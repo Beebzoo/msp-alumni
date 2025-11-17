@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSP Alumni Network - Global Reach</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* ============================================
+           MSP ALUMNI - MAIN STYLES
+           University of Maastricht Branding
+        ============================================ */
+        
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333333;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #001C3D 0%, #003d7a 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text h1 {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .logo-text .subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            margin: 5px 0 0 0;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+        }
+        
+        .header-nav a:hover {
+            color: #00BCD4;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #001C3D 0%, #003d7a 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-description {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+        
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #00BCD4;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            color: #001C3D;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* SEARCH BAR */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 18px 50px 18px 20px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #00BCD4;
+            box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00BCD4;
+            font-size: 20px;
+        }
+        
+        /* MAP CONTAINER */
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        
+        #worldMap {
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* MAP INFO BOX */
+        .map-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .map-info p {
+            color: #666;
+            font-size: 15px;
+            margin: 0;
+        }
+        
+        .map-info .highlight {
+            color: #E84E10;
+            font-weight: 600;
+        }
+        
+        /* TOP DESTINATIONS */
+        .top-destinations {
+            margin-top: 60px;
+        }
+        
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,162,219,0.2);
+            border-color: #00BCD4;
+        }
+        
+        .destination-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .country-flag {
+            font-size: 40px;
+            margin-right: 15px;
+        }
+        
+        .destination-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            color: #001C3D;
+            margin: 0;
+        }
+        
+        .alumni-count {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00BCD4;
+            margin: 15px 0 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .alumni-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .view-details {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #001C3D;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover .view-details {
+            background: #00BCD4;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #001C3D;
+            color: white;
+            padding: 40px 40px 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #00BCD4;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #00BCD4;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+        }
+        
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* LEAFLET CUSTOM STYLES */
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .leaflet-popup-content {
+            margin: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .popup-country {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #001C3D;
+            margin-bottom: 10px;
+        }
+        
+        .popup-stats {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .popup-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #00BCD4;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background 0.3s ease;
+        }
+        
+        .popup-button:hover {
+            background: #001C3D;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            #worldMap {
+                height: 400px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .header-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-text">
+                    <h1>Maastricht Science Programme</h1>
+                    <p class="subtitle">Alumni Network - Where in the World Are We?</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="#about">About</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>🌍 MSP Alumni Around the Globe</h1>
+        <p class="hero-description">
+            Discover where our graduates are making their mark. From research labs to tech hubs, 
+            from Europe to Asia and beyond—explore the global journey of MSP alumni.
+        </p>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">1,329</div>
+                <div class="stat-label">Alumni</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">66</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">235</div>
+                <div class="stat-label">Universities</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2014-2025</div>
+                <div class="stat-label">Graduating Years</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <h2>Explore Our Global Network</h2>
+            <p>Click on any country to discover where our alumni are studying and working</p>
+        </div>
+        
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Search for a country or city..." 
+                id="searchInput"
+            >
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <!-- INTERACTIVE MAP -->
+        <div class="map-container">
+            <div id="worldMap"></div>
+            <div class="map-info">
+                <p>
+                    💡 <span class="highlight">Hover over a country</span> to see alumni count, 
+                    then <span class="highlight">click</span> to explore detailed information
+                </p>
+            </div>
+        </div>
+        
+        <!-- TOP DESTINATIONS -->
+        <div class="top-destinations" id="destinations">
+            <div class="section-header">
+                <h2>Top Alumni Destinations</h2>
+                <p>The most popular countries for our graduates' master's programs and careers</p>
+            </div>
+            
+            <div class="destination-grid" id="destinationGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MSP Alumni</h3>
+                <p>The Maastricht Science Programme has been graduating talented scientists since 2014, with alumni now spread across the globe pursuing advanced degrees and impactful careers.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About the Programme</a>
+                <a href="#destinations">Alumni Destinations</a>
+                <a href="#contact">Get in Touch</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank">MSP Website</a>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>Contact</h3>
+                <p>Faculty of Science and Engineering<br>
+                Maastricht University<br>
+                Paul-Henri-Spaak Laan 1<br>
+                6229 EN Maastricht, Netherlands</p>
+                <p style="margin-top: 15px;">
+                    <strong>Alumni Officer:</strong> Martijn Jeurissen<br>
+                    Email: msp-alumni@maastrichtuniversity.nl
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Maastricht University - Faculty of Science and Engineering. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script>
+        // Alumni data by country
+        const alumniData = {
+            "Netherlands": {"current": 445, "masters": 487, "total": 487},
+            "Germany": {"current": 92, "masters": 49, "total": 92},
+            "United Kingdom": {"current": 71, "masters": 86, "total": 86},
+            "Belgium": {"current": 68, "masters": 42, "total": 68},
+            "Sweden": {"current": 49, "masters": 55, "total": 55},
+            "Switzerland": {"current": 39, "masters": 24, "total": 39},
+            "Spain": {"current": 29, "masters": 25, "total": 29},
+            "Italy": {"current": 27, "masters": 10, "total": 27},
+            "France": {"current": 25, "masters": 21, "total": 25},
+            "United States": {"current": 22, "masters": 13, "total": 22},
+            "Denmark": {"current": 19, "masters": 21, "total": 21},
+            "Austria": {"current": 14, "masters": 15, "total": 15},
+            "Canada": {"current": 15, "masters": 5, "total": 15},
+            "Norway": {"current": 12, "masters": 8, "total": 12},
+            "Luxembourg": {"current": 11, "masters": 1, "total": 11},
+            "Australia": {"current": 10, "masters": 4, "total": 10},
+            "Finland": {"current": 8, "masters": 7, "total": 8},
+            "Ireland": {"current": 6, "masters": 8, "total": 8},
+            "China": {"current": 7, "masters": 4, "total": 7},
+            "Singapore": {"current": 6, "masters": 5, "total": 6},
+            "Portugal": {"current": 5, "masters": 2, "total": 5},
+            "Poland": {"current": 5, "masters": 3, "total": 5},
+            "Japan": {"current": 4, "masters": 3, "total": 4},
+            "Czech Republic": {"current": 4, "masters": 2, "total": 4},
+            "Greece": {"current": 3, "masters": 3, "total": 3},
+            "Hungary": {"current": 3, "masters": 2, "total": 3},
+            "New Zealand": {"current": 3, "masters": 1, "total": 3},
+            "South Korea": {"current": 2, "masters": 2, "total": 2},
+            "Thailand": {"current": 2, "masters": 1, "total": 2},
+            "UAE": {"current": 2, "masters": 1, "total": 2}
+        };
+        
+        // Country flags (emoji)
+        const countryFlags = {
+            "Netherlands": "🇳🇱",
+            "Germany": "🇩🇪",
+            "United Kingdom": "🇬🇧",
+            "Belgium": "🇧🇪",
+            "Sweden": "🇸🇪",
+            "Switzerland": "🇨🇭",
+            "Spain": "🇪🇸",
+            "Italy": "🇮🇹",
+            "France": "🇫🇷",
+            "United States": "🇺🇸",
+            "Denmark": "🇩🇰",
+            "Austria": "🇦🇹",
+            "Canada": "🇨🇦",
+            "Norway": "🇳🇴",
+            "Luxembourg": "🇱🇺",
+            "Australia": "🇦🇺",
+            "Finland": "🇫🇮",
+            "Ireland": "🇮🇪",
+            "China": "🇨🇳",
+            "Singapore": "🇸🇬"
+        };
+        
+        // Initialize the map
+        const map = L.map('worldMap').setView([30, 10], 2);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+        
+        // Country coordinates (approximate centroids)
+        const countryCoordinates = {
+            "Netherlands": [52.1326, 5.2913],
+            "Germany": [51.1657, 10.4515],
+            "United Kingdom": [55.3781, -3.4360],
+            "Belgium": [50.5039, 4.4699],
+            "Sweden": [60.1282, 18.6435],
+            "Switzerland": [46.8182, 8.2275],
+            "Spain": [40.4637, -3.7492],
+            "Italy": [41.8719, 12.5674],
+            "France": [46.2276, 2.2137],
+            "United States": [37.0902, -95.7129],
+            "Denmark": [56.2639, 9.5018],
+            "Austria": [47.5162, 14.5501],
+            "Canada": [56.1304, -106.3468],
+            "Norway": [60.4720, 8.4689],
+            "Luxembourg": [49.8153, 6.1296],
+            "Australia": [-25.2744, 133.7751],
+            "Finland": [61.9241, 25.7482],
+            "Ireland": [53.4129, -8.2439],
+            "China": [35.8617, 104.1954],
+            "Singapore": [1.3521, 103.8198],
+            "Portugal": [39.3999, -8.2245],
+            "Poland": [51.9194, 19.1451],
+            "Japan": [36.2048, 138.2529],
+            "Czech Republic": [49.8175, 15.4730],
+            "Greece": [39.0742, 21.8243],
+            "Hungary": [47.1625, 19.5033],
+            "New Zealand": [-40.9006, 174.8860],
+            "South Korea": [35.9078, 127.7669],
+            "Thailand": [15.8700, 100.9925],
+            "UAE": [23.4241, 53.8478]
+        };
+        
+        // Add markers for each country
+        Object.keys(alumniData).forEach(country => {
+            if (countryCoordinates[country]) {
+                const coords = countryCoordinates[country];
+                const data = alumniData[country];
+                
+                // Calculate marker size based on alumni count
+                const radius = Math.min(Math.max(data.total / 10, 8), 30);
+                
+                // Create circle marker
+                const marker = L.circleMarker(coords, {
+                    radius: radius,
+                    fillColor: '#00BCD4',
+                    color: '#001C3D',
+                    weight: 2,
+                    opacity: 0.8,
+                    fillOpacity: 0.6
+                }).addTo(map);
+                
+                // Create popup content
+                const popupContent = `
+                    <div class="popup-country">${country}</div>
+                    <div class="popup-stats">
+                        <strong>${data.total}</strong> alumni<br>
+                        📚 ${data.masters} pursuing/completed master's<br>
+                        💼 ${data.current} currently living here
+                    </div>
+                    <a href="country.html?country=${encodeURIComponent(country)}" class="popup-button">
+                        Explore ${country} →
+                    </a>
+                `;
+                
+                marker.bindPopup(popupContent);
+                
+                // Hover effect
+                marker.on('mouseover', function() {
+                    this.setStyle({
+                        fillOpacity: 0.9,
+                        radius: radius * 1.2
+                    });
+                });
+                
+                marker.on('mouseout', function() {
+                    this.setStyle({
+                        fillOpacity: 0.6,
+                        radius: radius
+                    });
+                });
+            }
+        });
+        
+        // Populate top destinations
+        const destinationGrid = document.getElementById('destinationGrid');
+        const topCountries = Object.entries(alumniData)
+            .sort((a, b) => b[1].total - a[1].total)
+            .slice(0, 12);
+        
+        topCountries.forEach(([country, data]) => {
+            const card = document.createElement('div');
+            card.className = 'destination-card';
+            card.onclick = () => {
+                window.location.href = `country.html?country=${encodeURIComponent(country)}`;
+            };
+            
+            const flag = countryFlags[country] || '🌍';
+            
+            card.innerHTML = `
+                <div class="destination-header">
+                    <span class="country-flag">${flag}</span>
+                    <h3>${country}</h3>
+                </div>
+                <div class="alumni-count">${data.total}</div>
+                <div class="alumni-label">Alumni</div>
+                <div class="view-details">View Details →</div>
+            `;
+            
+            destinationGrid.appendChild(card);
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length > 2) {
+                // Filter countries
+                const matches = Object.keys(alumniData).filter(country => 
+                    country.toLowerCase().includes(searchTerm)
+                );
+                
+                if (matches.length > 0 && countryCoordinates[matches[0]]) {
+                    const coords = countryCoordinates[matches[0]];
+                    map.flyTo(coords, 5, {
+                        duration: 1.5
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

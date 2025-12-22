@@ -12,15 +12,16 @@
         :root {
             --dark-blue: #001C3D;
             --light-blue: #00A2DB;
-            --bright-blue: #00d4ff;
             --orange: #E84E10;
             --white: #FFFFFF;
             --off-white: #f8f9fa;
-            --gray-100: #f1f3f5;
+            --gray-100: #f5f5f5;
             --gray-200: #e9ecef;
-            --gray-400: #ced4da;
-            --gray-600: #868e96;
+            --gray-300: #dee2e6;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
             --gray-800: #343a40;
+            --text-dark: #1a1a2e;
         }
         
         * {
@@ -32,8 +33,8 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--white);
-            color: var(--dark-blue);
-            overflow-x: hidden;
+            color: var(--text-dark);
+            line-height: 1.6;
         }
         
         /* Header */
@@ -43,12 +44,11 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 20px 50px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
+            background: white;
             border-bottom: 1px solid var(--gray-200);
         }
         
@@ -66,7 +66,7 @@
             width: 32px;
             height: 32px;
             background: var(--dark-blue);
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -77,8 +77,11 @@
         
         .back-link {
             font-size: 14px;
-            color: var(--gray-600);
+            color: var(--light-blue);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
             transition: color 0.2s;
         }
         
@@ -86,15 +89,14 @@
             color: var(--dark-blue);
         }
         
-        /* Hero Section - Split Layout */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding-top: 80px;
+            padding-top: 65px;
         }
         
-        /* Left Side - Flag + Info */
         .hero-left {
             display: flex;
             flex-direction: column;
@@ -104,7 +106,7 @@
             flex: 1;
             position: relative;
             overflow: hidden;
-            min-height: 350px;
+            min-height: 320px;
         }
         
         .flag-img {
@@ -118,13 +120,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100px;
+            height: 120px;
             background: linear-gradient(to bottom, transparent, var(--dark-blue));
         }
         
         .info-section {
             background: var(--dark-blue);
-            padding: 50px 60px;
+            padding: 45px 50px;
             color: white;
         }
         
@@ -134,30 +136,29 @@
             color: var(--light-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .country-name {
-            font-size: 52px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
-            margin-bottom: 10px;
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 8px;
             color: white;
         }
         
         .country-native {
-            font-size: 16px;
+            font-size: 15px;
             color: rgba(255,255,255,0.5);
-            font-weight: 500;
             font-style: italic;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .country-region {
             font-size: 14px;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
         
         .quick-facts {
@@ -168,7 +169,7 @@
         
         .fact {
             border-left: 3px solid var(--light-blue);
-            padding-left: 15px;
+            padding-left: 12px;
         }
         
         .fact.orange {
@@ -176,7 +177,7 @@
         }
         
         .fact-value {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
         }
@@ -184,15 +185,15 @@
         .fact-label {
             font-size: 10px;
             color: rgba(255,255,255,0.5);
-            margin-top: 4px;
+            margin-top: 3px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        /* Right Side - Map */
+        /* Map */
         .hero-right {
             position: relative;
-            background: var(--off-white);
+            background: var(--gray-100);
         }
         
         #heroMap {
@@ -203,12 +204,12 @@
         
         .map-overlay {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 25px;
             background: white;
             padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
             z-index: 1000;
         }
         
@@ -217,7 +218,6 @@
             color: var(--gray-600);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
         }
         
         .map-overlay-value {
@@ -226,98 +226,114 @@
             color: var(--dark-blue);
         }
         
-        /* Big Stats Section */
-        .big-stats {
-            padding: 100px 80px;
-            background: var(--white);
+        /* UM Style Section Headers */
+        .section-header-um {
+            margin-bottom: 30px;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 900px;
+        .section-header-um h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .section-header-um p {
+            font-size: 15px;
+            color: var(--gray-600);
+            max-width: 600px;
+        }
+        
+        /* Stats Section - UM Style */
+        .stats-section {
+            padding: 70px 50px;
+            background: white;
+        }
+        
+        .stats-container {
+            max-width: 1100px;
             margin: 0 auto;
         }
         
-        .big-stat {
-            text-align: center;
-            padding: 40px;
-            background: var(--off-white);
-            border-radius: 20px;
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
         
-        .big-stat-number {
-            font-size: 56px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
+        .stat-card {
+            background: var(--gray-100);
+            padding: 35px 30px;
+            border-left: 4px solid var(--orange);
+        }
+        
+        .stat-card.blue {
+            border-left-color: var(--light-blue);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
             color: var(--dark-blue);
+            line-height: 1;
+            margin-bottom: 8px;
         }
         
-        .big-stat-number.blue {
-            color: var(--light-blue);
-        }
-        
-        .big-stat-number.orange {
-            color: var(--orange);
-        }
-        
-        .big-stat-label {
-            font-size: 13px;
+        .stat-label {
+            font-size: 14px;
             color: var(--gray-600);
-            margin-top: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
-        /* Graphs Section */
+        /* Graphs Section - UM Style */
         .graphs-section {
-            padding: 100px 80px;
-            background: var(--off-white);
+            padding: 70px 50px;
+            background: var(--gray-100);
+        }
+        
+        .graphs-container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
         
         .graphs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 30px;
         }
         
-        .graph-card {
+        .graph-card-um {
             background: white;
-            border-radius: 20px;
-            padding: 35px;
+            padding: 30px;
         }
         
-        .graph-card.full-width {
+        .graph-card-um.full-width {
             grid-column: span 2;
         }
         
-        .graph-title {
+        .graph-title-um {
             font-size: 18px;
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-200);
         }
         
-        /* Bar Chart */
-        .bar-chart {
+        /* Bar Chart - UM Style */
+        .bar-chart-um {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
         
-        .bar-row {
+        .bar-row-um {
             display: flex;
             align-items: center;
             gap: 15px;
         }
         
-        .bar-label {
-            font-size: 13px;
-            font-weight: 500;
+        .bar-label-um {
+            font-size: 14px;
             color: var(--gray-800);
             min-width: 140px;
             display: flex;
@@ -328,55 +344,49 @@
         .bar-flag {
             width: 24px;
             height: 16px;
-            border-radius: 3px;
+            border-radius: 2px;
             object-fit: cover;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
-        .bar-container {
+        .bar-track {
             flex: 1;
-            height: 28px;
+            height: 24px;
             background: var(--gray-100);
-            border-radius: 14px;
-            overflow: hidden;
+            position: relative;
         }
         
-        .bar-fill {
+        .bar-fill-um {
             height: 100%;
-            border-radius: 14px;
+            background: var(--light-blue);
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-right: 12px;
+            padding-right: 10px;
             font-size: 12px;
             font-weight: 600;
             color: white;
-            min-width: 40px;
-            transition: width 1s ease;
+            min-width: 35px;
         }
         
-        .bar-fill.blue {
-            background: linear-gradient(90deg, var(--light-blue), var(--bright-blue));
+        .bar-fill-um.orange {
+            background: var(--orange);
         }
         
-        .bar-fill.orange {
-            background: linear-gradient(90deg, var(--orange), #ff6b35);
-        }
-        
-        .bar-fill.dark {
-            background: linear-gradient(90deg, var(--dark-blue), #003366);
+        .bar-fill-um.dark {
+            background: var(--dark-blue);
         }
         
         /* Donut Chart */
         .donut-container {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 35px;
         }
         
         .donut-chart {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             position: relative;
             display: flex;
@@ -385,8 +395,8 @@
         }
         
         .donut-center {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -396,7 +406,7 @@
         }
         
         .donut-center-value {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--dark-blue);
         }
@@ -410,249 +420,207 @@
         .donut-legend {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 14px;
         }
         
         .legend-color {
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-        }
-        
-        .legend-text {
-            font-size: 14px;
-            color: var(--gray-800);
+            width: 16px;
+            height: 16px;
         }
         
         .legend-value {
-            font-weight: 700;
+            font-weight: 600;
             margin-left: auto;
+            color: var(--dark-blue);
         }
         
-        /* Year Timeline */
-        .year-timeline {
+        /* Year Timeline - UM Style */
+        .year-timeline-um {
             display: flex;
             align-items: flex-end;
-            gap: 8px;
-            height: 200px;
-            padding-top: 30px;
+            gap: 6px;
+            height: 180px;
+            padding-top: 25px;
         }
         
-        .year-bar {
+        .year-bar-um {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
-        .year-bar-fill {
+        .year-bar-fill-um {
             width: 100%;
-            background: linear-gradient(180deg, var(--light-blue), var(--bright-blue));
-            border-radius: 6px 6px 0 0;
-            transition: height 1s ease;
+            background: var(--light-blue);
             position: relative;
-            min-height: 10px;
+            min-height: 8px;
         }
         
-        .year-bar-value {
+        .year-bar-value-um {
             position: absolute;
-            top: -24px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--dark-blue);
         }
         
-        .year-bar-label {
+        .year-bar-label-um {
             font-size: 10px;
             color: var(--gray-600);
-            font-weight: 500;
         }
         
-        /* Universities Section */
+        /* Universities Section - UM Style Cards */
         .universities-section {
-            padding: 100px 80px;
-            background: var(--white);
+            padding: 70px 50px;
+            background: white;
         }
         
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 40px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .section-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--orange);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        
-        .section-heading {
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--dark-blue);
-        }
-        
-        .section-count {
-            font-size: 14px;
-            color: var(--gray-600);
-        }
-        
-        .section-count span {
-            font-weight: 700;
-            color: var(--dark-blue);
-        }
-        
-        .university-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            background: var(--gray-200);
-            border-radius: 16px;
-            overflow: hidden;
-            max-width: 1200px;
+        .universities-container {
+            max-width: 1100px;
             margin: 0 auto;
         }
         
-        .university-row {
+        .uni-grid {
             display: grid;
-            grid-template-columns: 50px 70px 1fr 180px 80px;
-            align-items: center;
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            padding: 20px 30px;
-            background: white;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
         }
         
-        .university-row:hover {
-            background: var(--gray-100);
-        }
-        
-        .uni-rank {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--gray-400);
-        }
-        
-        .uni-logo {
-            width: 50px;
-            height: 50px;
+        .uni-card {
             background: white;
             border: 1px solid var(--gray-200);
-            border-radius: 10px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .uni-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .uni-card-header {
+            height: 100px;
+            background: var(--gray-100);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6px;
+            padding: 20px;
         }
         
-        .uni-logo img {
-            max-width: 100%;
-            max-height: 100%;
+        .uni-card-header img {
+            max-height: 60px;
+            max-width: 140px;
             object-fit: contain;
         }
         
-        .uni-info h3 {
+        .uni-card-body {
+            padding: 20px;
+        }
+        
+        .uni-card-name {
             font-size: 15px;
             font-weight: 600;
             color: var(--dark-blue);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            line-height: 1.3;
         }
         
-        .uni-info p {
+        .uni-card-city {
             font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 15px;
+        }
+        
+        .uni-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .uni-card-count {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .uni-card-count span {
+            font-size: 13px;
+            font-weight: 400;
             color: var(--gray-600);
         }
         
-        .uni-bar {
-            height: 8px;
-            background: var(--gray-200);
-            border-radius: 4px;
-            overflow: hidden;
+        .uni-card-link {
+            color: var(--orange);
+            font-size: 20px;
         }
         
-        .uni-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--light-blue), var(--bright-blue));
-            border-radius: 4px;
-        }
-        
-        .uni-count {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark-blue);
-            text-align: right;
-        }
-        
-        /* Cities Section */
+        /* Cities Section - UM Style Buttons */
         .cities-section {
-            padding: 100px 80px;
-            background: var(--off-white);
+            padding: 70px 50px;
+            background: var(--gray-100);
         }
         
-        .cities-wrapper {
-            max-width: 1200px;
+        .cities-container {
+            max-width: 1100px;
             margin: 0 auto;
         }
         
-        .cities-grid {
-            display: flex;
-            flex-wrap: wrap;
+        .cities-grid-um {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
-        .city-pill {
-            padding: 14px 24px;
-            background: white;
-            border-radius: 100px;
+        .city-button {
+            background: var(--orange);
+            color: white;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            color: var(--dark-blue);
-            transition: all 0.2s;
-            cursor: default;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: background 0.2s;
         }
         
-        .city-pill:hover {
-            background: var(--light-blue);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,162,219,0.2);
+        .city-button:hover {
+            background: #d63d0a;
         }
         
-        .city-pill span {
+        .city-button span {
             font-weight: 700;
-            margin-left: 8px;
-            opacity: 0.7;
         }
         
-        .city-pill:hover span {
-            opacity: 1;
+        .city-button-alt {
+            background: white;
+            color: var(--dark-blue);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .city-button-alt:hover {
+            background: var(--gray-100);
         }
         
         /* Footer */
         footer {
-            padding: 50px 80px;
+            padding: 40px 50px;
             background: var(--dark-blue);
             display: flex;
             justify-content: space-between;
@@ -662,12 +630,12 @@
         .footer-logo {
             color: white;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .footer-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
         }
         
         .footer-links a {
@@ -681,19 +649,18 @@
             color: white;
         }
         
-        /* Leaflet popup overrides */
+        /* Leaflet Popups */
         .leaflet-popup-content-wrapper {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             padding: 0;
-            overflow: hidden;
         }
         
         .leaflet-popup-content {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            min-width: 220px;
+            min-width: 200px;
         }
         
         .leaflet-popup-tip {
@@ -701,26 +668,25 @@
         }
         
         .popup-card {
-            padding: 20px;
+            padding: 18px;
         }
         
         .popup-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
         
         .popup-logo {
-            width: 50px;
-            height: 50px;
-            background: var(--off-white);
-            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            background: var(--gray-100);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
-            flex-shrink: 0;
+            padding: 6px;
         }
         
         .popup-logo img {
@@ -729,39 +695,35 @@
             object-fit: contain;
         }
         
-        .popup-text {
-            flex: 1;
-        }
-        
         .popup-name {
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--dark-blue);
             line-height: 1.2;
         }
         
         .popup-city {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray-600);
-            margin-top: 3px;
+            margin-top: 2px;
         }
         
         .popup-stats {
             display: flex;
             align-items: baseline;
-            gap: 8px;
-            padding-top: 15px;
+            gap: 6px;
+            padding-top: 12px;
             border-top: 1px solid var(--gray-200);
         }
         
         .popup-count {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 700;
             color: var(--light-blue);
         }
         
         .popup-count-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray-600);
         }
         
@@ -771,68 +733,38 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-left {
-                order: 1;
-            }
-            
             .hero-right {
                 height: 400px;
-                order: 2;
             }
             
-            .flag-section {
-                min-height: 250px;
-            }
-            
-            .info-section {
-                padding: 40px 30px;
-            }
-            
-            .country-name {
-                font-size: 40px;
-            }
-            
-            .stats-grid {
+            .stats-row {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            
-            .big-stat {
-                padding: 30px 20px;
-            }
-            
-            .big-stat-number {
-                font-size: 42px;
-            }
-            
-            .graphs-section,
-            .universities-section,
-            .cities-section {
-                padding: 60px 30px;
             }
             
             .graphs-grid {
                 grid-template-columns: 1fr;
             }
             
-            .graph-card.full-width {
+            .graph-card-um.full-width {
                 grid-column: span 1;
             }
             
-            .university-row {
-                grid-template-columns: 40px 50px 1fr 60px;
+            .uni-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .uni-bar { display: none; }
+            .cities-grid-um {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             header {
-                padding: 15px 20px;
+                padding: 12px 20px;
             }
             
             .info-section {
-                padding: 30px 20px;
+                padding: 30px 25px;
             }
             
             .country-name {
@@ -840,62 +772,53 @@
             }
             
             .quick-facts {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             
-            .stats-grid {
+            .stats-section,
+            .graphs-section,
+            .universities-section,
+            .cities-section {
+                padding: 50px 25px;
+            }
+            
+            .stats-row {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
             
-            .big-stat {
-                padding: 25px;
+            .stat-card {
+                padding: 25px 20px;
             }
             
-            .big-stat-number {
-                font-size: 48px;
-            }
-            
-            .big-stats {
-                padding: 60px 20px;
+            .stat-number {
+                font-size: 40px;
             }
             
             .donut-container {
                 flex-direction: column;
+                align-items: flex-start;
             }
             
-            .bar-label {
+            .bar-label-um {
                 min-width: 100px;
                 font-size: 12px;
             }
             
-            .bar-flag {
-                width: 20px;
-                height: 14px;
+            .uni-grid {
+                grid-template-columns: 1fr;
             }
             
-            .year-timeline {
-                overflow-x: auto;
+            .cities-grid-um {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .year-bar {
-                min-width: 35px;
-            }
-            
-            .university-row {
-                grid-template-columns: 40px 1fr 50px;
-                gap: 12px;
-                padding: 15px 20px;
-            }
-            
-            .uni-logo { display: none; }
             
             footer {
                 flex-direction: column;
                 gap: 20px;
-                padding: 40px 20px;
                 text-align: center;
+                padding: 30px 25px;
             }
         }
     </style>
@@ -906,12 +829,12 @@
     <header>
         <a href="index.html" class="logo">
             <span class="logo-mark">UM</span>
-            MSP Alumni
+            MSP Alumni Network
         </a>
-        <a href="index.html" class="back-link">Back to World Map</a>
+        <a href="index.html" class="back-link">← Back to World Map</a>
     </header>
     
-    <!-- Hero - Flag + Info on Left, Map on Right -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-left">
             <div class="flag-section">
@@ -961,83 +884,96 @@
         </div>
     </section>
     
-    <!-- Big Stats -->
-    <section class="big-stats">
-        <div class="stats-grid">
-            <div class="big-stat">
-                <div class="big-stat-number" id="statTotal">487</div>
-                <div class="big-stat-label">Total Alumni</div>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="section-header-um">
+                <h2>MSP Alumni Statistics</h2>
+                <p>Overview of Maastricht Science Programme graduates connected to this country.</p>
             </div>
-            <div class="big-stat">
-                <div class="big-stat-number blue" id="statLiving">445</div>
-                <div class="big-stat-label">Living Here</div>
-            </div>
-            <div class="big-stat">
-                <div class="big-stat-number orange" id="statUnis">11</div>
-                <div class="big-stat-label">Universities</div>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number" id="statTotal">487</div>
+                    <div class="stat-label">Total Alumni</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-number" id="statLiving">445</div>
+                    <div class="stat-label">Currently Living Here</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statUnis">11</div>
+                    <div class="stat-label">Partner Universities</div>
+                </div>
             </div>
         </div>
     </section>
     
     <!-- Graphs Section -->
     <section class="graphs-section">
-        <div class="graphs-grid">
-            
-            <!-- Graduation Years -->
-            <div class="graph-card full-width">
-                <div class="graph-title">Alumni by Graduation Year</div>
-                <div class="year-timeline" id="yearTimeline"></div>
+        <div class="graphs-container">
+            <div class="section-header-um">
+                <h2>Alumni Demographics</h2>
+                <p>Detailed breakdown of alumni characteristics and trends.</p>
             </div>
             
-            <!-- Gender Distribution -->
-            <div class="graph-card">
-                <div class="graph-title">Gender Distribution</div>
-                <div class="donut-container">
-                    <div class="donut-chart" id="genderDonut"></div>
-                    <div class="donut-legend" id="genderLegend"></div>
+            <div class="graphs-grid">
+                <!-- Graduation Years -->
+                <div class="graph-card-um full-width">
+                    <div class="graph-title-um">Alumni by Graduation Year</div>
+                    <div class="year-timeline-um" id="yearTimeline"></div>
+                </div>
+                
+                <!-- Gender -->
+                <div class="graph-card-um">
+                    <div class="graph-title-um">Gender Distribution</div>
+                    <div class="donut-container">
+                        <div class="donut-chart" id="genderDonut"></div>
+                        <div class="donut-legend" id="genderLegend"></div>
+                    </div>
+                </div>
+                
+                <!-- Origins -->
+                <div class="graph-card-um">
+                    <div class="graph-title-um">Where They Come From</div>
+                    <div class="bar-chart-um" id="originChart"></div>
+                </div>
+                
+                <!-- Fields -->
+                <div class="graph-card-um full-width">
+                    <div class="graph-title-um">Fields of Study</div>
+                    <div class="bar-chart-um" id="fieldsChart"></div>
+                </div>
+                
+                <!-- Nationalities -->
+                <div class="graph-card-um full-width">
+                    <div class="graph-title-um">Top Nationalities</div>
+                    <div class="bar-chart-um" id="nationalitiesChart"></div>
                 </div>
             </div>
-            
-            <!-- Origin Regions -->
-            <div class="graph-card">
-                <div class="graph-title">Where They Come From</div>
-                <div class="bar-chart" id="originChart"></div>
-            </div>
-            
-            <!-- Fields of Study -->
-            <div class="graph-card full-width">
-                <div class="graph-title">Fields of Study</div>
-                <div class="bar-chart" id="fieldsChart"></div>
-            </div>
-            
-            <!-- Top Nationalities with Flags -->
-            <div class="graph-card full-width">
-                <div class="graph-title">Top Nationalities</div>
-                <div class="bar-chart" id="nationalitiesChart"></div>
-            </div>
-            
         </div>
     </section>
     
     <!-- Universities Section -->
     <section class="universities-section">
-        <div class="section-header">
-            <div>
-                <div class="section-title">Education</div>
-                <h2 class="section-heading">Universities</h2>
+        <div class="universities-container">
+            <div class="section-header-um">
+                <h2>Universities</h2>
+                <p>Institutions where MSP alumni have continued their academic journey.</p>
             </div>
-            <div class="section-count"><span id="uniTotal">11</span> institutions</div>
+            
+            <div class="uni-grid" id="universityGrid"></div>
         </div>
-        
-        <div class="university-list" id="universityList"></div>
     </section>
     
     <!-- Cities Section -->
     <section class="cities-section">
-        <div class="cities-wrapper">
-            <div class="section-title">Living</div>
-            <h2 class="section-heading">Where alumni call home</h2>
-            <div class="cities-grid" id="citiesGrid"></div>
+        <div class="cities-container">
+            <div class="section-header-um">
+                <h2>Where Alumni Live</h2>
+                <p>Cities across the country where our graduates have settled.</p>
+            </div>
+            
+            <div class="cities-grid-um" id="citiesGrid"></div>
         </div>
     </section>
     
@@ -1054,78 +990,26 @@
     
     <script>
         // ============================================
-        // GET COUNTRY FROM URL
+        // CONFIG
         // ============================================
         
         const urlParams = new URLSearchParams(window.location.search);
         const countryParam = urlParams.get('country') || 'Netherlands';
         
-        // Nationality to country code mapping for flags
         const nationalityFlags = {
-            "Dutch": "nl",
-            "German": "de",
-            "Belgian": "be",
-            "Italian": "it",
-            "British": "gb",
-            "Spanish": "es",
-            "Polish": "pl",
-            "Romanian": "ro",
-            "French": "fr",
-            "American": "us",
-            "Chinese": "cn",
-            "Indian": "in",
-            "Greek": "gr",
-            "Portuguese": "pt",
-            "Swedish": "se",
-            "Austrian": "at",
-            "Swiss": "ch",
-            "Danish": "dk",
-            "Finnish": "fi",
-            "Norwegian": "no",
-            "Irish": "ie",
-            "Czech": "cz",
-            "Hungarian": "hu",
-            "Bulgarian": "bg",
-            "Croatian": "hr",
-            "Slovenian": "si",
-            "Slovak": "sk",
-            "Lithuanian": "lt",
-            "Latvian": "lv",
-            "Estonian": "ee",
-            "Turkish": "tr",
-            "Russian": "ru",
-            "Ukrainian": "ua",
-            "Brazilian": "br",
-            "Mexican": "mx",
-            "Canadian": "ca",
-            "Australian": "au",
-            "Japanese": "jp",
-            "Korean": "kr",
-            "Taiwanese": "tw",
-            "Indonesian": "id",
-            "Malaysian": "my",
-            "Singaporean": "sg",
-            "Vietnamese": "vn",
-            "Thai": "th",
-            "Pakistani": "pk",
-            "Bangladeshi": "bd",
-            "Egyptian": "eg",
-            "Moroccan": "ma",
-            "Nigerian": "ng",
-            "South African": "za",
-            "Kenyan": "ke",
-            "Israeli": "il",
-            "Iranian": "ir",
-            "Saudi": "sa",
-            "Emirati": "ae",
-            "Luxembourgish": "lu",
-            "Cypriot": "cy",
-            "Maltese": "mt",
-            "Icelandic": "is"
+            "Dutch": "nl", "German": "de", "Belgian": "be", "Italian": "it",
+            "British": "gb", "Spanish": "es", "Polish": "pl", "Romanian": "ro",
+            "French": "fr", "American": "us", "Chinese": "cn", "Indian": "in",
+            "Greek": "gr", "Portuguese": "pt", "Swedish": "se", "Austrian": "at",
+            "Swiss": "ch", "Danish": "dk", "Finnish": "fi", "Norwegian": "no",
+            "Irish": "ie", "Czech": "cz", "Hungarian": "hu", "Bulgarian": "bg",
+            "Croatian": "hr", "Turkish": "tr", "Russian": "ru", "Ukrainian": "ua",
+            "Brazilian": "br", "Mexican": "mx", "Canadian": "ca", "Australian": "au",
+            "Japanese": "jp", "Korean": "kr"
         };
         
         // ============================================
-        // ALUMNI DATA (from database - privacy compliant: all n>=5)
+        // DATA (Privacy compliant: all n>=5)
         // ============================================
         
         const alumniDatabase = {
@@ -1193,7 +1077,7 @@
         const countryData = alumniDatabase[countryParam] || alumniDatabase["Netherlands"];
         
         // ============================================
-        // FETCH COUNTRY INFO FROM API
+        // FETCH COUNTRY INFO
         // ============================================
         
         async function fetchCountryInfo() {
@@ -1202,15 +1086,10 @@
                 const data = await response.json();
                 const country = data[0];
                 
-                document.title = `${countryData.displayName} - MSP Alumni Network`;
-                
-                // Flag image
+                document.title = `${countryData.displayName} - MSP Alumni`;
                 document.getElementById('flagImg').src = country.flags.svg;
-                
-                // Name
                 document.getElementById('countryName').textContent = countryData.displayName;
                 
-                // Native name
                 const nativeNames = country.name.nativeName;
                 if (nativeNames) {
                     const firstNative = Object.values(nativeNames)[0];
@@ -1219,10 +1098,7 @@
                     }
                 }
                 
-                // Region
                 document.getElementById('countryRegion').textContent = `${country.subregion} · ${country.region}`;
-                
-                // Facts
                 document.getElementById('factCapital').textContent = country.capital?.[0] || '-';
                 document.getElementById('factPopulation').textContent = formatPopulation(country.population);
                 document.getElementById('factArea').textContent = formatNumber(country.area);
@@ -1240,7 +1116,6 @@
                 if (country.timezones) {
                     document.getElementById('factTimezone').textContent = country.timezones[0];
                 }
-                
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -1266,7 +1141,7 @@
         }
         
         // ============================================
-        // MAP WITH LOGOS IN POPUPS
+        // MAP
         // ============================================
         
         function initMap() {
@@ -1278,15 +1153,15 @@
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
             
             countryData.universities.forEach(uni => {
-                const size = Math.max(12, Math.min(uni.count / 4, 28));
+                const size = Math.max(10, Math.min(uni.count / 4, 25));
                 
                 const marker = L.circleMarker([uni.lat, uni.lng], {
                     radius: size,
                     fillColor: '#00A2DB',
                     color: '#ffffff',
-                    weight: 3,
+                    weight: 2,
                     opacity: 1,
-                    fillOpacity: 0.8
+                    fillOpacity: 0.85
                 }).addTo(map);
                 
                 marker.bindPopup(`
@@ -1295,7 +1170,7 @@
                             <div class="popup-logo">
                                 <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.parentElement.style.display='none'">
                             </div>
-                            <div class="popup-text">
+                            <div>
                                 <div class="popup-name">${uni.name}</div>
                                 <div class="popup-city">${uni.city}</div>
                             </div>
@@ -1305,19 +1180,30 @@
                             <div class="popup-count-label">alumni</div>
                         </div>
                     </div>
-                `, { className: 'custom-popup', maxWidth: 280 });
+                `, { maxWidth: 260 });
                 
                 marker.on('mouseover', function() {
-                    this.setStyle({ fillOpacity: 1, radius: size * 1.2 });
+                    this.setStyle({ fillOpacity: 1, radius: size * 1.15 });
                 });
                 marker.on('mouseout', function() {
-                    this.setStyle({ fillOpacity: 0.8, radius: size });
+                    this.setStyle({ fillOpacity: 0.85, radius: size });
                 });
             });
         }
         
         // ============================================
-        // GRAPHS
+        // STATS
+        // ============================================
+        
+        function populateStats() {
+            document.getElementById('statTotal').textContent = countryData.total;
+            document.getElementById('statLiving').textContent = countryData.living;
+            document.getElementById('statUnis').textContent = countryData.universities.length;
+            document.getElementById('uniCount').textContent = countryData.universities.length;
+        }
+        
+        // ============================================
+        // CHARTS
         // ============================================
         
         function createYearTimeline() {
@@ -1326,14 +1212,14 @@
             const maxVal = Math.max(...Object.values(years));
             
             Object.entries(years).forEach(([year, count]) => {
-                const height = (count / maxVal) * 150;
+                const height = (count / maxVal) * 130;
                 const bar = document.createElement('div');
-                bar.className = 'year-bar';
+                bar.className = 'year-bar-um';
                 bar.innerHTML = `
-                    <div class="year-bar-fill" style="height: ${height}px">
-                        <span class="year-bar-value">${count}</span>
+                    <div class="year-bar-fill-um" style="height: ${height}px">
+                        <span class="year-bar-value-um">${count}</span>
                     </div>
-                    <div class="year-bar-label">'${year.slice(-2)}</div>
+                    <div class="year-bar-label-um">'${year.slice(-2)}</div>
                 `;
                 container.appendChild(bar);
             });
@@ -1346,45 +1232,26 @@
             const femalePct = (female / total) * 100;
             
             const donut = document.getElementById('genderDonut');
-            donut.style.background = `conic-gradient(
-                #00A2DB 0% ${femalePct}%,
-                #E84E10 ${femalePct}% 100%
-            )`;
-            donut.innerHTML = `
-                <div class="donut-center">
-                    <div class="donut-center-value">${total}</div>
-                    <div class="donut-center-label">Total</div>
-                </div>
-            `;
+            donut.style.background = `conic-gradient(#00A2DB 0% ${femalePct}%, #E84E10 ${femalePct}% 100%)`;
+            donut.innerHTML = `<div class="donut-center"><div class="donut-center-value">${total}</div><div class="donut-center-label">Total</div></div>`;
             
-            const legend = document.getElementById('genderLegend');
-            legend.innerHTML = `
-                <div class="legend-item">
-                    <div class="legend-color" style="background:#00A2DB"></div>
-                    <span class="legend-text">Female</span>
-                    <span class="legend-value">${female} (${femalePct.toFixed(0)}%)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background:#E84E10"></div>
-                    <span class="legend-text">Male</span>
-                    <span class="legend-value">${male} (${(100-femalePct).toFixed(0)}%)</span>
-                </div>
+            document.getElementById('genderLegend').innerHTML = `
+                <div class="legend-item"><div class="legend-color" style="background:#00A2DB"></div><span>Female</span><span class="legend-value">${female} (${femalePct.toFixed(0)}%)</span></div>
+                <div class="legend-item"><div class="legend-color" style="background:#E84E10"></div><span>Male</span><span class="legend-value">${male} (${(100-femalePct).toFixed(0)}%)</span></div>
             `;
         }
         
-        function createBarChart(containerId, data, colorClass = 'blue') {
+        function createBarChart(containerId, data, colorClass = '') {
             const container = document.getElementById(containerId);
             const maxVal = Math.max(...Object.values(data));
             
             Object.entries(data).forEach(([label, value]) => {
                 const pct = (value / maxVal) * 100;
                 const row = document.createElement('div');
-                row.className = 'bar-row';
+                row.className = 'bar-row-um';
                 row.innerHTML = `
-                    <div class="bar-label">${label}</div>
-                    <div class="bar-container">
-                        <div class="bar-fill ${colorClass}" style="width: ${pct}%">${value}</div>
-                    </div>
+                    <div class="bar-label-um">${label}</div>
+                    <div class="bar-track"><div class="bar-fill-um ${colorClass}" style="width: ${pct}%">${value}</div></div>
                 `;
                 container.appendChild(row);
             });
@@ -1398,79 +1265,58 @@
             Object.entries(data).forEach(([nationality, value]) => {
                 const pct = (value / maxVal) * 100;
                 const flagCode = nationalityFlags[nationality] || '';
-                const flagHtml = flagCode ? 
-                    `<img src="${getFlagUrl(flagCode)}" alt="${nationality}" class="bar-flag">` : '';
+                const flagHtml = flagCode ? `<img src="${getFlagUrl(flagCode)}" alt="" class="bar-flag">` : '';
                 
                 const row = document.createElement('div');
-                row.className = 'bar-row';
+                row.className = 'bar-row-um';
                 row.innerHTML = `
-                    <div class="bar-label">${flagHtml}${nationality}</div>
-                    <div class="bar-container">
-                        <div class="bar-fill orange" style="width: ${pct}%">${value}</div>
-                    </div>
+                    <div class="bar-label-um">${flagHtml}${nationality}</div>
+                    <div class="bar-track"><div class="bar-fill-um orange" style="width: ${pct}%">${value}</div></div>
                 `;
                 container.appendChild(row);
             });
         }
         
         // ============================================
-        // STATS
-        // ============================================
-        
-        function populateStats() {
-            document.getElementById('statTotal').textContent = countryData.total;
-            document.getElementById('statLiving').textContent = countryData.living;
-            document.getElementById('statUnis').textContent = countryData.universities.length;
-            document.getElementById('uniCount').textContent = countryData.universities.length;
-            document.getElementById('uniTotal').textContent = countryData.universities.length;
-        }
-        
-        // ============================================
-        // UNIVERSITIES
+        // UNIVERSITIES - Card Grid
         // ============================================
         
         function populateUniversities() {
-            const list = document.getElementById('universityList');
-            const maxCount = countryData.universities[0].count;
+            const grid = document.getElementById('universityGrid');
             
-            countryData.universities.forEach((uni, i) => {
-                const row = document.createElement('a');
-                row.href = `university.html?name=${encodeURIComponent(uni.name)}`;
-                row.className = 'university-row';
-                
-                const barWidth = (uni.count / maxCount) * 100;
-                
-                row.innerHTML = `
-                    <div class="uni-rank">${String(i + 1).padStart(2, '0')}</div>
-                    <div class="uni-logo">
+            countryData.universities.forEach(uni => {
+                const card = document.createElement('a');
+                card.href = `university.html?name=${encodeURIComponent(uni.name)}`;
+                card.className = 'uni-card';
+                card.innerHTML = `
+                    <div class="uni-card-header">
                         <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
                     </div>
-                    <div class="uni-info">
-                        <h3>${uni.name}</h3>
-                        <p>${uni.city}</p>
+                    <div class="uni-card-body">
+                        <div class="uni-card-name">${uni.name}</div>
+                        <div class="uni-card-city">${uni.city}</div>
+                        <div class="uni-card-footer">
+                            <div class="uni-card-count">${uni.count} <span>alumni</span></div>
+                            <div class="uni-card-link">→</div>
+                        </div>
                     </div>
-                    <div class="uni-bar">
-                        <div class="uni-bar-fill" style="width: ${barWidth}%"></div>
-                    </div>
-                    <div class="uni-count">${uni.count}</div>
                 `;
-                
-                list.appendChild(row);
+                grid.appendChild(card);
             });
         }
         
         // ============================================
-        // CITIES
+        // CITIES - UM Style Buttons
         // ============================================
         
         function populateCities() {
-            const container = document.getElementById('citiesGrid');
+            const grid = document.getElementById('citiesGrid');
             
-            countryData.cities.forEach(city => {
-                const pill = document.createElement('div');
-                pill.className = 'city-pill';
-                pill.innerHTML = `${city.name} <span>${city.count}</span>`;
-                container.appendChild(pill);
+            countryData.cities.forEach((city, i) => {
+                const btn = document.createElement('div');
+                btn.className = i < 4 ? 'city-button' : 'city-button city-button-alt';
+                btn.innerHTML = `${city.name} <span>${city.count}</span>`;
+                grid.appendChild(btn);
             });
         }
         
@@ -1483,7 +1329,7 @@
         initMap();
         createYearTimeline();
         createGenderDonut();
-        createBarChart('originChart', countryData.origins, 'blue');
+        createBarChart('originChart', countryData.origins, '');
         createBarChart('fieldsChart', countryData.fields, 'dark');
         createNationalitiesChart();
         populateUniversities();

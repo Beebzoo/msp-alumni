@@ -332,68 +332,142 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
         
-        /* LEAFLET CUSTOM STYLES */
+        /* LEAFLET CUSTOM STYLES - ENHANCED POPUP */
         .leaflet-popup-content-wrapper {
-            background: rgba(0,13,26,0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 16px !important;
+            overflow: hidden;
         }
         
         .leaflet-popup-content {
-            margin: 20px;
-            font-family: 'Inter', sans-serif;
-            color: var(--white);
+            margin: 0 !important;
+            width: 280px !important;
         }
         
-        .leaflet-popup-tip {
-            background: rgba(0,13,26,0.95);
-            border: 1px solid rgba(255,255,255,0.1);
+        .leaflet-popup-tip-container {
+            display: none;
+        }
+        
+        .popup-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .popup-flag-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+        
+        .popup-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(0,28,61,0.3) 0%, 
+                rgba(0,28,61,0.7) 40%, 
+                rgba(0,28,61,0.95) 100%);
+        }
+        
+        .popup-content {
+            position: relative;
+            z-index: 2;
+            padding: 25px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .popup-flag-icon {
+            width: 40px;
+            height: 28px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         
         .popup-country {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--light-blue);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
         .popup-number {
-            font-size: 36px;
+            font-size: 52px;
             font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #ffffff 0%, #00A2DB 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        .popup-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
         }
         
         .popup-stats {
-            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .popup-stat-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 14px;
-            line-height: 1.6;
-            margin: 10px 0;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .popup-stat-icon {
+            font-size: 16px;
         }
         
         .popup-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--bright-blue) 100%);
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #00A2DB 0%, #00d4ff 100%);
             color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
+            text-align: center;
             transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0,162,219,0.4);
         }
         
         .popup-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,162,219,0.5);
+            box-shadow: 0 6px 25px rgba(0,162,219,0.5);
         }
         
         /* ALUMNI ORIGINS SECTION */
@@ -503,9 +577,28 @@
             text-align: center;
         }
         
+        .university-logo {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .university-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
         .university-info {
             flex: 1;
-            margin: 0 25px;
+            margin-right: 25px;
         }
         
         .university-name {
@@ -792,6 +885,11 @@
                 order: 5;
             }
             
+            .university-logo {
+                width: 45px;
+                height: 45px;
+            }
+            
             .footer-bottom {
                 flex-direction: column;
                 gap: 20px;
@@ -1011,22 +1109,36 @@
             "Russia": 15
         };
         
-        // Top universities data
+        // Top universities data with logo filenames
         const topUniversities = {
-            "Maastricht University": {"count": 121, "country": "Netherlands", "code": "nl"},
-            "Utrecht University": {"count": 84, "country": "Netherlands", "code": "nl"},
-            "University of Amsterdam": {"count": 58, "country": "Netherlands", "code": "nl"},
-            "Leiden University": {"count": 41, "country": "Netherlands", "code": "nl"},
-            "Wageningen University & Research": {"count": 37, "country": "Netherlands", "code": "nl"},
-            "Radboud University": {"count": 36, "country": "Netherlands", "code": "nl"},
-            "University of Groningen": {"count": 23, "country": "Netherlands", "code": "nl"},
-            "KU Leuven": {"count": 21, "country": "Belgium", "code": "be"},
-            "Imperial College London": {"count": 19, "country": "United Kingdom", "code": "gb"},
-            "Uppsala University": {"count": 18, "country": "Sweden", "code": "se"},
-            "Delft University of Technology": {"count": 17, "country": "Netherlands", "code": "nl"},
-            "Vrije Universiteit Amsterdam": {"count": 14, "country": "Netherlands", "code": "nl"},
-            "University of Copenhagen": {"count": 12, "country": "Denmark", "code": "dk"},
-            "University College London": {"count": 12, "country": "United Kingdom", "code": "gb"}
+            "Maastricht University": {"count": 120, "country": "Netherlands", "code": "nl", "logo": "maastricht-university.png"},
+            "Utrecht University": {"count": 85, "country": "Netherlands", "code": "nl", "logo": "utrecht-university.png"},
+            "University of Amsterdam": {"count": 61, "country": "Netherlands", "code": "nl", "logo": "university-of-amsterdam.png"},
+            "Leiden University": {"count": 42, "country": "Netherlands", "code": "nl", "logo": "leiden-university.png"},
+            "Wageningen University & Research": {"count": 38, "country": "Netherlands", "code": "nl", "logo": "wageningen-university.png"},
+            "Radboud University": {"count": 36, "country": "Netherlands", "code": "nl", "logo": "radboud-university.png"},
+            "University of Groningen": {"count": 23, "country": "Netherlands", "code": "nl", "logo": "university-of-groningen.png"},
+            "KU Leuven": {"count": 21, "country": "Belgium", "code": "be", "logo": "ku-leuven.png"},
+            "Imperial College London": {"count": 19, "country": "United Kingdom", "code": "gb", "logo": "imperial-college-london.png"},
+            "Uppsala University": {"count": 18, "country": "Sweden", "code": "se", "logo": "uppsala-university.png"},
+            "Delft University of Technology": {"count": 17, "country": "Netherlands", "code": "nl", "logo": "tu-delft.png"},
+            "Vrije Universiteit Amsterdam": {"count": 15, "country": "Netherlands", "code": "nl", "logo": "vrije-universiteit-amsterdam.png"},
+            "University of Copenhagen": {"count": 14, "country": "Denmark", "code": "dk", "logo": "university-of-copenhagen.png"},
+            "University College London": {"count": 14, "country": "United Kingdom", "code": "gb", "logo": "ucl.png"},
+            "Lund University": {"count": 12, "country": "Sweden", "code": "se", "logo": "lund-university.png"},
+            "Eindhoven University of Technology": {"count": 9, "country": "Netherlands", "code": "nl", "logo": "eindhoven-university.png"},
+            "Stockholm University": {"count": 9, "country": "Sweden", "code": "se", "logo": "stockholm-university.png"},
+            "Karolinska Institutet": {"count": 9, "country": "Sweden", "code": "se", "logo": "karolinska-institutet.png"},
+            "ETH Zurich": {"count": 8, "country": "Switzerland", "code": "ch", "logo": "eth-zurich.png"},
+            "University of Oxford": {"count": 7, "country": "United Kingdom", "code": "gb", "logo": "university-of-oxford.png"},
+            "University of Edinburgh": {"count": 7, "country": "United Kingdom", "code": "gb", "logo": "university-of-edinburgh.png"},
+            "University of Cambridge": {"count": 7, "country": "United Kingdom", "code": "gb", "logo": "university-of-cambridge.png"},
+            "Technical University of Munich": {"count": 7, "country": "Germany", "code": "de", "logo": "technical-university-of-munich.png"},
+            "University of Bologna": {"count": 6, "country": "Italy", "code": "it", "logo": "university-of-bologna.png"},
+            "University of Helsinki": {"count": 5, "country": "Finland", "code": "fi", "logo": "university-of-helsinki.png"},
+            "Ghent University": {"count": 4, "country": "Belgium", "code": "be", "logo": "ghent-university.png"},
+            "Technical University of Denmark": {"count": 4, "country": "Denmark", "code": "dk", "logo": "technical-university-of-denmark.png"},
+            "Erasmus University Rotterdam": {"count": 4, "country": "Netherlands", "code": "nl", "logo": "erasmus-university.png"}
         };
         
         // Country flags CDN URLs
@@ -1075,6 +1187,15 @@
             return null;
         }
         
+        // Helper function to get large flag for background
+        function getFlagBgUrl(country) {
+            const code = countryFlags[country];
+            if (code) {
+                return `https://flagcdn.com/w640/${code}.png`;
+            }
+            return null;
+        }
+        
         // ============================================
         // POPULATE ORIGIN COUNTRIES
         // ============================================
@@ -1101,7 +1222,7 @@
         });
         
         // ============================================
-        // POPULATE TOP UNIVERSITIES
+        // POPULATE TOP UNIVERSITIES WITH LOGOS
         // ============================================
         
         const universityList = document.getElementById('universityList');
@@ -1113,9 +1234,13 @@
             
             const barWidth = (data.count / maxCount) * 100;
             const flagUrl = `https://flagcdn.com/w40/${data.code}.png`;
+            const logoUrl = `assets/logos/${data.logo}`;
             
             item.innerHTML = `
                 <div class="university-rank">#${index + 1}</div>
+                <div class="university-logo">
+                    <img src="${logoUrl}" alt="${university}" onerror="this.parentElement.style.display='none'">
+                </div>
                 <div class="university-info">
                     <div class="university-name">${university}</div>
                     <div class="university-location">
@@ -1237,21 +1362,43 @@
                     fillOpacity: 0.5
                 }).addTo(map);
                 
-                // Create popup content
-                const flagUrl = getFlagUrl(country, 40);
+                // Get flag URLs
+                const flagIconUrl = getFlagUrl(country, 80);
+                const flagBgUrl = getFlagBgUrl(country);
+                
+                // Create enhanced popup content with flag background
                 const popupContent = `
-                    <div class="popup-country">${country}</div>
-                    <div class="popup-number">${data.total}</div>
-                    <div class="popup-stats">
-                        📚 ${data.masters} pursuing/completed master's<br>
-                        💼 ${data.current} currently living here
+                    <div class="popup-card">
+                        <div class="popup-flag-bg" style="background-image: url('${flagBgUrl}');"></div>
+                        <div class="popup-gradient-overlay"></div>
+                        <div class="popup-content">
+                            <div class="popup-header">
+                                <img src="${flagIconUrl}" alt="${country}" class="popup-flag-icon">
+                                <div class="popup-country">${country}</div>
+                            </div>
+                            <div class="popup-number">${data.total}</div>
+                            <div class="popup-label">Alumni</div>
+                            <div class="popup-stats">
+                                <div class="popup-stat-row">
+                                    <span class="popup-stat-icon">🎓</span>
+                                    <span>${data.masters} pursuing/completed master's</span>
+                                </div>
+                                <div class="popup-stat-row">
+                                    <span class="popup-stat-icon">📍</span>
+                                    <span>${data.current} currently living here</span>
+                                </div>
+                            </div>
+                            <a href="country.html?country=${encodeURIComponent(country)}" class="popup-button">
+                                Explore ${country} →
+                            </a>
+                        </div>
                     </div>
-                    <a href="country.html?country=${encodeURIComponent(country)}" class="popup-button">
-                        Explore ${country} →
-                    </a>
                 `;
                 
-                marker.bindPopup(popupContent);
+                marker.bindPopup(popupContent, {
+                    maxWidth: 300,
+                    className: 'custom-popup'
+                });
                 
                 // Hover effect
                 marker.on('mouseover', function() {

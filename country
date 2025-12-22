@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country - MSP Alumni Network</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --dark-blue: #001C3D;
+            --light-blue: #00A2DB;
+            --bright-blue: #00d4ff;
+            --orange: #E84E10;
+            --white: #FFFFFF;
+            --off-white: #f8f9fa;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --gray-400: #ced4da;
+            --gray-600: #868e96;
+            --gray-800: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--dark-blue);
+            overflow-x: hidden;
+        }
+        
+        /* Loading State */
+        .loading {
+            opacity: 0.5;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .logo {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--dark-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+        }
+        
+        .back-link {
+            font-size: 14px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 80px;
+        }
+        
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+        }
+        
+        .country-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--light-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .country-name {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .country-native {
+            font-size: 20px;
+            color: var(--gray-400);
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .country-region {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 50px;
+        }
+        
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .fact {
+            border-left: 3px solid var(--light-blue);
+            padding-left: 20px;
+        }
+        
+        .fact.orange {
+            border-left-color: var(--orange);
+        }
+        
+        .fact-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .fact-label {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-right {
+            position: relative;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--gray-100) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .flag-container {
+            position: relative;
+            width: 75%;
+            max-width: 380px;
+        }
+        
+        .flag-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+        
+        .flag-decoration {
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            border: 2px solid var(--light-blue);
+            border-radius: 24px;
+            top: -20%;
+            left: -20%;
+            opacity: 0.2;
+            animation: rotate 30s linear infinite;
+        }
+        
+        .flag-decoration-2 {
+            position: absolute;
+            width: 160%;
+            height: 160%;
+            border: 1px solid var(--orange);
+            border-radius: 30px;
+            top: -30%;
+            left: -30%;
+            opacity: 0.15;
+            animation: rotate 40s linear infinite reverse;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Country Details Bar */
+        .details-bar {
+            padding: 60px 80px;
+            background: var(--off-white);
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .detail-label {
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Big Stats Section */
+        .big-stats {
+            padding: 120px 80px;
+            background: var(--dark-blue);
+            color: white;
+        }
+        
+        .stats-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .stats-header h2 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--light-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .stats-header p {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .big-stat {
+            text-align: center;
+        }
+        
+        .big-stat-number {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--bright-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .big-stat-number.orange {
+            background: linear-gradient(135deg, var(--orange) 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .big-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 100px 80px;
+            background: var(--white);
+        }
+        
+        .section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .section-heading {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .section-desc {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 50px;
+            max-width: 500px;
+        }
+        
+        .map-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        #countryMap {
+            height: 550px;
+            background: var(--gray-100);
+        }
+        
+        .map-legend {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 25px;
+            z-index: 1000;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.blue { background: var(--light-blue); }
+        .legend-dot.orange { background: var(--orange); }
+        
+        /* Universities Section */
+        .universities-section {
+            padding: 100px 80px;
+            background: var(--off-white);
+        }
+        
+        .uni-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+        }
+        
+        .uni-count {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        
+        .uni-count span {
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .university-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--gray-200);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .university-row {
+            display: grid;
+            grid-template-columns: 60px 80px 1fr 200px 100px;
+            align-items: center;
+            gap: 30px;
+            padding: 25px 35px;
+            background: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .university-row:hover {
+            background: var(--gray-100);
+        }
+        
+        .uni-rank {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-400);
+        }
+        
+        .uni-logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+        
+        .uni-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .uni-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 3px;
+        }
+        
+        .uni-info p {
+            font-size: 13px;
+            color: var(--gray-600);
+        }
+        
+        .uni-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .uni-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--light-blue), var(--bright-blue));
+            border-radius: 4px;
+        }
+        
+        .uni-count-num {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-align: right;
+        }
+        
+        /* Cities Section */
+        .cities-section {
+            padding: 100px 80px;
+            background: white;
+        }
+        
+        .cities-container {
+            display: flex;
+            gap: 80px;
+        }
+        
+        .cities-left {
+            flex: 0 0 320px;
+        }
+        
+        .cities-right {
+            flex: 1;
+        }
+        
+        .city-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .city-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .city-item:last-child {
+            border-bottom: none;
+        }
+        
+        .city-rank {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-400);
+            width: 30px;
+        }
+        
+        .city-name {
+            flex: 1;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        
+        .city-count {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--light-blue);
+        }
+        
+        .cities-visual {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-content: flex-start;
+        }
+        
+        .city-bubble {
+            padding: 12px 22px;
+            background: var(--gray-100);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-blue);
+            transition: all 0.2s;
+            cursor: default;
+        }
+        
+        .city-bubble:hover {
+            background: var(--light-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .city-bubble span {
+            color: var(--gray-500);
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        
+        .city-bubble:hover span {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* No Data State */
+        .no-data {
+            text-align: center;
+            padding: 80px 40px;
+            color: var(--gray-600);
+        }
+        
+        .no-data h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px 80px;
+            background: var(--dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        /* Leaflet overrides */
+        .leaflet-popup-content-wrapper {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        
+        .leaflet-popup-content {
+            margin: 15px 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .leaflet-popup-tip {
+            background: white;
+        }
+        
+        .popup-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        .popup-detail {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 3px;
+        }
+        
+        .popup-count {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--light-blue);
+            margin-top: 8px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-left {
+                padding: 60px 40px;
+                order: 2;
+            }
+            
+            .hero-right {
+                min-height: 350px;
+                order: 1;
+            }
+            
+            .country-name {
+                font-size: 48px;
+            }
+            
+            .quick-facts {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .details-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .big-stat-number {
+                font-size: 56px;
+            }
+            
+            .map-section,
+            .universities-section,
+            .cities-section,
+            .details-bar {
+                padding: 60px 30px;
+            }
+            
+            .university-row {
+                grid-template-columns: 50px 60px 1fr 80px;
+            }
+            
+            .uni-bar { display: none; }
+            
+            .cities-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .cities-left {
+                flex: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            .hero-left {
+                padding: 40px 20px;
+            }
+            
+            .country-name {
+                font-size: 36px;
+            }
+            
+            .quick-facts {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .big-stat-number {
+                font-size: 42px;
+            }
+            
+            .big-stats {
+                padding: 60px 20px;
+            }
+            
+            .section-heading {
+                font-size: 28px;
+            }
+            
+            .university-row {
+                grid-template-columns: 50px 1fr 60px;
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .uni-rank { display: none; }
+            
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                padding: 40px 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-mark">UM</span>
+            MSP Alumni
+        </a>
+        <a href="index.html" class="back-link">Back to World Map</a>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="country-label">Country Profile</div>
+            <h1 class="country-name" id="countryName">Loading...</h1>
+            <p class="country-native" id="countryNative"></p>
+            <p class="country-region" id="countryRegion"></p>
+            
+            <div class="quick-facts">
+                <div class="fact">
+                    <div class="fact-value" id="factCapital">-</div>
+                    <div class="fact-label">Capital</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-value" id="factPopulation">-</div>
+                    <div class="fact-label">Population</div>
+                </div>
+                <div class="fact orange">
+                    <div class="fact-value" id="factArea">-</div>
+                    <div class="fact-label">Area (km²)</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-value" id="factCurrency">-</div>
+                    <div class="fact-label">Currency</div>
+                </div>
+                <div class="fact">
+                    <div class="fact-value" id="factLanguage">-</div>
+                    <div class="fact-label">Language</div>
+                </div>
+                <div class="fact orange">
+                    <div class="fact-value" id="factTimezone">-</div>
+                    <div class="fact-label">Timezone</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="flag-container">
+                <div class="flag-decoration"></div>
+                <div class="flag-decoration-2"></div>
+                <img id="flagImg" class="flag-img" src="" alt="Flag">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Extra Details Bar -->
+    <section class="details-bar">
+        <div class="details-grid">
+            <div class="detail-item">
+                <div class="detail-value" id="detailContinent">-</div>
+                <div class="detail-label">Continent</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="detailDriving">-</div>
+                <div class="detail-label">Driving Side</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="detailCalling">-</div>
+                <div class="detail-label">Calling Code</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="detailDomain">-</div>
+                <div class="detail-label">Domain</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="detailUN">-</div>
+                <div class="detail-label">UN Member</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="detailIndependent">-</div>
+                <div class="detail-label">Independent</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Big Stats -->
+    <section class="big-stats">
+        <div class="stats-header">
+            <h2>MSP Alumni</h2>
+            <p id="statsTitle">Alumni in this country</p>
+        </div>
+        <div class="stats-grid">
+            <div class="big-stat">
+                <div class="big-stat-number" id="statTotal">0</div>
+                <div class="big-stat-label">Total Alumni</div>
+            </div>
+            <div class="big-stat">
+                <div class="big-stat-number" id="statLiving">0</div>
+                <div class="big-stat-label">Living Here Now</div>
+            </div>
+            <div class="big-stat">
+                <div class="big-stat-number orange" id="statMasters">0</div>
+                <div class="big-stat-label">Completed Masters</div>
+            </div>
+            <div class="big-stat">
+                <div class="big-stat-number" id="statUnis">0</div>
+                <div class="big-stat-label">Universities</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-title">Explore</div>
+        <h2 class="section-heading">Where our alumni are</h2>
+        <p class="section-desc" id="mapDesc">Universities and cities where MSP graduates have made their mark.</p>
+        
+        <div class="map-container">
+            <div id="countryMap"></div>
+            <div class="map-legend">
+                <div class="legend-item">
+                    <div class="legend-dot blue"></div>
+                    University
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot orange"></div>
+                    City
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Universities Section -->
+    <section class="universities-section" id="universitiesSection">
+        <div class="uni-header">
+            <div>
+                <div class="section-title">Education</div>
+                <h2 class="section-heading">Universities</h2>
+            </div>
+            <div class="uni-count"><span id="uniTotal">0</span> institutions</div>
+        </div>
+        
+        <div class="university-list" id="universityList">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+    
+    <!-- Cities Section -->
+    <section class="cities-section" id="citiesSection">
+        <div class="section-title">Living</div>
+        <h2 class="section-heading">Where alumni call home</h2>
+        <p class="section-desc">The cities where our graduates have settled down.</p>
+        
+        <div class="cities-container">
+            <div class="cities-left">
+                <div class="city-list" id="cityList">
+                    <!-- Top cities -->
+                </div>
+            </div>
+            <div class="cities-right">
+                <div class="cities-visual" id="cityBubbles">
+                    <!-- All cities as bubbles -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Maastricht University · Faculty of Science and Engineering</div>
+        <div class="footer-links">
+            <a href="index.html">World Map</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // ============================================
+        // GET COUNTRY FROM URL
+        // ============================================
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const countryParam = urlParams.get('country') || 'Netherlands';
+        
+        // ============================================
+        // ALUMNI DATA (Add more countries as needed)
+        // ============================================
+        
+        const alumniDatabase = {
+            "Netherlands": {
+                code: "NL",
+                total: 487,
+                living: 445,
+                masters: 487,
+                coordinates: [52.1326, 5.2913],
+                zoom: 7,
+                universities: [
+                    { name: "Maastricht University", city: "Maastricht", count: 120, lat: 50.8514, lng: 5.6910, logo: "maastricht-university.png" },
+                    { name: "Utrecht University", city: "Utrecht", count: 85, lat: 52.0855, lng: 5.1744, logo: "utrecht-university.png" },
+                    { name: "University of Amsterdam", city: "Amsterdam", count: 61, lat: 52.3559, lng: 4.9552, logo: "university-of-amsterdam.png" },
+                    { name: "Leiden University", city: "Leiden", count: 42, lat: 52.1575, lng: 4.4856, logo: "leiden-university.png" },
+                    { name: "Wageningen University", city: "Wageningen", count: 38, lat: 51.9692, lng: 5.6654, logo: "wageningen-university.png" },
+                    { name: "Radboud University", city: "Nijmegen", count: 36, lat: 51.8207, lng: 5.8656, logo: "radboud-university.png" },
+                    { name: "University of Groningen", city: "Groningen", count: 23, lat: 53.2194, lng: 6.5665, logo: "university-of-groningen.png" },
+                    { name: "TU Delft", city: "Delft", count: 17, lat: 52.0021, lng: 4.3734, logo: "tu-delft.png" },
+                    { name: "VU Amsterdam", city: "Amsterdam", count: 15, lat: 52.3340, lng: 4.8668, logo: "vrije-universiteit-amsterdam.png" },
+                    { name: "TU Eindhoven", city: "Eindhoven", count: 9, lat: 51.4478, lng: 5.4904, logo: "eindhoven-university.png" },
+                    { name: "Erasmus University", city: "Rotterdam", count: 4, lat: 51.9173, lng: 4.5260, logo: "erasmus-university.png" }
+                ],
+                cities: [
+                    { name: "Amsterdam", count: 87 },
+                    { name: "Maastricht", count: 72 },
+                    { name: "Utrecht", count: 58 },
+                    { name: "Rotterdam", count: 34 },
+                    { name: "The Hague", count: 28 },
+                    { name: "Eindhoven", count: 22 },
+                    { name: "Groningen", count: 19 },
+                    { name: "Nijmegen", count: 15 },
+                    { name: "Leiden", count: 14 },
+                    { name: "Delft", count: 12 }
+                ]
+            },
+            "Germany": {
+                code: "DE",
+                total: 92,
+                living: 92,
+                masters: 49,
+                coordinates: [51.1657, 10.4515],
+                zoom: 5,
+                universities: [
+                    { name: "Technical University of Munich", city: "Munich", count: 7, lat: 48.1497, lng: 11.5679, logo: "technical-university-of-munich.png" },
+                    { name: "Humboldt University Berlin", city: "Berlin", count: 4, lat: 52.5186, lng: 13.3935, logo: "humboldt-university-of-berlin.png" },
+                    { name: "University of Cologne", city: "Cologne", count: 4, lat: 50.9283, lng: 6.9292, logo: "university-of-cologne.png" }
+                ],
+                cities: [
+                    { name: "Berlin", count: 22 },
+                    { name: "Munich", count: 18 },
+                    { name: "Cologne", count: 12 },
+                    { name: "Frankfurt", count: 10 },
+                    { name: "Hamburg", count: 8 }
+                ]
+            },
+            "United Kingdom": {
+                code: "GB",
+                total: 86,
+                living: 71,
+                masters: 86,
+                coordinates: [55.3781, -3.4360],
+                zoom: 5,
+                universities: [
+                    { name: "Imperial College London", city: "London", count: 19, lat: 51.4988, lng: -0.1749, logo: "imperial-college-london.png" },
+                    { name: "University College London", city: "London", count: 14, lat: 51.5246, lng: -0.1340, logo: "ucl.png" },
+                    { name: "University of Oxford", city: "Oxford", count: 7, lat: 51.7548, lng: -1.2544, logo: "university-of-oxford.png" },
+                    { name: "University of Cambridge", city: "Cambridge", count: 7, lat: 52.2043, lng: 0.1149, logo: "university-of-cambridge.png" },
+                    { name: "University of Edinburgh", city: "Edinburgh", count: 7, lat: 55.9445, lng: -3.1892, logo: "university-of-edinburgh.png" },
+                    { name: "University of Birmingham", city: "Birmingham", count: 5, lat: 52.4508, lng: -1.9305, logo: "university-of-birmingham.png" }
+                ],
+                cities: [
+                    { name: "London", count: 45 },
+                    { name: "Edinburgh", count: 8 },
+                    { name: "Manchester", count: 6 },
+                    { name: "Cambridge", count: 5 },
+                    { name: "Oxford", count: 4 }
+                ]
+            },
+            "Belgium": {
+                code: "BE",
+                total: 68,
+                living: 68,
+                masters: 42,
+                coordinates: [50.5039, 4.4699],
+                zoom: 7,
+                universities: [
+                    { name: "KU Leuven", city: "Leuven", count: 21, lat: 50.8798, lng: 4.7005, logo: "ku-leuven.png" },
+                    { name: "Ghent University", city: "Ghent", count: 4, lat: 51.0458, lng: 3.7254, logo: "ghent-university.png" },
+                    { name: "Vrije Universiteit Brussel", city: "Brussels", count: 5, lat: 50.8225, lng: 4.3959, logo: "vrije-universiteit-brussel.png" }
+                ],
+                cities: [
+                    { name: "Brussels", count: 25 },
+                    { name: "Leuven", count: 18 },
+                    { name: "Antwerp", count: 10 },
+                    { name: "Ghent", count: 8 }
+                ]
+            },
+            "Sweden": {
+                code: "SE",
+                total: 55,
+                living: 49,
+                masters: 55,
+                coordinates: [60.1282, 18.6435],
+                zoom: 4,
+                universities: [
+                    { name: "Uppsala University", city: "Uppsala", count: 18, lat: 59.8586, lng: 17.6389, logo: "uppsala-university.png" },
+                    { name: "Lund University", city: "Lund", count: 12, lat: 55.7047, lng: 13.1910, logo: "lund-university.png" },
+                    { name: "Stockholm University", city: "Stockholm", count: 9, lat: 59.3639, lng: 18.0585, logo: "stockholm-university.png" },
+                    { name: "Karolinska Institutet", city: "Stockholm", count: 9, lat: 59.3487, lng: 18.0238, logo: "karolinska-institutet.png" }
+                ],
+                cities: [
+                    { name: "Stockholm", count: 22 },
+                    { name: "Uppsala", count: 12 },
+                    { name: "Lund", count: 8 },
+                    { name: "Gothenburg", count: 5 }
+                ]
+            }
+        };
+        
+        // Get current country data
+        const countryData = alumniDatabase[countryParam] || null;
+        
+        // ============================================
+        // FETCH COUNTRY INFO FROM API
+        // ============================================
+        
+        async function fetchCountryInfo() {
+            if (!countryData) {
+                document.getElementById('countryName').textContent = countryParam;
+                return;
+            }
+            
+            try {
+                const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryData.code}`);
+                const data = await response.json();
+                const country = data[0];
+                
+                // Update page title
+                document.title = `${country.name.common} - MSP Alumni Network`;
+                
+                // Flag
+                document.getElementById('flagImg').src = country.flags.svg;
+                
+                // Names
+                document.getElementById('countryName').textContent = country.name.common;
+                
+                // Native name
+                const nativeNames = country.name.nativeName;
+                if (nativeNames) {
+                    const firstNative = Object.values(nativeNames)[0];
+                    if (firstNative.common !== country.name.common) {
+                        document.getElementById('countryNative').textContent = firstNative.common;
+                    }
+                }
+                
+                // Region
+                document.getElementById('countryRegion').textContent = `${country.subregion} · ${country.region}`;
+                
+                // Quick facts
+                document.getElementById('factCapital').textContent = country.capital?.[0] || '-';
+                document.getElementById('factPopulation').textContent = formatPopulation(country.population);
+                document.getElementById('factArea').textContent = formatNumber(country.area);
+                
+                // Currency
+                if (country.currencies) {
+                    const currencyKey = Object.keys(country.currencies)[0];
+                    const currency = country.currencies[currencyKey];
+                    document.getElementById('factCurrency').textContent = `${currency.symbol} ${currencyKey}`;
+                }
+                
+                // Language
+                if (country.languages) {
+                    const languages = Object.values(country.languages);
+                    document.getElementById('factLanguage').textContent = languages[0];
+                }
+                
+                // Timezone
+                if (country.timezones) {
+                    document.getElementById('factTimezone').textContent = country.timezones[0];
+                }
+                
+                // Details bar
+                document.getElementById('detailContinent').textContent = country.continents?.[0] || '-';
+                document.getElementById('detailDriving').textContent = country.car?.side ? capitalizeFirst(country.car.side) : '-';
+                document.getElementById('detailCalling').textContent = country.idd?.root ? `${country.idd.root}${country.idd.suffixes?.[0] || ''}` : '-';
+                document.getElementById('detailDomain').textContent = country.tld?.[0] || '-';
+                document.getElementById('detailUN').textContent = country.unMember ? 'Yes' : 'No';
+                document.getElementById('detailIndependent').textContent = country.independent ? 'Yes' : 'No';
+                
+                // Stats title
+                document.getElementById('statsTitle').textContent = `Alumni in ${country.name.common}`;
+                document.getElementById('mapDesc').textContent = `Universities and cities across ${country.name.common} where MSP graduates have made their mark.`;
+                
+            } catch (error) {
+                console.error('Error fetching country data:', error);
+                document.getElementById('countryName').textContent = countryParam;
+            }
+        }
+        
+        // ============================================
+        // HELPER FUNCTIONS
+        // ============================================
+        
+        function formatPopulation(num) {
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
+            return num.toString();
+        }
+        
+        function formatNumber(num) {
+            return num?.toLocaleString() || '-';
+        }
+        
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+        
+        // ============================================
+        // POPULATE ALUMNI STATS
+        // ============================================
+        
+        function populateStats() {
+            if (!countryData) return;
+            
+            document.getElementById('statTotal').textContent = countryData.total;
+            document.getElementById('statLiving').textContent = countryData.living;
+            document.getElementById('statMasters').textContent = countryData.masters;
+            document.getElementById('statUnis').textContent = countryData.universities.length;
+            document.getElementById('uniTotal').textContent = countryData.universities.length;
+        }
+        
+        // ============================================
+        // MAP
+        // ============================================
+        
+        function initMap() {
+            if (!countryData) return;
+            
+            const map = L.map('countryMap', {
+                zoomControl: false
+            }).setView(countryData.coordinates, countryData.zoom);
+            
+            L.control.zoom({ position: 'topright' }).addTo(map);
+            
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB'
+            }).addTo(map);
+            
+            // University markers
+            countryData.universities.forEach(uni => {
+                const size = Math.max(10, Math.min(uni.count / 3, 25));
+                
+                const marker = L.circleMarker([uni.lat, uni.lng], {
+                    radius: size,
+                    fillColor: '#00A2DB',
+                    color: '#ffffff',
+                    weight: 3,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                marker.bindPopup(`
+                    <div class="popup-name">${uni.name}</div>
+                    <div class="popup-detail">${uni.city}</div>
+                    <div class="popup-count">${uni.count} alumni</div>
+                `);
+                
+                marker.on('mouseover', function() {
+                    this.setStyle({ fillOpacity: 1, radius: size * 1.2 });
+                });
+                marker.on('mouseout', function() {
+                    this.setStyle({ fillOpacity: 0.8, radius: size });
+                });
+            });
+        }
+        
+        // ============================================
+        // UNIVERSITIES LIST
+        // ============================================
+        
+        function populateUniversities() {
+            if (!countryData || countryData.universities.length === 0) {
+                document.getElementById('universitiesSection').style.display = 'none';
+                return;
+            }
+            
+            const list = document.getElementById('universityList');
+            const maxCount = countryData.universities[0].count;
+            
+            countryData.universities.forEach((uni, i) => {
+                const row = document.createElement('a');
+                row.href = `university.html?name=${encodeURIComponent(uni.name)}`;
+                row.className = 'university-row';
+                
+                const barWidth = (uni.count / maxCount) * 100;
+                
+                row.innerHTML = `
+                    <div class="uni-rank">${String(i + 1).padStart(2, '0')}</div>
+                    <div class="uni-logo">
+                        <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
+                    </div>
+                    <div class="uni-info">
+                        <h3>${uni.name}</h3>
+                        <p>${uni.city}</p>
+                    </div>
+                    <div class="uni-bar">
+                        <div class="uni-bar-fill" style="width: ${barWidth}%"></div>
+                    </div>
+                    <div class="uni-count-num">${uni.count}</div>
+                `;
+                
+                list.appendChild(row);
+            });
+        }
+        
+        // ============================================
+        // CITIES
+        // ============================================
+        
+        function populateCities() {
+            if (!countryData || countryData.cities.length === 0) {
+                document.getElementById('citiesSection').style.display = 'none';
+                return;
+            }
+            
+            // Top 5 list
+            const list = document.getElementById('cityList');
+            countryData.cities.slice(0, 5).forEach((city, i) => {
+                const item = document.createElement('div');
+                item.className = 'city-item';
+                item.innerHTML = `
+                    <div class="city-rank">${i + 1}</div>
+                    <div class="city-name">${city.name}</div>
+                    <div class="city-count">${city.count}</div>
+                `;
+                list.appendChild(item);
+            });
+            
+            // All as bubbles
+            const bubbles = document.getElementById('cityBubbles');
+            countryData.cities.forEach(city => {
+                const bubble = document.createElement('div');
+                bubble.className = 'city-bubble';
+                bubble.innerHTML = `${city.name} <span>${city.count}</span>`;
+                bubbles.appendChild(bubble);
+            });
+        }
+        
+        // ============================================
+        // INIT
+        // ============================================
+        
+        fetchCountryInfo();
+        populateStats();
+        initMap();
+        populateUniversities();
+        populateCities();
+    </script>
+</body>
+</html>

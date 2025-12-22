@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSP Alumni Network - Global Reach</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Inter for sleek modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS for Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
         /* ============================================
-           MSP ALUMNI - MAIN STYLES
+           MSP ALUMNI - FUTURISTIC UM DESIGN
            University of Maastricht Branding
         ============================================ */
+        
+        /* CSS VARIABLES */
+        :root {
+            --dark-blue: #001C3D;
+            --deep-blue: #000d1a;
+            --light-blue: #00A2DB;
+            --bright-blue: #00d4ff;
+            --orange: #E84E10;
+            --bright-orange: #ff6b35;
+            --white: #FFFFFF;
+            --text-light: rgba(255,255,255,0.9);
+            --text-muted: rgba(255,255,255,0.6);
+            --glass-bg: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+        }
         
         /* RESET & BASE */
         * {
@@ -25,380 +40,530 @@
         }
         
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 16px;
             line-height: 1.7;
-            color: #333333;
-            background: #ffffff;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, #002347 100%);
+            min-height: 100vh;
             overflow-x: hidden;
+        }
+        
+        /* ANIMATED BACKGROUND */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-orb-1 {
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,162,219,0.15) 0%, transparent 70%);
+        }
+        
+        .bg-orb-2 {
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232,78,16,0.1) 0%, transparent 70%);
         }
         
         /* HEADER */
         header {
-            background: linear-gradient(135deg, #001C3D 0%, #003d7a 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: relative;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
+            z-index: 10;
+            padding: 20px 40px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         
         .logo-container {
             display: flex;
             align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--bright-blue) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: -0.5px;
+            box-shadow: 0 4px 20px rgba(0,162,219,0.4);
         }
         
         .logo-text h1 {
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
             margin: 0;
         }
         
         .logo-text .subtitle {
-            font-size: 14px;
-            color: rgba(255,255,255,0.9);
-            margin: 5px 0 0 0;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 2px 0 0 0;
         }
         
         .header-nav {
             display: flex;
-            gap: 30px;
+            gap: 8px;
         }
         
         .header-nav a {
-            color: white;
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: color 0.3s ease;
-            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
         
-        .header-nav a:hover {
-            color: #00BCD4;
+        .header-nav a:hover,
+        .header-nav a.active {
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
         }
         
         /* HERO SECTION */
         .hero {
-            background: linear-gradient(135deg, #001C3D 0%, #003d7a 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 80px 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(232,78,16,0.2) 0%, rgba(255,107,53,0.1) 100%);
+            border-radius: 100px;
+            border: 1px solid rgba(232,78,16,0.3);
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--bright-orange);
+            letter-spacing: 0.5px;
         }
         
         .hero h1 {
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-description {
-            font-size: 20px;
-            color: rgba(255,255,255,0.9);
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 500px;
+            line-height: 1.7;
+            margin: 0;
+            font-weight: 400;
         }
         
-        /* STATS BAR */
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease 0.4s backwards;
+        /* STATS ROW */
+        .stats-row {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
         }
         
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .stat-number {
-            font-size: 42px;
-            font-weight: 700;
-            color: #00BCD4;
-            margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* MAIN CONTENT */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 40px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-header h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 36px;
-            color: #001C3D;
-            margin-bottom: 15px;
-        }
-        
-        .section-header p {
-            font-size: 18px;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* SEARCH BAR */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 40px;
             position: relative;
         }
         
-        .search-input {
-            width: 100%;
-            padding: 18px 50px 18px 20px;
-            font-size: 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-family: 'Open Sans', sans-serif;
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: var(--white);
+            line-height: 1;
         }
         
-        .search-input:focus {
-            outline: none;
-            border-color: #00BCD4;
-            box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1);
+        .stat-number.glow-blue {
+            text-shadow: 0 0 40px rgba(0,162,219,0.5);
         }
         
-        .search-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #00BCD4;
-            font-size: 20px;
+        .stat-number.glow-cyan {
+            text-shadow: 0 0 40px rgba(0,212,255,0.5);
         }
         
-        /* MAP CONTAINER */
-        .map-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-bottom: 50px;
+        .stat-number.glow-orange {
+            text-shadow: 0 0 40px rgba(232,78,16,0.5);
         }
         
-        #worldMap {
-            height: 600px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 8px;
+            font-weight: 500;
         }
         
-        /* MAP INFO BOX */
-        .map-info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: center;
+        /* MAIN CONTAINER */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
         }
         
-        .map-info p {
-            color: #666;
+        /* GLASS CARD */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+        
+        /* SECTION HEADERS */
+        .section-header {
+            margin-bottom: 30px;
+        }
+        
+        .section-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin: 0 0 8px 0;
+        }
+        
+        .section-header p {
             font-size: 15px;
+            color: var(--text-muted);
             margin: 0;
         }
         
-        .map-info .highlight {
-            color: #E84E10;
-            font-weight: 600;
+        /* MAP SECTION */
+        .map-section {
+            margin-bottom: 80px;
         }
         
-        /* ALUMNI ORIGINS */
-        .alumni-origins {
-            margin-top: 60px;
+        .map-container {
+            padding: 30px;
+        }
+        
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .map-legend {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+        }
+        
+        .legend-dot.blue {
+            background: var(--light-blue);
+            box-shadow: 0 0 10px rgba(0,162,219,0.6);
+        }
+        
+        .legend-dot.orange {
+            width: 10px;
+            height: 10px;
+            background: var(--orange);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(232,78,16,0.6);
+        }
+        
+        #worldMap {
+            height: 500px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(0,162,219,0.05) 0%, rgba(0,28,61,0.3) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* LEAFLET CUSTOM STYLES */
+        .leaflet-popup-content-wrapper {
+            background: rgba(0,13,26,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        
+        .leaflet-popup-content {
+            margin: 20px;
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+        }
+        
+        .leaflet-popup-tip {
+            background: rgba(0,13,26,0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .popup-country {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--light-blue);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .popup-number {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .popup-stats {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        
+        .popup-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--bright-blue) 100%);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,162,219,0.4);
+        }
+        
+        .popup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,162,219,0.5);
+        }
+        
+        /* ALUMNI ORIGINS SECTION */
+        .origins-section {
+            margin-bottom: 80px;
         }
         
         .origin-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
         
         .origin-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px 20px;
             text-align: center;
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .origin-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--light-blue);
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,162,219,0.15);
-            border-color: #00BCD4;
+            box-shadow: 0 10px 40px rgba(0,162,219,0.2);
         }
         
         .origin-flag {
-            font-size: 48px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: block;
-            animation: float 3s ease-in-out infinite;
+        }
+        
+        .origin-flag img {
+            width: 56px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .origin-card:hover .origin-flag img {
+            transform: scale(1.1);
         }
         
         .origin-country {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            color: #001C3D;
+            font-size: 14px;
             font-weight: 600;
+            color: var(--white);
             margin-bottom: 8px;
+            letter-spacing: -0.2px;
         }
         
         .origin-count {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            color: #00BCD4;
-            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .origin-label {
             font-size: 11px;
-            color: #999;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-top: 5px;
         }
         
-        /* TOP UNIVERSITIES */
-        .top-universities {
-            margin-top: 80px;
-        }
-        
-        .university-chart-container {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-top: 30px;
+        /* TOP UNIVERSITIES SECTION */
+        .universities-section {
+            margin-bottom: 80px;
         }
         
         .university-list {
-            display: grid;
-            gap: 15px;
+            margin-top: 30px;
         }
         
         .university-item {
             display: flex;
             align-items: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            padding: 20px 25px;
+            background: var(--glass-bg);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            margin-bottom: 12px;
             transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+            cursor: pointer;
         }
         
         .university-item:hover {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-left-color: #00BCD4;
-            transform: translateX(5px);
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(232,78,16,0.4);
+            transform: translateX(8px);
         }
         
         .university-rank {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: #001C3D;
-            font-family: 'Montserrat', sans-serif;
+            color: var(--text-muted);
             min-width: 50px;
             text-align: center;
         }
         
         .university-info {
             flex: 1;
-            margin: 0 20px;
+            margin: 0 25px;
         }
         
         .university-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
-            color: #001C3D;
-            margin-bottom: 5px;
+            color: var(--white);
+            margin-bottom: 4px;
+            letter-spacing: -0.2px;
         }
         
         .university-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 13px;
-            color: #666;
+            color: var(--text-muted);
+        }
+        
+        .university-location img {
+            width: 20px;
+            height: auto;
+            border-radius: 3px;
         }
         
         .university-bar-container {
             flex: 0 0 200px;
-            margin-right: 15px;
+            margin-right: 20px;
         }
         
         .university-bar-bg {
             width: 100%;
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
             overflow: hidden;
         }
         
         .university-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00BCD4 0%, #00ACC1 100%);
-            border-radius: 5px;
+            background: linear-gradient(90deg, var(--light-blue) 0%, var(--bright-blue) 100%);
+            border-radius: 4px;
             transition: width 1s ease;
+            box-shadow: 0 0 10px rgba(0,162,219,0.5);
         }
         
         .university-count {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            color: #00BCD4;
-            font-family: 'Montserrat', sans-serif;
             min-width: 60px;
             text-align: right;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--bright-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         /* REGIONAL BREAKDOWN */
-        .regional-breakdown {
-            margin-top: 80px;
-            margin-bottom: 40px;
+        .regional-section {
+            margin-bottom: 80px;
         }
         
         .region-grid {
@@ -409,84 +574,102 @@
         }
         
         .region-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            border-top: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
         
-        .region-card.international {
-            border-top-color: #00BCD4;
+        .region-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
         }
         
-        .region-card.euregio {
-            border-top-color: #E84E10;
+        .region-card.international::before {
+            background: linear-gradient(90deg, var(--light-blue), var(--bright-blue));
         }
         
-        .region-card.netherlands {
-            border-top-color: #4caf50;
+        .region-card.euregio::before {
+            background: linear-gradient(90deg, var(--orange), var(--bright-orange));
         }
         
-        .region-card.limburg {
-            border-top-color: #ff9800;
+        .region-card.netherlands::before {
+            background: linear-gradient(90deg, #4caf50, #66bb6a);
+        }
+        
+        .region-card.limburg::before {
+            background: linear-gradient(90deg, #ff9800, #ffb74d);
         }
         
         .region-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         .region-icon {
-            font-size: 56px;
+            font-size: 48px;
             margin-bottom: 15px;
         }
         
         .region-number {
             font-size: 48px;
             font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 10px;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
         }
         
         .region-card.international .region-number {
-            color: #00BCD4;
+            background: linear-gradient(135deg, var(--light-blue), var(--bright-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .region-card.euregio .region-number {
-            color: #E84E10;
+            background: linear-gradient(135deg, var(--orange), var(--bright-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .region-card.netherlands .region-number {
-            color: #4caf50;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .region-card.limburg .region-number {
-            color: #ff9800;
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .region-label {
             font-size: 14px;
-            color: #666;
-            font-weight: 600;
+            color: var(--text-muted);
+            font-weight: 500;
             margin-bottom: 8px;
         }
         
         .region-percent {
             font-size: 18px;
             font-weight: 700;
-            color: #001C3D;
-            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
         }
         
         /* FOOTER */
         footer {
-            background: #001C3D;
-            color: white;
-            padding: 40px 40px 20px;
-            margin-top: 80px;
+            position: relative;
+            z-index: 10;
+            padding: 50px 40px 30px;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
         
         .footer-content {
@@ -494,240 +677,219 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
+            gap: 50px;
+            margin-bottom: 40px;
         }
         
         .footer-section h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #00BCD4;
-            margin-bottom: 15px;
-            font-size: 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
         
         .footer-section p,
         .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-light);
             font-size: 14px;
             line-height: 1.8;
             text-decoration: none;
             display: block;
         }
         
+        .footer-section a {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            transition: color 0.2s ease;
+        }
+        
         .footer-section a:hover {
-            color: #00BCD4;
+            color: var(--white);
         }
         
         .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
             font-size: 13px;
         }
         
-        /* ANIMATIONS */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-links {
+            display: flex;
+            gap: 30px;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-        
-        /* LEAFLET CUSTOM STYLES */
-        .leaflet-popup-content-wrapper {
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .leaflet-popup-content {
-            margin: 15px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        .popup-country {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #001C3D;
-            margin-bottom: 10px;
-        }
-        
-        .popup-stats {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        .popup-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 16px;
-            background: #00BCD4;
-            color: white;
-            border-radius: 5px;
+        .footer-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: background 0.3s ease;
+            transition: color 0.2s ease;
         }
         
-        .popup-button:hover {
-            background: #001C3D;
+        .footer-links a:hover {
+            color: var(--white);
         }
         
         /* RESPONSIVE */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero-description {
                 font-size: 16px;
             }
             
-            .stats-bar {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            .stats-row {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
             }
             
             .container {
-                padding: 40px 20px;
+                padding: 0 20px 60px;
             }
             
             #worldMap {
-                height: 400px;
+                height: 350px;
             }
             
-            .header-container {
+            .origin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .university-item {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .university-bar-container {
+                flex: 1 1 100%;
+                order: 5;
+            }
+            
+            .footer-bottom {
                 flex-direction: column;
-                text-align: center;
                 gap: 20px;
+                text-align: center;
             }
-            
-            .header-nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .destination-grid {
-                grid-template-columns: 1fr;
-            }
+        }
+        
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
         }
     </style>
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    
     <!-- HEADER -->
     <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <div class="logo-text">
-                    <h1>Maastricht Science Programme</h1>
-                    <p class="subtitle">Alumni Network - Where in the World Are We?</p>
-                </div>
+        <div class="logo-container">
+            <div class="logo-icon">UM</div>
+            <div class="logo-text">
+                <h1>Maastricht University</h1>
+                <p class="subtitle">Science Programme Alumni</p>
             </div>
-            <nav class="header-nav">
-                <a href="index.html">Home</a>
-                <a href="#origins">Origins</a>
-                <a href="#universities">Universities</a>
-                <a href="#contact">Contact</a>
-            </nav>
         </div>
+        <nav class="header-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="#origins">Origins</a>
+            <a href="#universities">Universities</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
     
     <!-- HERO SECTION -->
     <section class="hero">
-        <h1>🌍 MSP Alumni Around the Globe</h1>
+        <div class="hero-badge">
+            <span>🌍 GLOBAL ALUMNI NETWORK</span>
+        </div>
+        
+        <h1>Where Science<br>Takes Our Alumni</h1>
+        
         <p class="hero-description">
-            Discover where our graduates are making their mark. From research labs to tech hubs, 
-            from Europe to Asia and beyond—explore the global journey of MSP alumni.
+            Explore the global journey of 1,329 MSP graduates across 66 countries 
+            and 235 universities worldwide.
         </p>
         
-        <div class="stats-bar">
+        <div class="stats-row">
             <div class="stat-item">
-                <div class="stat-number">1,329</div>
+                <div class="stat-number glow-blue">1,329</div>
                 <div class="stat-label">Alumni</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">66</div>
+                <div class="stat-number glow-cyan">66</div>
                 <div class="stat-label">Countries</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">235</div>
+                <div class="stat-number glow-orange">235</div>
                 <div class="stat-label">Universities</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2014-2025</div>
-                <div class="stat-label">Graduating Years</div>
             </div>
         </div>
     </section>
     
     <!-- MAIN CONTENT -->
     <div class="container">
-        <!-- SECTION HEADER -->
-        <div class="section-header">
-            <h2>Explore Our Global Network</h2>
-            <p>Click on any country to discover where our alumni are studying and working</p>
-        </div>
         
-        <!-- SEARCH BAR -->
-        <div class="search-container">
-            <input 
-                type="text" 
-                class="search-input" 
-                placeholder="Search for a country or city..." 
-                id="searchInput"
-            >
-            <span class="search-icon">🔍</span>
-        </div>
-        
-        <!-- INTERACTIVE MAP -->
-        <div class="map-container">
-            <div id="worldMap"></div>
-            <div class="map-info">
-                <p>
-                    💡 <span class="highlight">Hover over a country</span> to see alumni count, 
-                    then <span class="highlight">click</span> to explore detailed information
-                </p>
+        <!-- MAP SECTION -->
+        <section class="map-section">
+            <div class="glass-card map-container">
+                <div class="map-header">
+                    <div class="section-header">
+                        <h2>Interactive Map</h2>
+                        <p>Hover to explore • Click for details</p>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot blue"></div>
+                            <span>Alumni Location</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot orange"></div>
+                            <span>University</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="worldMap"></div>
             </div>
-        </div>
+        </section>
         
         <!-- ALUMNI ORIGINS -->
-        <div class="alumni-origins" id="origins">
+        <section class="origins-section" id="origins">
             <div class="section-header">
                 <h2>🌍 Where Our Alumni Come From</h2>
                 <p>MSP attracts talented students from across the globe</p>
@@ -736,24 +898,22 @@
             <div class="origin-grid" id="originGrid">
                 <!-- Dynamically populated -->
             </div>
-        </div>
+        </section>
         
         <!-- TOP UNIVERSITIES -->
-        <div class="top-universities" id="universities">
+        <section class="universities-section" id="universities">
             <div class="section-header">
                 <h2>🎓 Top Master's University Destinations</h2>
                 <p>Where MSP graduates continue their academic journey</p>
             </div>
             
-            <div class="university-chart-container">
-                <div class="university-list" id="universityList">
-                    <!-- Dynamically populated -->
-                </div>
+            <div class="university-list" id="universityList">
+                <!-- Dynamically populated -->
             </div>
-        </div>
+        </section>
         
         <!-- REGIONAL BREAKDOWN -->
-        <div class="regional-breakdown">
+        <section class="regional-section">
             <div class="section-header">
                 <h2>📊 Alumni Regional Distribution</h2>
                 <p>Understanding where our students originate</p>
@@ -785,7 +945,7 @@
                     <div class="region-percent">6.5%</div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
     
     <!-- FOOTER -->
@@ -815,7 +975,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University - Faculty of Science and Engineering. All rights reserved.</p>
+            <span>© 2025 Maastricht University · Faculty of Science and Engineering</span>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
     </footer>
     
@@ -824,6 +989,10 @@
     
     <!-- Main JavaScript -->
     <script>
+        // ============================================
+        // DATA
+        // ============================================
+        
         // Origin countries data (where alumni are FROM)
         const originCountries = {
             "Netherlands": 236,
@@ -844,65 +1013,97 @@
         
         // Top universities data
         const topUniversities = {
-            "Maastricht University": {"count": 121, "country": "Netherlands", "flag": "🇳🇱"},
-            "Utrecht University": {"count": 84, "country": "Netherlands", "flag": "🇳🇱"},
-            "University of Amsterdam": {"count": 58, "country": "Netherlands", "flag": "🇳🇱"},
-            "Leiden University": {"count": 41, "country": "Netherlands", "flag": "🇳🇱"},
-            "Wageningen University & Research": {"count": 37, "country": "Netherlands", "flag": "🇳🇱"},
-            "Radboud University": {"count": 36, "country": "Netherlands", "flag": "🇳🇱"},
-            "University of Groningen": {"count": 23, "country": "Netherlands", "flag": "🇳🇱"},
-            "KU Leuven": {"count": 21, "country": "Belgium", "flag": "🇧🇪"},
-            "Imperial College London": {"count": 19, "country": "United Kingdom", "flag": "🇬🇧"},
-            "Uppsala University": {"count": 18, "country": "Sweden", "flag": "🇸🇪"},
-            "Delft University of Technology": {"count": 17, "country": "Netherlands", "flag": "🇳🇱"},
-            "Vrije Universiteit Amsterdam": {"count": 14, "country": "Netherlands", "flag": "🇳🇱"},
-            "University of Copenhagen": {"count": 12, "country": "Denmark", "flag": "🇩🇰"},
-            "University College London": {"count": 12, "country": "United Kingdom", "flag": "🇬🇧"}
+            "Maastricht University": {"count": 121, "country": "Netherlands", "code": "nl"},
+            "Utrecht University": {"count": 84, "country": "Netherlands", "code": "nl"},
+            "University of Amsterdam": {"count": 58, "country": "Netherlands", "code": "nl"},
+            "Leiden University": {"count": 41, "country": "Netherlands", "code": "nl"},
+            "Wageningen University & Research": {"count": 37, "country": "Netherlands", "code": "nl"},
+            "Radboud University": {"count": 36, "country": "Netherlands", "code": "nl"},
+            "University of Groningen": {"count": 23, "country": "Netherlands", "code": "nl"},
+            "KU Leuven": {"count": 21, "country": "Belgium", "code": "be"},
+            "Imperial College London": {"count": 19, "country": "United Kingdom", "code": "gb"},
+            "Uppsala University": {"count": 18, "country": "Sweden", "code": "se"},
+            "Delft University of Technology": {"count": 17, "country": "Netherlands", "code": "nl"},
+            "Vrije Universiteit Amsterdam": {"count": 14, "country": "Netherlands", "code": "nl"},
+            "University of Copenhagen": {"count": 12, "country": "Denmark", "code": "dk"},
+            "University College London": {"count": 12, "country": "United Kingdom", "code": "gb"}
         };
         
-        // Country flags (emoji)
+        // Country flags CDN URLs
         const countryFlags = {
-            "Netherlands": "🇳🇱",
-            "Germany": "🇩🇪",
-            "United Kingdom": "🇬🇧",
-            "Belgium": "🇧🇪",
-            "Italy": "🇮🇹",
-            "Spain": "🇪🇸",
-            "France": "🇫🇷",
-            "Poland": "🇵🇱",
-            "Luxembourg": "🇱🇺",
-            "Ireland": "🇮🇪",
-            "Romania": "🇷🇴",
-            "Turkey": "🇹🇷",
-            "Greece": "🇬🇷",
-            "Russia": "🇷🇺",
-            "Sweden": "🇸🇪",
-            "Switzerland": "🇨🇭",
-            "Austria": "🇦🇹",
-            "Denmark": "🇩🇰",
-            "Norway": "🇳🇴",
-            "Finland": "🇫🇮"
+            "Netherlands": "nl",
+            "Germany": "de",
+            "United Kingdom": "gb",
+            "Belgium": "be",
+            "Italy": "it",
+            "Spain": "es",
+            "France": "fr",
+            "Poland": "pl",
+            "Luxembourg": "lu",
+            "Ireland": "ie",
+            "Romania": "ro",
+            "Turkey": "tr",
+            "Greece": "gr",
+            "Russia": "ru",
+            "Sweden": "se",
+            "Switzerland": "ch",
+            "Austria": "at",
+            "Denmark": "dk",
+            "Norway": "no",
+            "Finland": "fi",
+            "United States": "us",
+            "Canada": "ca",
+            "Australia": "au",
+            "New Zealand": "nz",
+            "China": "cn",
+            "Japan": "jp",
+            "Singapore": "sg",
+            "South Korea": "kr",
+            "Thailand": "th",
+            "UAE": "ae",
+            "Portugal": "pt",
+            "Czech Republic": "cz",
+            "Hungary": "hu"
         };
         
-        // Populate origin countries
+        // Helper function to get flag URL
+        function getFlagUrl(country, size = 80) {
+            const code = countryFlags[country];
+            if (code) {
+                return `https://flagcdn.com/w${size}/${code}.png`;
+            }
+            return null;
+        }
+        
+        // ============================================
+        // POPULATE ORIGIN COUNTRIES
+        // ============================================
+        
         const originGrid = document.getElementById('originGrid');
         Object.entries(originCountries).forEach(([country, count]) => {
             const card = document.createElement('div');
             card.className = 'origin-card';
             
-            const flag = countryFlags[country] || '🌍';
+            const flagUrl = getFlagUrl(country);
             
             card.innerHTML = `
-                <span class="origin-flag">${flag}</span>
+                <span class="origin-flag">
+                    ${flagUrl 
+                        ? `<img src="${flagUrl}" alt="${country} flag">` 
+                        : '🌍'}
+                </span>
                 <div class="origin-country">${country}</div>
                 <div class="origin-count">${count}</div>
-                <div class="origin-label">STUDENTS</div>
+                <div class="origin-label">Students</div>
             `;
             
             originGrid.appendChild(card);
         });
         
-        // Populate top universities
+        // ============================================
+        // POPULATE TOP UNIVERSITIES
+        // ============================================
+        
         const universityList = document.getElementById('universityList');
         const maxCount = Math.max(...Object.values(topUniversities).map(u => u.count));
         
@@ -911,12 +1112,16 @@
             item.className = 'university-item';
             
             const barWidth = (data.count / maxCount) * 100;
+            const flagUrl = `https://flagcdn.com/w40/${data.code}.png`;
             
             item.innerHTML = `
                 <div class="university-rank">#${index + 1}</div>
                 <div class="university-info">
                     <div class="university-name">${university}</div>
-                    <div class="university-location">${data.flag} ${data.country}</div>
+                    <div class="university-location">
+                        <img src="${flagUrl}" alt="${data.country}">
+                        ${data.country}
+                    </div>
                 </div>
                 <div class="university-bar-container">
                     <div class="university-bar-bg">
@@ -928,6 +1133,10 @@
             
             universityList.appendChild(item);
         });
+        
+        // ============================================
+        // MAP SETUP
+        // ============================================
         
         // Alumni data by country (for map)
         const alumniData = {
@@ -963,16 +1172,7 @@
             "UAE": {"current": 2, "masters": 1, "total": 2}
         };
         
-        // Initialize the map
-        const map = L.map('worldMap').setView([30, 10], 2);
-        
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 18
-        }).addTo(map);
-        
-        // Country coordinates (approximate centroids)
+        // Country coordinates
         const countryCoordinates = {
             "Netherlands": [52.1326, 5.2913],
             "Germany": [51.1657, 10.4515],
@@ -1006,6 +1206,18 @@
             "UAE": [23.4241, 53.8478]
         };
         
+        // Initialize the map with dark style
+        const map = L.map('worldMap', {
+            zoomControl: true,
+            scrollWheelZoom: true
+        }).setView([30, 10], 2);
+        
+        // Dark map tiles (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '©OpenStreetMap, ©CartoDB',
+            maxZoom: 18
+        }).addTo(map);
+        
         // Add markers for each country
         Object.keys(alumniData).forEach(country => {
             if (countryCoordinates[country]) {
@@ -1013,23 +1225,24 @@
                 const data = alumniData[country];
                 
                 // Calculate marker size based on alumni count
-                const radius = Math.min(Math.max(data.total / 10, 8), 30);
+                const radius = Math.min(Math.max(data.total / 8, 8), 35);
                 
-                // Create circle marker
+                // Create circle marker with glow effect
                 const marker = L.circleMarker(coords, {
                     radius: radius,
-                    fillColor: '#00BCD4',
-                    color: '#001C3D',
+                    fillColor: '#00A2DB',
+                    color: '#00d4ff',
                     weight: 2,
                     opacity: 0.8,
-                    fillOpacity: 0.6
+                    fillOpacity: 0.5
                 }).addTo(map);
                 
                 // Create popup content
+                const flagUrl = getFlagUrl(country, 40);
                 const popupContent = `
                     <div class="popup-country">${country}</div>
+                    <div class="popup-number">${data.total}</div>
                     <div class="popup-stats">
-                        <strong>${data.total}</strong> alumni<br>
                         📚 ${data.masters} pursuing/completed master's<br>
                         💼 ${data.current} currently living here
                     </div>
@@ -1043,37 +1256,19 @@
                 // Hover effect
                 marker.on('mouseover', function() {
                     this.setStyle({
-                        fillOpacity: 0.9,
-                        radius: radius * 1.2
+                        fillOpacity: 0.8,
+                        radius: radius * 1.3,
+                        weight: 3
                     });
                 });
                 
                 marker.on('mouseout', function() {
                     this.setStyle({
-                        fillOpacity: 0.6,
-                        radius: radius
+                        fillOpacity: 0.5,
+                        radius: radius,
+                        weight: 2
                     });
                 });
-            }
-        });
-        
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            if (searchTerm.length > 2) {
-                // Filter countries
-                const matches = Object.keys(alumniData).filter(country => 
-                    country.toLowerCase().includes(searchTerm)
-                );
-                
-                if (matches.length > 0 && countryCoordinates[matches[0]]) {
-                    const coords = countryCoordinates[matches[0]];
-                    map.flyTo(coords, 5, {
-                        duration: 1.5
-                    });
-                }
             }
         });
     </script>

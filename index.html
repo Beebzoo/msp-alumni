@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSP Alumni Network - Maastricht University</title>
+    <title>Where Will MSP Take You? - Maastricht Science Programme Alumni</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -18,10 +18,8 @@
             --gray-100: #f5f5f5;
             --gray-200: #e9ecef;
             --gray-300: #dee2e6;
-            --gray-500: #adb5bd;
             --gray-600: #6c757d;
             --gray-800: #343a40;
-            --text-dark: #1a1a2e;
         }
         
         * {
@@ -34,7 +32,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            color: var(--text-dark);
+            color: var(--dark-blue);
             background: var(--white);
         }
         
@@ -84,49 +82,57 @@
             margin: 0;
         }
         
-        .header-nav {
+        .header-cta {
             display: flex;
-            gap: 5px;
+            gap: 10px;
+            align-items: center;
         }
         
-        .header-nav a {
-            color: var(--dark-blue);
+        .header-cta a {
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 6px;
             transition: all 0.2s;
         }
         
-        .header-nav a:hover {
-            background: var(--gray-100);
+        .header-cta .link {
+            color: var(--dark-blue);
         }
         
-        .header-nav a.active {
-            color: var(--orange);
+        .header-cta .link:hover {
+            color: var(--light-blue);
         }
         
-        /* Hero Section */
+        .header-cta .btn-apply {
+            background: var(--orange);
+            color: white;
+        }
+        
+        .header-cta .btn-apply:hover {
+            background: #d63d0a;
+        }
+        
+        /* Hero - Recruitment Focused */
         .hero {
             background: var(--dark-blue);
             color: white;
-            padding: 80px 50px;
+            padding: 100px 50px 80px;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-bg-pattern {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-image: 
-                linear-gradient(rgba(0,162,219,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,162,219,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
         
         .hero-content {
@@ -134,73 +140,78 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
         
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(232,78,16,0.2);
-            border: 1px solid rgba(232,78,16,0.4);
-            border-radius: 100px;
+        .hero-eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--light-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
             margin-bottom: 25px;
         }
         
-        .hero-badge span {
-            font-size: 12px;
-            font-weight: 600;
-            color: #ff8a50;
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+        
+        /* Hero Stats - Impact Numbers */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+        
+        .hero-stat-number.white { color: white; }
+        .hero-stat-number.blue { color: var(--light-blue); }
+        .hero-stat-number.orange { color: var(--orange); }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 600px;
+        /* Value Proposition Bar */
+        .value-bar {
+            background: var(--light-blue);
+            padding: 25px 50px;
+            text-align: center;
         }
         
-        .hero-description {
+        .value-bar p {
             font-size: 18px;
-            color: rgba(255,255,255,0.7);
-            max-width: 500px;
-            line-height: 1.7;
-            margin-bottom: 50px;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 60px;
-        }
-        
-        .hero-stat {
-            text-align: left;
-        }
-        
-        .hero-stat-number {
-            font-size: 52px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1;
+            font-weight: 600;
             color: white;
-        }
-        
-        .hero-stat-number.blue {
-            color: var(--light-blue);
-        }
-        
-        .hero-stat-number.orange {
-            color: var(--orange);
-        }
-        
-        .hero-stat-label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 8px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         /* Section Styles */
@@ -222,22 +233,177 @@
         
         .section-header {
             margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-header.left {
+            text-align: left;
         }
         
         .section-header h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .section-header p {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--gray-600);
             max-width: 600px;
         }
         
-        /* Map Section */
+        .section-header.left p {
+            margin: 0;
+        }
+        
+        .section-header p:not(.left p) {
+            margin: 0 auto;
+        }
+        
+        /* Prestigious Universities - Featured */
+        .prestige-section {
+            padding: 80px 50px;
+            background: white;
+        }
+        
+        .prestige-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .prestige-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .prestige-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .prestige-card:hover {
+            border-color: var(--light-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,162,219,0.15);
+        }
+        
+        .prestige-logo {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .prestige-logo img {
+            max-height: 55px;
+            max-width: 120px;
+            object-fit: contain;
+        }
+        
+        .prestige-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .prestige-country {
+            font-size: 12px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .prestige-country img {
+            width: 16px;
+            height: auto;
+            border-radius: 2px;
+        }
+        
+        .prestige-count {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-blue);
+        }
+        
+        .prestige-count span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray-600);
+        }
+        
+        .see-all-link {
+            text-align: center;
+        }
+        
+        .see-all-link a {
+            color: var(--orange);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        
+        .see-all-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Fields of Study - Career Paths */
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .path-card {
+            background: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
+        }
+        
+        .path-card:nth-child(2) { border-color: var(--orange); }
+        .path-card:nth-child(3) { border-color: #4caf50; }
+        .path-card:nth-child(4) { border-color: #9c27b0; }
+        .path-card:nth-child(5) { border-color: #ff9800; }
+        .path-card:nth-child(6) { border-color: #00bcd4; }
+        .path-card:nth-child(7) { border-color: #e91e63; }
+        .path-card:nth-child(8) { border-color: #607d8b; }
+        
+        .path-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .path-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .path-count {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .path-count span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray-600);
+        }
+        
+        /* Global Reach Map */
         .map-section {
             padding: 80px 50px;
             background: white;
@@ -270,244 +436,108 @@
             color: var(--dark-blue);
         }
         
-        .map-legend {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .map-subtitle {
             font-size: 13px;
             color: var(--gray-600);
-        }
-        
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
-        .legend-dot.blue {
-            background: var(--light-blue);
         }
         
         #worldMap {
-            height: 500px;
+            height: 450px;
             background: var(--gray-100);
         }
         
-        /* Stats Cards */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 30px 25px;
-            border-left: 4px solid var(--light-blue);
-        }
-        
-        .stat-card.orange {
-            border-left-color: var(--orange);
-        }
-        
-        .stat-card-number {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--dark-blue);
-            letter-spacing: -1px;
-            line-height: 1;
-        }
-        
-        .stat-card-label {
-            font-size: 13px;
-            color: var(--gray-600);
-            margin-top: 8px;
-        }
-        
-        /* Origin Countries Grid */
-        .origin-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
-        }
-        
-        .origin-card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            padding: 20px 15px;
+        /* Testimonial */
+        .testimonial-section {
+            padding: 80px 50px;
+            background: var(--dark-blue);
             text-align: center;
-            transition: all 0.2s;
-            cursor: pointer;
         }
         
-        .origin-card:hover {
-            border-color: var(--light-blue);
-            box-shadow: 0 4px 15px rgba(0,162,219,0.1);
-            transform: translateY(-3px);
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .origin-flag {
-            margin-bottom: 12px;
-        }
-        
-        .origin-flag img {
-            width: 48px;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .origin-country {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--dark-blue);
-            margin-bottom: 5px;
-        }
-        
-        .origin-count {
+        .testimonial-quote {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 500;
+            color: white;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+        }
+        
+        .testimonial-author strong {
             color: var(--light-blue);
-        }
-        
-        /* University Grid */
-        .university-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        
-        .university-card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            transition: all 0.2s;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .university-card:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-        
-        .university-card-header {
-            height: 90px;
-            background: var(--gray-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
-        
-        .university-card-header img {
-            max-height: 55px;
-            max-width: 130px;
-            object-fit: contain;
-        }
-        
-        .university-card-body {
-            padding: 20px;
-        }
-        
-        .university-card-name {
-            font-size: 14px;
             font-weight: 600;
-            color: var(--dark-blue);
-            margin-bottom: 4px;
-            line-height: 1.3;
         }
         
-        .university-card-location {
-            font-size: 12px;
-            color: var(--gray-600);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 15px;
-        }
-        
-        .university-card-location img {
-            width: 16px;
-            height: auto;
-            border-radius: 2px;
-        }
-        
-        .university-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid var(--gray-200);
-        }
-        
-        .university-card-count {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark-blue);
-        }
-        
-        .university-card-count span {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--gray-600);
-        }
-        
-        .university-card-arrow {
-            color: var(--orange);
-            font-size: 18px;
-        }
-        
-        /* Regional Distribution */
-        .region-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        
-        .region-card {
-            background: white;
-            padding: 30px 20px;
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 50px;
+            background: var(--orange);
             text-align: center;
-            border-top: 4px solid var(--light-blue);
         }
         
-        .region-card.orange { border-top-color: var(--orange); }
-        .region-card.green { border-top-color: #4caf50; }
-        .region-card.yellow { border-top-color: #ff9800; }
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
         
-        .region-icon {
+        .cta-section h2 {
             font-size: 36px;
+            font-weight: 700;
+            color: white;
             margin-bottom: 15px;
         }
         
-        .region-number {
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--dark-blue);
-            letter-spacing: -1px;
+        .cta-section p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
         }
         
-        .region-label {
-            font-size: 13px;
-            color: var(--gray-600);
-            margin: 8px 0;
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
-        .region-percent {
+        .cta-btn {
+            padding: 16px 32px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: 700;
-            color: var(--light-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
         }
         
-        .region-card.orange .region-percent { color: var(--orange); }
-        .region-card.green .region-percent { color: #4caf50; }
-        .region-card.yellow .region-percent { color: #ff9800; }
+        .cta-btn.primary {
+            background: white;
+            color: var(--orange);
+        }
+        
+        .cta-btn.primary:hover {
+            background: var(--dark-blue);
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-btn.secondary:hover {
+            background: white;
+            color: var(--orange);
+        }
         
         /* Footer */
         footer {
@@ -573,14 +603,13 @@
         .footer-links a {
             color: rgba(255,255,255,0.5);
             text-decoration: none;
-            transition: color 0.2s;
         }
         
         .footer-links a:hover {
             color: white;
         }
         
-        /* Leaflet Popup Styles */
+        /* Leaflet Popup */
         .leaflet-popup-content-wrapper {
             background: white;
             border-radius: 12px;
@@ -592,7 +621,7 @@
         .leaflet-popup-content {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            min-width: 260px;
+            min-width: 240px;
         }
         
         .leaflet-popup-tip {
@@ -600,29 +629,7 @@
         }
         
         .popup-card {
-            position: relative;
-        }
-        
-        .popup-flag-bg {
-            height: 80px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .popup-flag-bg::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to bottom, transparent, white);
-        }
-        
-        .popup-body {
             padding: 20px;
-            padding-top: 10px;
         }
         
         .popup-header {
@@ -632,7 +639,7 @@
             margin-bottom: 15px;
         }
         
-        .popup-flag-icon {
+        .popup-flag {
             width: 32px;
             height: auto;
             border-radius: 4px;
@@ -657,7 +664,7 @@
         }
         
         .popup-stat-number {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--dark-blue);
         }
@@ -667,22 +674,22 @@
         }
         
         .popup-stat-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--gray-600);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
         .popup-button {
             display: block;
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px;
             background: var(--orange);
             color: white;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             text-align: center;
+            border-radius: 6px;
             transition: background 0.2s;
         }
         
@@ -690,21 +697,13 @@
             background: #d63d0a;
         }
         
-        .popup-button span {
-            margin-left: 8px;
-        }
-        
         /* Responsive */
         @media (max-width: 1100px) {
-            .stats-row {
+            .prestige-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .university-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .region-grid {
+            .paths-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -716,55 +715,69 @@
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
             }
             
-            .header-nav {
-                flex-wrap: wrap;
-                justify-content: center;
+            .header-cta .link {
+                display: none;
             }
             
             .hero {
-                padding: 50px 20px;
+                padding: 60px 20px;
             }
             
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero-stats {
-                flex-wrap: wrap;
-                gap: 30px;
+                gap: 40px;
             }
             
             .hero-stat-number {
-                font-size: 40px;
+                font-size: 48px;
+            }
+            
+            .value-bar {
+                padding: 20px;
+            }
+            
+            .value-bar p {
+                font-size: 16px;
             }
             
             .section,
+            .prestige-section,
             .map-section {
                 padding: 50px 20px;
             }
             
-            .stats-row {
-                grid-template-columns: 1fr;
+            .section-header h2 {
+                font-size: 26px;
             }
             
-            .origin-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .prestige-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
             }
             
-            .university-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .region-grid {
-                grid-template-columns: 1fr;
+            .paths-grid {
+                grid-template-columns: 1fr 1fr;
             }
             
             #worldMap {
-                height: 350px;
+                height: 300px;
+            }
+            
+            .testimonial-quote {
+                font-size: 20px;
+            }
+            
+            .cta-section h2 {
+                font-size: 28px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
             }
             
             footer {
@@ -791,67 +804,133 @@
         <a href="index.html" class="logo">
             <div class="logo-icon">UM</div>
             <div class="logo-text">
-                <h1>Maastricht University</h1>
-                <p>Science Programme Alumni</p>
+                <h1>Maastricht Science Programme</h1>
+                <p>Alumni Network</p>
             </div>
         </a>
-        <nav class="header-nav">
-            <a href="#" class="active">Home</a>
-            <a href="#map">Map</a>
-            <a href="#origins">Origins</a>
-            <a href="#universities">Universities</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="header-cta">
+            <a href="#map" class="link">Explore Map</a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="btn-apply">Apply to MSP →</a>
+        </div>
     </header>
     
-    <!-- Hero Section -->
+    <!-- Hero - Recruitment Focused -->
     <section class="hero">
-        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-badge">
-                <span>Global Alumni Network</span>
-            </div>
+            <div class="hero-eyebrow">Maastricht Science Programme</div>
             
-            <h1>Where Science Takes Our Alumni</h1>
+            <h1>Where Will MSP Take You?</h1>
             
-            <p class="hero-description">
-                Explore the global journey of MSP graduates across countries and universities worldwide. 
-                Discover where our alumni live, study, and build their careers.
+            <p class="hero-subtitle">
+                Our graduates pursue master's degrees at world-leading universities 
+                and build careers across the globe. See where your journey could lead.
             </p>
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number">1,329</div>
-                    <div class="hero-stat-label">Alumni</div>
+                    <div class="hero-stat-number white">85%</div>
+                    <div class="hero-stat-label">Pursue Master's</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number blue">66</div>
-                    <div class="hero-stat-label">Countries</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number orange">235</div>
+                    <div class="hero-stat-number blue">235</div>
                     <div class="hero-stat-label">Universities</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number orange">66</div>
+                    <div class="hero-stat-label">Countries</div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Map Section -->
+    <!-- Value Proposition -->
+    <div class="value-bar">
+        <p>MSP alumni have been accepted at Oxford, Cambridge, ETH Zürich, Imperial College, and 230+ other universities worldwide.</p>
+    </div>
+    
+    <!-- Prestigious Universities -->
+    <section class="prestige-section">
+        <div class="prestige-container">
+            <div class="section-header">
+                <h2>World-Class Destinations</h2>
+                <p>MSP graduates are accepted at the world's most prestigious institutions</p>
+            </div>
+            
+            <div class="prestige-grid" id="prestigeGrid"></div>
+            
+            <div class="see-all-link">
+                <a href="#map">See all 235 universities →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Career Paths -->
+    <section class="section section-gray">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Diverse Career Paths</h2>
+                <p>From neuroscience to business, MSP opens doors to every field</p>
+            </div>
+            
+            <div class="paths-grid">
+                <div class="path-card">
+                    <div class="path-icon">🧬</div>
+                    <div class="path-name">Life Sciences & Biomedical</div>
+                    <div class="path-count">287 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">🧠</div>
+                    <div class="path-name">Neuroscience & Psychology</div>
+                    <div class="path-count">156 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">⚗️</div>
+                    <div class="path-name">Chemistry & Materials</div>
+                    <div class="path-count">98 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">🔬</div>
+                    <div class="path-name">Physics & Engineering</div>
+                    <div class="path-count">124 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">💻</div>
+                    <div class="path-name">Computer Science & AI</div>
+                    <div class="path-count">89 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">📊</div>
+                    <div class="path-name">Business & Economics</div>
+                    <div class="path-count">112 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">🏥</div>
+                    <div class="path-name">Medicine & Health</div>
+                    <div class="path-count">167 <span>alumni</span></div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">🌍</div>
+                    <div class="path-name">Environment & Sustainability</div>
+                    <div class="path-count">76 <span>alumni</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Global Map -->
     <section class="map-section" id="map">
         <div class="map-container">
-            <div class="section-header">
-                <h2>Interactive World Map</h2>
-                <p>Click on any country to explore detailed alumni statistics and university destinations.</p>
+            <div class="section-header left">
+                <h2>A Truly Global Network</h2>
+                <p>Click any country to see which universities our alumni attend and where they build their careers.</p>
             </div>
             
             <div class="map-wrapper">
                 <div class="map-header">
-                    <div class="map-title">Alumni Locations Worldwide</div>
-                    <div class="map-legend">
-                        <div class="legend-item">
-                            <div class="legend-dot blue"></div>
-                            <span>Alumni Location</span>
-                        </div>
+                    <div>
+                        <div class="map-title">1,329 Alumni Across 66 Countries</div>
+                        <div class="map-subtitle">Hover to explore • Click for details</div>
                     </div>
                 </div>
                 <div id="worldMap"></div>
@@ -859,102 +938,53 @@
         </div>
     </section>
     
-    <!-- Stats + Origins Section -->
-    <section class="section section-gray" id="origins">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Alumni Demographics</h2>
-                <p>Understanding where our students come from and how they're distributed globally.</p>
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <div class="testimonial-quote">
+                "MSP gave me the interdisciplinary foundation I needed. The broad scientific training 
+                prepared me for a competitive master's programme and opened doors I never expected."
             </div>
-            
-            <div class="stats-row">
-                <div class="stat-card">
-                    <div class="stat-card-number">838</div>
-                    <div class="stat-card-label">International Students</div>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-card-number">307</div>
-                    <div class="stat-card-label">Euregio Region</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-card-number">99</div>
-                    <div class="stat-card-label">Netherlands (non-Euregio)</div>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-card-number">85</div>
-                    <div class="stat-card-label">Limburg Province</div>
-                </div>
+            <div class="testimonial-author">
+                <strong>MSP Alumnus</strong> · Now at ETH Zürich
             </div>
-            
-            <div class="section-header">
-                <h2>Where Our Alumni Come From</h2>
-                <p>MSP attracts talented students from across the globe.</p>
-            </div>
-            
-            <div class="origin-grid" id="originGrid"></div>
         </div>
     </section>
     
-    <!-- Universities Section -->
-    <section class="section" id="universities">
+    <!-- Top Dutch Universities -->
+    <section class="section">
         <div class="section-header">
-            <h2>Top University Destinations</h2>
-            <p>Where MSP graduates continue their academic journey with master's programmes.</p>
+            <h2>Top Destinations in the Netherlands</h2>
+            <p>Many alumni continue at leading Dutch research universities</p>
         </div>
         
-        <div class="university-grid" id="universityGrid"></div>
+        <div class="prestige-grid" id="dutchGrid"></div>
     </section>
     
-    <!-- Regional Section -->
-    <section class="section section-gray">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Regional Distribution</h2>
-                <p>Breakdown of alumni origins by region.</p>
-            </div>
-            
-            <div class="region-grid">
-                <div class="region-card">
-                    <div class="region-icon">🌏</div>
-                    <div class="region-number">838</div>
-                    <div class="region-label">International</div>
-                    <div class="region-percent">63%</div>
-                </div>
-                <div class="region-card orange">
-                    <div class="region-icon">🇪🇺</div>
-                    <div class="region-number">307</div>
-                    <div class="region-label">Euregio (non-Limburg)</div>
-                    <div class="region-percent">23%</div>
-                </div>
-                <div class="region-card green">
-                    <div class="region-icon">🇳🇱</div>
-                    <div class="region-number">99</div>
-                    <div class="region-label">Netherlands (non-Euregio)</div>
-                    <div class="region-percent">7.5%</div>
-                </div>
-                <div class="region-card yellow">
-                    <div class="region-icon">🏛️</div>
-                    <div class="region-number">85</div>
-                    <div class="region-label">Limburg</div>
-                    <div class="region-percent">6.5%</div>
-                </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Join 1,329 MSP graduates who are making their mark around the world.</p>
+            <div class="cta-buttons">
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="cta-btn primary">Apply to MSP</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science/why-this-programme" target="_blank" class="cta-btn secondary">Learn More</a>
             </div>
         </div>
     </section>
     
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About MSP Alumni</h3>
-                <p>The Maastricht Science Programme has been graduating talented scientists since 2014. Our alumni are now spread across the globe, pursuing advanced degrees and building impactful careers in science, technology, and beyond.</p>
+                <h3>About This Data</h3>
+                <p>This website showcases aggregated, anonymized data from MSP alumni surveys and graduation records. Data is collected with consent and updated annually. All statistics represent groups of 5 or more alumni to protect privacy.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="#map">Interactive Map</a>
-                <a href="#origins">Alumni Origins</a>
-                <a href="#universities">Top Universities</a>
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank">MSP Website →</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank">MSP Programme →</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science/why-this-programme" target="_blank">Why MSP? →</a>
+                <a href="https://www.maastrichtuniversity.nl/about-um/faculties/faculty-science-and-engineering" target="_blank">Faculty of Science & Engineering →</a>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
@@ -963,7 +993,6 @@
                 Paul-Henri-Spaak Laan 1<br>
                 6229 EN Maastricht</p>
                 <p style="margin-top: 15px;">
-                    <strong>Alumni Officer:</strong> Martijn Jeurissen<br>
                     msp-alumni@maastrichtuniversity.nl
                 </p>
             </div>
@@ -973,7 +1002,6 @@
             <div class="footer-links">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
-                <a href="#">Contact</a>
             </div>
         </div>
     </footer>
@@ -982,40 +1010,40 @@
     
     <script>
         // ============================================
-        // DATA
+        // DATA - Recruitment Focused
         // ============================================
         
-        const originCountries = {
-            "Netherlands": 236, "Germany": 176, "Belgium": 138, "Italy": 104,
-            "United Kingdom": 70, "Spain": 63, "France": 45, "Poland": 41,
-            "Luxembourg": 29, "Ireland": 26, "Romania": 23, "Turkey": 17,
-            "Greece": 16, "Russia": 15
-        };
+        // Prestigious universities (featured prominently)
+        const prestigeUniversities = [
+            {name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-oxford.png"},
+            {name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-cambridge.png"},
+            {name: "ETH Zürich", country: "Switzerland", code: "ch", count: 8, logo: "eth-zurich.png"},
+            {name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png"},
+            {name: "UCL", country: "United Kingdom", code: "gb", count: 14, logo: "ucl.png"},
+            {name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png"},
+            {name: "Karolinska Institutet", country: "Sweden", code: "se", count: 9, logo: "karolinska-institutet.png"},
+            {name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-edinburgh.png"}
+        ];
         
-        const topUniversities = {
-            "Maastricht University": {count: 120, country: "Netherlands", code: "nl", logo: "maastricht-university.png"},
-            "Utrecht University": {count: 85, country: "Netherlands", code: "nl", logo: "utrecht-university.png"},
-            "University of Amsterdam": {count: 61, country: "Netherlands", code: "nl", logo: "university-of-amsterdam.png"},
-            "Leiden University": {count: 42, country: "Netherlands", code: "nl", logo: "leiden-university.png"},
-            "Wageningen University": {count: 38, country: "Netherlands", code: "nl", logo: "wageningen-university.png"},
-            "Radboud University": {count: 36, country: "Netherlands", code: "nl", logo: "radboud-university.png"},
-            "University of Groningen": {count: 23, country: "Netherlands", code: "nl", logo: "university-of-groningen.png"},
-            "KU Leuven": {count: 21, country: "Belgium", code: "be", logo: "ku-leuven.png"},
-            "Imperial College London": {count: 19, country: "United Kingdom", code: "gb", logo: "imperial-college-london.png"},
-            "Uppsala University": {count: 18, country: "Sweden", code: "se", logo: "uppsala-university.png"},
-            "TU Delft": {count: 17, country: "Netherlands", code: "nl", logo: "tu-delft.png"},
-            "VU Amsterdam": {count: 15, country: "Netherlands", code: "nl", logo: "vrije-universiteit-amsterdam.png"}
-        };
+        // Top Dutch universities
+        const dutchUniversities = [
+            {name: "Maastricht University", country: "Netherlands", code: "nl", count: 120, logo: "maastricht-university.png"},
+            {name: "Utrecht University", country: "Netherlands", code: "nl", count: 85, logo: "utrecht-university.png"},
+            {name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 61, logo: "university-of-amsterdam.png"},
+            {name: "Leiden University", country: "Netherlands", code: "nl", count: 42, logo: "leiden-university.png"},
+            {name: "Wageningen University", country: "Netherlands", code: "nl", count: 38, logo: "wageningen-university.png"},
+            {name: "Radboud University", country: "Netherlands", code: "nl", count: 36, logo: "radboud-university.png"},
+            {name: "University of Groningen", country: "Netherlands", code: "nl", count: 23, logo: "university-of-groningen.png"},
+            {name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png"}
+        ];
         
         const countryFlags = {
             "Netherlands": "nl", "Germany": "de", "United Kingdom": "gb", "Belgium": "be",
-            "Italy": "it", "Spain": "es", "France": "fr", "Poland": "pl", "Luxembourg": "lu",
-            "Ireland": "ie", "Romania": "ro", "Turkey": "tr", "Greece": "gr", "Russia": "ru",
-            "Sweden": "se", "Switzerland": "ch", "Austria": "at", "Denmark": "dk",
-            "Norway": "no", "Finland": "fi", "United States": "us", "Canada": "ca",
-            "Australia": "au", "China": "cn", "Japan": "jp", "Singapore": "sg",
-            "Portugal": "pt", "Czech Republic": "cz", "Hungary": "hu", "New Zealand": "nz",
-            "South Korea": "kr", "Thailand": "th", "UAE": "ae"
+            "Italy": "it", "Spain": "es", "France": "fr", "Sweden": "se", "Switzerland": "ch",
+            "Austria": "at", "Denmark": "dk", "Norway": "no", "Finland": "fi",
+            "United States": "us", "Canada": "ca", "Australia": "au", "China": "cn",
+            "Singapore": "sg", "Portugal": "pt", "Poland": "pl", "Ireland": "ie",
+            "Luxembourg": "lu"
         };
         
         const alumniData = {
@@ -1057,63 +1085,32 @@
             "Portugal": [39.3999, -8.2245], "Poland": [51.9194, 19.1451]
         };
         
-        function getFlagUrl(country, size = 80) {
-            const code = countryFlags[country];
-            return code ? `https://flagcdn.com/w${size}/${code}.png` : null;
+        function getFlagUrl(code, size = 40) {
+            return `https://flagcdn.com/w${size}/${code}.png`;
         }
         
         // ============================================
-        // POPULATE ORIGIN COUNTRIES
+        // POPULATE PRESTIGE UNIVERSITIES
         // ============================================
         
-        const originGrid = document.getElementById('originGrid');
-        Object.entries(originCountries).forEach(([country, count]) => {
-            const card = document.createElement('div');
-            card.className = 'origin-card';
-            const flagUrl = getFlagUrl(country);
-            
-            card.innerHTML = `
-                <div class="origin-flag">
-                    ${flagUrl ? `<img src="${flagUrl}" alt="${country}">` : '🌍'}
-                </div>
-                <div class="origin-country">${country}</div>
-                <div class="origin-count">${count}</div>
-            `;
-            
-            originGrid.appendChild(card);
-        });
-        
-        // ============================================
-        // POPULATE UNIVERSITIES
-        // ============================================
-        
-        const universityGrid = document.getElementById('universityGrid');
-        Object.entries(topUniversities).forEach(([name, data]) => {
-            const card = document.createElement('a');
-            card.href = `country.html?country=${encodeURIComponent(data.country)}`;
-            card.className = 'university-card';
-            
-            const flagUrl = `https://flagcdn.com/w40/${data.code}.png`;
-            
-            card.innerHTML = `
-                <div class="university-card-header">
-                    <img src="assets/logos/${data.logo}" alt="${name}" onerror="this.style.display='none'">
-                </div>
-                <div class="university-card-body">
-                    <div class="university-card-name">${name}</div>
-                    <div class="university-card-location">
-                        <img src="${flagUrl}" alt="${data.country}">
-                        ${data.country}
+        function createUniCard(uni) {
+            return `
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
                     </div>
-                    <div class="university-card-footer">
-                        <div class="university-card-count">${data.count} <span>alumni</span></div>
-                        <div class="university-card-arrow">→</div>
+                    <div class="prestige-name">${uni.name}</div>
+                    <div class="prestige-country">
+                        <img src="${getFlagUrl(uni.code)}" alt="${uni.country}">
+                        ${uni.country}
                     </div>
+                    <div class="prestige-count">${uni.count} <span>alumni</span></div>
                 </div>
             `;
-            
-            universityGrid.appendChild(card);
-        });
+        }
+        
+        document.getElementById('prestigeGrid').innerHTML = prestigeUniversities.map(createUniCard).join('');
+        document.getElementById('dutchGrid').innerHTML = dutchUniversities.map(createUniCard).join('');
         
         // ============================================
         // MAP
@@ -1124,18 +1121,17 @@
             scrollWheelZoom: true
         }).setView([30, 10], 2);
         
-        // Light map tiles
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '©OpenStreetMap, ©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
-        // Add markers
         Object.keys(alumniData).forEach(country => {
             if (countryCoordinates[country]) {
                 const coords = countryCoordinates[country];
                 const data = alumniData[country];
                 const radius = Math.min(Math.max(data.total / 10, 8), 30);
+                const code = countryFlags[country];
                 
                 const marker = L.circleMarker(coords, {
                     radius: radius,
@@ -1146,35 +1142,29 @@
                     fillOpacity: 0.7
                 }).addTo(map);
                 
-                const flagUrl = getFlagUrl(country, 80);
-                const flagBgUrl = getFlagUrl(country, 640);
-                
                 const popupContent = `
                     <div class="popup-card">
-                        <div class="popup-flag-bg" style="background-image: url('${flagBgUrl}');"></div>
-                        <div class="popup-body">
-                            <div class="popup-header">
-                                <img src="${flagUrl}" alt="${country}" class="popup-flag-icon">
-                                <div class="popup-country">${country}</div>
-                            </div>
-                            <div class="popup-stats">
-                                <div class="popup-stat">
-                                    <div class="popup-stat-number">${data.total}</div>
-                                    <div class="popup-stat-label">Total</div>
-                                </div>
-                                <div class="popup-stat">
-                                    <div class="popup-stat-number blue">${data.current}</div>
-                                    <div class="popup-stat-label">Living Here</div>
-                                </div>
-                            </div>
-                            <a href="country.html?country=${encodeURIComponent(country)}" class="popup-button">
-                                Explore ${country} <span>→</span>
-                            </a>
+                        <div class="popup-header">
+                            <img src="${getFlagUrl(code, 80)}" alt="${country}" class="popup-flag">
+                            <div class="popup-country">${country}</div>
                         </div>
+                        <div class="popup-stats">
+                            <div class="popup-stat">
+                                <div class="popup-stat-number">${data.total}</div>
+                                <div class="popup-stat-label">Total Alumni</div>
+                            </div>
+                            <div class="popup-stat">
+                                <div class="popup-stat-number blue">${data.masters}</div>
+                                <div class="popup-stat-label">Master's</div>
+                            </div>
+                        </div>
+                        <a href="country.html?country=${encodeURIComponent(country)}" class="popup-button">
+                            Explore ${country} →
+                        </a>
                     </div>
                 `;
                 
-                marker.bindPopup(popupContent, { maxWidth: 300 });
+                marker.bindPopup(popupContent, { maxWidth: 280 });
                 
                 marker.on('mouseover', function() {
                     this.setStyle({ fillOpacity: 0.9, radius: radius * 1.2 });

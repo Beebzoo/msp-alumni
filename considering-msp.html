@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Considering MSP? | Maastricht Science Programme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --um-dark-blue: #001C3D;
+            --um-light-blue: #00A2DB;
+            --um-orange: #E84E10;
+            --um-white: #FFFFFF;
+            --um-light-gray: #f8f9fa;
+            --um-text-gray: #555555;
+            --gradient-hero: linear-gradient(135deg, #001C3D 0%, #003366 50%, #001C3D 100%);
+            --gradient-orange: linear-gradient(135deg, #E84E10 0%, #ff6b35 100%);
+            --gradient-blue: linear-gradient(135deg, #00A2DB 0%, #0077b6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--um-dark-blue);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 28, 61, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: var(--um-dark-blue);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 45px;
+        }
+
+        .nav-logo span {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--um-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--um-orange);
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 162, 219, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(232, 78, 16, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 162, 219, 0.05) 0%, transparent 70%);
+            animation: heroFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, -20px) scale(1.05); }
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 162, 219, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .hero-text h1 span {
+            color: var(--um-light-blue);
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            max-width: 550px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .hero-stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--um-light-blue);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--um-orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff6b35;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(232, 78, 16, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-globe {
+            width: 100%;
+            aspect-ratio: 1;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 162, 219, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(232, 78, 16, 0.2) 0%, transparent 50%);
+            border-radius: 50%;
+            position: relative;
+            animation: globeRotate 30s linear infinite;
+        }
+
+        @keyframes globeRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-globe::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 2px dashed rgba(0, 162, 219, 0.3);
+            border-radius: 50%;
+        }
+
+        .globe-stat {
+            position: absolute;
+            background: rgba(0, 28, 61, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 162, 219, 0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .globe-stat:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .globe-stat:nth-child(2) { top: 20%; right: 5%; animation-delay: 1s; }
+        .globe-stat:nth-child(3) { bottom: 25%; left: 5%; animation-delay: 2s; }
+        .globe-stat:nth-child(4) { bottom: 10%; right: 15%; animation-delay: 0.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .globe-stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-light-blue);
+        }
+
+        .globe-stat-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--um-light-blue);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Location Journey Section */
+        .journey-section {
+            background: var(--um-white);
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-blue);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: rgba(0, 162, 219, 0.1);
+            color: var(--um-light-blue);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--um-text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            position: relative;
+        }
+
+        .journey-step {
+            background: var(--um-light-gray);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-blue);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .journey-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 162, 219, 0.2);
+        }
+
+        .journey-step:hover::before {
+            opacity: 1;
+        }
+
+        .journey-step:hover .journey-icon,
+        .journey-step:hover .journey-name,
+        .journey-step:hover .journey-desc {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey-step.active {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 20px 50px rgba(232, 78, 16, 0.3);
+        }
+
+        .journey-step.active::before {
+            background: var(--gradient-orange);
+            opacity: 1;
+        }
+
+        .journey-step.active .journey-icon,
+        .journey-step.active .journey-name,
+        .journey-step.active .journey-desc {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+            transition: color 0.4s ease;
+        }
+
+        .journey-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+            transition: color 0.4s ease;
+        }
+
+        .journey-desc {
+            font-size: 13px;
+            color: var(--um-text-gray);
+            transition: color 0.4s ease;
+        }
+
+        .journey-arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--um-light-blue);
+            z-index: 2;
+        }
+
+        .journey-step:last-child .journey-arrow {
+            display: none;
+        }
+
+        /* Programme Features Section */
+        .features-section {
+            background: var(--um-dark-blue);
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .features-section .section-label {
+            background: rgba(232, 78, 16, 0.2);
+            color: var(--um-orange);
+        }
+
+        .features-section .section-title {
+            color: white;
+        }
+
+        .features-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 45px 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            border-color: rgba(0, 162, 219, 0.3);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-blue);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .feature-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--um-light-blue);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--um-light-gray);
+            padding: 120px 40px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 28, 61, 0.1);
+        }
+
+        .partner-logo {
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .partner-card:hover .partner-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .partner-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .partner-desc {
+            font-size: 14px;
+            color: var(--um-text-gray);
+            line-height: 1.6;
+        }
+
+        /* Einstein Telescope Section - THE HYPE SECTION! */
+        .einstein-section {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+            padding: 150px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .einstein-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, white, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, white, transparent),
+                radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 160px 120px, white, transparent);
+            background-size: 200px 200px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .einstein-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+        }
+
+        .wave-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgba(0, 162, 219, 0.3);
+            border-radius: 50%;
+            animation: ripple 4s ease-out infinite;
+        }
+
+        .wave-ring:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; }
+        .wave-ring:nth-child(2) { width: 400px; height: 400px; animation-delay: 1s; }
+        .wave-ring:nth-child(3) { width: 600px; height: 600px; animation-delay: 2s; }
+        .wave-ring:nth-child(4) { width: 800px; height: 800px; animation-delay: 3s; }
+
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        }
+
+        .einstein-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .einstein-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(232, 78, 16, 0.2);
+            border: 1px solid var(--um-orange);
+            color: var(--um-orange);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(232, 78, 16, 0.3); }
+            100% { box-shadow: 0 0 40px rgba(232, 78, 16, 0.6); }
+        }
+
+        .einstein-title {
+            font-size: clamp(42px, 6vw, 68px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .einstein-title span {
+            background: linear-gradient(135deg, var(--um-light-blue), #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .einstein-desc {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .einstein-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .einstein-stat {
+            text-align: center;
+        }
+
+        .einstein-stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--um-light-blue);
+            line-height: 1;
+        }
+
+        .einstein-stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .einstein-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-orange);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .einstein-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(232, 78, 16, 0.4);
+        }
+
+        /* Alumni Outcomes Section */
+        .alumni-section {
+            background: white;
+            padding: 120px 40px;
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .alumni-map-container {
+            background: var(--um-light-gray);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 28, 61, 0.1);
+        }
+
+        #alumni-map {
+            height: 450px;
+            width: 100%;
+        }
+
+        .alumni-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .alumni-stat-card {
+            background: var(--um-light-gray);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .alumni-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 28, 61, 0.08);
+        }
+
+        .alumni-stat-card.highlight {
+            background: var(--um-dark-blue);
+            grid-column: span 2;
+        }
+
+        .alumni-stat-card.highlight .alumni-stat-value,
+        .alumni-stat-card.highlight .alumni-stat-label {
+            color: white;
+        }
+
+        .alumni-stat-card.highlight .alumni-stat-value {
+            color: var(--um-light-blue);
+        }
+
+        .alumni-stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+
+        .alumni-stat-label {
+            font-size: 14px;
+            color: var(--um-text-gray);
+            margin-top: 10px;
+        }
+
+        .alumni-cta {
+            grid-column: span 2;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* Top Universities */
+        .universities-section {
+            background: var(--um-light-gray);
+            padding: 100px 40px;
+        }
+
+        .universities-scroll {
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+            padding: 40px 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .universities-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .uni-card {
+            flex: 0 0 200px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .uni-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 28, 61, 0.1);
+        }
+
+        .uni-logo {
+            height: 50px;
+            width: 100%;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .uni-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .uni-count {
+            font-size: 12px;
+            color: var(--um-text-gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-hero);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(0, 162, 219, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(232, 78, 16, 0.15) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .cta-desc {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--um-dark-blue);
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--um-light-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--um-light-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .hero-stats {
+                max-width: 500px;
+                margin: 0 auto 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .journey-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .einstein-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Logo">
+                <span>Maastricht Science Programme</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#programme">The Programme</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#einstein">Einstein Telescope</a></li>
+                <li><a href="#outcomes">Alumni Outcomes</a></li>
+                <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="nav-cta">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 85%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 95%; animation-delay: 2.5s;"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Design Your Own <span>Science Degree</span></h1>
+                <p>Join an international community of curious minds at the Maastricht Science Programme. Choose from 150+ courses in biology, chemistry, physics, and beyond. Build your unique academic path.</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">150+</div>
+                        <div class="hero-stat-label">Courses to choose from</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">60+</div>
+                        <div class="hero-stat-label">Nationalities</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">91%</div>
+                        <div class="hero-stat-label">Continue to Master's</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">42%</div>
+                        <div class="hero-stat-label">Top 100 Universities</div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="btn btn-primary">
+                        Apply Now
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#programme" class="btn btn-secondary">Explore Programme</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-globe">
+                    <div class="globe-stat">
+                        <div class="globe-stat-value">🇳🇱</div>
+                        <div class="globe-stat-text">Maastricht, NL</div>
+                    </div>
+                    <div class="globe-stat">
+                        <div class="globe-stat-value">87%</div>
+                        <div class="globe-stat-text">Satisfaction</div>
+                    </div>
+                    <div class="globe-stat">
+                        <div class="globe-stat-value">1,330</div>
+                        <div class="globe-stat-text">Alumni worldwide</div>
+                    </div>
+                    <div class="globe-stat">
+                        <div class="globe-stat-value">241</div>
+                        <div class="globe-stat-text">Universities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Location Journey Section -->
+    <section class="journey-section" id="location">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Your Journey Starts Here</span>
+                <h2 class="section-title">From the Heart of Europe</h2>
+                <p class="section-subtitle">Discover how MSP sits at the crossroads of science, innovation, and international collaboration</p>
+            </div>
+            
+            <div class="journey-grid reveal">
+                <div class="journey-step">
+                    <span class="journey-icon">🌍</span>
+                    <div class="journey-name">Europe</div>
+                    <div class="journey-desc">Center of global research</div>
+                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="journey-step">
+                    <span class="journey-icon">🇳🇱</span>
+                    <div class="journey-name">Netherlands</div>
+                    <div class="journey-desc">Innovation leader</div>
+                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="journey-step">
+                    <span class="journey-icon">⛰️</span>
+                    <div class="journey-name">Limburg</div>
+                    <div class="journey-desc">Science & tech hub</div>
+                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="journey-step">
+                    <span class="journey-icon">🏛️</span>
+                    <div class="journey-name">Maastricht</div>
+                    <div class="journey-desc">Historic university city</div>
+                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="journey-step">
+                    <span class="journey-icon">🎓</span>
+                    <div class="journey-name">FSE</div>
+                    <div class="journey-desc">Science & Engineering</div>
+                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                <div class="journey-step active">
+                    <span class="journey-icon">🔬</span>
+                    <div class="journey-name">MSP</div>
+                    <div class="journey-desc">Your future starts here</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programme Features Section -->
+    <section class="features-section" id="programme">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Why MSP</span>
+                <h2 class="section-title">A Unique Approach to Science Education</h2>
+                <p class="section-subtitle">MSP combines the flexibility of a Liberal Arts & Sciences education with rigorous natural science training</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Design Your Curriculum</h3>
+                    <p class="feature-desc">Choose from 150+ courses across biology, chemistry, physics, mathematics, and interdisciplinary fields. Your academic advisor helps you build a path to your dream master's programme.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Complete academic freedom
+                    </span>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Problem-Based Learning</h3>
+                    <p class="feature-desc">Learn in small groups of 12-15 students. Tackle real scientific challenges together. Develop critical thinking, communication, and collaboration skills that set you apart.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Active, engaging education
+                    </span>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">Research-Based Learning</h3>
+                    <p class="feature-desc">Conduct original research from year one. Work on projects with unknown answers. Present your findings at student conferences. Build your scientific portfolio early.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Real research experience
+                    </span>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🧪</div>
+                    <h3 class="feature-title">State-of-the-Art Labs</h3>
+                    <p class="feature-desc">Access cutting-edge facilities at Dubois Domein and the Brightlands Chemelot Campus. Work with advanced equipment used by industry professionals.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Industry-grade facilities
+                    </span>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">International Community</h3>
+                    <p class="feature-desc">Join 60+ nationalities in one programme. Experience diverse perspectives in every discussion. Build a global network that lasts a lifetime.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Truly global perspective
+                    </span>
+                </div>
+                
+                <div class="feature-card reveal">
+                    <div class="feature-icon">⭐</div>
+                    <h3 class="feature-title">Honours Programme</h3>
+                    <p class="feature-desc">Challenge yourself further with the Honours Research Programme. Start real research from day one. Work with top scientists. Get a head start on your academic career.</p>
+                    <span class="feature-highlight">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        For ambitious students
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Partners Section -->
+    <section class="partners-section" id="research">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Research Ecosystem</span>
+                <h2 class="section-title">World-Class Research Partners</h2>
+                <p class="section-subtitle">MSP students gain access to cutting-edge research facilities and industry collaborations</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-card reveal">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🏭</div>
+                    <h3 class="partner-name">Brightlands Chemelot</h3>
+                    <p class="partner-desc">Europe's leading chemistry and materials campus. Home to 50+ companies and 8,000 professionals innovating in sustainable materials.</p>
+                </div>
+                
+                <div class="partner-card reveal">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🔬</div>
+                    <h3 class="partner-name">M4I Institute</h3>
+                    <p class="partner-desc">Maastricht MultiModal Molecular Imaging Institute. Pioneering mass spectrometry imaging for biomedical research.</p>
+                </div>
+                
+                <div class="partner-card reveal">
+                    <div style="font-size: 48px; margin-bottom: 20px;">⚛️</div>
+                    <h3 class="partner-name">Nikhef</h3>
+                    <p class="partner-desc">National Institute for Subatomic Physics. Partner in major international particle physics experiments including CERN.</p>
+                </div>
+                
+                <div class="partner-card reveal">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🧬</div>
+                    <h3 class="partner-name">AMIBM</h3>
+                    <p class="partner-desc">Aachen-Maastricht Institute for Biobased Materials. Developing the sustainable materials of tomorrow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Einstein Telescope Section -->
+    <section class="einstein-section" id="einstein">
+        <div class="einstein-stars"></div>
+        <div class="einstein-waves">
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+        </div>
+        
+        <div class="einstein-content">
+            <div class="einstein-badge">
+                <span>🌟</span>
+                <span>Coming to Limburg</span>
+            </div>
+            
+            <h2 class="einstein-title">The <span>Einstein Telescope</span></h2>
+            
+            <p class="einstein-desc">
+                The next generation of gravitational wave detection is coming to your backyard. The Einstein Telescope — a €2 billion underground observatory — is planned for the Limburg-Belgium-Germany border region. As an MSP student, you'll be at the forefront of this scientific revolution.
+            </p>
+            
+            <div class="einstein-stats">
+                <div class="einstein-stat">
+                    <div class="einstein-stat-value">€2B</div>
+                    <div class="einstein-stat-label">Investment</div>
+                </div>
+                <div class="einstein-stat">
+                    <div class="einstein-stat-value">10km</div>
+                    <div class="einstein-stat-label">Underground Arms</div>
+                </div>
+                <div class="einstein-stat">
+                    <div class="einstein-stat-value">10x</div>
+                    <div class="einstein-stat-label">More Sensitive</div>
+                </div>
+            </div>
+            
+            <a href="https://www.einsteintelescope.nl/en/" target="_blank" class="einstein-cta">
+                Learn About the Einstein Telescope
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Alumni Outcomes Section -->
+    <section class="alumni-section" id="outcomes">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Where MSP Takes You</span>
+                <h2 class="section-title">A Global Community of Scientists</h2>
+                <p class="section-subtitle">Our 1,330 alumni have spread across 62 countries, studying and working at 241 universities worldwide</p>
+            </div>
+            
+            <div class="alumni-grid">
+                <div class="alumni-map-container reveal">
+                    <div id="alumni-map"></div>
+                </div>
+                
+                <div class="alumni-stats-grid reveal">
+                    <div class="alumni-stat-card">
+                        <div class="alumni-stat-value">1,330</div>
+                        <div class="alumni-stat-label">Alumni since 2014</div>
+                    </div>
+                    <div class="alumni-stat-card">
+                        <div class="alumni-stat-value">87</div>
+                        <div class="alumni-stat-label">Nationalities represented</div>
+                    </div>
+                    <div class="alumni-stat-card">
+                        <div class="alumni-stat-value">241</div>
+                        <div class="alumni-stat-label">Universities attended</div>
+                    </div>
+                    <div class="alumni-stat-card">
+                        <div class="alumni-stat-value">62</div>
+                        <div class="alumni-stat-label">Countries worldwide</div>
+                    </div>
+                    <div class="alumni-stat-card highlight">
+                        <div class="alumni-stat-value">+888%</div>
+                        <div class="alumni-stat-label">Programme growth since first cohort</div>
+                    </div>
+                    <div class="alumni-cta">
+                        <a href="index.html" class="btn btn-primary">
+                            Explore Full Alumni Map
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Universities Section -->
+    <section class="universities-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Top Destinations</span>
+                <h2 class="section-title">Where Our Alumni Go Next</h2>
+                <p class="section-subtitle">MSP graduates are accepted at the world's leading research universities</p>
+            </div>
+            
+            <div class="universities-scroll">
+                <div class="uni-card">
+                    <img src="assets/logos/university-of-oxford.png" alt="Oxford" class="uni-logo">
+                    <div class="uni-name">University of Oxford</div>
+                    <div class="uni-count">🇬🇧 United Kingdom</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/university-of-cambridge.png" alt="Cambridge" class="uni-logo">
+                    <div class="uni-name">University of Cambridge</div>
+                    <div class="uni-count">🇬🇧 United Kingdom</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/eth-zurich.png" alt="ETH Zurich" class="uni-logo">
+                    <div class="uni-name">ETH Zürich</div>
+                    <div class="uni-count">🇨🇭 Switzerland</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/imperial-college-london.png" alt="Imperial" class="uni-logo">
+                    <div class="uni-name">Imperial College London</div>
+                    <div class="uni-count">🇬🇧 United Kingdom</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/utrecht-university.png" alt="Utrecht" class="uni-logo">
+                    <div class="uni-name">Utrecht University</div>
+                    <div class="uni-count">🇳🇱 Netherlands</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/university-of-amsterdam.png" alt="Amsterdam" class="uni-logo">
+                    <div class="uni-name">University of Amsterdam</div>
+                    <div class="uni-count">🇳🇱 Netherlands</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/karolinska-institutet.png" alt="Karolinska" class="uni-logo">
+                    <div class="uni-name">Karolinska Institutet</div>
+                    <div class="uni-count">🇸🇪 Sweden</div>
+                </div>
+                <div class="uni-card">
+                    <img src="assets/logos/ku-leuven.png" alt="KU Leuven" class="uni-logo">
+                    <div class="uni-name">KU Leuven</div>
+                    <div class="uni-count">🇧🇪 Belgium</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Design Your Future?</h2>
+            <p class="cta-desc">Join the Maastricht Science Programme and become part of a global community of scientists, innovators, and change-makers.</p>
+            <div class="cta-buttons">
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="btn btn-primary">
+                    Apply Now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/contact" target="_blank" class="btn btn-secondary">
+                    Request Info
+                </a>
+                <a href="index.html" class="btn btn-secondary">
+                    Explore Alumni Network
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Maastricht Science Programme</h3>
+                <p>Part of the Faculty of Science and Engineering at Maastricht University. A University College offering a unique Liberal Arts & Sciences approach to natural science education.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Programme</h4>
+                <ul>
+                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/why-study" target="_blank">Why MSP</a></li>
+                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/curriculum" target="_blank">Curriculum</a></li>
+                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/career-prospects" target="_blank">Career Prospects</a></li>
+                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-requirements" target="_blank">Admission</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="index.html">Alumni Map</a></li>
+                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/contact" target="_blank">Contact Us</a></li>
+                    <li><a href="https://www.maastrichtuniversity.nl/study/studying-um/student-life" target="_blank">Student Life</a></li>
+                    <li><a href="https://www.linkedin.com/school/maastricht-science-programme/" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:fse-bachelor@maastrichtuniversity.nl">fse-bachelor@maastrichtuniversity.nl</a></li>
+                    <li><a href="tel:+31433882222">+31 43 388 2222</a></li>
+                    <li><a>Paul-Henri Spaaklaan 1</a></li>
+                    <li><a>6229 EN Maastricht</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/maastrichtscience/" target="_blank" title="Instagram">📷</a>
+                <a href="https://www.linkedin.com/school/maastricht-science-programme/" target="_blank" title="LinkedIn">💼</a>
+                <a href="https://www.youtube.com/@MaastrichtUniversity" target="_blank" title="YouTube">📺</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Initialize mini map
+        const map = L.map('alumni-map', {
+            scrollWheelZoom: false,
+            zoomControl: false
+        }).setView([30, 0], 1.5);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        }).addTo(map);
+
+        // Add some sample markers to show alumni distribution
+        const alumniLocations = [
+            { lat: 51.44, lng: 5.47, count: 120, name: 'Netherlands' },
+            { lat: 51.16, lng: 10.45, count: 65, name: 'Germany' },
+            { lat: 51.51, lng: -0.13, count: 45, name: 'United Kingdom' },
+            { lat: 50.85, lng: 4.35, count: 38, name: 'Belgium' },
+            { lat: 59.33, lng: 18.07, count: 35, name: 'Sweden' },
+            { lat: 46.95, lng: 7.45, count: 25, name: 'Switzerland' },
+            { lat: 40.71, lng: -74.01, count: 15, name: 'USA' },
+            { lat: 55.68, lng: 12.57, count: 22, name: 'Denmark' },
+            { lat: 48.86, lng: 2.35, count: 18, name: 'France' },
+            { lat: 52.52, lng: 13.41, count: 28, name: 'Berlin' }
+        ];
+
+        alumniLocations.forEach(loc => {
+            const size = Math.sqrt(loc.count) * 3;
+            L.circleMarker([loc.lat, loc.lng], {
+                radius: size,
+                fillColor: '#00A2DB',
+                color: '#001C3D',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.7
+            }).addTo(map).bindPopup(`<strong>${loc.name}</strong><br>${loc.count} alumni`);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1269,7 +1269,7 @@
             font-size: 12px;
         }
 
-        /* Alumni Journeys Section - New Clean Design */
+        /* Alumni Journeys Section - Clean Table Design */
         .journeys-section {
             background: linear-gradient(135deg, #001C3D 0%, #002d5c 100%);
             padding: 70px 40px;
@@ -1301,62 +1301,12 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Timeline Header */
-        .journey-timeline {
-            margin: 30px auto 25px;
-            max-width: 700px;
-        }
-
-        .timeline-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-        }
-
-        .timeline-step-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .step-number {
-            width: 30px;
-            height: 30px;
-            background: var(--um-orange);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .step-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .timeline-connector {
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, var(--um-orange), var(--um-light-blue));
-            margin: 0 12px;
-            margin-bottom: 24px;
-            max-width: 120px;
-        }
-
         /* Field Sections */
         .journey-fields {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            margin-top: 15px;
+            margin-top: 40px;
         }
 
         .field-section {
@@ -1372,164 +1322,110 @@
             border-color: rgba(0, 162, 219, 0.2);
         }
 
-        .field-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .field-icon-wrapper {
-            width: 32px;
-            height: 32px;
-            background: rgba(0, 162, 219, 0.15);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--um-light-blue);
-        }
-
-        .field-icon-wrapper svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .field-header h3 {
+        .field-title {
             color: white;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            margin: 0;
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--um-light-blue);
         }
 
-        /* Journey Rows */
-        .field-journeys {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        /* Journey Table */
+        .journey-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .journey-row {
-            display: grid;
-            grid-template-columns: 40px 1fr 130px 1fr 130px;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            transition: all 0.2s ease;
+        .journey-table thead th {
+            text-align: left;
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 8px 8px 8px;
         }
 
-        .journey-row:hover {
-            background: rgba(255, 255, 255, 0.05);
+        .journey-table thead th:last-child {
+            text-align: right;
         }
 
-        .journey-start {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 11px;
-            color: var(--um-orange);
-            text-align: center;
+        .journey-table tbody td {
+            padding: 10px 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: middle;
         }
 
-        .journey-arrow-line {
-            height: 2px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(0,162,219,0.4), rgba(255,255,255,0.1));
-            border-radius: 1px;
+        .journey-table tbody tr:first-child td {
+            border-top: none;
         }
 
-        .journey-middle {
+        .journey-table tbody td:first-child {
             display: flex;
             align-items: center;
             gap: 10px;
-            min-width: 0;
         }
 
-        .journey-middle img {
-            width: 28px;
-            height: 28px;
+        .journey-table tbody td:first-child img {
+            width: 24px;
+            height: 24px;
             object-fit: contain;
             background: white;
-            border-radius: 5px;
+            border-radius: 4px;
             padding: 2px;
             flex-shrink: 0;
         }
 
-        .journey-middle-text {
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-        }
-
-        .journey-middle .uni {
-            font-weight: 600;
-            font-size: 12px;
+        .journey-table tbody td:first-child span {
             color: var(--um-light-blue);
-            white-space: nowrap;
-        }
-
-        .journey-middle .prog {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            white-space: nowrap;
-        }
-
-        .journey-end {
-            text-align: right;
-            min-width: 0;
-        }
-
-        .journey-end .company {
             font-weight: 600;
             font-size: 12px;
-            color: white;
         }
 
-        .journey-end .role {
-            font-size: 10px;
+        .journey-table tbody td:first-child em {
             color: rgba(255, 255, 255, 0.5);
+            font-style: normal;
+            font-size: 11px;
+            margin-left: 4px;
         }
 
-        .journey-end.highlight .company {
+        .journey-table tbody td:last-child {
+            text-align: right;
+        }
+
+        .journey-table tbody td:last-child strong {
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            display: block;
+        }
+
+        .journey-table tbody td:last-child em {
+            color: rgba(255, 255, 255, 0.5);
+            font-style: normal;
+            font-size: 10px;
+        }
+
+        .journey-table tbody td.highlight strong {
             color: var(--um-orange);
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 900px) {
             .journey-fields {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 700px) {
-            .journey-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                text-align: center;
+        @media (max-width: 500px) {
+            .journey-table tbody td:first-child {
+                flex-wrap: wrap;
             }
-
-            .journey-arrow-line {
-                display: none;
-            }
-
-            .journey-middle {
-                justify-content: center;
-            }
-
-            .journey-end {
-                text-align: center;
-            }
-
-            .timeline-header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .timeline-connector {
-                width: 2px;
-                height: 30px;
-                margin: 0;
+            
+            .journey-table tbody td:first-child em {
+                width: 100%;
+                margin-left: 34px;
+                margin-top: 2px;
             }
         }
 
@@ -2636,256 +2532,117 @@
             <div class="section-header reveal">
                 <span class="section-label">Real Paths, Real Success</span>
                 <h2 class="section-title">Where MSP Takes You</h2>
-                <p class="section-subtitle">Follow the journeys of our alumni — from MSP to the world's top universities and institutions</p>
-            </div>
-            
-            <!-- Journey Timeline -->
-            <div class="journey-timeline reveal">
-                <div class="timeline-header">
-                    <div class="timeline-step-header">
-                        <span class="step-number">1</span>
-                        <span class="step-label">Bachelor's at MSP</span>
-                    </div>
-                    <div class="timeline-connector"></div>
-                    <div class="timeline-step-header">
-                        <span class="step-number">2</span>
-                        <span class="step-label">Master's Programme</span>
-                    </div>
-                    <div class="timeline-connector"></div>
-                    <div class="timeline-step-header">
-                        <span class="step-number">3</span>
-                        <span class="step-label">Career Today</span>
-                    </div>
-                </div>
+                <p class="section-subtitle">Follow the journeys of our alumni — from MSP to top universities and careers</p>
             </div>
 
             <!-- Journey Cards by Field -->
             <div class="journey-fields reveal">
                 <!-- Biology & Biomedical -->
                 <div class="field-section">
-                    <div class="field-header">
-                        <div class="field-icon-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 6v6l4 2"/>
-                            </svg>
-                        </div>
-                        <h3>Biology & Biomedical</h3>
-                    </div>
-                    <div class="field-journeys">
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-oxford.png" alt="Oxford">
-                                <div class="journey-middle-text"><span class="uni">Oxford</span>
-                                <span class="prog">Biochemistry PhD</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">MIT</span>
-                                <span class="role">Postdoctoral Researcher</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/stockholm-university.png" alt="Stockholm">
-                                <div class="journey-middle-text"><span class="uni">Stockholm</span>
-                                <span class="prog">Neuroscience</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Karolinska Institute</span>
-                                <span class="role">Postdoctoral Fellow</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/utrecht-university.png" alt="Utrecht">
-                                <div class="journey-middle-text"><span class="uni">Utrecht</span>
-                                <span class="prog">Biomedical Sciences</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Harvard Medical School</span>
-                                <span class="role">PhD Candidate</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="field-title">Biology & Biomedical</h3>
+                    <table class="journey-table">
+                        <thead>
+                            <tr>
+                                <th>Master's</th>
+                                <th>Now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="assets/logos/university-of-oxford.png" alt=""><span>Oxford</span> <em>Biochemistry PhD</em></td>
+                                <td><strong>MIT</strong> <em>Postdoc</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/stockholm-university.png" alt=""><span>Stockholm</span> <em>Neuroscience</em></td>
+                                <td><strong>Karolinska</strong> <em>Postdoc</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/utrecht-university.png" alt=""><span>Utrecht</span> <em>Biomedical Sciences</em></td>
+                                <td><strong>Harvard</strong> <em>PhD Candidate</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- Chemistry & Materials -->
                 <div class="field-section">
-                    <div class="field-header">
-                        <div class="field-icon-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 3h6v8l4 9H5l4-9V3z"/>
-                            </svg>
-                        </div>
-                        <h3>Chemistry & Materials</h3>
-                    </div>
-                    <div class="field-journeys">
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-cambridge.png" alt="Cambridge">
-                                <div class="journey-middle-text"><span class="uni">Cambridge</span>
-                                <span class="prog">Advanced Materials</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">ASML Research</span>
-                                <span class="role">Materials Scientist</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/imperial-college-london.png" alt="Imperial">
-                                <div class="journey-middle-text"><span class="uni">Imperial College</span>
-                                <span class="prog">Chemical Engineering</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Max Planck Institute</span>
-                                <span class="role">Postdoctoral Fellow</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/eth-zurich.png" alt="ETH">
-                                <div class="journey-middle-text"><span class="uni">ETH Zürich</span>
-                                <span class="prog">Materials Science</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Oxford</span>
-                                <span class="role">PhD Researcher</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="field-title">Chemistry & Materials</h3>
+                    <table class="journey-table">
+                        <thead>
+                            <tr>
+                                <th>Master's</th>
+                                <th>Now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="assets/logos/university-of-cambridge.png" alt=""><span>Cambridge</span> <em>Advanced Materials</em></td>
+                                <td><strong>ASML</strong> <em>Materials Scientist</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/imperial-college-london.png" alt=""><span>Imperial</span> <em>Chemical Engineering</em></td>
+                                <td><strong>Max Planck</strong> <em>Postdoc</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/eth-zurich.png" alt=""><span>ETH Zürich</span> <em>Materials Science</em></td>
+                                <td><strong>Oxford</strong> <em>PhD Researcher</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- Physics & Engineering -->
                 <div class="field-section">
-                    <div class="field-header">
-                        <div class="field-icon-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="3"/>
-                                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                            </svg>
-                        </div>
-                        <h3>Physics & Engineering</h3>
-                    </div>
-                    <div class="field-journeys">
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-cambridge.png" alt="Cambridge">
-                                <div class="journey-middle-text"><span class="uni">Cambridge</span>
-                                <span class="prog">Engineering PhD</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end highlight">
-                                <span class="company">Cleantech Startup</span>
-                                <span class="role">Founder & CEO</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-cambridge.png" alt="Cambridge">
-                                <div class="journey-middle-text"><span class="uni">Cambridge</span>
-                                <span class="prog">Nanotechnology PhD</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end highlight">
-                                <span class="company">Tech Startup</span>
-                                <span class="role">Co-Founder & CTO</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-oxford.png" alt="Oxford">
-                                <div class="journey-middle-text"><span class="uni">Oxford</span>
-                                <span class="prog">Theoretical Physics</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Bain & Company</span>
-                                <span class="role">Consultant</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="field-title">Physics & Engineering</h3>
+                    <table class="journey-table">
+                        <thead>
+                            <tr>
+                                <th>Master's</th>
+                                <th>Now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="assets/logos/university-of-cambridge.png" alt=""><span>Cambridge</span> <em>Engineering PhD</em></td>
+                                <td class="highlight"><strong>Cleantech Startup</strong> <em>Founder & CEO</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/university-of-cambridge.png" alt=""><span>Cambridge</span> <em>Nanotechnology PhD</em></td>
+                                <td class="highlight"><strong>Tech Startup</strong> <em>Co-Founder & CTO</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/university-of-oxford.png" alt=""><span>Oxford</span> <em>Theoretical Physics</em></td>
+                                <td><strong>Bain & Company</strong> <em>Consultant</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- AI & Data Science -->
                 <div class="field-section">
-                    <div class="field-header">
-                        <div class="field-icon-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                                <path d="M9 9h6M9 12h6M9 15h4"/>
-                            </svg>
-                        </div>
-                        <h3>AI & Data Science</h3>
-                    </div>
-                    <div class="field-journeys">
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/maastricht-university.png" alt="Maastricht">
-                                <div class="journey-middle-text"><span class="uni">Maastricht</span>
-                                <span class="prog">Artificial Intelligence</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">The Ocean Cleanup</span>
-                                <span class="role">Lead Data Engineer</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/eth-zurich.png" alt="ETH">
-                                <div class="journey-middle-text"><span class="uni">ETH Zürich</span>
-                                <span class="prog">Neural Systems</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Palantir</span>
-                                <span class="role">Deployment Strategist</span>
-                            </div>
-                        </div>
-                        <div class="journey-row">
-                            <div class="journey-start">MSP</div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-middle">
-                                <img src="assets/logos/university-of-cambridge.png" alt="Cambridge">
-                                <div class="journey-middle-text"><span class="uni">Cambridge</span>
-                                <span class="prog">Data Intensive Science</span>
-                            </div>
-                            <div class="journey-arrow-line"></div>
-                            <div class="journey-end">
-                                <span class="company">Tech Company</span>
-                                <span class="role">Gen AI Data Scientist</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="field-title">AI & Data Science</h3>
+                    <table class="journey-table">
+                        <thead>
+                            <tr>
+                                <th>Master's</th>
+                                <th>Now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="assets/logos/maastricht-university.png" alt=""><span>Maastricht</span> <em>Artificial Intelligence</em></td>
+                                <td><strong>The Ocean Cleanup</strong> <em>Lead Data Engineer</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/eth-zurich.png" alt=""><span>ETH Zürich</span> <em>Neural Systems</em></td>
+                                <td><strong>Palantir</strong> <em>Deployment Strategist</em></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/logos/university-of-cambridge.png" alt=""><span>Cambridge</span> <em>Data Intensive Science</em></td>
+                                <td><strong>Tech Company</strong> <em>Gen AI Data Scientist</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -1031,6 +1031,213 @@
             font-size: 14px;
         }
 
+        /* Alumni Journeys Section */
+        .journeys-section {
+            background: linear-gradient(135deg, #001C3D 0%, #002d5c 100%);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journeys-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300A2DB' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .journeys-section .section-label {
+            background: rgba(0, 162, 219, 0.2);
+            color: var(--um-light-blue);
+        }
+
+        .journeys-section .section-title {
+            color: white;
+        }
+
+        .journeys-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .journeys-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .journey-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 162, 219, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .journey-field {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .field-icon {
+            font-size: 32px;
+        }
+
+        .journey-field h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .journey-paths {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .journey-path {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-path:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .path-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 90px;
+        }
+
+        .path-step.msp {
+            min-width: 70px;
+        }
+
+        .path-step.msp img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            margin-bottom: 5px;
+        }
+
+        .path-step.msp span {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+        }
+
+        .path-step.masters .uni-name,
+        .path-step.current .position {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--um-light-blue);
+        }
+
+        .path-step.masters .degree,
+        .path-step.current .role {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 3px;
+        }
+
+        .path-step.current.highlight .position {
+            color: var(--um-orange);
+        }
+
+        .path-arrow {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .journeys-cta {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .journeys-cta p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--um-orange);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-explore:hover {
+            background: #ff6b35;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(232, 78, 16, 0.3);
+        }
+
+        .btn-explore svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-explore:hover svg {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 1024px) {
+            .journeys-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .journey-path {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .path-arrow {
+                display: none;
+            }
+
+            .path-step {
+                min-width: 80px;
+                margin: 5px;
+            }
+        }
+
         /* Partners Section */
         .partners-section {
             background: var(--um-light-gray);
@@ -1609,6 +1816,7 @@
                 <li><a href="#programme">The Programme</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#einstein">Einstein Telescope</a></li>
+                <li><a href="#journeys">Alumni Journeys</a></li>
                 <li><a href="#outcomes">Alumni Outcomes</a></li>
                 <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="nav-cta">Apply Now</a></li>
             </ul>
@@ -1918,6 +2126,261 @@
                         For ambitious students
                     </span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni Journeys Section -->
+    <section class="journeys-section" id="journeys">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Real Paths, Real Success</span>
+                <h2 class="section-title">Where MSP Takes You</h2>
+                <p class="section-subtitle">Follow the journeys of our alumni — from MSP to the world's top universities and institutions</p>
+            </div>
+            
+            <div class="journeys-grid">
+                <!-- Biology & Biomedical -->
+                <div class="journey-card reveal">
+                    <div class="journey-field">
+                        <span class="field-icon">🧬</span>
+                        <h3>Biology & Biomedical</h3>
+                    </div>
+                    <div class="journey-paths">
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Oxford</span>
+                                <span class="degree">Biochemistry PhD</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">MIT</span>
+                                <span class="role">Postdoctoral Researcher</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Stockholm</span>
+                                <span class="degree">Neuroscience</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Karolinska Institute</span>
+                                <span class="role">Postdoctoral Fellow</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Utrecht</span>
+                                <span class="degree">Biomedical Sciences</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Harvard Medical School</span>
+                                <span class="role">PhD Candidate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chemistry & Materials -->
+                <div class="journey-card reveal">
+                    <div class="journey-field">
+                        <span class="field-icon">🧪</span>
+                        <h3>Chemistry & Materials</h3>
+                    </div>
+                    <div class="journey-paths">
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Cambridge</span>
+                                <span class="degree">Advanced Materials</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">ASML Research</span>
+                                <span class="role">Materials Scientist</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">EPFL</span>
+                                <span class="degree">Chemical Engineering</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Nestlé</span>
+                                <span class="role">Innovation Specialist</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">ETH Zürich</span>
+                                <span class="degree">Materials Science</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Oxford</span>
+                                <span class="role">PhD Researcher</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics & Engineering -->
+                <div class="journey-card reveal">
+                    <div class="journey-field">
+                        <span class="field-icon">⚛️</span>
+                        <h3>Physics & Engineering</h3>
+                    </div>
+                    <div class="journey-paths">
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Cambridge</span>
+                                <span class="degree">Engineering PhD</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current highlight">
+                                <span class="position">Battery Associates</span>
+                                <span class="role">Founder & Chair</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Cambridge</span>
+                                <span class="degree">Nanotechnology PhD</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current highlight">
+                                <span class="position">Stealth Startup</span>
+                                <span class="role">Co-Founder & CTO</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Oxford</span>
+                                <span class="degree">Theoretical Physics</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Bain & Company</span>
+                                <span class="role">Consultant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Data Science -->
+                <div class="journey-card reveal">
+                    <div class="journey-field">
+                        <span class="field-icon">🤖</span>
+                        <h3>AI & Data Science</h3>
+                    </div>
+                    <div class="journey-paths">
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Maastricht</span>
+                                <span class="degree">Artificial Intelligence</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">The Ocean Cleanup</span>
+                                <span class="role">Lead Data Engineer</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">ETH Zürich</span>
+                                <span class="degree">Neural Systems</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Palantir</span>
+                                <span class="role">Deployment Strategist</span>
+                            </div>
+                        </div>
+                        <div class="journey-path">
+                            <div class="path-step msp">
+                                <img src="assets/logos/msp-logo.png" alt="MSP">
+                                <span>MSP</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step masters">
+                                <span class="uni-name">Cambridge</span>
+                                <span class="degree">Data Intensive Science</span>
+                            </div>
+                            <div class="path-arrow">→</div>
+                            <div class="path-step current">
+                                <span class="position">Publicis</span>
+                                <span class="role">Gen AI Data Scientist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journeys-cta reveal">
+                <p>These are just a few examples from our 1,330+ alumni across 62 countries</p>
+                <a href="index.html" class="btn-explore">
+                    Explore All Alumni Outcomes
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>

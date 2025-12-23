@@ -691,13 +691,13 @@
         /* Welcome to Maastricht Section */
         .maastricht-section {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
+            height: 45vh;
+            min-height: 350px;
             overflow: hidden;
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 40px;
+            padding-top: 30px;
         }
 
         .maastricht-image {
@@ -712,7 +712,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center 70%;
         }
 
         .maastricht-overlay {
@@ -734,14 +734,14 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 20px 40px;
+            padding: 15px 40px;
         }
 
         .maastricht-title {
-            font-size: clamp(42px, 7vw, 72px);
+            font-size: clamp(36px, 6vw, 60px);
             font-weight: 800;
             color: white;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -2447,65 +2447,6 @@
         </div>
     </section>
 
-    <!-- Location Journey Section -->
-    <section class="journey-section" id="location">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">Your Journey Starts Here</span>
-                <h2 class="section-title">From the Heart of Europe</h2>
-                <p class="section-subtitle">Discover how MSP sits at the crossroads of science, innovation, and international collaboration</p>
-            </div>
-            
-            <div class="journey-grid reveal">
-                <div class="journey-step">
-                    <span class="journey-icon">🌍</span>
-                    <div class="journey-name">Europe</div>
-                    <div class="journey-desc">Center of global research</div>
-                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-                <div class="journey-step">
-                    <span class="journey-icon">🇳🇱</span>
-                    <div class="journey-name">Netherlands</div>
-                    <div class="journey-desc">Innovation leader</div>
-                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-                <div class="journey-step">
-                    <span class="journey-icon">⛰️</span>
-                    <div class="journey-name">Limburg</div>
-                    <div class="journey-desc">Science & tech hub</div>
-                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-                <div class="journey-step">
-                    <span class="journey-icon">🏛️</span>
-                    <div class="journey-name">Maastricht</div>
-                    <div class="journey-desc">Historic university city</div>
-                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-                <div class="journey-step">
-                    <span class="journey-icon">🎓</span>
-                    <div class="journey-name">FSE</div>
-                    <div class="journey-desc">Science & Engineering</div>
-                    <svg class="journey-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
-                <div class="journey-step active">
-                    <span class="journey-icon">🔬</span>
-                    <div class="journey-name">MSP</div>
-                    <div class="journey-desc">Your future starts here</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Programme Features Section -->
     <section class="features-section" id="programme">
         <div class="section-container">
@@ -2961,54 +2902,6 @@
                     <p class="partner-desc">Aachen-Maastricht Institute for Biobased Materials. Developing the sustainable materials of tomorrow.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Einstein Telescope Section -->
-    <section class="einstein-section" id="einstein">
-        <div class="einstein-stars"></div>
-        <div class="einstein-waves">
-            <div class="wave-ring"></div>
-            <div class="wave-ring"></div>
-            <div class="wave-ring"></div>
-            <div class="wave-ring"></div>
-        </div>
-        
-        <div class="einstein-content">
-            <div class="einstein-badge">
-                <span>🌟</span>
-                <span>Coming to Limburg</span>
-            </div>
-            
-            <h2 class="einstein-title">The <span>Einstein Telescope</span></h2>
-            
-            <p class="einstein-desc">
-                The next generation of gravitational wave detection is coming to your backyard. The Einstein Telescope — a €2 billion underground observatory — is planned for the Limburg-Belgium-Germany border region. As an MSP student, you'll be at the forefront of this scientific revolution.
-            </p>
-            
-            <div class="einstein-stats">
-                <div class="einstein-stat">
-                    <div class="einstein-stat-value">€2B</div>
-                    <div class="einstein-stat-label">Investment</div>
-                </div>
-                <div class="einstein-stat">
-                    <div class="einstein-stat-value">10km</div>
-                    <div class="einstein-stat-label">Underground Arms</div>
-                </div>
-                <div class="einstein-stat">
-                    <div class="einstein-stat-value">10x</div>
-                    <div class="einstein-stat-label">More Sensitive</div>
-                </div>
-            </div>
-            
-            <a href="https://www.einsteintelescope.nl/en/" target="_blank" class="einstein-cta">
-                Learn About the Einstein Telescope
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-            </a>
         </div>
     </section>
 

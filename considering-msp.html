@@ -79,6 +79,7 @@
 
         .nav-logo img {
             height: 45px;
+            filter: brightness(0) invert(1);
         }
 
         .nav-logo span {
@@ -210,13 +211,30 @@
             color: white;
             margin-bottom: 30px;
             line-height: 1.1;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-logo {
-            height: 80px;
-            margin-bottom: 25px;
+        .hero-logo-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.08;
             filter: brightness(0) invert(1);
-            opacity: 0.95;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+        }
+
+        .hero-text > *:not(.hero-logo-bg) {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-text h1 span {
@@ -1613,7 +1631,7 @@
         
         <div class="hero-content">
             <div class="hero-text">
-                <img src="assets/logos/msp-logo.png" alt="Maastricht Science Programme" class="hero-logo">
+                <img src="assets/logos/msp-logo.png" alt="" class="hero-logo-bg">
                 <h1>Design Your Own <span>Science Degree</span></h1>
                 <p>Join an international community of curious minds at the Maastricht Science Programme. Choose from 150+ courses in biology, chemistry, physics, and beyond. Build your unique academic path.</p>
                 

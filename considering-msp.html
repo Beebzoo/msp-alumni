@@ -993,6 +993,195 @@
             line-height: 1.5;
         }
 
+        /* How It Works Section */
+        .how-it-works-section {
+            background: var(--um-light-gray);
+            padding: 70px 40px;
+        }
+
+        .how-it-works-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Semester Timeline */
+        .semester-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+
+        .period-box {
+            background: white;
+            border: 2px solid var(--um-light-blue);
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .period-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 162, 219, 0.15);
+        }
+
+        .period-box.project {
+            background: var(--um-dark-blue);
+            border-color: var(--um-dark-blue);
+        }
+
+        .period-box .period-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--um-dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .period-box.project .period-name {
+            color: white;
+        }
+
+        .period-box .period-detail {
+            font-size: 11px;
+            color: var(--um-text-gray);
+        }
+
+        .period-box.project .period-detail {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .timeline-arrow {
+            color: var(--um-light-blue);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .timeline-repeat {
+            font-size: 11px;
+            color: var(--um-text-gray);
+            margin-left: 10px;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Course Categories */
+        .courses-intro {
+            text-align: center;
+            margin: 30px 0 20px;
+            font-size: 14px;
+            color: var(--um-text-gray);
+        }
+
+        .courses-intro strong {
+            color: var(--um-dark-blue);
+        }
+
+        .course-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .course-cat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--um-dark-blue);
+            transition: all 0.2s ease;
+        }
+
+        .course-cat:hover {
+            border-color: var(--um-light-blue);
+            background: rgba(0, 162, 219, 0.05);
+        }
+
+        .course-cat .cat-count {
+            background: var(--um-light-blue);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* CTA Buttons */
+        .how-it-works-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hiw-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hiw-btn-primary {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+
+        .hiw-btn-primary:hover {
+            background: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 28, 61, 0.3);
+        }
+
+        .hiw-btn-secondary {
+            background: white;
+            color: var(--um-dark-blue);
+            border: 2px solid var(--um-dark-blue);
+        }
+
+        .hiw-btn-secondary:hover {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+
+        .hiw-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .semester-timeline {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .timeline-arrow {
+                transform: rotate(90deg);
+            }
+
+            .timeline-repeat {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+
         /* Impact Numbers Section */
         .impact-section {
             background: linear-gradient(135deg, #001C3D 0%, #002d5c 100%);
@@ -2185,6 +2374,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#what-is-msp">What is MSP?</a></li>
+                <li><a href="#how-it-works">Curriculum</a></li>
                 <li><a href="#impact">Impact</a></li>
                 <li><a href="#journeys">Alumni Journeys</a></li>
                 <li><a href="#careers">Careers</a></li>
@@ -2392,6 +2582,71 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Your Curriculum</span>
+                <h2 class="section-title">Build Your Own Science Degree</h2>
+                <p class="section-subtitle">Design a curriculum that matches your interests and career goals</p>
+            </div>
+
+            <div class="how-it-works-content reveal">
+                <!-- Semester Timeline -->
+                <div class="semester-timeline">
+                    <div class="period-box">
+                        <div class="period-name">Period 1</div>
+                        <div class="period-detail">2 courses + skills</div>
+                    </div>
+                    <span class="timeline-arrow">→</span>
+                    <div class="period-box">
+                        <div class="period-name">Period 2</div>
+                        <div class="period-detail">2 courses + skills</div>
+                    </div>
+                    <span class="timeline-arrow">→</span>
+                    <div class="period-box project">
+                        <div class="period-name">Project</div>
+                        <div class="period-detail">3-week research</div>
+                    </div>
+                    <span class="timeline-repeat">× 2 per year</span>
+                </div>
+
+                <!-- Course Categories -->
+                <p class="courses-intro">Choose from <strong>100+ courses</strong> across six disciplines:</p>
+                
+                <div class="course-categories">
+                    <span class="course-cat">Biology <span class="cat-count">15</span></span>
+                    <span class="course-cat">Chemistry <span class="cat-count">13</span></span>
+                    <span class="course-cat">Physics <span class="cat-count">19</span></span>
+                    <span class="course-cat">Mathematics <span class="cat-count">9</span></span>
+                    <span class="course-cat">Neuroscience <span class="cat-count">5</span></span>
+                    <span class="course-cat">Interdisciplinary <span class="cat-count">25+</span></span>
+                    <span class="course-cat">Skills & Practicals <span class="cat-count">40+</span></span>
+                </div>
+
+                <!-- CTAs -->
+                <div class="how-it-works-ctas">
+                    <a href="https://curriculum.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="hiw-btn hiw-btn-primary">
+                        View All Courses
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum" target="_blank" class="hiw-btn hiw-btn-secondary">
+                        How Curriculum Works
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>

@@ -673,7 +673,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 80px;
+            padding-top: 40px;
         }
 
         .maastricht-image {
@@ -699,10 +699,10 @@
             height: 100%;
             background: linear-gradient(
                 to bottom,
-                rgba(0, 28, 61, 0.5) 0%,
-                rgba(0, 28, 61, 0.2) 30%,
-                rgba(0, 28, 61, 0.1) 50%,
-                rgba(0, 28, 61, 0.4) 100%
+                rgba(0, 28, 61, 0.6) 0%,
+                rgba(0, 28, 61, 0.15) 25%,
+                rgba(0, 28, 61, 0.05) 50%,
+                rgba(0, 28, 61, 0.3) 100%
             );
         }
 
@@ -710,36 +710,47 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 40px;
-        }
-
-        .maastricht-label {
-            display: inline-block;
-            background: rgba(232, 78, 16, 0.9);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 10px 25px;
-            border-radius: 25px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            padding: 20px 40px;
         }
 
         .maastricht-title {
             font-size: clamp(42px, 7vw, 72px);
             font-weight: 800;
             color: white;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .maastricht-subtitle {
-            font-size: clamp(18px, 3vw, 24px);
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        .maastricht-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--um-orange);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 78, 16, 0.4);
+        }
+
+        .maastricht-btn:hover {
+            background: #ff6b35;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 78, 16, 0.5);
+        }
+
+        .maastricht-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .maastricht-btn:hover svg {
+            transform: translateX(5px);
         }
 
         /* Location Journey Section */
@@ -1732,9 +1743,13 @@
             <div class="maastricht-overlay"></div>
         </div>
         <div class="maastricht-content">
-            <span class="maastricht-label">Your New Home</span>
             <h2 class="maastricht-title">Welcome to Maastricht</h2>
-            <p class="maastricht-subtitle">Where history meets innovation in the heart of Europe</p>
+            <a href="about-maastricht.html" class="maastricht-btn">
+                Discover the City
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
         </div>
     </section>
 

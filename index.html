@@ -14,7 +14,6 @@
             --light-blue: #00A2DB;
             --orange: #E84E10;
             --white: #FFFFFF;
-            --off-white: #f8f9fa;
             --gray-100: #f5f5f5;
             --gray-200: #e9ecef;
             --gray-300: #dee2e6;
@@ -40,7 +39,7 @@
         header {
             background: white;
             border-bottom: 1px solid var(--gray-200);
-            padding: 15px 50px;
+            padding: 12px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,28 +55,26 @@
             text-decoration: none;
         }
         
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--dark-blue);
-            border-radius: 8px;
+        .logo-img {
+            height: 42px;
+            width: auto;
+        }
+        
+        .logo-text {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 13px;
+            flex-direction: column;
         }
         
         .logo-text h1 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--dark-blue);
             margin: 0;
+            line-height: 1.2;
         }
         
         .logo-text p {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gray-600);
             margin: 0;
         }
@@ -92,7 +89,7 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 6px;
             transition: all 0.2s;
             color: var(--dark-blue);
@@ -102,14 +99,10 @@
             background: var(--gray-100);
         }
         
-        .header-nav a.active {
-            color: var(--orange);
-        }
-        
         .header-nav .btn-cta {
             background: var(--orange);
             color: white;
-            margin-left: 10px;
+            margin-left: 8px;
         }
         
         .header-nav .btn-cta:hover {
@@ -120,7 +113,7 @@
         .hero {
             background: var(--dark-blue);
             color: white;
-            padding: 90px 50px 80px;
+            padding: 70px 50px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -138,7 +131,7 @@
         }
         
         .hero-content {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -149,31 +142,29 @@
         }
         
         .hero-left {
-            max-width: 500px;
+            max-width: 520px;
         }
         
-        .hero-eyebrow {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--light-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: brightness(0) invert(1);
         }
         
         .hero h1 {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 800;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         .hero-subtitle {
-            font-size: 18px;
+            font-size: 17px;
             color: rgba(255,255,255,0.7);
             line-height: 1.7;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
         
         .hero-buttons {
@@ -183,7 +174,7 @@
         }
         
         .hero-btn {
-            padding: 14px 28px;
+            padding: 14px 26px;
             border-radius: 8px;
             font-size: 15px;
             font-weight: 600;
@@ -214,19 +205,19 @@
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 20px;
         }
         
         .hero-stat {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
-            padding: 25px;
+            padding: 22px 20px;
             text-align: center;
         }
         
         .hero-stat-number {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             letter-spacing: -2px;
             line-height: 1;
@@ -237,9 +228,44 @@
         .hero-stat-number.orange { color: var(--orange); }
         
         .hero-stat-label {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(255,255,255,0.6);
-            margin-top: 8px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Highlight Bar */
+        .highlight-bar {
+            background: var(--light-blue);
+            padding: 20px 50px;
+        }
+        
+        .highlight-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+        
+        .highlight-number {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        
+        .highlight-text {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.9;
         }
         
         /* Section Styles */
@@ -263,7 +289,7 @@
         }
         
         .section-header {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
         
         .section-header.center {
@@ -271,14 +297,14 @@
         }
         
         .section-header h2 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .section-header p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--gray-600);
             max-width: 600px;
         }
@@ -289,7 +315,7 @@
         
         /* Two Audience Intro */
         .audience-section {
-            padding: 60px 50px;
+            padding: 50px 50px;
             background: white;
             border-bottom: 1px solid var(--gray-200);
         }
@@ -299,11 +325,11 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
         }
         
         .audience-card {
-            padding: 35px;
+            padding: 30px;
             border-radius: 12px;
             text-align: center;
             transition: all 0.2s;
@@ -320,21 +346,21 @@
         }
         
         .audience-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 36px;
+            margin-bottom: 12px;
         }
         
         .audience-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .audience-card p {
             font-size: 14px;
             color: var(--gray-600);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.6;
         }
         
@@ -345,32 +371,22 @@
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: gap 0.2s;
         }
         
-        .audience-card.prospective .audience-link {
-            color: var(--light-blue);
-        }
-        
-        .audience-card.alumni .audience-link {
-            color: var(--orange);
-        }
-        
-        .audience-link:hover {
-            gap: 10px;
-        }
+        .audience-card.prospective .audience-link { color: var(--light-blue); }
+        .audience-card.alumni .audience-link { color: var(--orange); }
         
         /* University Grid */
         .uni-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 18px;
         }
         
         .uni-card {
             background: white;
             border: 1px solid var(--gray-200);
-            padding: 25px 20px;
+            padding: 22px 18px;
             text-align: center;
             transition: all 0.2s;
         }
@@ -381,36 +397,41 @@
             box-shadow: 0 8px 25px rgba(0,162,219,0.12);
         }
         
+        .uni-card.prestige {
+            border-color: var(--orange);
+            border-width: 2px;
+        }
+        
         .uni-logo {
-            height: 50px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .uni-logo img {
-            max-height: 45px;
-            max-width: 100px;
+            max-height: 42px;
+            max-width: 90px;
             object-fit: contain;
         }
         
         .uni-name {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--dark-blue);
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             line-height: 1.3;
         }
         
         .uni-country {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--gray-600);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .uni-country img {
@@ -420,31 +441,118 @@
         }
         
         .uni-count {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--light-blue);
         }
         
         .uni-count span {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 400;
             color: var(--gray-600);
         }
         
         .see-more {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 25px;
         }
         
         .see-more a {
             color: var(--orange);
             font-weight: 600;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
         }
         
         .see-more a:hover {
             text-decoration: underline;
+        }
+        
+        /* Programme Growth */
+        .growth-section {
+            padding: 70px 50px;
+            background: var(--dark-blue);
+            color: white;
+        }
+        
+        .growth-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .growth-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .growth-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .growth-header p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .growth-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
+            gap: 8px;
+            padding: 0 20px;
+        }
+        
+        .growth-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .growth-bar-fill {
+            width: 100%;
+            max-width: 60px;
+            background: linear-gradient(180deg, var(--light-blue) 0%, rgba(0,162,219,0.6) 100%);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 1s ease;
+        }
+        
+        .growth-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+        }
+        
+        .growth-bar-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .growth-badge {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .growth-badge span {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(232,78,16,0.2);
+            border: 1px solid rgba(232,78,16,0.4);
+            border-radius: 100px;
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 18px;
         }
         
         /* Map Section */
@@ -468,7 +576,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 25px;
+            padding: 16px 22px;
             background: var(--gray-100);
             border-bottom: 1px solid var(--gray-200);
         }
@@ -480,135 +588,177 @@
         }
         
         .map-subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray-600);
         }
         
         #worldMap {
-            height: 450px;
+            height: 420px;
             background: var(--gray-100);
         }
         
-        /* Community Section */
-        .community-section {
-            padding: 80px 50px;
-            background: var(--dark-blue);
-            color: white;
-        }
-        
-        .community-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .community-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .community-header h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 12px;
-        }
-        
-        .community-header p {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .community-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        
-        .community-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-3px);
-        }
-        
-        .community-icon {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-        
-        .community-card h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 10px;
-        }
-        
-        .community-card p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.6;
-        }
-        
-        .community-stat {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--light-blue);
-            margin-top: 15px;
-        }
-        
-        /* Career Paths */
-        .paths-grid {
+        /* Career Outcomes */
+        .outcomes-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
         
-        .path-card {
+        .outcome-card {
             background: white;
             padding: 25px 20px;
             text-align: center;
             border-left: 4px solid var(--light-blue);
         }
         
-        .path-card:nth-child(2) { border-color: var(--orange); }
-        .path-card:nth-child(3) { border-color: #4caf50; }
-        .path-card:nth-child(4) { border-color: #9c27b0; }
-        .path-card:nth-child(5) { border-color: #ff9800; }
-        .path-card:nth-child(6) { border-color: #00bcd4; }
-        .path-card:nth-child(7) { border-color: #e91e63; }
-        .path-card:nth-child(8) { border-color: #607d8b; }
+        .outcome-card:nth-child(2) { border-color: var(--orange); }
+        .outcome-card:nth-child(3) { border-color: #4caf50; }
+        .outcome-card:nth-child(4) { border-color: #9c27b0; }
         
-        .path-icon {
+        .outcome-icon {
             font-size: 28px;
             margin-bottom: 10px;
         }
         
-        .path-name {
+        .outcome-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .outcome-label {
             font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+        
+        /* Fields of Study */
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        
+        .field-card {
+            background: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 4px solid var(--light-blue);
+        }
+        
+        .field-card:nth-child(2) { border-color: var(--orange); }
+        .field-card:nth-child(3) { border-color: #4caf50; }
+        .field-card:nth-child(4) { border-color: #9c27b0; }
+        .field-card:nth-child(5) { border-color: #ff9800; }
+        .field-card:nth-child(6) { border-color: #00bcd4; }
+        
+        .field-icon {
+            font-size: 28px;
+        }
+        
+        .field-info {
+            flex: 1;
+        }
+        
+        .field-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 2px;
+        }
+        
+        .field-count {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+        
+        .field-bar {
+            width: 60px;
+            height: 6px;
+            background: var(--gray-200);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .field-bar-fill {
+            height: 100%;
+            background: var(--light-blue);
+            border-radius: 3px;
+        }
+        
+        /* Community Section */
+        .community-section {
+            padding: 70px 50px;
+            background: var(--gray-100);
+        }
+        
+        .community-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .community-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .community-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        
+        .community-header p {
+            font-size: 15px;
+            color: var(--gray-600);
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .community-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .community-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        
+        .community-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .community-card h3 {
+            font-size: 17px;
             font-weight: 600;
             color: var(--dark-blue);
             margin-bottom: 8px;
         }
         
-        .path-count {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark-blue);
+        .community-card p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.6;
         }
         
-        .path-count span {
-            font-size: 11px;
-            font-weight: 400;
-            color: var(--gray-600);
+        .community-stat {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light-blue);
+            margin-top: 12px;
         }
         
         /* CTA Section */
@@ -619,26 +769,26 @@
         }
         
         .cta-container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
         
         .cta-section h2 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             color: white;
             margin-bottom: 12px;
         }
         
         .cta-section p {
-            font-size: 17px;
+            font-size: 16px;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -677,7 +827,7 @@
         footer {
             background: var(--dark-blue);
             color: white;
-            padding: 60px 50px 30px;
+            padding: 50px 50px 25px;
         }
         
         .footer-content {
@@ -685,22 +835,35 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo {
+            height: 45px;
+            width: auto;
+            filter: brightness(0) invert(1);
         }
         
         .footer-section h3 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: rgba(255,255,255,0.5);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
         
         .footer-section p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.75);
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
             line-height: 1.7;
         }
         
@@ -708,8 +871,8 @@
             display: block;
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
             transition: color 0.2s;
         }
         
@@ -720,18 +883,18 @@
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 25px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(255,255,255,0.5);
         }
         
         .footer-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
         
         .footer-links a {
@@ -847,7 +1010,11 @@
             
             .hero-stats {
                 max-width: 400px;
-                margin: 0 auto;
+                margin: 30px auto 0;
+            }
+            
+            .highlight-content {
+                gap: 30px;
             }
             
             .audience-grid {
@@ -859,14 +1026,18 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .community-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
+            .outcomes-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .paths-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .fields-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin: 0 auto;
             }
             
             .footer-content {
@@ -876,7 +1047,7 @@
         
         @media (max-width: 768px) {
             header {
-                padding: 15px 20px;
+                padding: 12px 20px;
             }
             
             .header-nav a:not(.btn-cta) {
@@ -884,28 +1055,43 @@
             }
             
             .hero {
-                padding: 60px 20px;
+                padding: 50px 20px 60px;
+            }
+            
+            .hero-logo {
+                width: 160px;
             }
             
             .hero h1 {
-                font-size: 32px;
+                font-size: 30px;
             }
             
             .hero-stats {
                 grid-template-columns: 1fr 1fr;
-                gap: 15px;
+                gap: 12px;
             }
             
             .hero-stat {
-                padding: 20px 15px;
+                padding: 18px 15px;
             }
             
             .hero-stat-number {
-                font-size: 32px;
+                font-size: 30px;
+            }
+            
+            .highlight-bar {
+                padding: 15px 20px;
+            }
+            
+            .highlight-content {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
             }
             
             .section,
             .map-section,
+            .growth-section,
             .community-section {
                 padding: 50px 20px;
             }
@@ -914,9 +1100,8 @@
                 padding: 40px 20px;
             }
             
-            .section-header h2,
-            .community-header h2 {
-                font-size: 26px;
+            .section-header h2 {
+                font-size: 24px;
             }
             
             .uni-grid {
@@ -924,8 +1109,21 @@
                 gap: 12px;
             }
             
-            .paths-grid {
+            .outcomes-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+            
+            .fields-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .growth-chart {
+                height: 150px;
+            }
+            
+            .growth-bar-value {
+                font-size: 10px;
+                top: -20px;
             }
             
             #worldMap {
@@ -937,7 +1135,7 @@
             }
             
             .cta-section h2 {
-                font-size: 26px;
+                font-size: 24px;
             }
             
             .cta-buttons {
@@ -951,12 +1149,12 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
             }
             
             .footer-bottom {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 text-align: center;
             }
         }
@@ -967,17 +1165,17 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-            <div class="logo-icon">UM</div>
+            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img">
             <div class="logo-text">
-                <h1>MSP Alumni Network</h1>
+                <h1>Alumni Network</h1>
                 <p>Maastricht Science Programme</p>
             </div>
         </a>
         <nav class="header-nav">
-            <a href="#map">Explore Map</a>
+            <a href="#map">Map</a>
             <a href="#universities">Universities</a>
             <a href="#community">Community</a>
-            <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="btn-cta">Join MSP →</a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="btn-cta">Apply to MSP →</a>
         </nav>
     </header>
     
@@ -986,12 +1184,15 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-left">
-                <div class="hero-eyebrow">Since 2014</div>
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="Maastricht Science Programme" class="hero-logo">
+                
                 <h1>A Global Community of Scientists</h1>
+                
                 <p class="hero-subtitle">
-                    From Maastricht to the world — explore where MSP graduates pursue their passions, 
-                    build their careers, and make an impact.
+                    From Maastricht to the world — explore where MSP graduates pursue their passions 
+                    and build careers at world-leading institutions.
                 </p>
+                
                 <div class="hero-buttons">
                     <a href="#map" class="hero-btn primary">Explore the Map</a>
                     <a href="#community" class="hero-btn secondary">Join the Network</a>
@@ -1000,24 +1201,46 @@
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number white">1,329</div>
+                    <div class="hero-stat-number white">1,330</div>
                     <div class="hero-stat-label">Alumni Worldwide</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number blue">66</div>
-                    <div class="hero-stat-label">Countries</div>
+                    <div class="hero-stat-number blue">87</div>
+                    <div class="hero-stat-label">Nationalities</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number orange">235</div>
+                    <div class="hero-stat-number orange">241</div>
                     <div class="hero-stat-label">Universities</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number white">85%</div>
-                    <div class="hero-stat-label">Pursue Master's</div>
+                    <div class="hero-stat-number white">62</div>
+                    <div class="hero-stat-label">Countries</div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Highlight Bar - Key Recruitment Stats -->
+    <div class="highlight-bar">
+        <div class="highlight-content">
+            <div class="highlight-item">
+                <div class="highlight-number">91%</div>
+                <div class="highlight-text">Pursue Master's Degrees</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-number">42%</div>
+                <div class="highlight-text">At Top 100 Universities</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-number">87%</div>
+                <div class="highlight-text">Programme Satisfaction</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-number">28%</div>
+                <div class="highlight-text">Pursuing PhD Track</div>
+            </div>
+        </div>
+    </div>
     
     <!-- Two Audience Paths -->
     <section class="audience-section">
@@ -1025,7 +1248,7 @@
             <div class="audience-card prospective">
                 <div class="audience-icon">🎓</div>
                 <h3>Considering MSP?</h3>
-                <p>Discover where our graduates go — from world-leading universities to diverse career paths in science and beyond.</p>
+                <p>See where our graduates go — from Oxford to ETH Zürich, and diverse careers from research to industry.</p>
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="audience-link">
                     Learn about MSP <span>→</span>
                 </a>
@@ -1033,7 +1256,7 @@
             <div class="audience-card alumni">
                 <div class="audience-icon">🌍</div>
                 <h3>MSP Alumnus?</h3>
-                <p>Stay connected with your global network. Update your info, join regional groups, and help shape the next generation.</p>
+                <p>Stay connected with your global network. Update your info and join alumni in your region.</p>
                 <a href="#community" class="audience-link">
                     Join the community <span>→</span>
                 </a>
@@ -1051,7 +1274,23 @@
         <div class="uni-grid" id="uniGrid"></div>
         
         <div class="see-more">
-            <a href="#map">View all 235 universities on the map →</a>
+            <a href="#map">View all 241 universities on the map →</a>
+        </div>
+    </section>
+    
+    <!-- Programme Growth -->
+    <section class="growth-section">
+        <div class="growth-container">
+            <div class="growth-header">
+                <h2>A Growing Programme</h2>
+                <p>MSP has grown significantly since its first cohort in 2014</p>
+            </div>
+            
+            <div class="growth-chart" id="growthChart"></div>
+            
+            <div class="growth-badge">
+                <span>+888% Growth Since 2014</span>
+            </div>
         </div>
     </section>
     
@@ -1060,14 +1299,14 @@
         <div class="map-container">
             <div class="section-header">
                 <h2>Our Global Network</h2>
-                <p>Click any country to explore universities, career paths, and connect with alumni.</p>
+                <p>Click any country to explore universities and connect with alumni.</p>
             </div>
             
             <div class="map-wrapper">
                 <div class="map-header">
                     <div>
-                        <div class="map-title">Alumni in 66 Countries</div>
-                        <div class="map-subtitle">Click to explore each country</div>
+                        <div class="map-title">Alumni in 62 Countries</div>
+                        <div class="map-subtitle">Click to explore</div>
                     </div>
                 </div>
                 <div id="worldMap"></div>
@@ -1075,85 +1314,75 @@
         </div>
     </section>
     
-    <!-- Community Section (Alumni Focused) -->
+    <!-- Career Outcomes -->
+    <section class="section section-full section-gray">
+        <div class="section-inner">
+            <div class="section-header center">
+                <h2>Career Outcomes</h2>
+                <p>Where our alumni are building their careers</p>
+            </div>
+            
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-icon">🎓</div>
+                    <div class="outcome-number">129</div>
+                    <div class="outcome-label">PhD Students</div>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">🔬</div>
+                    <div class="outcome-number">191</div>
+                    <div class="outcome-label">In Academia</div>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">💼</div>
+                    <div class="outcome-number">105</div>
+                    <div class="outcome-label">In Finance</div>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">💻</div>
+                    <div class="outcome-number">84</div>
+                    <div class="outcome-label">In Tech</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fields of Study -->
+    <section class="section">
+        <div class="section-header center">
+            <h2>Diverse Paths Forward</h2>
+            <p>MSP's interdisciplinary foundation opens doors across every scientific field</p>
+        </div>
+        
+        <div class="fields-grid" id="fieldsGrid"></div>
+    </section>
+    
+    <!-- Community Section -->
     <section class="community-section" id="community">
         <div class="community-container">
             <div class="community-header">
                 <h2>Stay Connected</h2>
-                <p>The MSP network spans the globe. Join alumni in your region and stay part of the community.</p>
+                <p>The MSP network spans the globe. Join alumni in your region.</p>
             </div>
             
             <div class="community-grid">
                 <div class="community-card">
                     <div class="community-icon">💬</div>
                     <h3>Regional Groups</h3>
-                    <p>Connect with MSP alumni in your country through our WhatsApp communities.</p>
+                    <p>Connect with MSP alumni in your country through WhatsApp communities.</p>
                     <div class="community-stat">24 countries</div>
                 </div>
                 <div class="community-card">
                     <div class="community-icon">🤝</div>
-                    <h3>Mentor Network</h3>
-                    <p>Share your experience with current students exploring career paths like yours.</p>
-                    <div class="community-stat">Growing</div>
+                    <h3>85% Want to Help</h3>
+                    <p>Our alumni are eager to mentor current students and share experiences.</p>
+                    <div class="community-stat">ROA Survey 2024</div>
                 </div>
                 <div class="community-card">
                     <div class="community-icon">📬</div>
                     <h3>Stay Updated</h3>
-                    <p>Keep your info current and receive news about MSP events and opportunities.</p>
+                    <p>Keep your info current and receive news about MSP events.</p>
                     <div class="community-stat">Annual updates</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Career Paths -->
-    <section class="section section-full section-gray">
-        <div class="section-inner">
-            <div class="section-header center">
-                <h2>Diverse Paths Forward</h2>
-                <p>MSP's interdisciplinary foundation opens doors across every scientific field</p>
-            </div>
-            
-            <div class="paths-grid">
-                <div class="path-card">
-                    <div class="path-icon">🧬</div>
-                    <div class="path-name">Life Sciences</div>
-                    <div class="path-count">287 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">🧠</div>
-                    <div class="path-name">Neuroscience</div>
-                    <div class="path-count">156 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">🔬</div>
-                    <div class="path-name">Physics & Engineering</div>
-                    <div class="path-count">124 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">📊</div>
-                    <div class="path-name">Business & Economics</div>
-                    <div class="path-count">112 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">⚗️</div>
-                    <div class="path-name">Chemistry</div>
-                    <div class="path-count">98 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">💻</div>
-                    <div class="path-name">Computer Science & AI</div>
-                    <div class="path-count">89 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">🏥</div>
-                    <div class="path-name">Medicine & Health</div>
-                    <div class="path-count">167 <span>alumni</span></div>
-                </div>
-                <div class="path-card">
-                    <div class="path-icon">🌍</div>
-                    <div class="path-name">Environment</div>
-                    <div class="path-count">76 <span>alumni</span></div>
                 </div>
             </div>
         </div>
@@ -1163,7 +1392,7 @@
     <section class="cta-section">
         <div class="cta-container">
             <h2>Be Part of the Story</h2>
-            <p>Whether you're considering MSP or already part of our alumni family, there's a place for you here.</p>
+            <p>Whether you're considering MSP or already part of our alumni family.</p>
             <div class="cta-buttons">
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-science" target="_blank" class="cta-btn white">Apply to MSP</a>
                 <a href="mailto:msp-alumni@maastrichtuniversity.nl" class="cta-btn outline">Update Your Info</a>
@@ -1175,8 +1404,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About</h3>
-                <p>The MSP Alumni Network connects 1,329 graduates across 66 countries. Since 2014, MSP has prepared scientists for diverse careers at world-leading institutions.</p>
+                <div class="footer-brand">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
+                </div>
+                <p>The MSP Alumni Network connects 1,330 graduates across 62 countries. Since 2014, MSP has prepared scientists for diverse careers at world-leading institutions.</p>
             </div>
             <div class="footer-section">
                 <h3>For Students</h3>
@@ -1210,51 +1441,79 @@
     
     <script>
         // ============================================
-        // DATA
+        // DATA - Updated December 2024
         // ============================================
         
         const topUniversities = [
-            {name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-oxford.png"},
-            {name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-cambridge.png"},
-            {name: "ETH Zürich", country: "Switzerland", code: "ch", count: 8, logo: "eth-zurich.png"},
-            {name: "Imperial College", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png"},
+            // Prestige internationals
+            {name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-oxford.png", prestige: true},
+            {name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", prestige: true},
+            {name: "ETH Zürich", country: "Switzerland", code: "ch", count: 8, logo: "eth-zurich.png", prestige: true},
+            {name: "Imperial College", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", prestige: true},
+            // Top Dutch
             {name: "Maastricht University", country: "Netherlands", code: "nl", count: 120, logo: "maastricht-university.png"},
             {name: "Utrecht University", country: "Netherlands", code: "nl", count: 85, logo: "utrecht-university.png"},
             {name: "Univ. of Amsterdam", country: "Netherlands", code: "nl", count: 61, logo: "university-of-amsterdam.png"},
             {name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png"}
         ];
         
+        const fieldsOfStudy = [
+            {name: "Life Sciences / Biology", count: 346, icon: "🧬", pct: 35},
+            {name: "Medicine & Health", count: 185, icon: "🏥", pct: 19},
+            {name: "Chemistry", count: 99, icon: "⚗️", pct: 10},
+            {name: "Environment", count: 97, icon: "🌍", pct: 10},
+            {name: "Computer Science & AI", count: 81, icon: "💻", pct: 8},
+            {name: "Neuroscience", count: 74, icon: "🧠", pct: 7}
+        ];
+        
+        const graduationData = [
+            {year: 2014, count: 25},
+            {year: 2015, count: 38},
+            {year: 2016, count: 47},
+            {year: 2017, count: 66},
+            {year: 2018, count: 70},
+            {year: 2019, count: 79},
+            {year: 2020, count: 108},
+            {year: 2021, count: 126},
+            {year: 2022, count: 140},
+            {year: 2023, count: 170},
+            {year: 2024, count: 194},
+            {year: 2025, count: 247}
+        ];
+        
         const countryFlags = {
             "Netherlands": "nl", "Germany": "de", "United Kingdom": "gb", "Belgium": "be",
-            "Italy": "it", "Spain": "es", "France": "fr", "Sweden": "se", "Switzerland": "ch",
-            "Austria": "at", "Denmark": "dk", "Norway": "no", "Finland": "fi",
-            "United States": "us", "Canada": "ca", "Australia": "au", "China": "cn",
-            "Singapore": "sg", "Portugal": "pt", "Poland": "pl", "Ireland": "ie", "Luxembourg": "lu"
+            "Sweden": "se", "Switzerland": "ch", "Spain": "es", "Italy": "it",
+            "France": "fr", "Denmark": "dk", "United States": "us", "Austria": "at",
+            "Canada": "ca", "Norway": "no", "Australia": "au", "Finland": "fi",
+            "Ireland": "ie", "Luxembourg": "lu", "Poland": "pl", "Portugal": "pt",
+            "China": "cn", "Singapore": "sg"
         };
         
+        // Updated current residence data
         const alumniData = {
-            "Netherlands": {current: 445, masters: 487, total: 487},
+            "Netherlands": {current: 456, masters: 495, total: 495},
             "Germany": {current: 92, masters: 49, total: 92},
-            "United Kingdom": {current: 71, masters: 86, total: 86},
-            "Belgium": {current: 68, masters: 42, total: 68},
-            "Sweden": {current: 49, masters: 55, total: 55},
-            "Switzerland": {current: 39, masters: 24, total: 39},
-            "Spain": {current: 29, masters: 25, total: 29},
-            "Italy": {current: 27, masters: 10, total: 27},
-            "France": {current: 25, masters: 21, total: 25},
+            "United Kingdom": {current: 75, masters: 100, total: 100},
+            "Belgium": {current: 70, masters: 42, total: 70},
+            "Sweden": {current: 51, masters: 57, total: 57},
+            "Switzerland": {current: 41, masters: 25, total: 41},
+            "Spain": {current: 30, masters: 25, total: 30},
+            "Italy": {current: 29, masters: 10, total: 29},
+            "France": {current: 28, masters: 21, total: 28},
+            "Denmark": {current: 24, masters: 14, total: 24},
             "United States": {current: 22, masters: 13, total: 22},
-            "Denmark": {current: 19, masters: 21, total: 21},
-            "Austria": {current: 14, masters: 15, total: 15},
-            "Canada": {current: 15, masters: 5, total: 15},
-            "Norway": {current: 12, masters: 8, total: 12},
-            "Luxembourg": {current: 11, masters: 1, total: 11},
-            "Australia": {current: 10, masters: 4, total: 10},
+            "Austria": {current: 14, masters: 8, total: 14},
+            "Canada": {current: 12, masters: 5, total: 12},
+            "Norway": {current: 10, masters: 8, total: 10},
+            "Australia": {current: 9, masters: 4, total: 9},
             "Finland": {current: 8, masters: 7, total: 8},
             "Ireland": {current: 6, masters: 8, total: 8},
-            "China": {current: 7, masters: 4, total: 7},
-            "Singapore": {current: 6, masters: 5, total: 6},
+            "Luxembourg": {current: 6, masters: 1, total: 6},
+            "Poland": {current: 5, masters: 3, total: 5},
             "Portugal": {current: 5, masters: 2, total: 5},
-            "Poland": {current: 5, masters: 3, total: 5}
+            "China": {current: 5, masters: 4, total: 5},
+            "Singapore": {current: 5, masters: 5, total: 5}
         };
         
         const countryCoordinates = {
@@ -1262,13 +1521,13 @@
             "United Kingdom": [55.3781, -3.4360], "Belgium": [50.5039, 4.4699],
             "Sweden": [60.1282, 18.6435], "Switzerland": [46.8182, 8.2275],
             "Spain": [40.4637, -3.7492], "Italy": [41.8719, 12.5674],
-            "France": [46.2276, 2.2137], "United States": [37.0902, -95.7129],
-            "Denmark": [56.2639, 9.5018], "Austria": [47.5162, 14.5501],
+            "France": [46.2276, 2.2137], "Denmark": [56.2639, 9.5018],
+            "United States": [37.0902, -95.7129], "Austria": [47.5162, 14.5501],
             "Canada": [56.1304, -106.3468], "Norway": [60.4720, 8.4689],
-            "Luxembourg": [49.8153, 6.1296], "Australia": [-25.2744, 133.7751],
-            "Finland": [61.9241, 25.7482], "Ireland": [53.4129, -8.2439],
-            "China": [35.8617, 104.1954], "Singapore": [1.3521, 103.8198],
-            "Portugal": [39.3999, -8.2245], "Poland": [51.9194, 19.1451]
+            "Australia": [-25.2744, 133.7751], "Finland": [61.9241, 25.7482],
+            "Ireland": [53.4129, -8.2439], "Luxembourg": [49.8153, 6.1296],
+            "Poland": [51.9194, 19.1451], "Portugal": [39.3999, -8.2245],
+            "China": [35.8617, 104.1954], "Singapore": [1.3521, 103.8198]
         };
         
         // ============================================
@@ -1278,7 +1537,7 @@
         const uniGrid = document.getElementById('uniGrid');
         topUniversities.forEach(uni => {
             const card = document.createElement('div');
-            card.className = 'uni-card';
+            card.className = uni.prestige ? 'uni-card prestige' : 'uni-card';
             card.innerHTML = `
                 <div class="uni-logo">
                     <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
@@ -1291,6 +1550,47 @@
                 <div class="uni-count">${uni.count} <span>alumni</span></div>
             `;
             uniGrid.appendChild(card);
+        });
+        
+        // ============================================
+        // POPULATE FIELDS
+        // ============================================
+        
+        const fieldsGrid = document.getElementById('fieldsGrid');
+        fieldsOfStudy.forEach(field => {
+            const card = document.createElement('div');
+            card.className = 'field-card';
+            card.innerHTML = `
+                <div class="field-icon">${field.icon}</div>
+                <div class="field-info">
+                    <div class="field-name">${field.name}</div>
+                    <div class="field-count">${field.count}+ alumni · ${field.pct}%</div>
+                </div>
+                <div class="field-bar">
+                    <div class="field-bar-fill" style="width: ${field.pct * 2.5}%"></div>
+                </div>
+            `;
+            fieldsGrid.appendChild(card);
+        });
+        
+        // ============================================
+        // GROWTH CHART
+        // ============================================
+        
+        const growthChart = document.getElementById('growthChart');
+        const maxGrad = Math.max(...graduationData.map(d => d.count));
+        
+        graduationData.forEach(d => {
+            const height = (d.count / maxGrad) * 180;
+            const bar = document.createElement('div');
+            bar.className = 'growth-bar';
+            bar.innerHTML = `
+                <div class="growth-bar-fill" style="height: ${height}px">
+                    <span class="growth-bar-value">${d.count}</span>
+                </div>
+                <div class="growth-bar-label">'${String(d.year).slice(-2)}</div>
+            `;
+            growthChart.appendChild(bar);
         });
         
         // ============================================

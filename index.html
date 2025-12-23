@@ -130,6 +130,67 @@
             background-size: 50px 50px;
         }
         
+        /* Flag Cascade */
+        .flag-cascade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+            mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, transparent 75%);
+            -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, transparent 75%);
+        }
+        
+        .flag-cascade-inner {
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            right: 0;
+            bottom: -20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px;
+            transform: rotate(-8deg) scale(1.2);
+            opacity: 0.6;
+        }
+        
+        .cascade-flag {
+            width: 48px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .cascade-flag:nth-child(odd) {
+            transform: translateY(8px);
+        }
+        
+        .cascade-flag:nth-child(3n) {
+            opacity: 0.8;
+        }
+        
+        .cascade-flag:nth-child(5n) {
+            transform: translateY(-5px) rotate(3deg);
+        }
+        
+        @media (max-width: 1100px) {
+            .flag-cascade {
+                width: 100%;
+                mask-image: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 60%);
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 60%);
+            }
+            
+            .flag-cascade-inner {
+                transform: rotate(-5deg) scale(1.1);
+            }
+        }
+        
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -1182,6 +1243,11 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
+        
+        <!-- Flag Cascade Background -->
+        <div class="flag-cascade">
+            <div class="flag-cascade-inner" id="flagCascade"></div>
+        </div>
         <div class="hero-content">
             <div class="hero-left">
                 <img src="assets/logos/maastricht-science-programme-logo.png" alt="Maastricht Science Programme" class="hero-logo">
@@ -1440,6 +1506,37 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <script>
+        // ============================================
+        // FLAG CASCADE - 87 Nationalities
+        // ============================================
+        
+        const nationalityFlags = [
+            'nl', 'de', 'be', 'it', 'gb', 'es', 'fr', 'pl', 'lu', 'ie',
+            'ro', 'tr', 'gr', 'ru', 'ch', 'bg', 'pt', 'fi', 'in', 'us',
+            'at', 'se', 'dk', 'no', 'hu', 'cz', 'sk', 'hr', 'ua', 'lt',
+            'lv', 'ee', 'si', 'rs', 'mk', 'al', 'ba', 'me', 'cy', 'mt',
+            'is', 'cn', 'jp', 'kr', 'tw', 'hk', 'sg', 'my', 'th', 'vn',
+            'id', 'ph', 'au', 'nz', 'ca', 'mx', 'br', 'ar', 'cl', 'co',
+            'pe', 'za', 'eg', 'ma', 'ng', 'ke', 'gh', 'et', 'tz', 'il',
+            'ae', 'sa', 'qa', 'kw', 'pk', 'bd', 'lk', 'np', 'mm', 'kh',
+            'la', 'mn', 'kz', 'uz', 'ge', 'am', 'az'
+        ];
+        
+        const flagCascade = document.getElementById('flagCascade');
+        
+        // Shuffle and repeat flags to fill the space
+        const shuffled = [...nationalityFlags].sort(() => Math.random() - 0.5);
+        const flagsToShow = [...shuffled, ...shuffled.slice(0, 40)]; // ~127 flags total
+        
+        flagsToShow.forEach(code => {
+            const img = document.createElement('img');
+            img.src = `https://flagcdn.com/w80/${code}.png`;
+            img.alt = '';
+            img.className = 'cascade-flag';
+            img.loading = 'lazy';
+            flagCascade.appendChild(img);
+        });
+        
         // ============================================
         // DATA - Updated December 2024
         // ============================================

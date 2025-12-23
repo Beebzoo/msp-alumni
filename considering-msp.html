@@ -664,6 +664,82 @@
             50% { transform: translateX(-50%) translateY(10px); }
         }
 
+        /* Welcome to Maastricht Section */
+        .maastricht-section {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maastricht-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .maastricht-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .maastricht-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 28, 61, 0.3) 0%,
+                rgba(0, 28, 61, 0.5) 50%,
+                rgba(0, 28, 61, 0.7) 100%
+            );
+        }
+
+        .maastricht-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .maastricht-label {
+            display: inline-block;
+            background: rgba(232, 78, 16, 0.9);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 25px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .maastricht-title {
+            font-size: clamp(42px, 7vw, 72px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .maastricht-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
         /* Location Journey Section */
         .journey-section {
             background: var(--um-white);
@@ -1644,6 +1720,19 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                 <path d="M12 5v14M19 12l-7 7-7-7"/>
             </svg>
+        </div>
+    </section>
+
+    <!-- Welcome to Maastricht Section -->
+    <section class="maastricht-section">
+        <div class="maastricht-image">
+            <img src="assets/images/maastricht-landscape.jpg" alt="Maastricht cityscape at dusk with Sint Servaasbrug bridge">
+            <div class="maastricht-overlay"></div>
+        </div>
+        <div class="maastricht-content">
+            <span class="maastricht-label">Your New Home</span>
+            <h2 class="maastricht-title">Welcome to Maastricht</h2>
+            <p class="maastricht-subtitle">Where history meets innovation in the heart of Europe</p>
         </div>
     </section>
 

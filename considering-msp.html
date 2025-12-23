@@ -1182,6 +1182,228 @@
             }
         }
 
+        /* Your Future Section */
+        .future-section {
+            background: var(--um-dark-blue);
+            padding: 70px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E84E10' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .future-section .section-label {
+            background: rgba(232, 78, 16, 0.2);
+            color: var(--um-orange);
+        }
+
+        .future-section .section-title {
+            color: white;
+        }
+
+        .future-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .future-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .future-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+
+        .future-item {
+            text-align: center;
+        }
+
+        .future-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(232, 78, 16, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+        }
+
+        .future-item-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .future-item-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .future-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--um-orange);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .future-cta:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 78, 16, 0.4);
+        }
+
+        .future-cta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Apply Section */
+        .apply-section {
+            background: var(--um-light-gray);
+            padding: 70px 40px;
+        }
+
+        .apply-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .apply-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .apply-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .apply-card-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--um-light-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+        }
+
+        .apply-card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .apply-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .apply-card-desc {
+            font-size: 12px;
+            color: var(--um-text-gray);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .apply-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--um-light-blue);
+        }
+
+        .apply-card-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .apply-card:hover .apply-card-link {
+            color: var(--um-orange);
+        }
+
+        .apply-main-cta {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 28, 61, 0.3);
+        }
+
+        .apply-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .apply-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .future-highlights {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
         /* Impact Numbers Section */
         .impact-section {
             background: linear-gradient(135deg, #001C3D 0%, #002d5c 100%);
@@ -2375,11 +2597,10 @@
             <ul class="nav-links">
                 <li><a href="#what-is-msp">What is MSP?</a></li>
                 <li><a href="#how-it-works">Curriculum</a></li>
-                <li><a href="#impact">Impact</a></li>
-                <li><a href="#journeys">Alumni Journeys</a></li>
-                <li><a href="#careers">Careers</a></li>
+                <li><a href="#future">Your Future</a></li>
+                <li><a href="#apply">Apply</a></li>
+                <li><a href="#journeys">Alumni</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="nav-cta">Apply Now</a></li>
             </ul>
         </div>
     </nav>
@@ -2648,6 +2869,128 @@
                         </svg>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Future Section -->
+    <section class="future-section" id="future">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">After MSP</span>
+                <h2 class="section-title">Your Future</h2>
+                <p class="section-subtitle">MSP opens doors to world-class master's programmes and diverse career paths</p>
+            </div>
+
+            <div class="future-content reveal">
+                <div class="future-highlights">
+                    <div class="future-item">
+                        <div class="future-item-icon">🎓</div>
+                        <div class="future-item-title">Master's Programmes</div>
+                        <div class="future-item-desc">Physics, Chemistry, Biology,<br>Neuroscience, AI & more</div>
+                    </div>
+                    <div class="future-item">
+                        <div class="future-item-icon">🔬</div>
+                        <div class="future-item-title">Research Careers</div>
+                        <div class="future-item-desc">Universities, institutes,<br>industry R&D</div>
+                    </div>
+                    <div class="future-item">
+                        <div class="future-item-icon">💼</div>
+                        <div class="future-item-title">Industry & Business</div>
+                        <div class="future-item-desc">Consulting, tech,<br>healthcare, startups</div>
+                    </div>
+                    <div class="future-item">
+                        <div class="future-item-icon">🌍</div>
+                        <div class="future-item-title">Global Opportunities</div>
+                        <div class="future-item-desc">Alumni in 60+ countries<br>at 240+ universities</div>
+                    </div>
+                </div>
+
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/your-future" target="_blank" class="future-cta">
+                    Explore Career Paths
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Section -->
+    <section class="apply-section" id="apply">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Join MSP</span>
+                <h2 class="section-title">Ready to Apply?</h2>
+                <p class="section-subtitle">Everything you need to know about joining the Maastricht Science Programme</p>
+            </div>
+
+            <div class="apply-grid reveal">
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements" target="_blank" class="apply-card">
+                    <div class="apply-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.94 0 3.74.62 5.2 1.67"/>
+                        </svg>
+                    </div>
+                    <div class="apply-card-title">Admission Requirements</div>
+                    <div class="apply-card-desc">Deadlines, required documents, language requirements & selection process</div>
+                    <span class="apply-card-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-and-enrolment" target="_blank" class="apply-card">
+                    <div class="apply-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="apply-card-title">Admission & Enrolment</div>
+                    <div class="apply-card-desc">Step-by-step guide through Studielink, MyApplication portal & enrolment</div>
+                    <span class="apply-card-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/tuition-fees" target="_blank" class="apply-card">
+                    <div class="apply-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v12M9 9h6M9 15h6"/>
+                        </svg>
+                    </div>
+                    <div class="apply-card-title">Tuition Fees</div>
+                    <div class="apply-card-desc">EU/EEA: €4,465 • Non-EU: €20,109<br>Fee waivers available</div>
+                    <span class="apply-card-link">
+                        Learn more
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="apply-main-cta reveal">
+                <a href="https://www.studielink.nl/" target="_blank" class="apply-btn">
+                    Apply via Studielink
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>

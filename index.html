@@ -1326,12 +1326,12 @@
                     <div class="hero-stat-label">Nationalities</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number orange">241</div>
+                    <div class="hero-stat-number orange">228</div>
                     <div class="hero-stat-label">Universities</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number white">62</div>
-                    <div class="hero-stat-label">Countries</div>
+                    <div class="hero-stat-number white">20</div>
+                    <div class="hero-stat-label">Country Profiles</div>
                 </div>
             </div>
         </div>
@@ -1391,7 +1391,7 @@
         <div class="uni-grid" id="uniGrid"></div>
         
         <div class="see-more">
-            <a href="#map">View all 241 universities on the map →</a>
+            <a href="#map">View all 228 universities on the map →</a>
         </div>
     </section>
     
@@ -1422,7 +1422,7 @@
             <div class="map-wrapper">
                 <div class="map-header">
                     <div>
-                        <div class="map-title">Alumni in 62 Countries</div>
+                        <div class="map-title">Alumni in 20 Countries (with detailed profiles)</div>
                         <div class="map-subtitle">Click to explore</div>
                     </div>
                 </div>
@@ -1487,7 +1487,7 @@
                     <div class="community-icon">💬</div>
                     <h3>Regional Groups</h3>
                     <p>Connect with MSP alumni in your country through WhatsApp communities.</p>
-                    <div class="community-stat">24 countries</div>
+                    <div class="community-stat">20 countries</div>
                 </div>
                 <div class="community-card">
                     <div class="community-icon">🤝</div>
@@ -1524,7 +1524,7 @@
                 <div class="footer-brand">
                     <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
                 </div>
-                <p>The MSP Alumni Network connects 1,330 graduates across 62 countries. Since 2014, MSP has prepared scientists for diverse careers at world-leading institutions.</p>
+                <p>The MSP Alumni Network connects 1,330 graduates across 20 countries with detailed profiles. Since 2014, MSP has prepared scientists for diverse careers at world-leading institutions.</p>
             </div>
             <div class="footer-section">
                 <h3>For Students</h3>
@@ -1596,14 +1596,14 @@
         const topUniversities = [
             // Prestige internationals
             {name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-oxford.png", prestige: true},
-            {name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", prestige: true},
+            {name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-cambridge.png", prestige: true},
             {name: "ETH Zürich", country: "Switzerland", code: "ch", count: 8, logo: "eth-zurich.png", prestige: true},
             {name: "Imperial College", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", prestige: true},
             // Top Dutch
-            {name: "Maastricht University", country: "Netherlands", code: "nl", count: 120, logo: "maastricht-university.png"},
-            {name: "Utrecht University", country: "Netherlands", code: "nl", count: 85, logo: "utrecht-university.png"},
-            {name: "Univ. of Amsterdam", country: "Netherlands", code: "nl", count: 61, logo: "university-of-amsterdam.png"},
-            {name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png"}
+            {name: "Maastricht University", country: "Netherlands", code: "nl", count: 125, logo: "maastricht-university.png"},
+            {name: "Utrecht University", country: "Netherlands", code: "nl", count: 91, logo: "utrecht-university.png"},
+            {name: "Univ. of Amsterdam", country: "Netherlands", code: "nl", count: 69, logo: "university-of-amsterdam.png"},
+            {name: "KU Leuven", country: "Belgium", code: "be", count: 20, logo: "ku-leuven.png"}
         ];
         
         const fieldsOfStudy = [
@@ -1630,53 +1630,53 @@
             {year: 2025, count: 247}
         ];
         
+        // ============================================
+        // UPDATED: 20 Countries matching alumni-data.js
+        // ============================================
+        
         const countryFlags = {
             "Netherlands": "nl", "Germany": "de", "United Kingdom": "gb", "Belgium": "be",
             "Sweden": "se", "Switzerland": "ch", "Spain": "es", "Italy": "it",
             "France": "fr", "Denmark": "dk", "United States": "us", "Austria": "at",
             "Canada": "ca", "Norway": "no", "Australia": "au", "Finland": "fi",
-            "Ireland": "ie", "Luxembourg": "lu", "Poland": "pl", "Portugal": "pt",
-            "China": "cn", "Singapore": "sg"
+            "Ireland": "ie", "Luxembourg": "lu", "Portugal": "pt", "Greece": "gr"
         };
         
-        // Updated current residence data
+        // Updated to match alumni-data.js (20 countries with n>=5)
         const alumniData = {
             "Netherlands": {current: 456, masters: 495, total: 495},
             "Germany": {current: 92, masters: 49, total: 92},
-            "United Kingdom": {current: 75, masters: 100, total: 100},
+            "United Kingdom": {current: 85, masters: 100, total: 100},
             "Belgium": {current: 70, masters: 42, total: 70},
             "Sweden": {current: 51, masters: 57, total: 57},
             "Switzerland": {current: 41, masters: 25, total: 41},
-            "Spain": {current: 30, masters: 25, total: 30},
-            "Italy": {current: 29, masters: 10, total: 29},
+            "Spain": {current: 30, masters: 26, total: 30},
+            "Italy": {current: 29, masters: 22, total: 29},
             "France": {current: 28, masters: 21, total: 28},
-            "Denmark": {current: 24, masters: 14, total: 24},
-            "United States": {current: 22, masters: 13, total: 22},
-            "Austria": {current: 14, masters: 8, total: 14},
-            "Canada": {current: 12, masters: 5, total: 12},
-            "Norway": {current: 10, masters: 8, total: 10},
-            "Australia": {current: 9, masters: 4, total: 9},
-            "Finland": {current: 8, masters: 7, total: 8},
-            "Ireland": {current: 6, masters: 8, total: 8},
-            "Luxembourg": {current: 6, masters: 1, total: 6},
-            "Poland": {current: 5, masters: 3, total: 5},
-            "Portugal": {current: 5, masters: 2, total: 5},
-            "China": {current: 5, masters: 4, total: 5},
-            "Singapore": {current: 5, masters: 5, total: 5}
+            "Denmark": {current: 24, masters: 22, total: 24},
+            "United States": {current: 23, masters: 10, total: 23},
+            "Finland": {current: 18, masters: 7, total: 18},
+            "Austria": {current: 17, masters: 10, total: 17},
+            "Canada": {current: 9, masters: 6, total: 9},
+            "Ireland": {current: 9, masters: 7, total: 9},
+            "Luxembourg": {current: 9, masters: 1, total: 9},
+            "Portugal": {current: 8, masters: 5, total: 8},
+            "Australia": {current: 8, masters: 2, total: 8},
+            "Norway": {current: 7, masters: 5, total: 7},
+            "Greece": {current: 5, masters: 3, total: 5}
         };
         
         const countryCoordinates = {
             "Netherlands": [52.1326, 5.2913], "Germany": [51.1657, 10.4515],
-            "United Kingdom": [55.3781, -3.4360], "Belgium": [50.5039, 4.4699],
-            "Sweden": [60.1282, 18.6435], "Switzerland": [46.8182, 8.2275],
+            "United Kingdom": [54.5, -2.5], "Belgium": [50.5039, 4.4699],
+            "Sweden": [62.0, 15.0], "Switzerland": [46.8182, 8.2275],
             "Spain": [40.4637, -3.7492], "Italy": [41.8719, 12.5674],
-            "France": [46.2276, 2.2137], "Denmark": [56.2639, 9.5018],
-            "United States": [37.0902, -95.7129], "Austria": [47.5162, 14.5501],
-            "Canada": [56.1304, -106.3468], "Norway": [60.4720, 8.4689],
-            "Australia": [-25.2744, 133.7751], "Finland": [61.9241, 25.7482],
+            "France": [46.6, 2.3], "Denmark": [56.0, 10.0],
+            "United States": [39.8283, -98.5795], "Austria": [47.5162, 14.5501],
+            "Canada": [56.1304, -106.3468], "Norway": [64.0, 10.0],
+            "Australia": [-25.2744, 133.7751], "Finland": [64.0, 26.0],
             "Ireland": [53.4129, -8.2439], "Luxembourg": [49.8153, 6.1296],
-            "Poland": [51.9194, 19.1451], "Portugal": [39.3999, -8.2245],
-            "China": [35.8617, 104.1954], "Singapore": [1.3521, 103.8198]
+            "Portugal": [39.3999, -8.2245], "Greece": [39.0742, 21.8243]
         };
         
         // ============================================

@@ -526,7 +526,85 @@ function getGrowthRate() {
 }
 
 // ==========================================
-// SECTION 12: DETAILED COUNTRY DATA
+// SECTION 12: UNIVERSITY LOGOS LOOKUP
+// ==========================================
+// Maps university names to logo filenames in assets/logos/
+// Add new logos here as you upload them
+
+const UNIVERSITY_LOGOS = {
+    // Netherlands
+    "Maastricht University": "maastricht-university.png",
+    "Utrecht University": "utrecht-university.png",
+    "University of Amsterdam": "university-of-amsterdam.png",
+    "Leiden University": "leiden-university.png",
+    "Wageningen University": "wageningen-university.png",
+    "Radboud University": "radboud-university.png",
+    "University of Groningen": "university-of-groningen.png",
+    "TU Delft": "tu-delft.png",
+    "VU Amsterdam": "vrije-universiteit-amsterdam.png",
+    "TU Eindhoven": "eindhoven-university.png",
+    "Erasmus University Rotterdam": "erasmus-university.png",
+    "University of Twente": "university-of-twente.png",
+    
+    // United Kingdom
+    "Imperial College London": "imperial-college-london.png",
+    "University of Cambridge": "university-of-cambridge.png",
+    "University of Oxford": "university-of-oxford.png",
+    "University College London": "ucl.png",
+    "UCL": "ucl.png",
+    "University of Edinburgh": "university-of-edinburgh.png",
+    "University of Birmingham": "university-of-birmingham.png",
+    
+    // Switzerland
+    "ETH Zürich": "eth-zurich.png",
+    "ETH Zurich": "eth-zurich.png",
+    
+    // Belgium
+    "KU Leuven": "ku-leuven.png",
+    "Ghent University": "ghent-university.png",
+    "Université Libre de Bruxelles": "universite-libre-de-bruxelles.png",
+    "Vrije Universiteit Brussel": "vrije-universiteit-brussel.jpg",
+    
+    // Sweden
+    "Uppsala University": "uppsala-university.png",
+    "Lund University": "lund-university.png",
+    "Karolinska Institutet": "karolinska-institutet.png",
+    "Stockholm University": "stockholm-university.png",
+    "KTH Royal Institute of Technology": "kth-royal-institute-of-technology.png",
+    
+    // Germany
+    "TU Munich": "technical-university-of-munich.png",
+    "Technical University of Munich": "technical-university-of-munich.png",
+    "Humboldt University of Berlin": "humboldt-university-of-berlin.png",
+    "University of Cologne": "university-of-cologne.png",
+    "TU Wien": "tu-wien.png",
+    
+    // Denmark
+    "University of Copenhagen": "university-of-copenhagen.png",
+    "Copenhagen Business School": "copenhagen-business-school.png",
+    "Technical University of Denmark": "technical-university-of-denmark.png",
+    
+    // Other
+    "University of Helsinki": "university-of-helsinki.png",
+    "University College Dublin": "university-college-dublin.png",
+    "Pompeu Fabra University": "pompeu-fabra-university.jpg",
+    "University of Barcelona": "university-of-barcelona.png",
+    "University of Bologna": "university-of-bologna.png",
+    "University of Pavia": "university-of-pavia.png",
+    
+    // MSP/UM logos (for special use)
+    "MSP": "msp-logo.png",
+    "MSP Alumni": "maastricht-science-programme-logo.png"
+};
+
+// Helper function to get logo path
+function getUniversityLogo(uniName) {
+    const logo = UNIVERSITY_LOGOS[uniName];
+    return logo ? `assets/logos/${logo}` : null;
+}
+
+// ==========================================
+// SECTION 13: DETAILED COUNTRY DATA
 // ==========================================
 
 const COUNTRY_DETAILS = {
@@ -544,6 +622,20 @@ const COUNTRY_DETAILS = {
             {"name": "Wageningen", "count": 18},
             {"name": "Nijmegen", "count": 11},
             {"name": "Eindhoven", "count": 10}
+        ],
+        "universities": [
+            {"name": "Maastricht University", "count": 121},
+            {"name": "Utrecht University", "count": 92},
+            {"name": "University of Amsterdam", "count": 66},
+            {"name": "Leiden University", "count": 41},
+            {"name": "Wageningen University", "count": 37},
+            {"name": "Radboud University", "count": 36},
+            {"name": "University of Groningen", "count": 23},
+            {"name": "TU Delft", "count": 17},
+            {"name": "VU Amsterdam", "count": 14},
+            {"name": "TU Eindhoven", "count": 9},
+            {"name": "Erasmus University Rotterdam", "count": 8},
+            {"name": "University of Twente", "count": 6}
         ],
         "graduationYears": {"2014": 5, "2015": 10, "2016": 22, "2017": 22, "2018": 19, "2019": 24, "2020": 40, "2021": 50, "2022": 52, "2023": 63, "2024": 65, "2025": 73},
         "gender": {"Female": 265, "Male": 180},
@@ -571,6 +663,14 @@ const COUNTRY_DETAILS = {
             {"name": "Frankfurt", "count": 3},
             {"name": "Heidelberg", "count": 3}
         ],
+        "universities": [
+            {"name": "TU Munich", "count": 7},
+            {"name": "Humboldt University of Berlin", "count": 5},
+            {"name": "University of Cologne", "count": 4},
+            {"name": "Ludwig Maximilian University", "count": 4},
+            {"name": "Heidelberg University", "count": 3},
+            {"name": "University of Freiburg", "count": 3}
+        ],
         "graduationYears": {"2014": 4, "2015": 11, "2016": 8, "2017": 4, "2018": 10, "2019": 6, "2020": 4, "2021": 9, "2022": 8, "2023": 13, "2024": 6, "2025": 9},
         "gender": {"Female": 62, "Male": 30},
         "nationalities": [
@@ -596,6 +696,15 @@ const COUNTRY_DETAILS = {
             {"name": "Glasgow", "count": 3},
             {"name": "Birmingham", "count": 3}
         ],
+        "universities": [
+            {"name": "Imperial College London", "count": 19},
+            {"name": "University College London", "count": 12},
+            {"name": "University of Cambridge", "count": 8},
+            {"name": "University of Edinburgh", "count": 7},
+            {"name": "University of Oxford", "count": 6},
+            {"name": "University of Birmingham", "count": 4},
+            {"name": "King's College London", "count": 3}
+        ],
         "graduationYears": {"2015": 7, "2016": 6, "2017": 7, "2018": 9, "2019": 9, "2020": 7, "2021": 8, "2022": 8, "2023": 6, "2024": 10, "2025": 4},
         "gender": {"Female": 48, "Male": 33},
         "nationalities": [
@@ -619,6 +728,13 @@ const COUNTRY_DETAILS = {
             {"name": "Antwerp", "count": 4},
             {"name": "Liège", "count": 2}
         ],
+        "universities": [
+            {"name": "KU Leuven", "count": 21},
+            {"name": "Ghent University", "count": 8},
+            {"name": "Université Libre de Bruxelles", "count": 5},
+            {"name": "Vrije Universiteit Brussel", "count": 4},
+            {"name": "University of Antwerp", "count": 3}
+        ],
         "graduationYears": {"2014": 3, "2015": 2, "2016": 5, "2017": 7, "2018": 2, "2019": 6, "2020": 6, "2021": 14, "2022": 5, "2023": 7, "2024": 4, "2025": 7},
         "gender": {"Female": 36, "Male": 32},
         "nationalities": [
@@ -640,6 +756,13 @@ const COUNTRY_DETAILS = {
             {"name": "Uppsala", "count": 17},
             {"name": "Lund", "count": 8},
             {"name": "Gothenburg", "count": 2}
+        ],
+        "universities": [
+            {"name": "Uppsala University", "count": 18},
+            {"name": "Lund University", "count": 10},
+            {"name": "Karolinska Institutet", "count": 9},
+            {"name": "Stockholm University", "count": 9},
+            {"name": "KTH Royal Institute of Technology", "count": 5}
         ],
         "graduationYears": {"2014": 1, "2016": 1, "2017": 1, "2018": 1, "2019": 2, "2020": 5, "2021": 4, "2022": 9, "2023": 4, "2024": 14, "2025": 7},
         "gender": {"Female": 27, "Male": 22},
@@ -663,6 +786,13 @@ const COUNTRY_DETAILS = {
             {"name": "Geneva", "count": 2},
             {"name": "Bern", "count": 2}
         ],
+        "universities": [
+            {"name": "ETH Zürich", "count": 12},
+            {"name": "University of Zurich", "count": 6},
+            {"name": "University of Basel", "count": 4},
+            {"name": "EPFL", "count": 3},
+            {"name": "University of Geneva", "count": 2}
+        ],
         "graduationYears": {"2014": 2, "2015": 1, "2016": 2, "2017": 4, "2019": 5, "2021": 6, "2022": 2, "2023": 1, "2024": 7, "2025": 9},
         "gender": {"Female": 29, "Male": 10},
         "nationalities": [
@@ -683,6 +813,12 @@ const COUNTRY_DETAILS = {
             {"name": "Barcelona", "count": 20},
             {"name": "Madrid", "count": 4}
         ],
+        "universities": [
+            {"name": "Pompeu Fabra University", "count": 8},
+            {"name": "University of Barcelona", "count": 6},
+            {"name": "Autonomous University of Barcelona", "count": 4},
+            {"name": "Autonomous University of Madrid", "count": 3}
+        ],
         "graduationYears": {"2014": 2, "2015": 1, "2017": 5, "2018": 1, "2019": 3, "2020": 3, "2021": 2, "2022": 2, "2023": 2, "2024": 5, "2025": 3},
         "gender": {"Male": 16, "Female": 13},
         "nationalities": [
@@ -702,6 +838,12 @@ const COUNTRY_DETAILS = {
             {"name": "Genoa", "count": 4},
             {"name": "Bologna", "count": 4},
             {"name": "Rome", "count": 2}
+        ],
+        "universities": [
+            {"name": "University of Bologna", "count": 5},
+            {"name": "University of Pavia", "count": 4},
+            {"name": "University of Milan", "count": 3},
+            {"name": "Polytechnic University of Milan", "count": 3}
         ],
         "graduationYears": {"2014": 1, "2016": 2, "2017": 2, "2018": 2, "2019": 2, "2020": 6, "2021": 2, "2022": 4, "2024": 3, "2025": 3},
         "gender": {"Female": 20, "Male": 7},
@@ -735,6 +877,11 @@ const COUNTRY_DETAILS = {
         "coords": [56.0, 10.0],
         "cities": [
             {"name": "Copenhagen", "count": 19}
+        ],
+        "universities": [
+            {"name": "University of Copenhagen", "count": 12},
+            {"name": "Technical University of Denmark", "count": 5},
+            {"name": "Copenhagen Business School", "count": 3}
         ],
         "graduationYears": {"2016": 1, "2017": 1, "2019": 1, "2020": 4, "2021": 1, "2022": 1, "2023": 6, "2024": 2, "2025": 5},
         "gender": {"Female": 14, "Male": 8},

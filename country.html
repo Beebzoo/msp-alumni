@@ -13,6 +13,9 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <style>
         /* ==========================================
            CSS VARIABLES - UM BRANDING
@@ -256,7 +259,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+        }
+        
+        .section-title-icon i,
+        .section-title-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+            stroke: white;
         }
         
         /* ==========================================
@@ -283,8 +293,22 @@
         }
         
         .fact-card-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
+            width: 40px;
+            height: 40px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+        }
+        
+        .fact-card-icon i,
+        .fact-card-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--um-dark-blue);
+            stroke: var(--um-dark-blue);
         }
         
         .fact-card-label {
@@ -712,37 +736,37 @@
                     <section class="content-section alt">
                         <div class="section-container">
                             <h2 class="section-title">
-                                <span class="section-title-icon">📊</span>
+                                <span class="section-title-icon"><i data-lucide="info"></i></span>
                                 About ${countryData.name}
                             </h2>
                             <div class="facts-grid">
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">🏛️</div>
+                                    <div class="fact-card-icon"><i data-lucide="landmark"></i></div>
                                     <div class="fact-card-label">Capital</div>
                                     <div class="fact-card-value">${capital}</div>
                                 </div>
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">👥</div>
+                                    <div class="fact-card-icon"><i data-lucide="users"></i></div>
                                     <div class="fact-card-label">Population</div>
                                     <div class="fact-card-value">${population}</div>
                                 </div>
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">🌍</div>
+                                    <div class="fact-card-icon"><i data-lucide="globe"></i></div>
                                     <div class="fact-card-label">Region</div>
                                     <div class="fact-card-value">${region}</div>
                                 </div>
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">🗣️</div>
+                                    <div class="fact-card-icon"><i data-lucide="languages"></i></div>
                                     <div class="fact-card-label">Languages</div>
                                     <div class="fact-card-value">${languages}</div>
                                 </div>
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">💰</div>
+                                    <div class="fact-card-icon"><i data-lucide="coins"></i></div>
                                     <div class="fact-card-label">Currency</div>
                                     <div class="fact-card-value">${currencies}</div>
                                 </div>
                                 <div class="fact-card">
-                                    <div class="fact-card-icon">📞</div>
+                                    <div class="fact-card-icon"><i data-lucide="phone"></i></div>
                                     <div class="fact-card-label">Calling Code</div>
                                     <div class="fact-card-value">${callingCode}</div>
                                 </div>
@@ -792,7 +816,7 @@
                 <section class="content-section${factsHTML ? '' : ' alt'}">
                     <div class="section-container">
                         <h2 class="section-title">
-                            <span class="section-title-icon">🏙️</span>
+                            <span class="section-title-icon"><i data-lucide="building-2"></i></span>
                             Cities with MSP Alumni
                         </h2>
                         <div class="cities-grid">${citiesHTML}</div>
@@ -803,7 +827,7 @@
                 <section class="content-section${factsHTML ? ' alt' : ''}">
                     <div class="section-container">
                         <h2 class="section-title">
-                            <span class="section-title-icon">🌍</span>
+                            <span class="section-title-icon"><i data-lucide="globe"></i></span>
                             Where They're From
                         </h2>
                         <p style="color: var(--um-gray-600); margin-bottom: 20px;">
@@ -817,7 +841,7 @@
                 <section class="content-section${factsHTML ? '' : ' alt'}">
                     <div class="section-container">
                         <h2 class="section-title">
-                            <span class="section-title-icon">🎓</span>
+                            <span class="section-title-icon"><i data-lucide="graduation-cap"></i></span>
                             Graduation Years
                         </h2>
                         <div class="grad-chart">${gradChartHTML}</div>
@@ -828,7 +852,7 @@
                 <section class="content-section${factsHTML ? ' alt' : ''}">
                     <div class="section-container">
                         <h2 class="section-title">
-                            <span class="section-title-icon">👥</span>
+                            <span class="section-title-icon"><i data-lucide="users"></i></span>
                             Gender Distribution
                         </h2>
                         <div class="gender-bar-container">
@@ -851,6 +875,9 @@
             
             // Initialize map with proper country bounds
             setTimeout(() => {
+                // Initialize Lucide icons
+                lucide.createIcons();
+                
                 const map = L.map('countryMap', {
                     zoomControl: true,
                     scrollWheelZoom: false

@@ -99,66 +99,133 @@ const MSP_DATA = {
     ],
     
     // ==========================================
-    // SECTION 6: WHERE ALUMNI LIVE NOW
+    // SECTION 6: WHERE ALUMNI LIVE NOW (All Countries)
     // ==========================================
+    // Fields: name, code, count, continent, coords (for maps)
     
     countriesLiving: [
-        { name: "Netherlands", code: "nl", count: 445, coords: [52.1326, 5.2913] },
-        { name: "Germany", code: "de", count: 92, coords: [51.1657, 10.4515] },
-        { name: "United Kingdom", code: "gb", count: 81, coords: [54.5, -2.5] },  // UK + Scotland
-        { name: "Belgium", code: "be", count: 68, coords: [50.5039, 4.4699] },
-        { name: "Sweden", code: "se", count: 49, coords: [62.0, 15.0] },
-        { name: "Switzerland", code: "ch", count: 39, coords: [46.8182, 8.2275] },
-        { name: "Spain", code: "es", count: 29, coords: [40.4637, -3.7492] },
-        { name: "Italy", code: "it", count: 27, coords: [41.8719, 12.5674] },
-        { name: "France", code: "fr", count: 25, coords: [46.6, 2.3] },
-        { name: "United States", code: "us", count: 22, coords: [39.8283, -98.5795] },
-        { name: "Denmark", code: "dk", count: 22, coords: [56.0, 10.0] },
-        { name: "Austria", code: "at", count: 18, coords: [47.5162, 14.5501] },
-        { name: "Finland", code: "fi", count: 17, coords: [64.0, 26.0] },
-        { name: "Ireland", code: "ie", count: 9, coords: [53.4129, -8.2439] },
-        { name: "Luxembourg", code: "lu", count: 9, coords: [49.8153, 6.1296] },
-        { name: "Canada", code: "ca", count: 8, coords: [56.1304, -106.3468] },
-        { name: "Australia", code: "au", count: 8, coords: [-25.2744, 133.7751] },
-        { name: "Portugal", code: "pt", count: 7, coords: [39.3999, -8.2245] },
-        { name: "Norway", code: "no", count: 7, coords: [64.0, 10.0] },
-        { name: "Greece", code: "gr", count: 5, coords: [39.0742, 21.8243] },
-        { name: "Japan", code: "jp", count: 4, coords: [36.2048, 138.2529] }
+        // Europe
+        { name: "Netherlands", code: "nl", count: 445, continent: "europe", coords: [52.1326, 5.2913] },
+        { name: "Germany", code: "de", count: 92, continent: "europe", coords: [51.1657, 10.4515] },
+        { name: "United Kingdom", code: "gb", count: 81, continent: "europe", coords: [54.5, -2.5] },
+        { name: "Belgium", code: "be", count: 68, continent: "europe", coords: [50.5039, 4.4699] },
+        { name: "Sweden", code: "se", count: 49, continent: "europe", coords: [62.0, 15.0] },
+        { name: "Switzerland", code: "ch", count: 39, continent: "europe", coords: [46.8182, 8.2275] },
+        { name: "Spain", code: "es", count: 29, continent: "europe", coords: [40.4637, -3.7492] },
+        { name: "Italy", code: "it", count: 27, continent: "europe", coords: [41.8719, 12.5674] },
+        { name: "France", code: "fr", count: 25, continent: "europe", coords: [46.6, 2.3] },
+        { name: "Denmark", code: "dk", count: 22, continent: "europe", coords: [56.0, 10.0] },
+        { name: "Austria", code: "at", count: 18, continent: "europe", coords: [47.5162, 14.5501] },
+        { name: "Finland", code: "fi", count: 17, continent: "europe", coords: [64.0, 26.0] },
+        { name: "Ireland", code: "ie", count: 9, continent: "europe", coords: [53.4129, -8.2439] },
+        { name: "Luxembourg", code: "lu", count: 9, continent: "europe", coords: [49.8153, 6.1296] },
+        { name: "Portugal", code: "pt", count: 7, continent: "europe", coords: [39.3999, -8.2245] },
+        { name: "Norway", code: "no", count: 7, continent: "europe", coords: [64.0, 10.0] },
+        { name: "Greece", code: "gr", count: 5, continent: "europe", coords: [39.0742, 21.8243] },
+        { name: "Poland", code: "pl", count: 4, continent: "europe", coords: [51.9194, 19.1451] },
+        { name: "Czech Republic", code: "cz", count: 3, continent: "europe", coords: [49.8175, 15.4730] },
+        { name: "Hungary", code: "hu", count: 3, continent: "europe", coords: [47.1625, 19.5033] },
+        { name: "Romania", code: "ro", count: 2, continent: "europe", coords: [45.9432, 24.9668] },
+        { name: "Croatia", code: "hr", count: 2, continent: "europe", coords: [45.1, 15.2] },
+        { name: "Slovenia", code: "si", count: 2, continent: "europe", coords: [46.1512, 14.9955] },
+        { name: "Slovakia", code: "sk", count: 2, continent: "europe", coords: [48.6690, 19.6990] },
+        { name: "Bulgaria", code: "bg", count: 1, continent: "europe", coords: [42.7339, 25.4858] },
+        { name: "Estonia", code: "ee", count: 1, continent: "europe", coords: [58.5953, 25.0136] },
+        { name: "Latvia", code: "lv", count: 1, continent: "europe", coords: [56.8796, 24.6032] },
+        { name: "Lithuania", code: "lt", count: 1, continent: "europe", coords: [55.1694, 23.8813] },
+        { name: "Iceland", code: "is", count: 1, continent: "europe", coords: [64.9631, -19.0208] },
+        { name: "Malta", code: "mt", count: 1, continent: "europe", coords: [35.9375, 14.3754] },
+        { name: "Cyprus", code: "cy", count: 1, continent: "europe", coords: [35.1264, 33.4299] },
+        
+        // Americas
+        { name: "United States", code: "us", count: 22, continent: "americas", coords: [39.8283, -98.5795] },
+        { name: "Canada", code: "ca", count: 8, continent: "americas", coords: [56.1304, -106.3468] },
+        { name: "Brazil", code: "br", count: 3, continent: "americas", coords: [-14.2350, -51.9253] },
+        { name: "Mexico", code: "mx", count: 2, continent: "americas", coords: [23.6345, -102.5528] },
+        { name: "Colombia", code: "co", count: 2, continent: "americas", coords: [4.5709, -74.2973] },
+        { name: "Argentina", code: "ar", count: 1, continent: "americas", coords: [-38.4161, -63.6167] },
+        { name: "Chile", code: "cl", count: 1, continent: "americas", coords: [-35.6751, -71.5430] },
+        { name: "Peru", code: "pe", count: 1, continent: "americas", coords: [-9.1900, -75.0152] },
+        
+        // Asia & Pacific
+        { name: "Australia", code: "au", count: 8, continent: "asia", coords: [-25.2744, 133.7751] },
+        { name: "Japan", code: "jp", count: 4, continent: "asia", coords: [36.2048, 138.2529] },
+        { name: "China", code: "cn", count: 3, continent: "asia", coords: [35.8617, 104.1954] },
+        { name: "Singapore", code: "sg", count: 3, continent: "asia", coords: [1.3521, 103.8198] },
+        { name: "South Korea", code: "kr", count: 2, continent: "asia", coords: [35.9078, 127.7669] },
+        { name: "India", code: "in", count: 2, continent: "asia", coords: [20.5937, 78.9629] },
+        { name: "Hong Kong", code: "hk", count: 2, continent: "asia", coords: [22.3193, 114.1694] },
+        { name: "Taiwan", code: "tw", count: 1, continent: "asia", coords: [23.6978, 120.9605] },
+        { name: "Thailand", code: "th", count: 1, continent: "asia", coords: [15.8700, 100.9925] },
+        { name: "Indonesia", code: "id", count: 1, continent: "asia", coords: [-0.7893, 113.9213] },
+        { name: "New Zealand", code: "nz", count: 1, continent: "asia", coords: [-40.9006, 174.8860] },
+        { name: "Philippines", code: "ph", count: 1, continent: "asia", coords: [12.8797, 121.7740] },
+        { name: "Vietnam", code: "vn", count: 1, continent: "asia", coords: [14.0583, 108.2772] },
+        
+        // Africa & Middle East
+        { name: "Israel", code: "il", count: 3, continent: "africa", coords: [31.0461, 34.8516] },
+        { name: "South Africa", code: "za", count: 2, continent: "africa", coords: [-30.5595, 22.9375] },
+        { name: "UAE", code: "ae", count: 2, continent: "africa", coords: [23.4241, 53.8478] },
+        { name: "Turkey", code: "tr", count: 2, continent: "africa", coords: [38.9637, 35.2433] },
+        { name: "Morocco", code: "ma", count: 1, continent: "africa", coords: [31.7917, -7.0926] },
+        { name: "Egypt", code: "eg", count: 1, continent: "africa", coords: [26.8206, 30.8025] },
+        { name: "Kenya", code: "ke", count: 1, continent: "africa", coords: [-0.0236, 37.9062] }
     ],
     
     // ==========================================
-    // SECTION 7: MASTER'S UNIVERSITIES
+    // SECTION 7: MASTER'S UNIVERSITIES (Full Data)
     // ==========================================
+    // Fields: name, country, code, count, logo, rank (QS 2025), prestige, fields, highlight, website
     
     topUniversities: [
         // Dutch Universities
-        { name: "Maastricht University", country: "Netherlands", code: "nl", count: 121, logo: "maastricht-university.png" },
-        { name: "Utrecht University", country: "Netherlands", code: "nl", count: 92, logo: "utrecht-university.png" },
-        { name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 66, logo: "university-of-amsterdam.png" },
-        { name: "Leiden University", country: "Netherlands", code: "nl", count: 41, logo: "leiden-university.png" },
-        { name: "Wageningen University", country: "Netherlands", code: "nl", count: 37, logo: "wageningen-university.png" },
-        { name: "Radboud University", country: "Netherlands", code: "nl", count: 36, logo: "radboud-university.png" },
-        { name: "University of Groningen", country: "Netherlands", code: "nl", count: 23, logo: "university-of-groningen.png" },
-        { name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png" },
-        { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vrije-universiteit-amsterdam.png" },
-        { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "eindhoven-university.png" },
+        { name: "Maastricht University", country: "Netherlands", code: "nl", count: 121, logo: "maastricht-university.png", rank: 121, fields: ["Life Sciences", "Medicine", "Psychology", "Economics"], website: "https://www.maastrichtuniversity.nl" },
+        { name: "Utrecht University", country: "Netherlands", code: "nl", count: 92, logo: "utrecht-university.png", rank: 107, fields: ["Biology", "Chemistry", "Physics", "Medicine"], website: "https://www.uu.nl" },
+        { name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 66, logo: "university-of-amsterdam.png", rank: 53, fields: ["Brain & Cognitive Sciences", "Chemistry", "Physics"], website: "https://www.uva.nl" },
+        { name: "Leiden University", country: "Netherlands", code: "nl", count: 41, logo: "leiden-university.png", rank: 126, fields: ["Biology", "Chemistry", "Physics", "Astronomy"], website: "https://www.universiteitleiden.nl" },
+        { name: "Wageningen University", country: "Netherlands", code: "nl", count: 37, logo: "wageningen-university.png", rank: 81, fields: ["Food Science", "Environmental Science", "Biology"], highlight: "#1 Agriculture", website: "https://www.wur.nl" },
+        { name: "Radboud University", country: "Netherlands", code: "nl", count: 36, logo: "radboud-university.png", rank: 127, fields: ["Neuroscience", "Biology", "Chemistry"], website: "https://www.ru.nl" },
+        { name: "University of Groningen", country: "Netherlands", code: "nl", count: 23, logo: "university-of-groningen.png", rank: 139, fields: ["Biology", "Chemistry", "Physics", "Astronomy"], website: "https://www.rug.nl" },
+        { name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png", rank: 47, fields: ["Engineering", "Physics", "Computer Science"], highlight: "Top 50 Global", website: "https://www.tudelft.nl" },
+        { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vrije-universiteit-amsterdam.png", rank: 207, fields: ["Neuroscience", "Biology", "Chemistry"], website: "https://www.vu.nl" },
+        { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "eindhoven-university.png", rank: 113, fields: ["Engineering", "Physics", "Data Science"], website: "https://www.tue.nl" },
         
-        // Prestige International
-        { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", prestige: true },
-        { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", prestige: true },
-        { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", prestige: true },
-        { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", prestige: true },
+        // Prestige International (Top 10 World)
+        { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", rank: 2, prestige: true, fields: ["Biology", "Chemistry", "Physics", "Engineering", "Medicine"], website: "https://www.imperial.ac.uk" },
+        { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true, fields: ["Physics", "Chemistry", "Engineering", "Computer Science"], website: "https://ethz.ch" },
+        { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", rank: 5, prestige: true, fields: ["Natural Sciences", "Chemistry", "Physics", "Biology"], website: "https://www.cam.ac.uk" },
+        { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", rank: 3, prestige: true, fields: ["Biochemistry", "Chemistry", "Physics"], website: "https://www.ox.ac.uk" },
+        { name: "UCL", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png", rank: 9, prestige: true, fields: ["Neuroscience", "Biology", "Chemistry", "Medicine"], website: "https://www.ucl.ac.uk" },
+        { name: "EPFL", country: "Switzerland", code: "ch", count: 6, logo: "epfl.png", rank: 12, prestige: true, fields: ["Engineering", "Physics", "Computer Science"], website: "https://www.epfl.ch" },
         
-        // Other Top International
-        { name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png" },
-        { name: "Uppsala University", country: "Sweden", code: "se", count: 18, logo: "uppsala-university.png" },
-        { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 12, logo: "university-of-copenhagen.png" },
-        { name: "University College London", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png" },
-        { name: "Lund University", country: "Sweden", code: "se", count: 10, logo: "lund-university.png" },
-        { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 9, logo: "karolinska-institutet.png" },
-        { name: "Stockholm University", country: "Sweden", code: "se", count: 9, logo: "stockholm-university.png" },
-        { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-edinburgh.png" },
-        { name: "TU Munich", country: "Germany", code: "de", count: 7, logo: "tu-munich.png" }
+        // UK Universities
+        { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-edinburgh.png", rank: 27, fields: ["Biology", "Neuroscience", "Chemistry"], website: "https://www.ed.ac.uk" },
+        { name: "King's College London", country: "United Kingdom", code: "gb", count: 5, logo: "kings-college-london.png", rank: 40, fields: ["Neuroscience", "Medicine", "Biology"], website: "https://www.kcl.ac.uk" },
+        
+        // Swedish Universities
+        { name: "Uppsala University", country: "Sweden", code: "se", count: 18, logo: "uppsala-university.png", rank: 105, fields: ["Biology", "Chemistry", "Physics", "Medicine"], website: "https://www.uu.se" },
+        { name: "Lund University", country: "Sweden", code: "se", count: 10, logo: "lund-university.png", rank: 75, fields: ["Biology", "Physics", "Medicine"], website: "https://www.lu.se" },
+        { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 9, logo: "karolinska-institutet.png", rank: 45, fields: ["Medicine", "Biomedical Science", "Neuroscience"], highlight: "Top Medical School", website: "https://ki.se" },
+        { name: "Stockholm University", country: "Sweden", code: "se", count: 9, logo: "stockholm-university.png", rank: 152, fields: ["Biology", "Chemistry", "Environmental Science"], website: "https://www.su.se" },
+        { name: "KTH Royal Institute", country: "Sweden", code: "se", count: 4, logo: "kth-royal-institute-of-technology.png", rank: 78, fields: ["Engineering", "Physics", "Computer Science"], website: "https://www.kth.se" },
+        
+        // German Universities
+        { name: "TU Munich", country: "Germany", code: "de", count: 7, logo: "tu-munich.png", rank: 37, fields: ["Biology", "Physics", "Engineering"], website: "https://www.tum.de" },
+        { name: "Heidelberg University", country: "Germany", code: "de", count: 5, logo: "heidelberg-university.png", rank: 49, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.uni-heidelberg.de" },
+        { name: "LMU Munich", country: "Germany", code: "de", count: 4, logo: "lmu-munich.png", rank: 54, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.lmu.de" },
+        { name: "Humboldt University Berlin", country: "Germany", code: "de", count: 3, logo: "humboldt-university-of-berlin.png", rank: 120, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.hu-berlin.de" },
+        
+        // Belgian Universities
+        { name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png", rank: 61, fields: ["Biology", "Chemistry", "Engineering", "Medicine"], website: "https://www.kuleuven.be" },
+        { name: "Ghent University", country: "Belgium", code: "be", count: 8, logo: "ghent-university.png", rank: 137, fields: ["Biology", "Chemistry", "Engineering"], website: "https://www.ugent.be" },
+        { name: "ULB Brussels", country: "Belgium", code: "be", count: 4, logo: "universite-libre-de-bruxelles.png", rank: 221, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.ulb.be" },
+        
+        // Other Countries
+        { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 12, logo: "university-of-copenhagen.png", rank: 96, fields: ["Biology", "Chemistry", "Neuroscience"], website: "https://www.ku.dk" },
+        { name: "University of Vienna", country: "Austria", code: "at", count: 5, logo: "university-of-vienna.png", rank: 130, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.univie.ac.at" },
+        { name: "University of Helsinki", country: "Finland", code: "fi", count: 4, logo: "university-of-helsinki.png", rank: 107, fields: ["Biology", "Environmental Science"], website: "https://www.helsinki.fi" },
+        { name: "Trinity College Dublin", country: "Ireland", code: "ie", count: 4, logo: "trinity-college-dublin.png", rank: 87, fields: ["Neuroscience", "Biology", "Chemistry"], website: "https://www.tcd.ie" },
+        { name: "University of Barcelona", country: "Spain", code: "es", count: 4, logo: "university-of-barcelona.png", rank: 164, fields: ["Biology", "Chemistry", "Environmental Science"], website: "https://www.ub.edu" }
     ],
     
     // ==========================================

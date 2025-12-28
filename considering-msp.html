@@ -1,652 +1,1387 @@
-// ============================================
-// MSP ALUMNI DATA - SINGLE SOURCE OF TRUTH
-// ============================================
-// 
-// 🔄 UPDATE THIS FILE TWICE YEARLY (January & July)
-// See UPDATE-GUIDE.md for instructions
-//
-// Last Updated: December 2025
-// Updated By: [Your Name]
-// Data Source: Alumni Survey + Records
-// ============================================
-
-const MSP_DATA = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Considering MSP? | Maastricht Science Programme</title>
+    <meta name="description" content="See where MSP graduates go - from Oxford to ETH Zürich, from research to entrepreneurship. Real outcomes from 1,300+ alumni.">
     
-    // ==========================================
-    // SECTION 1: KEY NUMBERS (Update these first!)
-    // ==========================================
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    lastUpdated: "December 2025",
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    summary: {
-        totalAlumni: 1329,
-        countriesLivingIn: 59,        // Countries where alumni currently live
-        universitiesAttended: 235,     // Unique Master's universities
-        nationalities: 87              // Unique nationalities
-    },
-    
-    // ==========================================
-    // SECTION 2: GRADUATION YEARS
-    // ==========================================
-    
-    graduationByYear: [
-        { year: 2014, count: 25 },
-        { year: 2015, count: 44 },
-        { year: 2016, count: 57 },
-        { year: 2017, count: 66 },
-        { year: 2018, count: 65 },
-        { year: 2019, count: 76 },
-        { year: 2020, count: 108 },
-        { year: 2021, count: 132 },
-        { year: 2022, count: 145 },
-        { year: 2023, count: 170 },
-        { year: 2024, count: 194 },
-        { year: 2025, count: 247 }
-    ],
-    
-    // ==========================================
-    // SECTION 3: GENDER DISTRIBUTION
-    // ==========================================
-    
-    gender: {
-        female: 795,
-        male: 534
-    },
-    
-    // ==========================================
-    // SECTION 4: STUDENT ORIGINS
-    // ==========================================
-    
-    origins: {
-        international: 838,           // Outside Euregio
-        euregioNonLimburg: 307,       // Belgium/Germany Euregio
-        netherlandsNonEuregio: 99,    // Rest of Netherlands
-        limburg: 85                   // Dutch Limburg
-    },
-    
-    // ==========================================
-    // SECTION 5: TOP NATIONALITIES
-    // ==========================================
-    
-    topNationalities: [
-        { name: "Dutch", code: "nl", count: 265 },      // Combined Netherlands entries
-        { name: "German", code: "de", count: 176 },
-        { name: "Belgian", code: "be", count: 138 },
-        { name: "Italian", code: "it", count: 104 },
-        { name: "British", code: "gb", count: 70 },
-        { name: "Spanish", code: "es", count: 63 },
-        { name: "French", code: "fr", count: 45 },
-        { name: "Polish", code: "pl", count: 41 },
-        { name: "Luxembourgish", code: "lu", count: 29 },
-        { name: "Irish", code: "ie", count: 26 },
-        { name: "Romanian", code: "ro", count: 23 },
-        { name: "Turkish", code: "tr", count: 17 },
-        { name: "Greek", code: "gr", count: 16 },
-        { name: "Russian", code: "ru", count: 15 }
-    ],
-    
-    // All 87 nationality flag codes for the flag cascade
-    allNationalityFlags: [
-        'nl', 'de', 'be', 'it', 'gb', 'es', 'fr', 'pl', 'lu', 'ie',
-        'ro', 'tr', 'gr', 'ru', 'ch', 'bg', 'pt', 'fi', 'in', 'us',
-        'at', 'se', 'dk', 'no', 'hu', 'cz', 'sk', 'hr', 'ua', 'lt',
-        'lv', 'ee', 'si', 'rs', 'mk', 'al', 'ba', 'me', 'cy', 'mt',
-        'is', 'cn', 'jp', 'kr', 'tw', 'hk', 'sg', 'my', 'th', 'vn',
-        'id', 'ph', 'au', 'nz', 'ca', 'mx', 'br', 'ar', 'cl', 'co',
-        'pe', 'za', 'eg', 'ma', 'ng', 'ke', 'gh', 'et', 'tz', 'ps',
-        'ae', 'sa', 'qa', 'kw', 'pk', 'bd', 'lk', 'np', 'mm', 'kh',
-        'la', 'mn', 'kz', 'uz', 'ge', 'am', 'az'
-    ],
-    
-    // ==========================================
-    // SECTION 6: WHERE ALUMNI LIVE NOW
-    // ==========================================
-    
-    countriesLiving: [
-        { name: "Netherlands", code: "nl", count: 445, coords: [52.1326, 5.2913] },
-        { name: "Germany", code: "de", count: 92, coords: [51.1657, 10.4515] },
-        { name: "United Kingdom", code: "gb", count: 81, coords: [54.5, -2.5] },  // UK + Scotland
-        { name: "Belgium", code: "be", count: 68, coords: [50.5039, 4.4699] },
-        { name: "Sweden", code: "se", count: 49, coords: [62.0, 15.0] },
-        { name: "Switzerland", code: "ch", count: 39, coords: [46.8182, 8.2275] },
-        { name: "Spain", code: "es", count: 29, coords: [40.4637, -3.7492] },
-        { name: "Italy", code: "it", count: 27, coords: [41.8719, 12.5674] },
-        { name: "France", code: "fr", count: 25, coords: [46.6, 2.3] },
-        { name: "United States", code: "us", count: 22, coords: [39.8283, -98.5795] },
-        { name: "Denmark", code: "dk", count: 22, coords: [56.0, 10.0] },
-        { name: "Austria", code: "at", count: 18, coords: [47.5162, 14.5501] },
-        { name: "Finland", code: "fi", count: 17, coords: [64.0, 26.0] },
-        { name: "Ireland", code: "ie", count: 9, coords: [53.4129, -8.2439] },
-        { name: "Luxembourg", code: "lu", count: 9, coords: [49.8153, 6.1296] },
-        { name: "Canada", code: "ca", count: 8, coords: [56.1304, -106.3468] },
-        { name: "Australia", code: "au", count: 8, coords: [-25.2744, 133.7751] },
-        { name: "Portugal", code: "pt", count: 7, coords: [39.3999, -8.2245] },
-        { name: "Norway", code: "no", count: 7, coords: [64.0, 10.0] },
-        { name: "Greece", code: "gr", count: 5, coords: [39.0742, 21.8243] },
-        { name: "Japan", code: "jp", count: 4, coords: [36.2048, 138.2529] }
-    ],
-    
-    // ==========================================
-    // SECTION 7: MASTER'S UNIVERSITIES
-    // ==========================================
-    
-    topUniversities: [
-        // Dutch Universities
-        { name: "Maastricht University", country: "Netherlands", code: "nl", count: 121, logo: "maastricht-university.png" },
-        { name: "Utrecht University", country: "Netherlands", code: "nl", count: 92, logo: "utrecht-university.png" },
-        { name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 66, logo: "university-of-amsterdam.png" },
-        { name: "Leiden University", country: "Netherlands", code: "nl", count: 41, logo: "leiden-university.png" },
-        { name: "Wageningen University", country: "Netherlands", code: "nl", count: 37, logo: "wageningen-university.png" },
-        { name: "Radboud University", country: "Netherlands", code: "nl", count: 36, logo: "radboud-university.png" },
-        { name: "University of Groningen", country: "Netherlands", code: "nl", count: 23, logo: "university-of-groningen.png" },
-        { name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png" },
-        { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vu-amsterdam.png" },
-        { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "tu-eindhoven.png" },
+    <style>
+        :root {
+            --um-dark-blue: #001C3D;
+            --um-light-blue: #00A2DB;
+            --um-orange: #E84E10;
+            --um-white: #FFFFFF;
+            --um-off-white: #f8f9fa;
+            --um-gray-100: #f5f5f5;
+            --um-gray-200: #e9ecef;
+            --um-gray-600: #6c757d;
+            --um-gray-800: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
         
-        // Prestige International
-        { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", prestige: true },
-        { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", prestige: true },
-        { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", prestige: true },
-        { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", prestige: true },
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        // Other Top International
-        { name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png" },
-        { name: "Uppsala University", country: "Sweden", code: "se", count: 18, logo: "uppsala-university.png" },
-        { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 12, logo: "university-of-copenhagen.png" },
-        { name: "University College London", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png" },
-        { name: "Lund University", country: "Sweden", code: "se", count: 10, logo: "lund-university.png" },
-        { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 9, logo: "karolinska-institutet.png" },
-        { name: "Stockholm University", country: "Sweden", code: "se", count: 9, logo: "stockholm-university.png" },
-        { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-edinburgh.png" },
-        { name: "TU Munich", country: "Germany", code: "de", count: 7, logo: "tu-munich.png" }
-    ],
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--um-dark-blue);
+            background: var(--um-white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+        
+        a {
+            color: var(--um-light-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--um-orange);
+        }
+        
+        /* ==========================================
+           HEADER
+        ========================================== */
+        header {
+            background: var(--um-white);
+            border-bottom: 1px solid var(--um-gray-200);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 42px;
+            width: auto;
+        }
+        
+        .logo-text h1 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 11px;
+            color: var(--um-gray-600);
+            margin: 0;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .header-nav a {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            color: var(--um-dark-blue);
+            transition: all 0.2s;
+        }
+        
+        .header-nav a:hover {
+            background: var(--um-gray-100);
+        }
+        
+        .header-nav .btn-cta {
+            background: var(--um-orange);
+            color: white;
+            margin-left: 8px;
+        }
+        
+        .header-nav .btn-cta:hover {
+            background: #d63d0a;
+            color: white;
+        }
+        
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero {
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 50%, #001530 100%);
+            color: white;
+            padding: 80px 50px 90px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,162,219,0.15);
+            color: var(--um-light-blue);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .hero-badge i, .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 19px;
+            color: rgba(255,255,255,0.85);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 16px 28px;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-cta i, .hero-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .hero-cta.primary {
+            background: var(--um-orange);
+            color: white;
+        }
+        
+        .hero-cta.primary:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232,78,16,0.4);
+            color: white;
+        }
+        
+        .hero-cta.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        
+        .hero-cta.secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+            color: white;
+        }
+        
+        /* ==========================================
+           PROOF POINTS BAR
+        ========================================== */
+        .proof-bar {
+            background: var(--um-white);
+            border-bottom: 1px solid var(--um-gray-200);
+            padding: 30px 50px;
+        }
+        
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .proof-item {
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+        
+        .proof-number.highlight {
+            color: var(--um-orange);
+        }
+        
+        .proof-label {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            margin-top: 6px;
+        }
+        
+        /* ==========================================
+           SECTION STYLES
+        ========================================== */
+        .section {
+            padding: 80px 50px;
+        }
+        
+        .section.alt {
+            background: var(--um-off-white);
+        }
+        
+        .section.dark {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--um-light-blue);
+            background: rgba(0,162,219,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+        }
+        
+        .section-label i, .section-label svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .section.dark .section-label {
+            background: rgba(232,78,16,0.2);
+            color: var(--um-orange);
+        }
+        
+        .section-title {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section.dark .section-title {
+            color: white;
+        }
+        
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--um-gray-600);
+            line-height: 1.6;
+        }
+        
+        .section.dark .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* ==========================================
+           ALUMNI JOURNEYS
+        ========================================== */
+        .journeys-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background: rgba(0,162,219,0.05);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--um-light-blue);
+        }
+        
+        .journeys-intro p {
+            font-size: 15px;
+            color: var(--um-gray-600);
+            margin: 0;
+        }
+        
+        .journeys-intro strong {
+            color: var(--um-dark-blue);
+        }
+        
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .journey-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .journey-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .journey-path {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .journey-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--um-dark-blue);
+        }
+        
+        .journey-step.msp {
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+        
+        .journey-step.uni {
+            color: var(--um-light-blue);
+            font-weight: 600;
+        }
+        
+        .journey-arrow {
+            color: var(--um-gray-600);
+        }
+        
+        .journey-arrow i, .journey-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .journey-outcome {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            color: var(--um-gray-800);
+        }
+        
+        .journey-outcome i, .journey-outcome svg {
+            width: 18px;
+            height: 18px;
+            color: var(--um-orange);
+            flex-shrink: 0;
+        }
+        
+        /* ==========================================
+           PRESTIGE DESTINATIONS
+        ========================================== */
+        .prestige-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .prestige-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .prestige-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+        }
+        
+        .prestige-logo {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            padding: 12px;
+        }
+        
+        .prestige-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .prestige-logo i, .prestige-logo svg {
+            width: 30px;
+            height: 30px;
+            color: var(--um-dark-blue);
+        }
+        
+        .prestige-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .prestige-count {
+            font-size: 13px;
+            color: var(--um-orange);
+            font-weight: 600;
+        }
+        
+        /* ==========================================
+           CAREER PATHS
+        ========================================== */
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .path-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--um-light-blue);
+        }
+        
+        .path-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        
+        .path-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--um-gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .path-icon i, .path-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--um-dark-blue);
+        }
+        
+        .path-title {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .path-count {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--um-orange);
+            font-family: var(--font-heading);
+        }
+        
+        .path-label {
+            font-size: 12px;
+            color: var(--um-gray-600);
+        }
+        
+        .path-examples {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--um-gray-200);
+            font-size: 12px;
+            color: var(--um-gray-600);
+            text-align: left;
+        }
+        
+        .path-examples span {
+            display: block;
+            padding: 3px 0;
+        }
+        
+        /* ==========================================
+           PhD SECTION
+        ========================================== */
+        .phd-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .phd-stats {
+            text-align: center;
+        }
+        
+        .phd-number {
+            font-family: var(--font-heading);
+            font-size: 80px;
+            font-weight: 800;
+            color: var(--um-orange);
+            line-height: 1;
+        }
+        
+        .phd-label {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+        }
+        
+        .phd-sub {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 5px;
+        }
+        
+        .phd-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .phd-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--um-orange);
+        }
+        
+        .phd-item-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .phd-item-icon i, .phd-item-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--um-orange);
+        }
+        
+        .phd-item-text {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .phd-item-text strong {
+            color: white;
+        }
+        
+        /* ==========================================
+           WHAT IS MSP
+        ========================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .about-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .about-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--um-light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+        
+        .about-icon i, .about-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .about-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+        
+        .about-desc {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            line-height: 1.6;
+        }
+        
+        /* ==========================================
+           CTA SECTION
+        ========================================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
+            padding: 70px 50px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 30px;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .cta-btn i, .cta-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .cta-btn.primary {
+            background: white;
+            color: var(--um-orange);
+        }
+        
+        .cta-btn.primary:hover {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+        
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 50px 50px 25px;
+        }
+        
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+        
+        .footer-brand p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+        
+        .footer-section h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+        @media (max-width: 1000px) {
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .prestige-grid,
+            .paths-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .phd-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+            
+            .header-nav a:not(.btn-cta) {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 20px 70px;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .proof-number {
+                font-size: 28px;
+            }
+            
+            .prestige-grid,
+            .paths-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="assets/msp-logo.png" alt="MSP Logo" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">
+                <h1>MSP Alumni Network</h1>
+                <p>Maastricht Science Programme</p>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html">Alumni Map</a>
+            <a href="#journeys">Journeys</a>
+            <a href="#careers">Careers</a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank" class="btn-cta">Apply Now</a>
+        </nav>
+    </header>
     
-    // ==========================================
-    // SECTION 8: MASTER'S BY COUNTRY
-    // ==========================================
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="sparkles"></i>
+                For Prospective Students
+            </div>
+            <h2>Where Will MSP Take You?</h2>
+            <p class="hero-subtitle">
+                92% of prospective students say hearing from alumni helps their decision. 
+                Here's where 1,300+ MSP graduates have built their careers.
+            </p>
+            <div class="hero-cta-group">
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="hero-cta primary">
+                    Explore MSP
+                    <i data-lucide="external-link"></i>
+                </a>
+                <a href="#journeys" class="hero-cta secondary">
+                    See Alumni Journeys
+                    <i data-lucide="arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
     
-    mastersByCountry: [
-        { name: "Netherlands", code: "nl", count: 487 },
-        { name: "United Kingdom", code: "gb", count: 97 },  // UK + Scotland
-        { name: "Sweden", code: "se", count: 55 },
-        { name: "Germany", code: "de", count: 49 },
-        { name: "Belgium", code: "be", count: 42 },
-        { name: "Spain", code: "es", count: 25 },
-        { name: "Switzerland", code: "ch", count: 24 },
-        { name: "France", code: "fr", count: 21 },
-        { name: "Denmark", code: "dk", count: 21 },
-        { name: "Italy", code: "it", count: 21 },
-        { name: "Austria", code: "at", count: 10 },
-        { name: "United States", code: "us", count: 9 },
-        { name: "Finland", code: "fi", count: 7 },
-        { name: "Ireland", code: "ie", count: 7 }
-    ],
+    <!-- Proof Points Bar -->
+    <div class="proof-bar">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number highlight">1,329</div>
+                <div class="proof-label">Alumni Worldwide</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">95</div>
+                <div class="proof-label">At World Top-100 Unis</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">146</div>
+                <div class="proof-label">PhD Candidates</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">66</div>
+                <div class="proof-label">Countries</div>
+            </div>
+        </div>
+    </div>
     
-    // ==========================================
-    // SECTION 9: FIELDS OF STUDY
-    // ==========================================
+    <!-- Alumni Journeys Section -->
+    <section class="section" id="journeys">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="route"></i>
+                    Real Alumni Journeys
+                </div>
+                <h2 class="section-title">From MSP to Everywhere</h2>
+                <p class="section-subtitle">Anonymized pathways showing how MSP graduates built their careers</p>
+            </div>
+            
+            <div class="journeys-intro">
+                <p><strong>These are real outcomes</strong> from MSP alumni — anonymized to protect privacy, but every journey represents an actual graduate's path.</p>
+            </div>
+            
+            <div class="journey-grid">
+                <!-- Journey 1: Entrepreneurship -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '14</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">University of Cambridge</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="lightbulb"></i>
+                        <span>Founder & Chair — Battery Technology Startup</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 2: Tech -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '16</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">ETH Zürich</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="brain"></i>
+                        <span>Deployment Strategist — Palantir Technologies</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 3: Academic Excellence -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '16</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">University of Oxford</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="graduation-cap"></i>
+                        <span>Postdoctoral Researcher — MIT</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 4: Industry R&D -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '15</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">Maastricht University</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="cpu"></i>
+                        <span>AI Researcher — Philips</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 5: Sustainability -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '14</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">Maastricht University</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="waves"></i>
+                        <span>Lead Data Engineer — The Ocean Cleanup</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 6: Startup CTO -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '18</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">University of Cambridge</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="rocket"></i>
+                        <span>Co-Founder & CTO — Stealth Startup</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 7: Big Tech -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '15</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">TU Eindhoven</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="microscope"></i>
+                        <span>Software Engineer — ASML</span>
+                    </div>
+                </div>
+                
+                <!-- Journey 8: Harvard Medical -->
+                <div class="journey-card">
+                    <div class="journey-path">
+                        <span class="journey-step msp">MSP '15</span>
+                        <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
+                        <span class="journey-step uni">Utrecht University</span>
+                    </div>
+                    <div class="journey-outcome">
+                        <i data-lucide="heart-pulse"></i>
+                        <span>PhD Candidate — Harvard Medical School</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    fieldsOfStudy: [
-        { name: "Life Sciences & Biology", icon: "dna", count: 262, percent: 31 },
-        { name: "Medicine & Health", icon: "heart-pulse", count: 79, percent: 9 },
-        { name: "Chemistry", icon: "flask-conical", count: 72, percent: 8 },
-        { name: "Environment & Sustainability", icon: "leaf", count: 52, percent: 6 },
-        { name: "Physics", icon: "atom", count: 50, percent: 6 },
-        { name: "Business & Economics", icon: "trending-up", count: 48, percent: 6 },
-        { name: "Neuroscience & Psychology", icon: "brain", count: 42, percent: 5 },
-        { name: "Computer Science & AI", icon: "cpu", count: 37, percent: 4 },
-        { name: "Other Fields", icon: "book-open", count: 210, percent: 25 }
-    ],
+    <!-- Prestige Destinations -->
+    <section class="section dark">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="award"></i>
+                    Prestige Destinations
+                </div>
+                <h2 class="section-title">World-Leading Universities</h2>
+                <p class="section-subtitle">MSP graduates are accepted at the world's most competitive institutions</p>
+            </div>
+            
+            <div class="prestige-grid">
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/imperial-college-london.png" alt="Imperial" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">Imperial College London</div>
+                    <div class="prestige-count">19 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/ku-leuven.png" alt="KU Leuven" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">KU Leuven</div>
+                    <div class="prestige-count">21 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/ucl.png" alt="UCL" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">UCL</div>
+                    <div class="prestige-count">13 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/eth-zurich.png" alt="ETH Zürich" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">ETH Zürich</div>
+                    <div class="prestige-count">12 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/karolinska-institutet.png" alt="Karolinska" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">Karolinska Institutet</div>
+                    <div class="prestige-count">9 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/university-of-cambridge.png" alt="Cambridge" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">Cambridge</div>
+                    <div class="prestige-count">8 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/university-of-edinburgh.png" alt="Edinburgh" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">Edinburgh</div>
+                    <div class="prestige-count">7 alumni</div>
+                </div>
+                <div class="prestige-card">
+                    <div class="prestige-logo">
+                        <img src="assets/logos/university-of-oxford.png" alt="Oxford" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+                    </div>
+                    <div class="prestige-name">Oxford</div>
+                    <div class="prestige-count">6 alumni</div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    // ==========================================
-    // SECTION 10: MSP PROGRAMME INFO
-    // ==========================================
+    <!-- Career Paths -->
+    <section class="section" id="careers">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="git-branch"></i>
+                    Career Diversity
+                </div>
+                <h2 class="section-title">Many Paths, One Foundation</h2>
+                <p class="section-subtitle">MSP's flexible curriculum prepares you for diverse careers</p>
+            </div>
+            
+            <div class="paths-grid">
+                <div class="path-card">
+                    <div class="path-icon"><i data-lucide="flask-conical"></i></div>
+                    <div class="path-title">Research & Science</div>
+                    <div class="path-count">144+</div>
+                    <div class="path-label">alumni</div>
+                    <div class="path-examples">
+                        <span>R&D Scientists</span>
+                        <span>Lab Researchers</span>
+                        <span>Research Associates</span>
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-icon"><i data-lucide="graduation-cap"></i></div>
+                    <div class="path-title">PhD & Academia</div>
+                    <div class="path-count">146</div>
+                    <div class="path-label">alumni</div>
+                    <div class="path-examples">
+                        <span>PhD Candidates</span>
+                        <span>Postdoctoral Fellows</span>
+                        <span>University Lecturers</span>
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-icon"><i data-lucide="heart-pulse"></i></div>
+                    <div class="path-title">Healthcare & Medical</div>
+                    <div class="path-count">64</div>
+                    <div class="path-label">alumni</div>
+                    <div class="path-examples">
+                        <span>Clinical Researchers</span>
+                        <span>Medical Writers</span>
+                        <span>Healthcare Analysts</span>
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-icon"><i data-lucide="briefcase"></i></div>
+                    <div class="path-title">Industry & Consulting</div>
+                    <div class="path-count">75+</div>
+                    <div class="path-label">alumni</div>
+                    <div class="path-examples">
+                        <span>Engineers at ASML</span>
+                        <span>Strategy Consultants</span>
+                        <span>Project Managers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    programmeInfo: {
-        duration: "3 years",
-        language: "English",
-        degree: "Bachelor of Science",
-        ects: 180,
-        coursesAvailable: "100+",
-        tutorialGroupSize: "12-15 students",
-        disciplines: [
-            { name: "Biology", courses: 15, color: "#4CAF50" },
-            { name: "Chemistry", courses: 13, color: "#FF9800" },
-            { name: "Physics", courses: 19, color: "#2196F3" },
-            { name: "Mathematics", courses: 9, color: "#9C27B0" },
-            { name: "Neuroscience", courses: 5, color: "#E91E63" },
-            { name: "Interdisciplinary", courses: 25, color: "#00BCD4" },
-            { name: "Skills & Practicals", courses: 40, color: "#607D8B" }
-        ]
-    },
+    <!-- PhD Pipeline -->
+    <section class="section dark">
+        <div class="section-container">
+            <div class="phd-content">
+                <div class="phd-stats">
+                    <div class="phd-number">146</div>
+                    <div class="phd-label">PhD Candidates & Holders</div>
+                    <div class="phd-sub">~11% of all MSP alumni</div>
+                </div>
+                <div class="phd-list">
+                    <div class="phd-item">
+                        <div class="phd-item-icon"><i data-lucide="building-2"></i></div>
+                        <div class="phd-item-text">PhDs at <strong>MIT, Harvard, Oxford, Cambridge, ETH Zürich</strong></div>
+                    </div>
+                    <div class="phd-item">
+                        <div class="phd-item-icon"><i data-lucide="globe"></i></div>
+                        <div class="phd-item-text">Research positions across <strong>15+ countries</strong></div>
+                    </div>
+                    <div class="phd-item">
+                        <div class="phd-item-icon"><i data-lucide="microscope"></i></div>
+                        <div class="phd-item-text">Fields from <strong>neuroscience to nanotechnology</strong></div>
+                    </div>
+                    <div class="phd-item">
+                        <div class="phd-item-icon"><i data-lucide="sparkles"></i></div>
+                        <div class="phd-item-text">Several now <strong>postdocs and faculty</strong> at leading institutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    // ==========================================
-    // SECTION 11: EXTERNAL LINKS
-    // ==========================================
+    <!-- What is MSP -->
+    <section class="section alt">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="info"></i>
+                    The Programme
+                </div>
+                <h2 class="section-title">What is MSP?</h2>
+                <p class="section-subtitle">A 3-year English-taught Bachelor's where you design your own science curriculum</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon"><i data-lucide="compass"></i></div>
+                    <h3 class="about-title">Design Your Path</h3>
+                    <p class="about-desc">Choose from 100+ courses across biology, chemistry, physics, mathematics, and neuroscience to build your unique degree.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i data-lucide="users"></i></div>
+                    <h3 class="about-title">Small-Scale Learning</h3>
+                    <p class="about-desc">Tutorial groups of 12-15 students using Problem-Based Learning. You're not a number — you're part of a community.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i data-lucide="microscope"></i></div>
+                    <h3 class="about-title">Research Experience</h3>
+                    <p class="about-desc">Hands-on lab practicals and a final thesis project. Many students publish before graduating.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    links: {
-        mspMain: "https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme",
-        admissions: "https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application",
-        courses: "https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum",
-        courseRepository: "https://courserepository.maastrichtuniversity.nl/p/program/EN/7503",
-        fse: "https://www.maastrichtuniversity.nl/about-um/faculties/science-and-engineering",
-        um: "https://www.maastrichtuniversity.nl",
-        instagram: "https://www.instagram.com/maboratorysp/",
-        linkedin: "https://www.linkedin.com/groups/4892346/",
-        whatsapp: "#"  // Add actual link when available
-    }
-};
-
-// ==========================================
-// HELPER FUNCTIONS (Don't modify these)
-// ==========================================
-
-// Get percentage of alumni in a country
-function getCountryPercentage(countryCount) {
-    const knownLocations = MSP_DATA.countriesLiving.reduce((sum, c) => sum + c.count, 0);
-    return Math.round((countryCount / knownLocations) * 100);
-}
-
-// Get total alumni with known Master's
-function getTotalWithMasters() {
-    return MSP_DATA.fieldsOfStudy.reduce((sum, f) => sum + f.count, 0);
-}
-
-// Format number with commas
-function formatNumber(num) {
-    return num.toLocaleString();
-}
-
-// Calculate growth rate
-function getGrowthRate() {
-    const years = MSP_DATA.graduationByYear;
-    const recent = years[years.length - 1].count;
-    const earlier = years[years.length - 4].count;
-    return Math.round(((recent - earlier) / earlier) * 100);
-}
-
-// ==========================================
-// SECTION 12: DETAILED COUNTRY DATA
-// ==========================================
-
-const COUNTRY_DETAILS = {
-    "Netherlands": {
-        "code": "nl",
-        "name": "Netherlands",
-        "count": 445,
-        "coords": [52.1326, 5.2913],
-        "cities": [
-            {"name": "Maastricht", "count": 103},
-            {"name": "Amsterdam", "count": 92},
-            {"name": "Utrecht", "count": 71},
-            {"name": "Leiden", "count": 34},
-            {"name": "Groningen", "count": 18},
-            {"name": "Wageningen", "count": 18},
-            {"name": "Nijmegen", "count": 11},
-            {"name": "Eindhoven", "count": 10}
-        ],
-        "graduationYears": {"2014": 5, "2015": 10, "2016": 22, "2017": 22, "2018": 19, "2019": 24, "2020": 40, "2021": 50, "2022": 52, "2023": 63, "2024": 65, "2025": 73},
-        "gender": {"Female": 265, "Male": 180},
-        "nationalities": [
-            {"name": "Dutch", "code": "nl", "count": 138},
-            {"name": "German", "code": "de", "count": 43},
-            {"name": "Belgian", "code": "be", "count": 34},
-            {"name": "Italian", "code": "it", "count": 26},
-            {"name": "British", "code": "gb", "count": 17},
-            {"name": "Spanish", "code": "es", "count": 17}
-        ]
-    },
-    "Germany": {
-        "code": "de",
-        "name": "Germany",
-        "count": 92,
-        "coords": [51.1657, 10.4515],
-        "cities": [
-            {"name": "Munich", "count": 22},
-            {"name": "Berlin", "count": 20},
-            {"name": "Hamburg", "count": 5},
-            {"name": "Cologne", "count": 4},
-            {"name": "Tübingen", "count": 4},
-            {"name": "Freiburg", "count": 3},
-            {"name": "Frankfurt", "count": 3},
-            {"name": "Heidelberg", "count": 3}
-        ],
-        "graduationYears": {"2014": 4, "2015": 11, "2016": 8, "2017": 4, "2018": 10, "2019": 6, "2020": 4, "2021": 9, "2022": 8, "2023": 13, "2024": 6, "2025": 9},
-        "gender": {"Female": 62, "Male": 30},
-        "nationalities": [
-            {"name": "German", "code": "de", "count": 42},
-            {"name": "Dutch", "code": "nl", "count": 7},
-            {"name": "Belgian", "code": "be", "count": 6},
-            {"name": "Italian", "code": "it", "count": 6},
-            {"name": "Luxembourgish", "code": "lu", "count": 4},
-            {"name": "Romanian", "code": "ro", "count": 3}
-        ]
-    },
-    "United Kingdom": {
-        "code": "gb",
-        "name": "United Kingdom",
-        "count": 81,
-        "coords": [54.5, -2.5],
-        "cities": [
-            {"name": "London", "count": 35},
-            {"name": "Edinburgh", "count": 6},
-            {"name": "Oxford", "count": 6},
-            {"name": "Cambridge", "count": 4},
-            {"name": "Liverpool", "count": 3},
-            {"name": "Glasgow", "count": 3},
-            {"name": "Birmingham", "count": 3}
-        ],
-        "graduationYears": {"2015": 7, "2016": 6, "2017": 7, "2018": 9, "2019": 9, "2020": 7, "2021": 8, "2022": 8, "2023": 6, "2024": 10, "2025": 4},
-        "gender": {"Female": 48, "Male": 33},
-        "nationalities": [
-            {"name": "British", "code": "gb", "count": 26},
-            {"name": "Dutch", "code": "nl", "count": 11},
-            {"name": "German", "code": "de", "count": 10},
-            {"name": "Italian", "code": "it", "count": 8},
-            {"name": "Spanish", "code": "es", "count": 4},
-            {"name": "Belgian", "code": "be", "count": 3}
-        ]
-    },
-    "Belgium": {
-        "code": "be",
-        "name": "Belgium",
-        "count": 68,
-        "coords": [50.5039, 4.4699],
-        "cities": [
-            {"name": "Brussels", "count": 33},
-            {"name": "Leuven", "count": 13},
-            {"name": "Ghent", "count": 4},
-            {"name": "Antwerp", "count": 4},
-            {"name": "Liège", "count": 2}
-        ],
-        "graduationYears": {"2014": 3, "2015": 2, "2016": 5, "2017": 7, "2018": 2, "2019": 6, "2020": 6, "2021": 14, "2022": 5, "2023": 7, "2024": 4, "2025": 7},
-        "gender": {"Female": 36, "Male": 32},
-        "nationalities": [
-            {"name": "Belgian", "code": "be", "count": 28},
-            {"name": "Italian", "code": "it", "count": 6},
-            {"name": "Dutch", "code": "nl", "count": 5},
-            {"name": "German", "code": "de", "count": 4},
-            {"name": "Spanish", "code": "es", "count": 3},
-            {"name": "Luxembourgish", "code": "lu", "count": 3}
-        ]
-    },
-    "Sweden": {
-        "code": "se",
-        "name": "Sweden",
-        "count": 49,
-        "coords": [62.0, 15.0],
-        "cities": [
-            {"name": "Stockholm", "count": 17},
-            {"name": "Uppsala", "count": 17},
-            {"name": "Lund", "count": 8},
-            {"name": "Gothenburg", "count": 2}
-        ],
-        "graduationYears": {"2014": 1, "2016": 1, "2017": 1, "2018": 1, "2019": 2, "2020": 5, "2021": 4, "2022": 9, "2023": 4, "2024": 14, "2025": 7},
-        "gender": {"Female": 27, "Male": 22},
-        "nationalities": [
-            {"name": "German", "code": "de", "count": 11},
-            {"name": "Dutch", "code": "nl", "count": 8},
-            {"name": "Belgian", "code": "be", "count": 6},
-            {"name": "Italian", "code": "it", "count": 4},
-            {"name": "Polish", "code": "pl", "count": 3}
-        ]
-    },
-    "Switzerland": {
-        "code": "ch",
-        "name": "Switzerland",
-        "count": 39,
-        "coords": [46.8182, 8.2275],
-        "cities": [
-            {"name": "Zürich", "count": 21},
-            {"name": "Basel", "count": 4},
-            {"name": "Lausanne", "count": 4},
-            {"name": "Geneva", "count": 2},
-            {"name": "Bern", "count": 2}
-        ],
-        "graduationYears": {"2014": 2, "2015": 1, "2016": 2, "2017": 4, "2019": 5, "2021": 6, "2022": 2, "2023": 1, "2024": 7, "2025": 9},
-        "gender": {"Female": 29, "Male": 10},
-        "nationalities": [
-            {"name": "German", "code": "de", "count": 8},
-            {"name": "Italian", "code": "it", "count": 5},
-            {"name": "Swiss", "code": "ch", "count": 4},
-            {"name": "Belgian", "code": "be", "count": 4},
-            {"name": "French", "code": "fr", "count": 3},
-            {"name": "Dutch", "code": "nl", "count": 3}
-        ]
-    },
-    "Spain": {
-        "code": "es",
-        "name": "Spain",
-        "count": 29,
-        "coords": [40.4637, -3.7492],
-        "cities": [
-            {"name": "Barcelona", "count": 20},
-            {"name": "Madrid", "count": 4}
-        ],
-        "graduationYears": {"2014": 2, "2015": 1, "2017": 5, "2018": 1, "2019": 3, "2020": 3, "2021": 2, "2022": 2, "2023": 2, "2024": 5, "2025": 3},
-        "gender": {"Male": 16, "Female": 13},
-        "nationalities": [
-            {"name": "Spanish", "code": "es", "count": 12},
-            {"name": "Italian", "code": "it", "count": 7},
-            {"name": "German", "code": "de", "count": 2},
-            {"name": "British", "code": "gb", "count": 2}
-        ]
-    },
-    "Italy": {
-        "code": "it",
-        "name": "Italy",
-        "count": 27,
-        "coords": [41.8719, 12.5674],
-        "cities": [
-            {"name": "Milan", "count": 9},
-            {"name": "Genoa", "count": 4},
-            {"name": "Bologna", "count": 4},
-            {"name": "Rome", "count": 2}
-        ],
-        "graduationYears": {"2014": 1, "2016": 2, "2017": 2, "2018": 2, "2019": 2, "2020": 6, "2021": 2, "2022": 4, "2024": 3, "2025": 3},
-        "gender": {"Female": 20, "Male": 7},
-        "nationalities": [
-            {"name": "Italian", "code": "it", "count": 16},
-            {"name": "Dutch", "code": "nl", "count": 2}
-        ]
-    },
-    "France": {
-        "code": "fr",
-        "name": "France",
-        "count": 25,
-        "coords": [46.6, 2.3],
-        "cities": [
-            {"name": "Paris", "count": 17},
-            {"name": "Grenoble", "count": 2}
-        ],
-        "graduationYears": {"2015": 2, "2020": 5, "2021": 2, "2022": 4, "2023": 3, "2024": 6, "2025": 3},
-        "gender": {"Female": 17, "Male": 8},
-        "nationalities": [
-            {"name": "French", "code": "fr", "count": 7},
-            {"name": "Japanese", "code": "jp", "count": 3},
-            {"name": "German", "code": "de", "count": 2},
-            {"name": "Croatian", "code": "hr", "count": 2}
-        ]
-    },
-    "Denmark": {
-        "code": "dk",
-        "name": "Denmark",
-        "count": 22,
-        "coords": [56.0, 10.0],
-        "cities": [
-            {"name": "Copenhagen", "count": 19}
-        ],
-        "graduationYears": {"2016": 1, "2017": 1, "2019": 1, "2020": 4, "2021": 1, "2022": 1, "2023": 6, "2024": 2, "2025": 5},
-        "gender": {"Female": 14, "Male": 8},
-        "nationalities": [
-            {"name": "German", "code": "de", "count": 5},
-            {"name": "Dutch", "code": "nl", "count": 4},
-            {"name": "Belgian", "code": "be", "count": 4},
-            {"name": "Luxembourgish", "code": "lu", "count": 3},
-            {"name": "Danish", "code": "dk", "count": 2},
-            {"name": "Polish", "code": "pl", "count": 2}
-        ]
-    },
-    "United States": {
-        "code": "us",
-        "name": "United States",
-        "count": 22,
-        "coords": [39.8283, -98.5795],
-        "cities": [
-            {"name": "Boston", "count": 5},
-            {"name": "San Francisco", "count": 2},
-            {"name": "New York", "count": 2}
-        ],
-        "graduationYears": {"2017": 1, "2018": 1, "2019": 1, "2020": 2, "2021": 1, "2022": 4, "2023": 9, "2024": 3},
-        "gender": {"Female": 13, "Male": 9},
-        "nationalities": [
-            {"name": "Indian", "code": "in", "count": 3},
-            {"name": "Dutch", "code": "nl", "count": 3},
-            {"name": "American", "code": "us", "count": 3},
-            {"name": "German", "code": "de", "count": 2},
-            {"name": "Polish", "code": "pl", "count": 2},
-            {"name": "Irish", "code": "ie", "count": 2}
-        ]
-    },
-    "Austria": {
-        "code": "at",
-        "name": "Austria",
-        "count": 18,
-        "coords": [47.5162, 14.5501],
-        "cities": [
-            {"name": "Vienna", "count": 16}
-        ],
-        "graduationYears": {"2015": 2, "2018": 2, "2020": 2, "2022": 4, "2023": 4, "2024": 4},
-        "gender": {"Female": 10, "Male": 8},
-        "nationalities": [
-            {"name": "German", "code": "de", "count": 6},
-            {"name": "Turkish", "code": "tr", "count": 3},
-            {"name": "Belgian", "code": "be", "count": 2}
-        ]
-    },
-    "Finland": {
-        "code": "fi",
-        "name": "Finland",
-        "count": 17,
-        "coords": [64.0, 26.0],
-        "cities": [
-            {"name": "Helsinki", "count": 16}
-        ],
-        "graduationYears": {"2014": 1, "2017": 3, "2018": 2, "2020": 1, "2021": 1, "2022": 4, "2023": 1, "2024": 3, "2025": 1},
-        "gender": {"Female": 10, "Male": 7},
-        "nationalities": [
-            {"name": "Finnish", "code": "fi", "count": 7},
-            {"name": "Dutch", "code": "nl", "count": 4}
-        ]
-    },
-    "Ireland": {
-        "code": "ie",
-        "name": "Ireland",
-        "count": 9,
-        "coords": [53.4129, -8.2439],
-        "cities": [
-            {"name": "Dublin", "count": 6},
-            {"name": "Cork", "count": 2}
-        ],
-        "graduationYears": {"2015": 1, "2017": 1, "2020": 3, "2021": 1, "2023": 1, "2024": 1, "2025": 1},
-        "gender": {"Female": 7, "Male": 2},
-        "nationalities": [
-            {"name": "Belgian", "code": "be", "count": 2}
-        ]
-    },
-    "Luxembourg": {
-        "code": "lu",
-        "name": "Luxembourg",
-        "count": 9,
-        "coords": [49.8153, 6.1296],
-        "cities": [
-            {"name": "Luxembourg City", "count": 7}
-        ],
-        "graduationYears": {"2018": 1, "2020": 4, "2021": 2, "2022": 1, "2023": 1},
-        "gender": {"Female": 7, "Male": 2},
-        "nationalities": [
-            {"name": "Luxembourgish", "code": "lu", "count": 4},
-            {"name": "Greek", "code": "gr", "count": 2}
-        ]
-    },
-    "Australia": {
-        "code": "au",
-        "name": "Australia",
-        "count": 8,
-        "coords": [-25.2744, 133.7751],
-        "cities": [
-            {"name": "Sydney", "count": 2},
-            {"name": "Perth", "count": 2}
-        ],
-        "graduationYears": {"2017": 2, "2021": 3, "2024": 1, "2025": 2},
-        "gender": {"Male": 5, "Female": 3},
-        "nationalities": [
-            {"name": "Australian", "code": "au", "count": 2}
-        ]
-    },
-    "Canada": {
-        "code": "ca",
-        "name": "Canada",
-        "count": 8,
-        "coords": [56.1304, -106.3468],
-        "cities": [
-            {"name": "Toronto", "count": 4}
-        ],
-        "graduationYears": {"2014": 1, "2015": 1, "2017": 2, "2018": 1, "2019": 1, "2020": 1, "2025": 1},
-        "gender": {"Female": 5, "Male": 3},
-        "nationalities": [
-            {"name": "Dutch", "code": "nl", "count": 2},
-            {"name": "British", "code": "gb", "count": 2}
-        ]
-    },
-    "Portugal": {
-        "code": "pt",
-        "name": "Portugal",
-        "count": 7,
-        "coords": [39.3999, -8.2245],
-        "cities": [
-            {"name": "Lisbon", "count": 4}
-        ],
-        "graduationYears": {"2016": 1, "2020": 1, "2021": 2, "2023": 2, "2025": 1},
-        "gender": {"Male": 4, "Female": 3},
-        "nationalities": [
-            {"name": "Bulgarian", "code": "bg", "count": 2},
-            {"name": "Belgian", "code": "be", "count": 2}
-        ]
-    },
-    "Norway": {
-        "code": "no",
-        "name": "Norway",
-        "count": 7,
-        "coords": [64.0, 10.0],
-        "cities": [
-            {"name": "Oslo", "count": 4}
-        ],
-        "graduationYears": {"2015": 1, "2018": 1, "2019": 1, "2023": 4},
-        "gender": {"Female": 6, "Male": 1},
-        "nationalities": [
-            {"name": "Dutch", "code": "nl", "count": 2},
-            {"name": "Norwegian", "code": "no", "count": 2}
-        ]
-    },
-    "Greece": {
-        "code": "gr",
-        "name": "Greece",
-        "count": 5,
-        "coords": [39.0742, 21.8243],
-        "cities": [
-            {"name": "Athens", "count": 3},
-            {"name": "Thessaloniki", "count": 2}
-        ],
-        "graduationYears": {"2021": 2, "2022": 1, "2023": 1, "2025": 1},
-        "gender": {"Female": 4, "Male": 1},
-        "nationalities": [
-            {"name": "Greek", "code": "gr", "count": 4}
-        ]
-    }
-};
-
-// Export for use in HTML files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { MSP_DATA, COUNTRY_DETAILS, getCountryPercentage, getTotalWithMasters, formatNumber, getGrowthRate };
-}
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Join 1,300+ alumni who designed their own path through science. Applications are open.</p>
+        <div class="cta-buttons">
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank" class="cta-btn primary">
+                Apply Now
+                <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="cta-btn secondary">
+                Learn More
+                <i data-lucide="external-link"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" style="color: white; font-weight: 700; font-size: 16px;">MSP Alumni Network</a>
+                <p>Data from 1,329 MSP alumni, collected through graduation surveys and LinkedIn research. Last updated December 2025.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a href="index.html">Alumni World Map</a>
+                <a href="#journeys">Alumni Journeys</a>
+                <a href="#careers">Career Paths</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="https://www.linkedin.com/groups/4892346/" target="_blank">LinkedIn Group</a>
+                <a href="https://www.instagram.com/maboratorysp/" target="_blank">Instagram</a>
+            </div>
+            <div class="footer-section">
+                <h3>Official Resources</h3>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank">MSP Website</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank">Admissions</a>
+                <a href="https://courserepository.maastrichtuniversity.nl/p/program/EN/7503" target="_blank">Course Repository</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

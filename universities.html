@@ -14,6 +14,10 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <!-- Data Source -->
     <script src="data.js"></script>
     
@@ -55,7 +59,7 @@
         a:hover { color: var(--um-orange); }
         
         /* ==========================================
-           INTERACTIVE WORLD MAP
+           INTERACTIVE WORLD MAP (Leaflet)
            ========================================== */
         .world-map-section {
             background: linear-gradient(180deg, var(--um-off-white) 0%, white 100%);
@@ -67,7 +71,7 @@
         }
         .world-map-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .world-map-header h3 {
             font-size: 28px;
@@ -84,68 +88,105 @@
             background: white;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            padding: 30px;
             overflow: hidden;
         }
-        #world-map-svg {
+        #universities-map {
             width: 100%;
-            height: auto;
-            display: block;
-        }
-        #world-map-svg .country {
-            fill: var(--um-gray-200);
-            stroke: white;
-            stroke-width: 0.5;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        #world-map-svg .country.has-data {
-            fill: var(--um-light-blue);
-            cursor: pointer;
-        }
-        #world-map-svg .country.has-data:hover {
-            fill: var(--um-orange);
-            transform: scale(1.02);
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-        #world-map-svg .country.has-data.top-country {
-            fill: #0090c4;
-        }
-        #world-map-svg .country.has-data.top-country:hover {
-            fill: var(--um-orange);
+            height: 400px;
+            border-radius: var(--radius-lg);
         }
         
-        /* Map Tooltip */
-        .map-tooltip {
-            position: absolute;
+        /* Custom map markers */
+        .country-marker {
+            background: var(--um-light-blue);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 11px;
+            font-family: var(--font-heading);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .country-marker:hover {
+            transform: scale(1.15);
+            z-index: 1000 !important;
+        }
+        .country-marker.top-destination {
+            background: var(--um-orange);
+        }
+        .country-marker.large {
+            width: 50px;
+            height: 50px;
+            font-size: 14px;
+        }
+        .country-marker.medium {
+            width: 40px;
+            height: 40px;
+            font-size: 12px;
+        }
+        .country-marker.small {
+            width: 32px;
+            height: 32px;
+            font-size: 10px;
+        }
+        
+        /* Map popup styling */
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+        }
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 200px;
+        }
+        .map-popup {
+            text-align: center;
+        }
+        .map-popup-header {
             background: var(--um-dark-blue);
             color: white;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-size: 14px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            z-index: 100;
-            white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            padding: 15px;
         }
-        .map-tooltip.visible {
-            opacity: 1;
+        .map-popup-flag {
+            width: 48px;
+            height: 32px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
-        .map-tooltip-country {
+        .map-popup-country {
+            font-family: var(--font-heading);
+            font-size: 16px;
             font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
-        .map-tooltip-stat {
-            color: var(--um-orange);
+        .map-popup-stats {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+        .map-popup-body {
+            padding: 15px;
+        }
+        .map-popup-btn {
+            display: inline-block;
+            background: var(--um-light-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
-        .map-tooltip-hint {
-            font-size: 11px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 4px;
+        .map-popup-btn:hover {
+            background: var(--um-dark-blue);
+            color: white;
         }
         
         /* Map Legend */
@@ -166,11 +207,12 @@
         .map-legend-dot {
             width: 14px;
             height: 14px;
-            border-radius: 4px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .map-legend-dot.top { background: #0090c4; }
+        .map-legend-dot.top { background: var(--um-orange); }
         .map-legend-dot.has-data { background: var(--um-light-blue); }
-        .map-legend-dot.no-data { background: var(--um-gray-200); }
         
         /* Country Modal */
         .country-modal-overlay {
@@ -1109,100 +1151,24 @@
         <div class="world-map-container">
             <div class="world-map-header">
                 <h3>🗺️ Explore by Country</h3>
-                <p>Click any highlighted country to see universities where MSP alumni study</p>
+                <p>Click any country marker to see universities where MSP alumni study</p>
             </div>
             <div class="world-map-wrapper">
-                <svg id="world-map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
-                    <!-- Simplified World Map SVG - Main regions -->
-                    <!-- North America -->
-                    <path class="country" id="map-us" d="M180,120 L280,120 L290,140 L280,180 L250,200 L200,200 L160,180 L150,150 Z" data-name="United States" data-code="us"/>
-                    <path class="country" id="map-ca" d="M150,60 L300,60 L310,100 L280,120 L180,120 L140,100 Z" data-name="Canada" data-code="ca"/>
-                    <path class="country" id="map-mx" d="M160,200 L200,200 L210,240 L180,260 L150,240 Z" data-name="Mexico" data-code="mx"/>
-                    
-                    <!-- South America -->
-                    <path class="country" id="map-br" d="M280,280 L340,260 L360,300 L340,380 L280,380 L260,320 Z" data-name="Brazil" data-code="br"/>
-                    <path class="country" id="map-ar" d="M260,380 L300,380 L290,450 L260,450 Z" data-name="Argentina" data-code="ar"/>
-                    <path class="country" id="map-cl" d="M250,380 L260,380 L260,450 L250,450 Z" data-name="Chile" data-code="cl"/>
-                    <path class="country" id="map-co" d="M240,260 L280,260 L280,300 L260,320 L240,300 Z" data-name="Colombia" data-code="co"/>
-                    
-                    <!-- Europe (larger, more detailed) -->
-                    <path class="country" id="map-gb" d="M445,115 L460,105 L465,120 L455,140 L445,135 Z" data-name="United Kingdom" data-code="gb"/>
-                    <path class="country" id="map-ie" d="M430,120 L445,115 L445,135 L435,135 Z" data-name="Ireland" data-code="ie"/>
-                    <path class="country" id="map-fr" d="M455,145 L490,140 L495,175 L470,185 L450,175 Z" data-name="France" data-code="fr"/>
-                    <path class="country" id="map-es" d="M440,175 L470,175 L475,205 L445,210 L435,195 Z" data-name="Spain" data-code="es"/>
-                    <path class="country" id="map-pt" d="M425,180 L440,175 L445,210 L430,210 Z" data-name="Portugal" data-code="pt"/>
-                    <path class="country" id="map-de" d="M490,125 L520,120 L525,155 L495,160 L485,145 Z" data-name="Germany" data-code="de"/>
-                    <path class="country" id="map-nl" d="M478,118 L492,115 L495,130 L482,132 Z" data-name="Netherlands" data-code="nl"/>
-                    <path class="country" id="map-be" d="M470,132 L485,130 L488,145 L472,147 Z" data-name="Belgium" data-code="be"/>
-                    <path class="country" id="map-ch" d="M485,155 L505,152 L508,168 L488,170 Z" data-name="Switzerland" data-code="ch"/>
-                    <path class="country" id="map-at" d="M505,150 L535,148 L538,165 L508,168 Z" data-name="Austria" data-code="at"/>
-                    <path class="country" id="map-it" d="M495,170 L520,165 L530,210 L510,220 L495,195 Z" data-name="Italy" data-code="it"/>
-                    <path class="country" id="map-pl" d="M520,115 L560,110 L565,145 L525,150 Z" data-name="Poland" data-code="pl"/>
-                    <path class="country" id="map-cz" d="M510,140 L535,138 L538,155 L512,158 Z" data-name="Czech Republic" data-code="cz"/>
-                    <path class="country" id="map-se" d="M505,60 L525,55 L535,110 L515,115 Z" data-name="Sweden" data-code="se"/>
-                    <path class="country" id="map-no" d="M485,50 L510,45 L515,100 L495,105 Z" data-name="Norway" data-code="no"/>
-                    <path class="country" id="map-dk" d="M492,105 L508,102 L510,118 L494,120 Z" data-name="Denmark" data-code="dk"/>
-                    <path class="country" id="map-fi" d="M535,50 L560,45 L570,100 L545,105 Z" data-name="Finland" data-code="fi"/>
-                    <path class="country" id="map-hu" d="M535,155 L560,152 L563,170 L538,173 Z" data-name="Hungary" data-code="hu"/>
-                    <path class="country" id="map-gr" d="M545,190 L565,185 L570,215 L550,220 Z" data-name="Greece" data-code="gr"/>
-                    <path class="country" id="map-ro" d="M560,160 L590,155 L595,180 L565,185 Z" data-name="Romania" data-code="ro"/>
-                    
-                    <!-- Russia -->
-                    <path class="country" id="map-ru" d="M570,60 L850,40 L870,150 L600,160 L580,100 Z" data-name="Russia" data-code="ru"/>
-                    
-                    <!-- Middle East -->
-                    <path class="country" id="map-tr" d="M570,175 L620,170 L630,195 L575,200 Z" data-name="Turkey" data-code="tr"/>
-                    <path class="country" id="map-il" d="M585,210 L595,208 L598,230 L588,232 Z" data-name="Israel" data-code="il"/>
-                    <path class="country" id="map-ae" d="M640,230 L660,225 L665,245 L645,248 Z" data-name="UAE" data-code="ae"/>
-                    
-                    <!-- Africa -->
-                    <path class="country" id="map-za" d="M540,380 L590,370 L600,420 L550,430 Z" data-name="South Africa" data-code="za"/>
-                    <path class="country" id="map-eg" d="M560,220 L590,215 L595,260 L565,265 Z" data-name="Egypt" data-code="eg"/>
-                    <path class="country" id="map-ma" d="M430,210 L460,205 L465,240 L435,245 Z" data-name="Morocco" data-code="ma"/>
-                    <path class="country" id="map-ke" d="M590,300 L615,295 L620,330 L595,335 Z" data-name="Kenya" data-code="ke"/>
-                    
-                    <!-- Asia -->
-                    <path class="country" id="map-cn" d="M720,140 L820,130 L840,220 L750,240 L710,200 Z" data-name="China" data-code="cn"/>
-                    <path class="country" id="map-jp" d="M860,160 L880,155 L885,200 L865,205 Z" data-name="Japan" data-code="jp"/>
-                    <path class="country" id="map-kr" d="M845,175 L860,172 L862,195 L847,198 Z" data-name="South Korea" data-code="kr"/>
-                    <path class="country" id="map-in" d="M680,210 L740,200 L750,280 L700,300 L670,260 Z" data-name="India" data-code="in"/>
-                    <path class="country" id="map-sg" d="M770,295 L785,293 L787,305 L772,307 Z" data-name="Singapore" data-code="sg"/>
-                    <path class="country" id="map-th" d="M760,250 L780,245 L785,285 L765,290 Z" data-name="Thailand" data-code="th"/>
-                    <path class="country" id="map-my" d="M765,290 L795,285 L800,310 L770,315 Z" data-name="Malaysia" data-code="my"/>
-                    <path class="country" id="map-id" d="M770,320 L850,310 L860,350 L780,360 Z" data-name="Indonesia" data-code="id"/>
-                    <path class="country" id="map-hk" d="M810,220 L825,218 L827,232 L812,234 Z" data-name="Hong Kong" data-code="hk"/>
-                    <path class="country" id="map-tw" d="M835,215 L848,212 L850,235 L837,238 Z" data-name="Taiwan" data-code="tw"/>
-                    
-                    <!-- Oceania -->
-                    <path class="country" id="map-au" d="M800,360 L900,340 L920,420 L820,440 Z" data-name="Australia" data-code="au"/>
-                    <path class="country" id="map-nz" d="M940,420 L960,415 L965,450 L945,455 Z" data-name="New Zealand" data-code="nz"/>
-                </svg>
-                
-                <!-- Tooltip -->
-                <div class="map-tooltip" id="map-tooltip">
-                    <div class="map-tooltip-country" id="tooltip-country"></div>
-                    <div class="map-tooltip-stat" id="tooltip-stat"></div>
-                    <div class="map-tooltip-hint">Click to explore</div>
-                </div>
+                <div id="universities-map"></div>
             </div>
             
             <div class="map-legend">
                 <div class="map-legend-item">
                     <div class="map-legend-dot top"></div>
-                    <span>Top destination (20+ alumni)</span>
+                    <span>Top destination (50+ alumni)</span>
                 </div>
                 <div class="map-legend-item">
                     <div class="map-legend-dot has-data"></div>
                     <span>MSP alumni present</span>
                 </div>
-                <div class="map-legend-item">
-                    <div class="map-legend-dot no-data"></div>
-                    <span>No data</span>
-                </div>
             </div>
         </div>
     </section>
-    
     <!-- Country Modal -->
     <div class="country-modal-overlay" id="country-modal">
         <div class="country-modal">
@@ -1533,50 +1499,99 @@
             countryUniData[uni.code].universities.push(uni);
         });
         
+        // Country coordinates for map markers
+        const countryCoords = {
+            nl: { lat: 52.1326, lng: 5.2913, name: "Netherlands" },
+            gb: { lat: 54.0, lng: -2.0, name: "United Kingdom" },
+            de: { lat: 51.1657, lng: 10.4515, name: "Germany" },
+            be: { lat: 50.8503, lng: 4.3517, name: "Belgium" },
+            se: { lat: 60.1282, lng: 18.6435, name: "Sweden" },
+            ch: { lat: 46.8182, lng: 8.2275, name: "Switzerland" },
+            fr: { lat: 46.6034, lng: 1.8883, name: "France" },
+            es: { lat: 40.4637, lng: -3.7492, name: "Spain" },
+            it: { lat: 41.8719, lng: 12.5674, name: "Italy" },
+            at: { lat: 47.5162, lng: 14.5501, name: "Austria" },
+            dk: { lat: 56.2639, lng: 9.5018, name: "Denmark" },
+            fi: { lat: 61.9241, lng: 25.7482, name: "Finland" },
+            no: { lat: 60.472, lng: 8.4689, name: "Norway" },
+            ie: { lat: 53.4129, lng: -8.2439, name: "Ireland" },
+            pl: { lat: 51.9194, lng: 19.1451, name: "Poland" },
+            cz: { lat: 49.8175, lng: 15.473, name: "Czech Republic" },
+            hu: { lat: 47.1625, lng: 19.5033, name: "Hungary" },
+            pt: { lat: 39.3999, lng: -8.2245, name: "Portugal" },
+            gr: { lat: 39.0742, lng: 21.8243, name: "Greece" },
+            us: { lat: 37.0902, lng: -95.7129, name: "United States" },
+            ca: { lat: 56.1304, lng: -106.3468, name: "Canada" },
+            au: { lat: -25.2744, lng: 133.7751, name: "Australia" },
+            nz: { lat: -40.9006, lng: 174.886, name: "New Zealand" },
+            jp: { lat: 36.2048, lng: 138.2529, name: "Japan" },
+            cn: { lat: 35.8617, lng: 104.1954, name: "China" },
+            sg: { lat: 1.3521, lng: 103.8198, name: "Singapore" },
+            hk: { lat: 22.3193, lng: 114.1694, name: "Hong Kong" }
+        };
+        
         function setupWorldMap() {
-            const svg = document.getElementById('world-map-svg');
-            const tooltip = document.getElementById('map-tooltip');
-            const tooltipCountry = document.getElementById('tooltip-country');
-            const tooltipStat = document.getElementById('tooltip-stat');
-            
-            // Mark countries that have data
-            Object.keys(countryUniData).forEach(code => {
-                const path = document.getElementById(`map-${code}`);
-                if (path) {
-                    path.classList.add('has-data');
-                    if (countryUniData[code].count >= 20) {
-                        path.classList.add('top-country');
-                    }
-                }
+            // Initialize Leaflet map
+            const map = L.map('universities-map', {
+                center: [30, 10],
+                zoom: 2,
+                minZoom: 1,
+                maxZoom: 6,
+                scrollWheelZoom: false
             });
             
-            // Add hover and click handlers to all countries with data
-            document.querySelectorAll('.country.has-data').forEach(country => {
-                const code = country.dataset.code;
-                const name = country.dataset.name;
+            // Add tile layer (clean, minimal style)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Add markers for each country with university data
+            Object.keys(countryUniData).forEach(code => {
+                const coords = countryCoords[code];
+                if (!coords) return;
+                
                 const data = countryUniData[code];
+                const isTop = data.count >= 50;
                 
-                // Hover
-                country.addEventListener('mouseenter', function(e) {
-                    tooltipCountry.textContent = name;
-                    tooltipStat.textContent = `${data.count} alumni at ${data.uniCount} universities`;
-                    tooltip.classList.add('visible');
+                // Determine marker size based on alumni count
+                let sizeClass = 'small';
+                if (data.count >= 100) sizeClass = 'large';
+                else if (data.count >= 30) sizeClass = 'medium';
+                
+                // Create custom marker
+                const markerHtml = `<div class="country-marker ${sizeClass} ${isTop ? 'top-destination' : ''}">${data.count}</div>`;
+                const icon = L.divIcon({
+                    html: markerHtml,
+                    className: 'country-marker-wrapper',
+                    iconSize: sizeClass === 'large' ? [50, 50] : sizeClass === 'medium' ? [40, 40] : [32, 32],
+                    iconAnchor: sizeClass === 'large' ? [25, 25] : sizeClass === 'medium' ? [20, 20] : [16, 16]
                 });
                 
-                country.addEventListener('mousemove', function(e) {
-                    const rect = svg.parentElement.getBoundingClientRect();
-                    tooltip.style.left = (e.clientX - rect.left + 15) + 'px';
-                    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
-                });
+                // Create popup content
+                const popupContent = `
+                    <div class="map-popup">
+                        <div class="map-popup-header">
+                            <img class="map-popup-flag" src="https://flagcdn.com/w96/${code}.png" alt="${data.name}">
+                            <div class="map-popup-country">${data.name}</div>
+                            <div class="map-popup-stats">${data.count} alumni · ${data.uniCount} universities</div>
+                        </div>
+                        <div class="map-popup-body">
+                            <a href="javascript:void(0)" class="map-popup-btn" onclick="openCountryModal('${code}')">
+                                View Universities
+                            </a>
+                        </div>
+                    </div>
+                `;
                 
-                country.addEventListener('mouseleave', function() {
-                    tooltip.classList.remove('visible');
-                });
-                
-                // Click
-                country.addEventListener('click', function() {
-                    openCountryModal(code);
-                });
+                // Add marker to map
+                const marker = L.marker([coords.lat, coords.lng], { icon: icon })
+                    .addTo(map)
+                    .bindPopup(popupContent, {
+                        closeButton: true,
+                        className: 'country-popup'
+                    });
             });
         }
         

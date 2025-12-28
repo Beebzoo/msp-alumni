@@ -149,30 +149,141 @@
         }
         .journeys-intro p { font-size: 15px; color: var(--um-gray-600); margin: 0; }
         .journeys-intro strong { color: var(--um-dark-blue); }
-        .journey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .journey-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        
+        /* Journey Cards - Visual Timeline */
         .journey-card {
-            background: white; border: 1px solid var(--um-gray-200);
-            border-radius: var(--radius-md); padding: 25px; transition: all 0.3s ease;
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        .journey-card:hover { border-color: var(--um-light-blue); box-shadow: var(--shadow-md); }
-        .journey-path { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
-        .journey-step { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--um-dark-blue); }
-        .journey-step.msp { background: var(--um-dark-blue); color: white; padding: 6px 12px; border-radius: var(--radius-sm); font-weight: 600; }
-        .journey-step.uni { color: var(--um-light-blue); font-weight: 600; }
-        .journey-arrow { color: var(--um-gray-600); }
-        .journey-arrow i, .journey-arrow svg { width: 16px; height: 16px; }
-        .journey-outcome {
-            display: flex; align-items: center; gap: 10px; padding: 12px 15px;
-            background: var(--um-gray-100); border-radius: var(--radius-sm); font-size: 14px; color: var(--um-gray-800);
+        .journey-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
         }
-        .journey-outcome i, .journey-outcome svg { width: 18px; height: 18px; color: var(--um-orange); flex-shrink: 0; }
+        .journey-timeline {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .journey-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+        .journey-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .journey-logo.msp {
+            background: var(--um-dark-blue);
+            border-color: var(--um-dark-blue);
+        }
+        .journey-logo.msp img {
+            filter: brightness(0) invert(1);
+        }
+        .journey-logo.uni {
+            background: white;
+            border-color: var(--um-light-blue);
+        }
+        .journey-logo.job {
+            background: white;
+            border-color: var(--um-orange);
+        }
+        .journey-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .journey-logo i, .journey-logo svg {
+            width: 28px;
+            height: 28px;
+            color: var(--um-gray-600);
+        }
+        .journey-logo.msp i, .journey-logo.msp svg { color: white; }
+        .journey-logo.uni i, .journey-logo.uni svg { color: var(--um-light-blue); }
+        .journey-logo.job i, .journey-logo.job svg { color: var(--um-orange); }
+        .journey-step-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--um-gray-600);
+            margin-bottom: 4px;
+        }
+        .journey-step-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            line-height: 1.3;
+        }
+        .journey-arrow {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
+            position: relative;
+            flex-shrink: 0;
+        }
+        .journey-arrow::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--um-orange);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        .journey-details {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .journey-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--um-gray-100);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--um-gray-800);
+        }
+        .journey-tag i, .journey-tag svg {
+            width: 14px;
+            height: 14px;
+            color: var(--um-light-blue);
+        }
+        .journey-tag.highlight {
+            background: rgba(232,78,16,0.1);
+            color: var(--um-orange);
+        }
+        .journey-tag.highlight i, .journey-tag.highlight svg {
+            color: var(--um-orange);
+        }
         
         /* World Top 10 Highlight */
         .world-top-highlight {
-            background: linear-gradient(135deg, rgba(232,78,16,0.15) 0%, rgba(0,162,219,0.15) 100%);
+            background: linear-gradient(135deg, rgba(232,78,16,0.08) 0%, rgba(0,162,219,0.08) 100%);
             border: 2px solid var(--um-orange);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 50px;
             text-align: center;
             margin-bottom: 50px;
         }
@@ -189,21 +300,23 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(232,78,16,0.3);
         }
         .world-top-badge i, .world-top-badge svg { width: 20px; height: 20px; }
         .world-top-stat {
             font-family: var(--font-heading);
-            font-size: 72px;
+            font-size: 100px;
             font-weight: 800;
             color: var(--um-dark-blue);
             line-height: 1;
         }
         .world-top-stat span { color: var(--um-orange); }
         .world-top-text {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--um-gray-800);
-            margin-top: 10px;
+            margin-top: 15px;
+            font-weight: 500;
         }
         
         /* World Top 10 Grid */
@@ -211,68 +324,78 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         .world-top-card {
             background: white;
             border: 2px solid var(--um-gray-200);
             border-radius: var(--radius-md);
-            padding: 20px 15px;
+            padding: 25px 15px 20px;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
         }
         .world-top-card.has-alumni {
             border-color: var(--um-light-blue);
-            background: linear-gradient(180deg, rgba(0,162,219,0.05) 0%, white 100%);
+            background: linear-gradient(180deg, rgba(0,162,219,0.08) 0%, white 100%);
         }
         .world-top-card.has-alumni:hover {
             border-color: var(--um-orange);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,162,219,0.2);
         }
         .world-top-card.no-alumni {
-            opacity: 0.5;
+            opacity: 0.4;
+            filter: grayscale(50%);
         }
         .world-top-rank {
             position: absolute;
-            top: -10px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--um-dark-blue);
             color: white;
             font-family: var(--font-heading);
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
         }
         .world-top-card.has-alumni .world-top-rank {
-            background: var(--um-orange);
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
+            box-shadow: 0 3px 10px rgba(232,78,16,0.3);
         }
         .world-top-logo {
-            width: 60px;
-            height: 60px;
-            margin: 15px auto 12px;
+            width: 65px;
+            height: 65px;
+            margin: 15px auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-sm);
+            padding: 10px;
         }
         .world-top-logo img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
+        .world-top-logo i, .world-top-logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--um-gray-600);
+        }
         .world-top-name {
             font-family: var(--font-heading);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.3;
         }
         .world-top-alumni {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--um-orange);
             font-family: var(--font-heading);
@@ -281,38 +404,44 @@
             font-size: 10px;
             color: var(--um-gray-600);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* University Sections */
         .uni-section {
-            margin-top: 60px;
+            margin-top: 70px;
         }
         .uni-section-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 18px;
+            margin-bottom: 30px;
         }
         .uni-section-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--um-light-blue);
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,162,219,0.3);
         }
-        .uni-section-icon i, .uni-section-icon svg { width: 24px; height: 24px; color: white; }
-        .uni-section-icon.orange { background: var(--um-orange); }
+        .uni-section-icon i, .uni-section-icon svg { width: 26px; height: 26px; color: white; }
+        .uni-section-icon.orange { 
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
+            box-shadow: 0 4px 15px rgba(232,78,16,0.3);
+        }
         .uni-section-title {
             font-family: var(--font-heading);
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--um-dark-blue);
         }
         .uni-section-subtitle {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--um-gray-600);
+            margin-top: 3px;
         }
         
         .uni-grid {
@@ -322,43 +451,51 @@
         }
         .uni-card {
             background: white;
-            border: 1px solid var(--um-gray-200);
+            border: 2px solid var(--um-gray-200);
             border-radius: var(--radius-md);
-            padding: 25px 20px;
+            padding: 28px 20px;
             text-align: center;
             transition: all 0.3s ease;
         }
         .uni-card:hover {
             border-color: var(--um-light-blue);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         .uni-card.featured {
             border: 2px solid var(--um-orange);
-            background: linear-gradient(180deg, #fff8f5 0%, white 100%);
+            background: linear-gradient(180deg, rgba(232,78,16,0.05) 0%, white 100%);
+        }
+        .uni-card.featured:hover {
+            box-shadow: 0 12px 30px rgba(232,78,16,0.15);
         }
         .uni-logo-wrap {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             background: var(--um-gray-100);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            padding: 10px;
+            margin: 0 auto 18px;
+            padding: 12px;
         }
         .uni-logo-wrap img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
+        .uni-logo-wrap i, .uni-logo-wrap svg {
+            width: 36px;
+            height: 36px;
+            color: var(--um-gray-600);
+        }
         .uni-card-name {
             font-family: var(--font-heading);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
         .uni-card-country {
             display: flex;
@@ -367,34 +504,44 @@
             gap: 6px;
             font-size: 12px;
             color: var(--um-gray-600);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .uni-card-country img {
-            width: 16px;
-            height: 12px;
+            width: 18px;
+            height: 13px;
             border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
         .uni-card-rank {
+            display: inline-block;
             font-size: 11px;
-            color: var(--um-light-blue);
-            margin-bottom: 8px;
+            color: white;
+            background: var(--um-light-blue);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .uni-card.featured .uni-card-rank {
+            background: var(--um-orange);
         }
         .uni-card-alumni {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 800;
             color: var(--um-orange);
             font-family: var(--font-heading);
         }
         .uni-card-alumni span {
-            font-size: 12px;
-            font-weight: 400;
+            font-size: 13px;
+            font-weight: 500;
             color: var(--um-gray-600);
         }
         .uni-card-highlight {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 11px;
             color: var(--um-orange);
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* Career Paths */
@@ -755,19 +902,65 @@
                 `;
             });
             
-            // --- Alumni Journeys ---
+            // --- Alumni Journeys (Visual Timeline with Logos) ---
             const journeyGrid = document.getElementById('journey-grid');
             recruitment.alumniJourneys.forEach(journey => {
+                // Determine logo for university (fallback to icon)
+                const uniLogo = journey.universityLogo 
+                    ? `<img src="assets/logos/${journey.universityLogo}" alt="${journey.university}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                       <i data-lucide="graduation-cap" style="display:none;"></i>`
+                    : `<i data-lucide="graduation-cap"></i>`;
+                
+                // Determine logo for job/company (fallback to icon)
+                const jobLogo = journey.companyLogo 
+                    ? `<img src="assets/logos/${journey.companyLogo}" alt="Company" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                       <i data-lucide="${journey.icon}" style="display:none;"></i>`
+                    : `<i data-lucide="${journey.icon}"></i>`;
+                
                 journeyGrid.innerHTML += `
                     <div class="journey-card">
-                        <div class="journey-path">
-                            <span class="journey-step msp">MSP ${journey.year}</span>
-                            <span class="journey-arrow"><i data-lucide="chevron-right"></i></span>
-                            <span class="journey-step uni">${journey.university}</span>
+                        <div class="journey-timeline">
+                            <!-- MSP Start -->
+                            <div class="journey-step">
+                                <div class="journey-logo msp">
+                                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" onerror="this.style.display='none'">
+                                </div>
+                                <div class="journey-step-label">MSP</div>
+                                <div class="journey-step-text">${journey.year}</div>
+                            </div>
+                            
+                            <div class="journey-arrow"></div>
+                            
+                            <!-- University -->
+                            <div class="journey-step">
+                                <div class="journey-logo uni">
+                                    ${uniLogo}
+                                </div>
+                                <div class="journey-step-label">Master's</div>
+                                <div class="journey-step-text">${journey.university}</div>
+                            </div>
+                            
+                            <div class="journey-arrow"></div>
+                            
+                            <!-- Career -->
+                            <div class="journey-step">
+                                <div class="journey-logo job">
+                                    ${jobLogo}
+                                </div>
+                                <div class="journey-step-label">Now</div>
+                                <div class="journey-step-text">${journey.role || 'Professional'}</div>
+                            </div>
                         </div>
-                        <div class="journey-outcome">
-                            <i data-lucide="${journey.icon}"></i>
-                            <span>${journey.outcome}</span>
+                        
+                        <div class="journey-details">
+                            <span class="journey-tag">
+                                <i data-lucide="map-pin"></i>
+                                ${journey.location || 'Global'}
+                            </span>
+                            <span class="journey-tag highlight">
+                                <i data-lucide="${journey.icon}"></i>
+                                ${journey.outcome}
+                            </span>
                         </div>
                     </div>
                 `;
@@ -782,7 +975,8 @@
                         <div class="world-top-card ${hasAlumni ? 'has-alumni' : 'no-alumni'}">
                             <div class="world-top-rank">#${uni.rank}</div>
                             <div class="world-top-logo">
-                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.src='https://via.placeholder.com/60x60?text=${uni.rank}'">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <i data-lucide="graduation-cap" style="display:none;"></i>
                             </div>
                             <div class="world-top-name">${uni.name}</div>
                             ${hasAlumni ? `
@@ -803,14 +997,15 @@
                     dutchUniGrid.innerHTML += `
                         <div class="uni-card ${uni.highlight ? 'featured' : ''}">
                             <div class="uni-logo-wrap">
-                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <i data-lucide="graduation-cap" style="display:none;"></i>
                             </div>
                             <div class="uni-card-name">${uni.name}</div>
                             <div class="uni-card-country">
                                 <img src="https://flagcdn.com/w20/nl.png" alt="Netherlands">
                                 Netherlands
                             </div>
-                            <div class="uni-card-rank">QS Rank: #${uni.rank}</div>
+                            <div class="uni-card-rank">QS #${uni.rank}</div>
                             <div class="uni-card-alumni">${uni.mspAlumni} <span>alumni</span></div>
                             ${uni.highlight ? `<div class="uni-card-highlight">${uni.highlight}</div>` : ''}
                         </div>
@@ -825,14 +1020,15 @@
                     intlUniGrid.innerHTML += `
                         <div class="uni-card ${uni.rank <= 10 ? 'featured' : ''}">
                             <div class="uni-logo-wrap">
-                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <i data-lucide="graduation-cap" style="display:none;"></i>
                             </div>
                             <div class="uni-card-name">${uni.name}</div>
                             <div class="uni-card-country">
                                 <img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">
                                 ${uni.country}
                             </div>
-                            <div class="uni-card-rank">QS Rank: #${uni.rank}</div>
+                            <div class="uni-card-rank">QS #${uni.rank}</div>
                             <div class="uni-card-alumni">${uni.mspAlumni} <span>alumni</span></div>
                         </div>
                     `;

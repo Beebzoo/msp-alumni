@@ -290,11 +290,50 @@ const MSP_DATA = {
         heroStat: "92% of prospective students say hearing from alumni helps their decision.",
         
         // Proof bar - key numbers for Gen Z (ROI-focused)
+        // Updated with ROA benchmark comparisons (ROA-F-2024/9E)
         proofStats: [
-            { number: 1329, label: "Alumni Worldwide", highlight: true },
-            { number: 95, label: "At World Top-100 Unis", highlight: false },
-            { number: 146, label: "PhD Candidates", highlight: false },
-            { number: 66, label: "Countries", highlight: false }
+            { number: "91%", label: "Pursue Master's", subtext: "vs 77% UM avg", highlight: true },
+            { number: "42%", label: "At QS Top-100", subtext: "universities", highlight: false },
+            { number: "146", label: "PhD Candidates", subtext: "15% of alumni", highlight: false },
+            { number: "59", label: "Countries", subtext: "on 6 continents", highlight: false }
+        ],
+        
+        // ROA Benchmark Comparisons (Source: ROA-F-2024/9E, September 2024)
+        roaBenchmarks: {
+            mastersContinuation: { msp: 91, um: 77, label: "Master's Continuation" },
+            programmeSatisfaction: { msp: "XX", um: 79, label: "Programme Satisfaction" }, // PLACEHOLDER - update with actual MSP data
+            wouldChooseAgain: { msp: "XX", um: 79, label: "Would Choose Same Programme" }, // PLACEHOLDER
+            source: "ROA Graduate Survey 2024 (ROA-F-2024/9E)"
+        },
+        
+        // Regional Retention Statistics (PLACEHOLDERS - update with actual data)
+        // Methodology: ROA 100km from Maastricht measure
+        regionalRetention: {
+            within100km: "XX", // PLACEHOLDER: % of alumni within 100km of Maastricht
+            inNetherlands: "XX", // PLACEHOLDER: % living in Netherlands
+            inLimburg: "XX", // PLACEHOLDER: % in Limburg province
+            inEuregio: "XX", // PLACEHOLDER: % in Euregio (NL/BE/DE border region)
+            brainGain: "XX", // PLACEHOLDER: # of international students who stayed in NL
+            source: "MSP Alumni Database 2025"
+        },
+        
+        // Employer Categories (PLACEHOLDERS - update with actual breakdown)
+        employerCategories: [
+            { category: "Academia & Research", percent: "XX", icon: "graduation-cap" }, // PLACEHOLDER
+            { category: "Healthcare & Pharma", percent: "XX", icon: "heart-pulse" }, // PLACEHOLDER
+            { category: "Tech & IT", percent: "XX", icon: "cpu" }, // PLACEHOLDER
+            { category: "Finance & Consulting", percent: "XX", icon: "trending-up" }, // PLACEHOLDER
+            { category: "Government & NGO", percent: "XX", icon: "landmark" }, // PLACEHOLDER
+            { category: "Entrepreneurship", count: "XX", icon: "lightbulb" } // PLACEHOLDER: # of founders/CEOs
+        ],
+        
+        // Top PhD Institutions (PLACEHOLDERS - update with actual data)
+        topPhdInstitutions: [
+            { name: "Institution 1", count: "XX" }, // PLACEHOLDER
+            { name: "Institution 2", count: "XX" }, // PLACEHOLDER
+            { name: "Institution 3", count: "XX" }, // PLACEHOLDER
+            { name: "Institution 4", count: "XX" }, // PLACEHOLDER
+            { name: "Institution 5", count: "XX" }  // PLACEHOLDER
         ],
         
         // Alumni journey cards - anonymized real outcomes

@@ -122,6 +122,7 @@
         .proof-number { font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: var(--um-dark-blue); line-height: 1; }
         .proof-number.highlight { color: var(--um-orange); }
         .proof-label { font-size: 13px; color: var(--um-gray-600); margin-top: 6px; }
+        .proof-subtext { font-size: 11px; color: var(--um-light-blue); margin-top: 4px; font-weight: 600; }
         
         /* Sections */
         .section { padding: 80px 50px; }
@@ -582,6 +583,56 @@
         .phd-item-text { font-size: 14px; color: rgba(255,255,255,0.9); }
         .phd-item-text strong { color: white; }
         
+        /* PhD Institutions */
+        .phd-institutions { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .phd-institutions-title { font-size: 14px; color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .phd-institutions-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .phd-institution { background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-size: 13px; color: rgba(255,255,255,0.8); }
+        
+        /* Benchmark Section */
+        .benchmark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 900px; margin: 0 auto; }
+        .benchmark-card { background: white; border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); padding: 30px; text-align: center; }
+        .benchmark-card.highlight { border-color: var(--um-orange); background: linear-gradient(135deg, rgba(232,78,16,0.05) 0%, white 100%); }
+        .benchmark-label { font-size: 14px; font-weight: 600; color: var(--um-gray-600); margin-bottom: 20px; }
+        .benchmark-comparison { display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .benchmark-msp, .benchmark-um { text-align: center; }
+        .benchmark-value { font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: var(--um-dark-blue); }
+        .benchmark-msp .benchmark-value { color: var(--um-orange); }
+        .benchmark-value.placeholder { color: var(--um-gray-400); }
+        .benchmark-tag { font-size: 11px; color: var(--um-gray-600); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 5px; }
+        .benchmark-vs { font-size: 14px; color: var(--um-gray-400); font-weight: 600; }
+        .benchmark-placeholder-note { font-size: 11px; color: var(--um-gray-400); margin-top: 15px; font-style: italic; }
+        .benchmark-source { text-align: center; margin-top: 30px; font-size: 12px; color: var(--um-gray-500); }
+        
+        /* Regional Impact Section */
+        .regional-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .regional-card { background: white; border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); padding: 25px; text-align: center; transition: all 0.3s ease; }
+        .regional-card:hover { border-color: var(--um-light-blue); transform: translateY(-3px); }
+        .regional-card.highlight { border-color: var(--um-orange); background: linear-gradient(135deg, rgba(232,78,16,0.05) 0%, white 100%); }
+        .regional-icon { width: 50px; height: 50px; background: var(--um-light-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; }
+        .regional-icon i, .regional-icon svg { width: 24px; height: 24px; color: white; }
+        .regional-card.highlight .regional-icon { background: var(--um-orange); }
+        .regional-value { font-family: var(--font-heading); font-size: 32px; font-weight: 800; color: var(--um-dark-blue); }
+        .regional-value.placeholder { color: var(--um-gray-400); }
+        .regional-label { font-size: 13px; font-weight: 600; color: var(--um-gray-800); margin-top: 5px; }
+        .regional-note { font-size: 11px; color: var(--um-gray-500); margin-top: 8px; }
+        .regional-context { max-width: 700px; margin: 40px auto 0; text-align: center; padding: 20px; background: var(--um-gray-100); border-radius: var(--radius-md); font-size: 14px; color: var(--um-gray-600); line-height: 1.6; }
+        .regional-context strong { color: var(--um-dark-blue); }
+        
+        /* Sectors Grid */
+        .sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .sector-card { background: white; border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); padding: 25px; text-align: center; transition: all 0.3s ease; }
+        .sector-card:hover { border-color: var(--um-light-blue); }
+        .sector-card.highlight { border-color: var(--um-orange); background: linear-gradient(135deg, rgba(232,78,16,0.05) 0%, white 100%); }
+        .sector-icon { width: 45px; height: 45px; background: var(--um-gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+        .sector-icon i, .sector-icon svg { width: 22px; height: 22px; color: var(--um-light-blue); }
+        .sector-card.highlight .sector-icon { background: rgba(232,78,16,0.1); }
+        .sector-card.highlight .sector-icon i, .sector-card.highlight .sector-icon svg { color: var(--um-orange); }
+        .sector-name { font-size: 13px; font-weight: 600; color: var(--um-dark-blue); margin-bottom: 8px; }
+        .sector-percent { font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--um-orange); }
+        .sector-percent.placeholder { color: var(--um-gray-400); }
+        .sectors-note { text-align: center; margin-top: 30px; font-size: 12px; color: var(--um-gray-500); font-style: italic; }
+        
         /* About/Features */
         .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .about-card {
@@ -628,6 +679,9 @@
             .footer-content { grid-template-columns: 1fr 1fr; }
             .world-top-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
             .uni-grid { grid-template-columns: repeat(2, 1fr); }
+            .benchmark-grid { grid-template-columns: 1fr; max-width: 350px; }
+            .regional-grid { grid-template-columns: repeat(2, 1fr); }
+            .sectors-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             header { padding: 12px 20px; }
@@ -642,10 +696,15 @@
             .world-top-stat { font-size: 56px; }
             .uni-grid, .paths-grid { grid-template-columns: 1fr 1fr; }
             .footer-content { grid-template-columns: 1fr; }
+            .regional-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .regional-value { font-size: 26px; }
+            .sectors-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
         }
         @media (max-width: 480px) {
             .world-top-grid { grid-template-columns: repeat(2, 1fr); }
             .uni-grid { grid-template-columns: 1fr; }
+            .regional-grid { grid-template-columns: 1fr; }
+            .sectors-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -661,8 +720,8 @@
         </a>
         <nav class="header-nav">
             <a href="index.html">Alumni Map</a>
-            <a href="#journeys">Journeys</a>
-            <a href="#careers">Careers</a>
+            <a href="countries.html">Countries</a>
+            <a href="universities.html">Universities</a>
             <a id="apply-link" href="#" target="_blank" class="btn-cta">Apply Now</a>
         </nav>
     </header>
@@ -809,6 +868,177 @@
                     <!-- Populated by JS -->
                 </div>
             </div>
+            
+            <!-- Top PhD Institutions (PLACEHOLDER) -->
+            <div class="phd-institutions" id="phd-institutions">
+                <div class="phd-institutions-title">Top PhD Destinations</div>
+                <div class="phd-institutions-grid" id="phd-institutions-grid">
+                    <!-- Will show: "Institution 1: XX", "Institution 2: XX", etc. -->
+                    <!-- PLACEHOLDER - update in data.js with actual institutions -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How MSP Compares (ROA Benchmarks) -->
+    <section class="section alt">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="bar-chart-3"></i>
+                    Proven Outcomes
+                </div>
+                <h2 class="section-title">How MSP Compares</h2>
+                <p class="section-subtitle">Official data from ROA Graduate Survey 2024 shows MSP outperforms university averages</p>
+            </div>
+            
+            <div class="benchmark-grid">
+                <div class="benchmark-card highlight">
+                    <div class="benchmark-label">Master's Continuation Rate</div>
+                    <div class="benchmark-comparison">
+                        <div class="benchmark-msp">
+                            <div class="benchmark-value">91%</div>
+                            <div class="benchmark-tag">MSP</div>
+                        </div>
+                        <div class="benchmark-vs">vs</div>
+                        <div class="benchmark-um">
+                            <div class="benchmark-value">77%</div>
+                            <div class="benchmark-tag">UM Average</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benchmark-card">
+                    <div class="benchmark-label">Programme Satisfaction</div>
+                    <div class="benchmark-comparison">
+                        <div class="benchmark-msp">
+                            <div class="benchmark-value placeholder">XX%</div>
+                            <div class="benchmark-tag">MSP</div>
+                        </div>
+                        <div class="benchmark-vs">vs</div>
+                        <div class="benchmark-um">
+                            <div class="benchmark-value">79%</div>
+                            <div class="benchmark-tag">UM Average</div>
+                        </div>
+                    </div>
+                    <div class="benchmark-placeholder-note">Data coming soon</div>
+                </div>
+                
+                <div class="benchmark-card">
+                    <div class="benchmark-label">Would Choose Same Programme</div>
+                    <div class="benchmark-comparison">
+                        <div class="benchmark-msp">
+                            <div class="benchmark-value placeholder">XX%</div>
+                            <div class="benchmark-tag">MSP</div>
+                        </div>
+                        <div class="benchmark-vs">vs</div>
+                        <div class="benchmark-um">
+                            <div class="benchmark-value">79%</div>
+                            <div class="benchmark-tag">UM Average</div>
+                        </div>
+                    </div>
+                    <div class="benchmark-placeholder-note">Data coming soon</div>
+                </div>
+            </div>
+            
+            <div class="benchmark-source">Source: ROA Graduate Survey 2024 (ROA-F-2024/9E)</div>
+        </div>
+    </section>
+    
+    <!-- Regional Impact -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="map-pin"></i>
+                    Regional Impact
+                </div>
+                <h2 class="section-title">Contributing to the Region</h2>
+                <p class="section-subtitle">MSP attracts international talent and contributes to regional development</p>
+            </div>
+            
+            <div class="regional-grid">
+                <div class="regional-card">
+                    <div class="regional-icon"><i data-lucide="home"></i></div>
+                    <div class="regional-value placeholder">XX%</div>
+                    <div class="regional-label">Stay in Netherlands</div>
+                    <div class="regional-note">Alumni who remain in NL after graduation</div>
+                </div>
+                
+                <div class="regional-card">
+                    <div class="regional-icon"><i data-lucide="target"></i></div>
+                    <div class="regional-value placeholder">XX%</div>
+                    <div class="regional-label">Within 100km of Maastricht</div>
+                    <div class="regional-note">Contributing to the Euregio knowledge economy</div>
+                </div>
+                
+                <div class="regional-card highlight">
+                    <div class="regional-icon"><i data-lucide="globe"></i></div>
+                    <div class="regional-value">87</div>
+                    <div class="regional-label">Nationalities Attracted</div>
+                    <div class="regional-note">A truly global classroom in Limburg</div>
+                </div>
+                
+                <div class="regional-card">
+                    <div class="regional-icon"><i data-lucide="user-plus"></i></div>
+                    <div class="regional-value placeholder">XX</div>
+                    <div class="regional-label">International "Brain Gain"</div>
+                    <div class="regional-note">International students who stayed in NL</div>
+                </div>
+            </div>
+            
+            <div class="regional-context">
+                <p><strong>Why this matters:</strong> As the Euregio positions for major scientific infrastructure like the Einstein Telescope, demonstrating a pipeline of science talent is essential. MSP contributes by attracting and educating the next generation of researchers.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Career Outcomes by Sector -->
+    <section class="section alt">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i data-lucide="briefcase"></i>
+                    Career Sectors
+                </div>
+                <h2 class="section-title">Where Alumni Work</h2>
+                <p class="section-subtitle">MSP graduates build careers across diverse industries</p>
+            </div>
+            
+            <div class="sectors-grid" id="sectors-grid">
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="graduation-cap"></i></div>
+                    <div class="sector-name">Academia & Research</div>
+                    <div class="sector-percent placeholder">XX%</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="heart-pulse"></i></div>
+                    <div class="sector-name">Healthcare & Pharma</div>
+                    <div class="sector-percent placeholder">XX%</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="cpu"></i></div>
+                    <div class="sector-name">Tech & IT</div>
+                    <div class="sector-percent placeholder">XX%</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="trending-up"></i></div>
+                    <div class="sector-name">Finance & Consulting</div>
+                    <div class="sector-percent placeholder">XX%</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="landmark"></i></div>
+                    <div class="sector-name">Government & NGO</div>
+                    <div class="sector-percent placeholder">XX%</div>
+                </div>
+                <div class="sector-card highlight">
+                    <div class="sector-icon"><i data-lucide="lightbulb"></i></div>
+                    <div class="sector-name">Founders & Entrepreneurs</div>
+                    <div class="sector-percent placeholder">XX</div>
+                </div>
+            </div>
+            
+            <div class="sectors-note">Data being collected — check back soon for complete breakdown</div>
         </div>
     </section>
     
@@ -851,19 +1081,21 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="index.html" style="color: white; font-weight: 700; font-size: 16px;">MSP Alumni Network</a>
-                <p id="footer-data-info"></p>
+                <p>Connecting graduates worldwide. Data updated December 2025.</p>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px;">Based on graduation surveys and publicly available professional information. Part of Maastricht University's alumni community.</p>
             </div>
             <div class="footer-section">
                 <h3>Explore</h3>
                 <a href="index.html">Alumni World Map</a>
-                <a href="#journeys">Alumni Journeys</a>
-                <a href="#careers">Career Paths</a>
+                <a href="countries.html">Countries</a>
+                <a href="universities.html">Universities</a>
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-section">
                 <h3>Connect</h3>
                 <a id="footer-linkedin" href="#" target="_blank">LinkedIn Group</a>
                 <a id="footer-instagram" href="#" target="_blank">Instagram</a>
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Update Your Info</a>
             </div>
             <div class="footer-section">
                 <h3>Official Resources</h3>
@@ -873,7 +1105,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2025 Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University
+            © 2025 Maastricht Science Programme · <a href="mailto:msp-alumni@maastrichtuniversity.nl" style="color: rgba(255,255,255,0.5);">Help keep the data accurate →</a>
         </div>
     </footer>
     
@@ -894,10 +1126,12 @@
             // --- Proof Bar ---
             const proofGrid = document.getElementById('proof-grid');
             recruitment.proofStats.forEach(stat => {
+                const displayNumber = typeof stat.number === 'number' ? stat.number.toLocaleString() : stat.number;
                 proofGrid.innerHTML += `
                     <div class="proof-item">
-                        <div class="proof-number ${stat.highlight ? 'highlight' : ''}">${stat.number.toLocaleString()}</div>
+                        <div class="proof-number ${stat.highlight ? 'highlight' : ''}">${displayNumber}</div>
                         <div class="proof-label">${stat.label}</div>
+                        ${stat.subtext ? `<div class="proof-subtext">${stat.subtext}</div>` : ''}
                     </div>
                 `;
             });

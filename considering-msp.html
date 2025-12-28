@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         /* ==========================================
            CSS VARIABLES - UM BRANDING
@@ -405,7 +407,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
             flex-shrink: 0;
         }
         
@@ -413,6 +414,14 @@
             width: 45px;
             height: 45px;
             object-fit: contain;
+        }
+        
+        .dest-logo i,
+        .dest-logo svg {
+            width: 26px;
+            height: 26px;
+            color: var(--um-gray-600);
+            stroke: var(--um-gray-600);
         }
         
         .dest-info {
@@ -503,8 +512,22 @@
         }
         
         .career-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        
+        .career-icon i,
+        .career-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--um-orange);
+            stroke: var(--um-orange);
         }
         
         .career-name {
@@ -563,7 +586,14 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 18px;
-            font-size: 28px;
+        }
+        
+        .feature-icon i,
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+            stroke: white;
         }
         
         .feature-title {
@@ -903,17 +933,17 @@
             </p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon"><i data-lucide="compass"></i></div>
                     <h3 class="feature-title">Design Your Path</h3>
                     <p class="feature-desc">Choose from 100+ courses to create a curriculum matching your interests and career goals</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">👥</div>
+                    <div class="feature-icon"><i data-lucide="users"></i></div>
                     <h3 class="feature-title">Small-Scale Learning</h3>
                     <p class="feature-desc">Tutorial groups of 12-15 students using Problem-Based Learning (PBL)</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
+                    <div class="feature-icon"><i data-lucide="microscope"></i></div>
                     <h3 class="feature-title">Research Experience</h3>
                     <p class="feature-desc">Hands-on lab work and a final thesis project at world-class institutions</p>
                 </div>
@@ -1031,7 +1061,7 @@
             card.className = uni.prestige ? 'dest-card prestige' : 'dest-card';
             card.innerHTML = `
                 <div class="dest-logo">
-                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.parentElement.innerHTML='🎓'">
+                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'; lucide.createIcons();">
                 </div>
                 <div class="dest-info">
                     <div class="dest-name">${uni.name}</div>
@@ -1057,12 +1087,15 @@
             const card = document.createElement('div');
             card.className = 'career-card';
             card.innerHTML = `
-                <div class="career-icon">${field.icon}</div>
+                <div class="career-icon"><i data-lucide="${field.icon}"></i></div>
                 <div class="career-name">${field.name}</div>
                 <div class="career-percent">${field.percent}%</div>
             `;
             careersGrid.appendChild(card);
         });
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
         
         // ==========================================
         // DISCIPLINES

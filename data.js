@@ -298,55 +298,87 @@ const MSP_DATA = {
         ],
         
         // Alumni journey cards - anonymized real outcomes
-        // Format: year, university, outcome (role + company/field), icon
+        // Format: year, university, universityLogo, role, outcome, location, icon, companyLogo
         alumniJourneys: [
             {
                 year: "'14",
-                university: "University of Cambridge",
-                outcome: "Founder & Chair — Battery Technology Startup",
-                icon: "lightbulb"
+                university: "Cambridge",
+                universityLogo: "university-of-cambridge.png",
+                role: "Founder & Chair",
+                outcome: "Battery Technology Startup",
+                location: "United Kingdom",
+                icon: "lightbulb",
+                companyLogo: null // Add company logo later
             },
             {
                 year: "'16",
                 university: "ETH Zürich",
-                outcome: "Deployment Strategist — Palantir Technologies",
-                icon: "brain"
+                universityLogo: "eth-zurich.png",
+                role: "Deployment Strategist",
+                outcome: "Palantir Technologies",
+                location: "United States",
+                icon: "brain",
+                companyLogo: null
             },
             {
                 year: "'16",
-                university: "University of Oxford",
-                outcome: "Postdoctoral Researcher — MIT",
-                icon: "graduation-cap"
+                university: "Oxford",
+                universityLogo: "university-of-oxford.png",
+                role: "Postdoctoral Researcher",
+                outcome: "MIT",
+                location: "United States",
+                icon: "graduation-cap",
+                companyLogo: null
             },
             {
                 year: "'15",
                 university: "Maastricht University",
-                outcome: "AI Researcher — Philips",
-                icon: "cpu"
+                universityLogo: "maastricht-university.png",
+                role: "AI Researcher",
+                outcome: "Philips",
+                location: "Netherlands",
+                icon: "cpu",
+                companyLogo: null
             },
             {
                 year: "'14",
                 university: "Maastricht University",
-                outcome: "Lead Data Engineer — The Ocean Cleanup",
-                icon: "waves"
+                universityLogo: "maastricht-university.png",
+                role: "Lead Data Engineer",
+                outcome: "The Ocean Cleanup",
+                location: "Netherlands",
+                icon: "waves",
+                companyLogo: null
             },
             {
                 year: "'18",
-                university: "University of Cambridge",
-                outcome: "Co-Founder & CTO — Stealth Startup",
-                icon: "rocket"
+                university: "Cambridge",
+                universityLogo: "university-of-cambridge.png",
+                role: "Co-Founder & CTO",
+                outcome: "Stealth Startup",
+                location: "Europe",
+                icon: "rocket",
+                companyLogo: null
             },
             {
                 year: "'15",
                 university: "TU Eindhoven",
-                outcome: "Software Engineer — ASML",
-                icon: "microscope"
+                universityLogo: "eindhoven-university.png",
+                role: "Software Engineer",
+                outcome: "ASML",
+                location: "Netherlands",
+                icon: "microscope",
+                companyLogo: null
             },
             {
                 year: "'15",
                 university: "Utrecht University",
-                outcome: "PhD Candidate — Harvard Medical School",
-                icon: "heart-pulse"
+                universityLogo: "utrecht-university.png",
+                role: "PhD Candidate",
+                outcome: "Harvard Medical School",
+                location: "United States",
+                icon: "heart-pulse",
+                companyLogo: null
             }
         ],
         

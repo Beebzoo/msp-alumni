@@ -58,16 +58,16 @@
            INTERACTIVE SVG WORLD MAP
            ========================================== */
         .world-map-section {
-            background: linear-gradient(180deg, var(--um-off-white) 0%, white 100%);
-            padding: 60px 50px;
+            background: white;
+            padding: 60px 20px 40px;
         }
         .world-map-container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         .world-map-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .world-map-header h3 {
             font-size: 28px;
@@ -81,17 +81,15 @@
         }
         .world-map-wrapper {
             position: relative;
-            background: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 20px;
-            overflow: hidden;
+            background: transparent;
+            padding: 0;
+            overflow: visible;
         }
         #world-map-svg {
             width: 100%;
             height: auto;
             display: block;
-            max-height: 500px;
+            max-height: 700px;
         }
         
         /* Country styling */
@@ -99,8 +97,10 @@
             fill: #e2e8f0;
             stroke: #fff;
             stroke-width: 0.5;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: default;
+            transform-origin: center;
+            transform-box: fill-box;
         }
         #world-map-svg .country.has-data {
             fill: var(--um-light-blue);
@@ -108,63 +108,221 @@
         }
         #world-map-svg .country.has-data:hover {
             fill: var(--um-orange);
-            filter: drop-shadow(0 4px 12px rgba(232,78,16,0.4));
-            transform-origin: center;
+            filter: drop-shadow(0 4px 15px rgba(232,78,16,0.5));
+            transform: scale(1.08);
+            z-index: 10;
         }
         #world-map-svg .country.has-data.top-destination {
-            fill: #0088cc;
+            fill: #0077b6;
         }
         #world-map-svg .country.has-data.top-destination:hover {
             fill: var(--um-orange);
+            transform: scale(1.08);
         }
         #world-map-svg .country.active {
             fill: var(--um-orange);
-            filter: drop-shadow(0 4px 12px rgba(232,78,16,0.5));
+            filter: drop-shadow(0 4px 15px rgba(232,78,16,0.6));
+            transform: scale(1.05);
         }
         
-        /* Tooltip */
+        /* Tooltip - enhanced */
         .map-tooltip {
-            position: absolute;
-            background: var(--um-dark-blue);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 12px;
+            position: fixed;
+            background: white;
+            color: var(--um-dark-blue);
+            padding: 16px 20px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             pointer-events: none;
             opacity: 0;
             visibility: hidden;
             transition: all 0.2s ease;
-            z-index: 100;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
             white-space: nowrap;
+            transform: translateY(5px);
         }
         .map-tooltip.visible {
             opacity: 1;
             visibility: visible;
+            transform: translateY(0);
         }
         .map-tooltip-flag {
-            width: 36px;
-            height: 24px;
-            border-radius: 4px;
+            width: 48px;
+            height: 32px;
+            border-radius: 6px;
             object-fit: cover;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        .map-tooltip-content {
+        .map-tooltip-info {
             display: flex;
             flex-direction: column;
+            gap: 2px;
         }
-        .map-tooltip-country {
+        .map-tooltip-name {
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 2px;
+            font-size: 16px;
+            color: var(--um-dark-blue);
         }
-        .map-tooltip-stat {
+        .map-tooltip-details {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            font-weight: 500;
+        }
+        .map-tooltip-details span {
+            color: var(--um-orange);
+            font-weight: 700;
+        }
+        
+        /* Country Info Card - appears on click */
+        .country-card {
+            position: fixed;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.05);
+            z-index: 1001;
+            width: 340px;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.9) translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .country-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+        .country-card-header {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+        }
+        .country-card-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.2s ease;
+        }
+        .country-card-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+        .country-card-flag {
+            width: 64px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .country-card-title {
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .country-card-body {
+            padding: 24px;
+        }
+        .country-card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .country-card-stat {
+            background: var(--um-off-white);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .country-card-stat-value {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+        .country-card-stat-label {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+        .country-card-top-unis {
+            margin-bottom: 20px;
+        }
+        .country-card-top-unis-title {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .country-card-uni {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--um-gray-200);
+        }
+        .country-card-uni:last-child {
+            border-bottom: none;
+        }
+        .country-card-uni-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            object-fit: contain;
+            background: var(--um-off-white);
+            padding: 4px;
+        }
+        .country-card-uni-name {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        .country-card-uni-count {
             font-size: 13px;
             color: var(--um-orange);
-            font-weight: 600;
+            font-weight: 700;
+        }
+        .country-card-link {
+            display: block;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .country-card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232,78,16,0.4);
+        }
+        .country-card-link i {
+            margin-left: 6px;
         }
         
         /* Legend */
@@ -1360,6 +1518,36 @@
                         <div class="map-tooltip-details" id="tooltip-details"></div>
                     </div>
                 </div>
+                
+                <!-- Country Info Card (appears on click) -->
+                <div class="country-card" id="country-card">
+                    <div class="country-card-header">
+                        <button class="country-card-close" onclick="closeCountryCard()">
+                            <i data-lucide="x"></i>
+                        </button>
+                        <img class="country-card-flag" id="card-flag" src="" alt="">
+                        <div class="country-card-title" id="card-title"></div>
+                    </div>
+                    <div class="country-card-body">
+                        <div class="country-card-stats">
+                            <div class="country-card-stat">
+                                <div class="country-card-stat-value" id="card-alumni">-</div>
+                                <div class="country-card-stat-label">Alumni</div>
+                            </div>
+                            <div class="country-card-stat">
+                                <div class="country-card-stat-value" id="card-unis">-</div>
+                                <div class="country-card-stat-label">Universities</div>
+                            </div>
+                        </div>
+                        <div class="country-card-top-unis">
+                            <div class="country-card-top-unis-title">Top Universities</div>
+                            <div id="card-top-unis"></div>
+                        </div>
+                        <a class="country-card-link" id="card-link" href="#">
+                            View Full Country Profile <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <div class="map-legend">
@@ -1710,6 +1898,7 @@
             const tooltipFlag = document.getElementById('tooltip-flag');
             const tooltipName = document.getElementById('tooltip-name');
             const tooltipDetails = document.getElementById('tooltip-details');
+            const countryCard = document.getElementById('country-card');
             
             // Mark countries that have data and add event listeners
             Object.keys(countryUniData).forEach(code => {
@@ -1728,19 +1917,14 @@
                 path.addEventListener('mouseenter', function(e) {
                     tooltipFlag.src = `https://flagcdn.com/w80/${code}.png`;
                     tooltipName.textContent = data.name;
-                    tooltipDetails.textContent = `${data.count} alumni · ${data.uniCount} universities`;
+                    tooltipDetails.innerHTML = `<span>${data.count}</span> alumni · <span>${data.uniCount}</span> universities`;
                     tooltip.classList.add('visible');
                 });
                 
-                // Mouse move - position tooltip
+                // Mouse move - position tooltip (fixed position)
                 path.addEventListener('mousemove', function(e) {
-                    const rect = svg.parentElement.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    // Position tooltip, keeping it on screen
-                    tooltip.style.left = (x + 15) + 'px';
-                    tooltip.style.top = (y - 30) + 'px';
+                    tooltip.style.left = (e.clientX + 20) + 'px';
+                    tooltip.style.top = (e.clientY - 20) + 'px';
                 });
                 
                 // Mouse leave - hide tooltip
@@ -1748,15 +1932,85 @@
                     tooltip.classList.remove('visible');
                 });
                 
-                // Click - open country modal
-                path.addEventListener('click', function() {
+                // Click - open country card
+                path.addEventListener('click', function(e) {
                     // Remove active class from all
                     document.querySelectorAll('.country.active').forEach(c => c.classList.remove('active'));
                     // Add to clicked
                     path.classList.add('active');
-                    openCountryModal(code);
+                    // Hide tooltip
+                    tooltip.classList.remove('visible');
+                    // Show country card
+                    showCountryCard(code, e.clientX, e.clientY);
                 });
             });
+            
+            // Close card when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.country.has-data') && !e.target.closest('.country-card')) {
+                    closeCountryCard();
+                }
+            });
+        }
+        
+        function showCountryCard(code, x, y) {
+            const data = countryUniData[code];
+            if (!data) return;
+            
+            const card = document.getElementById('country-card');
+            
+            // Populate card
+            document.getElementById('card-flag').src = `https://flagcdn.com/w160/${code}.png`;
+            document.getElementById('card-title').textContent = data.name;
+            document.getElementById('card-alumni').textContent = data.count;
+            document.getElementById('card-unis').textContent = data.uniCount;
+            document.getElementById('card-link').href = `country.html?code=${code}`;
+            
+            // Show top 3 universities
+            const topUnisContainer = document.getElementById('card-top-unis');
+            topUnisContainer.innerHTML = '';
+            
+            const topUnis = data.universities.sort((a, b) => b.count - a.count).slice(0, 3);
+            topUnis.forEach(uni => {
+                const uniEl = document.createElement('div');
+                uniEl.className = 'country-card-uni';
+                uniEl.innerHTML = `
+                    <img class="country-card-uni-logo" src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23ccc%22><path d=%22M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z%22/></svg>'">
+                    <div class="country-card-uni-name">${uni.name}</div>
+                    <div class="country-card-uni-count">${uni.count}</div>
+                `;
+                topUnisContainer.appendChild(uniEl);
+            });
+            
+            // Position card
+            const cardWidth = 340;
+            const cardHeight = 380;
+            const padding = 20;
+            
+            let cardX = x + padding;
+            let cardY = y - cardHeight / 2;
+            
+            // Keep on screen
+            if (cardX + cardWidth > window.innerWidth - padding) {
+                cardX = x - cardWidth - padding;
+            }
+            if (cardY < padding) {
+                cardY = padding;
+            }
+            if (cardY + cardHeight > window.innerHeight - padding) {
+                cardY = window.innerHeight - cardHeight - padding;
+            }
+            
+            card.style.left = cardX + 'px';
+            card.style.top = cardY + 'px';
+            card.classList.add('visible');
+            
+            lucide.createIcons();
+        }
+        
+        function closeCountryCard() {
+            document.getElementById('country-card').classList.remove('visible');
+            document.querySelectorAll('.country.active').forEach(c => c.classList.remove('active'));
         }
         
         function openCountryModal(code) {
@@ -1955,6 +2209,7 @@
             if (e.key === 'Escape') {
                 closeModal();
                 closeCountryModal();
+                closeCountryCard();
             }
         });
         

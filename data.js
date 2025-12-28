@@ -554,16 +554,22 @@ const UNIVERSITY_LOGOS = {
     "UCL": "ucl.png",
     "University of Edinburgh": "university-of-edinburgh.png",
     "University of Birmingham": "university-of-birmingham.png",
+    "King's College London": "kings-college-london.png",
     
     // Switzerland
     "ETH Zürich": "eth-zurich.png",
     "ETH Zurich": "eth-zurich.png",
+    "University of Zurich": "university-of-zurich.png",
+    "University of Basel": "university-of-basel.png",
+    "EPFL": "epfl.png",
+    "University of Geneva": "university-of-geneva.png",
     
     // Belgium
     "KU Leuven": "ku-leuven.png",
     "Ghent University": "ghent-university.png",
     "Université Libre de Bruxelles": "universite-libre-de-bruxelles.png",
     "Vrije Universiteit Brussel": "vrije-universiteit-brussel.jpg",
+    "University of Antwerp": "university-of-antwerp.png",
     
     // Sweden
     "Uppsala University": "uppsala-university.png",
@@ -578,19 +584,75 @@ const UNIVERSITY_LOGOS = {
     "Humboldt University of Berlin": "humboldt-university-of-berlin.png",
     "University of Cologne": "university-of-cologne.png",
     "TU Wien": "tu-wien.png",
+    "Ludwig Maximilian University": "ludwig-maximilian-university.png",
+    "Heidelberg University": "heidelberg-university.png",
+    "University of Freiburg": "university-of-freiburg.png",
     
     // Denmark
     "University of Copenhagen": "university-of-copenhagen.png",
     "Copenhagen Business School": "copenhagen-business-school.png",
     "Technical University of Denmark": "technical-university-of-denmark.png",
     
-    // Other
-    "University of Helsinki": "university-of-helsinki.png",
-    "University College Dublin": "university-college-dublin.png",
+    // France
+    "Sorbonne University": "sorbonne-university.png",
+    "Paris-Saclay University": "paris-saclay-university.png",
+    "Sciences Po Paris": "sciences-po-paris.png",
+    "École Normale Supérieure": "ecole-normale-superieure.png",
+    "Université Grenoble Alpes": "universite-grenoble-alpes.png",
+    
+    // Spain
     "Pompeu Fabra University": "pompeu-fabra-university.jpg",
     "University of Barcelona": "university-of-barcelona.png",
+    "Autonomous University of Barcelona": "autonomous-university-barcelona.png",
+    "Autonomous University of Madrid": "autonomous-university-madrid.png",
+    
+    // Italy
     "University of Bologna": "university-of-bologna.png",
     "University of Pavia": "university-of-pavia.png",
+    "University of Milan": "university-of-milan.png",
+    "Polytechnic University of Milan": "polytechnic-university-milan.png",
+    
+    // Austria
+    "University of Vienna": "university-of-vienna.png",
+    "Medical University of Vienna": "medical-university-vienna.png",
+    
+    // Finland
+    "University of Helsinki": "university-of-helsinki.png",
+    "Aalto University": "aalto-university.png",
+    "University of Turku": "university-of-turku.png",
+    
+    // Ireland
+    "Trinity College Dublin": "trinity-college-dublin.png",
+    "University College Dublin": "university-college-dublin.png",
+    "University College Cork": "university-college-cork.png",
+    
+    // USA
+    "Harvard University": "harvard-university.png",
+    "MIT": "mit.png",
+    "Stanford University": "stanford-university.png",
+    "Columbia University": "columbia-university.png",
+    "UC Berkeley": "uc-berkeley.png",
+    "Yale University": "yale-university.png",
+    
+    // Canada
+    "University of Toronto": "university-of-toronto.png",
+    "McGill University": "mcgill-university.png",
+    "University of British Columbia": "university-of-british-columbia.png",
+    
+    // Australia
+    "University of Sydney": "university-of-sydney.png",
+    "University of Melbourne": "university-of-melbourne.png",
+    "University of Western Australia": "university-of-western-australia.png",
+    
+    // Other European
+    "University of Luxembourg": "university-of-luxembourg.png",
+    "University of Lisbon": "university-of-lisbon.png",
+    "NOVA University Lisbon": "nova-university-lisbon.png",
+    "University of Porto": "university-of-porto.png",
+    "University of Oslo": "university-of-oslo.png",
+    "Norwegian University of Science and Technology": "ntnu.png",
+    "National and Kapodistrian University of Athens": "university-of-athens.png",
+    "Aristotle University of Thessaloniki": "aristotle-university-thessaloniki.png",
     
     // MSP/UM logos (for special use)
     "MSP": "msp-logo.png",
@@ -861,6 +923,13 @@ const COUNTRY_DETAILS = {
             {"name": "Paris", "count": 17},
             {"name": "Grenoble", "count": 2}
         ],
+        "universities": [
+            {"name": "Sorbonne University", "count": 6},
+            {"name": "Paris-Saclay University", "count": 5},
+            {"name": "Sciences Po Paris", "count": 4},
+            {"name": "École Normale Supérieure", "count": 3},
+            {"name": "Université Grenoble Alpes", "count": 2}
+        ],
         "graduationYears": {"2015": 2, "2020": 5, "2021": 2, "2022": 4, "2023": 3, "2024": 6, "2025": 3},
         "gender": {"Female": 17, "Male": 8},
         "nationalities": [
@@ -904,6 +973,14 @@ const COUNTRY_DETAILS = {
             {"name": "San Francisco", "count": 2},
             {"name": "New York", "count": 2}
         ],
+        "universities": [
+            {"name": "Harvard University", "count": 4},
+            {"name": "MIT", "count": 3},
+            {"name": "Stanford University", "count": 3},
+            {"name": "Columbia University", "count": 2},
+            {"name": "UC Berkeley", "count": 2},
+            {"name": "Yale University", "count": 2}
+        ],
         "graduationYears": {"2017": 1, "2018": 1, "2019": 1, "2020": 2, "2021": 1, "2022": 4, "2023": 9, "2024": 3},
         "gender": {"Female": 13, "Male": 9},
         "nationalities": [
@@ -923,6 +1000,11 @@ const COUNTRY_DETAILS = {
         "cities": [
             {"name": "Vienna", "count": 16}
         ],
+        "universities": [
+            {"name": "University of Vienna", "count": 8},
+            {"name": "TU Wien", "count": 5},
+            {"name": "Medical University of Vienna", "count": 3}
+        ],
         "graduationYears": {"2015": 2, "2018": 2, "2020": 2, "2022": 4, "2023": 4, "2024": 4},
         "gender": {"Female": 10, "Male": 8},
         "nationalities": [
@@ -938,6 +1020,11 @@ const COUNTRY_DETAILS = {
         "coords": [64.0, 26.0],
         "cities": [
             {"name": "Helsinki", "count": 16}
+        ],
+        "universities": [
+            {"name": "University of Helsinki", "count": 10},
+            {"name": "Aalto University", "count": 4},
+            {"name": "University of Turku", "count": 2}
         ],
         "graduationYears": {"2014": 1, "2017": 3, "2018": 2, "2020": 1, "2021": 1, "2022": 4, "2023": 1, "2024": 3, "2025": 1},
         "gender": {"Female": 10, "Male": 7},
@@ -955,6 +1042,11 @@ const COUNTRY_DETAILS = {
             {"name": "Dublin", "count": 6},
             {"name": "Cork", "count": 2}
         ],
+        "universities": [
+            {"name": "Trinity College Dublin", "count": 4},
+            {"name": "University College Dublin", "count": 3},
+            {"name": "University College Cork", "count": 2}
+        ],
         "graduationYears": {"2015": 1, "2017": 1, "2020": 3, "2021": 1, "2023": 1, "2024": 1, "2025": 1},
         "gender": {"Female": 7, "Male": 2},
         "nationalities": [
@@ -968,6 +1060,9 @@ const COUNTRY_DETAILS = {
         "coords": [49.8153, 6.1296],
         "cities": [
             {"name": "Luxembourg City", "count": 7}
+        ],
+        "universities": [
+            {"name": "University of Luxembourg", "count": 7}
         ],
         "graduationYears": {"2018": 1, "2020": 4, "2021": 2, "2022": 1, "2023": 1},
         "gender": {"Female": 7, "Male": 2},
@@ -985,6 +1080,11 @@ const COUNTRY_DETAILS = {
             {"name": "Sydney", "count": 2},
             {"name": "Perth", "count": 2}
         ],
+        "universities": [
+            {"name": "University of Sydney", "count": 3},
+            {"name": "University of Melbourne", "count": 2},
+            {"name": "University of Western Australia", "count": 2}
+        ],
         "graduationYears": {"2017": 2, "2021": 3, "2024": 1, "2025": 2},
         "gender": {"Male": 5, "Female": 3},
         "nationalities": [
@@ -998,6 +1098,11 @@ const COUNTRY_DETAILS = {
         "coords": [56.1304, -106.3468],
         "cities": [
             {"name": "Toronto", "count": 4}
+        ],
+        "universities": [
+            {"name": "University of Toronto", "count": 4},
+            {"name": "McGill University", "count": 2},
+            {"name": "University of British Columbia", "count": 2}
         ],
         "graduationYears": {"2014": 1, "2015": 1, "2017": 2, "2018": 1, "2019": 1, "2020": 1, "2025": 1},
         "gender": {"Female": 5, "Male": 3},
@@ -1014,6 +1119,11 @@ const COUNTRY_DETAILS = {
         "cities": [
             {"name": "Lisbon", "count": 4}
         ],
+        "universities": [
+            {"name": "University of Lisbon", "count": 3},
+            {"name": "NOVA University Lisbon", "count": 2},
+            {"name": "University of Porto", "count": 2}
+        ],
         "graduationYears": {"2016": 1, "2020": 1, "2021": 2, "2023": 2, "2025": 1},
         "gender": {"Male": 4, "Female": 3},
         "nationalities": [
@@ -1028,6 +1138,10 @@ const COUNTRY_DETAILS = {
         "coords": [64.0, 10.0],
         "cities": [
             {"name": "Oslo", "count": 4}
+        ],
+        "universities": [
+            {"name": "University of Oslo", "count": 4},
+            {"name": "Norwegian University of Science and Technology", "count": 2}
         ],
         "graduationYears": {"2015": 1, "2018": 1, "2019": 1, "2023": 4},
         "gender": {"Female": 6, "Male": 1},
@@ -1044,6 +1158,10 @@ const COUNTRY_DETAILS = {
         "cities": [
             {"name": "Athens", "count": 3},
             {"name": "Thessaloniki", "count": 2}
+        ],
+        "universities": [
+            {"name": "National and Kapodistrian University of Athens", "count": 3},
+            {"name": "Aristotle University of Thessaloniki", "count": 2}
         ],
         "graduationYears": {"2021": 2, "2022": 1, "2023": 1, "2025": 1},
         "gender": {"Female": 4, "Male": 1},

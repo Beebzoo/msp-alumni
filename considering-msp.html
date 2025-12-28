@@ -390,6 +390,40 @@
             font-weight: 500;
         }
         
+        /* Prestige Banner (QS Top 100) */
+        .prestige-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(232,78,16,0.1) 0%, rgba(0,162,219,0.1) 100%);
+            border: 2px solid var(--um-orange);
+            border-radius: var(--radius-md);
+            padding: 15px 30px;
+            margin-top: 25px;
+        }
+        .prestige-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .prestige-number {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--um-orange);
+        }
+        .prestige-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        .prestige-detail {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            padding-left: 20px;
+            border-left: 1px solid var(--um-gray-300);
+        }
+        
         /* World Top 10 Grid */
         .world-top-grid {
             display: grid;
@@ -766,6 +800,114 @@
         .phd-item-text { font-size: 14px; color: rgba(255,255,255,0.9); }
         .phd-item-text strong { color: white; }
         
+        /* Academic Pipeline */
+        .pipeline-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .pipeline-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            padding: 30px 35px;
+            text-align: center;
+            min-width: 180px;
+            transition: all 0.3s ease;
+        }
+        .pipeline-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-3px);
+        }
+        .pipeline-card.featured {
+            background: rgba(232,78,16,0.2);
+            border-color: var(--um-orange);
+        }
+        .pipeline-number {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+        .pipeline-card.featured .pipeline-number { color: var(--um-orange); }
+        .pipeline-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-top: 8px;
+        }
+        .pipeline-icon {
+            margin-top: 15px;
+        }
+        .pipeline-icon i {
+            width: 24px;
+            height: 24px;
+            color: rgba(255,255,255,0.5);
+        }
+        .pipeline-card.featured .pipeline-icon i { color: var(--um-orange); }
+        .pipeline-desc {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 8px;
+        }
+        .pipeline-arrow {
+            color: rgba(255,255,255,0.3);
+        }
+        .pipeline-arrow i {
+            width: 30px;
+            height: 30px;
+        }
+        .pipeline-total {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+        }
+        .pipeline-total-number {
+            font-family: var(--font-heading);
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--um-orange);
+        }
+        .pipeline-total-label {
+            font-size: 18px;
+            color: white;
+            margin-top: 5px;
+        }
+        .pipeline-total-percent {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 8px;
+        }
+        .phd-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .phd-highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 25px;
+        }
+        .phd-highlight-item i {
+            width: 18px;
+            height: 18px;
+            color: var(--um-orange);
+        }
+        .phd-highlight-item strong { color: white; }
+        
         /* PhD Institutions */
         .phd-institutions { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
         .phd-institutions-title { font-size: 14px; color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
@@ -802,8 +944,93 @@
         .regional-context { max-width: 700px; margin: 40px auto 0; text-align: center; padding: 20px; background: var(--um-gray-100); border-radius: var(--radius-md); font-size: 14px; color: var(--um-gray-600); line-height: 1.6; }
         .regional-context strong { color: var(--um-dark-blue); }
         
+        /* Talent Flow Section (Framework: Brain Gain) */
+        .talent-flow-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0,162,219,0.05) 0%, rgba(232,78,16,0.05) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--um-gray-200);
+        }
+        .talent-flow-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 30px;
+        }
+        .talent-flow-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .talent-flow-card {
+            background: white;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 25px 30px;
+            text-align: center;
+            min-width: 160px;
+            transition: all 0.3s ease;
+        }
+        .talent-flow-card.inbound { border-color: var(--um-light-blue); }
+        .talent-flow-card.retained { border-color: var(--um-orange); }
+        .talent-flow-card.retained.highlight { 
+            background: linear-gradient(135deg, rgba(232,78,16,0.08) 0%, white 100%);
+            box-shadow: 0 4px 20px rgba(232,78,16,0.15);
+        }
+        .talent-flow-card.limburg { border-color: #4CAF50; }
+        .talent-flow-icon {
+            width: 50px; height: 50px;
+            background: var(--um-gray-100);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
+        }
+        .talent-flow-card.inbound .talent-flow-icon { background: rgba(0,162,219,0.1); }
+        .talent-flow-card.inbound .talent-flow-icon i { color: var(--um-light-blue); }
+        .talent-flow-card.retained .talent-flow-icon { background: rgba(232,78,16,0.1); }
+        .talent-flow-card.retained .talent-flow-icon i { color: var(--um-orange); }
+        .talent-flow-card.limburg .talent-flow-icon { background: rgba(76,175,80,0.1); }
+        .talent-flow-card.limburg .talent-flow-icon i { color: #4CAF50; }
+        .talent-flow-icon i { width: 24px; height: 24px; color: var(--um-dark-blue); }
+        .talent-flow-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+        .talent-flow-card.retained .talent-flow-number { color: var(--um-orange); }
+        .talent-flow-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-top: 5px;
+        }
+        .talent-flow-desc {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            margin-top: 5px;
+        }
+        .talent-flow-arrow {
+            color: var(--um-gray-400);
+            font-size: 24px;
+        }
+        .talent-flow-arrow i { width: 30px; height: 30px; }
+        
+        /* Sector detail text */
+        .sector-detail {
+            font-size: 11px;
+            color: var(--um-gray-500);
+            margin-top: 5px;
+        }
+        
         /* Sectors Grid */
-        .sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .sectors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
         .sector-card { background: white; border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); padding: 25px; text-align: center; transition: all 0.3s ease; }
         .sector-card:hover { border-color: var(--um-light-blue); }
         .sector-card.highlight { border-color: var(--um-orange); background: linear-gradient(135deg, rgba(232,78,16,0.05) 0%, white 100%); }
@@ -865,6 +1092,10 @@
             .benchmark-grid { grid-template-columns: 1fr; max-width: 350px; }
             .regional-grid { grid-template-columns: repeat(2, 1fr); }
             .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+            .talent-flow-grid { flex-direction: column; }
+            .talent-flow-arrow { transform: rotate(90deg); }
+            .pipeline-grid { flex-direction: column; }
+            .pipeline-arrow { transform: rotate(90deg); }
         }
         @media (max-width: 768px) {
             header { padding: 12px 20px; }
@@ -881,13 +1112,19 @@
             .footer-content { grid-template-columns: 1fr; }
             .regional-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
             .regional-value { font-size: 26px; }
-            .sectors-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .sectors-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .prestige-banner { flex-direction: column; gap: 10px; text-align: center; }
+            .prestige-detail { border-left: none; padding-left: 0; border-top: 1px solid var(--um-gray-300); padding-top: 10px; }
+            .pipeline-total-number { font-size: 42px; }
+            .phd-highlights { flex-direction: column; gap: 15px; }
         }
         @media (max-width: 480px) {
             .world-top-grid { grid-template-columns: repeat(2, 1fr); }
             .uni-grid { grid-template-columns: 1fr; }
             .regional-grid { grid-template-columns: 1fr; }
             .sectors-grid { grid-template-columns: 1fr; }
+            .talent-flow-card { min-width: 100%; }
+            .pipeline-card { min-width: 100%; }
         }
     </style>
 </head>
@@ -988,6 +1225,15 @@
                 <div class="world-top-stat">8<span>/10</span></div>
                 <div class="world-top-text">MSP alumni studying at the world's top 10 universities</div>
                 
+                <!-- QS Top 100 stat -->
+                <div class="prestige-banner">
+                    <div class="prestige-stat">
+                        <span class="prestige-number">31%</span>
+                        <span class="prestige-label">at QS Top 100</span>
+                    </div>
+                    <div class="prestige-detail">282 alumni at world's top 100 universities</div>
+                </div>
+                
                 <div class="world-top-grid" id="world-top-grid">
                     <!-- Populated by JS -->
                 </div>
@@ -1043,7 +1289,7 @@
             <div style="text-align: center; margin-top: 40px;">
                 <a href="universities.html" class="view-all-unis-btn">
                     <i data-lucide="building-2"></i>
-                    Explore All 235+ Universities
+                    Explore All 220+ Universities
                     <i data-lucide="arrow-right"></i>
                 </a>
             </div>
@@ -1068,26 +1314,74 @@
         </div>
     </section>
     
-    <!-- PhD Pipeline -->
+    <!-- PhD Pipeline & Academic Careers (Framework: PhD tracking) -->
     <section class="section dark">
         <div class="section-container">
-            <div class="phd-content">
-                <div class="phd-stats">
-                    <div class="phd-number" id="phd-number"></div>
-                    <div class="phd-label">PhD Candidates & Holders</div>
-                    <div class="phd-sub" id="phd-percentage"></div>
+            <div class="section-header" style="margin-bottom: 40px;">
+                <div class="section-label">
+                    <i data-lucide="graduation-cap"></i>
+                    Academic Careers
                 </div>
-                <div class="phd-list" id="phd-list">
-                    <!-- Populated by JS -->
+                <h2 class="section-title" style="color: white;">The Academic Pipeline</h2>
+                <p class="section-subtitle">From PhD to Professor — MSP alumni building careers in research</p>
+            </div>
+            
+            <!-- Academic Pipeline Visualization -->
+            <div class="pipeline-grid">
+                <div class="pipeline-card">
+                    <div class="pipeline-number">130</div>
+                    <div class="pipeline-label">PhD Students</div>
+                    <div class="pipeline-icon"><i data-lucide="book-open"></i></div>
+                    <div class="pipeline-desc">Currently pursuing doctorates</div>
+                </div>
+                <div class="pipeline-arrow"><i data-lucide="chevron-right"></i></div>
+                <div class="pipeline-card">
+                    <div class="pipeline-number">9</div>
+                    <div class="pipeline-label">Postdocs</div>
+                    <div class="pipeline-icon"><i data-lucide="flask"></i></div>
+                    <div class="pipeline-desc">Completed postdoctoral research</div>
+                </div>
+                <div class="pipeline-arrow"><i data-lucide="chevron-right"></i></div>
+                <div class="pipeline-card featured">
+                    <div class="pipeline-number">5</div>
+                    <div class="pipeline-label">Faculty</div>
+                    <div class="pipeline-icon"><i data-lucide="award"></i></div>
+                    <div class="pipeline-desc">University professors & lecturers</div>
                 </div>
             </div>
             
-            <!-- Top PhD Institutions (PLACEHOLDER) -->
+            <div class="pipeline-total">
+                <div class="pipeline-total-number">199</div>
+                <div class="pipeline-total-label">Total in Academia</div>
+                <div class="pipeline-total-percent">15% of all MSP alumni pursue academic careers</div>
+            </div>
+            
+            <div class="phd-highlights">
+                <div class="phd-highlight-item">
+                    <i data-lucide="trending-up"></i>
+                    <span>Peak PhD rate: <strong>27%</strong> of 2017-2018 cohorts</span>
+                </div>
+                <div class="phd-highlight-item">
+                    <i data-lucide="globe"></i>
+                    <span>PhD destinations span <strong>15+ countries</strong></span>
+                </div>
+                <div class="phd-highlight-item">
+                    <i data-lucide="microscope"></i>
+                    <span><strong>42</strong> additional research staff positions</span>
+                </div>
+            </div>
+            
+            <!-- Top PhD Institutions -->
             <div class="phd-institutions" id="phd-institutions">
                 <div class="phd-institutions-title">Top PhD Destinations</div>
                 <div class="phd-institutions-grid" id="phd-institutions-grid">
-                    <!-- Will show: "Institution 1: XX", "Institution 2: XX", etc. -->
-                    <!-- PLACEHOLDER - update in data.js with actual institutions -->
+                    <div class="phd-institution">University of Amsterdam (4)</div>
+                    <div class="phd-institution">KU Leuven (3)</div>
+                    <div class="phd-institution">University of Helsinki (2)</div>
+                    <div class="phd-institution">TU Eindhoven (2)</div>
+                    <div class="phd-institution">Nikhef (2)</div>
+                    <div class="phd-institution">University of Sheffield (2)</div>
+                    <div class="phd-institution">UMCG (2)</div>
                 </div>
             </div>
         </div>
@@ -1158,7 +1452,7 @@
         </div>
     </section>
     
-    <!-- Regional Impact -->
+    <!-- Regional Impact & Talent Flow (Framework Section 3.4) -->
     <section class="section">
         <div class="section-container">
             <div class="section-header">
@@ -1173,40 +1467,68 @@
             <div class="regional-grid">
                 <div class="regional-card">
                     <div class="regional-icon"><i data-lucide="home"></i></div>
-                    <div class="regional-value placeholder">XX%</div>
+                    <div class="regional-value">43%</div>
                     <div class="regional-label">Stay in Netherlands</div>
-                    <div class="regional-note">Alumni who remain in NL after graduation</div>
+                    <div class="regional-note">456 alumni remain in NL after graduation</div>
                 </div>
                 
                 <div class="regional-card">
                     <div class="regional-icon"><i data-lucide="target"></i></div>
-                    <div class="regional-value placeholder">XX%</div>
-                    <div class="regional-label">Within 100km of Maastricht</div>
-                    <div class="regional-note">Contributing to the Euregio knowledge economy</div>
+                    <div class="regional-value">17%</div>
+                    <div class="regional-label">In the Euregio</div>
+                    <div class="regional-note">Contributing to the cross-border knowledge economy</div>
                 </div>
                 
                 <div class="regional-card highlight">
                     <div class="regional-icon"><i data-lucide="globe"></i></div>
-                    <div class="regional-value">87</div>
+                    <div class="regional-value">78</div>
                     <div class="regional-label">Nationalities Attracted</div>
                     <div class="regional-note">A truly global classroom in Limburg</div>
                 </div>
                 
                 <div class="regional-card">
                     <div class="regional-icon"><i data-lucide="user-plus"></i></div>
-                    <div class="regional-value placeholder">XX</div>
+                    <div class="regional-value">278</div>
                     <div class="regional-label">International "Brain Gain"</div>
                     <div class="regional-note">International students who stayed in NL</div>
                 </div>
             </div>
             
+            <!-- Talent Flow Visualization (Framework: "Brain gain narrative") -->
+            <div class="talent-flow-section">
+                <h3 class="talent-flow-title">Talent Flow: Where MSP Alumni Go</h3>
+                <div class="talent-flow-grid">
+                    <div class="talent-flow-card inbound">
+                        <div class="talent-flow-icon"><i data-lucide="plane-landing"></i></div>
+                        <div class="talent-flow-number">838</div>
+                        <div class="talent-flow-label">International Students</div>
+                        <div class="talent-flow-desc">Came to Maastricht from abroad</div>
+                    </div>
+                    <div class="talent-flow-arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                    <div class="talent-flow-card retained highlight">
+                        <div class="talent-flow-icon"><i data-lucide="home"></i></div>
+                        <div class="talent-flow-number">278</div>
+                        <div class="talent-flow-label">Stayed in NL</div>
+                        <div class="talent-flow-desc">33% retention = Brain Gain</div>
+                    </div>
+                    <div class="talent-flow-card limburg">
+                        <div class="talent-flow-icon"><i data-lucide="map-pin"></i></div>
+                        <div class="talent-flow-number">122</div>
+                        <div class="talent-flow-label">In Limburg</div>
+                        <div class="talent-flow-desc">Contributing locally</div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="regional-context">
-                <p><strong>Why this matters:</strong> As the Euregio positions for major scientific infrastructure like the Einstein Telescope, demonstrating a pipeline of science talent is essential. MSP contributes by attracting and educating the next generation of researchers.</p>
+                <p><strong>Why this matters:</strong> As the Euregio positions for major scientific infrastructure like the Einstein Telescope, demonstrating a pipeline of science talent is essential. MSP contributes by attracting and educating the next generation of researchers — and many choose to stay.</p>
             </div>
         </div>
     </section>
     
-    <!-- Career Outcomes by Sector -->
+    <!-- Career Outcomes by Sector (Framework Section 4.3) -->
     <section class="section alt">
         <div class="section-container">
             <div class="section-header">
@@ -1215,43 +1537,61 @@
                     Career Sectors
                 </div>
                 <h2 class="section-title">Where Alumni Work</h2>
-                <p class="section-subtitle">MSP graduates build careers across diverse industries</p>
+                <p class="section-subtitle">MSP graduates build careers across diverse industries — based on 654 alumni with career data</p>
             </div>
             
             <div class="sectors-grid" id="sectors-grid">
-                <div class="sector-card">
+                <div class="sector-card highlight">
                     <div class="sector-icon"><i data-lucide="graduation-cap"></i></div>
                     <div class="sector-name">Academia & Research</div>
-                    <div class="sector-percent placeholder">XX%</div>
+                    <div class="sector-percent">30%</div>
+                    <div class="sector-detail">199 alumni</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="flask"></i></div>
+                    <div class="sector-name">Industry R&D & Science</div>
+                    <div class="sector-percent">17%</div>
+                    <div class="sector-detail">108 alumni</div>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon"><i data-lucide="briefcase"></i></div>
+                    <div class="sector-name">Business & Corporate</div>
+                    <div class="sector-percent">13%</div>
+                    <div class="sector-detail">88 alumni</div>
                 </div>
                 <div class="sector-card">
                     <div class="sector-icon"><i data-lucide="heart-pulse"></i></div>
                     <div class="sector-name">Healthcare & Pharma</div>
-                    <div class="sector-percent placeholder">XX%</div>
+                    <div class="sector-percent">10%</div>
+                    <div class="sector-detail">62 alumni</div>
                 </div>
                 <div class="sector-card">
                     <div class="sector-icon"><i data-lucide="cpu"></i></div>
                     <div class="sector-name">Tech & IT</div>
-                    <div class="sector-percent placeholder">XX%</div>
+                    <div class="sector-percent">9%</div>
+                    <div class="sector-detail">61 alumni</div>
                 </div>
                 <div class="sector-card">
                     <div class="sector-icon"><i data-lucide="trending-up"></i></div>
                     <div class="sector-name">Finance & Consulting</div>
-                    <div class="sector-percent placeholder">XX%</div>
+                    <div class="sector-percent">8%</div>
+                    <div class="sector-detail">53 alumni</div>
                 </div>
                 <div class="sector-card">
                     <div class="sector-icon"><i data-lucide="landmark"></i></div>
                     <div class="sector-name">Government & NGO</div>
-                    <div class="sector-percent placeholder">XX%</div>
+                    <div class="sector-percent">2%</div>
+                    <div class="sector-detail">12 alumni</div>
                 </div>
                 <div class="sector-card highlight">
                     <div class="sector-icon"><i data-lucide="lightbulb"></i></div>
                     <div class="sector-name">Founders & Entrepreneurs</div>
-                    <div class="sector-percent placeholder">XX</div>
+                    <div class="sector-percent">15</div>
+                    <div class="sector-detail">startups founded</div>
                 </div>
             </div>
             
-            <div class="sectors-note">Data being collected — check back soon for complete breakdown</div>
+            <div class="sectors-note">Source: MSP Alumni Database, December 2025. Based on alumni with known career outcomes.</div>
         </div>
     </section>
     

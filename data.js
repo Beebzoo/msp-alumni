@@ -413,6 +413,66 @@ const MSP_DATA = {
             { name: "UMCG", count: 2 }
         ],
         
+        // Career paths summary
+        careerPaths: [
+            { title: "Research & Academia", icon: "microscope", count: 199, examples: ["PhD Student", "Postdoc", "Professor"] },
+            { title: "Industry R&D", icon: "flask", count: 108, examples: ["Research Scientist", "Lab Manager", "R&D Engineer"] },
+            { title: "Healthcare", icon: "heart-pulse", count: 62, examples: ["Medical Doctor", "Clinical Researcher", "Pharma"] },
+            { title: "Tech & Data", icon: "cpu", count: 61, examples: ["Software Engineer", "Data Scientist", "AI Researcher"] }
+        ],
+        
+        // PhD stats
+        phdStats: {
+            total: 199,
+            percentage: "15%",
+            phdOnly: 130,
+            highlights: [
+                { icon: "trending-up", text: "<strong>130</strong> currently pursuing PhDs at top institutions worldwide" },
+                { icon: "award", text: "<strong>9</strong> have completed postdoctoral positions" },
+                { icon: "users", text: "<strong>5</strong> are now faculty members at universities" },
+                { icon: "globe", text: "PhD destinations span <strong>15+ countries</strong> across 4 continents" }
+            ]
+        },
+        
+        // Academic pipeline for visualization
+        academicPipeline: [
+            { stage: "PhD Students", count: 130, icon: "book-open" },
+            { stage: "Postdocs", count: 9, icon: "flask" },
+            { stage: "Faculty", count: 5, icon: "award" },
+            { stage: "Research Staff", count: 42, icon: "microscope" }
+        ],
+        
+        // Talent flow data (Framework Section 3.4)
+        talentFlow: {
+            brainGain: 278,           // International students now in NL
+            euregioRetained: 124,     // Euregio students who stayed in NL
+            dutchAbroad: 44,          // Dutch students who went abroad
+            limburgRetained: 122,     // Alumni in Limburg
+            description: "MSP attracts international talent and contributes to regional knowledge economy"
+        },
+        
+        // Prestige stats
+        prestigeStats: {
+            worldTop10: 71,           // Alumni at world top 10 universities
+            qsTop100: 282,            // Alumni at QS top 100
+            qsTop100Percent: "31%"
+        },
+        
+        // Programme features
+        programmeFeatures: [
+            { icon: "palette", title: "Design Your Degree", description: "Choose from 100+ courses across biology, chemistry, physics, math, and neuroscience to create your unique path." },
+            { icon: "users", title: "Small Group Learning", description: "Problem-Based Learning in groups of 12-15 students, guided by expert tutors." },
+            { icon: "globe", title: "International Classroom", description: "Study alongside students from 78 nationalities in an English-taught programme." }
+        ],
+        
+        // Continental distribution
+        continentalDistribution: [
+            { continent: "Europe", count: 998, percent: "93%" },
+            { continent: "Americas", count: 39, percent: "4%" },
+            { continent: "Asia-Pacific", count: 23, percent: "2%" },
+            { continent: "Africa & Middle East", count: 8, percent: "1%" }
+        ],
+        
         // Alumni journey cards - anonymized real outcomes
         alumniJourneys: [
             {

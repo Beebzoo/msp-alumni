@@ -378,6 +378,122 @@ const MSP_DATA = {
                 description: "Hands-on lab practicals and a final thesis project. Many students publish before graduating."
             }
         ]
+    },
+    
+    // ==========================================
+    // SECTION 13: PRIVACY & LEGAL
+    // ==========================================
+    // Based on Framework Section 7 and Appendix A
+    // GDPR compliant, aligned with UM policies
+    
+    privacy: {
+        lastUpdated: "January 2025",
+        
+        // Data Controller
+        dataController: {
+            name: "Maastricht University",
+            faculty: "Faculty of Science and Engineering",
+            programme: "Maastricht Science Programme",
+            address: "P.O. Box 616, 6200 MD Maastricht, The Netherlands"
+        },
+        
+        // Contact emails
+        contacts: {
+            alumni: "msp-alumni@maastrichtuniversity.nl",
+            privacy: "privacy@maastrichtuniversity.nl",
+            dpo: "fg@maastrichtuniversity.nl"
+        },
+        
+        // External links
+        externalLinks: {
+            umPrivacy: "https://www.maastrichtuniversity.nl/privacy",
+            dutchDPA: "https://autoriteitpersoonsgegevens.nl"
+        },
+        
+        // Data categories collected
+        dataCategories: [
+            {
+                category: "From UM Student Records",
+                items: ["Name and contact details (email, phone, address)", "Date of birth and nationality", "Educational information (programme, graduation date)"]
+            },
+            {
+                category: "Provided Directly by Alumni",
+                items: ["Current location", "Career information (employer, job title)", "Post-MSP education (Master's programme, university)", "Communication preferences", "LinkedIn profile (optional)"]
+            },
+            {
+                category: "From Public Sources",
+                items: ["Publicly available LinkedIn professional information (with opt-out option)"]
+            }
+        ],
+        
+        // Processing purposes
+        purposes: [
+            { title: "Alumni Engagement", description: "Maintaining contact, sending newsletters, inviting to events" },
+            { title: "Statistical Analysis", description: "Understanding alumni outcomes to improve MSP and inform prospective students" },
+            { title: "Regional Development", description: "Providing anonymized data on graduate retention for stakeholders" },
+            { title: "Recruitment Support", description: "Sharing aggregate success stories with prospective students" },
+            { title: "Network Facilitation", description: "Enabling alumni-to-alumni connections (with consent)" }
+        ],
+        
+        // Legal bases
+        legalBases: [
+            { basis: "Legitimate Interest", article: "Article 6(1)(f) GDPR", description: "Alumni engagement and institutional research are legitimate interests of Maastricht University. We have conducted a balancing test to ensure your rights are protected." },
+            { basis: "Consent", article: "Article 6(1)(a) GDPR", description: "For optional activities such as featuring your story publicly, participating in mentorship programmes, or joining WhatsApp groups." }
+        ],
+        
+        // Data subject rights
+        rights: [
+            { right: "Access", description: "Request a copy of your personal data", response: "Within 30 days" },
+            { right: "Rectification", description: "Correct inaccurate or incomplete data", response: "Immediately upon verification" },
+            { right: "Erasure", description: "Request deletion of your data (with some exceptions)", response: "Honored unless legal retention required" },
+            { right: "Restriction", description: "Limit how we process your data", response: "Implemented pending resolution" },
+            { right: "Portability", description: "Receive your data in a structured format", response: "CSV/JSON format" },
+            { right: "Object", description: "Object to processing based on legitimate interest", response: "Balanced against legitimate interests" },
+            { right: "Withdraw Consent", description: "Withdraw previously given consent at any time", response: "Processed immediately" }
+        ],
+        
+        // What we share
+        dataSharing: [
+            { recipient: "Maastricht University Central Services", details: "Alumni Office, Marketing & Communications" },
+            { recipient: "Research Partners", details: "Only anonymized/aggregated data for academic research" },
+            { recipient: "Technical Service Providers", details: "Website hosting, email services (EU-based only)" }
+        ],
+        
+        // What we never do
+        neverDo: [
+            "Sell your personal data to anyone",
+            "Share your contact details without your permission",
+            "Display your name, photo, or story publicly without explicit consent",
+            "Send you spam or irrelevant marketing",
+            "Use tracking cookies or share data with advertising networks"
+        ],
+        
+        // Retention periods
+        retention: [
+            { dataType: "Degree Records", period: "30 years minimum", reason: "Public Records Act (Archiefwet)" },
+            { dataType: "Contact Information", period: "Until deletion requested", reason: "Ongoing alumni relationship" },
+            { dataType: "Career Outcome Data", period: "Indefinitely (anonymizable on request)", reason: "Longitudinal research value" },
+            { dataType: "Event Registrations", period: "5 years", reason: "Administrative records" },
+            { dataType: "Survey Responses", period: "Indefinitely (anonymizable on request)", reason: "Research and improvement" },
+            { dataType: "Communication Logs", period: "2 years", reason: "Service quality" },
+            { dataType: "Opt-out Records", period: "Indefinitely", reason: "Legal compliance" }
+        ],
+        
+        // Security measures
+        security: [
+            "Access restricted to authorized MSP staff only",
+            "Secure, encrypted connections (HTTPS)",
+            "EU-based hosting",
+            "Regular security reviews",
+            "Data minimization principles applied"
+        ],
+        
+        // Cookies
+        cookies: {
+            essential: "Required for website functionality",
+            analytics: "Privacy-friendly analytics only — no personal data collected",
+            tracking: "We do NOT use tracking cookies or advertising cookies"
+        }
     }
 };
 

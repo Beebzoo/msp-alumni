@@ -265,7 +265,388 @@ function getGrowthRate() {
     return Math.round(((recent - earlier) / earlier) * 100);
 }
 
+// ==========================================
+// SECTION 12: DETAILED COUNTRY DATA
+// ==========================================
+
+const COUNTRY_DETAILS = {
+    "Netherlands": {
+        "code": "nl",
+        "name": "Netherlands",
+        "count": 445,
+        "coords": [52.1326, 5.2913],
+        "cities": [
+            {"name": "Maastricht", "count": 103},
+            {"name": "Amsterdam", "count": 92},
+            {"name": "Utrecht", "count": 71},
+            {"name": "Leiden", "count": 34},
+            {"name": "Groningen", "count": 18},
+            {"name": "Wageningen", "count": 18},
+            {"name": "Nijmegen", "count": 11},
+            {"name": "Eindhoven", "count": 10}
+        ],
+        "graduationYears": {"2014": 5, "2015": 10, "2016": 22, "2017": 22, "2018": 19, "2019": 24, "2020": 40, "2021": 50, "2022": 52, "2023": 63, "2024": 65, "2025": 73},
+        "gender": {"Female": 265, "Male": 180},
+        "nationalities": [
+            {"name": "Dutch", "code": "nl", "count": 138},
+            {"name": "German", "code": "de", "count": 43},
+            {"name": "Belgian", "code": "be", "count": 34},
+            {"name": "Italian", "code": "it", "count": 26},
+            {"name": "British", "code": "gb", "count": 17},
+            {"name": "Spanish", "code": "es", "count": 17}
+        ]
+    },
+    "Germany": {
+        "code": "de",
+        "name": "Germany",
+        "count": 92,
+        "coords": [51.1657, 10.4515],
+        "cities": [
+            {"name": "Munich", "count": 22},
+            {"name": "Berlin", "count": 20},
+            {"name": "Hamburg", "count": 5},
+            {"name": "Cologne", "count": 4},
+            {"name": "Tübingen", "count": 4},
+            {"name": "Freiburg", "count": 3},
+            {"name": "Frankfurt", "count": 3},
+            {"name": "Heidelberg", "count": 3}
+        ],
+        "graduationYears": {"2014": 4, "2015": 11, "2016": 8, "2017": 4, "2018": 10, "2019": 6, "2020": 4, "2021": 9, "2022": 8, "2023": 13, "2024": 6, "2025": 9},
+        "gender": {"Female": 62, "Male": 30},
+        "nationalities": [
+            {"name": "German", "code": "de", "count": 42},
+            {"name": "Dutch", "code": "nl", "count": 7},
+            {"name": "Belgian", "code": "be", "count": 6},
+            {"name": "Italian", "code": "it", "count": 6},
+            {"name": "Luxembourgish", "code": "lu", "count": 4},
+            {"name": "Romanian", "code": "ro", "count": 3}
+        ]
+    },
+    "United Kingdom": {
+        "code": "gb",
+        "name": "United Kingdom",
+        "count": 81,
+        "coords": [54.5, -2.5],
+        "cities": [
+            {"name": "London", "count": 35},
+            {"name": "Edinburgh", "count": 6},
+            {"name": "Oxford", "count": 6},
+            {"name": "Cambridge", "count": 4},
+            {"name": "Liverpool", "count": 3},
+            {"name": "Glasgow", "count": 3},
+            {"name": "Birmingham", "count": 3}
+        ],
+        "graduationYears": {"2015": 7, "2016": 6, "2017": 7, "2018": 9, "2019": 9, "2020": 7, "2021": 8, "2022": 8, "2023": 6, "2024": 10, "2025": 4},
+        "gender": {"Female": 48, "Male": 33},
+        "nationalities": [
+            {"name": "British", "code": "gb", "count": 26},
+            {"name": "Dutch", "code": "nl", "count": 11},
+            {"name": "German", "code": "de", "count": 10},
+            {"name": "Italian", "code": "it", "count": 8},
+            {"name": "Spanish", "code": "es", "count": 4},
+            {"name": "Belgian", "code": "be", "count": 3}
+        ]
+    },
+    "Belgium": {
+        "code": "be",
+        "name": "Belgium",
+        "count": 68,
+        "coords": [50.5039, 4.4699],
+        "cities": [
+            {"name": "Brussels", "count": 33},
+            {"name": "Leuven", "count": 13},
+            {"name": "Ghent", "count": 4},
+            {"name": "Antwerp", "count": 4},
+            {"name": "Liège", "count": 2}
+        ],
+        "graduationYears": {"2014": 3, "2015": 2, "2016": 5, "2017": 7, "2018": 2, "2019": 6, "2020": 6, "2021": 14, "2022": 5, "2023": 7, "2024": 4, "2025": 7},
+        "gender": {"Female": 36, "Male": 32},
+        "nationalities": [
+            {"name": "Belgian", "code": "be", "count": 28},
+            {"name": "Italian", "code": "it", "count": 6},
+            {"name": "Dutch", "code": "nl", "count": 5},
+            {"name": "German", "code": "de", "count": 4},
+            {"name": "Spanish", "code": "es", "count": 3},
+            {"name": "Luxembourgish", "code": "lu", "count": 3}
+        ]
+    },
+    "Sweden": {
+        "code": "se",
+        "name": "Sweden",
+        "count": 49,
+        "coords": [62.0, 15.0],
+        "cities": [
+            {"name": "Stockholm", "count": 17},
+            {"name": "Uppsala", "count": 17},
+            {"name": "Lund", "count": 8},
+            {"name": "Gothenburg", "count": 2}
+        ],
+        "graduationYears": {"2014": 1, "2016": 1, "2017": 1, "2018": 1, "2019": 2, "2020": 5, "2021": 4, "2022": 9, "2023": 4, "2024": 14, "2025": 7},
+        "gender": {"Female": 27, "Male": 22},
+        "nationalities": [
+            {"name": "German", "code": "de", "count": 11},
+            {"name": "Dutch", "code": "nl", "count": 8},
+            {"name": "Belgian", "code": "be", "count": 6},
+            {"name": "Italian", "code": "it", "count": 4},
+            {"name": "Polish", "code": "pl", "count": 3}
+        ]
+    },
+    "Switzerland": {
+        "code": "ch",
+        "name": "Switzerland",
+        "count": 39,
+        "coords": [46.8182, 8.2275],
+        "cities": [
+            {"name": "Zürich", "count": 21},
+            {"name": "Basel", "count": 4},
+            {"name": "Lausanne", "count": 4},
+            {"name": "Geneva", "count": 2},
+            {"name": "Bern", "count": 2}
+        ],
+        "graduationYears": {"2014": 2, "2015": 1, "2016": 2, "2017": 4, "2019": 5, "2021": 6, "2022": 2, "2023": 1, "2024": 7, "2025": 9},
+        "gender": {"Female": 29, "Male": 10},
+        "nationalities": [
+            {"name": "German", "code": "de", "count": 8},
+            {"name": "Italian", "code": "it", "count": 5},
+            {"name": "Swiss", "code": "ch", "count": 4},
+            {"name": "Belgian", "code": "be", "count": 4},
+            {"name": "French", "code": "fr", "count": 3},
+            {"name": "Dutch", "code": "nl", "count": 3}
+        ]
+    },
+    "Spain": {
+        "code": "es",
+        "name": "Spain",
+        "count": 29,
+        "coords": [40.4637, -3.7492],
+        "cities": [
+            {"name": "Barcelona", "count": 20},
+            {"name": "Madrid", "count": 4}
+        ],
+        "graduationYears": {"2014": 2, "2015": 1, "2017": 5, "2018": 1, "2019": 3, "2020": 3, "2021": 2, "2022": 2, "2023": 2, "2024": 5, "2025": 3},
+        "gender": {"Male": 16, "Female": 13},
+        "nationalities": [
+            {"name": "Spanish", "code": "es", "count": 12},
+            {"name": "Italian", "code": "it", "count": 7},
+            {"name": "German", "code": "de", "count": 2},
+            {"name": "British", "code": "gb", "count": 2}
+        ]
+    },
+    "Italy": {
+        "code": "it",
+        "name": "Italy",
+        "count": 27,
+        "coords": [41.8719, 12.5674],
+        "cities": [
+            {"name": "Milan", "count": 9},
+            {"name": "Genoa", "count": 4},
+            {"name": "Bologna", "count": 4},
+            {"name": "Rome", "count": 2}
+        ],
+        "graduationYears": {"2014": 1, "2016": 2, "2017": 2, "2018": 2, "2019": 2, "2020": 6, "2021": 2, "2022": 4, "2024": 3, "2025": 3},
+        "gender": {"Female": 20, "Male": 7},
+        "nationalities": [
+            {"name": "Italian", "code": "it", "count": 16},
+            {"name": "Dutch", "code": "nl", "count": 2}
+        ]
+    },
+    "France": {
+        "code": "fr",
+        "name": "France",
+        "count": 25,
+        "coords": [46.6, 2.3],
+        "cities": [
+            {"name": "Paris", "count": 17},
+            {"name": "Grenoble", "count": 2}
+        ],
+        "graduationYears": {"2015": 2, "2020": 5, "2021": 2, "2022": 4, "2023": 3, "2024": 6, "2025": 3},
+        "gender": {"Female": 17, "Male": 8},
+        "nationalities": [
+            {"name": "French", "code": "fr", "count": 7},
+            {"name": "Japanese", "code": "jp", "count": 3},
+            {"name": "German", "code": "de", "count": 2},
+            {"name": "Croatian", "code": "hr", "count": 2}
+        ]
+    },
+    "Denmark": {
+        "code": "dk",
+        "name": "Denmark",
+        "count": 22,
+        "coords": [56.0, 10.0],
+        "cities": [
+            {"name": "Copenhagen", "count": 19}
+        ],
+        "graduationYears": {"2016": 1, "2017": 1, "2019": 1, "2020": 4, "2021": 1, "2022": 1, "2023": 6, "2024": 2, "2025": 5},
+        "gender": {"Female": 14, "Male": 8},
+        "nationalities": [
+            {"name": "German", "code": "de", "count": 5},
+            {"name": "Dutch", "code": "nl", "count": 4},
+            {"name": "Belgian", "code": "be", "count": 4},
+            {"name": "Luxembourgish", "code": "lu", "count": 3},
+            {"name": "Danish", "code": "dk", "count": 2},
+            {"name": "Polish", "code": "pl", "count": 2}
+        ]
+    },
+    "United States": {
+        "code": "us",
+        "name": "United States",
+        "count": 22,
+        "coords": [39.8283, -98.5795],
+        "cities": [
+            {"name": "Boston", "count": 5},
+            {"name": "San Francisco", "count": 2},
+            {"name": "New York", "count": 2}
+        ],
+        "graduationYears": {"2017": 1, "2018": 1, "2019": 1, "2020": 2, "2021": 1, "2022": 4, "2023": 9, "2024": 3},
+        "gender": {"Female": 13, "Male": 9},
+        "nationalities": [
+            {"name": "Indian", "code": "in", "count": 3},
+            {"name": "Dutch", "code": "nl", "count": 3},
+            {"name": "American", "code": "us", "count": 3},
+            {"name": "German", "code": "de", "count": 2},
+            {"name": "Polish", "code": "pl", "count": 2},
+            {"name": "Irish", "code": "ie", "count": 2}
+        ]
+    },
+    "Austria": {
+        "code": "at",
+        "name": "Austria",
+        "count": 18,
+        "coords": [47.5162, 14.5501],
+        "cities": [
+            {"name": "Vienna", "count": 16}
+        ],
+        "graduationYears": {"2015": 2, "2018": 2, "2020": 2, "2022": 4, "2023": 4, "2024": 4},
+        "gender": {"Female": 10, "Male": 8},
+        "nationalities": [
+            {"name": "German", "code": "de", "count": 6},
+            {"name": "Turkish", "code": "tr", "count": 3},
+            {"name": "Belgian", "code": "be", "count": 2}
+        ]
+    },
+    "Finland": {
+        "code": "fi",
+        "name": "Finland",
+        "count": 17,
+        "coords": [64.0, 26.0],
+        "cities": [
+            {"name": "Helsinki", "count": 16}
+        ],
+        "graduationYears": {"2014": 1, "2017": 3, "2018": 2, "2020": 1, "2021": 1, "2022": 4, "2023": 1, "2024": 3, "2025": 1},
+        "gender": {"Female": 10, "Male": 7},
+        "nationalities": [
+            {"name": "Finnish", "code": "fi", "count": 7},
+            {"name": "Dutch", "code": "nl", "count": 4}
+        ]
+    },
+    "Ireland": {
+        "code": "ie",
+        "name": "Ireland",
+        "count": 9,
+        "coords": [53.4129, -8.2439],
+        "cities": [
+            {"name": "Dublin", "count": 6},
+            {"name": "Cork", "count": 2}
+        ],
+        "graduationYears": {"2015": 1, "2017": 1, "2020": 3, "2021": 1, "2023": 1, "2024": 1, "2025": 1},
+        "gender": {"Female": 7, "Male": 2},
+        "nationalities": [
+            {"name": "Belgian", "code": "be", "count": 2}
+        ]
+    },
+    "Luxembourg": {
+        "code": "lu",
+        "name": "Luxembourg",
+        "count": 9,
+        "coords": [49.8153, 6.1296],
+        "cities": [
+            {"name": "Luxembourg City", "count": 7}
+        ],
+        "graduationYears": {"2018": 1, "2020": 4, "2021": 2, "2022": 1, "2023": 1},
+        "gender": {"Female": 7, "Male": 2},
+        "nationalities": [
+            {"name": "Luxembourgish", "code": "lu", "count": 4},
+            {"name": "Greek", "code": "gr", "count": 2}
+        ]
+    },
+    "Australia": {
+        "code": "au",
+        "name": "Australia",
+        "count": 8,
+        "coords": [-25.2744, 133.7751],
+        "cities": [
+            {"name": "Sydney", "count": 2},
+            {"name": "Perth", "count": 2}
+        ],
+        "graduationYears": {"2017": 2, "2021": 3, "2024": 1, "2025": 2},
+        "gender": {"Male": 5, "Female": 3},
+        "nationalities": [
+            {"name": "Australian", "code": "au", "count": 2}
+        ]
+    },
+    "Canada": {
+        "code": "ca",
+        "name": "Canada",
+        "count": 8,
+        "coords": [56.1304, -106.3468],
+        "cities": [
+            {"name": "Toronto", "count": 4}
+        ],
+        "graduationYears": {"2014": 1, "2015": 1, "2017": 2, "2018": 1, "2019": 1, "2020": 1, "2025": 1},
+        "gender": {"Female": 5, "Male": 3},
+        "nationalities": [
+            {"name": "Dutch", "code": "nl", "count": 2},
+            {"name": "British", "code": "gb", "count": 2}
+        ]
+    },
+    "Portugal": {
+        "code": "pt",
+        "name": "Portugal",
+        "count": 7,
+        "coords": [39.3999, -8.2245],
+        "cities": [
+            {"name": "Lisbon", "count": 4}
+        ],
+        "graduationYears": {"2016": 1, "2020": 1, "2021": 2, "2023": 2, "2025": 1},
+        "gender": {"Male": 4, "Female": 3},
+        "nationalities": [
+            {"name": "Bulgarian", "code": "bg", "count": 2},
+            {"name": "Belgian", "code": "be", "count": 2}
+        ]
+    },
+    "Norway": {
+        "code": "no",
+        "name": "Norway",
+        "count": 7,
+        "coords": [64.0, 10.0],
+        "cities": [
+            {"name": "Oslo", "count": 4}
+        ],
+        "graduationYears": {"2015": 1, "2018": 1, "2019": 1, "2023": 4},
+        "gender": {"Female": 6, "Male": 1},
+        "nationalities": [
+            {"name": "Dutch", "code": "nl", "count": 2},
+            {"name": "Norwegian", "code": "no", "count": 2}
+        ]
+    },
+    "Greece": {
+        "code": "gr",
+        "name": "Greece",
+        "count": 5,
+        "coords": [39.0742, 21.8243],
+        "cities": [
+            {"name": "Athens", "count": 3},
+            {"name": "Thessaloniki", "count": 2}
+        ],
+        "graduationYears": {"2021": 2, "2022": 1, "2023": 1, "2025": 1},
+        "gender": {"Female": 4, "Male": 1},
+        "nationalities": [
+            {"name": "Greek", "code": "gr", "count": 4}
+        ]
+    }
+};
+
 // Export for use in HTML files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { MSP_DATA, getCountryPercentage, getTotalWithMasters, formatNumber, getGrowthRate };
+    module.exports = { MSP_DATA, COUNTRY_DETAILS, getCountryPercentage, getTotalWithMasters, formatNumber, getGrowthRate };
 }

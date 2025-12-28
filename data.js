@@ -199,6 +199,48 @@ const MSP_DATA = {
     ],
     
     // ==========================================
+    // SECTION 9B: WORLD TOP 10 UNIVERSITIES (QS 2025)
+    // ==========================================
+    // MSP alumni presence at world's top-ranked universities
+    
+    worldTop10: [
+        { rank: 1, name: "MIT", fullName: "Massachusetts Institute of Technology", country: "United States", code: "us", mspAlumni: 3, logo: "mit.png" },
+        { rank: 2, name: "Imperial College London", fullName: "Imperial College London", country: "United Kingdom", code: "gb", mspAlumni: 19, logo: "imperial-college-london.png" },
+        { rank: 3, name: "University of Oxford", fullName: "University of Oxford", country: "United Kingdom", code: "gb", mspAlumni: 6, logo: "university-of-oxford.png" },
+        { rank: 4, name: "Harvard University", fullName: "Harvard University", country: "United States", code: "us", mspAlumni: 4, logo: "harvard-university.png" },
+        { rank: 5, name: "University of Cambridge", fullName: "University of Cambridge", country: "United Kingdom", code: "gb", mspAlumni: 8, logo: "university-of-cambridge.png" },
+        { rank: 6, name: "Stanford University", fullName: "Stanford University", country: "United States", code: "us", mspAlumni: 3, logo: "stanford-university.png" },
+        { rank: 7, name: "ETH Zürich", fullName: "ETH Zürich", country: "Switzerland", code: "ch", mspAlumni: 12, logo: "eth-zurich.png" },
+        { rank: 8, name: "NUS", fullName: "National University of Singapore", country: "Singapore", code: "sg", mspAlumni: 0, logo: "nus.png" },
+        { rank: 9, name: "UCL", fullName: "University College London", country: "United Kingdom", code: "gb", mspAlumni: 12, logo: "ucl.png" },
+        { rank: 10, name: "Caltech", fullName: "California Institute of Technology", country: "United States", code: "us", mspAlumni: 0, logo: "caltech.png" }
+    ],
+    
+    // Top Dutch Universities (with rankings)
+    topDutchUniversities: [
+        { name: "Maastricht University", rank: 121, mspAlumni: 121, logo: "maastricht-university.png", highlight: "Where it all starts" },
+        { name: "Utrecht University", rank: 107, mspAlumni: 92, logo: "utrecht-university.png" },
+        { name: "University of Amsterdam", rank: 53, mspAlumni: 66, logo: "university-of-amsterdam.png" },
+        { name: "Leiden University", rank: 126, mspAlumni: 41, logo: "leiden-university.png" },
+        { name: "Wageningen University", rank: 81, mspAlumni: 37, logo: "wageningen-university.png", highlight: "#1 in Agriculture" },
+        { name: "Radboud University", rank: 127, mspAlumni: 36, logo: "radboud-university.png" },
+        { name: "University of Groningen", rank: 139, mspAlumni: 23, logo: "university-of-groningen.png" },
+        { name: "TU Delft", rank: 47, mspAlumni: 17, logo: "tu-delft.png", highlight: "Top 50 globally" }
+    ],
+    
+    // Top International Universities (non-Netherlands)
+    topInternationalUniversities: [
+        { name: "Imperial College London", country: "United Kingdom", code: "gb", rank: 2, mspAlumni: 19, logo: "imperial-college-london.png" },
+        { name: "Uppsala University", country: "Sweden", code: "se", rank: 105, mspAlumni: 18, logo: "uppsala-university.png" },
+        { name: "KU Leuven", country: "Belgium", code: "be", rank: 61, mspAlumni: 21, logo: "ku-leuven.png" },
+        { name: "ETH Zürich", country: "Switzerland", code: "ch", rank: 7, mspAlumni: 12, logo: "eth-zurich.png" },
+        { name: "UCL", country: "United Kingdom", code: "gb", rank: 9, mspAlumni: 12, logo: "ucl.png" },
+        { name: "University of Copenhagen", country: "Denmark", code: "dk", rank: 96, mspAlumni: 12, logo: "university-of-copenhagen.png" },
+        { name: "Lund University", country: "Sweden", code: "se", rank: 75, mspAlumni: 10, logo: "lund-university.png" },
+        { name: "University of Cambridge", country: "United Kingdom", code: "gb", rank: 5, mspAlumni: 8, logo: "university-of-cambridge.png" }
+    ],
+    
+    // ==========================================
     // SECTION 10: MSP PROGRAMME INFO
     // ==========================================
     

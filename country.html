@@ -94,17 +94,9 @@
             text-decoration: none;
         }
         
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--um-dark-blue);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
+        .logo-img {
+            height: 40px;
+            width: auto;
         }
         
         .logo-text {
@@ -123,6 +115,107 @@
         
         .back-link:hover {
             color: var(--um-dark-blue);
+        }
+        
+        /* ==========================================
+           UNIVERSITY CARDS
+        ========================================== */
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .university-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .university-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+        
+        .university-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        .university-logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--um-dark-blue), var(--um-light-blue));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .university-logo-placeholder i,
+        .university-logo-placeholder svg {
+            color: white;
+            width: 28px;
+            height: 28px;
+        }
+        
+        .university-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .university-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .university-count {
+            font-size: 14px;
+            color: var(--um-gray-600);
+        }
+        
+        .university-count strong {
+            color: var(--um-orange);
+            font-weight: 700;
+        }
+        
+        /* Featured/Prestige university styling */
+        .university-card.featured {
+            border-color: var(--um-orange);
+            background: linear-gradient(135deg, #fff9f5 0%, white 100%);
+        }
+        
+        .university-card.featured .university-name {
+            color: var(--um-orange);
+        }
+        
+        @media (max-width: 600px) {
+            .universities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .university-card {
+                padding: 16px;
+            }
+            
+            .university-logo,
+            .university-logo-placeholder {
+                width: 50px;
+                height: 50px;
+            }
         }
         
         /* ==========================================
@@ -618,7 +711,7 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-            <div class="logo-icon">MSP</div>
+            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img">
             <span class="logo-text">Alumni Network</span>
         </a>
         <a href="index.html" class="back-link">
@@ -723,6 +816,42 @@
                 </div>
             `).join('');
             
+            // Build universities HTML (if data exists)
+            let universitiesHTML = '';
+            if (countryData.universities && countryData.universities.length > 0) {
+                const uniCards = countryData.universities.map(uni => {
+                    const logo = UNIVERSITY_LOGOS[uni.name];
+                    const logoHTML = logo 
+                        ? `<img src="assets/logos/${logo}" alt="${uni.name}" class="university-logo" onerror="this.parentElement.innerHTML='<div class=\\'university-logo-placeholder\\'><i data-lucide=\\'graduation-cap\\'></i></div>'">`
+                        : `<div class="university-logo-placeholder"><i data-lucide="graduation-cap"></i></div>`;
+                    
+                    return `
+                        <div class="university-card">
+                            ${logoHTML}
+                            <div class="university-info">
+                                <div class="university-name">${uni.name}</div>
+                                <div class="university-count"><strong>${uni.count}</strong> MSP alumni</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                universitiesHTML = `
+                    <section class="content-section">
+                        <div class="section-container">
+                            <h2 class="section-title">
+                                <span class="section-title-icon"><i data-lucide="school"></i></span>
+                                Master's Destinations in ${countryData.name}
+                            </h2>
+                            <p style="color: var(--um-gray-600); margin-bottom: 20px;">
+                                Universities where MSP alumni pursued their Master's degrees
+                            </p>
+                            <div class="universities-grid">${uniCards}</div>
+                        </div>
+                    </section>
+                `;
+            }
+            
             // Build country facts HTML from API
             let factsHTML = '';
             if (countryFacts) {
@@ -812,6 +941,9 @@
                 
                 <!-- Country Facts from API -->
                 ${factsHTML}
+                
+                <!-- Master's Universities Section -->
+                ${universitiesHTML}
                 
                 <!-- Cities Section -->
                 <section class="content-section${factsHTML ? '' : ' alt'}">

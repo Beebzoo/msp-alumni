@@ -54,6 +54,413 @@
         a { color: var(--um-light-blue); text-decoration: none; transition: color 0.2s ease; }
         a:hover { color: var(--um-orange); }
         
+        /* ==========================================
+           INTERACTIVE WORLD MAP
+           ========================================== */
+        .world-map-section {
+            background: linear-gradient(180deg, var(--um-off-white) 0%, white 100%);
+            padding: 60px 50px;
+        }
+        .world-map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .world-map-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .world-map-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+        .world-map-header p {
+            font-size: 16px;
+            color: var(--um-gray-600);
+        }
+        .world-map-wrapper {
+            position: relative;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            overflow: hidden;
+        }
+        #world-map-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        #world-map-svg .country {
+            fill: var(--um-gray-200);
+            stroke: white;
+            stroke-width: 0.5;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        #world-map-svg .country.has-data {
+            fill: var(--um-light-blue);
+            cursor: pointer;
+        }
+        #world-map-svg .country.has-data:hover {
+            fill: var(--um-orange);
+            transform: scale(1.02);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        #world-map-svg .country.has-data.top-country {
+            fill: #0090c4;
+        }
+        #world-map-svg .country.has-data.top-country:hover {
+            fill: var(--um-orange);
+        }
+        
+        /* Map Tooltip */
+        .map-tooltip {
+            position: absolute;
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 100;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .map-tooltip.visible {
+            opacity: 1;
+        }
+        .map-tooltip-country {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .map-tooltip-stat {
+            color: var(--um-orange);
+            font-weight: 600;
+        }
+        .map-tooltip-hint {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+        
+        /* Map Legend */
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--um-gray-600);
+        }
+        .map-legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+        }
+        .map-legend-dot.top { background: #0090c4; }
+        .map-legend-dot.has-data { background: var(--um-light-blue); }
+        .map-legend-dot.no-data { background: var(--um-gray-200); }
+        
+        /* Country Modal */
+        .country-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,28,61,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .country-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .country-modal {
+            background: white;
+            border-radius: var(--radius-lg);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .country-modal-overlay.open .country-modal {
+            transform: translateY(0);
+        }
+        .country-modal-header {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
+            padding: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .country-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .country-modal-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .country-modal-close i, .country-modal-close svg {
+            width: 20px;
+            height: 20px;
+        }
+        .country-modal-flag {
+            width: 80px;
+            height: 55px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+        .country-modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .country-modal-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .country-modal-stat {
+            text-align: center;
+        }
+        .country-modal-stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--um-orange);
+        }
+        .country-modal-stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .country-modal-body {
+            padding: 30px;
+        }
+        .country-modal-unis-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .country-modal-unis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .country-modal-uni {
+            background: var(--um-off-white);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .country-modal-uni:hover {
+            background: var(--um-gray-100);
+            transform: translateY(-2px);
+        }
+        .country-modal-uni-logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            padding: 8px;
+        }
+        .country-modal-uni-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .country-modal-uni-logo i, .country-modal-uni-logo svg {
+            width: 24px;
+            height: 24px;
+            color: var(--um-gray-600);
+        }
+        .country-modal-uni-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .country-modal-uni-count {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--um-orange);
+        }
+        .country-modal-uni-count span {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--um-gray-600);
+        }
+        .country-modal-footer {
+            padding: 20px 30px;
+            background: var(--um-off-white);
+            text-align: center;
+            border-top: 1px solid var(--um-gray-200);
+        }
+        .country-modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--um-light-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .country-modal-link:hover {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        .country-modal-link i, .country-modal-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* ==========================================
+           COLLAPSIBLE SECTIONS
+           ========================================== */
+        .collapsible-section {
+            margin-bottom: 20px;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: white;
+        }
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        .collapsible-header:hover {
+            background: var(--um-off-white);
+        }
+        .collapsible-header.active {
+            background: var(--um-off-white);
+            border-bottom: 1px solid var(--um-gray-200);
+        }
+        .collapsible-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .collapsible-header h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+        }
+        .collapsible-header h3 .flag {
+            width: 32px;
+            height: 24px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .collapsible-header p {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            margin: 4px 0 0 0;
+        }
+        .collapsible-header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .collapsible-count {
+            background: var(--um-light-blue);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+        .collapsible-arrow {
+            width: 36px;
+            height: 36px;
+            background: var(--um-gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .collapsible-arrow i, .collapsible-arrow svg {
+            width: 20px;
+            height: 20px;
+            color: var(--um-gray-600);
+            transition: transform 0.3s ease;
+        }
+        .collapsible-header.active .collapsible-arrow {
+            background: var(--um-light-blue);
+        }
+        .collapsible-header.active .collapsible-arrow i,
+        .collapsible-header.active .collapsible-arrow svg {
+            color: white;
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .collapsible-content.open {
+            max-height: 2000px;
+        }
+        .collapsible-content-inner {
+            padding: 30px;
+        }
+        
         /* Header */
         header {
             background: var(--um-white);
@@ -697,52 +1104,277 @@
         </div>
     </section>
     
-    <!-- Main Content -->
+    <!-- Interactive World Map -->
+    <section class="world-map-section">
+        <div class="world-map-container">
+            <div class="world-map-header">
+                <h3>🗺️ Explore by Country</h3>
+                <p>Click any highlighted country to see universities where MSP alumni study</p>
+            </div>
+            <div class="world-map-wrapper">
+                <svg id="world-map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+                    <!-- Simplified World Map SVG - Main regions -->
+                    <!-- North America -->
+                    <path class="country" id="map-us" d="M180,120 L280,120 L290,140 L280,180 L250,200 L200,200 L160,180 L150,150 Z" data-name="United States" data-code="us"/>
+                    <path class="country" id="map-ca" d="M150,60 L300,60 L310,100 L280,120 L180,120 L140,100 Z" data-name="Canada" data-code="ca"/>
+                    <path class="country" id="map-mx" d="M160,200 L200,200 L210,240 L180,260 L150,240 Z" data-name="Mexico" data-code="mx"/>
+                    
+                    <!-- South America -->
+                    <path class="country" id="map-br" d="M280,280 L340,260 L360,300 L340,380 L280,380 L260,320 Z" data-name="Brazil" data-code="br"/>
+                    <path class="country" id="map-ar" d="M260,380 L300,380 L290,450 L260,450 Z" data-name="Argentina" data-code="ar"/>
+                    <path class="country" id="map-cl" d="M250,380 L260,380 L260,450 L250,450 Z" data-name="Chile" data-code="cl"/>
+                    <path class="country" id="map-co" d="M240,260 L280,260 L280,300 L260,320 L240,300 Z" data-name="Colombia" data-code="co"/>
+                    
+                    <!-- Europe (larger, more detailed) -->
+                    <path class="country" id="map-gb" d="M445,115 L460,105 L465,120 L455,140 L445,135 Z" data-name="United Kingdom" data-code="gb"/>
+                    <path class="country" id="map-ie" d="M430,120 L445,115 L445,135 L435,135 Z" data-name="Ireland" data-code="ie"/>
+                    <path class="country" id="map-fr" d="M455,145 L490,140 L495,175 L470,185 L450,175 Z" data-name="France" data-code="fr"/>
+                    <path class="country" id="map-es" d="M440,175 L470,175 L475,205 L445,210 L435,195 Z" data-name="Spain" data-code="es"/>
+                    <path class="country" id="map-pt" d="M425,180 L440,175 L445,210 L430,210 Z" data-name="Portugal" data-code="pt"/>
+                    <path class="country" id="map-de" d="M490,125 L520,120 L525,155 L495,160 L485,145 Z" data-name="Germany" data-code="de"/>
+                    <path class="country" id="map-nl" d="M478,118 L492,115 L495,130 L482,132 Z" data-name="Netherlands" data-code="nl"/>
+                    <path class="country" id="map-be" d="M470,132 L485,130 L488,145 L472,147 Z" data-name="Belgium" data-code="be"/>
+                    <path class="country" id="map-ch" d="M485,155 L505,152 L508,168 L488,170 Z" data-name="Switzerland" data-code="ch"/>
+                    <path class="country" id="map-at" d="M505,150 L535,148 L538,165 L508,168 Z" data-name="Austria" data-code="at"/>
+                    <path class="country" id="map-it" d="M495,170 L520,165 L530,210 L510,220 L495,195 Z" data-name="Italy" data-code="it"/>
+                    <path class="country" id="map-pl" d="M520,115 L560,110 L565,145 L525,150 Z" data-name="Poland" data-code="pl"/>
+                    <path class="country" id="map-cz" d="M510,140 L535,138 L538,155 L512,158 Z" data-name="Czech Republic" data-code="cz"/>
+                    <path class="country" id="map-se" d="M505,60 L525,55 L535,110 L515,115 Z" data-name="Sweden" data-code="se"/>
+                    <path class="country" id="map-no" d="M485,50 L510,45 L515,100 L495,105 Z" data-name="Norway" data-code="no"/>
+                    <path class="country" id="map-dk" d="M492,105 L508,102 L510,118 L494,120 Z" data-name="Denmark" data-code="dk"/>
+                    <path class="country" id="map-fi" d="M535,50 L560,45 L570,100 L545,105 Z" data-name="Finland" data-code="fi"/>
+                    <path class="country" id="map-hu" d="M535,155 L560,152 L563,170 L538,173 Z" data-name="Hungary" data-code="hu"/>
+                    <path class="country" id="map-gr" d="M545,190 L565,185 L570,215 L550,220 Z" data-name="Greece" data-code="gr"/>
+                    <path class="country" id="map-ro" d="M560,160 L590,155 L595,180 L565,185 Z" data-name="Romania" data-code="ro"/>
+                    
+                    <!-- Russia -->
+                    <path class="country" id="map-ru" d="M570,60 L850,40 L870,150 L600,160 L580,100 Z" data-name="Russia" data-code="ru"/>
+                    
+                    <!-- Middle East -->
+                    <path class="country" id="map-tr" d="M570,175 L620,170 L630,195 L575,200 Z" data-name="Turkey" data-code="tr"/>
+                    <path class="country" id="map-il" d="M585,210 L595,208 L598,230 L588,232 Z" data-name="Israel" data-code="il"/>
+                    <path class="country" id="map-ae" d="M640,230 L660,225 L665,245 L645,248 Z" data-name="UAE" data-code="ae"/>
+                    
+                    <!-- Africa -->
+                    <path class="country" id="map-za" d="M540,380 L590,370 L600,420 L550,430 Z" data-name="South Africa" data-code="za"/>
+                    <path class="country" id="map-eg" d="M560,220 L590,215 L595,260 L565,265 Z" data-name="Egypt" data-code="eg"/>
+                    <path class="country" id="map-ma" d="M430,210 L460,205 L465,240 L435,245 Z" data-name="Morocco" data-code="ma"/>
+                    <path class="country" id="map-ke" d="M590,300 L615,295 L620,330 L595,335 Z" data-name="Kenya" data-code="ke"/>
+                    
+                    <!-- Asia -->
+                    <path class="country" id="map-cn" d="M720,140 L820,130 L840,220 L750,240 L710,200 Z" data-name="China" data-code="cn"/>
+                    <path class="country" id="map-jp" d="M860,160 L880,155 L885,200 L865,205 Z" data-name="Japan" data-code="jp"/>
+                    <path class="country" id="map-kr" d="M845,175 L860,172 L862,195 L847,198 Z" data-name="South Korea" data-code="kr"/>
+                    <path class="country" id="map-in" d="M680,210 L740,200 L750,280 L700,300 L670,260 Z" data-name="India" data-code="in"/>
+                    <path class="country" id="map-sg" d="M770,295 L785,293 L787,305 L772,307 Z" data-name="Singapore" data-code="sg"/>
+                    <path class="country" id="map-th" d="M760,250 L780,245 L785,285 L765,290 Z" data-name="Thailand" data-code="th"/>
+                    <path class="country" id="map-my" d="M765,290 L795,285 L800,310 L770,315 Z" data-name="Malaysia" data-code="my"/>
+                    <path class="country" id="map-id" d="M770,320 L850,310 L860,350 L780,360 Z" data-name="Indonesia" data-code="id"/>
+                    <path class="country" id="map-hk" d="M810,220 L825,218 L827,232 L812,234 Z" data-name="Hong Kong" data-code="hk"/>
+                    <path class="country" id="map-tw" d="M835,215 L848,212 L850,235 L837,238 Z" data-name="Taiwan" data-code="tw"/>
+                    
+                    <!-- Oceania -->
+                    <path class="country" id="map-au" d="M800,360 L900,340 L920,420 L820,440 Z" data-name="Australia" data-code="au"/>
+                    <path class="country" id="map-nz" d="M940,420 L960,415 L965,450 L945,455 Z" data-name="New Zealand" data-code="nz"/>
+                </svg>
+                
+                <!-- Tooltip -->
+                <div class="map-tooltip" id="map-tooltip">
+                    <div class="map-tooltip-country" id="tooltip-country"></div>
+                    <div class="map-tooltip-stat" id="tooltip-stat"></div>
+                    <div class="map-tooltip-hint">Click to explore</div>
+                </div>
+            </div>
+            
+            <div class="map-legend">
+                <div class="map-legend-item">
+                    <div class="map-legend-dot top"></div>
+                    <span>Top destination (20+ alumni)</span>
+                </div>
+                <div class="map-legend-item">
+                    <div class="map-legend-dot has-data"></div>
+                    <span>MSP alumni present</span>
+                </div>
+                <div class="map-legend-item">
+                    <div class="map-legend-dot no-data"></div>
+                    <span>No data</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Country Modal -->
+    <div class="country-modal-overlay" id="country-modal">
+        <div class="country-modal">
+            <div class="country-modal-header">
+                <button class="country-modal-close" onclick="closeCountryModal()">
+                    <i data-lucide="x"></i>
+                </button>
+                <img class="country-modal-flag" id="country-modal-flag" src="" alt="">
+                <h2 class="country-modal-title" id="country-modal-title"></h2>
+                <div class="country-modal-stats">
+                    <div class="country-modal-stat">
+                        <div class="country-modal-stat-value" id="country-modal-alumni">-</div>
+                        <div class="country-modal-stat-label">Alumni</div>
+                    </div>
+                    <div class="country-modal-stat">
+                        <div class="country-modal-stat-value" id="country-modal-unis">-</div>
+                        <div class="country-modal-stat-label">Universities</div>
+                    </div>
+                </div>
+            </div>
+            <div class="country-modal-body">
+                <div class="country-modal-unis-title">Universities in this country</div>
+                <div class="country-modal-unis-grid" id="country-modal-unis"></div>
+            </div>
+            <div class="country-modal-footer">
+                <a class="country-modal-link" id="country-modal-link" href="#">
+                    View Full Country Profile
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content - Collapsible Sections -->
     <main class="main-content">
         <!-- World Top Universities -->
-        <section id="prestige-section">
-            <div class="section-header">
-                <h3>⭐ World-Leading Universities</h3>
-                <p>MSP alumni at the most prestigious institutions globally <span class="section-count" id="prestige-count"></span></p>
+        <div class="collapsible-section" id="prestige-section">
+            <div class="collapsible-header" onclick="toggleSection('prestige')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3>⭐ World-Leading Universities</h3>
+                        <p>MSP alumni at the most prestigious institutions globally</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="prestige-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
             </div>
-            <div class="uni-grid" id="prestige-grid"></div>
-        </section>
+            <div class="collapsible-content" id="prestige-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="prestige-grid"></div>
+                </div>
+            </div>
+        </div>
         
         <!-- Dutch Universities -->
-        <section id="nl-section">
-            <div class="section-header">
-                <h3><img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="flag"> Dutch Universities</h3>
-                <p>Where most MSP alumni pursue their Master's <span class="section-count" id="nl-count"></span></p>
+        <div class="collapsible-section" id="nl-section">
+            <div class="collapsible-header" onclick="toggleSection('nl')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3><img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="flag"> Dutch Universities</h3>
+                        <p>Where most MSP alumni pursue their Master's</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="nl-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
             </div>
-            <div class="uni-grid" id="nl-grid"></div>
-        </section>
+            <div class="collapsible-content" id="nl-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="nl-grid"></div>
+                </div>
+            </div>
+        </div>
         
         <!-- UK Universities -->
-        <section id="gb-section">
-            <div class="section-header">
-                <h3><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag"> United Kingdom</h3>
-                <p>A popular destination with world-class institutions <span class="section-count" id="gb-count"></span></p>
+        <div class="collapsible-section" id="gb-section">
+            <div class="collapsible-header" onclick="toggleSection('gb')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag"> United Kingdom</h3>
+                        <p>A popular destination with world-class institutions</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="gb-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
             </div>
-            <div class="uni-grid" id="gb-grid"></div>
-        </section>
+            <div class="collapsible-content" id="gb-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="gb-grid"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- German Universities -->
+        <div class="collapsible-section" id="de-section">
+            <div class="collapsible-header" onclick="toggleSection('de')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3><img src="https://flagcdn.com/w40/de.png" alt="Germany" class="flag"> Germany</h3>
+                        <p>Strong research universities and technical institutions</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="de-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="collapsible-content" id="de-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="de-grid"></div>
+                </div>
+            </div>
+        </div>
         
         <!-- Swedish Universities -->
-        <section id="se-section">
-            <div class="section-header">
-                <h3><img src="https://flagcdn.com/w40/se.png" alt="Sweden" class="flag"> Sweden</h3>
-                <p>Top-ranked Scandinavian research universities <span class="section-count" id="se-count"></span></p>
+        <div class="collapsible-section" id="se-section">
+            <div class="collapsible-header" onclick="toggleSection('se')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3><img src="https://flagcdn.com/w40/se.png" alt="Sweden" class="flag"> Sweden</h3>
+                        <p>Top-ranked Scandinavian research universities</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="se-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
             </div>
-            <div class="uni-grid" id="se-grid"></div>
-        </section>
+            <div class="collapsible-content" id="se-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="se-grid"></div>
+                </div>
+            </div>
+        </div>
         
         <!-- Other Universities -->
-        <section id="other-section">
-            <div class="section-header">
-                <h3>🌍 Other Countries</h3>
-                <p>MSP alumni across Europe and beyond <span class="section-count" id="other-count"></span></p>
+        <div class="collapsible-section" id="other-section">
+            <div class="collapsible-header" onclick="toggleSection('other')">
+                <div class="collapsible-header-left">
+                    <div>
+                        <h3>🌍 Other Countries</h3>
+                        <p>MSP alumni across Europe and beyond</p>
+                    </div>
+                </div>
+                <div class="collapsible-header-right">
+                    <span class="collapsible-count" id="other-count">0</span>
+                    <div class="collapsible-arrow">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
             </div>
-            <div class="uni-grid" id="other-grid"></div>
-        </section>
+            <div class="collapsible-content" id="other-content">
+                <div class="collapsible-content-inner">
+                    <div class="uni-grid" id="other-grid"></div>
+                </div>
+            </div>
+        </div>
     </main>
     
     <!-- Modal -->
@@ -863,28 +1495,157 @@
             renderAllUniversities();
             setupFilters();
             setupSearch();
+            setupWorldMap();
             lucide.createIcons();
+        });
+        
+        // ==========================================
+        // COLLAPSIBLE SECTIONS
+        // ==========================================
+        function toggleSection(sectionId) {
+            const header = document.querySelector(`#${sectionId}-section .collapsible-header`);
+            const content = document.getElementById(`${sectionId}-content`);
+            
+            header.classList.toggle('active');
+            content.classList.toggle('open');
+            
+            lucide.createIcons();
+        }
+        
+        // ==========================================
+        // WORLD MAP FUNCTIONALITY
+        // ==========================================
+        
+        // Country data for the map (alumni counts at universities in each country)
+        const countryUniData = {};
+        universitiesData.forEach(uni => {
+            if (!countryUniData[uni.code]) {
+                countryUniData[uni.code] = { 
+                    name: uni.country, 
+                    code: uni.code,
+                    count: 0, 
+                    uniCount: 0,
+                    universities: []
+                };
+            }
+            countryUniData[uni.code].count += uni.count;
+            countryUniData[uni.code].uniCount++;
+            countryUniData[uni.code].universities.push(uni);
+        });
+        
+        function setupWorldMap() {
+            const svg = document.getElementById('world-map-svg');
+            const tooltip = document.getElementById('map-tooltip');
+            const tooltipCountry = document.getElementById('tooltip-country');
+            const tooltipStat = document.getElementById('tooltip-stat');
+            
+            // Mark countries that have data
+            Object.keys(countryUniData).forEach(code => {
+                const path = document.getElementById(`map-${code}`);
+                if (path) {
+                    path.classList.add('has-data');
+                    if (countryUniData[code].count >= 20) {
+                        path.classList.add('top-country');
+                    }
+                }
+            });
+            
+            // Add hover and click handlers to all countries with data
+            document.querySelectorAll('.country.has-data').forEach(country => {
+                const code = country.dataset.code;
+                const name = country.dataset.name;
+                const data = countryUniData[code];
+                
+                // Hover
+                country.addEventListener('mouseenter', function(e) {
+                    tooltipCountry.textContent = name;
+                    tooltipStat.textContent = `${data.count} alumni at ${data.uniCount} universities`;
+                    tooltip.classList.add('visible');
+                });
+                
+                country.addEventListener('mousemove', function(e) {
+                    const rect = svg.parentElement.getBoundingClientRect();
+                    tooltip.style.left = (e.clientX - rect.left + 15) + 'px';
+                    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                });
+                
+                country.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+                
+                // Click
+                country.addEventListener('click', function() {
+                    openCountryModal(code);
+                });
+            });
+        }
+        
+        function openCountryModal(code) {
+            const data = countryUniData[code];
+            if (!data) return;
+            
+            const modal = document.getElementById('country-modal');
+            document.getElementById('country-modal-flag').src = `https://flagcdn.com/w160/${code}.png`;
+            document.getElementById('country-modal-title').textContent = data.name;
+            document.getElementById('country-modal-alumni').textContent = data.count;
+            document.getElementById('country-modal-unis').textContent = data.uniCount;
+            document.getElementById('country-modal-link').href = `country.html?code=${code}`;
+            
+            // Render universities
+            const unisGrid = document.getElementById('country-modal-unis');
+            unisGrid.innerHTML = '';
+            
+            data.universities.sort((a, b) => b.count - a.count).forEach(uni => {
+                const uniEl = document.createElement('div');
+                uniEl.className = 'country-modal-uni';
+                uniEl.onclick = () => openModal(uni);
+                uniEl.innerHTML = `
+                    <div class="country-modal-uni-logo">
+                        <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>';">
+                    </div>
+                    <div class="country-modal-uni-name">${uni.name}</div>
+                    <div class="country-modal-uni-count">${uni.count} <span>alumni</span></div>
+                `;
+                unisGrid.appendChild(uniEl);
+            });
+            
+            modal.classList.add('open');
+            lucide.createIcons();
+        }
+        
+        function closeCountryModal() {
+            document.getElementById('country-modal').classList.remove('open');
+        }
+        
+        // Close country modal on overlay click
+        document.getElementById('country-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCountryModal();
+            }
         });
         
         function renderAllUniversities() {
             const prestigeUnis = universitiesData.filter(u => u.prestige);
             const nlUnis = universitiesData.filter(u => u.code === 'nl');
             const gbUnis = universitiesData.filter(u => u.code === 'gb' && !u.prestige);
+            const deUnis = universitiesData.filter(u => u.code === 'de' && !u.prestige);
             const seUnis = universitiesData.filter(u => u.code === 'se');
-            const otherUnis = universitiesData.filter(u => !['nl', 'gb', 'se'].includes(u.code) && !u.prestige);
+            const otherUnis = universitiesData.filter(u => !['nl', 'gb', 'de', 'se'].includes(u.code) && !u.prestige);
             
             renderGrid('prestige-grid', prestigeUnis);
             renderGrid('nl-grid', nlUnis);
             renderGrid('gb-grid', gbUnis);
+            renderGrid('de-grid', deUnis);
             renderGrid('se-grid', seUnis);
             renderGrid('other-grid', otherUnis);
             
-            // Update counts
-            document.getElementById('prestige-count').textContent = `(${prestigeUnis.length} universities)`;
-            document.getElementById('nl-count').textContent = `(${nlUnis.length} universities)`;
-            document.getElementById('gb-count').textContent = `(${gbUnis.length} universities)`;
-            document.getElementById('se-count').textContent = `(${seUnis.length} universities)`;
-            document.getElementById('other-count').textContent = `(${otherUnis.length} universities)`;
+            // Update counts for collapsible headers
+            document.getElementById('prestige-count').textContent = `${prestigeUnis.length} universities`;
+            document.getElementById('nl-count').textContent = `${nlUnis.length} universities`;
+            document.getElementById('gb-count').textContent = `${gbUnis.length} universities`;
+            document.getElementById('de-count').textContent = `${deUnis.length} universities`;
+            document.getElementById('se-count').textContent = `${seUnis.length} universities`;
+            document.getElementById('other-count').textContent = `${otherUnis.length} universities`;
         }
         
         function renderGrid(gridId, universities) {
@@ -1014,6 +1775,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
+                closeCountryModal();
             }
         });
         
@@ -1021,6 +1783,7 @@
         renderAllUniversities();
         setupFilters();
         setupSearch();
+        setupWorldMap();
         lucide.createIcons();
     </script>
 </body>

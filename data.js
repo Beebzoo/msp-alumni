@@ -234,6 +234,150 @@ const MSP_DATA = {
         instagram: "https://www.instagram.com/maboratorysp/",
         linkedin: "https://www.linkedin.com/groups/4892346/",
         whatsapp: "#"  // Add actual link when available
+    },
+    
+    // ==========================================
+    // SECTION 12: RECRUITMENT PAGE DATA
+    // ==========================================
+    // Data for the "Considering MSP?" page
+    // Based on research: 92% of students value alumni testimonials (Unibuddy 2023)
+    
+    recruitment: {
+        
+        // Hero section research stat
+        heroStat: "92% of prospective students say hearing from alumni helps their decision.",
+        
+        // Proof bar - key numbers for Gen Z (ROI-focused)
+        proofStats: [
+            { number: 1329, label: "Alumni Worldwide", highlight: true },
+            { number: 95, label: "At World Top-100 Unis", highlight: false },
+            { number: 146, label: "PhD Candidates", highlight: false },
+            { number: 66, label: "Countries", highlight: false }
+        ],
+        
+        // Alumni journey cards - anonymized real outcomes
+        // Format: year, university, outcome (role + company/field), icon
+        alumniJourneys: [
+            {
+                year: "'14",
+                university: "University of Cambridge",
+                outcome: "Founder & Chair — Battery Technology Startup",
+                icon: "lightbulb"
+            },
+            {
+                year: "'16",
+                university: "ETH Zürich",
+                outcome: "Deployment Strategist — Palantir Technologies",
+                icon: "brain"
+            },
+            {
+                year: "'16",
+                university: "University of Oxford",
+                outcome: "Postdoctoral Researcher — MIT",
+                icon: "graduation-cap"
+            },
+            {
+                year: "'15",
+                university: "Maastricht University",
+                outcome: "AI Researcher — Philips",
+                icon: "cpu"
+            },
+            {
+                year: "'14",
+                university: "Maastricht University",
+                outcome: "Lead Data Engineer — The Ocean Cleanup",
+                icon: "waves"
+            },
+            {
+                year: "'18",
+                university: "University of Cambridge",
+                outcome: "Co-Founder & CTO — Stealth Startup",
+                icon: "rocket"
+            },
+            {
+                year: "'15",
+                university: "TU Eindhoven",
+                outcome: "Software Engineer — ASML",
+                icon: "microscope"
+            },
+            {
+                year: "'15",
+                university: "Utrecht University",
+                outcome: "PhD Candidate — Harvard Medical School",
+                icon: "heart-pulse"
+            }
+        ],
+        
+        // Prestige universities - ordered by count
+        prestigeUniversities: [
+            { name: "KU Leuven", count: 21, logo: "ku-leuven.png" },
+            { name: "Imperial College London", count: 19, logo: "imperial-college-london.png" },
+            { name: "UCL", count: 13, logo: "ucl.png" },
+            { name: "ETH Zürich", count: 12, logo: "eth-zurich.png" },
+            { name: "Karolinska Institutet", count: 9, logo: "karolinska-institutet.png" },
+            { name: "Cambridge", count: 8, logo: "university-of-cambridge.png" },
+            { name: "Edinburgh", count: 7, logo: "university-of-edinburgh.png" },
+            { name: "Oxford", count: 6, logo: "university-of-oxford.png" }
+        ],
+        
+        // Career paths with counts
+        careerPaths: [
+            {
+                title: "Research & Science",
+                count: "144+",
+                icon: "flask-conical",
+                examples: ["R&D Scientists", "Lab Researchers", "Research Associates"]
+            },
+            {
+                title: "PhD & Academia",
+                count: "146",
+                icon: "graduation-cap",
+                examples: ["PhD Candidates", "Postdoctoral Fellows", "University Lecturers"]
+            },
+            {
+                title: "Healthcare & Medical",
+                count: "64",
+                icon: "heart-pulse",
+                examples: ["Clinical Researchers", "Medical Writers", "Healthcare Analysts"]
+            },
+            {
+                title: "Industry & Consulting",
+                count: "75+",
+                icon: "briefcase",
+                examples: ["Engineers at ASML", "Strategy Consultants", "Project Managers"]
+            }
+        ],
+        
+        // PhD pipeline stats
+        phdStats: {
+            total: 146,
+            percentage: "~11%",
+            highlights: [
+                { icon: "building-2", text: "PhDs at <strong>MIT, Harvard, Oxford, Cambridge, ETH Zürich</strong>" },
+                { icon: "globe", text: "Research positions across <strong>15+ countries</strong>" },
+                { icon: "microscope", text: "Fields from <strong>neuroscience to nanotechnology</strong>" },
+                { icon: "sparkles", text: "Several now <strong>postdocs and faculty</strong> at leading institutions" }
+            ]
+        },
+        
+        // Programme features for "What is MSP" section
+        programmeFeatures: [
+            {
+                title: "Design Your Path",
+                icon: "compass",
+                description: "Choose from 100+ courses across biology, chemistry, physics, mathematics, and neuroscience to build your unique degree."
+            },
+            {
+                title: "Small-Scale Learning",
+                icon: "users",
+                description: "Tutorial groups of 12-15 students using Problem-Based Learning. You're not a number — you're part of a community."
+            },
+            {
+                title: "Research Experience",
+                icon: "microscope",
+                description: "Hands-on lab practicals and a final thesis project. Many students publish before graduating."
+            }
+        ]
     }
 };
 

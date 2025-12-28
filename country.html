@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country - MSP Alumni Network</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* ==========================================
+           CSS VARIABLES - UM BRANDING
+        ========================================== */
+        :root {
+            --um-dark-blue: #001C3D;
+            --um-light-blue: #00A2DB;
+            --um-orange: #E84E10;
+            --um-white: #FFFFFF;
+            --um-off-white: #f8f9fa;
+            --um-gray-100: #f5f5f5;
+            --um-gray-200: #e9ecef;
+            --um-gray-600: #6c757d;
+            --um-gray-800: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--um-dark-blue);
+            background: var(--um-white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+        
+        a {
+            color: var(--um-light-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--um-orange);
+        }
+        
+        /* ==========================================
+           HEADER
+        ========================================== */
+        header {
+            background: var(--um-white);
+            border-bottom: 1px solid var(--um-gray-200);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--um-dark-blue);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        
+        .logo-text {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .back-link {
+            font-size: 14px;
+            color: var(--um-light-blue);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-link:hover {
+            color: var(--um-dark-blue);
+        }
+        
+        /* ==========================================
+           HERO - Split Layout
+        ========================================== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 70px);
+        }
+        
+        /* Left side - Flag & Info */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .flag-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+        
+        .flag-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .flag-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--um-dark-blue));
+        }
+        
+        .info-section {
+            background: var(--um-dark-blue);
+            padding: 40px 45px;
+            color: white;
+        }
+        
+        .country-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--um-light-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        
+        .country-name {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .fact {
+            border-left: 3px solid var(--um-light-blue);
+            padding-left: 12px;
+        }
+        
+        .fact.orange {
+            border-left-color: var(--um-orange);
+        }
+        
+        .fact-value {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .fact-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Right side - Map */
+        .hero-right {
+            position: relative;
+            background: var(--um-gray-100);
+        }
+        
+        #countryMap {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+        }
+        
+        /* ==========================================
+           CONTENT SECTIONS
+        ========================================== */
+        .content-section {
+            padding: 60px 50px;
+        }
+        
+        .content-section.alt {
+            background: var(--um-off-white);
+        }
+        
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--um-light-blue);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        /* ==========================================
+           CITIES GRID
+        ========================================== */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .city-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        
+        .city-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .city-name {
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .city-count {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--um-orange);
+        }
+        
+        /* ==========================================
+           NATIONALITIES
+        ========================================== */
+        .nationalities-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .nationality-tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: 30px;
+            padding: 10px 18px;
+            transition: all 0.2s ease;
+        }
+        
+        .nationality-tag:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nationality-tag img {
+            width: 24px;
+            height: 16px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+        
+        .nationality-name {
+            font-weight: 500;
+            color: var(--um-dark-blue);
+        }
+        
+        .nationality-count {
+            font-weight: 700;
+            color: var(--um-orange);
+        }
+        
+        /* ==========================================
+           GRADUATION CHART
+        ========================================== */
+        .grad-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 180px;
+            padding: 20px 0;
+        }
+        
+        .grad-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .grad-bar-fill {
+            width: 100%;
+            max-width: 45px;
+            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0077b6 100%);
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            min-height: 4px;
+            transition: height 0.5s ease;
+        }
+        
+        .grad-bar-value {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .grad-bar-label {
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--um-gray-600);
+        }
+        
+        /* ==========================================
+           GENDER BREAKDOWN
+        ========================================== */
+        .gender-bar-container {
+            background: var(--um-gray-200);
+            border-radius: 10px;
+            height: 40px;
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .gender-bar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            transition: width 0.5s ease;
+        }
+        
+        .gender-bar.female {
+            background: var(--um-light-blue);
+        }
+        
+        .gender-bar.male {
+            background: var(--um-dark-blue);
+        }
+        
+        .gender-legend {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .gender-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .gender-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .gender-dot.female {
+            background: var(--um-light-blue);
+        }
+        
+        .gender-dot.male {
+            background: var(--um-dark-blue);
+        }
+        
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            padding: 30px 50px;
+            background: var(--um-dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-right {
+                height: 350px;
+            }
+            
+            header {
+                padding: 15px 20px;
+            }
+            
+            .content-section {
+                padding: 50px 20px;
+            }
+            
+            .quick-facts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .country-name {
+                font-size: 32px;
+            }
+        }
+        
+        /* ==========================================
+           NOT FOUND STATE
+        ========================================== */
+        .not-found {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .not-found h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .not-found p {
+            color: var(--um-gray-600);
+            margin-bottom: 25px;
+        }
+        
+        .not-found a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--um-orange);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+        
+        .not-found a:hover {
+            background: #d63d0a;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">MSP</div>
+            <span class="logo-text">Alumni Network</span>
+        </a>
+        <a href="index.html" class="back-link">
+            ← Back to World Map
+        </a>
+    </header>
+    
+    <!-- Main Content - Will be populated by JavaScript -->
+    <main id="mainContent">
+        <!-- Loading state -->
+        <div class="not-found" id="loadingState">
+            <h2>Loading...</h2>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <span class="footer-text">© 2025 MSP Alumni Network · Faculty of Science and Engineering</span>
+        <div class="footer-links">
+            <a href="index.html">World Map</a>
+            <a href="considering-msp.html">Considering MSP?</a>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // ==========================================
+        // GET COUNTRY FROM URL
+        // ==========================================
+        const urlParams = new URLSearchParams(window.location.search);
+        const countryName = urlParams.get('country');
+        
+        // Find country data
+        const countryData = countryName ? COUNTRY_DETAILS[countryName] : null;
+        
+        if (!countryData) {
+            // Country not found
+            document.getElementById('mainContent').innerHTML = `
+                <div class="not-found">
+                    <h2>Country Not Found</h2>
+                    <p>We don't have detailed data for "${countryName || 'this country'}" yet.</p>
+                    <a href="index.html">← Back to World Map</a>
+                </div>
+            `;
+        } else {
+            // Update page title
+            document.title = `${countryData.name} - MSP Alumni Network`;
+            
+            // Calculate percentages
+            const femaleCount = countryData.gender.Female || 0;
+            const maleCount = countryData.gender.Male || 0;
+            const totalGender = femaleCount + maleCount;
+            const femalePct = Math.round((femaleCount / totalGender) * 100);
+            const malePct = 100 - femalePct;
+            
+            // Get graduation years data
+            const gradYears = Object.entries(countryData.graduationYears);
+            const maxGrad = Math.max(...gradYears.map(([y, c]) => c));
+            
+            // Build graduation chart HTML
+            const gradChartHTML = gradYears.map(([year, count]) => {
+                const height = Math.max((count / maxGrad) * 140, 4);
+                return `
+                    <div class="grad-bar">
+                        <div class="grad-bar-fill" style="height: ${height}px">
+                            <span class="grad-bar-value">${count}</span>
+                        </div>
+                        <div class="grad-bar-label">'${year.slice(-2)}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Build cities HTML
+            const citiesHTML = countryData.cities.map(city => `
+                <div class="city-card">
+                    <span class="city-name">${city.name}</span>
+                    <span class="city-count">${city.count}</span>
+                </div>
+            `).join('');
+            
+            // Build nationalities HTML
+            const nationalitiesHTML = countryData.nationalities.map(nat => `
+                <div class="nationality-tag">
+                    <img src="https://flagcdn.com/w40/${nat.code}.png" alt="${nat.name}">
+                    <span class="nationality-name">${nat.name}</span>
+                    <span class="nationality-count">${nat.count}</span>
+                </div>
+            `).join('');
+            
+            // Render full page
+            document.getElementById('mainContent').innerHTML = `
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-left">
+                        <div class="flag-section">
+                            <img src="https://flagcdn.com/w1280/${countryData.code}.png" alt="${countryData.name} flag" class="flag-img">
+                            <div class="flag-overlay"></div>
+                        </div>
+                        <div class="info-section">
+                            <div class="country-label">MSP Alumni in</div>
+                            <h1 class="country-name">${countryData.name}</h1>
+                            <div class="quick-facts">
+                                <div class="fact orange">
+                                    <div class="fact-value">${countryData.count}</div>
+                                    <div class="fact-label">Alumni</div>
+                                </div>
+                                <div class="fact">
+                                    <div class="fact-value">${countryData.cities.length}</div>
+                                    <div class="fact-label">Cities</div>
+                                </div>
+                                <div class="fact">
+                                    <div class="fact-value">${countryData.nationalities.length}+</div>
+                                    <div class="fact-label">Nationalities</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <div id="countryMap"></div>
+                    </div>
+                </section>
+                
+                <!-- Cities Section -->
+                <section class="content-section">
+                    <div class="section-container">
+                        <h2 class="section-title">
+                            <span class="section-title-icon">🏙️</span>
+                            Cities with MSP Alumni
+                        </h2>
+                        <div class="cities-grid">${citiesHTML}</div>
+                    </div>
+                </section>
+                
+                <!-- Nationalities Section -->
+                <section class="content-section alt">
+                    <div class="section-container">
+                        <h2 class="section-title">
+                            <span class="section-title-icon">🌍</span>
+                            Where They're From
+                        </h2>
+                        <p style="color: var(--um-gray-600); margin-bottom: 20px;">
+                            MSP alumni living in ${countryData.name} come from diverse backgrounds
+                        </p>
+                        <div class="nationalities-grid">${nationalitiesHTML}</div>
+                    </div>
+                </section>
+                
+                <!-- Graduation Years -->
+                <section class="content-section">
+                    <div class="section-container">
+                        <h2 class="section-title">
+                            <span class="section-title-icon">🎓</span>
+                            Graduation Years
+                        </h2>
+                        <div class="grad-chart">${gradChartHTML}</div>
+                    </div>
+                </section>
+                
+                <!-- Gender Breakdown -->
+                <section class="content-section alt">
+                    <div class="section-container">
+                        <h2 class="section-title">
+                            <span class="section-title-icon">👥</span>
+                            Gender Distribution
+                        </h2>
+                        <div class="gender-bar-container">
+                            <div class="gender-bar female" style="width: ${femalePct}%">${femalePct}%</div>
+                            <div class="gender-bar male" style="width: ${malePct}%">${malePct}%</div>
+                        </div>
+                        <div class="gender-legend">
+                            <div class="gender-legend-item">
+                                <span class="gender-dot female"></span>
+                                Female (${femaleCount})
+                            </div>
+                            <div class="gender-legend-item">
+                                <span class="gender-dot male"></span>
+                                Male (${maleCount})
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            // Initialize map
+            setTimeout(() => {
+                const map = L.map('countryMap', {
+                    zoomControl: true,
+                    scrollWheelZoom: false
+                }).setView(countryData.coords, 5);
+                
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '©OpenStreetMap, ©CartoDB',
+                    maxZoom: 18
+                }).addTo(map);
+                
+                // Add marker for the country
+                L.circleMarker(countryData.coords, {
+                    radius: 15,
+                    fillColor: '#E84E10',
+                    color: '#ffffff',
+                    weight: 3,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                // Fit bounds appropriately based on country size
+                const bounds = L.latLngBounds([countryData.coords]);
+                map.fitBounds(bounds.pad(0.5));
+            }, 100);
+        }
+    </script>
+</body>
+</html>

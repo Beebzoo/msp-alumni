@@ -156,12 +156,12 @@
         }
         
         /* ==========================================
-           HERO SECTION
+           HERO SECTION - Clean Introduction
         ========================================== */
         .hero {
             background: var(--um-dark-blue);
             color: white;
-            padding: 60px 50px 70px;
+            padding: 80px 50px;
             position: relative;
             overflow: hidden;
         }
@@ -178,81 +178,46 @@
             background-size: 50px 50px;
         }
         
-        /* Flag Cascade Effect */
-        .flag-cascade {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 65%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-            mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, transparent 80%);
-            -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, transparent 80%);
-        }
-        
-        .flag-cascade-inner {
-            position: absolute;
-            top: -20px;
-            left: -30px;
-            right: 0;
-            bottom: -20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 20px;
-            transform: rotate(-8deg) scale(1.2);
-            opacity: 0.55;
-        }
-        
-        .cascade-flag {
-            width: 48px;
-            height: 32px;
-            object-fit: cover;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        
-        .cascade-flag:nth-child(odd) { transform: translateY(8px); }
-        .cascade-flag:nth-child(3n) { opacity: 0.8; }
-        .cascade-flag:nth-child(5n) { transform: translateY(-5px) rotate(3deg); }
-        
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: auto 1fr;
+            gap: 80px;
             align-items: center;
         }
         
         .hero-left {
-            max-width: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .hero-logo {
-            width: 180px;
+        .hero-logo-large {
+            width: 280px;
             height: auto;
-            margin-bottom: 25px;
-            filter: brightness(0) invert(1);
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+        
+        .hero-right {
+            max-width: 600px;
         }
         
         .hero h2 {
-            font-size: 42px;
+            font-size: 52px;
             font-weight: 800;
             letter-spacing: -1px;
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         
         .hero-subtitle {
-            font-size: 18px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 30px;
-            line-height: 1.5;
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
         
         .hero-stats {
@@ -263,40 +228,88 @@
         
         .hero-stat {
             text-align: center;
-            padding: 15px 10px;
-            background: rgba(255,255,255,0.05);
+            padding: 18px 12px;
+            background: rgba(255,255,255,0.08);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-stat:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
         }
         
         .hero-stat-number {
             font-family: var(--font-heading);
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             color: var(--um-orange);
         }
         
         .hero-stat-label {
-            font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 4px;
+            margin-top: 5px;
         }
         
-        /* Hero Map */
-        .hero-right {
-            height: 400px;
-            background: rgba(255,255,255,0.03);
+        /* ==========================================
+           WORLD MAP SECTION
+        ========================================== */
+        .map-section {
+            background: white;
+            padding: 60px 50px 80px;
+        }
+        
+        .map-section .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 550px;
+            background: var(--um-gray-100);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--um-gray-200);
         }
         
-        #heroMap {
+        #worldMap {
             width: 100%;
             height: 100%;
         }
+        
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--um-gray-600);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.large { background: var(--um-orange); }
+        .legend-dot.medium { background: var(--um-light-blue); }
+        .legend-dot.small { background: rgba(0,162,219,0.5); }
         
         /* ==========================================
            SECTION STYLES
@@ -799,16 +812,23 @@
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-left {
+                justify-content: center;
+            }
+            
+            .hero-logo-large {
+                width: 200px;
             }
             
             .hero-right {
-                height: 350px;
+                max-width: 100%;
             }
             
-            .flag-cascade {
-                width: 100%;
-                mask-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 60%);
-                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 60%);
+            .map-container {
+                height: 450px;
             }
             
             .footer-content {
@@ -826,15 +846,31 @@
             }
             
             .hero {
-                padding: 40px 20px 50px;
+                padding: 50px 20px;
+            }
+            
+            .hero-logo-large {
+                width: 160px;
             }
             
             .hero h2 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .map-section {
+                padding: 40px 20px 60px;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .map-legend {
+                gap: 20px;
             }
             
             .section {
@@ -858,6 +894,7 @@
             </div>
         </a>
         <nav class="header-nav">
+            <a href="#map">Map</a>
             <a href="#universities">Universities</a>
             <a href="#fields">Fields</a>
             <a href="#growth">Growth</a>
@@ -869,17 +906,14 @@
     <section class="hero">
         <div class="hero-bg"></div>
         
-        <!-- Flag Cascade Background -->
-        <div class="flag-cascade">
-            <div class="flag-cascade-inner" id="flagCascade"></div>
-        </div>
-        
         <div class="hero-content">
             <div class="hero-left">
-                <img src="assets/logos/msp-logo.png" alt="Maastricht Science Programme" class="hero-logo" onerror="this.style.display='none'">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni Network" class="hero-logo-large">
+            </div>
+            <div class="hero-right">
                 <h2>Where Are They Now?</h2>
                 <p class="hero-subtitle">
-                    Discover where <span id="totalAlumni">1,329</span> MSP alumni from <span id="totalNationalities">87</span> nationalities have built their careers across the globe.
+                    Discover where <strong id="totalAlumni">1,329</strong> MSP alumni from <strong id="totalNationalities">87</strong> nationalities have built their careers — across <strong id="totalCountries">59</strong> countries and <strong id="totalUniversities">235+</strong> universities worldwide.
                 </p>
                 <div class="hero-stats">
                     <div class="hero-stat">
@@ -900,8 +934,31 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-right">
-                <div id="heroMap"></div>
+        </div>
+    </section>
+    
+    <!-- World Map Section -->
+    <section class="map-section" id="map">
+        <div class="section-header">
+            <span class="section-label">Global Network</span>
+            <h2 class="section-title">MSP Alumni Around the World</h2>
+            <p class="section-subtitle">Click on any country to explore where our alumni are and what they're doing</p>
+        </div>
+        <div class="map-container">
+            <div id="worldMap"></div>
+        </div>
+        <div class="map-legend">
+            <div class="legend-item">
+                <span class="legend-dot large"></span>
+                <span>50+ alumni</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot medium"></span>
+                <span>10-49 alumni</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot small"></span>
+                <span>1-9 alumni</span>
             </div>
         </div>
     </section>
@@ -991,27 +1048,13 @@
         // Update summary stats
         document.getElementById('totalAlumni').textContent = MSP_DATA.summary.totalAlumni.toLocaleString();
         document.getElementById('totalNationalities').textContent = MSP_DATA.summary.nationalities;
+        document.getElementById('totalCountries').textContent = MSP_DATA.summary.countriesLivingIn;
+        document.getElementById('totalUniversities').textContent = MSP_DATA.summary.universitiesAttended + '+';
         document.getElementById('statAlumni').textContent = MSP_DATA.summary.totalAlumni.toLocaleString();
         document.getElementById('statCountries').textContent = MSP_DATA.summary.countriesLivingIn;
         document.getElementById('statUniversities').textContent = MSP_DATA.summary.universitiesAttended;
         document.getElementById('statNationalities').textContent = MSP_DATA.summary.nationalities;
         document.getElementById('lastUpdated').textContent = MSP_DATA.lastUpdated;
-        
-        // ==========================================
-        // FLAG CASCADE
-        // ==========================================
-        const flagCascade = document.getElementById('flagCascade');
-        const shuffledFlags = [...MSP_DATA.allNationalityFlags].sort(() => Math.random() - 0.5);
-        const flagsToShow = [...shuffledFlags, ...shuffledFlags.slice(0, 50)];
-        
-        flagsToShow.forEach(code => {
-            const img = document.createElement('img');
-            img.src = `https://flagcdn.com/w80/${code}.png`;
-            img.alt = '';
-            img.className = 'cascade-flag';
-            img.loading = 'lazy';
-            flagCascade.appendChild(img);
-        });
         
         // ==========================================
         // UNIVERSITIES GRID
@@ -1082,27 +1125,35 @@
         // ==========================================
         // WORLD MAP
         // ==========================================
-        const map = L.map('heroMap', {
+        const map = L.map('worldMap', {
             zoomControl: true,
-            scrollWheelZoom: false
-        }).setView([30, 10], 2);
+            scrollWheelZoom: true
+        }).setView([25, 10], 2);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '©OpenStreetMap, ©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
-        // Add markers for each country
+        // Add markers for each country with size based on alumni count
         MSP_DATA.countriesLiving.forEach(country => {
-            const radius = Math.min(Math.max(country.count / 12, 6), 28);
+            const radius = Math.min(Math.max(country.count / 10, 8), 35);
+            
+            // Color based on count
+            let fillColor = 'rgba(0,162,219,0.5)'; // Small: light blue
+            if (country.count >= 50) {
+                fillColor = '#E84E10'; // Large: orange
+            } else if (country.count >= 10) {
+                fillColor = '#00A2DB'; // Medium: blue
+            }
             
             const marker = L.circleMarker(country.coords, {
                 radius: radius,
-                fillColor: '#00A2DB',
+                fillColor: fillColor,
                 color: '#ffffff',
                 weight: 2,
                 opacity: 1,
-                fillOpacity: 0.7
+                fillOpacity: 0.8
             }).addTo(map);
             
             const popupContent = `

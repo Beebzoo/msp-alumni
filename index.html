@@ -14,6 +14,9 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <style>
         /* ==========================================
            CSS VARIABLES - UM BRANDING
@@ -387,6 +390,14 @@
             object-fit: contain;
         }
         
+        .uni-logo i,
+        .uni-logo svg {
+            width: 24px;
+            height: 24px;
+            color: var(--um-gray-600);
+            stroke: var(--um-gray-600);
+        }
+        
         .uni-name {
             font-family: var(--font-heading);
             font-size: 15px;
@@ -454,14 +465,22 @@
         }
         
         .field-icon {
-            font-size: 28px;
             width: 50px;
             height: 50px;
-            background: var(--um-gray-100);
+            background: var(--um-light-blue);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .field-icon i,
+        .field-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            stroke: white;
         }
         
         .field-info {
@@ -1005,7 +1024,7 @@
             card.className = uni.prestige ? 'uni-card prestige' : 'uni-card';
             card.innerHTML = `
                 <div class="uni-logo">
-                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.parentElement.innerHTML='🎓'">
+                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'; lucide.createIcons();">
                 </div>
                 <div class="uni-name">${uni.name}</div>
                 <div class="uni-country">
@@ -1026,7 +1045,7 @@
             const card = document.createElement('div');
             card.className = 'field-card';
             card.innerHTML = `
-                <div class="field-icon">${field.icon}</div>
+                <div class="field-icon"><i data-lucide="${field.icon}"></i></div>
                 <div class="field-info">
                     <div class="field-name">${field.name}</div>
                     <div class="field-count">${field.count}+ alumni · ${field.percent}%</div>
@@ -1037,6 +1056,9 @@
             `;
             fieldsGrid.appendChild(card);
         });
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
         
         // ==========================================
         // GROWTH CHART

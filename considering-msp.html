@@ -167,21 +167,235 @@
         }
         .journey-outcome i, .journey-outcome svg { width: 18px; height: 18px; color: var(--um-orange); flex-shrink: 0; }
         
-        /* Prestige */
-        .prestige-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .prestige-card {
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: var(--radius-md); padding: 30px 20px; text-align: center; transition: all 0.3s ease;
+        /* World Top 10 Highlight */
+        .world-top-highlight {
+            background: linear-gradient(135deg, rgba(232,78,16,0.15) 0%, rgba(0,162,219,0.15) 100%);
+            border: 2px solid var(--um-orange);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
         }
-        .prestige-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
-        .prestige-logo {
-            width: 70px; height: 70px; background: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; padding: 12px;
+        .world-top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--um-orange);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
-        .prestige-logo img { width: 100%; height: 100%; object-fit: contain; }
-        .prestige-logo i, .prestige-logo svg { width: 30px; height: 30px; color: var(--um-dark-blue); }
-        .prestige-name { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: white; margin-bottom: 5px; }
-        .prestige-count { font-size: 13px; color: var(--um-orange); font-weight: 600; }
+        .world-top-badge i, .world-top-badge svg { width: 20px; height: 20px; }
+        .world-top-stat {
+            font-family: var(--font-heading);
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+        .world-top-stat span { color: var(--um-orange); }
+        .world-top-text {
+            font-size: 20px;
+            color: var(--um-gray-800);
+            margin-top: 10px;
+        }
+        
+        /* World Top 10 Grid */
+        .world-top-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .world-top-card {
+            background: white;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .world-top-card.has-alumni {
+            border-color: var(--um-light-blue);
+            background: linear-gradient(180deg, rgba(0,162,219,0.05) 0%, white 100%);
+        }
+        .world-top-card.has-alumni:hover {
+            border-color: var(--um-orange);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .world-top-card.no-alumni {
+            opacity: 0.5;
+        }
+        .world-top-rank {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--um-dark-blue);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .world-top-card.has-alumni .world-top-rank {
+            background: var(--um-orange);
+        }
+        .world-top-logo {
+            width: 60px;
+            height: 60px;
+            margin: 15px auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .world-top-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .world-top-name {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .world-top-alumni {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--um-orange);
+            font-family: var(--font-heading);
+        }
+        .world-top-alumni-label {
+            font-size: 10px;
+            color: var(--um-gray-600);
+            text-transform: uppercase;
+        }
+        
+        /* University Sections */
+        .uni-section {
+            margin-top: 60px;
+        }
+        .uni-section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .uni-section-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--um-light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .uni-section-icon i, .uni-section-icon svg { width: 24px; height: 24px; color: white; }
+        .uni-section-icon.orange { background: var(--um-orange); }
+        .uni-section-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        .uni-section-subtitle {
+            font-size: 14px;
+            color: var(--um-gray-600);
+        }
+        
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .uni-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .uni-card:hover {
+            border-color: var(--um-light-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .uni-card.featured {
+            border: 2px solid var(--um-orange);
+            background: linear-gradient(180deg, #fff8f5 0%, white 100%);
+        }
+        .uni-logo-wrap {
+            width: 70px;
+            height: 70px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            padding: 10px;
+        }
+        .uni-logo-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .uni-card-name {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 5px;
+        }
+        .uni-card-country {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--um-gray-600);
+            margin-bottom: 10px;
+        }
+        .uni-card-country img {
+            width: 16px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .uni-card-rank {
+            font-size: 11px;
+            color: var(--um-light-blue);
+            margin-bottom: 8px;
+        }
+        .uni-card-alumni {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--um-orange);
+            font-family: var(--font-heading);
+        }
+        .uni-card-alumni span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--um-gray-600);
+        }
+        .uni-card-highlight {
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--um-orange);
+            font-weight: 600;
+        }
         
         /* Career Paths */
         .paths-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -265,6 +479,8 @@
             .phd-content { grid-template-columns: 1fr; text-align: center; }
             .about-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr 1fr; }
+            .world-top-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+            .uni-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             header { padding: 12px 20px; }
@@ -275,8 +491,14 @@
             .section-title { font-size: 26px; }
             .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .proof-number { font-size: 28px; }
-            .prestige-grid, .paths-grid { grid-template-columns: 1fr 1fr; }
+            .world-top-grid { grid-template-columns: repeat(2, 1fr); }
+            .world-top-stat { font-size: 56px; }
+            .uni-grid, .paths-grid { grid-template-columns: 1fr 1fr; }
             .footer-content { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .world-top-grid { grid-template-columns: repeat(2, 1fr); }
+            .uni-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -349,20 +571,62 @@
         </div>
     </section>
     
-    <!-- Prestige Destinations -->
-    <section class="section dark">
+    <!-- World-Class Universities Section -->
+    <section class="section alt" id="universities">
         <div class="section-container">
             <div class="section-header">
                 <div class="section-label">
-                    <i data-lucide="award"></i>
-                    Prestige Destinations
+                    <i data-lucide="trophy"></i>
+                    World-Class Destinations
                 </div>
-                <h2 class="section-title">World-Leading Universities</h2>
-                <p class="section-subtitle">MSP graduates are accepted at the world's most competitive institutions</p>
+                <h2 class="section-title">Where MSP Opens Doors</h2>
+                <p class="section-subtitle">From local excellence to global prestige — see where our alumni pursue their Master's</p>
             </div>
             
-            <div class="prestige-grid" id="prestige-grid">
-                <!-- Populated by JS -->
+            <!-- World Top 10 Highlight -->
+            <div class="world-top-highlight">
+                <div class="world-top-badge">
+                    <i data-lucide="award"></i>
+                    QS World Rankings 2025
+                </div>
+                <div class="world-top-stat">8<span>/10</span></div>
+                <div class="world-top-text">MSP alumni studying at the world's top 10 universities</div>
+                
+                <div class="world-top-grid" id="world-top-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <!-- Top Dutch Universities -->
+            <div class="uni-section">
+                <div class="uni-section-header">
+                    <div class="uni-section-icon orange">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <div>
+                        <div class="uni-section-title">Top Dutch Universities</div>
+                        <div class="uni-section-subtitle">The Netherlands has 7 universities in the global top 150</div>
+                    </div>
+                </div>
+                <div class="uni-grid" id="dutch-uni-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <!-- Top International Universities -->
+            <div class="uni-section">
+                <div class="uni-section-header">
+                    <div class="uni-section-icon">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <div>
+                        <div class="uni-section-title">Top International Universities</div>
+                        <div class="uni-section-subtitle">MSP graduates go global — from London to Zürich, Copenhagen to Singapore</div>
+                    </div>
+                </div>
+                <div class="uni-grid" id="intl-uni-grid">
+                    <!-- Populated by JS -->
+                </div>
             </div>
         </div>
     </section>
@@ -509,19 +773,71 @@
                 `;
             });
             
-            // --- Prestige Universities ---
-            const prestigeGrid = document.getElementById('prestige-grid');
-            recruitment.prestigeUniversities.forEach(uni => {
-                prestigeGrid.innerHTML += `
-                    <div class="prestige-card">
-                        <div class="prestige-logo">
-                            <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=&quot;graduation-cap&quot;></i>'; lucide.createIcons();">
+            // --- World Top 10 Universities ---
+            const worldTopGrid = document.getElementById('world-top-grid');
+            if (MSP_DATA.worldTop10) {
+                MSP_DATA.worldTop10.forEach(uni => {
+                    const hasAlumni = uni.mspAlumni > 0;
+                    worldTopGrid.innerHTML += `
+                        <div class="world-top-card ${hasAlumni ? 'has-alumni' : 'no-alumni'}">
+                            <div class="world-top-rank">#${uni.rank}</div>
+                            <div class="world-top-logo">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.src='https://via.placeholder.com/60x60?text=${uni.rank}'">
+                            </div>
+                            <div class="world-top-name">${uni.name}</div>
+                            ${hasAlumni ? `
+                                <div class="world-top-alumni">${uni.mspAlumni}</div>
+                                <div class="world-top-alumni-label">MSP Alumni</div>
+                            ` : `
+                                <div class="world-top-alumni-label" style="color: #999;">—</div>
+                            `}
                         </div>
-                        <div class="prestige-name">${uni.name}</div>
-                        <div class="prestige-count">${uni.count} alumni</div>
-                    </div>
-                `;
-            });
+                    `;
+                });
+            }
+            
+            // --- Top Dutch Universities ---
+            const dutchUniGrid = document.getElementById('dutch-uni-grid');
+            if (MSP_DATA.topDutchUniversities) {
+                MSP_DATA.topDutchUniversities.forEach(uni => {
+                    dutchUniGrid.innerHTML += `
+                        <div class="uni-card ${uni.highlight ? 'featured' : ''}">
+                            <div class="uni-logo-wrap">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
+                            </div>
+                            <div class="uni-card-name">${uni.name}</div>
+                            <div class="uni-card-country">
+                                <img src="https://flagcdn.com/w20/nl.png" alt="Netherlands">
+                                Netherlands
+                            </div>
+                            <div class="uni-card-rank">QS Rank: #${uni.rank}</div>
+                            <div class="uni-card-alumni">${uni.mspAlumni} <span>alumni</span></div>
+                            ${uni.highlight ? `<div class="uni-card-highlight">${uni.highlight}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            // --- Top International Universities ---
+            const intlUniGrid = document.getElementById('intl-uni-grid');
+            if (MSP_DATA.topInternationalUniversities) {
+                MSP_DATA.topInternationalUniversities.forEach(uni => {
+                    intlUniGrid.innerHTML += `
+                        <div class="uni-card ${uni.rank <= 10 ? 'featured' : ''}">
+                            <div class="uni-logo-wrap">
+                                <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'">
+                            </div>
+                            <div class="uni-card-name">${uni.name}</div>
+                            <div class="uni-card-country">
+                                <img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">
+                                ${uni.country}
+                            </div>
+                            <div class="uni-card-rank">QS Rank: #${uni.rank}</div>
+                            <div class="uni-card-alumni">${uni.mspAlumni} <span>alumni</span></div>
+                        </div>
+                    `;
+                });
+            }
             
             // --- Career Paths ---
             const pathsGrid = document.getElementById('paths-grid');

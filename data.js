@@ -187,15 +187,15 @@ const MSP_DATA = {
     // ==========================================
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", icon: "🧬", count: 262, percent: 31 },
-        { name: "Medicine & Health", icon: "🏥", count: 79, percent: 9 },
-        { name: "Chemistry", icon: "⚗️", count: 72, percent: 8 },
-        { name: "Environment & Sustainability", icon: "🌍", count: 52, percent: 6 },
-        { name: "Physics", icon: "⚛️", count: 50, percent: 6 },
-        { name: "Business & Economics", icon: "📊", count: 48, percent: 6 },
-        { name: "Neuroscience & Psychology", icon: "🧠", count: 42, percent: 5 },
-        { name: "Computer Science & AI", icon: "💻", count: 37, percent: 4 },
-        { name: "Other Fields", icon: "📚", count: 210, percent: 25 }
+        { name: "Life Sciences & Biology", icon: "dna", count: 262, percent: 31 },
+        { name: "Medicine & Health", icon: "heart-pulse", count: 79, percent: 9 },
+        { name: "Chemistry", icon: "flask-conical", count: 72, percent: 8 },
+        { name: "Environment & Sustainability", icon: "leaf", count: 52, percent: 6 },
+        { name: "Physics", icon: "atom", count: 50, percent: 6 },
+        { name: "Business & Economics", icon: "trending-up", count: 48, percent: 6 },
+        { name: "Neuroscience & Psychology", icon: "brain", count: 42, percent: 5 },
+        { name: "Computer Science & AI", icon: "cpu", count: 37, percent: 4 },
+        { name: "Other Fields", icon: "book-open", count: 210, percent: 25 }
     ],
     
     // ==========================================

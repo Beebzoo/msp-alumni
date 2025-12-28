@@ -698,6 +698,121 @@
         }
         
         /* ==========================================
+           ALUMNI COMMUNITY SECTION
+        ========================================== */
+        .community-section {
+            background: var(--um-off-white);
+        }
+        
+        .community-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .community-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .community-text p {
+            font-size: 16px;
+            color: var(--um-gray-600);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .community-text p strong {
+            color: var(--um-dark-blue);
+        }
+        
+        .community-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .community-feature {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .community-feature:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        
+        .community-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .community-feature-icon i, .community-feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .community-feature-icon.orange {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
+        }
+        
+        .community-feature h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .community-feature p {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .community-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        
+        .community-value {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: 25px;
+            font-size: 13px;
+            color: var(--um-gray-800);
+        }
+        
+        .community-value i, .community-value svg {
+            width: 16px;
+            height: 16px;
+            color: var(--um-light-blue);
+        }
+        
+        /* ==========================================
            CTA SECTION
         ========================================== */
         .cta-section {
@@ -986,7 +1101,22 @@
                 padding: 50px 20px;
             }
             
+            .community-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .community-features {
+                grid-template-columns: 1fr 1fr;
+            }
+            
             .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .community-features {
                 grid-template-columns: 1fr;
             }
         }
@@ -1006,7 +1136,7 @@
             <a href="#map">Map</a>
             <a href="#universities">Universities</a>
             <a href="#fields">Fields</a>
-            <a href="#growth">Growth</a>
+            <a href="#community">Community</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
     </header>
@@ -1114,6 +1244,83 @@
                 <div class="growth-legend-item">
                     <span class="growth-legend-bar cumulative"></span>
                     <span>Total Alumni Network</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Alumni Community Section -->
+    <section class="section community-section" id="community">
+        <div class="section-header">
+            <span class="section-label">Join the Network</span>
+            <h2 class="section-title">What It Means to Be Part of the MSP Alumni Community</h2>
+            <p class="section-subtitle">More than just graduates — a global family of scientists supporting each other</p>
+        </div>
+        
+        <div class="community-content">
+            <div class="community-text">
+                <h3>We're Building Something Special Together</h3>
+                <p>
+                    The MSP Alumni Network isn't just a database — it's a <strong>living community</strong> of over 1,300 scientists across 59 countries who share a unique educational experience.
+                </p>
+                <p>
+                    We track where our alumni go not to monitor you, but to <strong>celebrate your achievements</strong> and show prospective students the incredible paths MSP opens up. Every success story helps the next generation see what's possible.
+                </p>
+                <p>
+                    By staying connected, you help us demonstrate the value of interdisciplinary science education — and you become part of the fabric that makes this programme extraordinary.
+                </p>
+                
+                <div class="community-values">
+                    <span class="community-value">
+                        <i data-lucide="shield-check"></i>
+                        Privacy-first approach
+                    </span>
+                    <span class="community-value">
+                        <i data-lucide="heart-handshake"></i>
+                        Mutual support
+                    </span>
+                    <span class="community-value">
+                        <i data-lucide="eye-off"></i>
+                        Always anonymous stats
+                    </span>
+                    <span class="community-value">
+                        <i data-lucide="mail-check"></i>
+                        Opt-out anytime
+                    </span>
+                </div>
+            </div>
+            
+            <div class="community-features">
+                <div class="community-feature">
+                    <div class="community-feature-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h4>Stay Connected</h4>
+                    <p>Join WhatsApp groups by country, receive our newsletter, and reconnect with classmates across the globe.</p>
+                </div>
+                
+                <div class="community-feature">
+                    <div class="community-feature-icon orange">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h4>Show Your Impact</h4>
+                    <p>Your career success inspires future students and strengthens MSP's reputation as a launchpad for scientists.</p>
+                </div>
+                
+                <div class="community-feature">
+                    <div class="community-feature-icon">
+                        <i data-lucide="message-circle"></i>
+                    </div>
+                    <h4>Give Back</h4>
+                    <p>Share your story, mentor current students, or return as a guest speaker to inspire the next cohort.</p>
+                </div>
+                
+                <div class="community-feature">
+                    <div class="community-feature-icon orange">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h4>Help Us Improve</h4>
+                    <p>Your feedback and career data help MSP continuously improve and demonstrate its impact to stakeholders.</p>
                 </div>
             </div>
         </div>

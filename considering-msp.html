@@ -4,3106 +4,1080 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Considering MSP? | Maastricht Science Programme</title>
+    <meta name="description" content="Discover what MSP graduates achieve - from Oxford to ETH Zürich, from biology to AI. See where your MSP journey could take you.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* ==========================================
+           CSS VARIABLES - UM BRANDING
+        ========================================== */
         :root {
             --um-dark-blue: #001C3D;
             --um-light-blue: #00A2DB;
             --um-orange: #E84E10;
             --um-white: #FFFFFF;
-            --um-light-gray: #f8f9fa;
-            --um-text-gray: #555555;
-            --gradient-hero: linear-gradient(135deg, #000510 0%, #001C3D 50%, #000a1a 100%);
-            --gradient-orange: linear-gradient(135deg, #E84E10 0%, #ff6b35 100%);
-            --gradient-blue: linear-gradient(135deg, #00A2DB 0%, #0077b6 100%);
+            --um-off-white: #f8f9fa;
+            --um-gray-100: #f5f5f5;
+            --um-gray-200: #e9ecef;
+            --um-gray-600: #6c757d;
+            --um-gray-800: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
-
+        
+        /* ==========================================
+           RESET & BASE
+        ========================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
             color: var(--um-dark-blue);
-            line-height: 1.7;
-            overflow-x: hidden;
+            background: var(--um-white);
         }
-
+        
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-heading);
             line-height: 1.2;
         }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(0, 28, 61, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            transition: all 0.3s ease;
+        
+        a {
+            color: var(--um-light-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
-
-        nav.scrolled {
-            background: var(--um-dark-blue);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        
+        a:hover {
+            color: var(--um-orange);
         }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
+        
+        /* ==========================================
+           HEADER
+        ========================================== */
+        header {
+            background: var(--um-white);
+            border-bottom: 1px solid var(--um-gray-200);
+            padding: 12px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .nav-logo {
+        
+        .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
         }
-
-        .nav-logo img {
-            height: 45px;
-            filter: brightness(0) invert(1);
+        
+        .logo-img {
+            height: 42px;
+            width: auto;
         }
-
-        .nav-logo span {
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-weight: 500;
+        
+        .logo-text h1 {
             font-size: 15px;
-            transition: color 0.3s ease;
-            position: relative;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin: 0;
+            line-height: 1.2;
         }
-
-        .nav-links a::after {
+        
+        .logo-text p {
+            font-size: 11px;
+            color: var(--um-gray-600);
+            margin: 0;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .header-nav a {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            color: var(--um-dark-blue);
+            transition: all 0.2s;
+        }
+        
+        .header-nav a:hover {
+            background: var(--um-gray-100);
+        }
+        
+        .header-nav .btn-cta {
+            background: var(--um-orange);
+            color: white;
+            margin-left: 8px;
+        }
+        
+        .header-nav .btn-cta:hover {
+            background: #d63d0a;
+        }
+        
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero {
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 50%, #001530 100%);
+            color: white;
+            padding: 80px 50px 100px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--um-orange);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--um-orange);
-            color: white !important;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            background: #ff6b35;
-            transform: translateY(-2px);
-        }
-
-        /* ============================================
-           HERO SECTION WITH INTERACTIVE SOLAR SYSTEM
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient-hero);
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Deep space background */
-        .deep-space {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            overflow: hidden;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.08) 0%, transparent 40%);
             pointer-events: none;
         }
-
-        .space-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(0, 162, 219, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(232, 78, 16, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(138, 43, 226, 0.04) 0%, transparent 60%);
-            animation: gradientShift 30s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, -2%) rotate(1deg); }
-            66% { transform: translate(-2%, 2%) rotate(-1deg); }
-        }
-
-        /* Star field */
-        .star-field {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .stars-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .stars-layer-1 { animation: parallax1 100s linear infinite; }
-        .stars-layer-2 { animation: parallax2 150s linear infinite; }
-        .stars-layer-3 { animation: parallax3 200s linear infinite; }
-
-        @keyframes parallax1 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-15px, 10px); }
-        }
-
-        @keyframes parallax2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10px, -12px); }
-        }
-
-        @keyframes parallax3 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-5px, -5px); }
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .star.tiny { width: 1px; height: 1px; opacity: 0.3; }
-        .star.small { width: 2px; height: 2px; opacity: 0.5; }
-        .star.medium { 
-            width: 3px; 
-            height: 3px;
-            box-shadow: 0 0 6px rgba(255,255,255,0.8);
-            animation: twinkle 3s ease-in-out infinite;
-        }
-        .star.bright {
-            width: 4px;
-            height: 4px;
-            box-shadow: 0 0 10px white, 0 0 20px rgba(255,255,255,0.5);
-            animation: twinkleBright 2s ease-in-out infinite;
-        }
-
-        .star.blue { background: #87ceeb; box-shadow: 0 0 10px rgba(135,206,235,0.9); }
-        .star.orange { background: #ffb347; box-shadow: 0 0 10px rgba(255,179,71,0.9); }
-        .star.red { background: #ff6b6b; box-shadow: 0 0 10px rgba(255,107,107,0.9); }
-        .star.purple { background: #da70d6; box-shadow: 0 0 10px rgba(218,112,214,0.9); }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        @keyframes twinkleBright {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.4); }
-        }
-
-        /* Nebulae */
-        .nebula {
+        
+        /* Floating elements */
+        .hero-float {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.15;
-            animation: nebulaPulse 20s ease-in-out infinite;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
         }
-
-        .nebula-1 {
-            width: 400px;
-            height: 300px;
-            background: radial-gradient(ellipse, rgba(0, 162, 219, 0.7) 0%, transparent 70%);
-            top: 5%;
-            left: 5%;
-        }
-
-        .nebula-2 {
-            width: 350px;
-            height: 250px;
-            background: radial-gradient(ellipse, rgba(232, 78, 16, 0.6) 0%, transparent 70%);
-            bottom: 10%;
-            right: 5%;
-            animation-delay: 7s;
-        }
-
-        .nebula-3 {
+        
+        .hero-float-1 {
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.5) 0%, transparent 70%);
-            top: 50%;
-            right: 15%;
-            animation-delay: 14s;
+            background: var(--um-light-blue);
+            top: -100px;
+            right: -50px;
+            animation-delay: 0s;
         }
-
-        @keyframes nebulaPulse {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.2; transform: scale(1.1); }
-        }
-
-        /* Shooting stars */
-        .shooting-star {
-            position: absolute;
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 20%, white 100%);
-            opacity: 0;
-            animation: shootStar 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .shooting-star::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -2px;
-            width: 6px;
-            height: 6px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-        }
-
-        .shooting-star-1 { top: 15%; left: 10%; transform: rotate(-35deg); animation-delay: 0s; }
-        .shooting-star-2 { top: 60%; right: 20%; transform: rotate(-40deg); animation-delay: 3s; }
-        .shooting-star-3 { top: 35%; left: 60%; transform: rotate(-30deg); animation-delay: 6s; }
-
-        @keyframes shootStar {
-            0% { opacity: 0; transform: translateX(0) rotate(-35deg); }
-            2% { opacity: 1; }
-            8% { opacity: 1; }
-            12% { opacity: 0; transform: translateX(300px) rotate(-35deg); }
-            100% { opacity: 0; }
-        }
-
-        /* Comet */
-        .comet {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: radial-gradient(circle, white 0%, #87ceeb 40%, transparent 70%);
-            border-radius: 50%;
-            animation: cometFly 35s linear infinite;
-            opacity: 0;
-            z-index: 50;
-            pointer-events: none;
-        }
-
-        .comet::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 100%;
+        
+        .hero-float-2 {
             width: 200px;
-            height: 8px;
-            background: linear-gradient(90deg, transparent 0%, rgba(135, 206, 235, 0.3) 30%, rgba(255,255,255,0.8) 100%);
-            transform: translateY(-50%);
-            filter: blur(2px);
-            border-radius: 50%;
+            height: 200px;
+            background: var(--um-orange);
+            bottom: -50px;
+            left: 10%;
+            animation-delay: -7s;
         }
-
-        .comet::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 100%;
+        
+        .hero-float-3 {
             width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent 0%, rgba(200, 220, 255, 0.5) 50%, white 100%);
-            transform: translateY(-50%);
+            height: 150px;
+            background: var(--um-light-blue);
+            top: 30%;
+            left: -30px;
+            animation-delay: -14s;
         }
-
-        @keyframes cometFly {
-            0% { top: -5%; right: -10%; opacity: 0; transform: rotate(35deg); }
-            5% { opacity: 1; }
-            30% { opacity: 1; }
-            40% { top: 105%; right: 110%; opacity: 0; }
-            100% { opacity: 0; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(5deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
         }
-
-        /* Hero Content Grid */
+        
         .hero-content {
-            max-width: 1400px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 120px 40px 80px;
             position: relative;
-            z-index: 10;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-text {
-            position: relative;
-        }
-
-        .hero-logo-bg {
-            position: absolute;
-            top: -50px;
-            left: -100px;
-            width: 600px;
-            height: 600px;
-            opacity: 0.1;
-            filter: brightness(0) invert(1);
-            pointer-events: none;
             z-index: 1;
         }
-
-        .hero-text > *:not(.hero-logo-bg) {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(42px, 5vw, 64px);
-            font-weight: 800;
-            color: white;
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(232,78,16,0.2);
+            color: var(--um-orange);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 18px;
+            border-radius: 25px;
             margin-bottom: 25px;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
             line-height: 1.1;
         }
-
-        .hero-text h1 span {
-            color: var(--um-light-blue);
-        }
-
-        .hero-text p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 35px;
-            max-width: 500px;
-            line-height: 1.8;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 35px;
-        }
-
-        .hero-stat {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-stat:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .hero-stat-number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--um-light-blue);
-            line-height: 1;
-        }
-
-        .hero-stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            margin-top: 6px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--um-orange);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #ff6b35;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(232, 78, 16, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: white;
-            transform: translateY(-3px);
-        }
-
-        /* ============================================
-           INTERACTIVE SOLAR SYSTEM
-           ============================================ */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 550px;
-        }
-
-        .solar-system-wrapper {
-            position: relative;
-            transition: transform 0.5s ease;
-        }
-
-        .solar-system {
-            width: 550px;
-            height: 550px;
-            position: relative;
-            transition: filter 0.3s ease;
-        }
-
-        .solar-system.dimmed .orbit:not(.highlighted),
-        .solar-system.dimmed .planet:not(.highlighted),
-        .solar-system.dimmed .sun:not(.highlighted) {
-            opacity: 0.2;
-            filter: blur(1px);
-        }
-
-        /* Sun */
-        .sun-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        .sun-corona {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 200, 100, 0.15) 30%, transparent 70%);
-            animation: coronaPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes coronaPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-        }
-
-        .sun-flare {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 150, 50, 0.2) 0%, transparent 70%);
-            animation: flarePulse 4s ease-in-out infinite;
-        }
-
-        @keyframes flarePulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-            50% { transform: translate(-50%, -50%) scale(1.3) rotate(180deg); }
-        }
-
-        .sun {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: 
-                radial-gradient(circle at 30% 30%, 
-                    #fffef0 0%, 
-                    #ffeb99 10%,
-                    #ffcc33 25%, 
-                    #ff9900 45%, 
-                    #ff6600 65%, 
-                    #e84e10 80%,
-                    #cc3300 100%);
-            box-shadow: 
-                0 0 60px rgba(255, 200, 100, 1),
-                0 0 100px rgba(255, 150, 50, 0.8),
-                0 0 150px rgba(255, 100, 0, 0.5),
-                0 0 200px rgba(232, 78, 16, 0.3);
-            animation: sunGlow 5s ease-in-out infinite;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 10;
-        }
-
-        .sun:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 
-                0 0 80px rgba(255, 200, 100, 1),
-                0 0 130px rgba(255, 150, 50, 0.9),
-                0 0 200px rgba(255, 100, 0, 0.6);
-        }
-
-        .sun.highlighted {
-            transform: translate(-50%, -50%) scale(1.15);
-            z-index: 100;
-        }
-
-        .sun::before {
-            content: '';
-            position: absolute;
-            top: 15%;
-            left: 20%;
-            width: 15px;
-            height: 15px;
-            background: rgba(255, 255, 200, 0.5);
-            border-radius: 50%;
-            filter: blur(3px);
-        }
-
-        .sun::after {
-            content: '';
-            position: absolute;
-            top: 55%;
-            right: 25%;
-            width: 10px;
-            height: 10px;
-            background: rgba(180, 50, 0, 0.6);
-            border-radius: 50%;
-            filter: blur(2px);
-        }
-
-        @keyframes sunGlow {
-            0%, 100% {
-                box-shadow: 
-                    0 0 60px rgba(255, 200, 100, 1),
-                    0 0 100px rgba(255, 150, 50, 0.8),
-                    0 0 150px rgba(255, 100, 0, 0.5),
-                    0 0 200px rgba(232, 78, 16, 0.3);
-            }
-            50% {
-                box-shadow: 
-                    0 0 80px rgba(255, 200, 100, 1),
-                    0 0 130px rgba(255, 150, 50, 0.9),
-                    0 0 180px rgba(255, 100, 0, 0.6),
-                    0 0 250px rgba(232, 78, 16, 0.4);
-            }
-        }
-
-        /* Orbits */
-        .orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px solid rgba(0, 162, 219, 0.1);
-            border-radius: 50%;
-            transition: border-color 0.3s ease, opacity 0.3s ease;
-        }
-
-        .orbit:hover {
-            border-color: rgba(0, 162, 219, 0.25);
-        }
-
-        .orbit.highlighted {
-            border-color: rgba(0, 162, 219, 0.5);
-            border-width: 2px;
-        }
-
-        .orbit-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            animation: orbitRotate linear infinite;
-        }
-
-        /* Orbit sizes */
-        .orbit-mercury { width: 110px; height: 110px; margin: -55px; }
-        .orbit-mercury .orbit-animation { animation-duration: 8s; }
-
-        .orbit-venus { width: 150px; height: 150px; margin: -75px; }
-        .orbit-venus .orbit-animation { animation-duration: 12s; }
-
-        .orbit-earth { width: 195px; height: 195px; margin: -97.5px; }
-        .orbit-earth .orbit-animation { animation-duration: 18s; }
-
-        .orbit-mars { width: 245px; height: 245px; margin: -122.5px; }
-        .orbit-mars .orbit-animation { animation-duration: 28s; }
-
-        .orbit-asteroid { 
-            width: 300px; 
-            height: 300px; 
-            margin: -150px; 
-            border-style: dashed;
-            border-color: rgba(150, 150, 150, 0.1);
-        }
-
-        .orbit-jupiter { width: 370px; height: 370px; margin: -185px; }
-        .orbit-jupiter .orbit-animation { animation-duration: 55s; }
-
-        .orbit-saturn { width: 450px; height: 450px; margin: -225px; }
-        .orbit-saturn .orbit-animation { animation-duration: 80s; }
-
-        .orbit-uranus { width: 510px; height: 510px; margin: -255px; }
-        .orbit-uranus .orbit-animation { animation-duration: 110s; }
-
-        @keyframes orbitRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Planet base */
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            right: -50%;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-            z-index: 5;
-        }
-
-        .planet:hover {
-            z-index: 100;
-        }
-
-        .planet.highlighted {
-            z-index: 100;
-            animation: planetHighlight 1s ease-in-out infinite;
-        }
-
-        @keyframes planetHighlight {
-            0%, 100% { filter: brightness(1.2); }
-            50% { filter: brightness(1.5); }
-        }
-
-        /* Mercury */
-        .planet-mercury {
-            width: 10px;
-            height: 10px;
-            right: -5px;
-            background: 
-                radial-gradient(circle at 30% 30%, 
-                    #e0e0e0 0%, 
-                    #b0b0b0 30%, 
-                    #808080 60%, 
-                    #505050 100%);
-            box-shadow: 
-                inset -2px -2px 4px rgba(0,0,0,0.6),
-                0 0 8px rgba(180, 180, 180, 0.3);
-        }
-
-        .planet-mercury:hover {
-            transform: translateY(-50%) scale(2.2);
-            box-shadow: 
-                inset -2px -2px 4px rgba(0,0,0,0.6),
-                0 0 20px rgba(180, 180, 180, 0.6);
-        }
-
-        /* Venus */
-        .planet-venus {
-            width: 15px;
-            height: 15px;
-            right: -7.5px;
-            background: 
-                radial-gradient(circle at 35% 35%, 
-                    #fff8dc 0%, 
-                    #ffe4a0 25%, 
-                    #e6c84d 50%, 
-                    #cc9933 80%, 
-                    #aa7722 100%);
-            box-shadow: 
-                inset -3px -3px 6px rgba(150, 100, 0, 0.5),
-                0 0 15px rgba(255, 220, 100, 0.4);
-            overflow: hidden;
-        }
-
-        .planet-venus::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(60deg, transparent 30%, rgba(255,255,200,0.3) 50%, transparent 70%);
-            animation: venusAtmo 15s linear infinite;
-            border-radius: 50%;
-        }
-
-        @keyframes venusAtmo {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-
-        .planet-venus:hover {
-            transform: translateY(-50%) scale(2);
-            box-shadow: 
-                inset -3px -3px 6px rgba(150, 100, 0, 0.5),
-                0 0 25px rgba(255, 220, 100, 0.6);
-        }
-
-        /* Earth */
-        .planet-earth {
-            width: 18px;
-            height: 18px;
-            right: -9px;
-            background: 
-                radial-gradient(circle at 30% 30%, 
-                    #b8e6ff 0%,
-                    #6eb5ff 20%,
-                    #3d8b40 35%,
-                    #2d6a4f 45%,
-                    #4a90d9 55%,
-                    #1e5631 70%,
-                    #0d3320 100%);
-            box-shadow: 
-                inset -3px -3px 8px rgba(0,0,0,0.4),
-                0 0 20px rgba(74, 144, 217, 0.5);
-            overflow: hidden;
-        }
-
-        .earth-atmosphere {
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            background: radial-gradient(circle, transparent 70%, rgba(135, 206, 235, 0.3) 90%, rgba(135, 206, 235, 0.1) 100%);
-            pointer-events: none;
-        }
-
-        .earth-clouds {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            background: 
-                radial-gradient(ellipse at 25% 25%, rgba(255,255,255,0.6) 0%, transparent 35%),
-                radial-gradient(ellipse at 75% 55%, rgba(255,255,255,0.5) 0%, transparent 30%),
-                radial-gradient(ellipse at 45% 80%, rgba(255,255,255,0.4) 0%, transparent 25%);
-            animation: cloudsMove 25s linear infinite;
-        }
-
-        @keyframes cloudsMove {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .planet-earth:hover {
-            transform: translateY(-50%) scale(2);
-            box-shadow: 
-                inset -3px -3px 8px rgba(0,0,0,0.4),
-                0 0 35px rgba(74, 144, 217, 0.7);
-        }
-
-        /* Moon */
-        .moon-system {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            top: 50%;
-            right: -20px;
-            margin-top: -20px;
-            animation: moonOrbit 5s linear infinite;
-        }
-
-        .moon {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: 
-                radial-gradient(circle at 30% 30%, 
-                    #f8f8f8 0%, 
-                    #d0d0d0 40%, 
-                    #a0a0a0 70%, 
-                    #707070 100%);
-            border-radius: 50%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes moonOrbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Mars */
-        .planet-mars {
-            width: 13px;
-            height: 13px;
-            right: -6.5px;
-            background: 
-                radial-gradient(circle at 30% 30%, 
-                    #f5b090 0%,
-                    #e07050 30%,
-                    #c04020 55%,
-                    #8b2500 80%,
-                    #5c1a00 100%);
-            box-shadow: 
-                inset -2px -2px 6px rgba(0,0,0,0.5),
-                0 0 12px rgba(200, 80, 50, 0.4);
-            overflow: hidden;
-        }
-
-        .planet-mars::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 30%;
-            right: 30%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 0 0 50% 50%;
-            filter: blur(1px);
-        }
-
-        .planet-mars:hover {
-            transform: translateY(-50%) scale(2.2);
-            box-shadow: 
-                inset -2px -2px 6px rgba(0,0,0,0.5),
-                0 0 20px rgba(200, 80, 50, 0.6);
-        }
-
-        /* Asteroid Belt */
-        .asteroid-belt {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            margin: -150px;
-            animation: asteroidSpin 300s linear infinite;
-            pointer-events: none;
-        }
-
-        .asteroid {
-            position: absolute;
-            background: linear-gradient(135deg, #aaa 0%, #666 100%);
-            border-radius: 30%;
-            opacity: 0.5;
-        }
-
-        @keyframes asteroidSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Jupiter */
-        .planet-jupiter {
-            width: 42px;
-            height: 42px;
-            right: -21px;
-            background: 
-                linear-gradient(180deg,
-                    #e8d5b8 0%,
-                    #d4bc96 6%,
-                    #9c7c54 12%,
-                    #d4bc96 18%,
-                    #a67c52 24%,
-                    #c9a882 30%,
-                    #d4bc96 36%,
-                    #8b6914 42%,
-                    #c9a882 48%,
-                    #d4bc96 54%,
-                    #a67c52 60%,
-                    #c9a882 66%,
-                    #d4bc96 72%,
-                    #9c7c54 80%,
-                    #c9a882 88%,
-                    #d4bc96 100%);
-            border-radius: 50%;
-            box-shadow: 
-                inset -8px -8px 16px rgba(0,0,0,0.4),
-                0 0 30px rgba(218, 165, 32, 0.3);
-            overflow: hidden;
-        }
-
-        .jupiter-spot {
-            position: absolute;
-            width: 12px;
-            height: 7px;
-            background: 
-                radial-gradient(ellipse, 
-                    #e05030 0%, 
-                    #c03020 50%, 
-                    #8b2500 100%);
-            border-radius: 50%;
-            top: 56%;
-            left: 20%;
-            transform: rotate(-10deg);
-            animation: spotWander 12s ease-in-out infinite;
-        }
-
-        @keyframes spotWander {
-            0%, 100% { left: 20%; }
-            50% { left: 28%; }
-        }
-
-        .planet-jupiter:hover {
-            transform: translateY(-50%) scale(1.5);
-            box-shadow: 
-                inset -8px -8px 16px rgba(0,0,0,0.4),
-                0 0 50px rgba(218, 165, 32, 0.5);
-        }
-
-        /* Jupiter moons */
-        .jupiter-moons {
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            top: 50%;
-            right: -45px;
-            margin-top: -45px;
-            pointer-events: none;
-        }
-
-        .jmoon {
-            position: absolute;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-        }
-
-        .io {
-            width: 5px;
-            height: 5px;
-            background: radial-gradient(circle at 30% 30%, #ffee88 0%, #ddaa22 100%);
-            animation: ioOrbit 2.5s linear infinite;
-            box-shadow: 0 0 4px rgba(255, 220, 100, 0.5);
-        }
-
-        .europa {
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle at 30% 30%, #f5f5f5 0%, #c0c0c0 100%);
-            animation: europaOrbit 4s linear infinite;
-        }
-
-        .ganymede {
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle at 30% 30%, #c0b0a0 0%, #807060 100%);
-            animation: ganymedeOrbit 7s linear infinite;
-        }
-
-        .callisto {
-            width: 5px;
-            height: 5px;
-            background: radial-gradient(circle at 30% 30%, #a09080 0%, #605040 100%);
-            animation: callistoOrbit 12s linear infinite;
-        }
-
-        @keyframes ioOrbit {
-            from { transform: translate(-50%, -50%) rotate(0deg) translateX(28px) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg) translateX(28px) rotate(-360deg); }
-        }
-
-        @keyframes europaOrbit {
-            from { transform: translate(-50%, -50%) rotate(90deg) translateX(34px) rotate(-90deg); }
-            to { transform: translate(-50%, -50%) rotate(450deg) translateX(34px) rotate(-450deg); }
-        }
-
-        @keyframes ganymedeOrbit {
-            from { transform: translate(-50%, -50%) rotate(180deg) translateX(40px) rotate(-180deg); }
-            to { transform: translate(-50%, -50%) rotate(540deg) translateX(40px) rotate(-540deg); }
-        }
-
-        @keyframes callistoOrbit {
-            from { transform: translate(-50%, -50%) rotate(270deg) translateX(48px) rotate(-270deg); }
-            to { transform: translate(-50%, -50%) rotate(630deg) translateX(48px) rotate(-630deg); }
-        }
-
-        /* Saturn */
-        .planet-saturn {
-            width: 36px;
-            height: 36px;
-            right: -18px;
-            background: 
-                linear-gradient(180deg,
-                    #f8ecd0 0%,
-                    #e8d4a8 15%,
-                    #d8c490 30%,
-                    #c8b478 45%,
-                    #b8a468 60%,
-                    #c8b478 75%,
-                    #d8c490 90%,
-                    #e8d4a8 100%);
-            border-radius: 50%;
-            box-shadow: 
-                inset -6px -6px 12px rgba(0,0,0,0.3),
-                0 0 25px rgba(218, 180, 100, 0.3);
-        }
-
-        .saturn-ring-system {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotateX(70deg);
-            pointer-events: none;
-        }
-
-        .saturn-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            border-style: solid;
-        }
-
-        .ring-a {
-            width: 70px;
-            height: 70px;
-            border-width: 7px;
-            border-color: rgba(210, 190, 150, 0.6);
-        }
-
-        .ring-b {
-            width: 60px;
-            height: 60px;
-            border-width: 4px;
-            border-color: rgba(190, 170, 130, 0.7);
-        }
-
-        .ring-cassini {
-            width: 54px;
-            height: 54px;
-            border-width: 1px;
-            border-color: rgba(50, 50, 50, 0.3);
-        }
-
-        .ring-c {
-            width: 50px;
-            height: 50px;
-            border-width: 2px;
-            border-color: rgba(180, 160, 120, 0.4);
-        }
-
-        .planet-saturn:hover {
-            transform: translateY(-50%) scale(1.5);
-            box-shadow: 
-                inset -6px -6px 12px rgba(0,0,0,0.3),
-                0 0 40px rgba(218, 180, 100, 0.5);
-        }
-
-        /* Saturn moon Titan */
-        .titan-orbit {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            right: -50px;
-            margin-top: -50px;
-            animation: titanOrbit 16s linear infinite;
-            pointer-events: none;
-        }
-
-        .titan {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: radial-gradient(circle at 30% 30%, #e8c080 0%, #c09050 100%);
-            border-radius: 50%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 6px rgba(232, 192, 128, 0.4);
-        }
-
-        @keyframes titanOrbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Uranus */
-        .planet-uranus {
-            width: 22px;
-            height: 22px;
-            right: -11px;
-            background: 
-                radial-gradient(circle at 35% 35%,
-                    #d0ffff 0%,
-                    #a0e8e8 25%,
-                    #70c8c8 50%,
-                    #409898 75%,
-                    #206868 100%);
-            border-radius: 50%;
-            box-shadow: 
-                inset -4px -4px 8px rgba(0,0,0,0.3),
-                0 0 18px rgba(100, 200, 200, 0.4);
-        }
-
-        .uranus-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(180, 220, 220, 0.25);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) rotateX(80deg) rotateZ(98deg);
-        }
-
-        .planet-uranus:hover {
-            transform: translateY(-50%) scale(1.8);
-            box-shadow: 
-                inset -4px -4px 8px rgba(0,0,0,0.3),
-                0 0 30px rgba(100, 200, 200, 0.6);
-        }
-
-        /* Solar system hint */
-        .solar-hint {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 28, 61, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 162, 219, 0.2);
-            white-space: nowrap;
-        }
-
-        .solar-hint strong {
-            color: var(--um-light-blue);
-        }
-
-        /* Planet Info Panel */
-        .planet-info-panel {
-            position: fixed;
-            top: 50%;
-            right: 40px;
-            transform: translateY(-50%) translateX(120%);
-            width: 300px;
-            background: rgba(0, 28, 61, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 162, 219, 0.3);
-            padding: 28px;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 2000;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .planet-info-panel.active {
-            transform: translateY(-50%) translateX(0);
-        }
-
-        .panel-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 28px;
-            height: 28px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .panel-close:hover {
-            background: var(--um-orange);
-            transform: rotate(90deg);
-        }
-
-        .panel-icon {
-            font-size: 42px;
-            margin-bottom: 12px;
-        }
-
-        .panel-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 4px;
-        }
-
-        .panel-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--um-light-blue);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-        }
-
-        .panel-desc {
-            font-size: 13px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 18px;
-        }
-
-        .panel-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .panel-stat {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .panel-stat-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
+        
+        .hero h2 span {
             color: var(--um-orange);
         }
-
-        .panel-stat-label {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 2px;
-        }
-
-        .panel-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--um-orange);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .panel-link:hover {
-            background: #ff6b35;
-            transform: translateX(5px);
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 13px;
-            animation: bounce 2s ease-in-out infinite;
-            z-index: 20;
-        }
-
-        .scroll-indicator svg {
-            width: 30px;
-            height: 30px;
-            stroke: var(--um-light-blue);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ============================================
-           REST OF THE PAGE STYLES
-           ============================================ */
-
-        /* Welcome to Maastricht Section */
-        .maastricht-section {
-            position: relative;
-            height: 45vh;
-            min-height: 350px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 30px;
-        }
-
-        .maastricht-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .maastricht-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 70%;
-        }
-
-        .maastricht-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 28, 61, 0.6) 0%,
-                rgba(0, 28, 61, 0.15) 25%,
-                rgba(0, 28, 61, 0.05) 50%,
-                rgba(0, 28, 61, 0.3) 100%
-            );
-        }
-
-        .maastricht-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 15px 40px;
-        }
-
-        .maastricht-title {
-            font-size: clamp(36px, 6vw, 60px);
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .maastricht-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--um-orange);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            padding: 14px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(232, 78, 16, 0.4);
-        }
-
-        .maastricht-btn:hover {
-            background: #ff6b35;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(232, 78, 16, 0.5);
-        }
-
-        .maastricht-btn svg {
-            transition: transform 0.3s ease;
-        }
-
-        .maastricht-btn:hover svg {
-            transform: translateX(5px);
-        }
-
-        /* Sections - General */
-        .section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            display: inline-block;
-            background: rgba(0, 162, 219, 0.1);
-            color: var(--um-light-blue);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 11px;
-            padding: 6px 16px;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 3.5vw, 34px);
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 12px;
-        }
-
-        .section-subtitle {
-            font-size: 14px;
-            color: var(--um-text-gray);
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        /* What is MSP Section */
-        .what-is-msp-section {
-            background: var(--um-white);
-            padding: 80px 40px;
-        }
-
-        .what-is-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .lead-text {
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--um-text-gray);
-            margin-bottom: 30px;
-        }
-
-        .lead-text strong {
-            color: var(--um-dark-blue);
-        }
-
-        .what-is-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 18px 20px;
-            background: var(--um-light-gray);
-            border-radius: 10px;
-            border-left: 3px solid var(--um-light-blue);
-        }
-
-        .highlight-icon {
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        .highlight-item strong {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            color: var(--um-dark-blue);
-            margin-bottom: 3px;
-        }
-
-        .highlight-item p {
-            color: var(--um-text-gray);
-            margin: 0;
-            font-size: 13px;
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 35px;
             line-height: 1.5;
         }
-
-        /* How It Works Section */
-        .how-it-works-section {
-            background: var(--um-light-gray);
-            padding: 70px 40px;
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--um-orange);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
         }
-
-        .how-it-works-content {
+        
+        .hero-cta:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232,78,16,0.4);
+            color: white;
+        }
+        
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* ==========================================
+           SECTIONS
+        ========================================== */
+        .section {
+            padding: 80px 50px;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--um-light-blue);
+            background: rgba(0,162,219,0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--um-gray-600);
+            line-height: 1.6;
+        }
+        
+        /* ==========================================
+           PROOF POINTS (Key Stats)
+        ========================================== */
+        .proof-section {
+            background: var(--um-off-white);
+        }
+        
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .proof-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .proof-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .proof-number {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--um-orange);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .proof-label {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            line-height: 1.4;
+        }
+        
+        .proof-label strong {
+            display: block;
+            color: var(--um-dark-blue);
+            font-weight: 600;
+        }
+        
+        /* ==========================================
+           DESTINATIONS SECTION
+        ========================================== */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dest-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .dest-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        
+        .dest-card.prestige {
+            background: linear-gradient(135deg, #fffbf8 0%, white 100%);
+            border: 2px solid var(--um-orange);
+        }
+        
+        .dest-logo {
+            width: 55px;
+            height: 55px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .dest-logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+        
+        .dest-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .dest-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .dest-country {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .dest-country img {
+            width: 16px;
+            height: 11px;
+            border-radius: 2px;
+        }
+        
+        .dest-count {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            text-align: right;
+        }
+        
+        .dest-count span {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--um-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ==========================================
+           CAREER PATHS
+        ========================================== */
+        .careers-section {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        
+        .careers-section .section-label {
+            background: rgba(232,78,16,0.2);
+            color: var(--um-orange);
+        }
+        
+        .careers-section .section-title {
+            color: white;
+        }
+        
+        .careers-section .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
             max-width: 1000px;
             margin: 0 auto;
         }
-
-        .semester-timeline {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 35px 0;
-            flex-wrap: wrap;
-        }
-
-        .period-box {
-            background: white;
-            border: 2px solid var(--um-light-blue);
-            border-radius: 10px;
-            padding: 15px 20px;
-            text-align: center;
-            min-width: 120px;
-            transition: all 0.3s ease;
-        }
-
-        .period-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 162, 219, 0.15);
-        }
-
-        .period-box.project {
-            background: var(--um-dark-blue);
-            border-color: var(--um-dark-blue);
-        }
-
-        .period-box .period-name {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 13px;
-            color: var(--um-dark-blue);
-            margin-bottom: 5px;
-        }
-
-        .period-box.project .period-name {
-            color: white;
-        }
-
-        .period-box .period-detail {
-            font-size: 11px;
-            color: var(--um-text-gray);
-        }
-
-        .period-box.project .period-detail {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .timeline-arrow {
-            color: var(--um-light-blue);
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .timeline-repeat {
-            font-size: 11px;
-            color: var(--um-text-gray);
-            margin-left: 10px;
-            background: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .courses-intro {
-            text-align: center;
-            margin: 30px 0 20px;
-            font-size: 14px;
-            color: var(--um-text-gray);
-        }
-
-        .courses-intro strong {
-            color: var(--um-dark-blue);
-        }
-
-        .course-categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .course-cat {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            border: 1px solid #e0e0e0;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--um-dark-blue);
-            transition: all 0.2s ease;
-        }
-
-        .course-cat:hover {
-            border-color: var(--um-light-blue);
-            background: rgba(0, 162, 219, 0.05);
-        }
-
-        .course-cat .cat-count {
-            background: var(--um-light-blue);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 10px;
-        }
-
-        .how-it-works-ctas {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hiw-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .hiw-btn-primary {
-            background: var(--um-dark-blue);
-            color: white;
-        }
-
-        .hiw-btn-primary:hover {
-            background: #003366;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 28, 61, 0.3);
-        }
-
-        .hiw-btn-secondary {
-            background: white;
-            color: var(--um-dark-blue);
-            border: 2px solid var(--um-dark-blue);
-        }
-
-        .hiw-btn-secondary:hover {
-            background: var(--um-dark-blue);
-            color: white;
-        }
-
-        .hiw-btn svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Your Future Section */
-        .future-section {
-            background: var(--um-dark-blue);
-            padding: 70px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .future-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E84E10' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        .future-section .section-label {
-            background: rgba(232, 78, 16, 0.2);
-            color: var(--um-orange);
-        }
-
-        .future-section .section-title {
-            color: white;
-        }
-
-        .future-section .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .future-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .future-highlights {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 35px 0;
-            flex-wrap: wrap;
-        }
-
-        .future-item {
-            text-align: center;
-        }
-
-        .future-item-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(232, 78, 16, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            font-size: 24px;
-        }
-
-        .future-item-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            color: white;
-            margin-bottom: 4px;
-        }
-
-        .future-item-desc {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .future-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--um-orange);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .future-cta:hover {
-            background: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(232, 78, 16, 0.4);
-        }
-
-        .future-cta svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Apply Section */
-        .apply-section {
-            background: var(--um-light-gray);
-            padding: 70px 40px;
-        }
-
-        .apply-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 35px;
-        }
-
-        .apply-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-
-        .apply-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .apply-card-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--um-light-blue);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            color: white;
-        }
-
-        .apply-card-icon svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .apply-card-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-
-        .apply-card-desc {
-            font-size: 12px;
-            color: var(--um-text-gray);
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .apply-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--um-light-blue);
-        }
-
-        .apply-card-link svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .apply-card:hover .apply-card-link {
-            color: var(--um-orange);
-        }
-
-        .apply-main-cta {
-            text-align: center;
-            margin-top: 35px;
-        }
-
-        .apply-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--um-dark-blue);
-            color: white;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .apply-btn:hover {
-            background: #003366;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 28, 61, 0.3);
-        }
-
-        .apply-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Impact Numbers Section */
-        .impact-section {
-            background: linear-gradient(135deg, #001C3D 0%, #002d5c 100%);
-            padding: 70px 40px;
-        }
-
-        .impact-section .section-label {
-            background: rgba(232, 78, 16, 0.2);
-            color: var(--um-orange);
-        }
-
-        .impact-section .section-title {
-            color: white;
-        }
-
-        .impact-section .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .impact-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px 15px;
+        
+        .career-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
             text-align: center;
             transition: all 0.3s ease;
         }
-
-        .impact-card:hover {
-            background: rgba(255, 255, 255, 0.1);
+        
+        .career-card:hover {
+            background: rgba(255,255,255,0.1);
             transform: translateY(-3px);
         }
-
-        .impact-number {
-            font-family: 'Montserrat', sans-serif;
+        
+        .career-icon {
             font-size: 32px;
-            font-weight: 800;
-            color: var(--um-orange);
+            margin-bottom: 12px;
+        }
+        
+        .career-name {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
             margin-bottom: 6px;
         }
-
-        .impact-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 4px;
-        }
-
-        .impact-detail {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #001C3D 0%, #003366 50%, #001C3D 100%);
-            padding: 100px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(0, 162, 219, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, rgba(232, 78, 16, 0.15) 0%, transparent 50%);
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .cta-desc {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 35px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--um-dark-blue);
-            padding: 60px 40px 30px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-        }
-
-        .footer-brand h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .footer-links h4 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 2.2;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--um-light-blue);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 50px auto 0;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.5);
+        
+        .career-percent {
             font-size: 13px;
+            color: var(--um-orange);
+            font-weight: 600;
         }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
+        
+        /* ==========================================
+           WHAT IS MSP
+        ========================================== */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+        
+        .about-lead {
+            font-size: 19px;
+            color: var(--um-gray-800);
+            line-height: 1.7;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        
+        .about-lead strong {
+            color: var(--um-dark-blue);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .feature-card {
+            background: var(--um-off-white);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--um-light-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            margin: 0 auto 18px;
+            font-size: 28px;
         }
-
-        .footer-social a:hover {
+        
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            line-height: 1.6;
+        }
+        
+        /* ==========================================
+           DISCIPLINES
+        ========================================== */
+        .disciplines-section {
+            background: var(--um-off-white);
+        }
+        
+        .disciplines-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .discipline-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: 30px;
+            padding: 12px 22px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--um-dark-blue);
+            transition: all 0.2s ease;
+        }
+        
+        .discipline-tag:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .discipline-tag .count {
             background: var(--um-light-blue);
-            transform: translateY(-3px);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 12px;
         }
-
-        /* Scroll reveal animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
+        
+        /* ==========================================
+           CTA SECTION
+        ========================================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
+            padding: 70px 50px;
+            text-align: center;
         }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
         }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero-visual {
-                min-height: 450px;
-            }
-
-            .solar-system {
-                width: 450px;
-                height: 450px;
-            }
-
-            .hero-stats {
-                max-width: 500px;
-                margin: 0 auto 35px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .impact-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content {
-                padding: 100px 20px 60px;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .apply-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .future-highlights {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .impact-grid {
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 30px;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .cta-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .cta-btn.primary {
+            background: white;
+            color: var(--um-orange);
+        }
+        
+        .cta-btn.primary:hover {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+        
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 50px 50px 25px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo {
+            height: 45px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-section h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+        
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+        @media (max-width: 1000px) {
+            .proof-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .footer-content {
+            
+            .features-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .planet-info-panel {
-                right: 20px;
-                left: 20px;
-                width: auto;
-                top: auto;
-                bottom: 20px;
-                transform: translateY(120%);
-            }
-
-            .planet-info-panel.active {
-                transform: translateY(0);
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
             }
         }
-
-        @media (max-width: 600px) {
-            .semester-timeline {
-                flex-direction: column;
-                gap: 10px;
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
             }
-
-            .timeline-arrow {
-                transform: rotate(90deg);
+            
+            .header-nav a:not(.btn-cta) {
+                display: none;
             }
-
-            .timeline-repeat {
-                margin-left: 0;
-                margin-top: 10px;
+            
+            .hero {
+                padding: 60px 20px 70px;
+            }
+            
+            .hero h2 {
+                font-size: 34px;
+            }
+            
+            .hero-subtitle {
+                font-size: 17px;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .proof-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .proof-number {
+                font-size: 32px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Logo">
-                <span>Maastricht Science Programme</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#what-is-msp">What is MSP?</a></li>
-                <li><a href="#how-it-works">Curriculum</a></li>
-                <li><a href="#future">Your Future</a></li>
-                <li><a href="#apply">Apply</a></li>
-                <li><a href="index.html">Alumni</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Interactive Solar System -->
-    <section class="hero">
-        <!-- Deep Space Background -->
-        <div class="deep-space">
-            <div class="space-gradient"></div>
-            
-            <!-- Nebulae -->
-            <div class="nebula nebula-1"></div>
-            <div class="nebula nebula-2"></div>
-            <div class="nebula nebula-3"></div>
-            
-            <!-- Star Field -->
-            <div class="star-field">
-                <div class="stars-layer stars-layer-1" id="stars1"></div>
-                <div class="stars-layer stars-layer-2" id="stars2"></div>
-                <div class="stars-layer stars-layer-3" id="stars3"></div>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="assets/msp-logo.png" alt="MSP Logo" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">
+                <h1>MSP Alumni Network</h1>
+                <p>Maastricht Science Programme</p>
             </div>
-            
-            <!-- Shooting Stars -->
-            <div class="shooting-star shooting-star-1"></div>
-            <div class="shooting-star shooting-star-2"></div>
-            <div class="shooting-star shooting-star-3"></div>
-            
-            <!-- Comet -->
-            <div class="comet"></div>
-        </div>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html">Alumni Map</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#careers">Careers</a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank" class="btn-cta">Apply Now</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-float hero-float-1"></div>
+        <div class="hero-float hero-float-2"></div>
+        <div class="hero-float hero-float-3"></div>
         
         <div class="hero-content">
-            <div class="hero-text">
-                <img src="assets/logos/msp-logo.png" alt="" class="hero-logo-bg">
-                <h1>Design Your Own <span>Science Degree</span></h1>
-                <p>Join an international community of curious minds at the Maastricht Science Programme. Choose from 150+ courses in biology, chemistry, physics, and beyond. Build your unique academic path.</p>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">150+</div>
-                        <div class="hero-stat-label">Courses to choose from</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">60+</div>
-                        <div class="hero-stat-label">Nationalities</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">91%</div>
-                        <div class="hero-stat-label">Continue to Master's</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">42%</div>
-                        <div class="hero-stat-label">Top 100 Universities</div>
-                    </div>
-                </div>
-                
-                <div class="hero-buttons">
-                    <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="btn btn-primary">
-                        Apply Now
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="#what-is-msp" class="btn btn-secondary">Explore Programme</a>
-                </div>
-            </div>
-            
-            <!-- Interactive Solar System -->
-            <div class="hero-visual">
-                <div class="solar-system-wrapper">
-                    <div class="solar-system" id="solarSystem">
-                        <!-- Sun -->
-                        <div class="sun-container">
-                            <div class="sun-corona"></div>
-                            <div class="sun-flare"></div>
-                            <div class="sun" data-planet="sun" onclick="showInfo('sun')"></div>
-                        </div>
-
-                        <!-- Mercury Orbit -->
-                        <div class="orbit orbit-mercury" data-orbit="mercury">
-                            <div class="orbit-animation">
-                                <div class="planet planet-mercury" data-planet="mercury" onclick="showInfo('mercury')"></div>
-                            </div>
-                        </div>
-
-                        <!-- Venus Orbit -->
-                        <div class="orbit orbit-venus" data-orbit="venus">
-                            <div class="orbit-animation">
-                                <div class="planet planet-venus" data-planet="venus" onclick="showInfo('venus')"></div>
-                            </div>
-                        </div>
-
-                        <!-- Earth Orbit -->
-                        <div class="orbit orbit-earth" data-orbit="earth">
-                            <div class="orbit-animation">
-                                <div class="planet planet-earth" data-planet="earth" onclick="showInfo('earth')">
-                                    <div class="earth-clouds"></div>
-                                    <div class="earth-atmosphere"></div>
-                                    <div class="moon-system">
-                                        <div class="moon"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mars Orbit -->
-                        <div class="orbit orbit-mars" data-orbit="mars">
-                            <div class="orbit-animation">
-                                <div class="planet planet-mars" data-planet="mars" onclick="showInfo('mars')"></div>
-                            </div>
-                        </div>
-
-                        <!-- Asteroid Belt -->
-                        <div class="orbit orbit-asteroid"></div>
-                        <div class="asteroid-belt" id="asteroidBelt"></div>
-
-                        <!-- Jupiter Orbit -->
-                        <div class="orbit orbit-jupiter" data-orbit="jupiter">
-                            <div class="orbit-animation">
-                                <div class="planet planet-jupiter" data-planet="jupiter" onclick="showInfo('jupiter')">
-                                    <div class="jupiter-spot"></div>
-                                </div>
-                                <div class="jupiter-moons">
-                                    <div class="jmoon io"></div>
-                                    <div class="jmoon europa"></div>
-                                    <div class="jmoon ganymede"></div>
-                                    <div class="jmoon callisto"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Saturn Orbit -->
-                        <div class="orbit orbit-saturn" data-orbit="saturn">
-                            <div class="orbit-animation">
-                                <div class="planet planet-saturn" data-planet="saturn" onclick="showInfo('saturn')">
-                                    <div class="saturn-ring-system">
-                                        <div class="saturn-ring ring-a"></div>
-                                        <div class="saturn-ring ring-b"></div>
-                                        <div class="saturn-ring ring-cassini"></div>
-                                        <div class="saturn-ring ring-c"></div>
-                                    </div>
-                                </div>
-                                <div class="titan-orbit">
-                                    <div class="titan"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Uranus Orbit -->
-                        <div class="orbit orbit-uranus" data-orbit="uranus">
-                            <div class="orbit-animation">
-                                <div class="planet planet-uranus" data-planet="uranus" onclick="showInfo('uranus')">
-                                    <div class="uranus-ring"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="solar-hint">
-                        <strong>💡 Tip:</strong> Click on planets to explore MSP disciplines!
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Planet Info Panel -->
-    <div class="planet-info-panel" id="infoPanel">
-        <button class="panel-close" onclick="closeInfo()">×</button>
-        <div class="panel-icon" id="panelIcon">☀️</div>
-        <h2 class="panel-title" id="panelTitle">The Sun</h2>
-        <p class="panel-subtitle" id="panelSubtitle">Chemistry & Nuclear Physics</p>
-        <p class="panel-desc" id="panelDesc">At the heart of our solar system, the Sun demonstrates the most powerful chemical and nuclear reactions in nature. MSP's chemistry courses explore these fundamental processes.</p>
-        <div class="panel-stats" id="panelStats">
-            <div class="panel-stat">
-                <div class="panel-stat-value">15M°C</div>
-                <div class="panel-stat-label">Core Temperature</div>
-            </div>
-            <div class="panel-stat">
-                <div class="panel-stat-value">13</div>
-                <div class="panel-stat-label">Chemistry Courses</div>
-            </div>
-        </div>
-        <a href="#" class="panel-link" id="panelLink">
-            Explore Chemistry
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
-    </div>
-
-    <!-- Welcome to Maastricht Section -->
-    <section class="maastricht-section">
-        <div class="maastricht-image">
-            <img src="assets/images/maastricht-landscape.jpg" alt="Maastricht cityscape at dusk with Sint Servaasbrug bridge">
-            <div class="maastricht-overlay"></div>
-        </div>
-        <div class="maastricht-content">
-            <h2 class="maastricht-title">Welcome to Maastricht</h2>
-            <a href="discover-the-city.html" class="maastricht-btn">
-                Discover the City
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+            <div class="hero-badge">For Prospective Students</div>
+            <h2>What Happens <span>After MSP?</span></h2>
+            <p class="hero-subtitle">
+                See where 1,300+ MSP graduates have taken their careers — from world-leading universities to breakthrough research.
+            </p>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="hero-cta">
+                Discover MSP
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
                 </svg>
             </a>
         </div>
     </section>
-
-    <!-- What is MSP Section -->
-    <section class="what-is-msp-section" id="what-is-msp">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">The Programme</span>
-                <h2 class="section-title">What is the Maastricht Science Programme?</h2>
-            </div>
-            
-            <div class="what-is-content reveal">
-                <div class="what-is-main">
-                    <p class="lead-text">MSP is a <strong>3-year English-taught Bachelor's programme</strong> where you design your own science degree. Unlike traditional programmes that lock you into one subject, MSP lets you combine courses across biology, chemistry, physics, mathematics, and neuroscience.</p>
-                    
-                    <div class="what-is-highlights">
-                        <div class="highlight-item">
-                            <span class="highlight-icon">🎯</span>
-                            <div>
-                                <strong>Design Your Path</strong>
-                                <p>Choose from 150+ courses to create a curriculum that matches your interests and career goals</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">👥</span>
-                            <div>
-                                <strong>Small-Scale Education</strong>
-                                <p>Learn in tutorial groups of 12-15 students using Problem-Based Learning (PBL)</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">🔬</span>
-                            <div>
-                                <strong>Research From Day One</strong>
-                                <p>Hands-on lab work and a final thesis project at world-class research institutions</p>
-                            </div>
-                        </div>
-                    </div>
+    
+    <!-- Proof Points -->
+    <section class="section proof-section">
+        <div class="proof-grid" id="proofGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Top Destinations -->
+    <section class="section" id="destinations">
+        <div class="section-header">
+            <span class="section-label">Master's Destinations</span>
+            <h2 class="section-title">Where MSP Opens Doors</h2>
+            <p class="section-subtitle">From leading Dutch research universities to world-renowned institutions like Oxford, Cambridge, and ETH Zürich</p>
+        </div>
+        <div class="destinations-grid" id="destGrid"></div>
+    </section>
+    
+    <!-- Career Paths -->
+    <section class="section careers-section" id="careers">
+        <div class="section-header">
+            <span class="section-label">Career Paths</span>
+            <h2 class="section-title">Fields Our Alumni Pursue</h2>
+            <p class="section-subtitle">MSP's interdisciplinary foundation enables specialization in virtually any scientific field</p>
+        </div>
+        <div class="careers-grid" id="careersGrid"></div>
+    </section>
+    
+    <!-- What is MSP -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <span class="section-label">The Programme</span>
+            <h2 class="section-title">What is MSP?</h2>
+        </div>
+        <div class="about-content">
+            <p class="about-lead">
+                The Maastricht Science Programme is a <strong>3-year English-taught Bachelor's degree</strong> where you design your own science curriculum. Unlike traditional programmes, MSP lets you combine courses across biology, chemistry, physics, mathematics, and neuroscience.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Design Your Path</h3>
+                    <p class="feature-desc">Choose from 100+ courses to create a curriculum matching your interests and career goals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Small-Scale Learning</h3>
+                    <p class="feature-desc">Tutorial groups of 12-15 students using Problem-Based Learning (PBL)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">Research Experience</h3>
+                    <p class="feature-desc">Hands-on lab work and a final thesis project at world-class institutions</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works-section" id="how-it-works">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">Your Curriculum</span>
-                <h2 class="section-title">Build Your Own Science Degree</h2>
-                <p class="section-subtitle">Design a curriculum that matches your interests and career goals</p>
-            </div>
-
-            <div class="how-it-works-content reveal">
-                <div class="semester-timeline">
-                    <div class="period-box">
-                        <div class="period-name">Period 1</div>
-                        <div class="period-detail">2 courses + skills</div>
-                    </div>
-                    <span class="timeline-arrow">→</span>
-                    <div class="period-box">
-                        <div class="period-name">Period 2</div>
-                        <div class="period-detail">2 courses + skills</div>
-                    </div>
-                    <span class="timeline-arrow">→</span>
-                    <div class="period-box project">
-                        <div class="period-name">Project</div>
-                        <div class="period-detail">3-week research</div>
-                    </div>
-                    <span class="timeline-repeat">× 2 per year</span>
-                </div>
-
-                <p class="courses-intro">Choose from <strong>100+ courses</strong> across six disciplines:</p>
-                
-                <div class="course-categories">
-                    <span class="course-cat">Biology <span class="cat-count">15</span></span>
-                    <span class="course-cat">Chemistry <span class="cat-count">13</span></span>
-                    <span class="course-cat">Physics <span class="cat-count">19</span></span>
-                    <span class="course-cat">Mathematics <span class="cat-count">9</span></span>
-                    <span class="course-cat">Neuroscience <span class="cat-count">5</span></span>
-                    <span class="course-cat">Interdisciplinary <span class="cat-count">25+</span></span>
-                    <span class="course-cat">Skills & Practicals <span class="cat-count">40+</span></span>
-                </div>
-
-                <div class="how-it-works-ctas">
-                    <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum" target="_blank" class="hiw-btn hiw-btn-primary">
-                        View All Courses
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                            <polyline points="15 3 21 3 21 9"/>
-                            <line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                    </a>
-                    <a href="https://courserepository.maastrichtuniversity.nl/p/program/EN/7503" target="_blank" class="hiw-btn hiw-btn-secondary">
-                        Course Repository
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                            <polyline points="15 3 21 3 21 9"/>
-                            <line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    
+    <!-- Disciplines -->
+    <section class="section disciplines-section">
+        <div class="section-header">
+            <span class="section-label">Your Curriculum</span>
+            <h2 class="section-title">Build Your Own Degree</h2>
+            <p class="section-subtitle">Combine courses across disciplines to match your interests</p>
         </div>
+        <div class="disciplines-grid" id="disciplinesGrid"></div>
     </section>
-
-    <!-- Your Future Section -->
-    <section class="future-section" id="future">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">After MSP</span>
-                <h2 class="section-title">Your Future</h2>
-                <p class="section-subtitle">MSP opens doors to world-class master's programmes and diverse career paths</p>
-            </div>
-
-            <div class="future-content reveal">
-                <div class="future-highlights">
-                    <div class="future-item">
-                        <div class="future-item-icon">🎓</div>
-                        <div class="future-item-title">Master's Programmes</div>
-                        <div class="future-item-desc">Physics, Chemistry, Biology,<br>Neuroscience, AI & more</div>
-                    </div>
-                    <div class="future-item">
-                        <div class="future-item-icon">🔬</div>
-                        <div class="future-item-title">Research Careers</div>
-                        <div class="future-item-desc">Universities, institutes,<br>industry R&D</div>
-                    </div>
-                    <div class="future-item">
-                        <div class="future-item-icon">💼</div>
-                        <div class="future-item-title">Industry & Business</div>
-                        <div class="future-item-desc">Consulting, tech,<br>healthcare, startups</div>
-                    </div>
-                    <div class="future-item">
-                        <div class="future-item-icon">🌍</div>
-                        <div class="future-item-title">Global Opportunities</div>
-                        <div class="future-item-desc">Alumni in 60+ countries<br>at 240+ universities</div>
-                    </div>
-                </div>
-
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/your-future" target="_blank" class="future-cta">
-                    Explore Career Paths
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Apply Section -->
-    <section class="apply-section" id="apply">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">Join MSP</span>
-                <h2 class="section-title">Ready to Apply?</h2>
-                <p class="section-subtitle">Everything you need to know about joining the Maastricht Science Programme</p>
-            </div>
-
-            <div class="apply-grid reveal">
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements" target="_blank" class="apply-card">
-                    <div class="apply-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 12l2 2 4-4"/>
-                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.94 0 3.74.62 5.2 1.67"/>
-                        </svg>
-                    </div>
-                    <div class="apply-card-title">Admission Requirements</div>
-                    <div class="apply-card-desc">Deadlines, required documents, language requirements & selection process</div>
-                    <span class="apply-card-link">
-                        Learn more
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-and-enrolment" target="_blank" class="apply-card">
-                    <div class="apply-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                        </svg>
-                    </div>
-                    <div class="apply-card-title">Admission & Enrolment</div>
-                    <div class="apply-card-desc">Step-by-step guide through Studielink, MyApplication portal & enrolment</div>
-                    <span class="apply-card-link">
-                        Learn more
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/tuition-fees" target="_blank" class="apply-card">
-                    <div class="apply-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v12M9 9h6M9 15h6"/>
-                        </svg>
-                    </div>
-                    <div class="apply-card-title">Tuition Fees</div>
-                    <div class="apply-card-desc">EU/EEA: €4,465 • Non-EU: €20,109<br>Fee waivers available</div>
-                    <span class="apply-card-link">
-                        Learn more
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-
-            <div class="apply-main-cta reveal">
-                <a href="https://www.studielink.nl/" target="_blank" class="apply-btn">
-                    Apply via Studielink
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Impact Numbers Section -->
-    <section class="impact-section" id="impact">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label">Proven Results</span>
-                <h2 class="section-title">The Numbers Speak</h2>
-                <p class="section-subtitle">Real outcomes from 1,330+ MSP alumni since 2014</p>
-            </div>
-            
-            <div class="impact-grid reveal">
-                <div class="impact-card">
-                    <div class="impact-number">91%</div>
-                    <div class="impact-label">Continue to Master's</div>
-                    <div class="impact-detail">Our graduates don't stop at a Bachelor's</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-number">241</div>
-                    <div class="impact-label">Universities Worldwide</div>
-                    <div class="impact-detail">Where our alumni pursued their Master's</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-number">136</div>
-                    <div class="impact-label">PhD Candidates</div>
-                    <div class="impact-detail">Alumni currently pursuing doctoral research</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-number">18</div>
-                    <div class="impact-label">Founders & CEOs</div>
-                    <div class="impact-detail">Alumni who started their own companies</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-number">87</div>
-                    <div class="impact-label">Nationalities</div>
-                    <div class="impact-detail">A truly international community</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-number">10x</div>
-                    <div class="impact-label">Programme Growth</div>
-                    <div class="impact-detail">From 25 graduates (2014) to 247 (2025)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-title">Ready to Design Your Future?</h2>
-            <p class="cta-desc">Join the Maastricht Science Programme and become part of a global community of scientists, innovators, and change-makers.</p>
-            <div class="cta-buttons">
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="btn btn-primary">
-                    Apply Now
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/contact" target="_blank" class="btn btn-secondary">
-                    Request Info
-                </a>
-                <a href="index.html" class="btn btn-secondary">
-                    Explore Alumni Network
-                </a>
-            </div>
+        <h2>Ready to Start Your Science Journey?</h2>
+        <p>Join a community of scientists who design their own path. Applications are open for September intake.</p>
+        <div class="cta-buttons">
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank" class="cta-btn primary">
+                Apply Now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum" target="_blank" class="cta-btn secondary">
+                View All Courses
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </a>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-brand">
-                <h3>Maastricht Science Programme</h3>
-                <p>Part of the Faculty of Science and Engineering at Maastricht University. A University College offering a unique Liberal Arts & Sciences approach to natural science education.</p>
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <img src="assets/msp-logo.png" alt="MSP" class="footer-logo" onerror="this.style.display='none'">
+                </div>
+                <p>The MSP Alumni Network connects graduates of the Maastricht Science Programme worldwide. Data updated <span id="lastUpdated">December 2025</span>.</p>
             </div>
-            
-            <div class="footer-links">
-                <h4>Programme</h4>
-                <ul>
-                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/why-study" target="_blank">Why MSP</a></li>
-                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/curriculum" target="_blank">Curriculum</a></li>
-                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/career-prospects" target="_blank">Career Prospects</a></li>
-                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-requirements" target="_blank">Admission</a></li>
-                </ul>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a href="index.html">Alumni Map</a>
+                <a href="#destinations">Top Destinations</a>
+                <a href="#careers">Career Paths</a>
             </div>
-            
-            <div class="footer-links">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="index.html">Alumni Map</a></li>
-                    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/contact" target="_blank">Contact Us</a></li>
-                    <li><a href="https://www.maastrichtuniversity.nl/study/studying-um/student-life" target="_blank">Student Life</a></li>
-                    <li><a href="https://www.linkedin.com/school/maastricht-science-programme/" target="_blank">LinkedIn</a></li>
-                </ul>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="https://www.linkedin.com/groups/4892346/" target="_blank">LinkedIn Group</a>
+                <a href="https://www.instagram.com/maboratorysp/" target="_blank">Instagram</a>
             </div>
-            
-            <div class="footer-links">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:fse-bachelor@maastrichtuniversity.nl">fse-bachelor@maastrichtuniversity.nl</a></li>
-                    <li><a href="tel:+31433882222">+31 43 388 2222</a></li>
-                    <li><a>Paul-Henri Spaaklaan 1</a></li>
-                    <li><a>6229 EN Maastricht</a></li>
-                </ul>
+            <div class="footer-section">
+                <h3>Official Resources</h3>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank">MSP Website</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application" target="_blank">Admissions</a>
+                <a href="https://courserepository.maastrichtuniversity.nl/p/program/EN/7503" target="_blank">Course Repository</a>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>© 2025 Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University</p>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/maastrichtscience/" target="_blank" title="Instagram">📷</a>
-                <a href="https://www.linkedin.com/school/maastricht-science-programme/" target="_blank" title="LinkedIn">💼</a>
-                <a href="https://www.youtube.com/@MaastrichtUniversity" target="_blank" title="YouTube">📺</a>
-            </div>
+            <span>© 2025 Maastricht Science Programme, Faculty of Science and Engineering</span>
         </div>
     </footer>
-
+    
+    <!-- Scripts -->
+    <script src="data.js"></script>
     <script>
-        // Planet data
-        const planetData = {
-            sun: {
-                icon: '☀️',
-                title: 'The Sun',
-                subtitle: 'Chemistry & Nuclear Physics',
-                desc: 'At the heart of our solar system, the Sun demonstrates the most powerful chemical and nuclear reactions in nature. MSP chemistry courses explore atomic structure, reaction kinetics, and the elements forged in stellar cores.',
-                stats: [
-                    { value: '15M°C', label: 'Core Temperature' },
-                    { value: '13', label: 'Chemistry Courses' }
-                ],
-                link: 'Explore Chemistry',
-                url: '#how-it-works'
-            },
-            mercury: {
-                icon: '🪨',
-                title: 'Mercury',
-                subtitle: 'Physics & Extreme Conditions',
-                desc: 'Mercury experiences the most extreme temperature swings in our solar system. MSP physics courses explore thermodynamics, relativity effects, and how matter behaves under extreme conditions.',
-                stats: [
-                    { value: '430°C', label: 'Day Temperature' },
-                    { value: '19', label: 'Physics Courses' }
-                ],
-                link: 'Explore Physics',
-                url: '#how-it-works'
-            },
-            venus: {
-                icon: '🌤️',
-                title: 'Venus',
-                subtitle: 'Climate & Atmospheric Science',
-                desc: 'Venus\'s runaway greenhouse effect offers crucial lessons in atmospheric chemistry and climate science. MSP courses in environmental science explore these planetary processes.',
-                stats: [
-                    { value: '96%', label: 'CO₂ Atmosphere' },
-                    { value: '8', label: 'Environmental Courses' }
-                ],
-                link: 'Explore Climate Science',
-                url: '#how-it-works'
-            },
-            earth: {
-                icon: '🌍',
-                title: 'Earth',
-                subtitle: 'Biology & Life Sciences',
-                desc: 'Earth is the only known planet harboring life. MSP biology courses explore the incredible diversity of life, from molecular mechanisms to global ecosystems.',
-                stats: [
-                    { value: '8.7M', label: 'Species Estimated' },
-                    { value: '15', label: 'Biology Courses' }
-                ],
-                link: 'Explore Biology',
-                url: '#how-it-works'
-            },
-            mars: {
-                icon: '🔴',
-                title: 'Mars',
-                subtitle: 'Engineering & Space Exploration',
-                desc: 'Mars represents humanity\'s next frontier. MSP courses in physics and engineering prepare students for the challenges of space exploration and planetary science.',
-                stats: [
-                    { value: '6', label: 'Successful Rovers' },
-                    { value: '12', label: 'Engineering Courses' }
-                ],
-                link: 'Explore Engineering',
-                url: '#how-it-works'
-            },
-            jupiter: {
-                icon: '🟠',
-                title: 'Jupiter',
-                subtitle: 'Mathematics & Complex Systems',
-                desc: 'Jupiter\'s complex atmospheric dynamics and gravitational influence on the solar system require advanced mathematics to understand. MSP math courses build these analytical skills.',
-                stats: [
-                    { value: '95', label: 'Known Moons' },
-                    { value: '9', label: 'Mathematics Courses' }
-                ],
-                link: 'Explore Mathematics',
-                url: '#how-it-works'
-            },
-            saturn: {
-                icon: '🪐',
-                title: 'Saturn',
-                subtitle: 'Materials Science',
-                desc: 'Saturn\'s rings are a natural laboratory for studying particle dynamics and material properties. MSP courses explore the science of materials from nanoscale to cosmic scales.',
-                stats: [
-                    { value: '99%', label: 'Ring Ice Content' },
-                    { value: '10', label: 'Materials Courses' }
-                ],
-                link: 'Explore Materials Science',
-                url: '#how-it-works'
-            },
-            uranus: {
-                icon: '🔵',
-                title: 'Uranus',
-                subtitle: 'Neuroscience & The Unknown',
-                desc: 'Like the mysterious ice giant, the brain remains one of science\'s greatest frontiers. MSP neuroscience courses explore consciousness, cognition, and neural networks.',
-                stats: [
-                    { value: '98°', label: 'Axial Tilt' },
-                    { value: '5', label: 'Neuroscience Courses' }
-                ],
-                link: 'Explore Neuroscience',
-                url: '#how-it-works'
-            }
-        };
-
-        // Generate stars
-        function generateStars() {
-            const layers = [
-                { id: 'stars1', count: 80, types: ['tiny', 'small'] },
-                { id: 'stars2', count: 50, types: ['small', 'medium'] },
-                { id: 'stars3', count: 25, types: ['medium', 'bright'], colors: ['blue', 'orange', 'red', 'purple', ''] }
-            ];
-
-            layers.forEach(layer => {
-                const container = document.getElementById(layer.id);
-                if (!container) return;
-                for (let i = 0; i < layer.count; i++) {
-                    const star = document.createElement('div');
-                    const type = layer.types[Math.floor(Math.random() * layer.types.length)];
-                    const color = layer.colors ? layer.colors[Math.floor(Math.random() * layer.colors.length)] : '';
-                    
-                    star.className = `star ${type} ${color}`.trim();
-                    star.style.top = Math.random() * 100 + '%';
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.animationDelay = Math.random() * 5 + 's';
-                    star.style.animationDuration = (2 + Math.random() * 3) + 's';
-                    
-                    container.appendChild(star);
-                }
-            });
-        }
-
-        // Generate asteroids
-        function generateAsteroids() {
-            const belt = document.getElementById('asteroidBelt');
-            if (!belt) return;
-            for (let i = 0; i < 35; i++) {
-                const asteroid = document.createElement('div');
-                asteroid.className = 'asteroid';
-                
-                const size = 1 + Math.random() * 2.5;
-                const angle = Math.random() * 360;
-                const radius = 46 + Math.random() * 8;
-                
-                asteroid.style.width = size + 'px';
-                asteroid.style.height = (size * (0.5 + Math.random() * 0.5)) + 'px';
-                asteroid.style.top = (50 + radius * Math.sin(angle * Math.PI / 180)) + '%';
-                asteroid.style.left = (50 + radius * Math.cos(angle * Math.PI / 180)) + '%';
-                asteroid.style.opacity = 0.3 + Math.random() * 0.4;
-                
-                belt.appendChild(asteroid);
-            }
-        }
-
-        // Show info panel
-        function showInfo(planetId) {
-            const data = planetData[planetId];
-            if (!data) return;
-
-            const panel = document.getElementById('infoPanel');
-            const solarSystem = document.getElementById('solarSystem');
-
-            // Update panel content
-            document.getElementById('panelIcon').textContent = data.icon;
-            document.getElementById('panelTitle').textContent = data.title;
-            document.getElementById('panelSubtitle').textContent = data.subtitle;
-            document.getElementById('panelDesc').textContent = data.desc;
-            
-            const linkEl = document.getElementById('panelLink');
-            linkEl.textContent = data.link;
-            linkEl.href = data.url;
-
-            // Update stats
-            const statsContainer = document.getElementById('panelStats');
-            statsContainer.innerHTML = data.stats.map(stat => `
-                <div class="panel-stat">
-                    <div class="panel-stat-value">${stat.value}</div>
-                    <div class="panel-stat-label">${stat.label}</div>
-                </div>
-            `).join('');
-
-            // Highlight planet
-            solarSystem.classList.add('dimmed');
-            document.querySelectorAll('.planet, .sun, .orbit').forEach(el => {
-                el.classList.remove('highlighted');
-            });
-            
-            const planet = document.querySelector(`[data-planet="${planetId}"]`);
-            const orbit = document.querySelector(`[data-orbit="${planetId}"]`);
-            if (planet) planet.classList.add('highlighted');
-            if (orbit) orbit.classList.add('highlighted');
-            if (planetId === 'sun') document.querySelector('.sun').classList.add('highlighted');
-
-            // Show panel
-            panel.classList.add('active');
-        }
-
-        // Close info panel
-        function closeInfo() {
-            const panel = document.getElementById('infoPanel');
-            const solarSystem = document.getElementById('solarSystem');
-            
-            panel.classList.remove('active');
-            solarSystem.classList.remove('dimmed');
-            
-            document.querySelectorAll('.planet, .sun, .orbit').forEach(el => {
-                el.classList.remove('highlighted');
-            });
-        }
-
-        // Navigation scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Scroll reveal animation
-        const reveals = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                const revealPoint = 150;
-                
-                if (revealTop < windowHeight - revealPoint) {
-                    reveal.classList.add('active');
-                }
-            });
-        };
+        // ==========================================
+        // POPULATE FROM DATA.JS
+        // ==========================================
         
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-
-        // Close panel on escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeInfo();
-            }
+        document.getElementById('lastUpdated').textContent = MSP_DATA.lastUpdated;
+        
+        // ==========================================
+        // PROOF POINTS
+        // ==========================================
+        const proofGrid = document.getElementById('proofGrid');
+        
+        const proofPoints = [
+            { number: MSP_DATA.summary.totalAlumni.toLocaleString(), label: '<strong>Alumni</strong>since 2014' },
+            { number: MSP_DATA.summary.countriesLivingIn, label: '<strong>Countries</strong>where alumni live' },
+            { number: MSP_DATA.summary.universitiesAttended + '+', label: '<strong>Universities</strong>for Master\'s' },
+            { number: MSP_DATA.summary.nationalities, label: '<strong>Nationalities</strong>in our community' }
+        ];
+        
+        proofPoints.forEach(point => {
+            const card = document.createElement('div');
+            card.className = 'proof-card';
+            card.innerHTML = `
+                <div class="proof-number">${point.number}</div>
+                <div class="proof-label">${point.label}</div>
+            `;
+            proofGrid.appendChild(card);
         });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        
+        // ==========================================
+        // DESTINATIONS
+        // ==========================================
+        const destGrid = document.getElementById('destGrid');
+        
+        // Show prestige universities first, then top others
+        const prestigeUnis = MSP_DATA.topUniversities.filter(u => u.prestige);
+        const otherUnis = MSP_DATA.topUniversities.filter(u => !u.prestige).slice(0, 8);
+        const allUnis = [...prestigeUnis, ...otherUnis];
+        
+        allUnis.forEach(uni => {
+            const card = document.createElement('div');
+            card.className = uni.prestige ? 'dest-card prestige' : 'dest-card';
+            card.innerHTML = `
+                <div class="dest-logo">
+                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.parentElement.innerHTML='🎓'">
+                </div>
+                <div class="dest-info">
+                    <div class="dest-name">${uni.name}</div>
+                    <div class="dest-country">
+                        <img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">
+                        ${uni.country}
+                    </div>
+                </div>
+                <div class="dest-count">
+                    ${uni.count}
+                    <span>alumni</span>
+                </div>
+            `;
+            destGrid.appendChild(card);
         });
-
-        // Initialize
-        generateStars();
-        generateAsteroids();
+        
+        // ==========================================
+        // CAREERS
+        // ==========================================
+        const careersGrid = document.getElementById('careersGrid');
+        
+        MSP_DATA.fieldsOfStudy.forEach(field => {
+            const card = document.createElement('div');
+            card.className = 'career-card';
+            card.innerHTML = `
+                <div class="career-icon">${field.icon}</div>
+                <div class="career-name">${field.name}</div>
+                <div class="career-percent">${field.percent}%</div>
+            `;
+            careersGrid.appendChild(card);
+        });
+        
+        // ==========================================
+        // DISCIPLINES
+        // ==========================================
+        const disciplinesGrid = document.getElementById('disciplinesGrid');
+        
+        MSP_DATA.programmeInfo.disciplines.forEach(disc => {
+            const tag = document.createElement('div');
+            tag.className = 'discipline-tag';
+            tag.innerHTML = `
+                ${disc.name}
+                <span class="count">${disc.courses}+ courses</span>
+            `;
+            disciplinesGrid.appendChild(tag);
+        });
     </script>
 </body>
 </html>

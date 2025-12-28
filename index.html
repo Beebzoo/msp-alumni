@@ -591,49 +591,110 @@
             color: rgba(255,255,255,0.7);
         }
         
-        .growth-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 12px;
-            height: 250px;
-            max-width: 900px;
+        .growth-chart-container {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px 0;
         }
         
+        .growth-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px;
+            height: 280px;
+            position: relative;
+        }
+        
         .growth-bar {
             flex: 1;
-            max-width: 60px;
+            max-width: 70px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
         
-        .growth-bar-fill {
+        .growth-bar-group {
             width: 100%;
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .growth-bar-yearly {
+            width: 45%;
             background: linear-gradient(180deg, var(--um-orange) 0%, #d63d0a 100%);
-            border-radius: 6px 6px 0 0;
-            position: relative;
-            min-height: 20px;
+            border-radius: 4px 4px 0 0;
+            min-height: 8px;
             transition: height 0.8s ease;
+            position: relative;
+        }
+        
+        .growth-bar-cumulative {
+            width: 45%;
+            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0082b3 100%);
+            border-radius: 4px 4px 0 0;
+            min-height: 8px;
+            transition: height 0.8s ease;
+            position: relative;
         }
         
         .growth-bar-value {
             position: absolute;
-            top: -25px;
+            top: -22px;
             left: 50%;
             transform: translateX(-50%);
             font-family: var(--font-heading);
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
             color: white;
+            white-space: nowrap;
+        }
+        
+        .growth-bar-yearly .growth-bar-value {
+            color: var(--um-orange);
+        }
+        
+        .growth-bar-cumulative .growth-bar-value {
+            color: var(--um-light-blue);
         }
         
         .growth-bar-label {
             margin-top: 10px;
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+        
+        .growth-legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .growth-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .growth-legend-bar {
+            width: 20px;
+            height: 14px;
+            border-radius: 3px;
+        }
+        
+        .growth-legend-bar.yearly {
+            background: var(--um-orange);
+        }
+        
+        .growth-legend-bar.cumulative {
+            background: var(--um-light-blue);
         }
         
         /* ==========================================
@@ -1041,9 +1102,21 @@
         <div class="section-header">
             <span class="section-label">Programme Growth</span>
             <h2 class="section-title">A Growing Global Network</h2>
-            <p class="section-subtitle">From 25 graduates in 2014 to nearly 250 in 2025 — MSP continues to expand</p>
+            <p class="section-subtitle">From 25 graduates in 2014 to over 1,300 alumni today — watch the MSP community grow</p>
         </div>
-        <div class="growth-chart" id="growthChart"></div>
+        <div class="growth-chart-container">
+            <div class="growth-chart" id="growthChart"></div>
+            <div class="growth-legend">
+                <div class="growth-legend-item">
+                    <span class="growth-legend-bar yearly"></span>
+                    <span>Graduates per Year</span>
+                </div>
+                <div class="growth-legend-item">
+                    <span class="growth-legend-bar cumulative"></span>
+                    <span>Total Alumni Network</span>
+                </div>
+            </div>
+        </div>
     </section>
     
     <!-- CTA Section -->
@@ -1178,13 +1251,28 @@
         const growthChart = document.getElementById('growthChart');
         const maxGrad = Math.max(...MSP_DATA.graduationByYear.map(d => d.count));
         
-        MSP_DATA.graduationByYear.forEach(d => {
-            const height = (d.count / maxGrad) * 180;
+        // Calculate cumulative totals
+        let cumulative = 0;
+        const dataWithCumulative = MSP_DATA.graduationByYear.map(d => {
+            cumulative += d.count;
+            return { ...d, cumulative };
+        });
+        const maxCumulative = Math.max(...dataWithCumulative.map(d => d.cumulative));
+        
+        dataWithCumulative.forEach(d => {
+            const yearlyHeight = (d.count / maxGrad) * 160;
+            const cumulativeHeight = (d.cumulative / maxCumulative) * 200;
+            
             const bar = document.createElement('div');
             bar.className = 'growth-bar';
             bar.innerHTML = `
-                <div class="growth-bar-fill" style="height: ${height}px">
-                    <span class="growth-bar-value">${d.count}</span>
+                <div class="growth-bar-group">
+                    <div class="growth-bar-yearly" style="height: ${yearlyHeight}px">
+                        <span class="growth-bar-value">${d.count}</span>
+                    </div>
+                    <div class="growth-bar-cumulative" style="height: ${cumulativeHeight}px">
+                        <span class="growth-bar-value">${d.cumulative.toLocaleString()}</span>
+                    </div>
                 </div>
                 <div class="growth-bar-label">'${String(d.year).slice(-2)}</div>
             `;

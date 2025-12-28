@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSP Alumni Network | Maastricht Science Programme</title>
-    <meta name="description" content="Explore where 1,300+ MSP alumni from 87 nationalities are now - across 59 countries and 235+ universities worldwide.">
+    <meta name="description" content="Explore where 1,330+ MSP alumni from 78 nationalities are now - across 56 countries and 220+ universities worldwide.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -404,6 +404,75 @@
             font-size: 16px;
             color: var(--um-gray-600);
             line-height: 1.6;
+        }
+        
+        /* ==========================================
+           CONTINENTAL DISTRIBUTION
+        ========================================== */
+        .continental-section {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            color: white;
+        }
+        .continental-section .section-label {
+            background: rgba(232,78,16,0.2);
+            color: var(--um-orange);
+        }
+        .continental-section .section-title { color: white; }
+        .continental-section .section-subtitle { color: rgba(255,255,255,0.7); }
+        
+        .continental-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .continental-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .continental-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+        }
+        .continental-card.europe { border-top: 3px solid var(--um-orange); }
+        .continental-card.americas { border-top: 3px solid var(--um-light-blue); }
+        .continental-card.asia { border-top: 3px solid #4CAF50; }
+        .continental-card.africa { border-top: 3px solid #FFC107; }
+        .continental-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        .continental-icon i { width: 24px; height: 24px; color: white; }
+        .continental-name {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 10px;
+        }
+        .continental-count {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+        .continental-percent {
+            font-size: 14px;
+            color: var(--um-orange);
+            font-weight: 600;
+            margin-top: 5px;
         }
         
         /* ==========================================
@@ -1298,6 +1367,10 @@
                 gap: 20px;
             }
             
+            .continental-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .section {
                 padding: 50px 20px;
             }
@@ -1344,6 +1417,15 @@
             
             .highlights-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+            
+            .continental-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .continental-count {
+                font-size: 28px;
             }
         }
     </style>
@@ -1432,6 +1514,41 @@
         </div>
     </section>
     
+    <!-- Continental Distribution (Framework: Geographic distribution) -->
+    <section class="section continental-section">
+        <div class="section-header">
+            <span class="section-label">Global Reach</span>
+            <h2 class="section-title">Alumni Across Continents</h2>
+            <p class="section-subtitle">From Maastricht to 6 continents — MSP graduates are truly global</p>
+        </div>
+        <div class="continental-grid">
+            <div class="continental-card europe">
+                <div class="continental-icon"><i data-lucide="landmark"></i></div>
+                <div class="continental-name">Europe</div>
+                <div class="continental-count">998</div>
+                <div class="continental-percent">93%</div>
+            </div>
+            <div class="continental-card americas">
+                <div class="continental-icon"><i data-lucide="building"></i></div>
+                <div class="continental-name">Americas</div>
+                <div class="continental-count">39</div>
+                <div class="continental-percent">4%</div>
+            </div>
+            <div class="continental-card asia">
+                <div class="continental-icon"><i data-lucide="mountain"></i></div>
+                <div class="continental-name">Asia-Pacific</div>
+                <div class="continental-count">23</div>
+                <div class="continental-percent">2%</div>
+            </div>
+            <div class="continental-card africa">
+                <div class="continental-icon"><i data-lucide="sun"></i></div>
+                <div class="continental-name">Africa & Middle East</div>
+                <div class="continental-count">8</div>
+                <div class="continental-percent">1%</div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Top Universities Section -->
     <section class="section universities-section" id="universities">
         <div class="section-header">
@@ -1442,7 +1559,7 @@
         <div class="uni-grid" id="uniGrid"></div>
         <div style="text-align: center; margin-top: 30px;">
             <a href="universities.html" class="view-all-btn">
-                View All 235+ Universities →
+                View All 220+ Universities →
             </a>
         </div>
     </section>
@@ -1462,7 +1579,7 @@
         <div class="section-header">
             <span class="section-label">Programme Growth</span>
             <h2 class="section-title">A Growing Global Network</h2>
-            <p class="section-subtitle">From 25 graduates in 2014 to over 1,300 alumni today — watch the MSP community grow</p>
+            <p class="section-subtitle">From 25 graduates in 2014 to over 1,330 alumni today — watch the MSP community grow</p>
         </div>
         <div class="growth-chart-container">
             <div class="growth-chart" id="growthChart"></div>

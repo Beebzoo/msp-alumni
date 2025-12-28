@@ -140,8 +140,8 @@ const MSP_DATA = {
         { name: "Radboud University", country: "Netherlands", code: "nl", count: 36, logo: "radboud-university.png" },
         { name: "University of Groningen", country: "Netherlands", code: "nl", count: 23, logo: "university-of-groningen.png" },
         { name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png" },
-        { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vu-amsterdam.png" },
-        { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "tu-eindhoven.png" },
+        { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vrije-universiteit-amsterdam.png" },
+        { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "eindhoven-university.png" },
         
         // Prestige International
         { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", prestige: true },

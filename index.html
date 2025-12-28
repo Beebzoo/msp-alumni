@@ -1630,19 +1630,19 @@
             </div>
             <div class="footer-section">
                 <h3>Connect</h3>
-                <a href="https://www.linkedin.com/groups/4892346/" target="_blank">LinkedIn Group</a>
-                <a href="https://www.instagram.com/maboratorysp/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/groups/12472184/" target="_blank">MSP Alumni LinkedIn</a>
+                <a href="https://www.instagram.com/msp_alumni?igsh=cHdlMHF4czY0YWUy" target="_blank">Instagram</a>
                 <a href="mailto:msp-alumni@maastrichtuniversity.nl">Update Your Info</a>
             </div>
             <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank">MSP Website</a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/faculties/science-and-engineering" target="_blank">Faculty of SE</a>
+                <h3>Official Resources</h3>
+                <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme" target="_blank">MSP Website</a>
+                <a href="https://www.maastrichtuniversity.nl/nl/fse-alumni" target="_blank">FSE Alumni</a>
                 <a href="privacy.html">Privacy Policy</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2025 Maastricht Science Programme · Part of <a href="https://www.maastrichtuniversity.nl/alumni" target="_blank" style="color: rgba(255,255,255,0.7);">Maastricht University's Alumni Community</a></span>
+            <span>© 2025 Maastricht Science Programme · Part of <a href="https://www.maastrichtuniversity.nl/nl/fse-alumni" target="_blank" style="color: rgba(255,255,255,0.7);">Maastricht University's Alumni Community</a></span>
             <div class="footer-links">
                 <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate →</a>
             </div>
@@ -1650,7 +1650,7 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="data.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="data.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // ==========================================
@@ -1840,8 +1840,10 @@
             toggle.classList.toggle('active');
             content.classList.toggle('open');
             
-            // Re-initialize Lucide icons in case they weren't rendered
-            lucide.createIcons();
+            // Re-initialize Lucide icons when opening
+            if (content.classList.contains('open')) {
+                lucide.createIcons();
+            }
         }
     </script>
 </body>

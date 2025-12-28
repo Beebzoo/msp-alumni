@@ -265,17 +265,36 @@ const MSP_DATA = {
     // ==========================================
     // SECTION 11: EXTERNAL LINKS
     // ==========================================
+    // Note: Links are in Dutch (nl) - international visitors can switch language on UM site
+    // This keeps Dutch prospective students comfortable while site remains accessible
     
     links: {
-        mspMain: "https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme",
-        admissions: "https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme/admission-application",
-        courses: "https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum",
-        courseRepository: "https://courserepository.maastrichtuniversity.nl/p/program/EN/7503",
+        // Main MSP pages
+        mspMain: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme",
+        mspWhyThisStudy: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/waarom-deze-studie",
+        mspCourses: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/vakken-en-curriculum",
+        mspCareer: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/jouw-toekomst",
+        
+        // Admissions
+        mspRequirements: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelatingseisen",
+        mspAdmissions: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelating-en-inschrijving",
+        mspTuition: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/collegegelden",
+        mspContact: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/contact",
+        
+        // Faculty & University
         fse: "https://www.maastrichtuniversity.nl/about-um/faculties/science-and-engineering",
+        fseAlumni: "https://www.maastrichtuniversity.nl/nl/fse-alumni",
         um: "https://www.maastrichtuniversity.nl",
-        instagram: "https://www.instagram.com/maboratorysp/",
-        linkedin: "https://www.linkedin.com/groups/4892346/",
-        whatsapp: "#"  // Add actual link when available
+        
+        // Social Media
+        instagram: "https://www.instagram.com/msp_alumni?igsh=cHdlMHF4czY0YWUy",
+        linkedinMspAlumni: "https://www.linkedin.com/groups/12472184/",
+        linkedinFseAlumni: "https://www.linkedin.com/groups/14782233/",
+        
+        // Legacy (keeping for backward compatibility)
+        admissions: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelating-en-inschrijving",
+        courses: "https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/vakken-en-curriculum",
+        linkedin: "https://www.linkedin.com/groups/12472184/"
     },
     
     // ==========================================

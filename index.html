@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -32,8 +32,8 @@
             --um-gray-600: #6c757d;
             --um-gray-800: #343a40;
             
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Source Sans 3', sans-serif;
+            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
@@ -1050,8 +1050,14 @@
         }
         
         .highlight-emoji {
-            font-size: 40px;
             margin-bottom: 15px;
+            color: var(--um-light-blue);
+        }
+        
+        .highlight-emoji svg {
+            width: 40px;
+            height: 40px;
+            stroke-width: 1.5;
         }
         
         .highlight-value {
@@ -1600,7 +1606,7 @@
     <section class="highlights-section">
         <div class="highlights-grid">
             <div class="highlight-card">
-                <div class="highlight-emoji">🎯</div>
+                <div class="highlight-emoji"><i data-lucide="target"></i></div>
                 <div class="highlight-value">91%</div>
                 <div class="highlight-label">
                     <strong>Pursue Master's</strong>
@@ -1608,7 +1614,7 @@
                 </div>
             </div>
             <div class="highlight-card">
-                <div class="highlight-emoji">🎓</div>
+                <div class="highlight-emoji"><i data-lucide="graduation-cap"></i></div>
                 <div class="highlight-value">15%</div>
                 <div class="highlight-label">
                     <strong>Pursue PhDs</strong>
@@ -1616,7 +1622,7 @@
                 </div>
             </div>
             <div class="highlight-card">
-                <div class="highlight-emoji">🌍</div>
+                <div class="highlight-emoji"><i data-lucide="globe"></i></div>
                 <div class="highlight-value">6</div>
                 <div class="highlight-label">
                     <strong>Continents</strong>
@@ -1624,7 +1630,7 @@
                 </div>
             </div>
             <div class="highlight-card">
-                <div class="highlight-emoji">🚀</div>
+                <div class="highlight-emoji"><i data-lucide="rocket"></i></div>
                 <div class="highlight-value">8/10</div>
                 <div class="highlight-label">
                     <strong>World Top 10</strong>

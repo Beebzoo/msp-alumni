@@ -3,707 +3,563 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country - MSP Alumni Network</title>
+    <title>Country | MSP Alumni Network</title>
+    <meta name="description" content="Explore MSP alumni in this country - their universities, careers, and connections.">
     
-    <!-- Fonts -->
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
+    <!-- Data Source -->
+    <script src="data.js"></script>
+    
     <style>
         /* ==========================================
-           CSS VARIABLES - UM BRANDING
+           CSS VARIABLES - PREMIUM UM BRANDING
         ========================================== */
         :root {
             --um-dark-blue: #001C3D;
+            --um-dark-blue-rgb: 0, 28, 61;
             --um-light-blue: #00A2DB;
+            --um-light-blue-rgb: 0, 162, 219;
             --um-orange: #E84E10;
+            --um-orange-rgb: 232, 78, 16;
             --um-white: #FFFFFF;
             --um-off-white: #f8f9fa;
             --um-gray-100: #f5f5f5;
             --um-gray-200: #e9ecef;
+            --um-gray-300: #dee2e6;
             --um-gray-600: #6c757d;
             --um-gray-800: #343a40;
             
-            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
             
             --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ==========================================
+           RESET & BASE STYLES
+        ========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: var(--font-body);
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--um-dark-blue);
             background: var(--um-white);
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
             line-height: 1.2;
+            letter-spacing: -0.02em;
         }
         
         a {
             color: var(--um-light-blue);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        a:hover {
-            color: var(--um-orange);
-        }
+        a:hover { color: var(--um-orange); }
         
         /* ==========================================
            HEADER
         ========================================== */
         header {
-            background: var(--um-white);
-            border-bottom: 1px solid var(--um-gray-200);
-            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 28, 61, 0.08);
+            padding: 16px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 12px 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
         
         .logo-img {
-            height: 40px;
+            height: 48px;
             width: auto;
         }
         
-        .logo-text {
-            font-size: 15px;
+        .logo-text h1 {
+            font-size: 16px;
             font-weight: 700;
             color: var(--um-dark-blue);
+            margin: 0;
+            line-height: 1.2;
         }
         
-        .back-link {
-            font-size: 14px;
-            color: var(--um-light-blue);
+        .logo-text p {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .header-nav {
             display: flex;
+            gap: 8px;
             align-items: center;
-            gap: 5px;
         }
         
-        .back-link:hover {
+        .header-nav a {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
             color: var(--um-dark-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .header-nav a:not(.btn-cta):hover {
+            background: rgba(0, 162, 219, 0.08);
+            color: var(--um-light-blue);
+        }
+        
+        .header-nav .btn-cta {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white;
+            margin-left: 12px;
+            box-shadow: 0 4px 15px rgba(232, 78, 16, 0.3);
+        }
+        
+        .header-nav .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 78, 16, 0.4);
+            color: white;
         }
         
         /* ==========================================
-           UNIVERSITY CARDS
+           HERO SECTION
         ========================================== */
-        .universities-grid {
+        .hero {
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 40%, #001530 100%);
+            color: white;
+            padding: 140px 50px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 162, 219, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(232, 78, 16, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .breadcrumb i, .breadcrumb svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .country-hero-main {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .country-flag-large {
+            width: 160px;
+            height: 107px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+        }
+        
+        .country-hero-info h2 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+        
+        .country-hero-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+        
+        .country-hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .country-stat {
+            text-align: left;
+        }
+        
+        .country-stat-number {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--um-orange);
+            line-height: 1;
+        }
+        
+        .country-stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ==========================================
+           MAIN CONTENT
+        ========================================== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 50px;
+        }
+        
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--um-gray-200);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .section-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-header h3 i, .section-header h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--um-light-blue);
+        }
+        
+        .section-count {
+            background: var(--um-light-blue);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 25px;
+        }
+        
+        /* University Grid */
+        .uni-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
         
-        .university-card {
-            background: white;
-            border: 1px solid var(--um-gray-200);
+        .uni-card {
+            background: var(--um-off-white);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 25px;
             display: flex;
             align-items: center;
             gap: 16px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
         
-        .university-card:hover {
+        .uni-card:hover {
+            background: white;
             border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-sm);
-            transform: translateY(-2px);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 162, 219, 0.1);
         }
         
-        .university-logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            flex-shrink: 0;
+        .uni-card.prestige {
+            border-color: var(--um-orange);
+            background: linear-gradient(135deg, rgba(232, 78, 16, 0.03) 0%, var(--um-off-white) 100%);
         }
         
-        .university-logo-placeholder {
+        .uni-logo {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--um-dark-blue), var(--um-light-blue));
+            background: white;
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 10px;
             flex-shrink: 0;
         }
         
-        .university-logo-placeholder i,
-        .university-logo-placeholder svg {
-            color: white;
+        .uni-logo i, .uni-logo svg {
             width: 28px;
             height: 28px;
+            color: var(--um-gray-600);
         }
         
-        .university-info {
+        .uni-info {
             flex: 1;
             min-width: 0;
         }
         
-        .university-name {
+        .uni-name {
             font-family: var(--font-heading);
             font-size: 15px;
             font-weight: 600;
             color: var(--um-dark-blue);
             margin-bottom: 4px;
-            line-height: 1.3;
         }
         
-        .university-count {
-            font-size: 14px;
+        .uni-rank {
+            font-size: 12px;
             color: var(--um-gray-600);
         }
         
-        .university-count strong {
-            color: var(--um-orange);
-            font-weight: 700;
-        }
-        
-        /* Featured/Prestige university styling */
-        .university-card.featured {
-            border-color: var(--um-orange);
-            background: linear-gradient(135deg, #fff9f5 0%, white 100%);
-        }
-        
-        .university-card.featured .university-name {
-            color: var(--um-orange);
-        }
-        
-        @media (max-width: 600px) {
-            .universities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .university-card {
-                padding: 16px;
-            }
-            
-            .university-logo,
-            .university-logo-placeholder {
-                width: 50px;
-                height: 50px;
-            }
-        }
-        
-        /* ==========================================
-           HERO - Split Layout
-        ========================================== */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: calc(100vh - 70px);
-        }
-        
-        /* Left side - Flag & Info */
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .flag-section {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            min-height: 280px;
-        }
-        
-        .flag-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .flag-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, var(--um-dark-blue));
-        }
-        
-        .info-section {
-            background: var(--um-dark-blue);
-            padding: 40px 45px;
-            color: white;
-        }
-        
-        .country-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--um-light-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-        
-        .country-name {
-            font-size: 42px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 25px;
-        }
-        
-        .quick-facts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        
-        .fact {
-            border-left: 3px solid var(--um-light-blue);
-            padding-left: 12px;
-        }
-        
-        .fact.orange {
-            border-left-color: var(--um-orange);
-        }
-        
-        .fact-value {
-            font-size: 22px;
-            font-weight: 700;
-        }
-        
-        .fact-label {
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Right side - Map */
-        .hero-right {
-            position: relative;
-            background: var(--um-gray-100);
-        }
-        
-        #countryMap {
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
-        }
-        
-        /* ==========================================
-           CONTENT SECTIONS
-        ========================================== */
-        .content-section {
-            padding: 60px 50px;
-        }
-        
-        .content-section.alt {
-            background: var(--um-off-white);
-        }
-        
-        .section-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .section-title-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--um-light-blue);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .section-title-icon i,
-        .section-title-icon svg {
-            width: 20px;
-            height: 20px;
-            color: white;
-            stroke: white;
-        }
-        
-        /* ==========================================
-           COUNTRY FACTS GRID
-        ========================================== */
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
-        }
-        
-        .fact-card {
-            background: white;
-            border: 1px solid var(--um-gray-200);
-            border-radius: var(--radius-md);
-            padding: 20px 15px;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-        
-        .fact-card:hover {
-            border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .fact-card-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--um-gray-100);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 8px;
-        }
-        
-        .fact-card-icon i,
-        .fact-card-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--um-dark-blue);
-            stroke: var(--um-dark-blue);
-        }
-        
-        .fact-card-label {
-            font-size: 11px;
-            color: var(--um-gray-600);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
-        
-        .fact-card-value {
+        .uni-count {
             font-family: var(--font-heading);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-            line-height: 1.3;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-orange);
         }
         
-        @media (max-width: 900px) {
-            .facts-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 500px) {
-            .facts-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        /* ==========================================
-           CITIES GRID
-        ========================================== */
-        .cities-grid {
+        /* Career Distribution */
+        .career-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
         
-        .city-card {
-            background: white;
-            border: 1px solid var(--um-gray-200);
+        .career-card {
+            background: var(--um-off-white);
             border-radius: var(--radius-md);
             padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
+            text-align: center;
+            transition: all 0.3s ease;
         }
         
-        .city-card:hover {
-            border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-sm);
+        .career-card:hover {
+            background: var(--um-gray-100);
+            transform: translateY(-4px);
         }
         
-        .city-name {
+        .career-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .career-name {
+            font-family: var(--font-heading);
+            font-size: 14px;
             font-weight: 600;
             color: var(--um-dark-blue);
+            margin-bottom: 5px;
         }
         
-        .city-count {
-            font-family: var(--font-heading);
-            font-size: 20px;
+        .career-count {
+            font-size: 24px;
             font-weight: 700;
             color: var(--um-orange);
         }
         
-        /* ==========================================
-           NATIONALITIES
-        ========================================== */
-        .nationalities-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .nationality-tag {
-            display: flex;
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: white;
-            border: 1px solid var(--um-gray-200);
-            border-radius: 30px;
-            padding: 10px 18px;
-            transition: all 0.2s ease;
+            gap: 8px;
+            color: var(--um-dark-blue);
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
         }
         
-        .nationality-tag:hover {
+        .back-link:hover {
             border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-sm);
+            background: rgba(0, 162, 219, 0.05);
+            color: var(--um-light-blue);
         }
         
-        .nationality-tag img {
-            width: 24px;
-            height: 16px;
-            border-radius: 3px;
-            object-fit: cover;
-        }
-        
-        .nationality-name {
-            font-weight: 500;
-            color: var(--um-dark-blue);
-        }
-        
-        .nationality-count {
-            font-weight: 700;
-            color: var(--um-orange);
-        }
-        
-        /* ==========================================
-           GRADUATION CHART
-        ========================================== */
-        .grad-chart {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            height: 180px;
-            padding: 20px 0;
-        }
-        
-        .grad-bar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .grad-bar-fill {
-            width: 100%;
-            max-width: 45px;
-            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0077b6 100%);
-            border-radius: 6px 6px 0 0;
-            position: relative;
-            min-height: 4px;
-            transition: height 0.5s ease;
-        }
-        
-        .grad-bar-value {
-            position: absolute;
-            top: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-heading);
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-        }
-        
-        .grad-bar-label {
-            margin-top: 8px;
-            font-size: 11px;
-            color: var(--um-gray-600);
-        }
-        
-        /* ==========================================
-           GENDER BREAKDOWN
-        ========================================== */
-        .gender-bar-container {
-            background: var(--um-gray-200);
-            border-radius: 10px;
-            height: 40px;
-            overflow: hidden;
-            display: flex;
-        }
-        
-        .gender-bar {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-            color: white;
-            transition: width 0.5s ease;
-        }
-        
-        .gender-bar.female {
-            background: var(--um-light-blue);
-        }
-        
-        .gender-bar.male {
-            background: var(--um-dark-blue);
-        }
-        
-        .gender-legend {
-            display: flex;
-            gap: 30px;
-            margin-top: 15px;
-        }
-        
-        .gender-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-        
-        .gender-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
-        .gender-dot.female {
-            background: var(--um-light-blue);
-        }
-        
-        .gender-dot.male {
-            background: var(--um-dark-blue);
+        .back-link i, .back-link svg {
+            width: 18px;
+            height: 18px;
         }
         
         /* ==========================================
            FOOTER
         ========================================== */
         footer {
-            padding: 30px 50px;
-            background: var(--um-dark-blue);
+            background: #000a1a;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
         }
         
-        .footer-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 13px;
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-brand p {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
         }
         
         .footer-links {
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
         
         .footer-links a {
-            color: rgba(255,255,255,0.6);
-            font-size: 13px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--um-orange);
         }
         
-        /* ==========================================
-           RESPONSIVE
-        ========================================== */
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-right {
-                height: 350px;
-            }
-            
-            header {
-                padding: 15px 20px;
-            }
-            
-            .content-section {
-                padding: 50px 20px;
-            }
-            
-            .quick-facts {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .country-name {
-                font-size: 32px;
-            }
-        }
-        
-        /* ==========================================
-           NOT FOUND STATE
-        ========================================== */
-        .not-found {
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            padding: 100px 20px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
         }
         
-        .not-found h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-        
-        .not-found p {
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px;
             color: var(--um-gray-600);
-            margin-bottom: 25px;
         }
         
-        .not-found a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--um-orange);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--um-gray-200);
+            border-top-color: var(--um-light-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
         
-        .not-found a:hover {
-            background: #d63d0a;
-            color: white;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ==========================================
+           RESPONSIVE DESIGN
+        ========================================== */
+        @media (max-width: 1000px) {
+            header { padding: 14px 30px; }
+            .hero { padding: 120px 30px 60px; }
+            .country-hero-main { flex-direction: column; text-align: center; }
+            .country-hero-info h2 { font-size: 42px; }
+            .country-hero-stats { justify-content: center; }
+            .country-stat { text-align: center; }
+            .main-content { padding: 40px 30px; }
+        }
+        
+        @media (max-width: 768px) {
+            header { padding: 12px 20px; }
+            .header-nav a:not(.btn-cta) { display: none; }
+            .hero { padding: 100px 20px 50px; }
+            .country-flag-large { width: 120px; height: 80px; }
+            .country-hero-info h2 { font-size: 32px; }
+            .country-hero-stats { flex-direction: column; gap: 20px; }
+            .country-stat-number { font-size: 36px; }
+            .main-content { padding: 30px 20px; }
+            .section-card { padding: 25px; }
+            .uni-grid { grid-template-columns: 1fr; }
+            .career-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { padding: 40px 20px 25px; }
+            .footer-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -711,359 +567,325 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img">
-            <span class="logo-text">Alumni Network</span>
+            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">
+                <h1>MSP Alumni Network</h1>
+                <p>Maastricht Science Programme</p>
+            </div>
         </a>
-        <div style="display: flex; gap: 20px; align-items: center;">
-            <a href="countries.html" style="color: var(--um-light-blue); font-weight: 500; font-size: 14px;">All Countries</a>
-            <a href="universities.html" style="color: var(--um-light-blue); font-weight: 500; font-size: 14px;">Universities</a>
-            <a href="index.html" class="back-link">
-                ← Back to Map
-            </a>
-        </div>
+        <nav class="header-nav">
+            <a href="index.html">Alumni Map</a>
+            <a href="countries.html">Countries</a>
+            <a href="universities.html">Universities</a>
+            <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
+        </nav>
     </header>
     
-    <!-- Main Content - Will be populated by JavaScript -->
-    <main id="mainContent">
-        <!-- Loading state -->
-        <div class="not-found" id="loadingState">
-            <h2>Loading...</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i data-lucide="chevron-right"></i>
+                <a href="countries.html">Countries</a>
+                <i data-lucide="chevron-right"></i>
+                <span id="breadcrumb-country">Loading...</span>
+            </div>
+            
+            <div class="country-hero-main">
+                <img id="country-flag" src="" alt="" class="country-flag-large">
+                <div class="country-hero-info">
+                    <h2 id="country-name">Loading...</h2>
+                    <p class="country-hero-subtitle" id="country-subtitle">MSP alumni in this country</p>
+                    
+                    <div class="country-hero-stats">
+                        <div class="country-stat">
+                            <div class="country-stat-number" id="alumni-count">0</div>
+                            <div class="country-stat-label">Alumni</div>
+                        </div>
+                        <div class="country-stat">
+                            <div class="country-stat-number" id="uni-count">0</div>
+                            <div class="country-stat-label">Universities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Universities Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <h3><i data-lucide="graduation-cap"></i> Universities</h3>
+                <span class="section-count" id="uni-section-count">0 universities</span>
+            </div>
+            <div class="uni-grid" id="uni-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading universities...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Career Distribution -->
+        <div class="section-card">
+            <div class="section-header">
+                <h3><i data-lucide="briefcase"></i> Career Sectors</h3>
+            </div>
+            <div class="career-grid" id="career-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading careers...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back Button -->
+        <a href="countries.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            Back to All Countries
+        </a>
     </main>
     
     <!-- Footer -->
     <footer>
-        <span class="footer-text">© 2025 MSP Alumni Network · Faculty of Science and Engineering</span>
-        <div class="footer-links">
-            <a href="index.html">World Map</a>
-            <a href="considering-msp.html">Considering MSP?</a>
-            <a href="privacy.html">Privacy</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                MSP Alumni Network
+                <p>Data updated December 2025</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Alumni Map</a>
+                <a href="universities.html">Universities</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University
         </div>
     </footer>
     
-    <!-- Scripts -->
-    <script src="data.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        (async function() {
         // ==========================================
-        // GET COUNTRY FROM URL
+        // HEADER SCROLL EFFECT
         // ==========================================
-        const urlParams = new URLSearchParams(window.location.search);
-        const countryName = urlParams.get('country');
-        
-        // Find country data
-        const countryData = countryName ? COUNTRY_DETAILS[countryName] : null;
-        
-        if (!countryData) {
-            // Country not found
-            document.getElementById('mainContent').innerHTML = `
-                <div class="not-found">
-                    <h2>Country Not Found</h2>
-                    <p>We don't have detailed data for "${countryName || 'this country'}" yet.</p>
-                    <a href="index.html">← Back to World Map</a>
-                </div>
-            `;
-        } else {
-            // Fetch country facts from REST Countries API
-            let countryFacts = null;
-            try {
-                const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryData.code}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    countryFacts = data[0];
-                }
-            } catch (e) {
-                console.log('Could not fetch country facts');
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-            // Update page title
-            document.title = `${countryData.name} - MSP Alumni Network`;
+        });
+        
+        // ==========================================
+        // COUNTRY DATA
+        // ==========================================
+        const countryData = {
+            'NL': {
+                name: 'Netherlands',
+                alumni: 445,
+                subtitle: 'Our home country and top destination',
+                universities: [
+                    { name: 'Maastricht University', count: 186, rank: 'QS #256' },
+                    { name: 'University of Amsterdam', count: 45, rank: 'QS #53', prestige: true },
+                    { name: 'Utrecht University', count: 38, rank: 'QS #107' },
+                    { name: 'Erasmus University Rotterdam', count: 32, rank: 'QS #176' },
+                    { name: 'TU Delft', count: 28, rank: 'QS #47', prestige: true },
+                    { name: 'Leiden University', count: 24, rank: 'QS #126' },
+                    { name: 'VU Amsterdam', count: 18, rank: 'QS #207' },
+                    { name: 'Wageningen University', count: 15, rank: 'QS #151' }
+                ],
+                careers: [
+                    { name: 'Healthcare', icon: '🏥', count: 85 },
+                    { name: 'Technology', icon: '💻', count: 72 },
+                    { name: 'Academia', icon: '🎓', count: 68 },
+                    { name: 'Finance', icon: '💰', count: 45 },
+                    { name: 'Consulting', icon: '📊', count: 38 },
+                    { name: 'Government', icon: '🏛️', count: 25 }
+                ]
+            },
+            'DE': {
+                name: 'Germany',
+                alumni: 195,
+                subtitle: 'Engineering and research excellence',
+                universities: [
+                    { name: 'Technical University of Munich', count: 14, rank: 'QS #37', prestige: true },
+                    { name: 'RWTH Aachen', count: 12, rank: 'QS #106' },
+                    { name: 'LMU Munich', count: 11, rank: 'QS #54', prestige: true },
+                    { name: 'Heidelberg University', count: 8, rank: 'QS #87', prestige: true },
+                    { name: 'Humboldt University Berlin', count: 6, rank: 'QS #120' },
+                    { name: 'Free University Berlin', count: 5, rank: 'QS #98', prestige: true }
+                ],
+                careers: [
+                    { name: 'Technology', icon: '💻', count: 42 },
+                    { name: 'Academia', icon: '🎓', count: 35 },
+                    { name: 'Engineering', icon: '⚙️', count: 28 },
+                    { name: 'Healthcare', icon: '🏥', count: 22 },
+                    { name: 'Finance', icon: '💰', count: 18 }
+                ]
+            },
+            'GB': {
+                name: 'United Kingdom',
+                alumni: 86,
+                subtitle: 'Home to Oxford, Cambridge, and Imperial',
+                universities: [
+                    { name: 'Imperial College London', count: 19, rank: 'QS #2', prestige: true },
+                    { name: 'UCL London', count: 12, rank: 'QS #9', prestige: true },
+                    { name: 'University of Edinburgh', count: 8, rank: 'QS #27', prestige: true },
+                    { name: 'University of Cambridge', count: 7, rank: 'QS #5', prestige: true },
+                    { name: 'University of Oxford', count: 7, rank: 'QS #3', prestige: true },
+                    { name: "King's College London", count: 6, rank: 'QS #40', prestige: true }
+                ],
+                careers: [
+                    { name: 'Finance', icon: '💰', count: 22 },
+                    { name: 'Academia', icon: '🎓', count: 18 },
+                    { name: 'Consulting', icon: '📊', count: 15 },
+                    { name: 'Technology', icon: '💻', count: 12 },
+                    { name: 'Healthcare', icon: '🏥', count: 10 }
+                ]
+            },
+            'BE': {
+                name: 'Belgium',
+                alumni: 84,
+                subtitle: 'Our neighbors with world-class research',
+                universities: [
+                    { name: 'KU Leuven', count: 42, rank: 'QS #61', prestige: true },
+                    { name: 'Ghent University', count: 18, rank: 'QS #137' },
+                    { name: 'University of Antwerp', count: 8, rank: 'QS #234' },
+                    { name: 'Vrije Universiteit Brussel', count: 6, rank: 'QS #210' }
+                ],
+                careers: [
+                    { name: 'Academia', icon: '🎓', count: 20 },
+                    { name: 'Healthcare', icon: '🏥', count: 18 },
+                    { name: 'Government', icon: '🏛️', count: 12 },
+                    { name: 'Technology', icon: '💻', count: 10 }
+                ]
+            },
+            'CH': {
+                name: 'Switzerland',
+                alumni: 28,
+                subtitle: 'Home to ETH Zürich and EPFL',
+                universities: [
+                    { name: 'ETH Zürich', count: 16, rank: 'QS #7', prestige: true },
+                    { name: 'EPFL', count: 8, rank: 'QS #12', prestige: true },
+                    { name: 'University of Zürich', count: 5, rank: 'QS #91', prestige: true }
+                ],
+                careers: [
+                    { name: 'Technology', icon: '💻', count: 8 },
+                    { name: 'Finance', icon: '💰', count: 7 },
+                    { name: 'Academia', icon: '🎓', count: 6 },
+                    { name: 'Pharma', icon: '💊', count: 4 }
+                ]
+            },
+            'SE': {
+                name: 'Sweden',
+                alumni: 30,
+                subtitle: 'Innovation and sustainability leaders',
+                universities: [
+                    { name: 'Karolinska Institute', count: 12, rank: 'QS #46', prestige: true },
+                    { name: 'KTH Royal Institute', count: 8, rank: 'QS #73' },
+                    { name: 'Uppsala University', count: 6, rank: 'QS #105' },
+                    { name: 'Lund University', count: 5, rank: 'QS #85', prestige: true }
+                ],
+                careers: [
+                    { name: 'Healthcare', icon: '🏥', count: 10 },
+                    { name: 'Technology', icon: '💻', count: 8 },
+                    { name: 'Academia', icon: '🎓', count: 6 }
+                ]
+            },
+            'US': {
+                name: 'United States',
+                alumni: 35,
+                subtitle: 'From coast to coast',
+                universities: [
+                    { name: 'MIT', count: 3, rank: 'QS #1', prestige: true },
+                    { name: 'Stanford University', count: 2, rank: 'QS #6', prestige: true },
+                    { name: 'Harvard University', count: 2, rank: 'QS #4', prestige: true },
+                    { name: 'UC Berkeley', count: 4, rank: 'QS #12', prestige: true },
+                    { name: 'Columbia University', count: 3, rank: 'QS #23', prestige: true }
+                ],
+                careers: [
+                    { name: 'Technology', icon: '💻', count: 12 },
+                    { name: 'Academia', icon: '🎓', count: 8 },
+                    { name: 'Finance', icon: '💰', count: 6 },
+                    { name: 'Consulting', icon: '📊', count: 4 }
+                ]
+            }
+        };
+        
+        // ==========================================
+        // LOAD COUNTRY DATA
+        // ==========================================
+        function loadCountryData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const countryCode = urlParams.get('code')?.toUpperCase() || 'NL';
             
-            // Calculate percentages
-            const femaleCount = countryData.gender.Female || 0;
-            const maleCount = countryData.gender.Male || 0;
-            const totalGender = femaleCount + maleCount;
-            const femalePct = Math.round((femaleCount / totalGender) * 100);
-            const malePct = 100 - femalePct;
+            const country = countryData[countryCode];
             
-            // Get graduation years data
-            const gradYears = Object.entries(countryData.graduationYears);
-            const maxGrad = Math.max(...gradYears.map(([y, c]) => c));
+            if (!country) {
+                // Country not found, show default
+                document.getElementById('country-name').textContent = 'Country Not Found';
+                document.getElementById('country-subtitle').textContent = 'Please select a country from the countries page';
+                return;
+            }
             
-            // Build graduation chart HTML
-            const gradChartHTML = gradYears.map(([year, count]) => {
-                const height = Math.max((count / maxGrad) * 140, 4);
-                return `
-                    <div class="grad-bar">
-                        <div class="grad-bar-fill" style="height: ${height}px">
-                            <span class="grad-bar-value">${count}</span>
-                        </div>
-                        <div class="grad-bar-label">'${year.slice(-2)}</div>
+            // Update page
+            document.title = `${country.name} | MSP Alumni Network`;
+            document.getElementById('breadcrumb-country').textContent = country.name;
+            document.getElementById('country-name').textContent = country.name;
+            document.getElementById('country-subtitle').textContent = country.subtitle;
+            document.getElementById('country-flag').src = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+            document.getElementById('country-flag').alt = country.name;
+            document.getElementById('alumni-count').textContent = country.alumni;
+            document.getElementById('uni-count').textContent = country.universities.length;
+            document.getElementById('uni-section-count').textContent = `${country.universities.length} universities`;
+            
+            // Render universities
+            const uniGrid = document.getElementById('uni-grid');
+            uniGrid.innerHTML = country.universities.map(uni => `
+                <div class="uni-card ${uni.prestige ? 'prestige' : ''}">
+                    <div class="uni-logo">
+                        <i data-lucide="building-2"></i>
                     </div>
-                `;
-            }).join('');
-            
-            // Build cities HTML
-            const citiesHTML = countryData.cities.map(city => `
-                <div class="city-card">
-                    <span class="city-name">${city.name}</span>
-                    <span class="city-count">${city.count}</span>
+                    <div class="uni-info">
+                        <div class="uni-name">${uni.name}</div>
+                        <div class="uni-rank">${uni.rank}</div>
+                    </div>
+                    <div class="uni-count">${uni.count}</div>
                 </div>
             `).join('');
             
-            // Build nationalities HTML
-            const nationalitiesHTML = countryData.nationalities.map(nat => `
-                <div class="nationality-tag">
-                    <img src="https://flagcdn.com/w40/${nat.code}.png" alt="${nat.name}">
-                    <span class="nationality-name">${nat.name}</span>
-                    <span class="nationality-count">${nat.count}</span>
+            // Render careers
+            const careerGrid = document.getElementById('career-grid');
+            careerGrid.innerHTML = country.careers.map(career => `
+                <div class="career-card">
+                    <div class="career-icon">${career.icon}</div>
+                    <div class="career-name">${career.name}</div>
+                    <div class="career-count">${career.count}</div>
                 </div>
             `).join('');
             
-            // Build universities HTML (if data exists)
-            let universitiesHTML = '';
-            if (countryData.universities && countryData.universities.length > 0) {
-                const uniCards = countryData.universities.map(uni => {
-                    const logo = UNIVERSITY_LOGOS[uni.name];
-                    const logoHTML = logo 
-                        ? `<img src="assets/logos/${logo}" alt="${uni.name}" class="university-logo" onerror="this.parentElement.innerHTML='<div class=\\'university-logo-placeholder\\'><i data-lucide=\\'graduation-cap\\'></i></div>'">`
-                        : `<div class="university-logo-placeholder"><i data-lucide="graduation-cap"></i></div>`;
-                    
-                    return `
-                        <div class="university-card">
-                            ${logoHTML}
-                            <div class="university-info">
-                                <div class="university-name">${uni.name}</div>
-                                <div class="university-count"><strong>${uni.count}</strong> MSP alumni</div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-                
-                universitiesHTML = `
-                    <section class="content-section">
-                        <div class="section-container">
-                            <h2 class="section-title">
-                                <span class="section-title-icon"><i data-lucide="school"></i></span>
-                                Master's Destinations in ${countryData.name}
-                            </h2>
-                            <p style="color: var(--um-gray-600); margin-bottom: 20px;">
-                                Universities where MSP alumni pursued their Master's degrees
-                            </p>
-                            <div class="universities-grid">${uniCards}</div>
-                        </div>
-                    </section>
-                `;
-            }
-            
-            // Build country facts HTML from API
-            let factsHTML = '';
-            if (countryFacts) {
-                const capital = countryFacts.capital ? countryFacts.capital[0] : 'N/A';
-                const population = countryFacts.population ? (countryFacts.population / 1000000).toFixed(1) + 'M' : 'N/A';
-                const region = countryFacts.subregion || countryFacts.region || 'N/A';
-                const languages = countryFacts.languages ? Object.values(countryFacts.languages).slice(0, 3).join(', ') : 'N/A';
-                const currencies = countryFacts.currencies ? Object.values(countryFacts.currencies).map(c => c.name).slice(0, 2).join(', ') : 'N/A';
-                const callingCode = countryFacts.idd ? (countryFacts.idd.root + (countryFacts.idd.suffixes ? countryFacts.idd.suffixes[0] : '')) : 'N/A';
-                
-                factsHTML = `
-                    <section class="content-section alt">
-                        <div class="section-container">
-                            <h2 class="section-title">
-                                <span class="section-title-icon"><i data-lucide="info"></i></span>
-                                About ${countryData.name}
-                            </h2>
-                            <div class="facts-grid">
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="landmark"></i></div>
-                                    <div class="fact-card-label">Capital</div>
-                                    <div class="fact-card-value">${capital}</div>
-                                </div>
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="users"></i></div>
-                                    <div class="fact-card-label">Population</div>
-                                    <div class="fact-card-value">${population}</div>
-                                </div>
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="globe"></i></div>
-                                    <div class="fact-card-label">Region</div>
-                                    <div class="fact-card-value">${region}</div>
-                                </div>
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="languages"></i></div>
-                                    <div class="fact-card-label">Languages</div>
-                                    <div class="fact-card-value">${languages}</div>
-                                </div>
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="coins"></i></div>
-                                    <div class="fact-card-label">Currency</div>
-                                    <div class="fact-card-value">${currencies}</div>
-                                </div>
-                                <div class="fact-card">
-                                    <div class="fact-card-icon"><i data-lucide="phone"></i></div>
-                                    <div class="fact-card-label">Calling Code</div>
-                                    <div class="fact-card-value">${callingCode}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                `;
-            }
-            
-            // Render full page
-            document.getElementById('mainContent').innerHTML = `
-                <!-- Hero Section -->
-                <section class="hero">
-                    <div class="hero-left">
-                        <div class="flag-section">
-                            <img src="https://flagcdn.com/w1280/${countryData.code}.png" alt="${countryData.name} flag" class="flag-img">
-                            <div class="flag-overlay"></div>
-                        </div>
-                        <div class="info-section">
-                            <div class="country-label">MSP Alumni in</div>
-                            <h1 class="country-name">${countryData.name}</h1>
-                            <div class="quick-facts">
-                                <div class="fact orange">
-                                    <div class="fact-value">${countryData.count}</div>
-                                    <div class="fact-label">Alumni</div>
-                                </div>
-                                <div class="fact">
-                                    <div class="fact-value">${countryData.cities.length}</div>
-                                    <div class="fact-label">Cities</div>
-                                </div>
-                                <div class="fact">
-                                    <div class="fact-value">${countryData.nationalities.length}+</div>
-                                    <div class="fact-label">Nationalities</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-right">
-                        <div id="countryMap"></div>
-                    </div>
-                </section>
-                
-                <!-- Country Facts from API -->
-                ${factsHTML}
-                
-                <!-- Master's Universities Section -->
-                ${universitiesHTML}
-                
-                <!-- Cities Section -->
-                <section class="content-section${factsHTML ? '' : ' alt'}">
-                    <div class="section-container">
-                        <h2 class="section-title">
-                            <span class="section-title-icon"><i data-lucide="building-2"></i></span>
-                            Cities with MSP Alumni
-                        </h2>
-                        <div class="cities-grid">${citiesHTML}</div>
-                    </div>
-                </section>
-                
-                <!-- Nationalities Section -->
-                <section class="content-section${factsHTML ? ' alt' : ''}">
-                    <div class="section-container">
-                        <h2 class="section-title">
-                            <span class="section-title-icon"><i data-lucide="globe"></i></span>
-                            Where They're From
-                        </h2>
-                        <p style="color: var(--um-gray-600); margin-bottom: 20px;">
-                            MSP alumni living in ${countryData.name} come from diverse backgrounds
-                        </p>
-                        <div class="nationalities-grid">${nationalitiesHTML}</div>
-                    </div>
-                </section>
-                
-                <!-- Graduation Years -->
-                <section class="content-section${factsHTML ? '' : ' alt'}">
-                    <div class="section-container">
-                        <h2 class="section-title">
-                            <span class="section-title-icon"><i data-lucide="graduation-cap"></i></span>
-                            Graduation Years
-                        </h2>
-                        <div class="grad-chart">${gradChartHTML}</div>
-                    </div>
-                </section>
-                
-                <!-- Gender Breakdown -->
-                <section class="content-section${factsHTML ? ' alt' : ''}">
-                    <div class="section-container">
-                        <h2 class="section-title">
-                            <span class="section-title-icon"><i data-lucide="users"></i></span>
-                            Gender Distribution
-                        </h2>
-                        <div class="gender-bar-container">
-                            <div class="gender-bar female" style="width: ${femalePct}%">${femalePct}%</div>
-                            <div class="gender-bar male" style="width: ${malePct}%">${malePct}%</div>
-                        </div>
-                        <div class="gender-legend">
-                            <div class="gender-legend-item">
-                                <span class="gender-dot female"></span>
-                                Female (${femaleCount})
-                            </div>
-                            <div class="gender-legend-item">
-                                <span class="gender-dot male"></span>
-                                Male (${maleCount})
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `;
-            
-            // Initialize map with proper country bounds
-            setTimeout(() => {
-                // Initialize Lucide icons
+            // Re-init icons
+            if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
-                
-                const map = L.map('countryMap', {
-                    zoomControl: true,
-                    scrollWheelZoom: false
-                });
-                
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    attribution: '©OpenStreetMap, ©CartoDB',
-                    maxZoom: 18
-                }).addTo(map);
-                
-                // Use bounds from REST Countries API if available
-                if (countryFacts && countryFacts.latlng && countryFacts.area) {
-                    const center = countryFacts.latlng;
-                    // Calculate zoom based on country area (rough approximation)
-                    const area = countryFacts.area;
-                    let zoom = 4;
-                    if (area < 1000) zoom = 9;
-                    else if (area < 10000) zoom = 7;
-                    else if (area < 100000) zoom = 6;
-                    else if (area < 500000) zoom = 5;
-                    else if (area < 2000000) zoom = 4;
-                    else zoom = 3;
-                    
-                    map.setView(center, zoom);
-                    
-                    // Add country marker
-                    L.circleMarker(center, {
-                        radius: 12,
-                        fillColor: '#E84E10',
-                        color: '#ffffff',
-                        weight: 3,
-                        opacity: 1,
-                        fillOpacity: 0.8
-                    }).addTo(map);
-                } else {
-                    // Fallback to stored coordinates
-                    map.setView(countryData.coords, 5);
-                    L.circleMarker(countryData.coords, {
-                        radius: 12,
-                        fillColor: '#E84E10',
-                        color: '#ffffff',
-                        weight: 3,
-                        opacity: 1,
-                        fillOpacity: 0.8
-                    }).addTo(map);
-                }
-            }, 100);
+            }
         }
-        })();
+        
+        // ==========================================
+        // INITIALIZE
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            loadCountryData();
+        });
     </script>
 </body>
 </html>

@@ -216,13 +216,13 @@
         }
         
         /* ============================================
-           HERO SECTION - BALANCED & SOPHISTICATED
+           HERO SECTION - COMMANDING & PRESTIGIOUS
         ============================================ */
         .hero {
-            min-height: auto;
+            min-height: 90vh;
             background: linear-gradient(165deg, #000a14 0%, var(--um-dark-blue) 35%, #001a35 70%, #00243d 100%);
             color: white;
-            padding: 130px 50px 90px;
+            padding: 120px 50px 80px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -259,13 +259,13 @@
         /* Floating DNA Helix */
         .dna-container {
             position: absolute;
-            right: 4%;
+            right: 5%;
             top: 50%;
             transform: translateY(-50%);
-            width: 250px;
-            height: 500px;
+            width: 300px;
+            height: 600px;
             pointer-events: none;
-            opacity: 0.12;
+            opacity: 0.15;
             z-index: 0;
         }
         
@@ -394,7 +394,7 @@
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: 80px;
             align-items: center;
             width: 100%;
@@ -409,7 +409,6 @@
         
         .hero-logo-container {
             position: relative;
-            margin-bottom: 20px;
         }
         
         .hero-logo-glow {
@@ -417,9 +416,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(0,162,219,0.15) 0%, transparent 70%);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0,162,219,0.12) 0%, transparent 70%);
             border-radius: 50%;
             animation: logoGlow 4s ease-in-out infinite;
         }
@@ -430,7 +429,7 @@
         }
         
         .hero-logo-large {
-            width: 220px;
+            width: 320px;
             height: auto;
             filter: brightness(0) invert(1);
             position: relative;
@@ -472,11 +471,11 @@
         }
         
         .hero h2 {
-            font-size: 52px;
+            font-size: 62px;
             font-weight: 700;
             letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.05;
+            margin-bottom: 24px;
             background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -491,24 +490,24 @@
         }
         
         .hero-subtitle {
-            font-size: 18px;
+            font-size: 20px;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             line-height: 1.7;
             font-weight: 400;
         }
         
-        /* Hero Stats - Glass Cards */
+        /* Hero Stats - Premium Glass Cards */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
+            gap: 16px;
         }
         
         .hero-stat {
             position: relative;
             text-align: center;
-            padding: 22px 14px;
+            padding: 28px 18px;
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
@@ -554,11 +553,11 @@
         
         .hero-stat-number {
             font-family: var(--font-heading);
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
             color: white;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         a.hero-stat.clickable .hero-stat-number {
@@ -566,11 +565,59 @@
         }
         
         .hero-stat-label {
-            font-size: 11px;
+            font-size: 12px;
             color: rgba(255,255,255,0.5);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            animation: fadeInUp 1s ease 1s both;
+        }
+        
+        .scroll-indicator-mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .scroll-indicator-wheel {
+            width: 4px;
+            height: 8px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 2px;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s ease-in-out infinite;
+        }
+        
+        @keyframes scrollWheel {
+            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.3; transform: translateX(-50%) translateY(10px); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
         
         /* ============================================
@@ -1569,7 +1616,7 @@
         @media (max-width: 1200px) {
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 50px;
                 text-align: center;
             }
             
@@ -1583,11 +1630,13 @@
             }
             
             .hero h2 {
-                font-size: 42px;
+                font-size: 48px;
             }
             
             .hero-stats {
                 justify-content: center;
+                max-width: 600px;
+                margin: 0 auto;
             }
             
             .dna-container {
@@ -1595,7 +1644,7 @@
             }
             
             .hero-logo-large {
-                width: 180px;
+                width: 240px;
             }
         }
         
@@ -1605,19 +1654,24 @@
             }
             
             .hero {
-                padding: 110px 24px 70px;
+                padding: 120px 24px 100px;
+                min-height: 85vh;
             }
             
             .hero h2 {
-                font-size: 36px;
+                font-size: 38px;
             }
             
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .hero-stat-number {
+                font-size: 34px;
+            }
+            
             .section {
-                padding: 60px 24px;
+                padding: 70px 24px;
             }
             
             .map-section,
@@ -1626,11 +1680,11 @@
             .growth-section,
             .continental-section,
             .community-section {
-                padding: 60px 24px;
+                padding: 70px 24px;
             }
             
             .section-title {
-                font-size: 28px;
+                font-size: 32px;
             }
             
             .continental-grid {
@@ -1642,7 +1696,11 @@
             }
             
             .hero-logo-large {
-                width: 150px;
+                width: 200px;
+            }
+            
+            .scroll-indicator {
+                bottom: 20px;
             }
         }
         
@@ -1652,24 +1710,25 @@
             }
             
             .hero {
-                padding: 100px 20px 60px;
+                padding: 110px 20px 80px;
+                min-height: auto;
             }
             
             .hero h2 {
-                font-size: 28px;
+                font-size: 30px;
             }
             
             .hero-subtitle {
-                font-size: 15px;
+                font-size: 16px;
             }
             
             .hero-stats {
                 grid-template-columns: 1fr 1fr;
-                gap: 10px;
+                gap: 12px;
             }
             
             .hero-stat {
-                padding: 16px 10px;
+                padding: 20px 12px;
             }
             
             .hero-stat-number {
@@ -1677,7 +1736,7 @@
             }
             
             .hero-logo-large {
-                width: 120px;
+                width: 160px;
             }
             
             .map-container {
@@ -1700,6 +1759,10 @@
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .scroll-indicator {
+                display: none;
             }
         }
     </style>
@@ -1745,16 +1808,12 @@
                     <div class="hero-logo-glow"></div>
                     <img src="assets/logos/msp-logo.png" alt="Maastricht Science Programme" class="hero-logo-large">
                 </div>
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    Since 2011
-                </div>
             </div>
             
             <div class="hero-right">
-                <h2>Where <span>Science</span> Takes Our Graduates</h2>
+                <h2>Where <span>Science</span> Takes You</h2>
                 <p class="hero-subtitle">
-                    Track the global journey of MSP alumni — from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni — from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
@@ -1776,6 +1835,14 @@
                     </a>
                 </div>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-mouse">
+                <div class="scroll-indicator-wheel"></div>
+            </div>
+            <span>Explore</span>
         </div>
     </section>
     
@@ -2095,8 +2162,8 @@
         // ==========================================
         function createDNAHelix() {
             const container = document.getElementById('dnaContainer');
-            const height = 500;
-            const points = 18;
+            const height = 600;
+            const points = 22;
             
             for (let i = 0; i < points; i++) {
                 const y = (i / points) * height;
@@ -2105,14 +2172,14 @@
                 // Left strand dot
                 const leftDot = document.createElement('div');
                 leftDot.className = 'dna-dot';
-                leftDot.style.left = `${125 + Math.sin(angle) * 70}px`;
+                leftDot.style.left = `${150 + Math.sin(angle) * 80}px`;
                 leftDot.style.top = `${y}px`;
                 container.appendChild(leftDot);
                 
                 // Right strand dot
                 const rightDot = document.createElement('div');
                 rightDot.className = 'dna-dot orange';
-                rightDot.style.left = `${125 - Math.sin(angle) * 70}px`;
+                rightDot.style.left = `${150 - Math.sin(angle) * 80}px`;
                 rightDot.style.top = `${y}px`;
                 container.appendChild(rightDot);
                 
@@ -2120,8 +2187,8 @@
                 if (i % 2 === 0) {
                     const line = document.createElement('div');
                     line.className = 'dna-line';
-                    const leftX = 125 + Math.sin(angle) * 70;
-                    const rightX = 125 - Math.sin(angle) * 70;
+                    const leftX = 150 + Math.sin(angle) * 80;
+                    const rightX = 150 - Math.sin(angle) * 80;
                     line.style.left = `${Math.min(leftX, rightX)}px`;
                     line.style.top = `${y + 3}px`;
                     line.style.width = `${Math.abs(leftX - rightX)}px`;

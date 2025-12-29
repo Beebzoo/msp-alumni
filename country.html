@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country | MSP Alumni Network</title>
-    <meta name="description" content="Explore MSP alumni in this country - their universities, careers, and connections.">
+    <title>Country Details | MSP Alumni Network</title>
+    <meta name="description" content="Explore MSP alumni in this country - universities, career sectors, and success stories.">
     
     <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +14,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Data Source -->
-    <script src="data.js"></script>
-    
     <style>
-        /* ==========================================
-           CSS VARIABLES - PREMIUM UM BRANDING
-        ========================================== */
         :root {
             --um-dark-blue: #001C3D;
             --um-dark-blue-rgb: 0, 28, 61;
@@ -49,9 +43,6 @@
             --radius-xl: 32px;
         }
         
-        /* ==========================================
-           RESET & BASE STYLES
-        ========================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
@@ -82,7 +73,7 @@
            HEADER
         ========================================== */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 28, 61, 0.08);
@@ -113,7 +104,10 @@
         .logo-img {
             height: 48px;
             width: auto;
+            transition: transform 0.3s ease;
         }
+        
+        .logo:hover .logo-img { transform: scale(1.05); }
         
         .logo-text h1 {
             font-size: 16px;
@@ -174,23 +168,24 @@
             overflow: hidden;
         }
         
-        .hero-bg-pattern {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(0, 162, 219, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(232, 78, 16, 0.08) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 162, 219, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(232, 78, 16, 0.08) 0%, transparent 40%);
             pointer-events: none;
         }
         
         .hero-content {
-            position: relative;
-            z-index: 10;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
         
         .breadcrumb {
@@ -204,16 +199,12 @@
         
         .breadcrumb a {
             color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
         }
         
-        .breadcrumb a:hover {
-            color: white;
-        }
+        .breadcrumb a:hover { color: var(--um-orange); }
         
-        .breadcrumb i, .breadcrumb svg {
-            width: 14px;
-            height: 14px;
-        }
+        .breadcrumb span { color: rgba(255, 255, 255, 0.4); }
         
         .country-hero-main {
             display: flex;
@@ -222,49 +213,50 @@
         }
         
         .country-flag-large {
-            width: 160px;
-            height: 107px;
-            border-radius: var(--radius-md);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            width: 200px;
+            height: 134px;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
             object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .country-hero-info {
+            flex: 1;
         }
         
         .country-hero-info h2 {
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 700;
             letter-spacing: -0.03em;
-            margin-bottom: 10px;
-        }
-        
-        .country-hero-subtitle {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         
         .country-hero-stats {
             display: flex;
-            gap: 40px;
+            gap: 50px;
+            margin-top: 25px;
         }
         
-        .country-stat {
+        .country-hero-stat {
             text-align: left;
         }
         
-        .country-stat-number {
+        .country-hero-stat-number {
             font-family: var(--font-heading);
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
-            color: var(--um-orange);
+            color: white;
             line-height: 1;
         }
         
-        .country-stat-label {
+        .country-hero-stat-number.highlight { color: var(--um-orange); }
+        
+        .country-hero-stat-label {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-top: 6px;
+            font-weight: 500;
         }
         
         /* ==========================================
@@ -276,177 +268,362 @@
             padding: 60px 50px;
         }
         
-        /* Section Cards */
-        .section-card {
-            background: white;
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
-            border: 1px solid var(--um-gray-200);
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
         }
         
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
+        .content-main { }
+        .content-sidebar { }
+        
+        /* Section styles */
+        .section-block {
+            margin-bottom: 50px;
         }
         
-        .section-header h3 {
-            font-size: 24px;
+        .section-title {
+            font-size: 28px;
             font-weight: 700;
             color: var(--um-dark-blue);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
         
-        .section-header h3 i, .section-header h3 svg {
-            width: 24px;
-            height: 24px;
+        .section-title i, .section-title svg {
+            width: 28px;
+            height: 28px;
             color: var(--um-light-blue);
         }
         
-        .section-count {
-            background: var(--um-light-blue);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 25px;
-        }
-        
-        /* University Grid */
-        .uni-grid {
+        /* Universities Grid */
+        .universities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
         
-        .uni-card {
-            background: var(--um-off-white);
-            border-radius: var(--radius-md);
+        .university-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
             padding: 25px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 2px solid transparent;
+            text-decoration: none;
         }
         
-        .uni-card:hover {
-            background: white;
+        .university-card:hover {
             border-color: var(--um-light-blue);
-            transform: translateX(8px);
-            box-shadow: 0 8px 25px rgba(0, 162, 219, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 162, 219, 0.15);
         }
         
-        .uni-card.prestige {
-            border-color: var(--um-orange);
-            background: linear-gradient(135deg, rgba(232, 78, 16, 0.03) 0%, var(--um-off-white) 100%);
-        }
-        
-        .uni-logo {
+        .university-logo {
             width: 60px;
             height: 60px;
-            background: white;
-            border-radius: var(--radius-sm);
+            background: var(--um-gray-100);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
             flex-shrink: 0;
+            padding: 8px;
+            overflow: hidden;
         }
         
-        .uni-logo i, .uni-logo svg {
+        .university-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .university-logo i, .university-logo svg {
             width: 28px;
             height: 28px;
             color: var(--um-gray-600);
         }
         
-        .uni-info {
+        .university-info {
             flex: 1;
             min-width: 0;
         }
         
-        .uni-name {
+        .university-name {
             font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--um-dark-blue);
             margin-bottom: 4px;
+            line-height: 1.3;
         }
         
-        .uni-rank {
-            font-size: 12px;
+        .university-meta {
+            font-size: 13px;
             color: var(--um-gray-600);
         }
         
-        .uni-count {
+        .university-count {
             font-family: var(--font-heading);
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--um-orange);
+            flex-shrink: 0;
         }
         
-        /* Career Distribution */
-        .career-grid {
+        .university-badges {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        
+        .uni-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .uni-badge.top100 {
+            background: linear-gradient(135deg, #ffd700, #ffb700);
+            color: #333;
+        }
+        
+        .uni-badge.top200 {
+            background: var(--um-light-blue);
+            color: white;
+        }
+        
+        /* Career Sectors */
+        .sectors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
         
-        .career-card {
-            background: var(--um-off-white);
+        .sector-card {
+            background: var(--um-gray-100);
             border-radius: var(--radius-md);
             padding: 20px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             transition: all 0.3s ease;
         }
         
-        .career-card:hover {
-            background: var(--um-gray-100);
-            transform: translateY(-4px);
+        .sector-card:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
         
-        .career-icon {
+        .sector-icon {
             font-size: 28px;
-            margin-bottom: 10px;
+            flex-shrink: 0;
         }
         
-        .career-name {
+        .sector-info {
+            flex: 1;
+        }
+        
+        .sector-name {
             font-family: var(--font-heading);
             font-size: 14px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 5px;
         }
         
-        .career-count {
-            font-size: 24px;
-            font-weight: 700;
+        .sector-count {
+            font-size: 12px;
+            color: var(--um-gray-600);
+        }
+        
+        .sector-count strong {
             color: var(--um-orange);
         }
         
-        /* Back Button */
+        /* Alumni Stories */
+        .stories-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .story-card {
+            background: linear-gradient(135deg, rgba(0, 162, 219, 0.05) 0%, rgba(232, 78, 16, 0.03) 100%);
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .story-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: 0 10px 30px rgba(0, 162, 219, 0.1);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--um-light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .story-meta {
+            flex: 1;
+        }
+        
+        .story-name {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .story-role {
+            font-size: 13px;
+            color: var(--um-gray-600);
+        }
+        
+        .story-quote {
+            font-style: italic;
+            color: var(--um-gray-800);
+            line-height: 1.7;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--um-light-blue);
+        }
+        
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--um-off-white);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-card h4 i, .sidebar-card h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--um-orange);
+        }
+        
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .quick-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--um-gray-200);
+        }
+        
+        .quick-stat:last-child { border-bottom: none; }
+        
+        .quick-stat-label {
+            font-size: 14px;
+            color: var(--um-gray-600);
+        }
+        
+        .quick-stat-value {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        /* Related Countries */
+        .related-countries {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .related-country {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: white;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .related-country:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .related-country img {
+            width: 32px;
+            height: 21px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+        
+        .related-country-name {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .related-country-count {
+            font-size: 13px;
+            color: var(--um-gray-600);
+        }
+        
+        /* Back Link */
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--um-dark-blue);
             font-weight: 600;
+            color: var(--um-light-blue);
+            margin-top: 40px;
             padding: 12px 24px;
-            border: 2px solid var(--um-gray-200);
+            background: rgba(0, 162, 219, 0.08);
             border-radius: var(--radius-sm);
             transition: all 0.3s ease;
         }
         
         .back-link:hover {
-            border-color: var(--um-light-blue);
-            background: rgba(0, 162, 219, 0.05);
-            color: var(--um-light-blue);
+            background: var(--um-light-blue);
+            color: white;
         }
         
         .back-link i, .back-link svg {
@@ -496,11 +673,10 @@
         .footer-links a {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
         }
         
-        .footer-links a:hover {
-            color: var(--um-orange);
-        }
+        .footer-links a:hover { color: var(--um-orange); }
         
         .footer-bottom {
             max-width: 1200px;
@@ -515,14 +691,13 @@
         /* Loading State */
         .loading {
             text-align: center;
-            padding: 60px;
-            color: var(--um-gray-600);
+            padding: 100px 50px;
         }
         
         .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--um-gray-200);
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--um-gray-200);
             border-top-color: var(--um-light-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -534,30 +709,31 @@
         }
         
         /* ==========================================
-           RESPONSIVE DESIGN
+           RESPONSIVE
         ========================================== */
         @media (max-width: 1000px) {
             header { padding: 14px 30px; }
             .hero { padding: 120px 30px 60px; }
             .country-hero-main { flex-direction: column; text-align: center; }
-            .country-hero-info h2 { font-size: 42px; }
+            .country-flag-large { width: 160px; height: 107px; }
+            .country-hero-info h2 { font-size: 38px; }
             .country-hero-stats { justify-content: center; }
-            .country-stat { text-align: center; }
+            .country-hero-stat { text-align: center; }
             .main-content { padding: 40px 30px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .content-sidebar { order: -1; }
         }
         
         @media (max-width: 768px) {
             header { padding: 12px 20px; }
             .header-nav a:not(.btn-cta) { display: none; }
             .hero { padding: 100px 20px 50px; }
-            .country-flag-large { width: 120px; height: 80px; }
             .country-hero-info h2 { font-size: 32px; }
             .country-hero-stats { flex-direction: column; gap: 20px; }
-            .country-stat-number { font-size: 36px; }
+            .country-hero-stat-number { font-size: 32px; }
             .main-content { padding: 30px 20px; }
-            .section-card { padding: 25px; }
-            .uni-grid { grid-template-columns: 1fr; }
-            .career-grid { grid-template-columns: repeat(2, 1fr); }
+            .universities-grid { grid-template-columns: 1fr; }
+            .sectors-grid { grid-template-columns: 1fr; }
             footer { padding: 40px 20px 25px; }
             .footer-content { flex-direction: column; text-align: center; }
         }
@@ -567,7 +743,7 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
+            <img src="assets/logos/msp-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
             <div class="logo-text">
                 <h1>MSP Alumni Network</h1>
                 <p>Maastricht Science Programme</p>
@@ -581,74 +757,117 @@
         </nav>
     </header>
     
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="hero-content">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <i data-lucide="chevron-right"></i>
-                <a href="countries.html">Countries</a>
-                <i data-lucide="chevron-right"></i>
-                <span id="breadcrumb-country">Loading...</span>
-            </div>
-            
-            <div class="country-hero-main">
-                <img id="country-flag" src="" alt="" class="country-flag-large">
-                <div class="country-hero-info">
-                    <h2 id="country-name">Loading...</h2>
-                    <p class="country-hero-subtitle" id="country-subtitle">MSP alumni in this country</p>
-                    
-                    <div class="country-hero-stats">
-                        <div class="country-stat">
-                            <div class="country-stat-number" id="alumni-count">0</div>
-                            <div class="country-stat-label">Alumni</div>
+    <!-- Loading State -->
+    <div id="loadingState" class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading country data...</p>
+    </div>
+    
+    <!-- Main Content (populated by JS) -->
+    <div id="pageContent" style="display: none;">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>›</span>
+                    <a href="countries.html">Countries</a>
+                    <span>›</span>
+                    <span id="breadcrumbCountry">Country</span>
+                </div>
+                
+                <div class="country-hero-main">
+                    <img id="countryFlag" src="" alt="" class="country-flag-large">
+                    <div class="country-hero-info">
+                        <h2 id="countryName">Country Name</h2>
+                        <div class="country-hero-stats">
+                            <div class="country-hero-stat">
+                                <div class="country-hero-stat-number highlight" id="alumniCount">0</div>
+                                <div class="country-hero-stat-label">Alumni</div>
+                            </div>
+                            <div class="country-hero-stat">
+                                <div class="country-hero-stat-number" id="uniCount">0</div>
+                                <div class="country-hero-stat-label">Universities</div>
+                            </div>
+                            <div class="country-hero-stat">
+                                <div class="country-hero-stat-number" id="sectorCount">0</div>
+                                <div class="country-hero-stat-label">Career Sectors</div>
+                            </div>
                         </div>
-                        <div class="country-stat">
-                            <div class="country-stat-number" id="uni-count">0</div>
-                            <div class="country-stat-label">Universities</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-grid">
+                <div class="content-main">
+                    <!-- Universities Section -->
+                    <div class="section-block">
+                        <h3 class="section-title">
+                            <i data-lucide="building-2"></i>
+                            <span id="uniSectionTitle">Universities in This Country</span>
+                        </h3>
+                        <div class="universities-grid" id="universitiesGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Career Sectors -->
+                    <div class="section-block">
+                        <h3 class="section-title">
+                            <i data-lucide="briefcase"></i>
+                            Career Sectors
+                        </h3>
+                        <div class="sectors-grid" id="sectorsGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Alumni Stories (Placeholder) -->
+                    <div class="section-block">
+                        <h3 class="section-title">
+                            <i data-lucide="message-circle"></i>
+                            Alumni Voices
+                        </h3>
+                        <div class="stories-grid" id="storiesGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <a href="countries.html" class="back-link">
+                        <i data-lucide="arrow-left"></i>
+                        Back to All Countries
+                    </a>
+                </div>
+                
+                <div class="content-sidebar">
+                    <!-- Quick Stats -->
+                    <div class="sidebar-card">
+                        <h4>
+                            <i data-lucide="bar-chart-3"></i>
+                            Quick Facts
+                        </h4>
+                        <div class="quick-stats" id="quickStats">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Related Countries -->
+                    <div class="sidebar-card">
+                        <h4>
+                            <i data-lucide="globe"></i>
+                            Nearby Countries
+                        </h4>
+                        <div class="related-countries" id="relatedCountries">
+                            <!-- Populated by JS -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Universities Section -->
-        <div class="section-card">
-            <div class="section-header">
-                <h3><i data-lucide="graduation-cap"></i> Universities</h3>
-                <span class="section-count" id="uni-section-count">0 universities</span>
-            </div>
-            <div class="uni-grid" id="uni-grid">
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                    <p>Loading universities...</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Career Distribution -->
-        <div class="section-card">
-            <div class="section-header">
-                <h3><i data-lucide="briefcase"></i> Career Sectors</h3>
-            </div>
-            <div class="career-grid" id="career-grid">
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                    <p>Loading careers...</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Back Button -->
-        <a href="countries.html" class="back-link">
-            <i data-lucide="arrow-left"></i>
-            Back to All Countries
-        </a>
-    </main>
+    </div>
     
     <!-- Footer -->
     <footer>
@@ -671,7 +890,786 @@
     
     <script>
         // ==========================================
-        // HEADER SCROLL EFFECT
+        // COMPREHENSIVE COUNTRY DATA
+        // Based on Alumni Database FINAL CLEAN
+        // ==========================================
+        const countryDatabase = {
+            'NL': {
+                name: 'Netherlands',
+                alumniCount: 456,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'Maastricht University', count: 123, logo: 'maastricht', ranking: 'Top 200', qs: 121 },
+                    { name: 'Utrecht University', count: 93, logo: 'utrecht', ranking: 'Top 100', qs: 107 },
+                    { name: 'University of Amsterdam', count: 70, logo: 'uva', ranking: 'Top 100', qs: 53 },
+                    { name: 'Leiden University', count: 44, logo: 'leiden', ranking: 'Top 100', qs: 126 },
+                    { name: 'Wageningen University', count: 38, logo: 'wageningen', ranking: 'Top 100', qs: 83 },
+                    { name: 'Radboud University', count: 36, logo: 'radboud', ranking: 'Top 200', qs: 222 },
+                    { name: 'University of Groningen', count: 23, logo: 'groningen', ranking: 'Top 150', qs: 139 },
+                    { name: 'TU Delft', count: 19, logo: 'tudelft', ranking: 'Top 50', qs: 47 },
+                    { name: 'Vrije Universiteit Amsterdam', count: 15, logo: 'vu', ranking: 'Top 250', qs: 207 },
+                    { name: 'TU Eindhoven', count: 9, logo: 'tue', ranking: 'Top 150', qs: 124 },
+                    { name: 'Erasmus University Rotterdam', count: 4, logo: 'erasmus', ranking: 'Top 200', qs: 176 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 145 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 62 },
+                    { name: 'Technology & IT', icon: '💻', count: 58 },
+                    { name: 'Consulting', icon: '📊', count: 42 },
+                    { name: 'Government & Public', icon: '🏛️', count: 35 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 28 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 24 },
+                    { name: 'Engineering', icon: '⚙️', count: 22 }
+                ],
+                relatedCountries: ['DE', 'BE', 'GB', 'FR'],
+                stories: [
+                    { initials: 'MK', name: 'Anonymous Alumnus', role: 'PhD Candidate, University of Amsterdam', year: 2019, quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The interdisciplinary approach at MSP prepared me perfectly for my research career.' },
+                    { initials: 'JV', name: 'Anonymous Alumna', role: 'Data Scientist, Philips', year: 2020, quote: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. MSP gave me the foundation to bridge multiple scientific disciplines in my current role.' }
+                ]
+            },
+            'DE': {
+                name: 'Germany',
+                alumniCount: 92,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'TU Munich', count: 7, logo: 'tum', ranking: 'Top 50', qs: 37 },
+                    { name: 'University of Cologne', count: 4, logo: 'cologne', ranking: 'Top 400' },
+                    { name: 'Humboldt University Berlin', count: 4, logo: 'humboldt', ranking: 'Top 150', qs: 120 },
+                    { name: 'Goethe University Frankfurt', count: 2, logo: 'goethe', ranking: 'Top 300' },
+                    { name: 'University of Tübingen', count: 2, logo: 'tubingen', ranking: 'Top 100', qs: 89 },
+                    { name: 'Heidelberg University', count: 2, logo: 'heidelberg', ranking: 'Top 50', qs: 49 },
+                    { name: 'Charité Berlin', count: 1, logo: 'charite', ranking: 'Top 100' },
+                    { name: 'LMU Munich', count: 1, logo: 'lmu', ranking: 'Top 60', qs: 59 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 38 },
+                    { name: 'Technology & IT', icon: '💻', count: 18 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 12 },
+                    { name: 'Engineering', icon: '⚙️', count: 10 },
+                    { name: 'Consulting', icon: '📊', count: 8 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 4 }
+                ],
+                relatedCountries: ['NL', 'CH', 'AT', 'BE'],
+                stories: [
+                    { initials: 'LS', name: 'Anonymous Alumnus', role: 'Research Associate, Max Planck Institute', year: 2018, quote: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. The rigorous scientific training at MSP was invaluable.' }
+                ]
+            },
+            'GB': {
+                name: 'United Kingdom',
+                alumniCount: 86,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'Imperial College London', count: 19, logo: 'imperial', ranking: 'Top 10', qs: 2 },
+                    { name: 'University College London', count: 14, logo: 'ucl', ranking: 'Top 10', qs: 9 },
+                    { name: 'University of Cambridge', count: 7, logo: 'cambridge', ranking: 'Top 5', qs: 5 },
+                    { name: 'University of Oxford', count: 7, logo: 'oxford', ranking: 'Top 5', qs: 3 },
+                    { name: 'University of Edinburgh', count: 7, logo: 'edinburgh', ranking: 'Top 50', qs: 27 },
+                    { name: 'University of Birmingham', count: 5, logo: 'birmingham', ranking: 'Top 100', qs: 84 },
+                    { name: 'University of Glasgow', count: 3, logo: 'glasgow', ranking: 'Top 100', qs: 76 },
+                    { name: 'King\'s College London', count: 2, logo: 'kcl', ranking: 'Top 50', qs: 40 },
+                    { name: 'University of Manchester', count: 2, logo: 'manchester', ranking: 'Top 50', qs: 34 },
+                    { name: 'London School of Economics', count: 1, logo: 'lse', ranking: 'Top 50', qs: 50 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 35 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 15 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 12 },
+                    { name: 'Technology & IT', icon: '💻', count: 10 },
+                    { name: 'Consulting', icon: '📊', count: 8 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 4 }
+                ],
+                relatedCountries: ['NL', 'IE', 'DE', 'FR'],
+                stories: [
+                    { initials: 'EH', name: 'Anonymous Alumna', role: 'PhD Student, Imperial College', year: 2021, quote: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Coming from MSP gave me confidence at one of the world\'s best universities.' }
+                ]
+            },
+            'BE': {
+                name: 'Belgium',
+                alumniCount: 70,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'KU Leuven', count: 20, logo: 'kuleuven', ranking: 'Top 100', qs: 61 },
+                    { name: 'Vrije Universiteit Brussel', count: 5, logo: 'vub', ranking: 'Top 250' },
+                    { name: 'Ghent University', count: 4, logo: 'ghent', ranking: 'Top 150', qs: 141 },
+                    { name: 'Université Libre de Bruxelles', count: 3, logo: 'ulb', ranking: 'Top 200' },
+                    { name: 'University of Liège', count: 2, logo: 'liege', ranking: 'Top 350' },
+                    { name: 'University of Antwerp', count: 2, logo: 'antwerp', ranking: 'Top 300' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 28 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 12 },
+                    { name: 'Government & Public', icon: '🏛️', count: 10 },
+                    { name: 'Technology & IT', icon: '💻', count: 8 },
+                    { name: 'Consulting', icon: '📊', count: 6 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 4 }
+                ],
+                relatedCountries: ['NL', 'DE', 'FR', 'LU'],
+                stories: [
+                    { initials: 'PD', name: 'Anonymous Alumnus', role: 'Research Fellow, KU Leuven', year: 2017, quote: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. MSP\'s PBL approach prepared me well for collaborative research.' }
+                ]
+            },
+            'SE': {
+                name: 'Sweden',
+                alumniCount: 51,
+                continent: 'Europe',
+                region: 'Northern Europe',
+                universities: [
+                    { name: 'Uppsala University', count: 18, logo: 'uppsala', ranking: 'Top 100', qs: 105 },
+                    { name: 'Lund University', count: 14, logo: 'lund', ranking: 'Top 100', qs: 75 },
+                    { name: 'Karolinska Institutet', count: 10, logo: 'karolinska', ranking: 'Top 50', qs: 45 },
+                    { name: 'Stockholm University', count: 9, logo: 'stockholm', ranking: 'Top 150', qs: 143 },
+                    { name: 'KTH Royal Institute', count: 3, logo: 'kth', ranking: 'Top 100', qs: 73 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 25 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 10 },
+                    { name: 'Technology & IT', icon: '💻', count: 8 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 5 },
+                    { name: 'Government & Public', icon: '🏛️', count: 2 }
+                ],
+                relatedCountries: ['DK', 'NO', 'FI', 'NL'],
+                stories: [
+                    { initials: 'AK', name: 'Anonymous Alumna', role: 'Medical Researcher, Karolinska', year: 2019, quote: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. The biomedical focus I developed at MSP led me to world-leading research.' }
+                ]
+            },
+            'CH': {
+                name: 'Switzerland',
+                alumniCount: 41,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'ETH Zürich', count: 10, logo: 'eth', ranking: 'Top 10', qs: 7 },
+                    { name: 'University of Zürich', count: 3, logo: 'uzh', ranking: 'Top 100', qs: 91 },
+                    { name: 'EPFL', count: 2, logo: 'epfl', ranking: 'Top 20', qs: 12 },
+                    { name: 'University of Basel', count: 1, logo: 'basel', ranking: 'Top 150', qs: 135 },
+                    { name: 'University of Geneva', count: 1, logo: 'geneva', ranking: 'Top 150', qs: 131 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 18 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 8 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 6 },
+                    { name: 'Technology & IT', icon: '💻', count: 5 },
+                    { name: 'Consulting', icon: '📊', count: 3 }
+                ],
+                relatedCountries: ['DE', 'AT', 'FR', 'IT'],
+                stories: [
+                    { initials: 'TM', name: 'Anonymous Alumnus', role: 'PhD Student, ETH Zürich', year: 2020, quote: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. ETH was challenging but MSP prepared me well.' }
+                ]
+            },
+            'ES': {
+                name: 'Spain',
+                alumniCount: 30,
+                continent: 'Europe',
+                region: 'Southern Europe',
+                universities: [
+                    { name: 'University of Barcelona', count: 5, logo: 'ub', ranking: 'Top 200', qs: 164 },
+                    { name: 'Autonomous University of Barcelona', count: 3, logo: 'uab', ranking: 'Top 200', qs: 168 },
+                    { name: 'Pompeu Fabra University', count: 2, logo: 'upf', ranking: 'Top 200' },
+                    { name: 'University of Madrid', count: 2, logo: 'ucm', ranking: 'Top 200' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 12 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 6 },
+                    { name: 'Technology & IT', icon: '💻', count: 5 },
+                    { name: 'Tourism & Hospitality', icon: '✈️', count: 3 },
+                    { name: 'Consulting', icon: '📊', count: 2 }
+                ],
+                relatedCountries: ['PT', 'FR', 'IT', 'NL'],
+                stories: []
+            },
+            'IT': {
+                name: 'Italy',
+                alumniCount: 29,
+                continent: 'Europe',
+                region: 'Southern Europe',
+                universities: [
+                    { name: 'University of Bologna', count: 6, logo: 'bologna', ranking: 'Top 200', qs: 133 },
+                    { name: 'Bocconi University', count: 2, logo: 'bocconi', ranking: 'Top 20 Business' },
+                    { name: 'University of Pavia', count: 2, logo: 'pavia', ranking: 'Top 400' },
+                    { name: 'Sapienza University Rome', count: 1, logo: 'sapienza', ranking: 'Top 150', qs: 132 },
+                    { name: 'University of Padua', count: 1, logo: 'padua', ranking: 'Top 250', qs: 219 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 12 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 5 },
+                    { name: 'Technology & IT', icon: '💻', count: 4 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 3 },
+                    { name: 'Engineering', icon: '⚙️', count: 3 }
+                ],
+                relatedCountries: ['CH', 'AT', 'FR', 'ES'],
+                stories: []
+            },
+            'FR': {
+                name: 'France',
+                alumniCount: 28,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'École Polytechnique', count: 5, logo: 'polytechnique', ranking: 'Top 50', qs: 46 },
+                    { name: 'Sorbonne University', count: 2, logo: 'sorbonne', ranking: 'Top 60', qs: 59 },
+                    { name: 'Université Paris-Saclay', count: 2, logo: 'saclay', ranking: 'Top 20', qs: 15 },
+                    { name: 'ESCP Business School', count: 1, logo: 'escp', ranking: 'Top Business' },
+                    { name: 'University of Strasbourg', count: 1, logo: 'strasbourg', ranking: 'Top 300' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 11 },
+                    { name: 'Technology & IT', icon: '💻', count: 5 },
+                    { name: 'Consulting', icon: '📊', count: 4 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 3 },
+                    { name: 'Engineering', icon: '⚙️', count: 3 }
+                ],
+                relatedCountries: ['BE', 'CH', 'DE', 'NL'],
+                stories: []
+            },
+            'DK': {
+                name: 'Denmark',
+                alumniCount: 24,
+                continent: 'Europe',
+                region: 'Northern Europe',
+                universities: [
+                    { name: 'University of Copenhagen', count: 13, logo: 'copenhagen', ranking: 'Top 100', qs: 82 },
+                    { name: 'Technical University of Denmark', count: 4, logo: 'dtu', ranking: 'Top 100', qs: 99 },
+                    { name: 'Copenhagen Business School', count: 3, logo: 'cbs', ranking: 'Top Business' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 12 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 4 },
+                    { name: 'Technology & IT', icon: '💻', count: 4 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 3 }
+                ],
+                relatedCountries: ['SE', 'NO', 'DE', 'NL'],
+                stories: []
+            },
+            'US': {
+                name: 'United States',
+                alumniCount: 23,
+                continent: 'North America',
+                region: 'North America',
+                universities: [
+                    { name: 'Harvard University', count: 1, logo: 'harvard', ranking: 'Top 5', qs: 4 },
+                    { name: 'Princeton University', count: 1, logo: 'princeton', ranking: 'Top 20', qs: 16 },
+                    { name: 'Johns Hopkins University', count: 1, logo: 'jhu', ranking: 'Top 50', qs: 52 },
+                    { name: 'UCLA', count: 1, logo: 'ucla', ranking: 'Top 50', qs: 29 },
+                    { name: 'Boston University', count: 1, logo: 'bu', ranking: 'Top 100', qs: 93 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 8 },
+                    { name: 'Technology & IT', icon: '💻', count: 6 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 4 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 3 },
+                    { name: 'Consulting', icon: '📊', count: 2 }
+                ],
+                relatedCountries: ['CA', 'GB', 'NL', 'DE'],
+                stories: []
+            },
+            'FI': {
+                name: 'Finland',
+                alumniCount: 18,
+                continent: 'Europe',
+                region: 'Northern Europe',
+                universities: [
+                    { name: 'University of Helsinki', count: 4, logo: 'helsinki', ranking: 'Top 150', qs: 115 },
+                    { name: 'Aalto University', count: 2, logo: 'aalto', ranking: 'Top 150', qs: 116 },
+                    { name: 'Tampere University', count: 1, logo: 'tampere', ranking: 'Top 300' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 8 },
+                    { name: 'Technology & IT', icon: '💻', count: 4 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 3 },
+                    { name: 'Engineering', icon: '⚙️', count: 2 }
+                ],
+                relatedCountries: ['SE', 'NO', 'DK', 'NL'],
+                stories: []
+            },
+            'AT': {
+                name: 'Austria',
+                alumniCount: 17,
+                continent: 'Europe',
+                region: 'Central Europe',
+                universities: [
+                    { name: 'University of Vienna', count: 3, logo: 'vienna', ranking: 'Top 150', qs: 130 },
+                    { name: 'TU Wien', count: 2, logo: 'tuwien', ranking: 'Top 200' },
+                    { name: 'IST Austria', count: 1, logo: 'ist', ranking: 'Top Research' },
+                    { name: 'Medical University of Vienna', count: 1, logo: 'meduni', ranking: 'Top Medical' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 7 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 3 },
+                    { name: 'Technology & IT', icon: '💻', count: 3 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 2 },
+                    { name: 'Consulting', icon: '📊', count: 2 }
+                ],
+                relatedCountries: ['DE', 'CH', 'IT', 'CZ'],
+                stories: []
+            },
+            'IE': {
+                name: 'Ireland',
+                alumniCount: 9,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'Trinity College Dublin', count: 3, logo: 'tcd', ranking: 'Top 100', qs: 87 },
+                    { name: 'University College Dublin', count: 2, logo: 'ucd', ranking: 'Top 200', qs: 171 },
+                    { name: 'NUI Galway', count: 1, logo: 'nuig', ranking: 'Top 300' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 3 },
+                    { name: 'Technology & IT', icon: '💻', count: 3 },
+                    { name: 'Pharma & Biotech', icon: '🧬', count: 2 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 1 }
+                ],
+                relatedCountries: ['GB', 'NL', 'DE', 'US'],
+                stories: []
+            },
+            'CA': {
+                name: 'Canada',
+                alumniCount: 9,
+                continent: 'North America',
+                region: 'North America',
+                universities: [
+                    { name: 'University of Toronto', count: 2, logo: 'toronto', ranking: 'Top 25', qs: 21 },
+                    { name: 'McGill University', count: 1, logo: 'mcgill', ranking: 'Top 50', qs: 29 },
+                    { name: 'University of British Columbia', count: 1, logo: 'ubc', ranking: 'Top 50', qs: 34 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 3 },
+                    { name: 'Technology & IT', icon: '💻', count: 3 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 2 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 1 }
+                ],
+                relatedCountries: ['US', 'GB', 'NL', 'DE'],
+                stories: []
+            },
+            'LU': {
+                name: 'Luxembourg',
+                alumniCount: 9,
+                continent: 'Europe',
+                region: 'Western Europe',
+                universities: [
+                    { name: 'University of Luxembourg', count: 2, logo: 'lux', ranking: 'Top 400' }
+                ],
+                sectors: [
+                    { name: 'Finance & Banking', icon: '🏦', count: 4 },
+                    { name: 'Government & Public', icon: '🏛️', count: 2 },
+                    { name: 'Technology & IT', icon: '💻', count: 2 },
+                    { name: 'Academia & Research', icon: '🎓', count: 1 }
+                ],
+                relatedCountries: ['BE', 'DE', 'FR', 'NL'],
+                stories: []
+            },
+            'PT': {
+                name: 'Portugal',
+                alumniCount: 8,
+                continent: 'Europe',
+                region: 'Southern Europe',
+                universities: [
+                    { name: 'University of Lisbon', count: 2, logo: 'ulisboa', ranking: 'Top 300' },
+                    { name: 'University of Porto', count: 1, logo: 'porto', ranking: 'Top 300' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 3 },
+                    { name: 'Technology & IT', icon: '💻', count: 2 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 2 },
+                    { name: 'Tourism & Hospitality', icon: '✈️', count: 1 }
+                ],
+                relatedCountries: ['ES', 'FR', 'NL', 'GB'],
+                stories: []
+            },
+            'AU': {
+                name: 'Australia',
+                alumniCount: 8,
+                continent: 'Oceania',
+                region: 'Oceania',
+                universities: [
+                    { name: 'University of Melbourne', count: 2, logo: 'melbourne', ranking: 'Top 20', qs: 14 },
+                    { name: 'University of Sydney', count: 1, logo: 'sydney', ranking: 'Top 20', qs: 18 },
+                    { name: 'ANU', count: 1, logo: 'anu', ranking: 'Top 50', qs: 30 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 3 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 2 },
+                    { name: 'Technology & IT', icon: '💻', count: 2 },
+                    { name: 'Engineering', icon: '⚙️', count: 1 }
+                ],
+                relatedCountries: ['NZ', 'SG', 'GB', 'NL'],
+                stories: []
+            },
+            'NO': {
+                name: 'Norway',
+                alumniCount: 7,
+                continent: 'Europe',
+                region: 'Northern Europe',
+                universities: [
+                    { name: 'University of Oslo', count: 2, logo: 'oslo', ranking: 'Top 150', qs: 140 },
+                    { name: 'NTNU', count: 2, logo: 'ntnu', ranking: 'Top 200' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 3 },
+                    { name: 'Energy & Environment', icon: '⚡', count: 2 },
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 1 }
+                ],
+                relatedCountries: ['SE', 'DK', 'FI', 'NL'],
+                stories: []
+            },
+            'GR': {
+                name: 'Greece',
+                alumniCount: 5,
+                continent: 'Europe',
+                region: 'Southern Europe',
+                universities: [
+                    { name: 'University of Athens', count: 2, logo: 'athens', ranking: 'Top 400' },
+                    { name: 'Aristotle University', count: 1, logo: 'aristotle', ranking: 'Top 450' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 2 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 1 },
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Tourism & Hospitality', icon: '✈️', count: 1 }
+                ],
+                relatedCountries: ['IT', 'CY', 'NL', 'GB'],
+                stories: []
+            },
+            'JP': {
+                name: 'Japan',
+                alumniCount: 4,
+                continent: 'Asia',
+                region: 'East Asia',
+                universities: [
+                    { name: 'University of Tokyo', count: 1, logo: 'tokyo', ranking: 'Top 30', qs: 28 },
+                    { name: 'Kyoto University', count: 1, logo: 'kyoto', ranking: 'Top 50', qs: 50 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 2 },
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Engineering', icon: '⚙️', count: 1 }
+                ],
+                relatedCountries: ['SG', 'CN', 'AU', 'US'],
+                stories: []
+            },
+            'PL': {
+                name: 'Poland',
+                alumniCount: 3,
+                continent: 'Europe',
+                region: 'Central Europe',
+                universities: [
+                    { name: 'University of Warsaw', count: 1, logo: 'warsaw', ranking: 'Top 350' },
+                    { name: 'Jagiellonian University', count: 1, logo: 'jagiellonian', ranking: 'Top 350' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 1 }
+                ],
+                relatedCountries: ['DE', 'CZ', 'NL', 'AT'],
+                stories: []
+            },
+            'BG': {
+                name: 'Bulgaria',
+                alumniCount: 3,
+                continent: 'Europe',
+                region: 'Eastern Europe',
+                universities: [
+                    { name: 'Sofia University', count: 1, logo: 'sofia', ranking: 'Top 600' }
+                ],
+                sectors: [
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 1 }
+                ],
+                relatedCountries: ['RO', 'GR', 'AT', 'NL'],
+                stories: []
+            },
+            'SG': {
+                name: 'Singapore',
+                alumniCount: 2,
+                continent: 'Asia',
+                region: 'Southeast Asia',
+                universities: [
+                    { name: 'NUS', count: 1, logo: 'nus', ranking: 'Top 10', qs: 8 },
+                    { name: 'NTU', count: 1, logo: 'ntu', ranking: 'Top 20', qs: 15 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Finance & Banking', icon: '🏦', count: 1 }
+                ],
+                relatedCountries: ['MY', 'HK', 'AU', 'JP'],
+                stories: []
+            },
+            'IN': {
+                name: 'India',
+                alumniCount: 2,
+                continent: 'Asia',
+                region: 'South Asia',
+                universities: [
+                    { name: 'IIT Delhi', count: 1, logo: 'iitd', ranking: 'Top 200' }
+                ],
+                sectors: [
+                    { name: 'Technology & IT', icon: '💻', count: 1 },
+                    { name: 'Healthcare & Medical', icon: '🏥', count: 1 }
+                ],
+                relatedCountries: ['SG', 'AE', 'GB', 'US'],
+                stories: []
+            },
+            'CN': {
+                name: 'China',
+                alumniCount: 2,
+                continent: 'Asia',
+                region: 'East Asia',
+                universities: [
+                    { name: 'Peking University', count: 1, logo: 'pku', ranking: 'Top 20', qs: 17 },
+                    { name: 'Tsinghua University', count: 1, logo: 'tsinghua', ranking: 'Top 25', qs: 20 }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Technology & IT', icon: '💻', count: 1 }
+                ],
+                relatedCountries: ['HK', 'SG', 'JP', 'AU'],
+                stories: []
+            },
+            'CL': {
+                name: 'Chile',
+                alumniCount: 2,
+                continent: 'South America',
+                region: 'South America',
+                universities: [
+                    { name: 'Universidad de Chile', count: 1, logo: 'uchile', ranking: 'Top 200' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Engineering', icon: '⚙️', count: 1 }
+                ],
+                relatedCountries: ['BR', 'AR', 'CO', 'US'],
+                stories: []
+            },
+            'HU': {
+                name: 'Hungary',
+                alumniCount: 2,
+                continent: 'Europe',
+                region: 'Central Europe',
+                universities: [
+                    { name: 'CEU', count: 1, logo: 'ceu', ranking: 'Top Research' },
+                    { name: 'ELTE', count: 1, logo: 'elte', ranking: 'Top 400' }
+                ],
+                sectors: [
+                    { name: 'Academia & Research', icon: '🎓', count: 1 },
+                    { name: 'Government & Public', icon: '🏛️', count: 1 }
+                ],
+                relatedCountries: ['AT', 'DE', 'CZ', 'SK'],
+                stories: []
+            }
+        };
+        
+        // Default/fallback for unknown countries
+        const defaultCountry = {
+            name: 'Unknown Country',
+            alumniCount: 1,
+            continent: 'Unknown',
+            region: 'Unknown',
+            universities: [],
+            sectors: [
+                { name: 'Various Sectors', icon: '💼', count: 1 }
+            ],
+            relatedCountries: ['NL', 'DE', 'GB', 'BE'],
+            stories: []
+        };
+        
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+        function getUrlParameter(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+        
+        function formatRanking(ranking) {
+            if (!ranking) return '';
+            if (ranking.includes('Top 10')) return 'top100';
+            if (ranking.includes('Top 50')) return 'top100';
+            if (ranking.includes('Top 100')) return 'top100';
+            if (ranking.includes('Top 150')) return 'top200';
+            if (ranking.includes('Top 200')) return 'top200';
+            return '';
+        }
+        
+        // ==========================================
+        // RENDER FUNCTIONS
+        // ==========================================
+        function renderUniversities(universities) {
+            const grid = document.getElementById('universitiesGrid');
+            if (!grid) return;
+            
+            if (!universities || universities.length === 0) {
+                grid.innerHTML = `
+                    <div class="university-card" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <p style="color: var(--um-gray-600);">University destination data coming soon. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = universities.map(uni => {
+                const badgeClass = formatRanking(uni.ranking);
+                const badge = badgeClass ? `<span class="uni-badge ${badgeClass}">${uni.ranking}</span>` : '';
+                
+                return `
+                    <a href="universities.html" class="university-card">
+                        <div class="university-logo">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="university-info">
+                            <div class="university-name">${uni.name}</div>
+                            <div class="university-meta">${uni.qs ? `QS #${uni.qs}` : uni.ranking || 'Research University'}</div>
+                            <div class="university-badges">${badge}</div>
+                        </div>
+                        <div class="university-count">${uni.count}</div>
+                    </a>
+                `;
+            }).join('');
+        }
+        
+        function renderSectors(sectors) {
+            const grid = document.getElementById('sectorsGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = sectors.map(sector => `
+                <div class="sector-card">
+                    <div class="sector-icon">${sector.icon}</div>
+                    <div class="sector-info">
+                        <div class="sector-name">${sector.name}</div>
+                        <div class="sector-count"><strong>${sector.count}</strong> alumni</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderStories(stories, countryName) {
+            const grid = document.getElementById('storiesGrid');
+            if (!grid) return;
+            
+            if (!stories || stories.length === 0) {
+                grid.innerHTML = `
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">?</div>
+                            <div class="story-meta">
+                                <div class="story-name">Your Story Here</div>
+                                <div class="story-role">MSP Alumnus/Alumna in ${countryName}</div>
+                            </div>
+                        </div>
+                        <p class="story-quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. We'd love to feature your story — contact us at msp-alumni@maastrichtuniversity.nl</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = stories.map(story => `
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">${story.initials}</div>
+                        <div class="story-meta">
+                            <div class="story-name">${story.name}</div>
+                            <div class="story-role">${story.role} · Class of ${story.year}</div>
+                        </div>
+                    </div>
+                    <p class="story-quote">${story.quote}</p>
+                </div>
+            `).join('');
+        }
+        
+        function renderQuickStats(data) {
+            const container = document.getElementById('quickStats');
+            if (!container) return;
+            
+            const topUni = data.universities && data.universities.length > 0 ? data.universities[0].name : 'Various';
+            const topSector = data.sectors && data.sectors.length > 0 ? data.sectors[0].name : 'Various';
+            
+            container.innerHTML = `
+                <div class="quick-stat">
+                    <span class="quick-stat-label">Region</span>
+                    <span class="quick-stat-value">${data.region}</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-label">Universities</span>
+                    <span class="quick-stat-value">${data.universities ? data.universities.length : 0}</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-label">Top University</span>
+                    <span class="quick-stat-value" style="font-size: 14px;">${topUni}</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-label">Top Sector</span>
+                    <span class="quick-stat-value" style="font-size: 14px;">${topSector}</span>
+                </div>
+            `;
+        }
+        
+        function renderRelatedCountries(codes) {
+            const container = document.getElementById('relatedCountries');
+            if (!container) return;
+            
+            container.innerHTML = codes.map(code => {
+                const country = countryDatabase[code] || { name: code, alumniCount: '?' };
+                return `
+                    <a href="country.html?code=${code}" class="related-country">
+                        <img src="https://flagcdn.com/w64/${code.toLowerCase()}.png" alt="${country.name}">
+                        <span class="related-country-name">${country.name}</span>
+                        <span class="related-country-count">${country.alumniCount}</span>
+                    </a>
+                `;
+            }).join('');
+        }
+        
+        // ==========================================
+        // INITIALIZE PAGE
+        // ==========================================
+        function initPage() {
+            const countryCode = getUrlParameter('code');
+            
+            if (!countryCode) {
+                // Redirect to countries page if no code
+                window.location.href = 'countries.html';
+                return;
+            }
+            
+            const data = countryDatabase[countryCode.toUpperCase()] || defaultCountry;
+            
+            // Update page title
+            document.title = `${data.name} | MSP Alumni Network`;
+            
+            // Update hero section
+            document.getElementById('countryFlag').src = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
+            document.getElementById('countryFlag').alt = data.name;
+            document.getElementById('countryName').textContent = data.name;
+            document.getElementById('breadcrumbCountry').textContent = data.name;
+            document.getElementById('alumniCount').textContent = data.alumniCount;
+            document.getElementById('uniCount').textContent = data.universities ? data.universities.length : 0;
+            document.getElementById('sectorCount').textContent = data.sectors ? data.sectors.length : 0;
+            document.getElementById('uniSectionTitle').textContent = `Universities Where Alumni Studied in ${data.name}`;
+            
+            // Render content
+            renderUniversities(data.universities);
+            renderSectors(data.sectors);
+            renderStories(data.stories, data.name);
+            renderQuickStats(data);
+            renderRelatedCountries(data.relatedCountries);
+            
+            // Show content, hide loading
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('pageContent').style.display = 'block';
+            
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        // ==========================================
+        // EVENT LISTENERS
         // ==========================================
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -682,210 +1680,7 @@
             }
         });
         
-        // ==========================================
-        // COUNTRY DATA
-        // ==========================================
-        const countryData = {
-            'NL': {
-                name: 'Netherlands',
-                alumni: 445,
-                subtitle: 'Our home country and top destination',
-                universities: [
-                    { name: 'Maastricht University', count: 186, rank: 'QS #256' },
-                    { name: 'University of Amsterdam', count: 45, rank: 'QS #53', prestige: true },
-                    { name: 'Utrecht University', count: 38, rank: 'QS #107' },
-                    { name: 'Erasmus University Rotterdam', count: 32, rank: 'QS #176' },
-                    { name: 'TU Delft', count: 28, rank: 'QS #47', prestige: true },
-                    { name: 'Leiden University', count: 24, rank: 'QS #126' },
-                    { name: 'VU Amsterdam', count: 18, rank: 'QS #207' },
-                    { name: 'Wageningen University', count: 15, rank: 'QS #151' }
-                ],
-                careers: [
-                    { name: 'Healthcare', icon: '🏥', count: 85 },
-                    { name: 'Technology', icon: '💻', count: 72 },
-                    { name: 'Academia', icon: '🎓', count: 68 },
-                    { name: 'Finance', icon: '💰', count: 45 },
-                    { name: 'Consulting', icon: '📊', count: 38 },
-                    { name: 'Government', icon: '🏛️', count: 25 }
-                ]
-            },
-            'DE': {
-                name: 'Germany',
-                alumni: 195,
-                subtitle: 'Engineering and research excellence',
-                universities: [
-                    { name: 'Technical University of Munich', count: 14, rank: 'QS #37', prestige: true },
-                    { name: 'RWTH Aachen', count: 12, rank: 'QS #106' },
-                    { name: 'LMU Munich', count: 11, rank: 'QS #54', prestige: true },
-                    { name: 'Heidelberg University', count: 8, rank: 'QS #87', prestige: true },
-                    { name: 'Humboldt University Berlin', count: 6, rank: 'QS #120' },
-                    { name: 'Free University Berlin', count: 5, rank: 'QS #98', prestige: true }
-                ],
-                careers: [
-                    { name: 'Technology', icon: '💻', count: 42 },
-                    { name: 'Academia', icon: '🎓', count: 35 },
-                    { name: 'Engineering', icon: '⚙️', count: 28 },
-                    { name: 'Healthcare', icon: '🏥', count: 22 },
-                    { name: 'Finance', icon: '💰', count: 18 }
-                ]
-            },
-            'GB': {
-                name: 'United Kingdom',
-                alumni: 86,
-                subtitle: 'Home to Oxford, Cambridge, and Imperial',
-                universities: [
-                    { name: 'Imperial College London', count: 19, rank: 'QS #2', prestige: true },
-                    { name: 'UCL London', count: 12, rank: 'QS #9', prestige: true },
-                    { name: 'University of Edinburgh', count: 8, rank: 'QS #27', prestige: true },
-                    { name: 'University of Cambridge', count: 7, rank: 'QS #5', prestige: true },
-                    { name: 'University of Oxford', count: 7, rank: 'QS #3', prestige: true },
-                    { name: "King's College London", count: 6, rank: 'QS #40', prestige: true }
-                ],
-                careers: [
-                    { name: 'Finance', icon: '💰', count: 22 },
-                    { name: 'Academia', icon: '🎓', count: 18 },
-                    { name: 'Consulting', icon: '📊', count: 15 },
-                    { name: 'Technology', icon: '💻', count: 12 },
-                    { name: 'Healthcare', icon: '🏥', count: 10 }
-                ]
-            },
-            'BE': {
-                name: 'Belgium',
-                alumni: 84,
-                subtitle: 'Our neighbors with world-class research',
-                universities: [
-                    { name: 'KU Leuven', count: 42, rank: 'QS #61', prestige: true },
-                    { name: 'Ghent University', count: 18, rank: 'QS #137' },
-                    { name: 'University of Antwerp', count: 8, rank: 'QS #234' },
-                    { name: 'Vrije Universiteit Brussel', count: 6, rank: 'QS #210' }
-                ],
-                careers: [
-                    { name: 'Academia', icon: '🎓', count: 20 },
-                    { name: 'Healthcare', icon: '🏥', count: 18 },
-                    { name: 'Government', icon: '🏛️', count: 12 },
-                    { name: 'Technology', icon: '💻', count: 10 }
-                ]
-            },
-            'CH': {
-                name: 'Switzerland',
-                alumni: 28,
-                subtitle: 'Home to ETH Zürich and EPFL',
-                universities: [
-                    { name: 'ETH Zürich', count: 16, rank: 'QS #7', prestige: true },
-                    { name: 'EPFL', count: 8, rank: 'QS #12', prestige: true },
-                    { name: 'University of Zürich', count: 5, rank: 'QS #91', prestige: true }
-                ],
-                careers: [
-                    { name: 'Technology', icon: '💻', count: 8 },
-                    { name: 'Finance', icon: '💰', count: 7 },
-                    { name: 'Academia', icon: '🎓', count: 6 },
-                    { name: 'Pharma', icon: '💊', count: 4 }
-                ]
-            },
-            'SE': {
-                name: 'Sweden',
-                alumni: 30,
-                subtitle: 'Innovation and sustainability leaders',
-                universities: [
-                    { name: 'Karolinska Institute', count: 12, rank: 'QS #46', prestige: true },
-                    { name: 'KTH Royal Institute', count: 8, rank: 'QS #73' },
-                    { name: 'Uppsala University', count: 6, rank: 'QS #105' },
-                    { name: 'Lund University', count: 5, rank: 'QS #85', prestige: true }
-                ],
-                careers: [
-                    { name: 'Healthcare', icon: '🏥', count: 10 },
-                    { name: 'Technology', icon: '💻', count: 8 },
-                    { name: 'Academia', icon: '🎓', count: 6 }
-                ]
-            },
-            'US': {
-                name: 'United States',
-                alumni: 35,
-                subtitle: 'From coast to coast',
-                universities: [
-                    { name: 'MIT', count: 3, rank: 'QS #1', prestige: true },
-                    { name: 'Stanford University', count: 2, rank: 'QS #6', prestige: true },
-                    { name: 'Harvard University', count: 2, rank: 'QS #4', prestige: true },
-                    { name: 'UC Berkeley', count: 4, rank: 'QS #12', prestige: true },
-                    { name: 'Columbia University', count: 3, rank: 'QS #23', prestige: true }
-                ],
-                careers: [
-                    { name: 'Technology', icon: '💻', count: 12 },
-                    { name: 'Academia', icon: '🎓', count: 8 },
-                    { name: 'Finance', icon: '💰', count: 6 },
-                    { name: 'Consulting', icon: '📊', count: 4 }
-                ]
-            }
-        };
-        
-        // ==========================================
-        // LOAD COUNTRY DATA
-        // ==========================================
-        function loadCountryData() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const countryCode = urlParams.get('code')?.toUpperCase() || 'NL';
-            
-            const country = countryData[countryCode];
-            
-            if (!country) {
-                // Country not found, show default
-                document.getElementById('country-name').textContent = 'Country Not Found';
-                document.getElementById('country-subtitle').textContent = 'Please select a country from the countries page';
-                return;
-            }
-            
-            // Update page
-            document.title = `${country.name} | MSP Alumni Network`;
-            document.getElementById('breadcrumb-country').textContent = country.name;
-            document.getElementById('country-name').textContent = country.name;
-            document.getElementById('country-subtitle').textContent = country.subtitle;
-            document.getElementById('country-flag').src = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
-            document.getElementById('country-flag').alt = country.name;
-            document.getElementById('alumni-count').textContent = country.alumni;
-            document.getElementById('uni-count').textContent = country.universities.length;
-            document.getElementById('uni-section-count').textContent = `${country.universities.length} universities`;
-            
-            // Render universities
-            const uniGrid = document.getElementById('uni-grid');
-            uniGrid.innerHTML = country.universities.map(uni => `
-                <div class="uni-card ${uni.prestige ? 'prestige' : ''}">
-                    <div class="uni-logo">
-                        <i data-lucide="building-2"></i>
-                    </div>
-                    <div class="uni-info">
-                        <div class="uni-name">${uni.name}</div>
-                        <div class="uni-rank">${uni.rank}</div>
-                    </div>
-                    <div class="uni-count">${uni.count}</div>
-                </div>
-            `).join('');
-            
-            // Render careers
-            const careerGrid = document.getElementById('career-grid');
-            careerGrid.innerHTML = country.careers.map(career => `
-                <div class="career-card">
-                    <div class="career-icon">${career.icon}</div>
-                    <div class="career-name">${career.name}</div>
-                    <div class="career-count">${career.count}</div>
-                </div>
-            `).join('');
-            
-            // Re-init icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        }
-        
-        // ==========================================
-        // INITIALIZE
-        // ==========================================
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-            
-            loadCountryData();
-        });
+        document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
 </html>

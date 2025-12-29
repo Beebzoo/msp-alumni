@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countries | MSP Alumni Network</title>
-    <meta name="description" content="Explore where MSP alumni live and work across 59 countries on 6 continents worldwide.">
+    <meta name="description" content="Explore where MSP alumni live and work across 56 countries on 6 continents worldwide.">
     
-    <!-- Fonts -->
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -18,131 +18,294 @@
     <script src="data.js"></script>
     
     <style>
+        /* ==========================================
+           CSS VARIABLES - PREMIUM UM BRANDING
+        ========================================== */
         :root {
             --um-dark-blue: #001C3D;
+            --um-dark-blue-rgb: 0, 28, 61;
             --um-light-blue: #00A2DB;
+            --um-light-blue-rgb: 0, 162, 219;
             --um-orange: #E84E10;
+            --um-orange-rgb: 232, 78, 16;
             --um-white: #FFFFFF;
             --um-off-white: #f8f9fa;
             --um-gray-100: #f5f5f5;
             --um-gray-200: #e9ecef;
+            --um-gray-300: #dee2e6;
             --um-gray-600: #6c757d;
             --um-gray-800: #343a40;
             
-            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --shadow-glow: 0 0 40px rgba(0, 162, 219, 0.3);
             
             --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
         
+        /* ==========================================
+           RESET & BASE STYLES
+        ========================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        
         body {
             font-family: var(--font-body);
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--um-dark-blue);
             background: var(--um-white);
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.2; }
-        a { color: var(--um-light-blue); text-decoration: none; transition: color 0.2s ease; }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        a {
+            color: var(--um-light-blue);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         a:hover { color: var(--um-orange); }
         
-        /* Header */
+        /* ==========================================
+           HEADER - PREMIUM GLASSMORPHISM
+        ========================================== */
         header {
-            background: var(--um-white);
-            border-bottom: 1px solid var(--um-gray-200);
-            padding: 12px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 28, 61, 0.08);
+            padding: 16px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 42px; width: auto; }
-        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; }
-        .logo-text p { font-size: 11px; color: var(--um-gray-600); margin: 0; }
-        .header-nav { display: flex; gap: 5px; align-items: center; }
-        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 16px; border-radius: var(--radius-sm); color: var(--um-dark-blue); transition: all 0.2s; }
-        .header-nav a:hover { background: var(--um-gray-100); }
-        .header-nav a.active { background: var(--um-light-blue); color: white; }
-        .header-nav .btn-cta { background: var(--um-orange); color: white; margin-left: 8px; }
-        .header-nav .btn-cta:hover { background: #d63d0a; color: white; }
         
-        /* Hero */
+        header.scrolled {
+            padding: 12px 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+        
+        .logo-text h1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .header-nav a {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            color: var(--um-dark-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .header-nav a:not(.btn-cta):hover {
+            background: rgba(0, 162, 219, 0.08);
+            color: var(--um-light-blue);
+        }
+        
+        .header-nav a.active {
+            background: var(--um-light-blue);
+            color: white;
+        }
+        
+        .header-nav .btn-cta {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white;
+            margin-left: 12px;
+            box-shadow: 0 4px 15px rgba(232, 78, 16, 0.3);
+        }
+        
+        .header-nav .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 78, 16, 0.4);
+            color: white;
+        }
+        
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
         .hero {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
-            padding: 80px 50px;
-            text-align: center;
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 40%, #001530 100%);
+            color: white;
+            padding: 140px 50px 100px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
-        .hero::before {
+        
+        /* Animated Globe Background */
+        .globe-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 162, 219, 0.15) 0%, transparent 50%);
+            opacity: 0.5;
+            animation: globePulse 8s ease-in-out infinite;
+        }
+        
+        .globe-bg::before {
             content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border: 1px solid rgba(0, 162, 219, 0.1);
+            border-radius: 50%;
+            animation: globeRotate 20s linear infinite;
+        }
+        
+        .globe-bg::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            right: 20%;
+            bottom: 20%;
+            border: 1px solid rgba(232, 78, 16, 0.1);
+            border-radius: 50%;
+            animation: globeRotate 15s linear infinite reverse;
+        }
+        
+        @keyframes globePulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.7; }
+        }
+        
+        @keyframes globeRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Floating Particles */
+        .particle-field {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            pointer-events: none;
         }
+        
+        .particle-field .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 162, 219, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s ease-in-out infinite;
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-30px) translateX(20px); opacity: 0.8; }
+        }
+        
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
             max-width: 900px;
             margin: 0 auto;
         }
+        
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(0,162,219,0.2);
-            color: var(--um-light-blue);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 13px;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 12px;
             font-weight: 600;
-            margin-bottom: 25px;
-        }
-        .hero-badge i, .hero-badge svg { width: 16px; height: 16px; }
-        .hero h2 {
-            font-size: 48px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-        }
-        .hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
         }
         
-        /* Floating Flags Animation */
+        .hero-badge i, .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Floating Flags */
         .floating-flags {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease-out 0.1s backwards;
         }
+        
         .floating-flag {
-            width: 50px;
-            height: 35px;
+            width: 56px;
+            height: 38px;
             border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            animation: float 3s ease-in-out infinite;
-            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: flagFloat 3s ease-in-out infinite;
         }
+        
         .floating-flag:nth-child(1) { animation-delay: 0s; }
         .floating-flag:nth-child(2) { animation-delay: 0.2s; }
         .floating-flag:nth-child(3) { animation-delay: 0.4s; }
@@ -152,178 +315,100 @@
         .floating-flag:nth-child(7) { animation-delay: 1.2s; }
         .floating-flag:nth-child(8) { animation-delay: 1.4s; }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .floating-flag:hover {
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
         
-        /* Hero Stats */
+        @keyframes flagFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .hero h2 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 600px;
+            margin: 0 auto 45px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+        
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 60px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
         }
+        
         .hero-stat {
             text-align: center;
         }
+        
         .hero-stat-number {
             font-family: var(--font-heading);
             font-size: 56px;
-            font-weight: 800;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        
+        .hero-stat-number.highlight {
             color: var(--um-orange);
         }
+        
         .hero-stat-label {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        /* Continent Sections */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ==========================================
+           MAIN CONTENT
+        ========================================== */
         .main-content {
-            padding: 60px 50px;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-        }
-        
-        .continent-section {
-            margin-bottom: 60px;
-        }
-        
-        .continent-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--um-gray-200);
-        }
-        
-        .continent-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        
-        .continent-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 2;
-        }
-        
-        .continent-header h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-        }
-        
-        .continent-count {
-            margin-left: auto;
-            font-size: 14px;
-            color: var(--um-gray-600);
-            background: var(--um-gray-100);
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-        
-        .continent-count strong {
-            color: var(--um-orange);
-        }
-        
-        /* Country Grid */
-        .country-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        /* Country Card */
-        .country-card {
-            background: white;
-            border: 2px solid var(--um-gray-200);
-            border-radius: var(--radius-lg);
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .country-card:hover {
-            border-color: var(--um-light-blue);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .country-card.top-country {
-            border-color: var(--um-orange);
-            background: linear-gradient(180deg, rgba(232,78,16,0.05) 0%, white 100%);
-        }
-        
-        .country-card.top-country:hover {
-            box-shadow: 0 12px 40px rgba(232,78,16,0.2);
-        }
-        
-        .country-flag {
-            width: 80px;
-            height: 55px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            margin: 0 auto 15px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .country-card:hover .country-flag {
-            transform: scale(1.1);
-        }
-        
-        .country-name {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-        
-        .country-alumni {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--um-orange);
-        }
-        
-        .country-alumni span {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--um-gray-600);
-        }
-        
-        .country-badge {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 12px;
-            background: var(--um-orange);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 80px 50px;
         }
         
         /* Top Countries Showcase */
         .top-showcase {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
-            padding: 60px 50px;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 50px;
             margin-bottom: 60px;
-            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .top-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--um-dark-blue), var(--um-light-blue), var(--um-orange));
         }
         
         .top-showcase-header {
@@ -334,134 +419,271 @@
         .top-showcase-header h3 {
             font-size: 32px;
             font-weight: 700;
-            color: white;
+            color: var(--um-dark-blue);
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
         
         .top-showcase-header p {
             font-size: 16px;
-            color: rgba(255,255,255,0.7);
+            color: var(--um-gray-600);
         }
         
         .top-countries-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
         
         .top-country-card {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: var(--radius-md);
+            background: var(--um-off-white);
+            border-radius: var(--radius-lg);
             padding: 30px 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            text-decoration: none;
-            display: block;
+            border: 2px solid transparent;
+            position: relative;
         }
         
         .top-country-card:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--um-orange);
-            transform: translateY(-6px);
+            background: white;
+            border-color: var(--um-light-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(0, 162, 219, 0.15);
         }
         
-        .top-country-card .country-flag {
-            width: 70px;
-            height: 48px;
-            margin-bottom: 15px;
-        }
-        
-        .top-country-card .country-name {
-            color: white;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .top-country-card .country-alumni {
-            font-size: 32px;
-        }
-        
-        .top-country-card .country-alumni span {
-            color: rgba(255,255,255,0.6);
-        }
+        .top-country-card.gold { border-color: #FFD700; }
+        .top-country-card.gold:hover { box-shadow: 0 15px 45px rgba(255, 215, 0, 0.2); }
         
         .top-country-rank {
             position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--um-orange);
+            top: -12px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: var(--um-dark-blue);
             color: white;
-            width: 28px;
-            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-heading);
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 28, 61, 0.3);
         }
         
-        .top-country-card {
-            position: relative;
+        .top-country-card.gold .top-country-rank {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: var(--um-dark-blue);
         }
         
-        /* All Flags Wall */
+        .top-country-flag {
+            width: 80px;
+            height: 54px;
+            border-radius: 8px;
+            margin: 0 auto 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+        
+        .top-country-name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .top-country-count {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--um-orange);
+            line-height: 1;
+        }
+        
+        .top-country-label {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            margin-top: 5px;
+        }
+        
+        /* Flags Wall */
         .flags-wall {
-            background: var(--um-off-white);
+            background: linear-gradient(135deg, var(--um-off-white) 0%, white 100%);
             padding: 50px;
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             margin-bottom: 60px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
         }
         
         .flags-wall-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .flags-wall-header h3 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--um-dark-blue);
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .flags-wall-header p {
             color: var(--um-gray-600);
+            font-size: 15px;
         }
         
         .flags-mosaic {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
         }
         
         .flag-tile {
-            width: 60px;
-            height: 40px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 64px;
+            height: 43px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             object-fit: cover;
         }
         
         .flag-tile:hover {
-            transform: scale(1.2);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: scale(1.25) translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
             z-index: 10;
         }
         
-        /* Footer */
-        footer {
-            background: var(--um-dark-blue);
-            color: white;
-            padding: 40px 50px 25px;
+        /* Continent Sections */
+        .continent-section {
+            margin-bottom: 50px;
         }
+        
+        .continent-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--um-gray-200);
+        }
+        
+        .continent-icon {
+            font-size: 32px;
+        }
+        
+        .continent-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .continent-count {
+            margin-left: auto;
+            background: var(--um-light-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .country-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .country-card:hover {
+            border-color: var(--um-light-blue);
+            background: rgba(0, 162, 219, 0.03);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 162, 219, 0.1);
+        }
+        
+        .country-card-flag {
+            width: 50px;
+            height: 34px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .country-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .country-card-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .country-card-count {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            margin-top: 2px;
+        }
+        
+        .country-card-count strong {
+            color: var(--um-orange);
+            font-weight: 700;
+        }
+        
+        .country-card-arrow {
+            color: var(--um-gray-300);
+            transition: all 0.3s ease;
+        }
+        
+        .country-card:hover .country-card-arrow {
+            color: var(--um-light-blue);
+            transform: translateX(5px);
+        }
+        
+        .country-card-arrow i, .country-card-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            background: #000a1a;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px 30px;
+        }
+        
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -469,52 +691,89 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
         }
-        .footer-text {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-        }
-        .footer-links {
-            display: flex;
-            gap: 25px;
-        }
-        .footer-links a {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-        }
-        .footer-links a:hover {
+        
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
             color: white;
         }
         
-        /* Responsive */
+        .footer-brand p {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--um-orange);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* ==========================================
+           RESPONSIVE DESIGN
+        ========================================== */
         @media (max-width: 1200px) {
             .top-countries-grid { grid-template-columns: repeat(3, 1fr); }
+            .country-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        
         @media (max-width: 1000px) {
-            .hero { padding: 60px 30px; }
-            .hero h2 { font-size: 36px; }
-            .hero-stats { gap: 30px; }
+            header { padding: 14px 30px; }
+            .hero { padding: 120px 30px 80px; }
+            .hero h2 { font-size: 42px; }
+            .hero-stats { gap: 40px; }
             .hero-stat-number { font-size: 42px; }
-            .main-content { padding: 40px 30px; }
+            .main-content { padding: 60px 30px; }
             .top-countries-grid { grid-template-columns: repeat(2, 1fr); }
             .country-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        
         @media (max-width: 768px) {
             header { padding: 12px 20px; }
             .header-nav a:not(.btn-cta) { display: none; }
-            .hero { padding: 50px 20px; }
-            .hero h2 { font-size: 28px; }
-            .hero-stats { flex-direction: column; gap: 20px; }
-            .floating-flags { gap: 10px; }
-            .floating-flag { width: 40px; height: 28px; }
-            .top-showcase { padding: 40px 20px; }
+            .hero { padding: 100px 20px 60px; }
+            .hero h2 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 25px; }
+            .floating-flags { gap: 10px; flex-wrap: wrap; }
+            .floating-flag { width: 44px; height: 30px; }
+            .main-content { padding: 40px 20px; }
+            .top-showcase { padding: 35px 25px; }
             .top-countries-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .flags-wall { padding: 30px 20px; }
-        }
-        @media (max-width: 500px) {
+            .flags-wall { padding: 35px 20px; }
             .country-grid { grid-template-columns: 1fr; }
+            footer { padding: 40px 20px 25px; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+        
+        @media (max-width: 500px) {
             .top-countries-grid { grid-template-columns: 1fr; }
+            .hero-stat-number { font-size: 36px; }
         }
     </style>
 </head>
@@ -536,8 +795,14 @@
         </nav>
     </header>
     
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
+        <!-- Animated Globe Background -->
+        <div class="globe-bg"></div>
+        
+        <!-- Particle Field -->
+        <div class="particle-field" id="particle-field"></div>
+        
         <div class="hero-content">
             <div class="hero-badge">
                 <i data-lucide="globe"></i>
@@ -558,20 +823,20 @@
             
             <h2>Where MSP Alumni Call Home</h2>
             <p class="hero-subtitle">
-                From Maastricht to the world — our graduates live and work across 59 countries on 6 continents. Click on any country to explore.
+                From Maastricht to the world — our graduates live and work across 56 countries on 6 continents. Click any country to explore.
             </p>
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number">59</div>
+                    <div class="hero-stat-number" data-count="56">0</div>
                     <div class="hero-stat-label">Countries</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">6</div>
+                    <div class="hero-stat-number" data-count="6">0</div>
                     <div class="hero-stat-label">Continents</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">1,329</div>
+                    <div class="hero-stat-number highlight" data-count="1330">0</div>
                     <div class="hero-stat-label">Alumni Worldwide</div>
                 </div>
             </div>
@@ -585,7 +850,7 @@
         <div class="top-showcase">
             <div class="top-showcase-header">
                 <h3>🏆 Top 5 Countries</h3>
-                <p>Where most MSP alumni currently live</p>
+                <p>Where most MSP alumni currently live and work</p>
             </div>
             <div class="top-countries-grid" id="topCountriesGrid"></div>
         </div>
@@ -593,8 +858,8 @@
         <!-- All Flags Wall -->
         <div class="flags-wall">
             <div class="flags-wall-header">
-                <h3><i data-lucide="globe" style="display: inline; width: 28px; height: 28px; vertical-align: middle; margin-right: 8px;"></i>All 59 Countries</h3>
-                <p>Click any flag to explore that country's MSP alumni</p>
+                <h3>🌍 All 56 Countries</h3>
+                <p>Click any flag to explore that country's MSP alumni community</p>
             </div>
             <div class="flags-mosaic" id="flagsMosaic"></div>
         </div>
@@ -602,41 +867,61 @@
         <!-- Europe -->
         <section class="continent-section" id="europe">
             <div class="continent-header">
-                <div class="continent-icon"><i data-lucide="map-pin"></i></div>
+                <div class="continent-icon">🇪🇺</div>
                 <h3>Europe</h3>
-                <div class="continent-count"><strong id="europeCount">0</strong> alumni</div>
+                <span class="continent-count" id="europe-count">0 alumni</span>
             </div>
-            <div class="country-grid" id="europeGrid"></div>
+            <div class="country-grid" id="europe-grid"></div>
         </section>
         
-        <!-- Americas -->
-        <section class="continent-section" id="americas">
+        <!-- North America -->
+        <section class="continent-section" id="north-america">
             <div class="continent-header">
-                <div class="continent-icon"><i data-lucide="map-pin"></i></div>
-                <h3>Americas</h3>
-                <div class="continent-count"><strong id="americasCount">0</strong> alumni</div>
+                <div class="continent-icon">🌎</div>
+                <h3>North America</h3>
+                <span class="continent-count" id="north-america-count">0 alumni</span>
             </div>
-            <div class="country-grid" id="americasGrid"></div>
+            <div class="country-grid" id="north-america-grid"></div>
         </section>
         
-        <!-- Asia & Pacific -->
+        <!-- Asia -->
         <section class="continent-section" id="asia">
             <div class="continent-header">
-                <div class="continent-icon"><i data-lucide="map-pin"></i></div>
-                <h3>Asia & Pacific</h3>
-                <div class="continent-count"><strong id="asiaCount">0</strong> alumni</div>
+                <div class="continent-icon">🌏</div>
+                <h3>Asia</h3>
+                <span class="continent-count" id="asia-count">0 alumni</span>
             </div>
-            <div class="country-grid" id="asiaGrid"></div>
+            <div class="country-grid" id="asia-grid"></div>
         </section>
         
-        <!-- Africa & Middle East -->
+        <!-- Oceania -->
+        <section class="continent-section" id="oceania">
+            <div class="continent-header">
+                <div class="continent-icon">🌊</div>
+                <h3>Oceania</h3>
+                <span class="continent-count" id="oceania-count">0 alumni</span>
+            </div>
+            <div class="country-grid" id="oceania-grid"></div>
+        </section>
+        
+        <!-- South America -->
+        <section class="continent-section" id="south-america">
+            <div class="continent-header">
+                <div class="continent-icon">🌎</div>
+                <h3>South America</h3>
+                <span class="continent-count" id="south-america-count">0 alumni</span>
+            </div>
+            <div class="country-grid" id="south-america-grid"></div>
+        </section>
+        
+        <!-- Africa -->
         <section class="continent-section" id="africa">
             <div class="continent-header">
-                <div class="continent-icon"><i data-lucide="map-pin"></i></div>
-                <h3>Africa & Middle East</h3>
-                <div class="continent-count"><strong id="africaCount">0</strong> alumni</div>
+                <div class="continent-icon">🌍</div>
+                <h3>Africa</h3>
+                <span class="continent-count" id="africa-count">0 alumni</span>
             </div>
-            <div class="country-grid" id="africaGrid"></div>
+            <div class="country-grid" id="africa-grid"></div>
         </section>
         
     </main>
@@ -644,8 +929,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · Data updated December 2025 · <a href="/cdn-cgi/l/email-protection#bbd6c8cb96dad7ced6d5d2fbd6dadac8cfc9d2d8d3cfced5d2cddec9c8d2cfc295d5d7" style="color: rgba(255,255,255,0.7);">Help keep data accurate</a>
+            <div class="footer-brand">
+                MSP Alumni Network
+                <p>Data updated December 2025</p>
             </div>
             <div class="footer-links">
                 <a href="index.html">Alumni Map</a>
@@ -654,157 +940,265 @@
                 <a href="privacy.html">Privacy</a>
             </div>
         </div>
+        <div class="footer-bottom">
+            © 2025 Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University
+        </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Complete countries data with continents
-        const allCountries = [
-            // Europe (main)
-            { name: "Netherlands", code: "nl", count: 445, continent: "europe" },
-            { name: "Germany", code: "de", count: 92, continent: "europe" },
-            { name: "United Kingdom", code: "gb", count: 81, continent: "europe" },
-            { name: "Belgium", code: "be", count: 68, continent: "europe" },
-            { name: "Sweden", code: "se", count: 49, continent: "europe" },
-            { name: "Switzerland", code: "ch", count: 39, continent: "europe" },
-            { name: "Spain", code: "es", count: 29, continent: "europe" },
-            { name: "Italy", code: "it", count: 27, continent: "europe" },
-            { name: "France", code: "fr", count: 25, continent: "europe" },
-            { name: "Denmark", code: "dk", count: 22, continent: "europe" },
-            { name: "Austria", code: "at", count: 18, continent: "europe" },
-            { name: "Finland", code: "fi", count: 17, continent: "europe" },
-            { name: "Ireland", code: "ie", count: 9, continent: "europe" },
-            { name: "Luxembourg", code: "lu", count: 9, continent: "europe" },
-            { name: "Portugal", code: "pt", count: 7, continent: "europe" },
-            { name: "Norway", code: "no", count: 7, continent: "europe" },
-            { name: "Greece", code: "gr", count: 5, continent: "europe" },
-            { name: "Poland", code: "pl", count: 4, continent: "europe" },
-            { name: "Czech Republic", code: "cz", count: 3, continent: "europe" },
-            { name: "Hungary", code: "hu", count: 3, continent: "europe" },
-            { name: "Romania", code: "ro", count: 2, continent: "europe" },
-            { name: "Croatia", code: "hr", count: 2, continent: "europe" },
-            { name: "Slovenia", code: "si", count: 2, continent: "europe" },
-            { name: "Slovakia", code: "sk", count: 2, continent: "europe" },
-            { name: "Bulgaria", code: "bg", count: 1, continent: "europe" },
-            { name: "Estonia", code: "ee", count: 1, continent: "europe" },
-            { name: "Latvia", code: "lv", count: 1, continent: "europe" },
-            { name: "Lithuania", code: "lt", count: 1, continent: "europe" },
-            { name: "Iceland", code: "is", count: 1, continent: "europe" },
-            { name: "Malta", code: "mt", count: 1, continent: "europe" },
-            { name: "Cyprus", code: "cy", count: 1, continent: "europe" },
-            
-            // Americas
-            { name: "United States", code: "us", count: 22, continent: "americas" },
-            { name: "Canada", code: "ca", count: 8, continent: "americas" },
-            { name: "Brazil", code: "br", count: 3, continent: "americas" },
-            { name: "Mexico", code: "mx", count: 2, continent: "americas" },
-            { name: "Colombia", code: "co", count: 2, continent: "americas" },
-            { name: "Argentina", code: "ar", count: 1, continent: "americas" },
-            { name: "Chile", code: "cl", count: 1, continent: "americas" },
-            { name: "Peru", code: "pe", count: 1, continent: "americas" },
-            
-            // Asia & Pacific
-            { name: "Japan", code: "jp", count: 4, continent: "asia" },
-            { name: "Australia", code: "au", count: 8, continent: "asia" },
-            { name: "China", code: "cn", count: 3, continent: "asia" },
-            { name: "Singapore", code: "sg", count: 3, continent: "asia" },
-            { name: "South Korea", code: "kr", count: 2, continent: "asia" },
-            { name: "India", code: "in", count: 2, continent: "asia" },
-            { name: "Hong Kong", code: "hk", count: 2, continent: "asia" },
-            { name: "Taiwan", code: "tw", count: 1, continent: "asia" },
-            { name: "Thailand", code: "th", count: 1, continent: "asia" },
-            { name: "Indonesia", code: "id", count: 1, continent: "asia" },
-            { name: "New Zealand", code: "nz", count: 1, continent: "asia" },
-            { name: "Philippines", code: "ph", count: 1, continent: "asia" },
-            { name: "Vietnam", code: "vn", count: 1, continent: "asia" },
-            
-            // Africa & Middle East
-            { name: "Israel", code: "il", count: 3, continent: "africa" },
-            { name: "South Africa", code: "za", count: 2, continent: "africa" },
-            { name: "UAE", code: "ae", count: 2, continent: "africa" },
-            { name: "Turkey", code: "tr", count: 2, continent: "africa" },
-            { name: "Morocco", code: "ma", count: 1, continent: "africa" },
-            { name: "Egypt", code: "eg", count: 1, continent: "africa" },
-            { name: "Kenya", code: "ke", count: 1, continent: "africa" }
-        ];
-        
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderTopCountries();
-            renderFlagsMosaic();
-            renderContinentGrids();
-            lucide.createIcons();
+    <script>
+        // ==========================================
+        // HEADER SCROLL EFFECT
+        // ==========================================
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
         
+        // ==========================================
+        // ANIMATED COUNTERS
+        // ==========================================
+        function animateCounter(element, target) {
+            const duration = 2000;
+            const start = 0;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (target - start) * easeProgress);
+                
+                element.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        // Intersection Observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    animateCounter(counter, target);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.hero-stat-number[data-count]').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+        
+        // ==========================================
+        // PARTICLE FIELD GENERATION
+        // ==========================================
+        function generateParticles() {
+            const container = document.getElementById('particle-field');
+            if (!container) return;
+            
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        
+        // ==========================================
+        // COUNTRY DATA & RENDERING
+        // ==========================================
+        
+        // Country data organized by continent
+        const countriesByContinent = {
+            europe: [
+                { code: 'NL', name: 'Netherlands', count: 445 },
+                { code: 'DE', name: 'Germany', count: 195 },
+                { code: 'GB', name: 'United Kingdom', count: 86 },
+                { code: 'BE', name: 'Belgium', count: 84 },
+                { code: 'SE', name: 'Sweden', count: 30 },
+                { code: 'CH', name: 'Switzerland', count: 28 },
+                { code: 'FR', name: 'France', count: 26 },
+                { code: 'AT', name: 'Austria', count: 22 },
+                { code: 'IT', name: 'Italy', count: 21 },
+                { code: 'ES', name: 'Spain', count: 18 },
+                { code: 'DK', name: 'Denmark', count: 15 },
+                { code: 'NO', name: 'Norway', count: 12 },
+                { code: 'IE', name: 'Ireland', count: 11 },
+                { code: 'PL', name: 'Poland', count: 10 },
+                { code: 'FI', name: 'Finland', count: 9 },
+                { code: 'PT', name: 'Portugal', count: 8 },
+                { code: 'CZ', name: 'Czech Republic', count: 7 },
+                { code: 'GR', name: 'Greece', count: 6 },
+                { code: 'HU', name: 'Hungary', count: 5 },
+                { code: 'RO', name: 'Romania', count: 4 },
+                { code: 'LU', name: 'Luxembourg', count: 4 },
+                { code: 'BG', name: 'Bulgaria', count: 3 },
+                { code: 'HR', name: 'Croatia', count: 3 },
+                { code: 'SK', name: 'Slovakia', count: 2 },
+                { code: 'SI', name: 'Slovenia', count: 2 },
+                { code: 'EE', name: 'Estonia', count: 2 },
+                { code: 'LT', name: 'Lithuania', count: 2 },
+                { code: 'LV', name: 'Latvia', count: 1 },
+                { code: 'CY', name: 'Cyprus', count: 1 },
+                { code: 'MT', name: 'Malta', count: 1 }
+            ],
+            'north-america': [
+                { code: 'US', name: 'United States', count: 35 },
+                { code: 'CA', name: 'Canada', count: 12 },
+                { code: 'MX', name: 'Mexico', count: 3 }
+            ],
+            asia: [
+                { code: 'JP', name: 'Japan', count: 8 },
+                { code: 'CN', name: 'China', count: 7 },
+                { code: 'SG', name: 'Singapore', count: 6 },
+                { code: 'IN', name: 'India', count: 5 },
+                { code: 'KR', name: 'South Korea', count: 4 },
+                { code: 'HK', name: 'Hong Kong', count: 4 },
+                { code: 'TW', name: 'Taiwan', count: 3 },
+                { code: 'TH', name: 'Thailand', count: 2 },
+                { code: 'ID', name: 'Indonesia', count: 2 },
+                { code: 'MY', name: 'Malaysia', count: 2 },
+                { code: 'PH', name: 'Philippines', count: 1 },
+                { code: 'VN', name: 'Vietnam', count: 1 },
+                { code: 'IL', name: 'Israel', count: 3 },
+                { code: 'AE', name: 'UAE', count: 2 },
+                { code: 'TR', name: 'Turkey', count: 2 }
+            ],
+            oceania: [
+                { code: 'AU', name: 'Australia', count: 12 },
+                { code: 'NZ', name: 'New Zealand', count: 4 }
+            ],
+            'south-america': [
+                { code: 'BR', name: 'Brazil', count: 5 },
+                { code: 'AR', name: 'Argentina', count: 3 },
+                { code: 'CL', name: 'Chile', count: 2 },
+                { code: 'CO', name: 'Colombia', count: 2 },
+                { code: 'PE', name: 'Peru', count: 1 }
+            ],
+            africa: [
+                { code: 'ZA', name: 'South Africa', count: 4 },
+                { code: 'EG', name: 'Egypt', count: 2 },
+                { code: 'KE', name: 'Kenya', count: 2 },
+                { code: 'NG', name: 'Nigeria', count: 1 },
+                { code: 'MA', name: 'Morocco', count: 1 }
+            ]
+        };
+        
+        // Get all countries flat
+        function getAllCountries() {
+            const all = [];
+            Object.values(countriesByContinent).forEach(countries => {
+                all.push(...countries);
+            });
+            return all.sort((a, b) => b.count - a.count);
+        }
+        
+        // Render top 5 countries
         function renderTopCountries() {
             const grid = document.getElementById('topCountriesGrid');
-            const top5 = allCountries.sort((a, b) => b.count - a.count).slice(0, 5);
+            if (!grid) return;
             
-            top5.forEach((country, index) => {
-                const card = document.createElement('a');
-                card.href = `country.html?code=${country.code}`;
-                card.className = 'top-country-card';
-                card.innerHTML = `
+            const top5 = getAllCountries().slice(0, 5);
+            
+            grid.innerHTML = top5.map((country, index) => `
+                <div class="top-country-card ${index === 0 ? 'gold' : ''}" onclick="goToCountry('${country.code}')">
                     <div class="top-country-rank">${index + 1}</div>
-                    <img src="https://flagcdn.com/w160/${country.code}.png" alt="${country.name}" class="country-flag">
-                    <div class="country-name">${country.name}</div>
-                    <div class="country-alumni">${country.count} <span>alumni</span></div>
-                `;
-                grid.appendChild(card);
-            });
+                    <img src="https://flagcdn.com/w160/${country.code.toLowerCase()}.png" alt="${country.name}" class="top-country-flag">
+                    <div class="top-country-name">${country.name}</div>
+                    <div class="top-country-count">${country.count}</div>
+                    <div class="top-country-label">alumni</div>
+                </div>
+            `).join('');
         }
         
+        // Render flags mosaic
         function renderFlagsMosaic() {
             const mosaic = document.getElementById('flagsMosaic');
+            if (!mosaic) return;
             
-            // Sort by count for visual weight
-            const sorted = [...allCountries].sort((a, b) => b.count - a.count);
+            const allCountries = getAllCountries();
             
-            sorted.forEach(country => {
-                const flag = document.createElement('a');
-                flag.href = `country.html?code=${country.code}`;
-                flag.title = `${country.name} - ${country.count} alumni`;
-                flag.innerHTML = `<img src="https://flagcdn.com/w120/${country.code}.png" alt="${country.name}" class="flag-tile">`;
-                mosaic.appendChild(flag);
-            });
+            mosaic.innerHTML = allCountries.map(country => `
+                <img 
+                    src="https://flagcdn.com/w128/${country.code.toLowerCase()}.png" 
+                    alt="${country.name}" 
+                    class="flag-tile"
+                    title="${country.name}: ${country.count} alumni"
+                    onclick="goToCountry('${country.code}')"
+                >
+            `).join('');
         }
         
-        function renderContinentGrids() {
-            const continents = {
-                europe: { grid: 'europeGrid', count: 'europeCount' },
-                americas: { grid: 'americasGrid', count: 'americasCount' },
-                asia: { grid: 'asiaGrid', count: 'asiaCount' },
-                africa: { grid: 'africaGrid', count: 'africaCount' }
-            };
-            
-            Object.keys(continents).forEach(continent => {
-                const countries = allCountries
-                    .filter(c => c.continent === continent)
-                    .sort((a, b) => b.count - a.count);
+        // Render continent grids
+        function renderContinents() {
+            Object.entries(countriesByContinent).forEach(([continent, countries]) => {
+                const grid = document.getElementById(`${continent}-grid`);
+                const countEl = document.getElementById(`${continent}-count`);
                 
-                const grid = document.getElementById(continents[continent].grid);
-                const countEl = document.getElementById(continents[continent].count);
+                if (!grid) return;
                 
-                let totalCount = 0;
+                // Sort by count
+                const sorted = [...countries].sort((a, b) => b.count - a.count);
+                const totalCount = sorted.reduce((sum, c) => sum + c.count, 0);
                 
-                countries.forEach((country, index) => {
-                    totalCount += country.count;
-                    const isTop = index < 3 && country.count >= 20;
-                    
-                    const card = document.createElement('a');
-                    card.href = `country.html?code=${country.code}`;
-                    card.className = `country-card ${isTop ? 'top-country' : ''}`;
-                    card.innerHTML = `
-                        <img src="https://flagcdn.com/w160/${country.code}.png" alt="${country.name}" class="country-flag">
-                        <div class="country-name">${country.name}</div>
-                        <div class="country-alumni">${country.count} <span>alumni</span></div>
-                        ${isTop ? '<div class="country-badge">Top Destination</div>' : ''}
-                    `;
-                    grid.appendChild(card);
-                });
+                if (countEl) {
+                    countEl.textContent = `${totalCount} alumni`;
+                }
                 
-                countEl.textContent = totalCount.toLocaleString();
+                grid.innerHTML = sorted.map(country => `
+                    <div class="country-card" onclick="goToCountry('${country.code}')">
+                        <img src="https://flagcdn.com/w80/${country.code.toLowerCase()}.png" alt="${country.name}" class="country-card-flag">
+                        <div class="country-card-info">
+                            <div class="country-card-name">${country.name}</div>
+                            <div class="country-card-count"><strong>${country.count}</strong> alumni</div>
+                        </div>
+                        <div class="country-card-arrow">
+                            <i data-lucide="chevron-right"></i>
+                        </div>
+                    </div>
+                `).join('');
             });
+            
+            // Re-init icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         }
+        
+        // Navigate to country page
+        function goToCountry(code) {
+            window.location.href = `country.html?code=${code}`;
+        }
+        
+        // ==========================================
+        // INITIALIZE
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Generate particles
+            generateParticles();
+            
+            // Render all sections
+            renderTopCountries();
+            renderFlagsMosaic();
+            renderContinents();
+        });
     </script>
 </body>
 </html>

@@ -4,628 +4,362 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | MSP Alumni Network</title>
-    <meta name="description" content="Privacy policy for the MSP Alumni Network - how we collect, use, and protect your personal data.">
+    <meta name="description" content="Privacy policy for the MSP Alumni Network at Maastricht University.">
     
-    <!-- Premium Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --um-dark-blue: #001C3D;
-            --um-light-blue: #00A2DB;
-            --um-orange: #E84E10;
-            --um-white: #FFFFFF;
-            --um-off-white: #f8f9fa;
-            --um-gray-100: #f5f5f5;
-            --um-gray-200: #e9ecef;
-            --um-gray-600: #6c757d;
-            --um-gray-800: #343a40;
-            
-            --font-heading: 'Space Grotesk', sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-            
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         
         body {
-            font-family: var(--font-body);
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 16px;
             line-height: 1.7;
-            color: var(--um-dark-blue);
-            background: var(--um-white);
+            color: #1a1a1a;
+            background: #fff;
         }
         
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            line-height: 1.3;
-            letter-spacing: -0.02em;
-        }
-        
-        a {
-            color: var(--um-light-blue);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        a:hover { color: var(--um-orange); }
+        a { color: #00A2DB; }
+        a:hover { color: #0077a3; }
         
         /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 28, 61, 0.08);
-            padding: 16px 50px;
+        .header {
+            background: #001C3D;
+            color: white;
+            padding: 15px 30px;
+        }
+        .header-inner {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-        }
-        
-        .logo-img {
-            height: 48px;
-            width: auto;
-        }
-        
-        .logo-text h1 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin: 0;
-        }
-        
-        .logo-text p {
-            font-size: 12px;
-            color: var(--um-gray-600);
-            margin: 0;
-        }
-        
-        .header-nav {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        
-        .header-nav a {
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            color: var(--um-dark-blue);
-        }
-        
-        .header-nav a:hover {
-            background: rgba(0, 162, 219, 0.08);
-        }
-        
-        .header-nav .btn-cta {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
-            color: white;
-            margin-left: 12px;
-        }
-        
-        .header-nav .btn-cta:hover {
-            transform: translateY(-2px);
-            color: white;
-        }
-        
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 100%);
-            color: white;
-            padding: 140px 50px 80px;
-            text-align: center;
-        }
-        
-        .hero h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Content */
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 50px;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-        }
-        
-        .section h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--um-orange);
-        }
-        
-        .section h4 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-            margin: 30px 0 15px;
-        }
-        
-        .section p {
-            margin-bottom: 15px;
-            color: var(--um-gray-800);
-        }
-        
-        .section ul {
-            margin: 15px 0 20px 25px;
-        }
-        
-        .section li {
-            margin-bottom: 10px;
-            color: var(--um-gray-800);
-        }
-        
-        /* Info Boxes */
-        .info-box {
-            background: var(--um-off-white);
-            border-radius: var(--radius-md);
-            padding: 25px;
-            margin: 25px 0;
-            border-left: 4px solid var(--um-light-blue);
-        }
-        
-        .info-box.warning {
-            border-left-color: var(--um-orange);
-            background: rgba(232, 78, 16, 0.05);
-        }
-        
-        .info-box h5 {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 10px;
+        .header a { color: white; text-decoration: none; font-size: 14px; }
+        .header a:hover { text-decoration: underline; }
+        .header-logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        .header-logo img {
+            height: 32px;
+            width: auto;
+        }
+        .header-title { font-weight: 700; font-size: 16px; }
         
-        .info-box h5 i, .info-box h5 svg {
-            width: 20px;
-            height: 20px;
-            color: var(--um-light-blue);
+        /* Main */
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 30px 80px;
         }
         
-        .info-box.warning h5 i, .info-box.warning h5 svg {
-            color: var(--um-orange);
+        /* Title */
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #001C3D;
+            margin-bottom: 10px;
         }
-        
-        .info-box p {
-            margin: 0;
+        .subtitle {
+            color: #666;
             font-size: 15px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
         }
         
-        /* Data Table */
-        .data-table {
+        /* Sections */
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #001C3D;
+            margin: 40px 0 15px;
+        }
+        h2:first-of-type { margin-top: 0; }
+        
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 25px 0 10px;
+        }
+        
+        p { margin-bottom: 15px; }
+        
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+        li { margin-bottom: 8px; }
+        
+        /* Tables */
+        table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            font-size: 14px;
         }
-        
-        .data-table th,
-        .data-table td {
-            padding: 15px;
+        th, td {
             text-align: left;
-            border-bottom: 1px solid var(--um-gray-200);
+            padding: 12px 15px;
+            border: 1px solid #ddd;
         }
-        
-        .data-table th {
-            background: var(--um-dark-blue);
-            color: white;
-            font-family: var(--font-heading);
+        th {
+            background: #f5f5f5;
             font-weight: 600;
+            color: #333;
         }
         
-        .data-table tr:hover td {
-            background: var(--um-off-white);
+        /* Highlight box */
+        .highlight {
+            background: #f8f9fa;
+            border-left: 3px solid #00A2DB;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-size: 15px;
         }
         
-        /* Rights Grid */
-        .rights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+        /* Contact box */
+        .contact-box {
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
             margin: 25px 0;
         }
-        
-        .right-card {
-            background: white;
-            border: 1px solid var(--um-gray-200);
-            border-radius: var(--radius-md);
-            padding: 25px;
-        }
-        
-        .right-card h5 {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .right-card h5 i, .right-card h5 svg {
-            width: 20px;
-            height: 20px;
-            color: var(--um-light-blue);
-        }
-        
-        .right-card p {
-            font-size: 14px;
-            margin: 0;
-            color: var(--um-gray-600);
-        }
-        
-        /* Contact Card */
-        .contact-card {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #001530 100%);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            color: white;
-            margin: 40px 0;
-        }
-        
-        .contact-card h4 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .contact-card p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .contact-card a {
-            color: var(--um-orange);
-        }
-        
-        .contact-card a:hover {
-            color: #ff6b35;
-        }
+        .contact-box h3 { margin-top: 0; color: #001C3D; }
+        .contact-box p { margin-bottom: 10px; font-size: 15px; }
+        .contact-box ul { margin: 15px 0 0 20px; }
+        .contact-box li { margin-bottom: 10px; }
         
         /* Footer */
-        footer {
-            background: #000a1a;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 60px 50px 30px;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .footer-brand {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-        }
-        
-        .footer-brand p {
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 8px;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-links a {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .footer-links a:hover { color: var(--um-orange); }
-        
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .footer {
+            background: #f5f5f5;
+            padding: 25px 30px;
             text-align: center;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
+            color: #666;
+            border-top: 1px solid #e0e0e0;
         }
+        .footer a { color: #666; margin: 0 15px; }
+        .footer a:hover { color: #001C3D; }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            header { padding: 12px 20px; }
-            .header-nav a:not(.btn-cta) { display: none; }
-            .hero { padding: 100px 20px 60px; }
-            .hero h2 { font-size: 32px; }
-            .content { padding: 40px 20px; }
-            .section h3 { font-size: 24px; }
-            .rights-grid { grid-template-columns: 1fr; }
-            .contact-card { padding: 25px; }
-            footer { padding: 40px 20px 25px; }
-            .footer-content { flex-direction: column; text-align: center; }
+        @media (max-width: 600px) {
+            .main { padding: 30px 20px 60px; }
+            h1 { font-size: 26px; }
+            table { font-size: 13px; }
+            th, td { padding: 10px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="logo">
-            <img src="assets/logos/msp-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
-            <div class="logo-text">
-                <h1>MSP Alumni Network</h1>
-                <p>Maastricht Science Programme</p>
-            </div>
-        </a>
-        <nav class="header-nav">
-            <a href="index.html">Alumni Map</a>
-            <a href="countries.html">Countries</a>
-            <a href="universities.html">Universities</a>
-            <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
-        </nav>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" onerror="this.style.display='none'">
+                <span class="header-title">MSP Alumni Network</span>
+            </a>
+            <a href="index.html">← Back to Alumni Map</a>
+        </div>
     </header>
     
-    <!-- Hero -->
-    <section class="hero">
-        <h2>Privacy Policy</h2>
-        <p>How we collect, use, and protect your personal data in the MSP Alumni Network</p>
-    </section>
+    <main class="main">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Last updated: January 2025</p>
+        
+        <h2>Introduction</h2>
+        <p>The Maastricht Science Programme (MSP) values your privacy. This policy explains how we handle personal data for the MSP Alumni Network — a community platform that helps us stay connected with you and showcase what our graduates achieve together.</p>
+        <p>By keeping track of where our alumni are and what paths they've taken, we can maintain an up-to-date picture of our global community — from the countries you live in, to the universities you've attended, to the careers you've built. This information helps current students see what's possible after MSP, and helps you connect with fellow alumni around the world.</p>
+        <p>We are committed to processing your data fairly, transparently, and in accordance with the General Data Protection Regulation (GDPR). The MSP Alumni Network operates as part of Maastricht University's alumni engagement activities. For comprehensive information about how Maastricht University handles personal data, please refer to the <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement" target="_blank">UM General Privacy Statement</a> and the <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement-1" target="_blank">UM Privacy Statements</a>.</p>
+        
+        <h2>What Data We Process</h2>
+        <p>We process a limited set of personal data to maintain our alumni community and keep our records accurate. This allows us to show where MSP alumni are in the world, which universities they've gone on to, and what fields they work in — creating a living picture of our network that benefits everyone.</p>
+        
+        <h3>Data from university records</h3>
+        <p>When you graduate, we retain basic information from your student record:</p>
+        <ul>
+            <li>Name and contact details (email address, phone number)</li>
+            <li>Date of birth and nationality</li>
+            <li>Programme and graduation date</li>
+        </ul>
+        
+        <h3>Data you provide</h3>
+        <p>Through our graduation survey or when you update us later, you may share:</p>
+        <ul>
+            <li>Your current location (city/country)</li>
+            <li>Your Master's programme and university</li>
+            <li>Your current role and employer</li>
+            <li>Communication preferences</li>
+        </ul>
+        <p>This information helps us keep our community map and university destination overviews accurate — so when a prospective student asks "where do MSP graduates go?", we can give them a truthful, up-to-date answer.</p>
+        
+        <h3>Publicly available information</h3>
+        <p>To keep our records accurate and our overviews current, we may occasionally check publicly available information on professional networking sites such as LinkedIn. This helps us verify details — for example, confirming which Master's programme you completed or which city you're now based in — so that our alumni statistics remain reliable.</p>
+        
+        <div class="highlight">
+            <strong>Please note:</strong> We only look at information you have chosen to make public. We never attempt to access private profiles. If you would prefer we don't use this source for your records, simply let us know and we will rely solely on information you provide directly.
+        </div>
+        
+        <h2>Why We Process Your Data</h2>
+        <p>We use alumni data to build and maintain a community that benefits both you and future MSP students:</p>
+        
+        <table>
+            <tr>
+                <th style="width: 30%;">Purpose</th>
+                <th>How this helps</th>
+            </tr>
+            <tr>
+                <td><strong>Staying in touch</strong></td>
+                <td>Keeping you informed about MSP news, events, and opportunities to connect with fellow alumni</td>
+            </tr>
+            <tr>
+                <td><strong>Mapping our community</strong></td>
+                <td>Maintaining accurate overviews of where alumni live, which universities they've attended, and what careers they've pursued — so you can see the full reach of our network</td>
+            </tr>
+            <tr>
+                <td><strong>Helping prospective students</strong></td>
+                <td>Showing future students real outcomes (e.g., "X alumni went to ETH Zürich", "Y% work in research") so they can make informed choices</td>
+            </tr>
+            <tr>
+                <td><strong>Connecting alumni</strong></td>
+                <td>Facilitating networking through country-based WhatsApp groups and helping alumni in similar fields or locations find each other — always with your consent</td>
+            </tr>
+        </table>
+        
+        <h2>Legal Basis</h2>
+        <p>We process your data based on:</p>
+        <ul>
+            <li><strong>Legitimate interest</strong> (Article 6(1)(f) GDPR): Maintaining an alumni community and tracking graduate outcomes are standard activities for a university programme. We have assessed that this processing does not override your rights, particularly because you can opt out at any time and we only use data in ways you would reasonably expect.</li>
+            <li><strong>Consent</strong> (Article 6(1)(a) GDPR): For optional activities — such as featuring your story on our website, joining WhatsApp groups, or participating in mentorship — we always ask for your explicit permission first.</li>
+        </ul>
+        
+        <h2>What Appears on the Public Website</h2>
+        <p>The MSP Alumni Network website displays <strong>aggregate statistics only</strong> — the kind of overview that helps everyone understand where our community is and what alumni have achieved. This includes:</p>
+        <ul>
+            <li>Total number of alumni and their geographic distribution (e.g., "445 alumni in the Netherlands")</li>
+            <li>Which universities alumni have gone on to attend (e.g., "19 alumni at Imperial College London")</li>
+            <li>Career sectors and PhD statistics (as totals and percentages)</li>
+            <li>Country profiles showing cities, nationalities, and graduation year breakdowns</li>
+        </ul>
+        
+        <div class="highlight">
+            <strong>Your individual information is never displayed publicly without your explicit consent.</strong> The statistics you see on the website are always aggregated — we show that "8 alumni went to Cambridge", not who those individuals are. We only publish names, photos, or individual stories if you have specifically agreed to be featured.
+        </div>
+        
+        <h2>Who We Share Data With</h2>
+        <p>We do not sell your data. We may share information only with:</p>
+        <ul>
+            <li><strong>Maastricht University central services</strong> — The Alumni Office and Marketing & Communications, for coordinated university-wide alumni activities</li>
+            <li><strong>Research partners</strong> — Only anonymised, aggregate data for academic research purposes</li>
+            <li><strong>Service providers</strong> — Technical providers for website hosting and email services, all based within the EU</li>
+        </ul>
+        <p>We never share your individual contact details with external parties without your permission.</p>
+        
+        <h2>How Long We Keep Your Data</h2>
+        <p>Alumni relationships are lifelong, and the value of our community overview grows over time — being able to show where alumni are 5, 10, or 20 years after graduation tells a richer story than recent data alone. Therefore, we retain alumni data indefinitely unless you ask us to delete it.</p>
+        <p>If you request deletion, we will remove your personal details promptly. However, certain records must be retained for legal reasons:</p>
+        
+        <table>
+            <tr>
+                <th>Data type</th>
+                <th>Retention</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>Degree records</td>
+                <td>30 years minimum</td>
+                <td>Dutch Public Records Act</td>
+            </tr>
+            <tr>
+                <td>Contact information</td>
+                <td>Until you request deletion</td>
+                <td>Ongoing relationship</td>
+            </tr>
+            <tr>
+                <td>Career outcomes</td>
+                <td>Indefinitely (can be anonymised on request)</td>
+                <td>Longitudinal community overview</td>
+            </tr>
+            <tr>
+                <td>Opt-out records</td>
+                <td>Indefinitely</td>
+                <td>To ensure we respect your preferences</td>
+            </tr>
+        </table>
+        
+        <h2>Your Rights</h2>
+        <p>Under GDPR, you have the right to:</p>
+        <ul>
+            <li><strong>Access</strong> — Request a copy of the personal data we hold about you</li>
+            <li><strong>Rectification</strong> — Ask us to correct any inaccurate information</li>
+            <li><strong>Erasure</strong> — Request deletion of your data (subject to legal retention requirements)</li>
+            <li><strong>Restriction</strong> — Ask us to limit how we use your data</li>
+            <li><strong>Portability</strong> — Receive your data in a structured, machine-readable format</li>
+            <li><strong>Object</strong> — Object to processing based on legitimate interest</li>
+            <li><strong>Withdraw consent</strong> — Withdraw any consent you have given, at any time</li>
+        </ul>
+        <p>To exercise your rights, please use the <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement-1" target="_blank">GDPR request form</a> provided by Maastricht University, or contact us directly at the address below.</p>
+        
+        <h2>Data Security</h2>
+        <p>We take appropriate measures to protect your data:</p>
+        <ul>
+            <li>Access to alumni records is restricted to authorised MSP staff only</li>
+            <li>All connections to our website use secure encryption (HTTPS)</li>
+            <li>Our systems are hosted within the European Union</li>
+            <li>We conduct regular reviews of our security practices</li>
+        </ul>
+        
+        <h2>Cookies</h2>
+        <p>This website uses only essential cookies required for basic functionality. We do not use tracking cookies, advertising cookies, or any cookies that collect personal data. We do not share browsing data with third parties.</p>
+        
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy from time to time. If we make significant changes, we will notify registered alumni by email. The "last updated" date at the top of this page shows when the policy was last revised.</p>
+        
+        <h2>Contact Information</h2>
+        
+        <div class="contact-box">
+            <h3>Data Controller</h3>
+            <p><strong>Maastricht University</strong><br>
+            Faculty of Science and Engineering — Maastricht Science Programme<br>
+            P.O. Box 616<br>
+            6200 MD Maastricht<br>
+            The Netherlands</p>
+        </div>
+        
+        <h3>Questions, Requests, or Complaints</h3>
+        <p>For information about personal data and privacy regulations at Maastricht University:</p>
+        
+        <div class="contact-box">
+            <p><strong>Maastricht University</strong><br>
+            attn. GDPR Team UM<br>
+            Postbus 616<br>
+            6200 MD Maastricht</p>
+            
+            <p>Email: <a href="/cdn-cgi/l/email-protection#69191b001f080a10290408081a1d1b000a011d1c07001f0c1b1a001d10470705"><span class="__cf_email__" data-cfemail="1666647f6077756f567b77776562647f757e6263787f607364657f626f38787a">[email&#160;protected]</span></a></p>
+            
+            <p>If you would like specific advice about the legitimate processing of personal data, or if you want to file a complaint, please contact UM's Data Protection Officer:</p>
+            <p>Email: <a href="/cdn-cgi/l/email-protection#f59392b59894948681879c969d81809b9c839087869c818cdb9b99"><span class="__cf_email__" data-cfemail="bddbdafdd0dcdccec9cfd4ded5c9c8d3d4cbd8cfced4c9c493d3d1">[email&#160;protected]</span></a></p>
+            
+            <ul>
+                <li>Use the <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement-1" target="_blank">GDPR request form</a> to exercise your rights under the GDPR</li>
+                <li>You can also submit a complaint to the <a href="https://autoriteitpersoonsgegevens.nl" target="_blank">Dutch Data Protection Authority</a> (Autoriteit Persoonsgegevens)</li>
+            </ul>
+        </div>
+        
+        <div class="highlight" style="margin-top: 40px;">
+            <p style="margin: 0;">For comprehensive information about Maastricht University's privacy practices, please refer to the <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement" target="_blank">UM General Privacy Statement</a> and <a href="https://www.maastrichtuniversity.nl/um-general-privacy-statement-1" target="_blank">UM Privacy Statements</a>.</p>
+        </div>
+        
+    </main>
     
-    <!-- Content -->
-    <div class="content">
-        <p style="color: var(--um-gray-600); margin-bottom: 40px;"><strong>Last updated:</strong> December 2025</p>
-        
-        <!-- Overview -->
-        <div class="section">
-            <h3>Overview</h3>
-            <p>Your privacy is important to the Maastricht Science Programme (MSP) at Maastricht University. This privacy policy explains how we collect, use, and protect your personal data through the MSP Alumni Network website and related activities.</p>
-            
-            <p>The MSP Alumni Network operates under the umbrella of Maastricht University's alumni engagement activities. For UM's general privacy practices, please refer to the <a href="https://www.maastrichtuniversity.nl/privacy" target="_blank">UM General Privacy Statement</a>.</p>
-            
-            <div class="info-box">
-                <h5><i data-lucide="shield"></i> Data Controller</h5>
-                <p><strong>Maastricht University</strong><br>
-                Faculty of Science and Engineering<br>
-                Maastricht Science Programme<br>
-                P.O. Box 616, 6200 MD Maastricht, The Netherlands</p>
-            </div>
+    <footer class="footer">
+        <div>
+            <a href="index.html">Alumni Map</a> · 
+            <a href="considering-msp.html">Considering MSP?</a> · 
+            <a href="/cdn-cgi/l/email-protection#264b55560b474a534b484f664b47475552544f454e5253484f504354554f525f08484a">Contact</a>
         </div>
-        
-        <!-- What We Display -->
-        <div class="section">
-            <h3>What This Website Displays</h3>
-            <p>The MSP Alumni Network website displays <strong>aggregated, anonymized statistics only</strong>. We never publish individual names or personal details without explicit consent.</p>
-            
-            <table class="data-table">
-                <tr>
-                    <th>Displayed Publicly</th>
-                    <th>Never Public</th>
-                </tr>
-                <tr>
-                    <td>Total alumni count (1,330+)</td>
-                    <td>Individual names</td>
-                </tr>
-                <tr>
-                    <td>Country distribution (by numbers)</td>
-                    <td>Individual locations</td>
-                </tr>
-                <tr>
-                    <td>University destinations (by institution)</td>
-                    <td>Individual educational details</td>
-                </tr>
-                <tr>
-                    <td>Career sector breakdown (%)</td>
-                    <td>Individual employers</td>
-                </tr>
-                <tr>
-                    <td>Success stories (with consent only)</td>
-                    <td>Contact information</td>
-                </tr>
-            </table>
-        </div>
-        
-        <!-- Data Collection -->
-        <div class="section">
-            <h3>Data We Collect</h3>
-            
-            <h4>From UM Student Records</h4>
-            <ul>
-                <li>Name and contact details (email, phone, address)</li>
-                <li>Date of birth and nationality</li>
-                <li>Educational information (programme, graduation date)</li>
-            </ul>
-            
-            <h4>Data You Provide Directly</h4>
-            <ul>
-                <li>Current location</li>
-                <li>Career information (employer, job title)</li>
-                <li>Post-MSP education (Master's programme, university)</li>
-                <li>Communication preferences</li>
-                <li>LinkedIn profile (optional)</li>
-            </ul>
-            
-            <h4>From Public Sources</h4>
-            <p>As part of maintaining accurate alumni records, we may review publicly available professional information on LinkedIn to verify educational paths and track career outcomes. We always give you the option to opt out of this.</p>
-            
-            <div class="info-box warning">
-                <h5><i data-lucide="alert-triangle"></i> What We Don't Collect</h5>
-                <p>We do not collect financial information, health data (except dietary requirements for events), political opinions, religious beliefs, biometric data, or criminal records.</p>
-            </div>
-        </div>
-        
-        <!-- Alumni Data Management -->
-        <div class="section">
-            <h3>How We Manage Alumni Data</h3>
-            
-            <h4>Purposes of Processing</h4>
-            <ul>
-                <li><strong>Alumni engagement:</strong> Maintaining contact, sending newsletters, inviting to events</li>
-                <li><strong>Statistical analysis:</strong> Understanding alumni outcomes to improve MSP and inform prospective students</li>
-                <li><strong>Regional development:</strong> Providing anonymized data on graduate retention for stakeholders</li>
-                <li><strong>Recruitment support:</strong> Sharing aggregate success stories with prospective students</li>
-                <li><strong>Network facilitation:</strong> Enabling alumni-to-alumni connections (with consent)</li>
-            </ul>
-            
-            <h4>Legal Basis</h4>
-            <p>We process your personal data based on:</p>
-            <ul>
-                <li><strong>Legitimate interest</strong> (Article 6(1)(f) GDPR): Alumni engagement and institutional research are legitimate interests of Maastricht University.</li>
-                <li><strong>Consent</strong> (Article 6(1)(a) GDPR): For optional activities such as featuring your story publicly, participating in mentorship programmes, or joining WhatsApp groups.</li>
-            </ul>
-        </div>
-        
-        <!-- Success Stories -->
-        <div class="section">
-            <h3>Success Stories</h3>
-            <p>We feature individual alumni stories only with explicit consent. Before publishing any story:</p>
-            <ol>
-                <li>We contact you with a specific request</li>
-                <li>Story content is shared for your review</li>
-                <li>We obtain your written approval (email confirmation is acceptable)</li>
-                <li>You retain the right to withdraw consent at any time</li>
-            </ol>
-            <p>If you withdraw consent, we will remove your story promptly from all platforms.</p>
-        </div>
-        
-        <!-- Your Rights -->
-        <div class="section">
-            <h3>Your Rights</h3>
-            <p>Under GDPR, you have the following rights regarding your personal data:</p>
-            
-            <div class="rights-grid">
-                <div class="right-card">
-                    <h5><i data-lucide="eye"></i> Access</h5>
-                    <p>Request a copy of your personal data we hold</p>
-                </div>
-                <div class="right-card">
-                    <h5><i data-lucide="edit-3"></i> Rectification</h5>
-                    <p>Correct inaccurate or incomplete data</p>
-                </div>
-                <div class="right-card">
-                    <h5><i data-lucide="trash-2"></i> Erasure</h5>
-                    <p>Request deletion of your data (with some exceptions)</p>
-                </div>
-                <div class="right-card">
-                    <h5><i data-lucide="pause"></i> Restriction</h5>
-                    <p>Limit how we process your data</p>
-                </div>
-                <div class="right-card">
-                    <h5><i data-lucide="x-circle"></i> Object</h5>
-                    <p>Object to processing based on legitimate interest</p>
-                </div>
-                <div class="right-card">
-                    <h5><i data-lucide="download"></i> Portability</h5>
-                    <p>Receive your data in a structured format</p>
-                </div>
-            </div>
-            
-            <p>We will respond to all requests within 30 days.</p>
-        </div>
-        
-        <!-- Data Controller -->
-        <div class="section">
-            <h3>Data Controller & Contacts</h3>
-            
-            <div class="contact-card">
-                <h4>Contact Us</h4>
-                <p><strong>MSP Alumni Office</strong><br>
-                Email: <a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
-                
-                <p style="margin-top: 20px;"><strong>UM Data Protection Officer</strong><br>
-                Email: <a href="mailto:fg@maastrichtuniversity.nl">fg@maastrichtuniversity.nl</a></p>
-                
-                <p style="margin-top: 20px;"><strong>General Privacy Inquiries</strong><br>
-                Email: <a href="mailto:privacy@maastrichtuniversity.nl">privacy@maastrichtuniversity.nl</a></p>
-            </div>
-        </div>
-        
-        <!-- Complaints -->
-        <div class="section">
-            <h3>Complaints</h3>
-            <p>If you believe your privacy rights have been violated, you may:</p>
-            <ol>
-                <li>Contact us at <a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></li>
-                <li>Contact the UM Data Protection Officer at <a href="mailto:fg@maastrichtuniversity.nl">fg@maastrichtuniversity.nl</a></li>
-                <li>File a complaint with the Dutch Data Protection Authority (<a href="https://autoriteitpersoonsgegevens.nl" target="_blank">Autoriteit Persoonsgegevens</a>)</li>
-            </ol>
-        </div>
-        
-        <!-- Changes -->
-        <div class="section">
-            <h3>Changes to This Policy</h3>
-            <p>We may update this policy periodically. Significant changes will be communicated via email to registered alumni. The "Last updated" date at the top of this page indicates when this policy was last revised.</p>
-        </div>
-    </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                MSP Alumni Network
-                <p>Data updated December 2025</p>
-            </div>
-            <div class="footer-links">
-                <a href="index.html">Alumni Map</a>
-                <a href="universities.html">Universities</a>
-                <a href="considering-msp.html">Considering MSP?</a>
-                <a href="countries.html">Countries</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2025 Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University
-        </div>
-    </footer>
-    
-    <script>
-        // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
-    </script>
-</body>
-</html>
+        <div style="margin-top: 10px; font-size: 12px; color: #666;">
+            © 2025 Maastricht Science Programme · Maastrich

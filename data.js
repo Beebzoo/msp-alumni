@@ -245,16 +245,16 @@ const MSP_DATA = {
     // ==========================================
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", icon: "🧬", count: 341, percent: 39, description: "From molecular biology to ecology", examples: ["Biomedical Sciences", "Neuroscience", "Ecology"] },
-        { name: "Chemistry & Materials", icon: "⚗️", count: 105, percent: 12, description: "Molecular to materials science", examples: ["Organic Chemistry", "Materials Science", "Biochemistry"] },
-        { name: "Medicine & Health", icon: "🏥", count: 105, percent: 12, description: "Clinical and health sciences", examples: ["Medicine", "Public Health", "Epidemiology"] },
-        { name: "Physics & Engineering", icon: "⚡", count: 98, percent: 11, description: "From theory to application", examples: ["Applied Physics", "Engineering", "Astronomy"] },
-        { name: "Neuroscience & Psychology", icon: "🧠", count: 61, percent: 7, description: "Brain and behavior", examples: ["Cognitive Neuroscience", "Psychology", "AI & Cognition"] },
-        { name: "Business & Economics", icon: "📊", count: 50, percent: 6, description: "Science meets business", examples: ["Economics", "Finance", "Management"] },
-        { name: "Computer Science & AI", icon: "💻", count: 27, percent: 3, description: "Digital innovation", examples: ["Data Science", "AI", "Bioinformatics"] },
-        { name: "Environmental & Earth Sciences", icon: "🌍", count: 24, percent: 3, description: "Planet and climate", examples: ["Environmental Science", "Climate Science", "Geoscience"] },
-        { name: "Social Sciences & Humanities", icon: "📚", count: 24, percent: 3, description: "Science and society", examples: ["Science Policy", "Philosophy of Science"] },
-        { name: "Other", icon: "🔬", count: 42, percent: 5, description: "Interdisciplinary paths", examples: ["Science Communication", "Education", "Law"] }
+        { name: "Life Sciences & Biology", icon: "dna", count: 341, percent: 39, description: "From molecular biology to ecology", examples: ["Biomedical Sciences", "Neuroscience", "Ecology"] },
+        { name: "Chemistry & Materials", icon: "flask-conical", count: 105, percent: 12, description: "Molecular to materials science", examples: ["Organic Chemistry", "Materials Science", "Biochemistry"] },
+        { name: "Medicine & Health", icon: "heart-pulse", count: 105, percent: 12, description: "Clinical and health sciences", examples: ["Medicine", "Public Health", "Epidemiology"] },
+        { name: "Physics & Engineering", icon: "atom", count: 98, percent: 11, description: "From theory to application", examples: ["Applied Physics", "Engineering", "Astronomy"] },
+        { name: "Neuroscience & Psychology", icon: "brain", count: 61, percent: 7, description: "Brain and behavior", examples: ["Cognitive Neuroscience", "Psychology", "AI & Cognition"] },
+        { name: "Business & Economics", icon: "bar-chart-3", count: 50, percent: 6, description: "Science meets business", examples: ["Economics", "Finance", "Management"] },
+        { name: "Computer Science & AI", icon: "cpu", count: 27, percent: 3, description: "Digital innovation", examples: ["Data Science", "AI", "Bioinformatics"] },
+        { name: "Environmental & Earth Sciences", icon: "globe", count: 24, percent: 3, description: "Planet and climate", examples: ["Environmental Science", "Climate Science", "Geoscience"] },
+        { name: "Social Sciences & Humanities", icon: "book-open", count: 24, percent: 3, description: "Science and society", examples: ["Science Policy", "Philosophy of Science"] },
+        { name: "Other", icon: "microscope", count: 42, percent: 5, description: "Interdisciplinary paths", examples: ["Science Communication", "Education", "Law"] }
     ],
     
     // ==========================================

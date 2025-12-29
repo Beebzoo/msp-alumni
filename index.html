@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSP Alumni Network | Maastricht Science Programme</title>
-    <meta name="description" content="Explore where 1,330+ MSP alumni from 78 nationalities are now - across 56 countries and 220+ universities worldwide.">
+    <meta name="description" content="Explore the global network of 1,330+ MSP alumni across 56 countries. See where MSP graduates live, work, and pursue their careers.">
     
-    <!-- Fonts - Using more distinctive choices -->
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -18,65 +18,41 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <style>
-        /* ============================================
-           PREMIUM CSS VARIABLES - REFINED UM BRANDING
-        ============================================ */
         :root {
             --um-dark-blue: #001C3D;
-            --um-darker-blue: #00101f;
+            --um-dark-blue-rgb: 0, 28, 61;
             --um-light-blue: #00A2DB;
-            --um-light-blue-glow: rgba(0, 162, 219, 0.4);
+            --um-light-blue-rgb: 0, 162, 219;
             --um-orange: #E84E10;
-            --um-orange-glow: rgba(232, 78, 16, 0.4);
+            --um-orange-rgb: 232, 78, 16;
             --um-white: #FFFFFF;
-            --um-off-white: #fafbfc;
-            --um-gray-50: #f8fafc;
-            --um-gray-100: #f1f5f9;
-            --um-gray-200: #e2e8f0;
-            --um-gray-300: #cbd5e1;
-            --um-gray-500: #64748b;
-            --um-gray-600: #475569;
-            --um-gray-800: #1e293b;
+            --um-off-white: #f8f9fa;
+            --um-gray-100: #f5f5f5;
+            --um-gray-200: #e9ecef;
+            --um-gray-300: #dee2e6;
+            --um-gray-600: #6c757d;
+            --um-gray-800: #343a40;
             
             --font-heading: 'Space Grotesk', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.1);
-            --shadow-glow-blue: 0 0 40px rgba(0, 162, 219, 0.15);
-            --shadow-glow-orange: 0 0 40px rgba(232, 78, 16, 0.15);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
             
             --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            
-            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
         
-        /* ============================================
-           RESET & BASE STYLES
-        ============================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: var(--font-body);
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--um-dark-blue);
             background: var(--um-white);
             overflow-x: hidden;
@@ -84,35 +60,27 @@
         
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
-            line-height: 1.15;
+            line-height: 1.2;
             letter-spacing: -0.02em;
         }
         
         a {
             color: var(--um-light-blue);
             text-decoration: none;
-            transition: color var(--transition-fast);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        a:hover {
-            color: var(--um-orange);
-        }
+        a:hover { color: var(--um-orange); }
         
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* ============================================
-           PREMIUM HEADER
-        ============================================ */
+        /* ==========================================
+           HEADER
+        ========================================== */
         header {
-            background: rgba(255,255,255,0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,28,61,0.06);
-            padding: 0 50px;
-            height: 72px;
+            border-bottom: 1px solid rgba(0, 28, 61, 0.08);
+            padding: 16px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -121,12 +89,12 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            transition: all var(--transition-smooth);
+            transition: all 0.3s ease;
         }
         
         header.scrolled {
-            background: rgba(255,255,255,0.98);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+            padding: 12px 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
         
         .logo {
@@ -137,17 +105,15 @@
         }
         
         .logo-img {
-            height: 44px;
+            height: 48px;
             width: auto;
-            transition: transform var(--transition-smooth);
+            transition: transform 0.3s ease;
         }
         
-        .logo:hover .logo-img {
-            transform: scale(1.02);
-        }
+        .logo:hover .logo-img { transform: scale(1.05); }
         
         .logo-text h1 {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--um-dark-blue);
             margin: 0;
@@ -155,1418 +121,583 @@
         }
         
         .logo-text p {
-            font-size: 11px;
-            color: var(--um-gray-500);
+            font-size: 12px;
+            color: var(--um-gray-600);
             margin: 0;
             font-weight: 500;
-            letter-spacing: 0.01em;
         }
         
         .header-nav {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             align-items: center;
         }
         
         .header-nav a {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             padding: 10px 18px;
             border-radius: var(--radius-sm);
-            color: var(--um-gray-600);
-            transition: all var(--transition-fast);
-            position: relative;
+            color: var(--um-dark-blue);
+            transition: all 0.3s ease;
         }
         
-        .header-nav a:hover {
-            color: var(--um-dark-blue);
-            background: var(--um-gray-50);
+        .header-nav a:not(.btn-cta):hover {
+            background: rgba(0, 162, 219, 0.08);
+            color: var(--um-light-blue);
         }
         
         .header-nav a.active {
-            color: var(--um-dark-blue);
-            font-weight: 600;
-        }
-        
-        .header-nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 2px;
-            background: var(--um-orange);
-            border-radius: 2px;
+            background: var(--um-light-blue);
+            color: white;
         }
         
         .header-nav .btn-cta {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
             color: white;
             margin-left: 12px;
-            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.25);
-            border: none;
+            box-shadow: 0 4px 15px rgba(232, 78, 16, 0.3);
         }
         
         .header-nav .btn-cta:hover {
-            background: linear-gradient(135deg, #ff5a1f 0%, var(--um-orange) 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(232, 78, 16, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 78, 16, 0.4);
             color: white;
         }
         
-        /* ============================================
-           HERO SECTION - COMMANDING & PRESTIGIOUS
-        ============================================ */
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
         .hero {
-            min-height: 100vh;
-            background: linear-gradient(165deg, #000a14 0%, var(--um-dark-blue) 35%, #001a35 70%, #00243d 100%);
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 40%, #001530 100%);
             color: white;
-            padding: 120px 50px 80px;
+            padding: 120px 50px 60px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
+            min-height: 100vh;
         }
         
-        /* Subtle grid pattern */
-        .hero::before {
-            content: '';
+        /* DNA Helix Animation */
+        .dna-helix {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image:
-                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
-        }
-        
-        /* Particle Network Canvas */
-        #particleCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-        
-        /* Floating DNA Helix */
-        .dna-container {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px;
-            height: 600px;
             pointer-events: none;
             opacity: 0.15;
-            z-index: 0;
         }
         
         .dna-strand {
             position: absolute;
-            width: 100%;
+            width: 2px;
             height: 100%;
-            animation: dnaRotate 20s linear infinite;
+            background: linear-gradient(180deg, transparent, var(--um-light-blue), transparent);
         }
         
-        .dna-dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--um-light-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--um-light-blue);
+        .dna-strand:nth-child(1) { left: 10%; animation: dnaFloat 8s ease-in-out infinite; }
+        .dna-strand:nth-child(2) { left: 30%; animation: dnaFloat 8s ease-in-out infinite 1s; }
+        .dna-strand:nth-child(3) { left: 70%; animation: dnaFloat 8s ease-in-out infinite 2s; }
+        .dna-strand:nth-child(4) { left: 90%; animation: dnaFloat 8s ease-in-out infinite 3s; }
+        
+        @keyframes dnaFloat {
+            0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+            50% { transform: translateY(-50px) scaleY(1.1); opacity: 0.6; }
         }
         
-        .dna-dot.orange {
-            background: var(--um-orange);
-            box-shadow: 0 0 20px var(--um-orange);
-        }
-        
-        .dna-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
-            opacity: 0.5;
-        }
-        
-        @keyframes dnaRotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        
-        /* Glowing orbs */
-        .hero-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: orbFloat 8s ease-in-out infinite;
-        }
-        
-        .hero-orb-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--um-light-blue);
-            top: -200px;
-            left: -200px;
-            animation-delay: 0s;
-        }
-        
-        .hero-orb-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--um-orange);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -4s;
-        }
-        
-        .hero-orb-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--um-light-blue);
-            top: 50%;
-            right: 20%;
-            opacity: 0.2;
-            animation-delay: -2s;
-        }
-        
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-        
-        /* Flag Cascade - Refined */
-        .flag-cascade {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-            mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
-        }
-        
-        .flag-cascade-inner {
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            right: -30px;
-            bottom: -30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            padding: 30px;
-            transform: rotate(-12deg) scale(1.4);
-            opacity: 0.7;
-        }
-        
-        .cascade-flag {
-            width: 56px;
-            height: 38px;
-            object-fit: cover;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            transition: all 0.4s ease;
-        }
-        
-        .cascade-flag:nth-child(odd) { transform: translateY(10px); }
-        .cascade-flag:nth-child(3n) { opacity: 0.8; }
-        .cascade-flag:nth-child(5n) { transform: translateY(-8px) rotate(4deg); }
-        .cascade-flag:nth-child(7n) { transform: translateY(15px) rotate(-3deg); }
-        
-        /* Hero Content */
         .hero-content {
             max-width: 1400px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
             display: grid;
-            grid-template-columns: 420px 1fr;
-            gap: 80px;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
             align-items: center;
-            width: 100%;
-        }
-        
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .hero-logo-container {
             position: relative;
+            z-index: 10;
         }
         
-        .hero-logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, rgba(0,162,219,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: logoGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes logoGlow {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
-        }
-        
-        .hero-logo-large {
-            width: 400px;
-            height: auto;
-            filter: brightness(0) invert(1);
-            position: relative;
-            z-index: 1;
-            drop-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        .hero-text {
+            padding-right: 40px;
         }
         
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.06);
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
             font-size: 12px;
             font-weight: 600;
-            color: rgba(255,255,255,0.8);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-bottom: 25px;
         }
         
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--um-orange);
-            border-radius: 50%;
-            animation: pulseDot 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-        
-        .hero-right {
-            max-width: 700px;
-        }
+        .hero-badge i, .hero-badge svg { width: 16px; height: 16px; }
         
         .hero h2 {
-            font-size: 62px;
+            font-size: 56px;
             font-weight: 700;
             letter-spacing: -0.03em;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
         
         .hero h2 span {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            background: linear-gradient(135deg, var(--um-light-blue), var(--um-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 50px;
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 35px;
             line-height: 1.7;
-            font-weight: 400;
         }
         
-        /* Hero Stats - Premium Glass Cards */
         .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .hero-stat {
-            position: relative;
-            text-align: center;
-            padding: 28px 18px;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all var(--transition-smooth);
-            text-decoration: none;
-            overflow: hidden;
-        }
-        
-        .hero-stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
-        
-        .hero-stat:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-4px);
-            border-color: rgba(255,255,255,0.15);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        a.hero-stat.clickable {
-            background: rgba(232,78,16,0.1);
-            border: 1px solid rgba(232,78,16,0.3);
-            cursor: pointer;
-        }
-        
-        a.hero-stat.clickable::before {
-            background: linear-gradient(90deg, transparent, rgba(232,78,16,0.5), transparent);
-        }
-        
-        a.hero-stat.clickable:hover {
-            background: rgba(232,78,16,0.18);
-            border-color: rgba(232,78,16,0.5);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(232,78,16,0.25);
+            text-align: left;
         }
         
         .hero-stat-number {
             font-family: var(--font-heading);
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
             color: white;
             line-height: 1;
-            margin-bottom: 10px;
+            letter-spacing: -2px;
         }
         
-        a.hero-stat.clickable .hero-stat-number {
-            color: var(--um-orange);
-        }
+        .hero-stat-number.highlight { color: var(--um-orange); }
         
         .hero-stat-label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.4);
-            font-size: 11px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            animation: fadeInUp 1s ease 1s both;
         }
         
-        .scroll-indicator-mouse {
-            width: 24px;
-            height: 38px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            position: relative;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
         }
         
-        .scroll-indicator-wheel {
-            width: 4px;
-            height: 8px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 2px;
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: scrollWheel 2s ease-in-out infinite;
-        }
-        
-        @keyframes scrollWheel {
-            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            50% { opacity: 0.3; transform: translateX(-50%) translateY(10px); }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        
-        /* ============================================
-           MAP SECTION - ELEVATED
-        ============================================ */
-        .map-section {
-            background: var(--um-white);
-            padding: 60px 50px 100px;
-            position: relative;
-        }
-        
-        .map-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(180deg, var(--um-gray-50) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-        
-        .section-label {
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--um-light-blue);
-            margin-bottom: 16px;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
         
-        .section-label::before,
-        .section-label::after {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--um-light-blue));
+        .btn-primary {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(232, 78, 16, 0.35);
         }
         
-        .section-label::after {
-            background: linear-gradient(90deg, var(--um-light-blue), transparent);
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(232, 78, 16, 0.45);
+            color: white;
         }
         
-        .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .section-subtitle {
-            font-size: 17px;
-            color: var(--um-gray-500);
-            line-height: 1.7;
-            font-weight: 400;
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
         }
         
-        .map-container-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-        }
+        .btn i, .btn svg { width: 18px; height: 18px; }
         
-        .map-container {
-            height: 580px;
-            background: linear-gradient(135deg, var(--um-gray-50) 0%, var(--um-gray-100) 100%);
+        /* Map Container */
+        .hero-map {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-xl);
             overflow: hidden;
-            box-shadow: var(--shadow-xl), var(--shadow-glow-blue);
-            border: 1px solid var(--um-gray-200);
+            height: 500px;
             position: relative;
         }
         
-        .map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%);
-            pointer-events: none;
-            z-index: 1;
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-        }
-        
-        #worldMap {
+        #map {
             width: 100%;
             height: 100%;
+            background: #0a1628;
         }
         
-        /* Premium Map Legend */
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 28, 61, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            z-index: 1000;
+            max-width: 280px;
+        }
+        
+        .map-overlay h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+        
         .map-legend {
             display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 30px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 8px;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .legend-dot.large { background: var(--um-orange); }
+        .legend-dot.medium { background: var(--um-light-blue); }
+        .legend-dot.small { background: rgba(0, 162, 219, 0.5); }
+        
+        /* Leaflet Custom Styles */
+        .leaflet-container {
+            background: #0a1628;
+            font-family: var(--font-body);
+        }
+        
+        .leaflet-popup-content-wrapper {
+            background: var(--um-dark-blue);
+            color: white;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .leaflet-popup-tip {
+            background: var(--um-dark-blue);
+        }
+        
+        .leaflet-popup-content {
+            margin: 15px 18px;
+        }
+        
+        .popup-country {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .popup-flag {
+            width: 36px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        
+        .popup-name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .popup-count {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+        }
+        
+        .popup-count strong {
+            color: var(--um-orange);
+            font-size: 20px;
+        }
+        
+        .popup-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--um-orange);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-link:hover {
+            background: #ff6b35;
+            color: white;
+        }
+        
+        /* ==========================================
+           QUICK STATS SECTION
+        ========================================== */
+        .quick-stats {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background: var(--um-off-white);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 162, 219, 0.15);
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--um-light-blue), #0090c5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .stat-icon i, .stat-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 15px;
             color: var(--um-gray-600);
             font-weight: 500;
         }
         
-        .legend-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        /* ==========================================
+           FEATURED SECTION
+        ========================================== */
+        .featured {
+            background: linear-gradient(180deg, var(--um-off-white) 0%, white 100%);
+            padding: 80px 50px;
         }
         
-        .legend-dot.large { 
-            background: var(--um-orange);
-            box-shadow: 0 2px 12px rgba(232, 78, 16, 0.4);
-        }
-        .legend-dot.medium { 
-            background: var(--um-light-blue);
-            box-shadow: 0 2px 12px rgba(0, 162, 219, 0.4);
-        }
-        .legend-dot.small { 
-            background: rgba(0,162,219,0.5);
-        }
-        
-        /* Leaflet Popup Styling */
-        .leaflet-popup-content-wrapper {
-            border-radius: var(--radius-lg) !important;
-            box-shadow: var(--shadow-lg) !important;
-            padding: 0 !important;
-        }
-        
-        .leaflet-popup-content {
-            margin: 0 !important;
-            min-width: 240px;
-        }
-        
-        .leaflet-popup-tip {
-            box-shadow: var(--shadow-md) !important;
-        }
-        
-        .popup-card {
-            padding: 20px;
-        }
-        
-        .popup-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--um-gray-100);
-        }
-        
-        .popup-flag {
-            width: 48px;
-            height: 32px;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .popup-country {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-        }
-        
-        .popup-stats {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .popup-stat {
-            flex: 1;
-        }
-        
-        .popup-stat-number {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--um-orange);
-            line-height: 1;
-        }
-        
-        .popup-stat-label {
-            font-size: 12px;
-            color: var(--um-gray-500);
-            margin-top: 4px;
-        }
-        
-        /* ============================================
-           UNIVERSITIES SECTION - PREMIUM
-        ============================================ */
-        .universities-section {
-            background: var(--um-gray-50);
-            padding: 100px 50px;
-            position: relative;
-        }
-        
-        .uni-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1300px;
+        .featured-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .uni-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
         
-        .uni-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--um-light-blue), var(--um-light-blue));
-            opacity: 0;
-            transition: opacity var(--transition-smooth);
-        }
-        
-        .uni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--um-gray-200);
-        }
-        
-        .uni-card:hover::before {
-            opacity: 1;
-        }
-        
-        .uni-card.prestige {
-            border: 2px solid var(--um-orange);
-            background: linear-gradient(135deg, #fffbf8 0%, white 100%);
-        }
-        
-        .uni-card.prestige::before {
-            background: linear-gradient(90deg, var(--um-orange), #ff6b35);
-            opacity: 1;
-            height: 4px;
-        }
-        
-        .uni-card.prestige:hover {
-            box-shadow: var(--shadow-lg), 0 0 30px rgba(232, 78, 16, 0.1);
-        }
-        
-        .uni-logo {
-            width: 56px;
-            height: 56px;
-            background: var(--um-gray-50);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            overflow: hidden;
-            border: 1px solid var(--um-gray-100);
-        }
-        
-        .uni-logo img {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-        }
-        
-        .uni-logo i,
-        .uni-logo svg {
-            width: 26px;
-            height: 26px;
-            color: var(--um-gray-400);
-            stroke: var(--um-gray-400);
-        }
-        
-        .uni-name {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-        
-        .uni-country {
-            font-size: 13px;
-            color: var(--um-gray-500);
-            display: flex;
+        .section-badge {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: linear-gradient(135deg, var(--um-orange), #ff6b35);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border-radius: 50px;
             margin-bottom: 20px;
         }
         
-        .uni-country img {
-            width: 20px;
-            height: 14px;
-            object-fit: cover;
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .uni-count {
-            margin-top: auto;
-            font-family: var(--font-heading);
-            font-size: 28px;
+        .section-header h3 {
+            font-size: 42px;
             font-weight: 700;
             color: var(--um-dark-blue);
-            display: flex;
-            align-items: baseline;
-            gap: 6px;
+            margin-bottom: 15px;
         }
         
-        .uni-count span {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--um-gray-500);
-        }
-        
-        .view-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 36px;
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
-            color: white;
-            border-radius: var(--radius-md);
-            font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all var(--transition-smooth);
-            box-shadow: 0 4px 20px rgba(0,28,61,0.25);
-        }
-        
-        .view-all-btn:hover {
-            background: linear-gradient(135deg, #002b5c 0%, var(--um-dark-blue) 100%);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,28,61,0.35);
-        }
-        
-        .view-all-btn i,
-        .view-all-btn svg {
-            width: 18px;
-            height: 18px;
-            transition: transform var(--transition-smooth);
-        }
-        
-        .view-all-btn:hover i,
-        .view-all-btn:hover svg {
-            transform: translateX(4px);
-        }
-        
-        /* ============================================
-           FIELDS OF STUDY - REFINED
-        ============================================ */
-        .fields-section {
-            background: white;
-            padding: 100px 50px;
-        }
-        
-        .fields-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 18px;
-            max-width: 1100px;
+        .section-header p {
+            font-size: 18px;
+            color: var(--um-gray-600);
+            max-width: 600px;
             margin: 0 auto;
         }
         
-        .field-card {
-            background: var(--um-gray-50);
-            border: 1px solid var(--um-gray-100);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            transition: all var(--transition-smooth);
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
         
-        .field-card:hover {
+        .featured-card {
             background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px 35px;
+            text-align: center;
+            border: 2px solid var(--um-gray-200);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .featured-card:hover {
             border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-md), 0 0 0 1px var(--um-light-blue);
-            transform: translateX(6px);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 162, 219, 0.2);
         }
         
-        .field-icon {
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.25);
+        .featured-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
-        .field-icon i,
-        .field-icon svg {
-            width: 26px;
-            height: 26px;
-            color: white;
-            stroke: white;
-        }
-        
-        .field-info {
-            flex: 1;
-        }
-        
-        .field-name {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 15px;
+        .featured-card h4 {
+            font-size: 22px;
+            font-weight: 700;
             color: var(--um-dark-blue);
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
         
-        .field-count {
-            font-size: 13px;
-            color: var(--um-gray-500);
-            font-weight: 500;
+        .featured-card p {
+            font-size: 15px;
+            color: var(--um-gray-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
         
-        .field-bar {
-            height: 6px;
-            background: var(--um-gray-200);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 12px;
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--um-light-blue);
+            font-weight: 600;
+            font-size: 14px;
         }
         
-        .field-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--um-light-blue), #00c4ff);
-            border-radius: 3px;
-            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        .featured-link i, .featured-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
         }
         
-        /* ============================================
-           GROWTH SECTION - DATA VIZ EXCELLENCE
-        ============================================ */
-        .growth-section {
-            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 50%, #00203d 100%);
-            color: white;
+        .featured-card:hover .featured-link i,
+        .featured-card:hover .featured-link svg {
+            transform: translateX(5px);
+        }
+        
+        /* ==========================================
+           CTA SECTION
+        ========================================== */
+        .cta {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #001530 100%);
             padding: 100px 50px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .growth-section::before {
+        .cta::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image:
-                linear-gradient(rgba(0,162,219,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,162,219,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 162, 219, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(232, 78, 16, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
         
-        .growth-section .section-label {
-            color: var(--um-orange);
-        }
-        
-        .growth-section .section-label::before,
-        .growth-section .section-label::after {
-            background: linear-gradient(90deg, transparent, var(--um-orange));
-        }
-        
-        .growth-section .section-label::after {
-            background: linear-gradient(90deg, var(--um-orange), transparent);
-        }
-        
-        .growth-section .section-title {
-            color: white;
-        }
-        
-        .growth-section .section-subtitle {
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .growth-chart-container {
-            max-width: 1100px;
+        .cta-content {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 30px 0;
             position: relative;
+            z-index: 10;
         }
         
-        .growth-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 12px;
-            height: 300px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .growth-bar {
-            flex: 1;
-            max-width: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        
-        .growth-bar-group {
-            width: 100%;
-            display: flex;
-            gap: 4px;
-            align-items: flex-end;
-            justify-content: center;
-        }
-        
-        .growth-bar-yearly {
-            width: 45%;
-            background: linear-gradient(180deg, var(--um-orange) 0%, #c43a08 100%);
-            border-radius: 6px 6px 0 0;
-            min-height: 10px;
-            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 -4px 20px rgba(232, 78, 16, 0.3);
-        }
-        
-        .growth-bar-cumulative {
-            width: 45%;
-            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0077a3 100%);
-            border-radius: 6px 6px 0 0;
-            min-height: 10px;
-            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 -4px 20px rgba(0, 162, 219, 0.3);
-        }
-        
-        .growth-bar-value {
-            position: absolute;
-            top: -26px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-heading);
-            font-size: 11px;
+        .cta h3 {
+            font-size: 42px;
             font-weight: 700;
-            white-space: nowrap;
-        }
-        
-        .growth-bar-yearly .growth-bar-value {
-            color: var(--um-orange);
-        }
-        
-        .growth-bar-cumulative .growth-bar-value {
-            color: var(--um-light-blue);
-        }
-        
-        .growth-bar-label {
-            margin-top: 14px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 600;
-            font-family: var(--font-heading);
-        }
-        
-        .growth-legend {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-        }
-        
-        .growth-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            font-weight: 500;
-        }
-        
-        .growth-legend-bar {
-            width: 24px;
-            height: 16px;
-            border-radius: 4px;
-        }
-        
-        .growth-legend-bar.yearly {
-            background: linear-gradient(180deg, var(--um-orange) 0%, #c43a08 100%);
-            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.3);
-        }
-        
-        .growth-legend-bar.cumulative {
-            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0077a3 100%);
-            box-shadow: 0 2px 8px rgba(0, 162, 219, 0.3);
-        }
-        
-        /* ============================================
-           CONTINENTAL SECTION
-        ============================================ */
-        .continental-section {
-            background: var(--um-gray-50);
-            padding: 100px 50px;
-        }
-        
-        .continental-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .continental-card {
-            background: white;
-            border: 1px solid var(--um-gray-200);
-            border-radius: var(--radius-lg);
-            padding: 36px 24px;
-            text-align: center;
-            transition: all var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .continental-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-        
-        .continental-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-        
-        .continental-card.europe::before { background: var(--um-orange); }
-        .continental-card.americas::before { background: var(--um-light-blue); }
-        .continental-card.asia::before { background: #10b981; }
-        .continental-card.africa::before { background: #f59e0b; }
-        
-        .continental-card.europe:hover { box-shadow: var(--shadow-lg), 0 0 30px rgba(232, 78, 16, 0.1); }
-        .continental-card.americas:hover { box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 162, 219, 0.1); }
-        .continental-card.asia:hover { box-shadow: var(--shadow-lg), 0 0 30px rgba(16, 185, 129, 0.1); }
-        .continental-card.africa:hover { box-shadow: var(--shadow-lg), 0 0 30px rgba(245, 158, 11, 0.1); }
-        
-        .continental-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--um-gray-50);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: all var(--transition-smooth);
-        }
-        
-        .continental-card:hover .continental-icon {
-            transform: scale(1.1);
-        }
-        
-        .continental-card.europe .continental-icon { background: rgba(232, 78, 16, 0.1); }
-        .continental-card.americas .continental-icon { background: rgba(0, 162, 219, 0.1); }
-        .continental-card.asia .continental-icon { background: rgba(16, 185, 129, 0.1); }
-        .continental-card.africa .continental-icon { background: rgba(245, 158, 11, 0.1); }
-        
-        .continental-icon i { 
-            width: 28px; 
-            height: 28px; 
-            color: var(--um-dark-blue); 
-        }
-        
-        .continental-name {
-            font-family: var(--font-heading);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--um-gray-600);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .continental-count {
-            font-family: var(--font-heading);
-            font-size: 44px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            line-height: 1;
-        }
-        
-        .continental-percent {
-            font-size: 14px;
-            color: var(--um-gray-500);
-            font-weight: 600;
-            margin-top: 8px;
-        }
-        
-        .continental-card.europe .continental-percent { color: var(--um-orange); }
-        .continental-card.americas .continental-percent { color: var(--um-light-blue); }
-        .continental-card.asia .continental-percent { color: #10b981; }
-        .continental-card.africa .continental-percent { color: #f59e0b; }
-        
-        /* ============================================
-           COMMUNITY SECTION
-        ============================================ */
-        .community-section {
-            background: white;
-            padding: 100px 50px;
-        }
-        
-        .community-toggle {
-            background: var(--um-gray-50);
-            border: 2px solid var(--um-gray-200);
-            border-radius: var(--radius-xl);
-            padding: 32px 44px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: all var(--transition-smooth);
-            max-width: 950px;
-            margin: 0 auto;
-        }
-        
-        .community-toggle:hover {
-            border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-md);
-            background: white;
-        }
-        
-        .community-toggle.active {
-            border-color: var(--um-orange);
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            border-bottom: none;
-            background: white;
-        }
-        
-        .community-toggle-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-        
-        .community-toggle-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--um-orange) 0%, #d63d0a 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 4px 16px rgba(232, 78, 16, 0.3);
-        }
-        
-        .community-toggle-icon i, .community-toggle-icon svg {
-            width: 30px;
-            height: 30px;
             color: white;
+            margin-bottom: 20px;
         }
         
-        .community-toggle-text h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin: 0 0 6px 0;
+        .cta p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 35px;
         }
         
-        .community-toggle-text p {
-            font-size: 15px;
-            color: var(--um-gray-500);
-            margin: 0;
+        .cta .btn-primary {
+            padding: 18px 40px;
+            font-size: 16px;
         }
         
-        .community-toggle-arrow {
-            width: 44px;
-            height: 44px;
-            background: var(--um-gray-100);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition-smooth);
-        }
-        
-        .community-toggle-arrow i, .community-toggle-arrow svg {
-            width: 22px;
-            height: 22px;
-            color: var(--um-gray-500);
-            transition: transform var(--transition-smooth);
-        }
-        
-        .community-toggle.active .community-toggle-arrow {
-            background: var(--um-orange);
-        }
-        
-        .community-toggle.active .community-toggle-arrow i,
-        .community-toggle.active .community-toggle-arrow svg {
-            color: white;
-            transform: rotate(180deg);
-        }
-        
-        .community-expandable {
-            max-width: 950px;
-            margin: 0 auto;
-            background: white;
-            border: 2px solid var(--um-orange);
-            border-top: none;
-            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .community-expandable.open {
-            max-height: 1200px;
-            padding: 44px;
-        }
-        
-        .community-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 44px;
-            align-items: start;
-        }
-        
-        .community-text h4 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 18px;
-        }
-        
-        .community-text p {
-            font-size: 15px;
-            color: var(--um-gray-600);
-            line-height: 1.8;
-            margin-bottom: 14px;
-        }
-        
-        .community-text p strong {
-            color: var(--um-dark-blue);
-        }
-        
-        .community-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-        
-        .community-feature {
-            background: var(--um-gray-50);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            transition: all var(--transition-smooth);
-        }
-        
-        .community-feature:hover {
-            background: rgba(0,162,219,0.08);
-            transform: translateY(-4px);
-        }
-        
-        .community-feature-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--um-light-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 14px;
-            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.2);
-        }
-        
-        .community-feature-icon i, .community-feature-icon svg {
-            width: 22px;
-            height: 22px;
-            color: white;
-        }
-        
-        .community-feature-icon.orange {
-            background: var(--um-orange);
-            box-shadow: 0 4px 12px rgba(232, 78, 16, 0.2);
-        }
-        
-        .community-feature h5 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-        
-        .community-feature p {
-            font-size: 13px;
-            color: var(--um-gray-500);
-            line-height: 1.6;
-            margin: 0;
-        }
-        
-        /* ============================================
-           FOOTER - REFINED
-        ============================================ */
+        /* ==========================================
+           FOOTER
+        ========================================== */
         footer {
-            background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
-            color: white;
-            padding: 60px 50px 40px;
-            position: relative;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
+            background: #000a1a;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px 30px;
         }
         
         .footer-content {
@@ -1579,19 +710,19 @@
             gap: 30px;
         }
         
-        .footer-text {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-brand p {
+            font-family: var(--font-body);
+            font-size: 14px;
             font-weight: 400;
-        }
-        
-        .footer-text a {
-            color: rgba(255,255,255,0.7);
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-text a:hover {
-            color: var(--um-orange);
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
         }
         
         .footer-links {
@@ -1600,193 +731,73 @@
         }
         
         .footer-links a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover { color: var(--um-orange); }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
             font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 500;
-            transition: all var(--transition-fast);
+            color: rgba(255, 255, 255, 0.4);
         }
         
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        /* ============================================
+        /* ==========================================
            RESPONSIVE
-        ============================================ */
+        ========================================== */
         @media (max-width: 1200px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 50px;
-                text-align: center;
-            }
-            
-            .hero-left {
-                order: 2;
-            }
-            
-            .hero-right {
-                order: 1;
-                max-width: 100%;
-            }
-            
-            .hero h2 {
-                font-size: 48px;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .dna-container {
-                display: none;
-            }
-            
-            .hero-logo-large {
-                width: 300px;
-            }
-            
-            .hero-logo-glow {
-                width: 400px;
-                height: 400px;
-            }
+            .hero-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text { padding-right: 0; text-align: center; }
+            .hero-stats { justify-content: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-map { height: 400px; }
         }
         
-        @media (max-width: 900px) {
-            header {
-                padding: 0 24px;
-            }
-            
-            .hero {
-                padding: 120px 24px 100px;
-                min-height: 100vh;
-            }
-            
-            .hero h2 {
-                font-size: 38px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero-stat-number {
-                font-size: 34px;
-            }
-            
-            .section {
-                padding: 70px 24px;
-            }
-            
-            .map-section,
-            .universities-section,
-            .fields-section,
-            .growth-section,
-            .continental-section,
-            .community-section {
-                padding: 70px 24px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .continental-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .community-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-logo-large {
-                width: 240px;
-            }
-            
-            .hero-logo-glow {
-                width: 320px;
-                height: 320px;
-            }
-            
-            .scroll-indicator {
-                bottom: 20px;
-            }
+        @media (max-width: 1000px) {
+            header { padding: 14px 30px; }
+            .hero { padding: 100px 30px 50px; }
+            .hero h2 { font-size: 42px; }
+            .quick-stats { padding: 60px 30px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .featured { padding: 60px 30px; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .cta { padding: 80px 30px; }
         }
         
-        @media (max-width: 600px) {
-            .header-nav a:not(.btn-cta) {
-                display: none;
-            }
-            
-            .hero {
-                padding: 110px 20px 80px;
-                min-height: 100vh;
-            }
-            
-            .hero h2 {
-                font-size: 30px;
-            }
-            
-            .hero-subtitle {
-                font-size: 16px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            
-            .hero-stat {
-                padding: 20px 12px;
-            }
-            
-            .hero-stat-number {
-                font-size: 28px;
-            }
-            
-            .hero-logo-large {
-                width: 180px;
-            }
-            
-            .hero-logo-glow {
-                width: 240px;
-                height: 240px;
-            }
-            
-            .map-container {
-                height: 350px;
-            }
-            
-            .uni-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .continental-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .scroll-indicator {
-                display: none;
-            }
+        @media (max-width: 768px) {
+            header { padding: 12px 20px; }
+            .header-nav a:not(.btn-cta) { display: none; }
+            .hero { padding: 90px 20px 40px; }
+            .hero h2 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .hero-stat { text-align: center; }
+            .hero-stat-number { font-size: 36px; }
+            .hero-buttons { flex-direction: column; }
+            .hero-map { height: 300px; }
+            .map-overlay { display: none; }
+            .quick-stats { padding: 50px 20px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 20px; }
+            .featured { padding: 50px 20px; }
+            .section-header h3 { font-size: 32px; }
+            .cta { padding: 60px 20px; }
+            .cta h3 { font-size: 32px; }
+            footer { padding: 40px 20px 25px; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header id="header">
+    <header>
         <a href="index.html" class="logo">
-            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img">
+            <img src="assets/logos/msp-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
             <div class="logo-text">
                 <h1>MSP Alumni Network</h1>
                 <p>Maastricht Science Programme</p>
@@ -1802,291 +813,190 @@
     
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Background Elements -->
-        <canvas id="particleCanvas"></canvas>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        
-        <!-- DNA Helix Visual -->
-        <div class="dna-container" id="dnaContainer"></div>
-        
-        <!-- Flag Cascade -->
-        <div class="flag-cascade">
-            <div class="flag-cascade-inner" id="flagCascade"></div>
+        <!-- DNA Helix Background -->
+        <div class="dna-helix">
+            <div class="dna-strand"></div>
+            <div class="dna-strand"></div>
+            <div class="dna-strand"></div>
+            <div class="dna-strand"></div>
         </div>
         
-        <!-- Content -->
         <div class="hero-content">
-            <div class="hero-left">
-                <div class="hero-logo-container">
-                    <div class="hero-logo-glow"></div>
-                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="Maastricht Science Programme" class="hero-logo-large">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i data-lucide="globe"></i>
+                    Global Alumni Network
                 </div>
-            </div>
-            
-            <div class="hero-right">
-                <h2>Where <span>Science</span> Takes You</h2>
-                <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni — from Maastricht to world-leading universities and careers across six continents.
+                <h2>From Maastricht to <span>the World</span></h2>
+                <p class="hero-description">
+                    Explore the global network of MSP graduates. 1,330+ alumni across 56 countries, 
+                    pursuing careers in science, technology, healthcare, and beyond.
                 </p>
                 
                 <div class="hero-stats">
-                    <a href="countries.html" class="hero-stat clickable">
-                        <div class="hero-stat-number" id="totalAlumni">1,330</div>
-                        <div class="hero-stat-label">Alumni</div>
-                    </a>
                     <div class="hero-stat">
-                        <div class="hero-stat-number" id="totalNationalities">78</div>
-                        <div class="hero-stat-label">Nationalities</div>
+                        <div class="hero-stat-number highlight">1,330+</div>
+                        <div class="hero-stat-label">Alumni</div>
                     </div>
-                    <a href="countries.html" class="hero-stat clickable">
-                        <div class="hero-stat-number" id="totalCountries">56</div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">56</div>
                         <div class="hero-stat-label">Countries</div>
-                    </a>
-                    <a href="universities.html" class="hero-stat clickable">
-                        <div class="hero-stat-number" id="totalUniversities">220+</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">247</div>
                         <div class="hero-stat-label">Universities</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-indicator-mouse">
-                <div class="scroll-indicator-wheel"></div>
-            </div>
-            <span>Explore</span>
-        </div>
-    </section>
-    
-    <!-- World Map Section -->
-    <section class="map-section">
-        <div class="section-header">
-            <div class="section-label">Global Presence</div>
-            <h2 class="section-title">Alumni Around the World</h2>
-            <p class="section-subtitle">
-                From research labs in Zurich to startups in San Francisco, MSP graduates are making their mark globally.
-            </p>
-        </div>
-        
-        <div class="map-container-wrapper">
-            <div class="map-container">
-                <div id="worldMap"></div>
-            </div>
-            
-            <div class="map-legend">
-                <div class="legend-item">
-                    <span class="legend-dot large"></span>
-                    50+ alumni
-                </div>
-                <div class="legend-item">
-                    <span class="legend-dot medium"></span>
-                    10-49 alumni
-                </div>
-                <div class="legend-item">
-                    <span class="legend-dot small"></span>
-                    1-9 alumni
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Universities Section -->
-    <section class="universities-section section">
-        <div class="section-header">
-            <div class="section-label">Academic Destinations</div>
-            <h2 class="section-title">Where They Continue</h2>
-            <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities — from Oxford to ETH Zürich.
-            </p>
-        </div>
-        
-        <div class="uni-grid" id="uniGrid"></div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="universities.html" class="view-all-btn">
-                Explore All <span id="statUniversities">220</span>+ Universities
-                <i data-lucide="arrow-right"></i>
-            </a>
-        </div>
-    </section>
-    
-    <!-- Fields of Study Section -->
-    <section class="fields-section section">
-        <div class="section-header">
-            <div class="section-label">Academic Paths</div>
-            <h2 class="section-title">Fields of Expertise</h2>
-            <p class="section-subtitle">
-                The interdisciplinary foundation of MSP leads to diverse specializations.
-            </p>
-        </div>
-        
-        <div class="fields-grid" id="fieldsGrid"></div>
-    </section>
-    
-    <!-- Growth Section -->
-    <section class="growth-section section">
-        <div class="section-header">
-            <div class="section-label">Programme Growth</div>
-            <h2 class="section-title">A Growing Community</h2>
-            <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide — and counting.
-            </p>
-        </div>
-        
-        <div class="growth-chart-container">
-            <div class="growth-chart" id="growthChart"></div>
-            <div class="growth-legend">
-                <div class="growth-legend-item">
-                    <span class="growth-legend-bar yearly"></span>
-                    Yearly Graduates
-                </div>
-                <div class="growth-legend-item">
-                    <span class="growth-legend-bar cumulative"></span>
-                    Cumulative Total
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Continental Distribution -->
-    <section class="continental-section section">
-        <div class="section-header">
-            <div class="section-label">Geographic Distribution</div>
-            <h2 class="section-title">Across Six Continents</h2>
-            <p class="section-subtitle">
-                MSP alumni have established themselves in every corner of the globe.
-            </p>
-        </div>
-        
-        <div class="continental-grid">
-            <div class="continental-card europe">
-                <div class="continental-icon">
-                    <i data-lucide="landmark"></i>
-                </div>
-                <div class="continental-name">Europe</div>
-                <div class="continental-count">987</div>
-                <div class="continental-percent">90%</div>
-            </div>
-            <div class="continental-card americas">
-                <div class="continental-icon">
-                    <i data-lucide="building-2"></i>
-                </div>
-                <div class="continental-name">Americas</div>
-                <div class="continental-count">42</div>
-                <div class="continental-percent">4%</div>
-            </div>
-            <div class="continental-card asia">
-                <div class="continental-icon">
-                    <i data-lucide="mountain"></i>
-                </div>
-                <div class="continental-name">Asia Pacific</div>
-                <div class="continental-count">35</div>
-                <div class="continental-percent">3%</div>
-            </div>
-            <div class="continental-card africa">
-                <div class="continental-icon">
-                    <i data-lucide="sun"></i>
-                </div>
-                <div class="continental-name">Africa & ME</div>
-                <div class="continental-count">29</div>
-                <div class="continental-percent">3%</div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Community Section -->
-    <section class="community-section section">
-        <div class="community-toggle" onclick="toggleCommunity()">
-            <div class="community-toggle-left">
-                <div class="community-toggle-icon">
-                    <i data-lucide="users"></i>
-                </div>
-                <div class="community-toggle-text">
-                    <h3>Join the MSP Alumni Community</h3>
-                    <p>Connect with fellow graduates in 24 countries</p>
-                </div>
-            </div>
-            <div class="community-toggle-arrow">
-                <i data-lucide="chevron-down"></i>
-            </div>
-        </div>
-        
-        <div class="community-expandable" id="communityContent">
-            <div class="community-content">
-                <div class="community-text">
-                    <h4>Stay Connected After Graduation</h4>
-                    <p>
-                        The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
-                        <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students — 
-                        we're here to help.
-                    </p>
-                    <p>
-                        Our WhatsApp communities cover <strong>24 countries</strong>, making it 
-                        easy to connect with fellow MSP alumni wherever your career takes you.
-                    </p>
+                    </div>
                 </div>
                 
-                <div class="community-features">
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="message-circle"></i>
+                <div class="hero-buttons">
+                    <a href="considering-msp.html" class="btn btn-primary">
+                        <i data-lucide="rocket"></i>
+                        Considering MSP?
+                    </a>
+                    <a href="countries.html" class="btn btn-secondary">
+                        <i data-lucide="map"></i>
+                        Explore Countries
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-map">
+                <div id="map"></div>
+                <div class="map-overlay">
+                    <h4>Alumni Distribution</h4>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot large"></div>
+                            <span>50+ alumni</span>
                         </div>
-                        <h5>WhatsApp Groups</h5>
-                        <p>Country-based groups for local networking and meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="briefcase"></i>
+                        <div class="legend-item">
+                            <div class="legend-dot medium"></div>
+                            <span>10-49 alumni</span>
                         </div>
-                        <h5>Career Network</h5>
-                        <p>Connect with alumni in your field or target companies</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="calendar"></i>
+                        <div class="legend-item">
+                            <div class="legend-dot small"></div>
+                            <span>1-9 alumni</span>
                         </div>
-                        <h5>Events</h5>
-                        <p>Annual gatherings, reunions, and local meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="heart-handshake"></i>
-                        </div>
-                        <h5>Give Back</h5>
-                        <p>Mentor current students and share your experience</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <a href="universities.html" class="stat-card">
+                    <div class="stat-icon"><i data-lucide="building-2"></i></div>
+                    <div class="stat-number">91%</div>
+                    <div class="stat-label">Pursue Master's Degree</div>
+                </a>
+                <a href="universities.html" class="stat-card">
+                    <div class="stat-icon"><i data-lucide="trophy"></i></div>
+                    <div class="stat-number">31%</div>
+                    <div class="stat-label">At QS Top 100</div>
+                </a>
+                <a href="countries.html?code=NL" class="stat-card">
+                    <div class="stat-icon"><i data-lucide="map-pin"></i></div>
+                    <div class="stat-number">43%</div>
+                    <div class="stat-label">Stay in Netherlands</div>
+                </a>
+                <a href="universities.html" class="stat-card">
+                    <div class="stat-icon"><i data-lucide="graduation-cap"></i></div>
+                    <div class="stat-number">142</div>
+                    <div class="stat-label">PhD Candidates</div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i data-lucide="compass"></i>
+                    Explore
+                </div>
+                <h3>Discover the MSP Network</h3>
+                <p>See where MSP graduates go and what they achieve</p>
+            </div>
+            
+            <div class="featured-grid">
+                <a href="countries.html" class="featured-card">
+                    <div class="featured-icon">🌍</div>
+                    <h4>56 Countries</h4>
+                    <p>From Amsterdam to Zürich, Sydney to San Francisco — MSP alumni are making an impact worldwide.</p>
+                    <span class="featured-link">
+                        Explore Countries
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                </a>
+                
+                <a href="universities.html" class="featured-card">
+                    <div class="featured-icon">🎓</div>
+                    <h4>Top Universities</h4>
+                    <p>Oxford, Cambridge, ETH Zürich, Imperial — see where MSP opens doors to world-class education.</p>
+                    <span class="featured-link">
+                        View Universities
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                </a>
+                
+                <a href="considering-msp.html" class="featured-card">
+                    <div class="featured-icon">🚀</div>
+                    <h4>Your Journey</h4>
+                    <p>Thinking about MSP? Discover how our interdisciplinary approach shapes successful careers.</p>
+                    <span class="featured-link">
+                        Learn More
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h3>Ready to Start Your Journey?</h3>
+            <p>Join 1,330+ alumni who transformed their curiosity into careers. The Maastricht Science Programme awaits.</p>
+            <a href="considering-msp.html" class="btn btn-primary">
+                <i data-lucide="rocket"></i>
+                Explore MSP
+            </a>
         </div>
     </section>
     
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · 
-                Updated <span id="lastUpdated">December 2025</span> · 
-                <a href="privacy.html">Privacy Policy</a>
+            <div class="footer-brand">
+                MSP Alumni Network
+                <p>Data updated December 2025</p>
             </div>
             <div class="footer-links">
-                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate →</a>
+                <a href="countries.html">Countries</a>
+                <a href="universities.html">Universities</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="privacy.html">Privacy</a>
             </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University
         </div>
     </footer>
     
-    <!-- Scripts -->
-    <script src="data.js"></script>
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <script>
         // ==========================================
         // HEADER SCROLL EFFECT
         // ==========================================
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
@@ -2095,356 +1005,110 @@
         });
         
         // ==========================================
-        // PARTICLE NETWORK ANIMATION
+        // ALUMNI DATA - From Database
         // ==========================================
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        const particles = [];
-        const particleCount = 80;
-        const connectionDistance = 150;
-        
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 162, 219, 0.5)';
-                ctx.fill();
-            }
-        }
-        
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw connections
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < connectionDistance) {
-                        const opacity = (1 - distance / connectionDistance) * 0.3;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 162, 219, ${opacity})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            // Update and draw particles
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+        const alumniData = [
+            { code: 'NL', name: 'Netherlands', count: 456, lat: 52.1326, lng: 5.2913 },
+            { code: 'DE', name: 'Germany', count: 92, lat: 51.1657, lng: 10.4515 },
+            { code: 'GB', name: 'United Kingdom', count: 86, lat: 55.3781, lng: -3.4360 },
+            { code: 'BE', name: 'Belgium', count: 70, lat: 50.5039, lng: 4.4699 },
+            { code: 'SE', name: 'Sweden', count: 51, lat: 60.1282, lng: 18.6435 },
+            { code: 'CH', name: 'Switzerland', count: 41, lat: 46.8182, lng: 8.2275 },
+            { code: 'ES', name: 'Spain', count: 30, lat: 40.4637, lng: -3.7492 },
+            { code: 'IT', name: 'Italy', count: 29, lat: 41.8719, lng: 12.5674 },
+            { code: 'FR', name: 'France', count: 28, lat: 46.2276, lng: 2.2137 },
+            { code: 'DK', name: 'Denmark', count: 24, lat: 56.2639, lng: 9.5018 },
+            { code: 'US', name: 'United States', count: 23, lat: 37.0902, lng: -95.7129 },
+            { code: 'FI', name: 'Finland', count: 18, lat: 61.9241, lng: 25.7482 },
+            { code: 'AT', name: 'Austria', count: 17, lat: 47.5162, lng: 14.5501 },
+            { code: 'IE', name: 'Ireland', count: 9, lat: 53.1424, lng: -7.6921 },
+            { code: 'LU', name: 'Luxembourg', count: 9, lat: 49.8153, lng: 6.1296 },
+            { code: 'CA', name: 'Canada', count: 9, lat: 56.1304, lng: -106.3468 },
+            { code: 'PT', name: 'Portugal', count: 8, lat: 39.3999, lng: -8.2245 },
+            { code: 'AU', name: 'Australia', count: 8, lat: -25.2744, lng: 133.7751 },
+            { code: 'NO', name: 'Norway', count: 7, lat: 60.4720, lng: 8.4689 },
+            { code: 'GR', name: 'Greece', count: 5, lat: 39.0742, lng: 21.8243 },
+            { code: 'JP', name: 'Japan', count: 4, lat: 36.2048, lng: 138.2529 },
+            { code: 'PL', name: 'Poland', count: 3, lat: 51.9194, lng: 19.1451 },
+            { code: 'SG', name: 'Singapore', count: 2, lat: 1.3521, lng: 103.8198 },
+            { code: 'IN', name: 'India', count: 2, lat: 20.5937, lng: 78.9629 },
+            { code: 'CN', name: 'China', count: 2, lat: 35.8617, lng: 104.1954 }
+        ];
         
         // ==========================================
-        // DNA HELIX GENERATOR
+        // INITIALIZE MAP
         // ==========================================
-        function createDNAHelix() {
-            const container = document.getElementById('dnaContainer');
-            const height = 600;
-            const points = 22;
-            
-            for (let i = 0; i < points; i++) {
-                const y = (i / points) * height;
-                const angle = (i / points) * Math.PI * 4;
-                
-                // Left strand dot
-                const leftDot = document.createElement('div');
-                leftDot.className = 'dna-dot';
-                leftDot.style.left = `${150 + Math.sin(angle) * 80}px`;
-                leftDot.style.top = `${y}px`;
-                container.appendChild(leftDot);
-                
-                // Right strand dot
-                const rightDot = document.createElement('div');
-                rightDot.className = 'dna-dot orange';
-                rightDot.style.left = `${150 - Math.sin(angle) * 80}px`;
-                rightDot.style.top = `${y}px`;
-                container.appendChild(rightDot);
-                
-                // Connection line
-                if (i % 2 === 0) {
-                    const line = document.createElement('div');
-                    line.className = 'dna-line';
-                    const leftX = 150 + Math.sin(angle) * 80;
-                    const rightX = 150 - Math.sin(angle) * 80;
-                    line.style.left = `${Math.min(leftX, rightX)}px`;
-                    line.style.top = `${y + 3}px`;
-                    line.style.width = `${Math.abs(leftX - rightX)}px`;
-                    container.appendChild(line);
-                }
-            }
-        }
-        createDNAHelix();
-        
-        // ==========================================
-        // POPULATE FROM DATA.JS
-        // ==========================================
-        document.getElementById('totalAlumni').textContent = MSP_DATA.summary.totalAlumni.toLocaleString();
-        document.getElementById('totalNationalities').textContent = MSP_DATA.summary.nationalities;
-        document.getElementById('totalCountries').textContent = MSP_DATA.summary.countriesLivingIn;
-        document.getElementById('totalUniversities').textContent = MSP_DATA.summary.universitiesAttended + '+';
-        document.getElementById('statUniversities').textContent = MSP_DATA.summary.universitiesAttended;
-        document.getElementById('lastUpdated').textContent = MSP_DATA.lastUpdated;
-        
-        // ==========================================
-        // FLAG CASCADE
-        // ==========================================
-        const flagCascade = document.getElementById('flagCascade');
-        const shuffledFlags = [...MSP_DATA.allNationalityFlags].sort(() => Math.random() - 0.5);
-        const flagsToShow = [...shuffledFlags, ...shuffledFlags.slice(0, 60)];
-        
-        flagsToShow.forEach(code => {
-            const img = document.createElement('img');
-            img.src = `https://flagcdn.com/w80/${code}.png`;
-            img.alt = '';
-            img.className = 'cascade-flag';
-            img.loading = 'lazy';
-            flagCascade.appendChild(img);
-        });
-        
-        // ==========================================
-        // UNIVERSITIES GRID
-        // ==========================================
-        const uniGrid = document.getElementById('uniGrid');
-        
-        MSP_DATA.topUniversities.slice(0, 12).forEach(uni => {
-            const card = document.createElement('a');
-            card.href = 'universities.html';
-            card.className = uni.prestige ? 'uni-card prestige' : 'uni-card';
-            card.style.textDecoration = 'none';
-            card.innerHTML = `
-                <div class="uni-logo">
-                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'; lucide.createIcons();">
-                </div>
-                <div class="uni-name">${uni.name}</div>
-                <div class="uni-country">
-                    <img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">
-                    ${uni.country}
-                </div>
-                <div class="uni-count">${uni.count} <span>alumni</span></div>
-            `;
-            uniGrid.appendChild(card);
-        });
-        
-        // ==========================================
-        // FIELDS OF STUDY
-        // ==========================================
-        const fieldsGrid = document.getElementById('fieldsGrid');
-        
-        // Map emoji icons to Lucide icons
-        const fieldIcons = {
-            '🧬': 'dna',
-            '⚗️': 'flask-conical',
-            '🏥': 'heart-pulse',
-            '⚡': 'zap',
-            '🧠': 'brain',
-            '📊': 'bar-chart-3',
-            '💻': 'monitor',
-            '🌍': 'globe-2',
-            '📚': 'book-open'
-        };
-        
-        MSP_DATA.fieldsOfStudy.forEach(field => {
-            const iconName = fieldIcons[field.icon] || 'book-open';
-            const card = document.createElement('div');
-            card.className = 'field-card';
-            card.innerHTML = `
-                <div class="field-icon"><i data-lucide="${iconName}"></i></div>
-                <div class="field-info">
-                    <div class="field-name">${field.name}</div>
-                    <div class="field-count">${field.count}+ alumni · ${field.percent}%</div>
-                    <div class="field-bar">
-                        <div class="field-bar-fill" style="width: ${field.percent * 2.5}%"></div>
-                    </div>
-                </div>
-            `;
-            fieldsGrid.appendChild(card);
-        });
-        
-        lucide.createIcons();
-        
-        // ==========================================
-        // GROWTH CHART
-        // ==========================================
-        const growthChart = document.getElementById('growthChart');
-        const maxGrad = Math.max(...MSP_DATA.graduationByYear.map(d => d.count));
-        
-        let cumulative = 0;
-        const dataWithCumulative = MSP_DATA.graduationByYear.map(d => {
-            cumulative += d.count;
-            return { ...d, cumulative };
-        });
-        const maxCumulative = Math.max(...dataWithCumulative.map(d => d.cumulative));
-        
-        dataWithCumulative.forEach(d => {
-            const yearlyHeight = (d.count / maxGrad) * 180;
-            const cumulativeHeight = (d.cumulative / maxCumulative) * 220;
-            
-            const bar = document.createElement('div');
-            bar.className = 'growth-bar';
-            bar.innerHTML = `
-                <div class="growth-bar-group">
-                    <div class="growth-bar-yearly" style="height: ${yearlyHeight}px">
-                        <span class="growth-bar-value">${d.count}</span>
-                    </div>
-                    <div class="growth-bar-cumulative" style="height: ${cumulativeHeight}px">
-                        <span class="growth-bar-value">${d.cumulative.toLocaleString()}</span>
-                    </div>
-                </div>
-                <div class="growth-bar-label">'${String(d.year).slice(-2)}</div>
-            `;
-            growthChart.appendChild(bar);
-        });
-        
-        // ==========================================
-        // WORLD MAP
-        // ==========================================
-        const map = L.map('worldMap', {
-            zoomControl: true,
-            scrollWheelZoom: true
-        }).setView([30, 10], 2);
-        
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '©OpenStreetMap, ©CartoDB',
-            maxZoom: 18
-        }).addTo(map);
-        
-        MSP_DATA.countriesLiving.forEach(country => {
-            const radius = Math.min(Math.max(country.count / 8, 8), 40);
-            
-            let fillColor = 'rgba(0,162,219,0.6)';
-            if (country.count >= 50) {
-                fillColor = '#E84E10';
-            } else if (country.count >= 10) {
-                fillColor = '#00A2DB';
-            }
-            
-            const marker = L.circleMarker(country.coords, {
-                radius: radius,
-                fillColor: fillColor,
-                color: '#ffffff',
-                weight: 2,
-                opacity: 1,
-                fillOpacity: 0.85
-            }).addTo(map);
-            
-            const popupContent = `
-                <div class="popup-card">
-                    <div class="popup-header">
-                        <img src="https://flagcdn.com/w80/${country.code}.png" alt="${country.name}" class="popup-flag">
-                        <div class="popup-country">${country.name}</div>
-                    </div>
-                    <div class="popup-stats">
-                        <div class="popup-stat">
-                            <div class="popup-stat-number">${country.count}</div>
-                            <div class="popup-stat-label">Alumni Living Here</div>
-                        </div>
-                    </div>
-                    <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} →
-                    </a>
-                </div>
-            `;
-            
-            marker.bindPopup(popupContent, { maxWidth: 280 });
-            
-            marker.on('mouseover', function() {
-                this.setStyle({ fillOpacity: 1, radius: radius * 1.2 });
-            });
-            
-            marker.on('mouseout', function() {
-                this.setStyle({ fillOpacity: 0.85, radius: radius });
-            });
-        });
-        
-        // ==========================================
-        // COMMUNITY SECTION TOGGLE
-        // ==========================================
-        function toggleCommunity() {
-            const toggle = document.querySelector('.community-toggle');
-            const content = document.getElementById('communityContent');
-            
-            toggle.classList.toggle('active');
-            content.classList.toggle('open');
-            
-            if (content.classList.contains('open')) {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-        }
-        
-        // ==========================================
-        // ANIMATED COUNTERS
-        // ==========================================
-        function animateCounter(element, target, duration = 2000) {
-            const start = 0;
-            const startTime = performance.now();
             
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                const current = Math.floor(start + (target - start) * easeOut);
-                
-                element.textContent = current.toLocaleString();
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = target.toLocaleString();
-                }
-            }
-            
-            requestAnimationFrame(update);
-        }
-        
-        // Trigger counters when hero is visible
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(document.getElementById('totalAlumni'), MSP_DATA.summary.totalAlumni);
-                    heroObserver.disconnect();
-                }
+            // Initialize Leaflet map
+            const map = L.map('map', {
+                center: [30, 10],
+                zoom: 2,
+                minZoom: 2,
+                maxZoom: 6,
+                zoomControl: false,
+                attributionControl: false
             });
-        }, { threshold: 0.5 });
-        
-        heroObserver.observe(document.querySelector('.hero'));
+            
+            // Add zoom control to bottom right
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+            
+            // Dark map tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap, &copy; CARTO'
+            }).addTo(map);
+            
+            // Add markers for each country
+            alumniData.forEach(country => {
+                // Determine marker size based on count
+                let radius, color;
+                if (country.count >= 50) {
+                    radius = 20;
+                    color = '#E84E10';
+                } else if (country.count >= 10) {
+                    radius = 14;
+                    color = '#00A2DB';
+                } else {
+                    radius = 8;
+                    color = 'rgba(0, 162, 219, 0.6)';
+                }
+                
+                // Create circle marker
+                const marker = L.circleMarker([country.lat, country.lng], {
+                    radius: radius,
+                    fillColor: color,
+                    color: 'rgba(255,255,255,0.3)',
+                    weight: 2,
+                    fillOpacity: 0.9
+                }).addTo(map);
+                
+                // Popup content
+                const popupContent = `
+                    <div class="popup-country">
+                        <img src="https://flagcdn.com/w80/${country.code.toLowerCase()}.png" alt="${country.name}" class="popup-flag">
+                        <span class="popup-name">${country.name}</span>
+                    </div>
+                    <div class="popup-count"><strong>${country.count}</strong> alumni</div>
+                    <a href="country.html?code=${country.code}" class="popup-link">
+                        View Details →
+                    </a>
+                `;
+                
+                marker.bindPopup(popupContent);
+                
+                // Hover effect
+                marker.on('mouseover', function() {
+                    this.setStyle({ fillOpacity: 1, weight: 3 });
+                });
+                marker.on('mouseout', function() {
+                    this.setStyle({ fillOpacity: 0.9, weight: 2 });
+                });
+            });
+        });
     </script>
 </body>
 </html>

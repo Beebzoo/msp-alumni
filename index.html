@@ -2493,7 +2493,7 @@
         
         topCountries.forEach(country => {
             const tile = document.createElement('a');
-            tile.href = `country.html?country=${encodeURIComponent(country.name)}`;
+            tile.href = `country.html?code=${country.code}`;
             tile.className = `country-tile ${country.code} ${country.size}`;
             tile.innerHTML = `
                 <div class="country-tile-inner">
@@ -2584,7 +2584,7 @@
                             <div class="popup-stat-label">Alumni Living Here</div>
                         </div>
                     </div>
-                    <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
+                    <a href="country.html?code=${country.code}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
                         Explore ${country.name} Ã¢â€ â€™
                     </a>
                 </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Considering MSP? | Where Will Science Take You?</title>
-    <meta name="description" content="See where MSP graduates go - from Oxford to ETH Zürich, from research labs to startups. Real outcomes from 1,330+ alumni.">
+    <meta name="description" content="See where MSP graduates go - from Oxford to ETH ZÃ¼rich, from research labs to startups. Real outcomes from 1,330+ alumni.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,11 +59,11 @@
         .header-nav .btn-cta:hover { background: linear-gradient(135deg, #ff5a1f 0%, var(--um-orange) 100%); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 78, 16, 0.35); color: white; }
         
         /* ============================================
-           FULL PAGE HERO - UNIQUE DESIGN
+           FULL PAGE HERO - COSMIC STARFIELD DESIGN
         ============================================ */
         .hero-fullpage {
             min-height: 100vh;
-            background: linear-gradient(165deg, #000810 0%, var(--um-dark-blue) 30%, #001530 60%, #001a35 100%);
+            background: linear-gradient(165deg, #000408 0%, #000a15 20%, #001020 40%, var(--um-dark-blue) 70%, #001530 100%);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -73,56 +73,585 @@
             padding: 100px 50px;
         }
         
-        /* Animated gradient mesh background */
+        /* Starfield Canvas */
+        #starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        /* Animated Nebula Clouds */
+        .hero-nebula {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .nebula-cloud {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0;
+            animation: nebulaGlow 12s ease-in-out infinite;
+        }
+        
+        .nebula-cloud.cloud-1 {
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(0,162,219,0.25) 0%, rgba(0,162,219,0.1) 40%, transparent 70%);
+            top: 10%; left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .nebula-cloud.cloud-2 {
+            width: 500px; height: 350px;
+            background: radial-gradient(ellipse, rgba(232,78,16,0.2) 0%, rgba(232,78,16,0.08) 40%, transparent 70%);
+            top: 40%; right: -5%;
+            animation-delay: 4s;
+        }
+        
+        .nebula-cloud.cloud-3 {
+            width: 400px; height: 300px;
+            background: radial-gradient(ellipse, rgba(138,43,226,0.15) 0%, rgba(138,43,226,0.05) 40%, transparent 70%);
+            bottom: 15%; left: 20%;
+            animation-delay: 8s;
+        }
+        
+        .nebula-cloud.cloud-4 {
+            width: 350px; height: 250px;
+            background: radial-gradient(ellipse, rgba(0,200,150,0.12) 0%, transparent 60%);
+            top: 60%; left: 50%;
+            animation-delay: 6s;
+        }
+        
+        @keyframes nebulaGlow {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(1) translate(0, 0);
+            }
+            25% { 
+                opacity: 0.7; 
+                transform: scale(1.1) translate(20px, -10px);
+            }
+            50% { 
+                opacity: 0.5; 
+                transform: scale(1.05) translate(-10px, 15px);
+            }
+            75% { 
+                opacity: 0.8; 
+                transform: scale(1.15) translate(5px, -5px);
+            }
+        }
+        
+        /* Cosmic dust particles (CSS-based for additional depth) */
+        .cosmic-dust {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.25), transparent),
+                radial-gradient(2px 2px at 160px 120px, rgba(0,162,219,0.4), transparent);
+            background-size: 200px 200px;
+            animation: dustDrift 60s linear infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes dustDrift {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(-200px) translateX(100px); }
+        }
+        
+        /* Animated gradient mesh background - enhanced */
         .hero-mesh {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
             background: 
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0,162,219,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(232,78,16,0.1) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 30% at 50% 80%, rgba(0,162,219,0.08) 0%, transparent 50%);
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0,162,219,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(232,78,16,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 50% 80%, rgba(0,162,219,0.06) 0%, transparent 50%);
             animation: meshMove 20s ease-in-out infinite;
         }
         
         @keyframes meshMove {
-            0%, 100% { transform: scale(1) translate(0, 0); }
-            25% { transform: scale(1.1) translate(2%, -2%); }
-            50% { transform: scale(1) translate(-1%, 1%); }
-            75% { transform: scale(1.05) translate(1%, 2%); }
+            0%, 100% { transform: scale(1) translate(0, 0); opacity: 1; }
+            25% { transform: scale(1.1) translate(2%, -2%); opacity: 0.8; }
+            50% { transform: scale(1) translate(-1%, 1%); opacity: 1; }
+            75% { transform: scale(1.05) translate(1%, 2%); opacity: 0.9; }
         }
         
-        /* Floating university logos in background */
+        /* Floating logos container (kept for compatibility but empty) */
         .floating-logos {
+            display: none;
+        }
+        
+        /* ============================================
+           REALISTIC PLANETS - PROMINENT & STUNNING
+        ============================================ */
+        .planets-container {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
             pointer-events: none;
             overflow: hidden;
         }
         
-        .floating-logo {
+        /* Large Gas Giant (Jupiter-like) - Top Right - MASSIVE */
+        .planet-giant {
             position: absolute;
-            width: 60px; height: 60px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            opacity: 0.4;
-            animation: float var(--duration) ease-in-out infinite;
+            top: -20%;
+            right: -12%;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: 
+                /* Storm bands - more prominent */
+                repeating-linear-gradient(
+                    178deg,
+                    rgba(255,180,120,0.15) 0px,
+                    rgba(220,160,100,0.2) 12px,
+                    rgba(200,140,90,0.12) 24px,
+                    rgba(240,200,160,0.18) 36px,
+                    rgba(180,120,70,0.1) 48px,
+                    rgba(255,190,140,0.15) 60px
+                ),
+                /* Base color gradient - richer */
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(255,220,180,0.6) 0%,
+                    rgba(230,180,130,0.5) 25%,
+                    rgba(200,150,100,0.5) 50%,
+                    rgba(150,100,60,0.6) 75%,
+                    rgba(80,50,30,0.8) 100%
+                );
+            box-shadow:
+                /* Deep inner shadow for 3D sphere effect */
+                inset -80px -40px 120px rgba(0,0,0,0.8),
+                inset 60px 30px 80px rgba(255,200,150,0.25),
+                /* Atmospheric glow */
+                0 0 100px rgba(255,180,120,0.25),
+                0 0 200px rgba(255,150,100,0.15),
+                0 0 400px rgba(255,120,80,0.08);
+            animation: planetFloat 40s ease-in-out infinite, planetBandsMove 200s linear infinite;
+            opacity: 0.85;
         }
         
-        .floating-logo img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; }
+        /* Great Red Spot - larger and more visible */
+        .planet-giant::before {
+            content: '';
+            position: absolute;
+            top: 42%;
+            left: 22%;
+            width: 90px;
+            height: 55px;
+            background: 
+                radial-gradient(ellipse, 
+                    rgba(220,80,50,0.5) 0%, 
+                    rgba(200,60,40,0.35) 40%,
+                    rgba(180,50,30,0.15) 70%,
+                    transparent 100%
+                );
+            border-radius: 50%;
+            transform: rotate(-15deg);
+            box-shadow: 0 0 30px rgba(200,80,50,0.3);
+        }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+        /* Atmospheric limb glow */
+        .planet-giant::after {
+            content: '';
+            position: absolute;
+            top: -3%; left: -3%;
+            width: 106%; height: 106%;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle at 25% 25%,
+                rgba(255,220,180,0.15) 0%,
+                transparent 40%
+            );
+            box-shadow: inset 0 0 100px rgba(255,200,150,0.1);
+        }
+        
+        @keyframes planetBandsMove {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: 500px 0, 0 0; }
+        }
+        
+        /* Ringed Planet (Saturn-like) - Bottom Left - LARGER */
+        .planet-ringed {
+            position: absolute;
+            bottom: -5%;
+            left: -8%;
+            width: 450px;
+            height: 450px;
+        }
+        
+        .planet-ringed-body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: 
+                /* Subtle polar regions */
+                radial-gradient(
+                    ellipse 100% 40% at 50% 10%,
+                    rgba(200,220,200,0.15) 0%,
+                    transparent 50%
+                ),
+                /* Subtle bands */
+                repeating-linear-gradient(
+                    175deg,
+                    rgba(240,220,190,0.12) 0px,
+                    rgba(220,200,170,0.08) 8px,
+                    rgba(200,180,150,0.12) 16px,
+                    rgba(230,210,180,0.1) 24px
+                ),
+                /* Base gradient - golden */
+                radial-gradient(
+                    circle at 35% 35%,
+                    rgba(255,245,220,0.7) 0%,
+                    rgba(240,220,180,0.6) 25%,
+                    rgba(220,190,140,0.6) 50%,
+                    rgba(180,150,100,0.7) 75%,
+                    rgba(100,70,40,0.9) 100%
+                );
+            box-shadow:
+                inset -40px -20px 70px rgba(0,0,0,0.7),
+                inset 25px 15px 40px rgba(255,240,200,0.2),
+                0 0 60px rgba(255,220,180,0.15),
+                0 0 120px rgba(255,200,150,0.08);
+            z-index: 2;
+        }
+        
+        /* Ring system - more detailed */
+        .planet-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(75deg);
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: transparent;
+            z-index: 1;
+        }
+        
+        .planet-ring::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(
+                    circle,
+                    transparent 23%,
+                    rgba(180,160,130,0.15) 24%,
+                    rgba(200,180,150,0.35) 26%,
+                    rgba(220,200,170,0.4) 28%,
+                    rgba(200,180,150,0.25) 31%,
+                    transparent 32%,
+                    rgba(180,160,130,0.2) 33%,
+                    rgba(200,180,150,0.45) 36%,
+                    rgba(220,200,170,0.5) 40%,
+                    rgba(200,180,150,0.35) 44%,
+                    rgba(180,160,130,0.2) 47%,
+                    transparent 48%,
+                    rgba(160,140,110,0.15) 49%,
+                    rgba(180,160,130,0.25) 52%,
+                    rgba(200,180,150,0.3) 56%,
+                    rgba(180,160,130,0.15) 60%,
+                    transparent 62%
+                );
+            box-shadow: 0 0 40px rgba(200,180,150,0.15);
+        }
+        
+        /* Ring shadow on planet */
+        .planet-ring::after {
+            content: '';
+            position: absolute;
+            top: 38%;
+            left: 30%;
+            width: 80px;
+            height: 12px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.25), rgba(0,0,0,0.15), transparent);
+            border-radius: 50%;
+            filter: blur(4px);
+            transform: rotate(-8deg);
+            z-index: 3;
+        }
+        
+        .planet-ringed-wrapper {
+            animation: planetFloat2 35s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        
+        /* Earth-like Planet - Center right area */
+        .planet-earth {
+            position: absolute;
+            top: 55%;
+            right: 5%;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: 
+                /* Cloud layers */
+                radial-gradient(
+                    ellipse 80% 40% at 30% 25%,
+                    rgba(255,255,255,0.3) 0%,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    ellipse 60% 30% at 70% 60%,
+                    rgba(255,255,255,0.25) 0%,
+                    transparent 40%
+                ),
+                /* Ocean and land */
+                radial-gradient(
+                    circle at 35% 35%,
+                    rgba(100,180,255,0.8) 0%,
+                    rgba(80,150,220,0.7) 20%,
+                    rgba(60,130,200,0.8) 40%,
+                    rgba(50,110,180,0.85) 60%,
+                    rgba(30,70,140,0.9) 80%,
+                    rgba(20,40,100,1) 100%
+                );
+            box-shadow:
+                inset -25px -15px 50px rgba(0,0,0,0.7),
+                inset 15px 10px 30px rgba(150,200,255,0.3),
+                /* Blue atmospheric glow */
+                0 0 40px rgba(100,180,255,0.3),
+                0 0 80px rgba(80,150,255,0.2),
+                0 0 120px rgba(60,120,255,0.1);
+            animation: planetFloat3 25s ease-in-out infinite, planetRotateSlow 100s linear infinite;
+            opacity: 0.9;
+        }
+        
+        /* Earth atmosphere rim */
+        .planet-earth::before {
+            content: '';
+            position: absolute;
+            top: -4%; left: -4%;
+            width: 108%; height: 108%;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 
+                inset -30px 0 40px rgba(100,180,255,0.2),
+                inset 0 0 20px rgba(100,180,255,0.1);
+        }
+        
+        /* Land masses suggestion */
+        .planet-earth::after {
+            content: '';
+            position: absolute;
+            top: 20%; left: 25%;
+            width: 50%; height: 35%;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(80,140,80,0.4) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 60%, rgba(90,150,90,0.35) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 80%, rgba(70,130,70,0.3) 0%, transparent 30%);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+        
+        @keyframes planetRotateSlow {
+            from { background-position: 0 0, 0 0, 0 0; }
+            to { background-position: 100px 0, 50px 0, 0 0; }
+        }
+        
+        /* Small Rocky Planet (Mars-like) - Upper area */
+        .planet-small {
+            position: absolute;
+            top: 18%;
+            left: 8%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: 
+                /* Surface features */
+                radial-gradient(
+                    circle at 55% 35%,
+                    rgba(60,35,25,0.35) 0%,
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 35% 55%,
+                    rgba(50,30,20,0.3) 0%,
+                    transparent 20%
+                ),
+                /* Polar ice cap hint */
+                radial-gradient(
+                    ellipse 60% 20% at 50% 5%,
+                    rgba(255,250,240,0.25) 0%,
+                    transparent 50%
+                ),
+                /* Base color - Mars red */
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(220,140,100,1) 0%,
+                    rgba(200,120,80,0.95) 30%,
+                    rgba(180,100,60,0.95) 55%,
+                    rgba(140,70,40,1) 75%,
+                    rgba(80,40,25,1) 100%
+                );
+            box-shadow:
+                inset -18px -10px 35px rgba(0,0,0,0.75),
+                inset 10px 8px 20px rgba(255,180,140,0.25),
+                0 0 40px rgba(220,120,80,0.2),
+                0 0 80px rgba(200,100,60,0.12);
+            animation: planetFloat4 30s ease-in-out infinite;
+            opacity: 0.85;
+        }
+        
+        /* Ice Planet - Far background, larger */
+        .planet-ice {
+            position: absolute;
+            top: 70%;
+            left: 25%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(
+                    circle at 35% 35%,
+                    rgba(220,240,255,1) 0%,
+                    rgba(180,210,245,0.95) 30%,
+                    rgba(140,180,230,0.95) 55%,
+                    rgba(100,140,200,1) 75%,
+                    rgba(60,90,150,1) 100%
+                );
+            box-shadow:
+                inset -10px -6px 20px rgba(0,0,0,0.5),
+                inset 6px 4px 12px rgba(220,240,255,0.4),
+                0 0 30px rgba(150,200,255,0.25),
+                0 0 60px rgba(120,170,255,0.15);
+            animation: planetFloat5 45s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        
+        /* Moon orbiting the gas giant */
+        .planet-moon {
+            position: absolute;
+            top: 15%;
+            right: 28%;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(
+                    circle at 35% 35%,
+                    rgba(220,220,215,1) 0%,
+                    rgba(180,180,175,0.95) 40%,
+                    rgba(140,140,135,1) 70%,
+                    rgba(80,80,75,1) 100%
+                );
+            box-shadow:
+                inset -8px -4px 15px rgba(0,0,0,0.7),
+                inset 4px 3px 8px rgba(255,255,250,0.3),
+                0 0 20px rgba(200,200,200,0.15);
+            animation: moonOrbit 60s linear infinite;
+            opacity: 0.8;
+        }
+        
+        @keyframes moonOrbit {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-30px, 20px); }
+            50% { transform: translate(0, 40px); }
+            75% { transform: translate(30px, 20px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        /* Planet floating animations - smoother */
+        @keyframes planetFloat {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-20px, 15px); }
+            66% { transform: translate(10px, -10px); }
+        }
+        
+        @keyframes planetFloat2 {
+            0%, 100% { transform: translate(0, 0) rotate(-8deg); }
+            50% { transform: translate(15px, -12px) rotate(-5deg); }
+        }
+        
+        @keyframes planetFloat3 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-8px, 12px); }
+            66% { transform: translate(12px, -5px); }
+        }
+        
+        @keyframes planetFloat4 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(8px, -10px); }
+        }
+        
+        @keyframes planetFloat5 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-5px, 8px); }
+            66% { transform: translate(5px, -5px); }
+        }
+        
+        /* Distant Galaxy/Nebula - more visible */
+        .distant-galaxy {
+            position: absolute;
+            top: 35%;
+            right: 35%;
+            width: 180px;
+            height: 80px;
+            background: 
+                radial-gradient(ellipse at center,
+                    rgba(180,140,220,0.2) 0%,
+                    rgba(150,110,200,0.15) 25%,
+                    rgba(120,90,180,0.08) 45%,
+                    transparent 65%
+                );
+            border-radius: 50%;
+            transform: rotate(35deg);
+            filter: blur(3px);
+            animation: galaxyPulse 20s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        
+        /* Second smaller galaxy */
+        .distant-galaxy-2 {
+            position: absolute;
+            bottom: 25%;
+            right: 15%;
+            width: 100px;
+            height: 45px;
+            background: 
+                radial-gradient(ellipse at center,
+                    rgba(255,200,150,0.15) 0%,
+                    rgba(255,180,130,0.1) 30%,
+                    transparent 60%
+                );
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            filter: blur(2px);
+            animation: galaxyPulse 25s ease-in-out infinite;
+            animation-delay: -10s;
+            opacity: 0.5;
+        }
+        
+        @keyframes galaxyPulse {
+            0%, 100% { opacity: 0.5; transform: rotate(35deg) scale(1); }
+            50% { opacity: 0.8; transform: rotate(35deg) scale(1.15); }
         }
         
         /* Main hero content */
         .hero-center {
             position: relative;
-            z-index: 2;
+            z-index: 10;
             text-align: center;
             max-width: 1000px;
         }
@@ -142,6 +671,7 @@
             letter-spacing: 2px;
             margin-bottom: 30px;
             animation: fadeInDown 0.8s ease;
+            backdrop-filter: blur(10px);
         }
         
         .hero-eyebrow-icon { width: 18px; height: 18px; }
@@ -159,6 +689,7 @@
             margin-bottom: 24px;
             letter-spacing: -0.03em;
             animation: fadeInUp 0.8s ease 0.2s both;
+            text-shadow: 0 0 60px rgba(0,162,219,0.3), 0 0 120px rgba(0,162,219,0.1);
         }
         
         .hero-title .highlight {
@@ -169,6 +700,7 @@
             background-clip: text;
             background-size: 200% auto;
             animation: gradientShift 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(232,78,16,0.4));
         }
         
         @keyframes gradientShift {
@@ -183,11 +715,12 @@
         
         .hero-subtitle {
             font-size: 22px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             max-width: 700px;
             margin: 0 auto 50px;
             line-height: 1.7;
             animation: fadeInUp 0.8s ease 0.4s both;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         
         /* Journey Stats - Horizontal Flow */
@@ -314,6 +847,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             animation: bounce 2s ease-in-out infinite;
+            z-index: 10;
         }
         
         .scroll-hint i { width: 24px; height: 24px; }
@@ -1066,16 +1600,51 @@
     
     <!-- FULL PAGE HERO -->
     <section class="hero-fullpage">
-        <div class="hero-mesh"></div>
+        <!-- Starfield Canvas -->
+        <canvas id="starfield"></canvas>
         
-        <div class="floating-logos">
-            <div class="floating-logo" style="top: 15%; left: 10%; --duration: 6s;"><img src="assets/logos/imperial-college-london.png" alt=""></div>
-            <div class="floating-logo" style="top: 25%; right: 15%; --duration: 8s;"><img src="assets/logos/eth-zurich.png" alt=""></div>
-            <div class="floating-logo" style="bottom: 30%; left: 8%; --duration: 7s;"><img src="assets/logos/cambridge.png" alt=""></div>
-            <div class="floating-logo" style="bottom: 20%; right: 10%; --duration: 9s;"><img src="assets/logos/oxford.png" alt=""></div>
-            <div class="floating-logo" style="top: 60%; left: 20%; --duration: 5s;"><img src="assets/logos/utrecht.png" alt=""></div>
-            <div class="floating-logo" style="top: 40%; right: 25%; --duration: 7.5s;"><img src="assets/logos/uva.png" alt=""></div>
+        <!-- Nebula Clouds -->
+        <div class="hero-nebula">
+            <div class="nebula-cloud cloud-1"></div>
+            <div class="nebula-cloud cloud-2"></div>
+            <div class="nebula-cloud cloud-3"></div>
+            <div class="nebula-cloud cloud-4"></div>
         </div>
+        
+        <!-- Realistic Planets -->
+        <div class="planets-container">
+            <!-- Large Gas Giant (Jupiter-like) -->
+            <div class="planet-giant"></div>
+            
+            <!-- Moon orbiting the giant -->
+            <div class="planet-moon"></div>
+            
+            <!-- Ringed Planet (Saturn-like) -->
+            <div class="planet-ringed-wrapper">
+                <div class="planet-ringed">
+                    <div class="planet-ring"></div>
+                    <div class="planet-ringed-body"></div>
+                </div>
+            </div>
+            
+            <!-- Earth-like Planet -->
+            <div class="planet-earth"></div>
+            
+            <!-- Small Rocky Planet (Mars-like) -->
+            <div class="planet-small"></div>
+            
+            <!-- Distant Ice Planet -->
+            <div class="planet-ice"></div>
+            
+            <!-- Distant Galaxies -->
+            <div class="distant-galaxy"></div>
+            <div class="distant-galaxy-2"></div>
+        </div>
+        
+        <!-- Cosmic Dust Overlay -->
+        <div class="cosmic-dust"></div>
+        
+        <div class="hero-mesh"></div>
         
         <div class="hero-center">
             <div class="hero-eyebrow">
@@ -1089,7 +1658,7 @@
             </h1>
             
             <p class="hero-subtitle">
-                This isn't marketing. This is data. See exactly where MSP graduates go — the universities, the cities, the careers. Real paths from real alumni.
+                This isn't marketing. This is data. See exactly where MSP graduates go â€” the universities, the cities, the careers. Real paths from real alumni.
             </p>
             
             <div class="journey-flow">
@@ -1386,7 +1955,7 @@
             </div>
             <div class="city-card">
                 <div class="city-rank">9</div>
-                <div class="city-name">Zürich</div>
+                <div class="city-name">ZÃ¼rich</div>
                 <div class="city-country"><img src="https://flagcdn.com/w20/ch.png" alt="CH"> Switzerland</div>
                 <div class="city-count">20</div>
                 <div class="city-label">alumni</div>
@@ -1411,14 +1980,14 @@
         
         <div class="growth-container">
             <div class="growth-stat">
-                <div class="growth-number">10×</div>
+                <div class="growth-number">10Ã—</div>
                 <div class="growth-label">Growth in 12 Years</div>
                 <div class="growth-years">
                     <div class="growth-year">
                         <div class="growth-year-num">25</div>
                         <div class="growth-year-label">2014</div>
                     </div>
-                    <span class="growth-arrow-icon">→</span>
+                    <span class="growth-arrow-icon">â†’</span>
                     <div class="growth-year">
                         <div class="growth-year-num">247</div>
                         <div class="growth-year-label">2025</div>
@@ -1479,7 +2048,7 @@
     
     <footer>
         <div class="footer-text">
-            © 2025 MSP Alumni Network · <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> · <a href="privacy.html">Privacy Policy</a>
+            Â© 2025 MSP Alumni Network Â· <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> Â· <a href="privacy.html">Privacy Policy</a>
         </div>
     </footer>
     
@@ -1491,6 +2060,390 @@
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 100);
         });
+        
+        // ============================================
+        // STARFIELD ANIMATION - Canvas-based
+        // ============================================
+        (function() {
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            
+            // Configuration
+            const config = {
+                starCount: 400,
+                starLayers: 3,
+                shootingStarInterval: 4000,
+                mouseInfluence: 0.02,
+                twinkleSpeed: 0.03
+            };
+            
+            let width, height;
+            let stars = [];
+            let shootingStars = [];
+            let mouseX = 0, mouseY = 0;
+            let animationId;
+            
+            // Resize handler
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                initStars();
+            }
+            
+            // Star class
+            class Star {
+                constructor(layer) {
+                    this.layer = layer;
+                    this.reset();
+                }
+                
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    
+                    // Size based on layer (parallax depth)
+                    const layerMultiplier = (this.layer + 1) / config.starLayers;
+                    this.size = Math.random() * 2 * layerMultiplier + 0.5;
+                    
+                    // Speed based on layer
+                    this.speed = layerMultiplier * 0.5;
+                    
+                    // Twinkle properties
+                    this.twinkleOffset = Math.random() * Math.PI * 2;
+                    this.twinkleSpeed = Math.random() * config.twinkleSpeed + 0.01;
+                    this.baseOpacity = Math.random() * 0.5 + 0.3;
+                    
+                    // Color variation
+                    const colorRand = Math.random();
+                    if (colorRand < 0.1) {
+                        this.color = { r: 0, g: 162, b: 219 }; // Blue (UM color)
+                    } else if (colorRand < 0.15) {
+                        this.color = { r: 232, g: 78, b: 16 }; // Orange (UM color)
+                    } else if (colorRand < 0.2) {
+                        this.color = { r: 255, g: 200, b: 150 }; // Warm white
+                    } else if (colorRand < 0.25) {
+                        this.color = { r: 200, g: 200, b: 255 }; // Cool white
+                    } else {
+                        this.color = { r: 255, g: 255, b: 255 }; // White
+                    }
+                }
+                
+                update(time) {
+                    // Parallax mouse movement
+                    const dx = (mouseX - width / 2) * config.mouseInfluence * this.speed;
+                    const dy = (mouseY - height / 2) * config.mouseInfluence * this.speed;
+                    this.x = this.baseX - dx;
+                    this.y = this.baseY - dy;
+                    
+                    // Twinkle
+                    this.opacity = this.baseOpacity + Math.sin(time * this.twinkleSpeed + this.twinkleOffset) * 0.3;
+                    this.opacity = Math.max(0.1, Math.min(1, this.opacity));
+                    
+                    // Wrap around screen
+                    if (this.x < -10) this.x = width + 10;
+                    if (this.x > width + 10) this.x = -10;
+                    if (this.y < -10) this.y = height + 10;
+                    if (this.y > height + 10) this.y = -10;
+                }
+                
+                draw() {
+                    const { r, g, b } = this.color;
+                    
+                    // Glow effect for larger stars
+                    if (this.size > 1.5) {
+                        const gradient = ctx.createRadialGradient(
+                            this.x, this.y, 0,
+                            this.x, this.y, this.size * 3
+                        );
+                        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.8})`);
+                        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.2})`);
+                        gradient.addColorStop(1, 'transparent');
+                        
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    
+                    // Star core
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            // Shooting Star class - Realistic meteor with comet tail
+            class ShootingStar {
+                constructor() {
+                    this.reset();
+                }
+                
+                reset() {
+                    // Start position - from top/right area
+                    const startSide = Math.random();
+                    if (startSide < 0.7) {
+                        // Start from top
+                        this.x = Math.random() * width * 0.8 + width * 0.2;
+                        this.y = -20;
+                    } else {
+                        // Start from right
+                        this.x = width + 20;
+                        this.y = Math.random() * height * 0.4;
+                    }
+                    
+                    // Direction - always moving down-left at realistic angle
+                    this.angle = Math.PI * 0.6 + (Math.random() - 0.5) * 0.4; // ~108-144 degrees
+                    
+                    // Speed - fast like real meteors
+                    this.baseSpeed = Math.random() * 25 + 20;
+                    this.speed = this.baseSpeed;
+                    
+                    // Appearance
+                    this.tailLength = Math.random() * 150 + 100; // Long tail
+                    this.headSize = Math.random() * 2.5 + 2;
+                    this.brightness = Math.random() * 0.4 + 0.6;
+                    
+                    // Color - slight blue/white variation
+                    const colorVar = Math.random();
+                    if (colorVar < 0.3) {
+                        this.color = { r: 220, g: 240, b: 255 }; // Blue-white
+                    } else if (colorVar < 0.5) {
+                        this.color = { r: 255, g: 250, b: 230 }; // Warm white
+                    } else {
+                        this.color = { r: 255, g: 255, b: 255 }; // Pure white
+                    }
+                    
+                    // Life cycle
+                    this.life = 0;
+                    this.maxLife = 80 + Math.random() * 40;
+                    this.active = true;
+                    this.fadeStart = this.maxLife * 0.6;
+                    
+                    // Trail history for smooth rendering
+                    this.positions = [];
+                    this.maxPositions = 50;
+                    
+                    // Sparkle particles
+                    this.sparkles = [];
+                }
+                
+                update() {
+                    if (!this.active) return;
+                    
+                    this.life++;
+                    
+                    // Store current position
+                    this.positions.unshift({ x: this.x, y: this.y });
+                    if (this.positions.length > this.maxPositions) {
+                        this.positions.pop();
+                    }
+                    
+                    // Move with slight acceleration (gravity effect)
+                    this.speed = this.baseSpeed + (this.life * 0.1);
+                    this.x += Math.cos(this.angle) * this.speed;
+                    this.y += Math.sin(this.angle) * this.speed;
+                    
+                    // Occasionally spawn sparkle
+                    if (Math.random() < 0.4 && this.life < this.fadeStart) {
+                        this.sparkles.push({
+                            x: this.x + (Math.random() - 0.5) * 10,
+                            y: this.y + (Math.random() - 0.5) * 10,
+                            vx: (Math.random() - 0.5) * 2,
+                            vy: (Math.random() - 0.5) * 2 + 1,
+                            life: 0,
+                            maxLife: 15 + Math.random() * 10,
+                            size: Math.random() * 1.5 + 0.5
+                        });
+                    }
+                    
+                    // Update sparkles
+                    this.sparkles = this.sparkles.filter(s => {
+                        s.x += s.vx;
+                        s.y += s.vy;
+                        s.vy += 0.1; // gravity
+                        s.life++;
+                        return s.life < s.maxLife;
+                    });
+                    
+                    // Calculate opacity based on life
+                    if (this.life > this.fadeStart) {
+                        this.brightness = 0.6 * (1 - (this.life - this.fadeStart) / (this.maxLife - this.fadeStart));
+                    }
+                    
+                    // Deactivate when done
+                    if (this.life >= this.maxLife || 
+                        this.x < -100 || this.x > width + 100 ||
+                        this.y > height + 100) {
+                        this.active = false;
+                    }
+                }
+                
+                draw() {
+                    if (!this.active || this.positions.length < 2) return;
+                    
+                    const { r, g, b } = this.color;
+                    
+                    // Draw tail as smooth gradient line
+                    if (this.positions.length > 1) {
+                        ctx.save();
+                        ctx.lineCap = 'round';
+                        ctx.lineJoin = 'round';
+                        
+                        // Draw multiple layers for glow effect
+                        for (let layer = 3; layer >= 0; layer--) {
+                            const layerWidth = this.headSize * (layer + 1) * 0.8;
+                            const layerOpacity = this.brightness * (0.15 / (layer + 1));
+                            
+                            ctx.beginPath();
+                            ctx.moveTo(this.positions[0].x, this.positions[0].y);
+                            
+                            for (let i = 1; i < this.positions.length; i++) {
+                                const progress = i / this.positions.length;
+                                const pos = this.positions[i];
+                                ctx.lineTo(pos.x, pos.y);
+                            }
+                            
+                            // Create gradient along path
+                            const gradient = ctx.createLinearGradient(
+                                this.positions[0].x, this.positions[0].y,
+                                this.positions[this.positions.length - 1].x, 
+                                this.positions[this.positions.length - 1].y
+                            );
+                            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${layerOpacity})`);
+                            gradient.addColorStop(0.3, `rgba(${r}, ${g}, ${b}, ${layerOpacity * 0.5})`);
+                            gradient.addColorStop(1, 'transparent');
+                            
+                            ctx.strokeStyle = gradient;
+                            ctx.lineWidth = layerWidth;
+                            ctx.stroke();
+                        }
+                        
+                        // Draw core tail (brighter, thinner)
+                        ctx.beginPath();
+                        ctx.moveTo(this.positions[0].x, this.positions[0].y);
+                        for (let i = 1; i < Math.min(this.positions.length, 30); i++) {
+                            ctx.lineTo(this.positions[i].x, this.positions[i].y);
+                        }
+                        
+                        const coreGradient = ctx.createLinearGradient(
+                            this.positions[0].x, this.positions[0].y,
+                            this.positions[Math.min(29, this.positions.length - 1)].x,
+                            this.positions[Math.min(29, this.positions.length - 1)].y
+                        );
+                        coreGradient.addColorStop(0, `rgba(255, 255, 255, ${this.brightness})`);
+                        coreGradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${this.brightness * 0.4})`);
+                        coreGradient.addColorStop(1, 'transparent');
+                        
+                        ctx.strokeStyle = coreGradient;
+                        ctx.lineWidth = this.headSize * 0.6;
+                        ctx.stroke();
+                        
+                        ctx.restore();
+                    }
+                    
+                    // Draw head with bright glow
+                    const headX = this.positions[0].x;
+                    const headY = this.positions[0].y;
+                    
+                    // Outer glow
+                    const glowGradient = ctx.createRadialGradient(
+                        headX, headY, 0,
+                        headX, headY, this.headSize * 8
+                    );
+                    glowGradient.addColorStop(0, `rgba(255, 255, 255, ${this.brightness * 0.8})`);
+                    glowGradient.addColorStop(0.1, `rgba(${r}, ${g}, ${b}, ${this.brightness * 0.5})`);
+                    glowGradient.addColorStop(0.4, `rgba(${r * 0.5}, ${g * 0.5}, ${b}, ${this.brightness * 0.15})`);
+                    glowGradient.addColorStop(1, 'transparent');
+                    
+                    ctx.fillStyle = glowGradient;
+                    ctx.beginPath();
+                    ctx.arc(headX, headY, this.headSize * 8, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Bright core
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+                    ctx.beginPath();
+                    ctx.arc(headX, headY, this.headSize, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Draw sparkles
+                    this.sparkles.forEach(s => {
+                        const sparkleOpacity = (1 - s.life / s.maxLife) * this.brightness * 0.8;
+                        ctx.fillStyle = `rgba(255, 255, 255, ${sparkleOpacity})`;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.size * (1 - s.life / s.maxLife), 0, Math.PI * 2);
+                        ctx.fill();
+                    });
+                }
+            }
+            
+            // Initialize stars
+            function initStars() {
+                stars = [];
+                const starsPerLayer = Math.floor(config.starCount / config.starLayers);
+                
+                for (let layer = 0; layer < config.starLayers; layer++) {
+                    for (let i = 0; i < starsPerLayer; i++) {
+                        stars.push(new Star(layer));
+                    }
+                }
+            }
+            
+            // Create shooting star periodically
+            function createShootingStar() {
+                if (shootingStars.filter(s => s.active).length < 2) {
+                    shootingStars.push(new ShootingStar());
+                }
+            }
+            
+            // Animation loop
+            let time = 0;
+            function animate() {
+                time++;
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, width, height);
+                
+                // Update and draw stars
+                stars.forEach(star => {
+                    star.update(time);
+                    star.draw();
+                });
+                
+                // Update and draw shooting stars
+                shootingStars.forEach(ss => {
+                    ss.update();
+                    ss.draw();
+                });
+                
+                // Clean up inactive shooting stars
+                shootingStars = shootingStars.filter(s => s.active);
+                
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Mouse tracking
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Initialize
+            resize();
+            window.addEventListener('resize', resize);
+            
+            // Start animation
+            animate();
+            
+            // Periodic shooting stars
+            setInterval(createShootingStar, config.shootingStarInterval);
+            
+            // Create initial shooting star after a delay
+            setTimeout(createShootingStar, 1000);
+        })();
         
         // Growth Chart
         const growthData = [
@@ -1534,7 +2487,7 @@
         // Universities
         const eliteUnis = [
             {name: 'Imperial College', code: 'gb', count: 19, logo: 'imperial-college-london.png'},
-            {name: 'ETH Zürich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
+            {name: 'ETH ZÃ¼rich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
             {name: 'Cambridge', code: 'gb', count: 8, logo: 'cambridge.png'},
             {name: 'Oxford', code: 'gb', count: 7, logo: 'oxford.png'},
             {name: 'UCL', code: 'gb', count: 14, logo: 'ucl.png'},

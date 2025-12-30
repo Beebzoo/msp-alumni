@@ -282,76 +282,92 @@
             opacity: 0.6;
         }
         
-        /* Floating DNA Helix - Right Side */
-        .dna-container {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px;
-            height: 600px;
-            pointer-events: none;
-            opacity: 0.15;
-            z-index: 0;
-        }
-        
-        /* Floating DNA Helix - Left Side (more visible) */
+        /* DNA Helix Containers - Left Side (prominent, static) */
         .dna-container-left {
             position: absolute;
-            left: 2%;
+            left: 0%;
             top: 50%;
             transform: translateY(-50%);
-            width: 250px;
-            height: 550px;
+            width: 200px;
+            height: 650px;
             pointer-events: none;
-            opacity: 0.35;
-            z-index: 0;
+            opacity: 0.6;
+            z-index: 1;
         }
         
         .dna-container-left-2 {
             position: absolute;
-            left: 8%;
-            top: 30%;
+            left: 6%;
+            top: 35%;
             transform: translateY(-50%);
             width: 180px;
-            height: 400px;
+            height: 500px;
+            pointer-events: none;
+            opacity: 0.45;
+            z-index: 1;
+        }
+        
+        .dna-container-left-3 {
+            position: absolute;
+            left: 12%;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 450px;
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 1;
+        }
+        
+        .dna-container-left-4 {
+            position: absolute;
+            left: 3%;
+            top: 75%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 350px;
             pointer-events: none;
             opacity: 0.25;
-            z-index: 0;
+            z-index: 1;
         }
         
         .dna-strand {
             position: absolute;
             width: 100%;
             height: 100%;
-            animation: dnaRotate 20s linear infinite;
         }
         
         .dna-dot {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             background: var(--um-light-blue);
             border-radius: 50%;
-            box-shadow: 0 0 20px var(--um-light-blue);
+            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.4);
+            animation: dotPulse 3s ease-in-out infinite;
         }
         
         .dna-dot.orange {
             background: var(--um-orange);
-            box-shadow: 0 0 20px var(--um-orange);
+            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.4);
         }
         
         .dna-line {
             position: absolute;
             height: 2px;
             background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
-            opacity: 0.5;
+            opacity: 0.6;
+            box-shadow: 0 0 8px rgba(0, 162, 219, 0.3);
         }
         
-        @keyframes dnaRotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
+        
+        .dna-dot:nth-child(odd) { animation-delay: -0.5s; }
+        .dna-dot:nth-child(3n) { animation-delay: -1s; }
+        .dna-dot:nth-child(5n) { animation-delay: -1.5s; }
         
         /* Glowing orbs */
         .hero-orb {
@@ -1963,12 +1979,10 @@
                 margin: 0 auto;
             }
             
-            .dna-container {
-                display: none;
-            }
-            
             .dna-container-left,
-            .dna-container-left-2 {
+            .dna-container-left-2,
+            .dna-container-left-3,
+            .dna-container-left-4 {
                 display: none;
             }
             
@@ -2198,12 +2212,11 @@
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
         
-        <!-- DNA Helix Visual - Right -->
-        <div class="dna-container" id="dnaContainer"></div>
-        
-        <!-- DNA Helix Visual - Left (more visible) -->
+        <!-- DNA Helix Visuals - Left Side (multiple strands) -->
         <div class="dna-container-left" id="dnaContainerLeft"></div>
         <div class="dna-container-left-2" id="dnaContainerLeft2"></div>
+        <div class="dna-container-left-3" id="dnaContainerLeft3"></div>
+        <div class="dna-container-left-4" id="dnaContainerLeft4"></div>
         
         <!-- Flag Cascade -->
         <div class="flag-cascade">
@@ -2538,7 +2551,7 @@
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="/cdn-cgi/l/email-protection#ea87999ac78b869f878483aa878b8b999e988389829e9f84839c8f9899839e93c48486">Help keep the map accurate →'</a>
+                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate →'</a>
             </div>
         </div>
     </footer>
@@ -2636,47 +2649,6 @@
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
-        
-        // ==========================================
-        // DNA HELIX GENERATOR
-        // ==========================================
-        function createDNAHelix() {
-            const container = document.getElementById('dnaContainer');
-            const height = 600;
-            const points = 22;
-            
-            for (let i = 0; i < points; i++) {
-                const y = (i / points) * height;
-                const angle = (i / points) * Math.PI * 4;
-                
-                // Left strand dot
-                const leftDot = document.createElement('div');
-                leftDot.className = 'dna-dot';
-                leftDot.style.left = `${150 + Math.sin(angle) * 80}px`;
-                leftDot.style.top = `${y}px`;
-                container.appendChild(leftDot);
-                
-                // Right strand dot
-                const rightDot = document.createElement('div');
-                rightDot.className = 'dna-dot orange';
-                rightDot.style.left = `${150 - Math.sin(angle) * 80}px`;
-                rightDot.style.top = `${y}px`;
-                container.appendChild(rightDot);
-                
-                // Connection line
-                if (i % 2 === 0) {
-                    const line = document.createElement('div');
-                    line.className = 'dna-line';
-                    const leftX = 150 + Math.sin(angle) * 80;
-                    const rightX = 150 - Math.sin(angle) * 80;
-                    line.style.left = `${Math.min(leftX, rightX)}px`;
-                    line.style.top = `${y + 3}px`;
-                    line.style.width = `${Math.abs(leftX - rightX)}px`;
-                    container.appendChild(line);
-                }
-            }
-        }
-        createDNAHelix();
         
         // ==========================================
         // POPULATE FROM DATA.JS
@@ -2985,10 +2957,10 @@
         heroObserver.observe(document.querySelector('.hero'));
         
         // ==========================================
-        // DNA HELIX GENERATION (Left Side - More Visible)
+        // DNA HELIX GENERATION (Left Side - Static, Prominent)
         // ==========================================
-        function createDNAHelix(container, dotCount, height) {
-            const containerEl = document.getElementById(container);
+        function createDNAHelix(containerId, dotCount, height, dotSize = 10) {
+            const containerEl = document.getElementById(containerId);
             if (!containerEl) return;
             
             const strand = document.createElement('div');
@@ -2997,30 +2969,42 @@
             for (let i = 0; i < dotCount; i++) {
                 const progress = i / dotCount;
                 const y = progress * height;
-                const angle = progress * Math.PI * 6;
-                const x1 = 50 + Math.sin(angle) * 40;
-                const x2 = 50 - Math.sin(angle) * 40;
+                const angle = progress * Math.PI * 5; // 2.5 full waves
+                const x1 = 50 + Math.sin(angle) * 35;
+                const x2 = 50 - Math.sin(angle) * 35;
                 
-                // Left dot
+                // Left dot (blue)
                 const dot1 = document.createElement('div');
                 dot1.className = 'dna-dot';
-                dot1.style.cssText = `left: ${x1}%; top: ${y}px; animation-delay: ${-progress * 2}s;`;
+                dot1.style.cssText = `
+                    left: ${x1}%; 
+                    top: ${y}px; 
+                    width: ${dotSize}px; 
+                    height: ${dotSize}px;
+                    animation-delay: ${-progress * 3}s;
+                `;
                 strand.appendChild(dot1);
                 
-                // Right dot
+                // Right dot (orange)
                 const dot2 = document.createElement('div');
                 dot2.className = 'dna-dot orange';
-                dot2.style.cssText = `left: ${x2}%; top: ${y}px; animation-delay: ${-progress * 2}s;`;
+                dot2.style.cssText = `
+                    left: ${x2}%; 
+                    top: ${y}px; 
+                    width: ${dotSize}px; 
+                    height: ${dotSize}px;
+                    animation-delay: ${-progress * 3 - 0.5}s;
+                `;
                 strand.appendChild(dot2);
                 
-                // Connecting line
-                if (i % 3 === 0) {
+                // Connecting line every 2nd point
+                if (i % 2 === 0) {
                     const line = document.createElement('div');
                     line.className = 'dna-line';
                     const lineWidth = Math.abs(x1 - x2);
                     line.style.cssText = `
                         left: ${Math.min(x1, x2)}%;
-                        top: ${y}px;
+                        top: ${y + dotSize/2 - 1}px;
                         width: ${lineWidth}%;
                     `;
                     strand.appendChild(line);
@@ -3030,10 +3014,11 @@
             containerEl.appendChild(strand);
         }
         
-        // Create DNA helixes
-        createDNAHelix('dnaContainer', 25, 600);
-        createDNAHelix('dnaContainerLeft', 22, 550);
-        createDNAHelix('dnaContainerLeft2', 18, 400);
+        // Create all DNA helixes on the left side
+        createDNAHelix('dnaContainerLeft', 28, 650, 12);
+        createDNAHelix('dnaContainerLeft2', 22, 500, 10);
+        createDNAHelix('dnaContainerLeft3', 18, 450, 9);
+        createDNAHelix('dnaContainerLeft4', 14, 350, 8);
         
         // ==========================================
         // HEADER SCROLL EFFECT

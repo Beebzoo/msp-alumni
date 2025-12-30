@@ -97,22 +97,107 @@
         /* Custom markers */
         .custom-marker { background: none; border: none; }
         .marker-maastricht { width: 20px; height: 20px; background: var(--um-orange); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 20px var(--um-orange), 0 0 40px rgba(232,78,16,0.5); animation: pulseMarker 2s ease-in-out infinite; }
-        .marker-destination { width: 12px; height: 12px; background: var(--um-light-blue); border-radius: 50%; border: 2px solid white; box-shadow: 0 0 10px var(--um-light-blue); transition: all 0.3s; }
+        .marker-destination { width: 12px; height: 12px; background: var(--um-light-blue); border-radius: 50%; border: 2px solid white; box-shadow: 0 0 10px var(--um-light-blue); transition: all 0.3s; cursor: pointer; }
         .marker-destination:hover { transform: scale(1.3); background: var(--um-orange); box-shadow: 0 0 20px var(--um-orange); }
         @keyframes pulseMarker { 0%, 100% { box-shadow: 0 0 20px var(--um-orange), 0 0 40px rgba(232,78,16,0.5); } 50% { box-shadow: 0 0 30px var(--um-orange), 0 0 60px rgba(232,78,16,0.7); } }
         
-        /* Custom popup */
-        .leaflet-popup-content-wrapper { background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
-        .leaflet-popup-content { margin: 0; padding: 0; }
-        .leaflet-popup-tip { background: white; }
-        .popup-content { padding: 16px; min-width: 200px; }
-        .popup-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .popup-flag { width: 40px; height: 28px; border-radius: 4px; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-        .popup-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--um-dark-blue); }
-        .popup-stats { display: flex; gap: 16px; }
-        .popup-stat { font-size: 13px; color: var(--um-gray-600); }
-        .popup-stat strong { color: var(--um-orange); font-weight: 700; }
-        .popup-unis { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--um-gray-200); font-size: 12px; color: var(--um-gray-500); }
+        /* Custom popup - Flag background style */
+        .leaflet-popup-content-wrapper { 
+            background: transparent !important; 
+            border-radius: 16px !important; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important;
+            padding: 0 !important;
+            overflow: hidden;
+        }
+        .leaflet-popup-content { margin: 0 !important; padding: 0 !important; }
+        .leaflet-popup-tip-container { display: none; }
+        
+        .popup-card {
+            width: 220px;
+            height: 140px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .popup-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+        }
+        .popup-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        .popup-flag-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .popup-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            color: white;
+        }
+        .popup-city {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 2px;
+        }
+        .popup-country {
+            font-size: 13px;
+            opacity: 0.9;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+            margin-bottom: 8px;
+        }
+        .popup-stats {
+            display: flex;
+            gap: 12px;
+        }
+        .popup-stat {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .popup-stat strong {
+            color: var(--um-orange);
+        }
+        .popup-cta {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--um-orange);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(232,78,16,0.4);
+            z-index: 3;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .popup-card:hover .popup-cta {
+            transform: scale(1.1);
+            background: #ff5a1f;
+        }
         
         .map-legend { position: absolute; bottom: 20px; left: 20px; background: rgba(0,28,61,0.9); backdrop-filter: blur(10px); padding: 16px 20px; border-radius: 12px; z-index: 1000; border: 1px solid rgba(255,255,255,0.1); }
         .legend-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
@@ -121,9 +206,6 @@
         .legend-dot.origin { background: var(--um-orange); box-shadow: 0 0 8px var(--um-orange); }
         .legend-dot.destination { background: var(--um-light-blue); }
         .legend-line { width: 24px; height: 2px; background: var(--um-orange); opacity: 0.6; }
-        
-        .map-instruction { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); color: rgba(255,255,255,0.8); padding: 10px 20px; border-radius: 100px; font-size: 13px; display: flex; align-items: center; gap: 8px; z-index: 1000; }
-        .map-instruction i { width: 16px; height: 16px; }
         
         .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.5); font-size: 12px; animation: bounce 2s ease-in-out infinite; cursor: pointer; z-index: 10; }
         .scroll-indicator i { width: 20px; height: 20px; }
@@ -601,10 +683,10 @@
                 iconAnchor: [10, 10]
             });
             
-            // Add Maastricht marker
-            const maastrichtMarker = L.marker(MAASTRICHT, { icon: maastrichtIcon })
+            // Add Maastricht marker (special - no link)
+            L.marker(MAASTRICHT, { icon: maastrichtIcon })
                 .addTo(map)
-                .bindPopup(createPopup('Maastricht', 'Netherlands', 'nl', 1330, ['MSP Origin - All alumni start here']));
+                .bindPopup(createPopup('Maastricht', 'Netherlands', 'nl', 1330, ['MSP Origin'], false));
             
             // Add destination markers and flight paths
             DESTINATIONS.forEach(dest => {
@@ -616,10 +698,10 @@
                     iconAnchor: [6, 6]
                 });
                 
-                // Add marker
+                // Add marker with clickable popup
                 L.marker([dest.lat, dest.lng], { icon: destIcon })
                     .addTo(map)
-                    .bindPopup(createPopup(dest.name, dest.country, dest.code, dest.alumni, dest.unis));
+                    .bindPopup(createPopup(dest.name, dest.country, dest.code, dest.alumni, dest.unis, true));
                 
                 // Draw curved flight path from Maastricht
                 const latlngs = getCurvedPath(MAASTRICHT, [dest.lat, dest.lng]);
@@ -633,18 +715,23 @@
             });
         }
         
-        // Create popup content
-        function createPopup(name, country, code, alumni, unis) {
+        // Create popup content with flag background
+        function createPopup(name, country, code, alumni, unis, clickable = true) {
+            const countryData = COUNTRIES.find(c => c.code === code);
+            const uniCount = countryData ? countryData.universities : unis.length;
+            
             return `
-                <div class="popup-content">
-                    <div class="popup-header">
-                        <img class="popup-flag" src="https://flagcdn.com/w80/${code}.png" alt="${country}">
-                        <div class="popup-title">${name}</div>
+                <div class="popup-card" ${clickable ? `onclick="window.location.href='country.html?code=${code}'"` : ''}>
+                    <img class="popup-flag-bg" src="https://flagcdn.com/w640/${code}.png" alt="${country}">
+                    <div class="popup-content">
+                        <div class="popup-city">${name}</div>
+                        <div class="popup-country">${country}</div>
+                        <div class="popup-stats">
+                            <div class="popup-stat"><strong>${alumni}</strong> alumni</div>
+                            <div class="popup-stat"><strong>${uniCount}</strong> unis</div>
+                        </div>
                     </div>
-                    <div class="popup-stats">
-                        <div class="popup-stat"><strong>${alumni}</strong> alumni</div>
-                    </div>
-                    <div class="popup-unis">${unis.join(' • ')}</div>
+                    ${clickable ? '<div class="popup-cta">→</div>' : ''}
                 </div>
             `;
         }
@@ -704,6 +791,7 @@
                 const card = document.createElement('div');
                 card.className = 'country-card' + (country.top ? ' top' : '');
                 card.innerHTML = '<img class="country-flag" src="https://flagcdn.com/w80/' + country.code + '.png" alt="' + country.name + '"><h4>' + country.name + '</h4><p><strong>' + country.alumni + '</strong> alumni</p>';
+                card.onclick = () => window.location.href = 'country.html?code=' + country.code;
                 grid.appendChild(card);
             });
         }

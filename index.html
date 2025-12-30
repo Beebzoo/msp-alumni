@@ -282,89 +282,87 @@
             opacity: 0.6;
         }
         
-        /* Flowing Particle Lines - Left Side */
-        .particle-lines-container {
+        /* Flowing Connected Strands - Left Side */
+        .particle-strands-container {
             position: absolute;
             left: 0;
             top: 0;
-            width: 35%;
+            width: 40%;
             height: 100%;
             pointer-events: none;
             overflow: hidden;
             z-index: 1;
         }
         
-        .particle-line {
+        /* Each strand is a group of connected dots */
+        .flow-strand {
+            position: absolute;
+            opacity: 0;
+            animation: flowStrand var(--duration, 12s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+        
+        @keyframes flowStrand {
+            0% { 
+                opacity: 0;
+                transform: translateX(-150px) translateY(var(--drift-start, 0px));
+            }
+            8% { opacity: 0.8; }
+            92% { opacity: 0.8; }
+            100% { 
+                opacity: 0;
+                transform: translateX(calc(100vw * 0.5)) translateY(var(--drift-end, 20px));
+            }
+        }
+        
+        /* Individual dots in strand */
+        .strand-dot {
+            position: absolute;
+            width: var(--dot-size, 8px);
+            height: var(--dot-size, 8px);
+            border-radius: 50%;
+            background: var(--um-light-blue);
+            box-shadow: 0 0 12px var(--um-light-blue), 0 0 25px rgba(0, 162, 219, 0.5);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+        
+        .strand-dot.orange {
+            background: var(--um-orange);
+            box-shadow: 0 0 12px var(--um-orange), 0 0 25px rgba(232, 78, 16, 0.5);
+        }
+        
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        /* Connecting lines between dots */
+        .strand-line {
             position: absolute;
             height: 2px;
-            background: linear-gradient(90deg, transparent 0%, var(--um-light-blue) 20%, var(--um-light-blue) 80%, transparent 100%);
-            opacity: 0;
-            animation: flowLine 8s ease-in-out infinite;
+            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
+            opacity: 0.5;
+            transform-origin: left center;
+            box-shadow: 0 0 8px rgba(0, 162, 219, 0.4);
         }
         
-        .particle-line::before,
-        .particle-line::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+        /* Strand positioning - 8 flowing strands */
+        .flow-strand:nth-child(1) { top: 10%; --duration: 14s; --delay: 0s; --drift-start: 0px; --drift-end: 30px; }
+        .flow-strand:nth-child(2) { top: 20%; --duration: 11s; --delay: -2s; --drift-start: 10px; --drift-end: -20px; }
+        .flow-strand:nth-child(3) { top: 30%; --duration: 16s; --delay: -4s; --drift-start: -15px; --drift-end: 25px; }
+        .flow-strand:nth-child(4) { top: 42%; --duration: 13s; --delay: -6s; --drift-start: 5px; --drift-end: -15px; }
+        .flow-strand:nth-child(5) { top: 55%; --duration: 15s; --delay: -8s; --drift-start: -10px; --drift-end: 35px; }
+        .flow-strand:nth-child(6) { top: 65%; --duration: 12s; --delay: -3s; --drift-start: 20px; --drift-end: -10px; }
+        .flow-strand:nth-child(7) { top: 78%; --duration: 14s; --delay: -5s; --drift-start: -5px; --drift-end: 20px; }
+        .flow-strand:nth-child(8) { top: 88%; --duration: 10s; --delay: -7s; --drift-start: 15px; --drift-end: -25px; }
         
-        .particle-line::before {
-            left: 0;
-            background: var(--um-light-blue);
-            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.5);
-        }
-        
-        .particle-line::after {
-            right: 0;
-            background: var(--um-orange);
-            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.5);
-        }
-        
-        .particle-line.orange {
-            background: linear-gradient(90deg, transparent 0%, var(--um-orange) 20%, var(--um-orange) 80%, transparent 100%);
-        }
-        
-        .particle-line.orange::before {
-            background: var(--um-orange);
-            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.5);
-        }
-        
-        .particle-line.orange::after {
-            background: var(--um-light-blue);
-            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.5);
-        }
-        
-        @keyframes flowLine {
-            0% { 
-                opacity: 0; 
-                transform: translateX(-100%) rotate(var(--angle, 0deg));
-            }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { 
-                opacity: 0; 
-                transform: translateX(250%) rotate(var(--angle, 0deg));
-            }
-        }
-        
-        /* Individual line positioning and timing */
-        .particle-line:nth-child(1) { top: 8%; width: 120px; --angle: 15deg; animation-delay: 0s; animation-duration: 7s; }
-        .particle-line:nth-child(2) { top: 15%; width: 180px; --angle: -8deg; animation-delay: -1s; animation-duration: 9s; }
-        .particle-line:nth-child(3) { top: 22%; width: 100px; --angle: 22deg; animation-delay: -2s; animation-duration: 6s; }
-        .particle-line:nth-child(4) { top: 30%; width: 150px; --angle: -12deg; animation-delay: -3s; animation-duration: 8s; }
-        .particle-line:nth-child(5) { top: 38%; width: 200px; --angle: 5deg; animation-delay: -4s; animation-duration: 10s; }
-        .particle-line:nth-child(6) { top: 45%; width: 130px; --angle: -18deg; animation-delay: -0.5s; animation-duration: 7.5s; }
-        .particle-line:nth-child(7) { top: 52%; width: 170px; --angle: 10deg; animation-delay: -1.5s; animation-duration: 8.5s; }
-        .particle-line:nth-child(8) { top: 60%; width: 90px; --angle: -5deg; animation-delay: -2.5s; animation-duration: 6.5s; }
-        .particle-line:nth-child(9) { top: 68%; width: 160px; --angle: 20deg; animation-delay: -3.5s; animation-duration: 9.5s; }
-        .particle-line:nth-child(10) { top: 75%; width: 140px; --angle: -15deg; animation-delay: -4.5s; animation-duration: 7s; }
-        .particle-line:nth-child(11) { top: 82%; width: 110px; --angle: 8deg; animation-delay: -5s; animation-duration: 8s; }
-        .particle-line:nth-child(12) { top: 90%; width: 190px; --angle: -10deg; animation-delay: -5.5s; animation-duration: 9s; }
+        /* Stagger dot animations within strands */
+        .strand-dot:nth-child(1) { animation-delay: 0s; }
+        .strand-dot:nth-child(2) { animation-delay: -0.3s; }
+        .strand-dot:nth-child(3) { animation-delay: -0.6s; }
+        .strand-dot:nth-child(4) { animation-delay: -0.9s; }
+        .strand-dot:nth-child(5) { animation-delay: -1.2s; }
+        .strand-dot:nth-child(6) { animation-delay: -1.5s; }
         
         /* Glowing orbs */
         .hero-orb {
@@ -1090,20 +1088,10 @@
             width: 100%;
             height: auto;
             filter: drop-shadow(0 10px 40px rgba(0,0,0,0.1));
-            transform: rotate(-90deg);
         }
         
-        .donut-segment {
-            fill: none;
-            stroke-width: 45;
-            stroke-linecap: butt;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        
-        .donut-segment:hover {
-            stroke-width: 52;
-            filter: brightness(1.1);
+        .donut-segment-path {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .donut-center {
@@ -2453,7 +2441,7 @@
                 margin: 0 auto;
             }
             
-            .particle-lines-container {
+            .particle-strands-container {
                 display: none;
             }
             
@@ -2837,20 +2825,9 @@
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
         
-        <!-- Flowing Particle Lines - Left Side -->
-        <div class="particle-lines-container">
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
-            <div class="particle-line"></div>
-            <div class="particle-line orange"></div>
+        <!-- Flowing Connected Strands - Left Side -->
+        <div class="particle-strands-container" id="particleStrands">
+            <!-- Strands will be generated by JS for precise positioning -->
         </div>
         
         <!-- Flag Cascade -->
@@ -3269,6 +3246,65 @@
         });
         
         // ==========================================
+        // FLOWING CONNECTED STRANDS
+        // ==========================================
+        const strandsContainer = document.getElementById('particleStrands');
+        if (strandsContainer) {
+            // Create 8 flowing strands with connected dots
+            const strandConfigs = [
+                { dots: 5, spacing: 35, dotSize: 10, top: '10%' },
+                { dots: 6, spacing: 30, dotSize: 8, top: '20%' },
+                { dots: 4, spacing: 40, dotSize: 12, top: '32%' },
+                { dots: 7, spacing: 28, dotSize: 7, top: '42%' },
+                { dots: 5, spacing: 35, dotSize: 9, top: '55%' },
+                { dots: 6, spacing: 32, dotSize: 10, top: '66%' },
+                { dots: 4, spacing: 38, dotSize: 11, top: '78%' },
+                { dots: 5, spacing: 30, dotSize: 8, top: '88%' }
+            ];
+            
+            strandConfigs.forEach((config, strandIndex) => {
+                const strand = document.createElement('div');
+                strand.className = 'flow-strand';
+                strand.style.top = config.top;
+                
+                // Create dots
+                for (let i = 0; i < config.dots; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'strand-dot' + (i % 2 === 1 ? ' orange' : '');
+                    dot.style.cssText = `
+                        left: ${i * config.spacing}px;
+                        top: ${Math.sin(i * 0.8) * 15}px;
+                        --dot-size: ${config.dotSize}px;
+                        animation-delay: ${-i * 0.25}s;
+                    `;
+                    strand.appendChild(dot);
+                    
+                    // Add connecting line to next dot (except last)
+                    if (i < config.dots - 1) {
+                        const line = document.createElement('div');
+                        line.className = 'strand-line';
+                        const nextY = Math.sin((i + 1) * 0.8) * 15;
+                        const currentY = Math.sin(i * 0.8) * 15;
+                        const dx = config.spacing;
+                        const dy = nextY - currentY;
+                        const length = Math.sqrt(dx * dx + dy * dy);
+                        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                        
+                        line.style.cssText = `
+                            left: ${i * config.spacing + config.dotSize / 2}px;
+                            top: ${currentY + config.dotSize / 2 - 1}px;
+                            width: ${length}px;
+                            transform: rotate(${angle}deg);
+                        `;
+                        strand.appendChild(line);
+                    }
+                }
+                
+                strandsContainer.appendChild(strand);
+            });
+        }
+        
+        // ==========================================
         // PARTICLE NETWORK ANIMATION
         // ==========================================
         const canvas = document.getElementById('particleCanvas');
@@ -3408,39 +3444,60 @@
             '#3b82f6', '#06b6d4', '#22c55e', '#ec4899', '#64748b'
         ];
         
-        // Create donut chart segments
+        // Create donut chart segments using path arcs for seamless circle
         const radius = 85;
-        const circumference = 2 * Math.PI * radius;
-        let offset = 0;
+        const cx = 100, cy = 100;
+        let currentAngle = -90; // Start from top (12 o'clock)
         
         MSP_DATA.fieldsOfStudy.forEach((field, index) => {
             const percent = field.percent / 100;
-            const segmentLength = circumference * percent;
-            const gapLength = circumference - segmentLength;
+            const angle = percent * 360;
+            const endAngle = currentAngle + angle;
             
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', '100');
-            circle.setAttribute('cy', '100');
-            circle.setAttribute('r', radius);
-            circle.setAttribute('class', 'donut-segment');
-            circle.setAttribute('stroke', fieldColors[index]);
-            circle.setAttribute('stroke-dasharray', `${segmentLength} ${gapLength}`);
-            circle.setAttribute('stroke-dashoffset', -offset);
-            circle.style.animationDelay = `${index * 0.1}s`;
+            // Convert angles to radians
+            const startRad = (currentAngle * Math.PI) / 180;
+            const endRad = (endAngle * Math.PI) / 180;
+            
+            // Calculate arc points
+            const x1 = cx + radius * Math.cos(startRad);
+            const y1 = cy + radius * Math.sin(startRad);
+            const x2 = cx + radius * Math.cos(endRad);
+            const y2 = cy + radius * Math.sin(endRad);
+            
+            // Large arc flag (1 if angle > 180)
+            const largeArc = angle > 180 ? 1 : 0;
+            
+            // Create path element
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const d = `M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+            path.setAttribute('d', d);
+            path.setAttribute('fill', fieldColors[index]);
+            path.setAttribute('class', 'donut-segment-path');
+            path.style.transition = 'all 0.3s ease';
+            path.style.cursor = 'pointer';
+            path.style.transformOrigin = 'center';
             
             // Hover effect
-            circle.addEventListener('mouseenter', () => {
-                circle.style.strokeWidth = '52';
-                circle.style.filter = 'brightness(1.1) drop-shadow(0 0 10px ' + fieldColors[index] + ')';
+            path.addEventListener('mouseenter', () => {
+                path.style.transform = 'scale(1.03)';
+                path.style.filter = 'brightness(1.1) drop-shadow(0 0 15px ' + fieldColors[index] + ')';
             });
-            circle.addEventListener('mouseleave', () => {
-                circle.style.strokeWidth = '45';
-                circle.style.filter = 'none';
+            path.addEventListener('mouseleave', () => {
+                path.style.transform = 'scale(1)';
+                path.style.filter = 'none';
             });
             
-            donutChart.appendChild(circle);
-            offset += segmentLength;
+            donutChart.appendChild(path);
+            currentAngle = endAngle;
         });
+        
+        // Add center circle (donut hole)
+        const centerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        centerCircle.setAttribute('cx', cx);
+        centerCircle.setAttribute('cy', cy);
+        centerCircle.setAttribute('r', '48');
+        centerCircle.setAttribute('fill', 'white');
+        donutChart.appendChild(centerCircle);
         
         // Create bar chart rows
         const maxCount = Math.max(...MSP_DATA.fieldsOfStudy.map(f => f.count));

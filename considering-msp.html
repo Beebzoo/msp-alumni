@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Considering MSP? | Where Will Science Take You?</title>
-    <meta name="description" content="See where MSP graduates go - from Oxford to ETH ZÃ¼rich, from research labs to startups. Real outcomes from 1,330+ alumni.">
+    <meta name="description" content="See where MSP graduates go - from Oxford to ETH ZÃƒÂ¼rich, from research labs to startups. Real outcomes from 1,330+ alumni.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,7 +203,7 @@
             overflow: hidden;
         }
         
-        /* Large Gas Giant (Jupiter-like) - Top Right - MASSIVE */
+        /* Large Gas Giant (Jupiter-like) - Top Right - MASSIVE & SHARP */
         .planet-giant {
             position: absolute;
             top: -20%;
@@ -212,70 +212,73 @@
             height: 700px;
             border-radius: 50%;
             background: 
-                /* Storm bands - more prominent */
+                /* Sharp storm bands */
                 repeating-linear-gradient(
                     178deg,
-                    rgba(255,180,120,0.15) 0px,
-                    rgba(220,160,100,0.2) 12px,
-                    rgba(200,140,90,0.12) 24px,
-                    rgba(240,200,160,0.18) 36px,
-                    rgba(180,120,70,0.1) 48px,
-                    rgba(255,190,140,0.15) 60px
+                    rgba(255,190,140,0.25) 0px,
+                    rgba(240,170,110,0.35) 8px,
+                    rgba(210,150,95,0.2) 16px,
+                    rgba(250,210,170,0.3) 24px,
+                    rgba(200,130,80,0.15) 32px,
+                    rgba(255,200,150,0.28) 40px,
+                    rgba(230,160,100,0.22) 48px
                 ),
                 /* Base color gradient - richer */
                 radial-gradient(
                     circle at 30% 30%,
-                    rgba(255,220,180,0.6) 0%,
-                    rgba(230,180,130,0.5) 25%,
-                    rgba(200,150,100,0.5) 50%,
-                    rgba(150,100,60,0.6) 75%,
-                    rgba(80,50,30,0.8) 100%
+                    rgba(255,225,190,0.75) 0%,
+                    rgba(240,190,140,0.65) 20%,
+                    rgba(220,165,115,0.6) 40%,
+                    rgba(190,130,80,0.65) 60%,
+                    rgba(140,90,50,0.75) 80%,
+                    rgba(80,50,30,0.9) 100%
                 );
             box-shadow:
                 /* Deep inner shadow for 3D sphere effect */
-                inset -80px -40px 120px rgba(0,0,0,0.8),
-                inset 60px 30px 80px rgba(255,200,150,0.25),
-                /* Atmospheric glow */
-                0 0 100px rgba(255,180,120,0.25),
-                0 0 200px rgba(255,150,100,0.15),
-                0 0 400px rgba(255,120,80,0.08);
+                inset -90px -45px 100px rgba(0,0,0,0.85),
+                inset 50px 25px 60px rgba(255,210,170,0.3),
+                /* Atmospheric glow - reduced blur */
+                0 0 60px rgba(255,180,120,0.2),
+                0 0 120px rgba(255,150,100,0.12);
             animation: planetFloat 40s ease-in-out infinite, planetBandsMove 200s linear infinite;
-            opacity: 0.85;
+            opacity: 0.9;
         }
         
-        /* Great Red Spot - larger and more visible */
+        /* Great Red Spot - SHARP and defined */
         .planet-giant::before {
             content: '';
             position: absolute;
-            top: 42%;
-            left: 22%;
-            width: 90px;
-            height: 55px;
+            top: 40%;
+            left: 20%;
+            width: 100px;
+            height: 60px;
             background: 
-                radial-gradient(ellipse, 
-                    rgba(220,80,50,0.5) 0%, 
-                    rgba(200,60,40,0.35) 40%,
-                    rgba(180,50,30,0.15) 70%,
+                /* Sharp central spot */
+                radial-gradient(ellipse 70% 70% at 50% 50%, 
+                    rgba(200,70,40,0.7) 0%,
+                    rgba(180,55,35,0.6) 30%,
+                    rgba(160,50,30,0.45) 55%,
+                    rgba(140,45,25,0.25) 75%,
                     transparent 100%
                 );
             border-radius: 50%;
-            transform: rotate(-15deg);
-            box-shadow: 0 0 30px rgba(200,80,50,0.3);
+            transform: rotate(-12deg);
+            /* Sharp edge, no blur */
+            filter: contrast(1.1);
         }
         
         /* Atmospheric limb glow */
         .planet-giant::after {
             content: '';
             position: absolute;
-            top: -3%; left: -3%;
-            width: 106%; height: 106%;
+            top: -2%; left: -2%;
+            width: 104%; height: 104%;
             border-radius: 50%;
             background: radial-gradient(
                 circle at 25% 25%,
-                rgba(255,220,180,0.15) 0%,
-                transparent 40%
+                rgba(255,225,190,0.12) 0%,
+                transparent 35%
             );
-            box-shadow: inset 0 0 100px rgba(255,200,150,0.1);
         }
         
         @keyframes planetBandsMove {
@@ -283,69 +286,85 @@
             to { background-position: 500px 0, 0 0; }
         }
         
-        /* Ringed Planet (Saturn-like) - Bottom Left - LARGER */
-        .planet-ringed {
+        /* ============================================
+           SATURN - THE STAR OF THE SHOW
+        ============================================ */
+        .planet-saturn-wrapper {
             position: absolute;
-            bottom: -5%;
-            left: -8%;
-            width: 450px;
-            height: 450px;
+            bottom: 8%;
+            left: 3%;
+            width: 500px;
+            height: 320px;
+            animation: saturnFloat 35s ease-in-out infinite;
+            opacity: 0.9;
         }
         
-        .planet-ringed-body {
+        .planet-saturn {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .planet-saturn-body {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             background: 
-                /* Subtle polar regions */
+                /* Subtle polar darkening */
                 radial-gradient(
-                    ellipse 100% 40% at 50% 10%,
-                    rgba(200,220,200,0.15) 0%,
-                    transparent 50%
+                    ellipse 100% 50% at 50% 0%,
+                    rgba(180,170,140,0.2) 0%,
+                    transparent 40%
                 ),
-                /* Subtle bands */
+                radial-gradient(
+                    ellipse 100% 50% at 50% 100%,
+                    rgba(160,150,120,0.15) 0%,
+                    transparent 40%
+                ),
+                /* Subtle horizontal bands */
                 repeating-linear-gradient(
-                    175deg,
-                    rgba(240,220,190,0.12) 0px,
-                    rgba(220,200,170,0.08) 8px,
-                    rgba(200,180,150,0.12) 16px,
-                    rgba(230,210,180,0.1) 24px
+                    180deg,
+                    rgba(255,235,200,0.15) 0px,
+                    rgba(240,220,180,0.1) 6px,
+                    rgba(230,210,170,0.15) 12px,
+                    rgba(245,225,190,0.12) 18px
                 ),
-                /* Base gradient - golden */
+                /* Base gradient - beautiful golden */
                 radial-gradient(
                     circle at 35% 35%,
-                    rgba(255,245,220,0.7) 0%,
-                    rgba(240,220,180,0.6) 25%,
-                    rgba(220,190,140,0.6) 50%,
-                    rgba(180,150,100,0.7) 75%,
-                    rgba(100,70,40,0.9) 100%
+                    rgba(255,248,230,0.9) 0%,
+                    rgba(250,235,200,0.85) 20%,
+                    rgba(240,220,175,0.8) 40%,
+                    rgba(220,195,145,0.8) 60%,
+                    rgba(180,155,105,0.85) 80%,
+                    rgba(120,95,55,0.95) 100%
                 );
             box-shadow:
-                inset -40px -20px 70px rgba(0,0,0,0.7),
-                inset 25px 15px 40px rgba(255,240,200,0.2),
-                0 0 60px rgba(255,220,180,0.15),
-                0 0 120px rgba(255,200,150,0.08);
+                inset -35px -18px 50px rgba(0,0,0,0.65),
+                inset 20px 12px 35px rgba(255,245,220,0.25),
+                0 0 40px rgba(255,230,180,0.15),
+                0 0 80px rgba(255,220,160,0.08);
             z-index: 2;
         }
         
-        /* Ring system - more detailed */
-        .planet-ring {
+        /* Saturn's Ring System - SPECTACULAR */
+        .planet-saturn-rings {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotateX(75deg);
-            width: 450px;
-            height: 450px;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: transparent;
             z-index: 1;
         }
         
-        .planet-ring::before {
+        /* Main ring structure */
+        .planet-saturn-rings::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
@@ -356,45 +375,120 @@
             background: 
                 radial-gradient(
                     circle,
+                    /* Inner gap (Cassini division area) */
+                    transparent 17%,
+                    /* C Ring - faint inner */
+                    rgba(180,170,150,0.15) 18%,
+                    rgba(190,180,160,0.2) 20%,
+                    rgba(175,165,145,0.12) 22%,
                     transparent 23%,
-                    rgba(180,160,130,0.15) 24%,
-                    rgba(200,180,150,0.35) 26%,
-                    rgba(220,200,170,0.4) 28%,
-                    rgba(200,180,150,0.25) 31%,
-                    transparent 32%,
-                    rgba(180,160,130,0.2) 33%,
-                    rgba(200,180,150,0.45) 36%,
-                    rgba(220,200,170,0.5) 40%,
-                    rgba(200,180,150,0.35) 44%,
-                    rgba(180,160,130,0.2) 47%,
-                    transparent 48%,
-                    rgba(160,140,110,0.15) 49%,
-                    rgba(180,160,130,0.25) 52%,
-                    rgba(200,180,150,0.3) 56%,
-                    rgba(180,160,130,0.15) 60%,
-                    transparent 62%
+                    /* B Ring - brightest */
+                    rgba(220,210,185,0.35) 24%,
+                    rgba(240,230,205,0.5) 27%,
+                    rgba(250,242,220,0.55) 30%,
+                    rgba(245,237,215,0.5) 33%,
+                    rgba(230,220,195,0.4) 36%,
+                    /* Cassini Division - dark gap */
+                    rgba(100,95,80,0.15) 37%,
+                    transparent 38%,
+                    /* A Ring - outer bright */
+                    rgba(210,200,175,0.35) 39%,
+                    rgba(230,220,195,0.45) 42%,
+                    rgba(240,232,210,0.4) 46%,
+                    rgba(220,210,185,0.3) 50%,
+                    /* Encke Gap */
+                    rgba(150,145,130,0.1) 51%,
+                    rgba(200,190,170,0.25) 52%,
+                    /* Outer A Ring */
+                    rgba(210,200,180,0.3) 55%,
+                    rgba(190,180,160,0.2) 58%,
+                    /* F Ring - faint outer */
+                    transparent 59%,
+                    rgba(180,170,155,0.12) 60%,
+                    rgba(170,160,145,0.08) 62%,
+                    transparent 64%
                 );
-            box-shadow: 0 0 40px rgba(200,180,150,0.15);
         }
         
         /* Ring shadow on planet */
-        .planet-ring::after {
+        .planet-saturn-rings::after {
             content: '';
             position: absolute;
-            top: 38%;
-            left: 30%;
-            width: 80px;
-            height: 12px;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.25), rgba(0,0,0,0.15), transparent);
+            top: 44%;
+            left: 38%;
+            width: 60px;
+            height: 10px;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(0,0,0,0.2) 20%,
+                rgba(0,0,0,0.25) 50%,
+                rgba(0,0,0,0.15) 80%,
+                transparent 100%
+            );
             border-radius: 50%;
-            filter: blur(4px);
-            transform: rotate(-8deg);
+            transform: rotate(-5deg);
             z-index: 3;
         }
         
+        /* Front portion of rings (in front of planet) */
+        .planet-saturn-rings-front {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            z-index: 3;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+        
+        .planet-saturn-rings-front::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(
+                    circle,
+                    transparent 17%,
+                    rgba(180,170,150,0.12) 18%,
+                    rgba(190,180,160,0.18) 20%,
+                    rgba(175,165,145,0.1) 22%,
+                    transparent 23%,
+                    rgba(220,210,185,0.3) 24%,
+                    rgba(240,230,205,0.45) 27%,
+                    rgba(250,242,220,0.5) 30%,
+                    rgba(245,237,215,0.45) 33%,
+                    rgba(230,220,195,0.35) 36%,
+                    rgba(100,95,80,0.12) 37%,
+                    transparent 38%,
+                    rgba(210,200,175,0.3) 39%,
+                    rgba(230,220,195,0.4) 42%,
+                    rgba(240,232,210,0.35) 46%,
+                    rgba(220,210,185,0.25) 50%,
+                    rgba(150,145,130,0.08) 51%,
+                    rgba(200,190,170,0.2) 52%,
+                    rgba(210,200,180,0.25) 55%,
+                    rgba(190,180,160,0.15) 58%,
+                    transparent 59%,
+                    rgba(180,170,155,0.1) 60%,
+                    rgba(170,160,145,0.06) 62%,
+                    transparent 64%
+                );
+        }
+        
+        @keyframes saturnFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(12px, -10px); }
+        }
+        
+        /* Hide the old ringed planet */
         .planet-ringed-wrapper {
-            animation: planetFloat2 35s ease-in-out infinite;
-            opacity: 0.8;
+            display: none;
         }
         
         /* Earth-like Planet - Center right area */
@@ -1618,11 +1712,12 @@
             <!-- Moon orbiting the giant -->
             <div class="planet-moon"></div>
             
-            <!-- Ringed Planet (Saturn-like) -->
-            <div class="planet-ringed-wrapper">
-                <div class="planet-ringed">
-                    <div class="planet-ring"></div>
-                    <div class="planet-ringed-body"></div>
+            <!-- SATURN - The Star of the Show -->
+            <div class="planet-saturn-wrapper">
+                <div class="planet-saturn">
+                    <div class="planet-saturn-rings"></div>
+                    <div class="planet-saturn-body"></div>
+                    <div class="planet-saturn-rings-front"></div>
                 </div>
             </div>
             
@@ -1657,7 +1752,7 @@
             </h1>
             
             <p class="hero-subtitle">
-                This isn't marketing. This is data. See exactly where MSP graduates go â€” the universities, the cities, the careers. Real paths from real alumni.
+                This isn't marketing. This is data. See exactly where MSP graduates go Ã¢â‚¬â€ the universities, the cities, the careers. Real paths from real alumni.
             </p>
             
             <div class="journey-flow">
@@ -1954,7 +2049,7 @@
             </div>
             <div class="city-card">
                 <div class="city-rank">9</div>
-                <div class="city-name">ZÃ¼rich</div>
+                <div class="city-name">ZÃƒÂ¼rich</div>
                 <div class="city-country"><img src="https://flagcdn.com/w20/ch.png" alt="CH"> Switzerland</div>
                 <div class="city-count">20</div>
                 <div class="city-label">alumni</div>
@@ -1979,14 +2074,14 @@
         
         <div class="growth-container">
             <div class="growth-stat">
-                <div class="growth-number">10Ã—</div>
+                <div class="growth-number">10Ãƒâ€”</div>
                 <div class="growth-label">Growth in 12 Years</div>
                 <div class="growth-years">
                     <div class="growth-year">
                         <div class="growth-year-num">25</div>
                         <div class="growth-year-label">2014</div>
                     </div>
-                    <span class="growth-arrow-icon">â†’</span>
+                    <span class="growth-arrow-icon">Ã¢â€ â€™</span>
                     <div class="growth-year">
                         <div class="growth-year-num">247</div>
                         <div class="growth-year-label">2025</div>
@@ -2028,7 +2123,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <a href="universities.html" class="view-all-btn">Explore All 249 Universities <i data-lucide="arrow-right"></i></a>
+                <a href="destinations.html" class="view-all-btn">Explore All 249 Universities <i data-lucide="arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -2047,7 +2142,7 @@
     
     <footer>
         <div class="footer-text">
-            Â© 2025 MSP Alumni Network Â· <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> Â· <a href="privacy.html">Privacy Policy</a>
+            Ã‚Â© 2025 MSP Alumni Network Ã‚Â· <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> Ã‚Â· <a href="privacy.html">Privacy Policy</a>
         </div>
     </footer>
     
@@ -2486,7 +2581,7 @@
         // Universities
         const eliteUnis = [
             {name: 'Imperial College', code: 'gb', count: 19, logo: 'imperial-college-london.png'},
-            {name: 'ETH ZÃ¼rich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
+            {name: 'ETH ZÃƒÂ¼rich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
             {name: 'Cambridge', code: 'gb', count: 8, logo: 'cambridge.png'},
             {name: 'Oxford', code: 'gb', count: 7, logo: 'oxford.png'},
             {name: 'UCL', code: 'gb', count: 14, logo: 'ucl.png'},

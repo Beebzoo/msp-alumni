@@ -282,53 +282,62 @@
             opacity: 0.6;
         }
         
-        /* DNA Helix Containers - Left Side (prominent, static) */
+        /* DNA Helix Containers - Left Side (prominent, animated) */
         .dna-container-left {
             position: absolute;
-            left: 0%;
+            left: 2%;
             top: 50%;
             transform: translateY(-50%);
             width: 200px;
             height: 650px;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.85;
             z-index: 1;
+            animation: dnaFloat 8s ease-in-out infinite;
         }
         
         .dna-container-left-2 {
             position: absolute;
-            left: 6%;
+            left: 8%;
             top: 35%;
             transform: translateY(-50%);
             width: 180px;
             height: 500px;
             pointer-events: none;
-            opacity: 0.45;
+            opacity: 0.7;
             z-index: 1;
+            animation: dnaFloat 10s ease-in-out infinite reverse;
         }
         
         .dna-container-left-3 {
             position: absolute;
-            left: 12%;
+            left: 14%;
             top: 60%;
             transform: translateY(-50%);
             width: 150px;
             height: 450px;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.55;
             z-index: 1;
+            animation: dnaFloat 12s ease-in-out infinite;
         }
         
         .dna-container-left-4 {
             position: absolute;
-            left: 3%;
-            top: 75%;
+            left: 5%;
+            top: 80%;
             transform: translateY(-50%);
             width: 120px;
             height: 350px;
             pointer-events: none;
-            opacity: 0.25;
+            opacity: 0.45;
             z-index: 1;
+            animation: dnaFloat 9s ease-in-out infinite reverse;
+        }
+        
+        @keyframes dnaFloat {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(8px); }
         }
         
         .dna-strand {
@@ -343,21 +352,21 @@
             height: 10px;
             background: var(--um-light-blue);
             border-radius: 50%;
-            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.4);
+            box-shadow: 0 0 20px var(--um-light-blue), 0 0 40px rgba(0, 162, 219, 0.6), 0 0 60px rgba(0, 162, 219, 0.3);
             animation: dotPulse 3s ease-in-out infinite;
         }
         
         .dna-dot.orange {
             background: var(--um-orange);
-            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.4);
+            box-shadow: 0 0 20px var(--um-orange), 0 0 40px rgba(232, 78, 16, 0.6), 0 0 60px rgba(232, 78, 16, 0.3);
         }
         
         .dna-line {
             position: absolute;
             height: 2px;
             background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
-            opacity: 0.6;
-            box-shadow: 0 0 8px rgba(0, 162, 219, 0.3);
+            opacity: 0.7;
+            box-shadow: 0 0 12px rgba(0, 162, 219, 0.5);
         }
         
         @keyframes dotPulse {
@@ -1065,7 +1074,7 @@
         }
         
         /* ============================================
-           FIELDS OF STUDY - PROFESSIONAL CHART
+           FIELDS OF STUDY - DONUT + BAR CHART
         ============================================ */
         .fields-section {
             background: white;
@@ -1073,25 +1082,40 @@
         }
         
         .fields-chart-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 380px 1fr;
+            gap: 80px;
             align-items: center;
         }
         
-        /* Donut Chart */
+        /* Animated Donut Chart */
         .donut-chart-wrapper {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             margin: 0 auto;
         }
         
-        .donut-chart {
+        .donut-chart-svg {
             width: 100%;
             height: auto;
+            filter: drop-shadow(0 10px 40px rgba(0,0,0,0.1));
+            transform: rotate(-90deg);
+        }
+        
+        .donut-segment {
+            fill: none;
+            stroke-width: 45;
+            stroke-linecap: round;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .donut-segment:hover {
+            stroke-width: 52;
+            filter: brightness(1.1);
         }
         
         .donut-center {
@@ -1100,22 +1124,136 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            background: white;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         .donut-center-number {
             font-family: var(--font-heading);
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 700;
             color: var(--um-dark-blue);
             line-height: 1;
         }
         
         .donut-center-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--um-gray-500);
-            font-weight: 500;
+            font-weight: 600;
             margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
+        /* Horizontal Bar Chart */
+        .fields-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .field-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 0;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        
+        .field-bar-row:hover {
+            background: var(--um-gray-50);
+            padding-left: 12px;
+            margin-left: -12px;
+            padding-right: 12px;
+            margin-right: -12px;
+        }
+        
+        .field-bar-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        
+        .field-bar-label {
+            width: 160px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .field-bar-track {
+            flex: 1;
+            height: 24px;
+            background: var(--um-gray-100);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .field-bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            position: relative;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 50px;
+        }
+        
+        .field-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .field-bar-value {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .field-bar-percent {
+            width: 50px;
+            text-align: right;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--um-gray-600);
+        }
+        
+        /* Field colors */
+        .field-color-1 { background: linear-gradient(135deg, #00A2DB 0%, #0082b3 100%); }
+        .field-color-2 { background: linear-gradient(135deg, #E84E10 0%, #c43a08 100%); }
+        .field-color-3 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .field-color-4 { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .field-color-5 { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .field-color-6 { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        .field-color-7 { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .field-color-8 { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+        .field-color-9 { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+        .field-color-10 { background: linear-gradient(135deg, #64748b 0%, #475569 100%); }
         
         /* Horizontal Bar Chart */
         .fields-bars {
@@ -1564,11 +1702,169 @@
             color: var(--um-orange);
         }
         
-        /* Nationality Diversity Section */
-        .nationality-section {
-            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 100%);
+        /* Talent Flow Visualization */
+        .talent-flow-section {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--um-gray-200);
+        }
+        
+        .talent-flow-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .talent-flow-title i {
+            width: 24px;
+            height: 24px;
+            color: var(--um-light-blue);
+        }
+        
+        .talent-flow-subtitle {
+            font-size: 14px;
+            color: var(--um-gray-500);
+            margin-bottom: 30px;
+        }
+        
+        .talent-flow-container {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .talent-flow-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .talent-flow-column-title {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--um-gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .talent-flow-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: var(--um-gray-50);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        
+        .talent-flow-item:hover {
+            background: var(--um-gray-100);
+            transform: translateX(4px);
+        }
+        
+        .talent-flow-item.origin:hover {
+            transform: translateX(-4px);
+        }
+        
+        .talent-flow-flag {
+            width: 28px;
+            height: 20px;
+            border-radius: 3px;
+            object-fit: cover;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .talent-flow-info {
+            flex: 1;
+        }
+        
+        .talent-flow-country {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .talent-flow-count {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--um-gray-500);
+        }
+        
+        .talent-flow-bar {
+            height: 6px;
+            background: var(--um-gray-200);
+            border-radius: 3px;
+            margin-top: 4px;
+            overflow: hidden;
+        }
+        
+        .talent-flow-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease-out;
+        }
+        
+        .talent-flow-item.origin .talent-flow-bar-fill {
+            background: linear-gradient(90deg, var(--um-orange), #ff6b35);
+        }
+        
+        .talent-flow-item.destination .talent-flow-bar-fill {
+            background: linear-gradient(90deg, var(--um-light-blue), #00c4ff);
+        }
+        
+        .talent-flow-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        
+        .talent-flow-arrow {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--um-dark-blue), #002d5c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .talent-flow-arrow i {
+            width: 28px;
+            height: 28px;
             color: white;
-            padding: 100px 50px;
+        }
+        
+        .talent-flow-label {
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--um-gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Nationality Diversity Section - Creative Globe Design */
+        .nationality-section {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #000d1a 50%, #001530 100%);
+            color: white;
+            padding: 100px 50px 120px;
             position: relative;
             overflow: hidden;
         }
@@ -1581,9 +1877,8 @@
             right: 0;
             bottom: 0;
             background-image:
-                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.08) 0%, transparent 50%);
         }
         
         .nationality-section .section-label {
@@ -1607,88 +1902,267 @@
             color: rgba(255,255,255,0.6);
         }
         
-        .nationality-mosaic {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            padding: 30px;
-            background: rgba(255,255,255,0.03);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        
-        .nat-flag {
-            width: 40px;
-            height: 28px;
-            border-radius: 4px;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            transition: all var(--transition-smooth);
-            cursor: pointer;
-        }
-        
-        .nat-flag:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-        
-        .nationality-stats {
+        /* Globe Container */
+        .nationality-globe-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 900px;
+            grid-template-columns: 1fr 450px 1fr;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto 60px;
+            align-items: center;
+        }
+        
+        /* Animated Globe */
+        .globe-wrapper {
+            position: relative;
+            width: 450px;
+            height: 450px;
             margin: 0 auto;
         }
         
-        .nat-stat {
+        .globe-sphere {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0,162,219,0.2) 0%, rgba(0,162,219,0.05) 50%, rgba(232,78,16,0.1) 100%);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 
+                0 0 60px rgba(0,162,219,0.2),
+                inset 0 0 60px rgba(0,162,219,0.1);
+        }
+        
+        .globe-sphere::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .globe-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .globe-number {
+            font-family: var(--font-heading);
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            text-shadow: 0 0 40px rgba(255,255,255,0.3);
+        }
+        
+        .globe-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 8px;
+        }
+        
+        /* Orbiting Flags */
+        .orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .orbit-ring-1 {
+            width: 350px;
+            height: 350px;
+            transform: translate(-50%, -50%) rotateX(75deg);
+            animation: orbitRotate 30s linear infinite;
+        }
+        
+        .orbit-ring-2 {
+            width: 400px;
+            height: 400px;
+            transform: translate(-50%, -50%) rotateX(75deg) rotateZ(60deg);
+            animation: orbitRotate 40s linear infinite reverse;
+        }
+        
+        .orbit-ring-3 {
+            width: 450px;
+            height: 450px;
+            transform: translate(-50%, -50%) rotateX(75deg) rotateZ(120deg);
+            animation: orbitRotate 35s linear infinite;
+        }
+        
+        @keyframes orbitRotate {
+            from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+            to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+        }
+        
+        /* Floating Flags around Globe */
+        .floating-flag {
+            position: absolute;
+            width: 36px;
+            height: 25px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            animation: flagFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes flagFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+        
+        /* Flag positions around globe */
+        .floating-flag:nth-child(1) { top: 5%; left: 50%; animation-delay: 0s; }
+        .floating-flag:nth-child(2) { top: 15%; right: 10%; animation-delay: -0.5s; }
+        .floating-flag:nth-child(3) { top: 35%; right: 0%; animation-delay: -1s; }
+        .floating-flag:nth-child(4) { top: 60%; right: 5%; animation-delay: -1.5s; }
+        .floating-flag:nth-child(5) { bottom: 15%; right: 15%; animation-delay: -2s; }
+        .floating-flag:nth-child(6) { bottom: 5%; left: 50%; animation-delay: -2.5s; }
+        .floating-flag:nth-child(7) { bottom: 15%; left: 15%; animation-delay: -3s; }
+        .floating-flag:nth-child(8) { top: 60%; left: 0%; animation-delay: -3.5s; }
+        .floating-flag:nth-child(9) { top: 35%; left: 5%; animation-delay: -4s; }
+        .floating-flag:nth-child(10) { top: 15%; left: 15%; animation-delay: -4.5s; }
+        .floating-flag:nth-child(11) { top: 25%; left: 25%; animation-delay: -5s; }
+        .floating-flag:nth-child(12) { bottom: 25%; right: 25%; animation-delay: -5.5s; }
+        
+        /* Side Stats Columns */
+        .nationality-side-stats {
             display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.05);
-            padding: 24px;
-            border-radius: var(--radius-lg);
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .nationality-side-stats.left {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .nationality-side-stats.right {
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .side-stat-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
             transition: all var(--transition-smooth);
+            max-width: 200px;
         }
         
-        .nat-stat:hover {
-            background: rgba(255,255,255,0.08);
+        .side-stat-card:hover {
+            background: rgba(255,255,255,0.06);
             transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.15);
         }
         
-        .nat-stat-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
-            border-radius: 12px;
+        .side-stat-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            margin-bottom: 12px;
         }
         
-        .nat-stat-icon i {
-            width: 24px;
-            height: 24px;
+        .side-stat-card:nth-child(even) .side-stat-icon {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+        }
+        
+        .nationality-side-stats.left .side-stat-icon {
+            margin-left: auto;
+        }
+        
+        .side-stat-icon i {
+            width: 20px;
+            height: 20px;
             color: white;
         }
         
-        .nat-stat-number {
+        .side-stat-number {
             font-family: var(--font-heading);
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: white;
             line-height: 1;
         }
         
-        .nat-stat-label {
-            font-size: 13px;
+        .side-stat-label {
+            font-size: 12px;
             color: rgba(255,255,255,0.6);
-            margin-top: 4px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+        
+        /* Flag Mosaic Wave */
+        .flag-wave-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .flag-wave {
+            display: flex;
+            gap: 12px;
+            animation: flagWaveScroll 60s linear infinite;
+            width: max-content;
+        }
+        
+        .flag-wave-row {
+            display: flex;
+            gap: 12px;
+        }
+        
+        @keyframes flagWaveScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .wave-flag {
+            width: 48px;
+            height: 32px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+            transition: all var(--transition-smooth);
+            flex-shrink: 0;
+        }
+        
+        .wave-flag:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        /* Hide old nationality styles */
+        .nationality-mosaic {
+            display: none;
+        }
+        
+        .nationality-stats {
+            display: none;
         }
         
         /* ============================================
@@ -2047,17 +2521,91 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            /* Fields section - stack donut and bars */
             .fields-chart-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .donut-chart-wrapper {
+                max-width: 320px;
+            }
+            
+            .donut-center {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .donut-center-number {
+                font-size: 42px;
+            }
+            
+            /* Nationality globe responsive */
+            .nationality-globe-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
             
-            .field-bar-label {
-                width: 140px;
+            .globe-wrapper {
+                width: 350px;
+                height: 350px;
+                order: 1;
             }
             
-            .field-bar-label span {
-                font-size: 12px;
+            .globe-sphere {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .globe-number {
+                font-size: 56px;
+            }
+            
+            .nationality-side-stats {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nationality-side-stats.left {
+                order: 2;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .nationality-side-stats.right {
+                order: 3;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .nationality-side-stats.left .side-stat-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .orbit-ring-1 { width: 280px; height: 280px; }
+            .orbit-ring-2 { width: 320px; height: 320px; }
+            .orbit-ring-3 { width: 350px; height: 350px; }
+            
+            .floating-flag {
+                width: 28px;
+                height: 20px;
+            }
+            
+            .talent-flow-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .talent-flow-center {
+                order: 2;
+                flex-direction: row;
+                padding: 20px 0;
+            }
+            
+            .talent-flow-center .talent-flow-arrow {
+                transform: rotate(90deg);
             }
             
             .community-content {
@@ -2151,22 +2699,89 @@
                 padding: 24px;
             }
             
-            .field-bar-label {
-                width: 100px;
-                flex-direction: column;
-                gap: 4px;
+            /* Globe mobile styles */
+            .globe-wrapper {
+                width: 280px;
+                height: 280px;
             }
             
-            .field-bar-label span {
+            .globe-sphere {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .globe-number {
+                font-size: 42px;
+            }
+            
+            .globe-label {
                 font-size: 11px;
             }
             
+            .orbit-ring { display: none; }
+            
+            .floating-flag {
+                width: 24px;
+                height: 17px;
+            }
+            
+            .side-stat-card {
+                padding: 16px 20px;
+            }
+            
+            .side-stat-number {
+                font-size: 24px;
+            }
+            
+            .wave-flag {
+                width: 36px;
+                height: 24px;
+            }
+            
+            .talent-flow-section {
+                padding: 24px;
+            }
+            
+            .talent-flow-item {
+                padding: 8px 10px;
+            }
+            
+            .talent-flow-flag {
+                width: 24px;
+                height: 17px;
+            }
+            
+            /* Fields mobile */
+            .field-bar-label {
+                width: 90px;
+                font-size: 11px;
+            }
+            
+            .field-bar-color {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .field-bar-percent {
+                width: 40px;
+                font-size: 12px;
+            }
+            
             .donut-chart-wrapper {
-                max-width: 280px;
+                max-width: 260px;
+            }
+            
+            .donut-center {
+                width: 120px;
+                height: 120px;
             }
             
             .donut-center-number {
-                font-size: 36px;
+                font-size: 32px;
+            }
+            
+            .donut-center-label {
+                font-size: 10px;
             }
             
             .footer-content {
@@ -2235,7 +2850,7 @@
             <div class="hero-right">
                 <h2><span>MSP</span> Alumni Community</h2>
                 <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni — from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni  —  from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
@@ -2306,7 +2921,7 @@
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where They Continue</h2>
             <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities — from Oxford to ETH Zürich.
+                Our alumni pursue Master's degrees at the world's top universities  —  from Oxford to ETH Zürich.
             </p>
         </div>
         
@@ -2331,10 +2946,10 @@
         </div>
         
         <div class="fields-chart-container">
-            <!-- Donut Chart -->
+            <!-- Animated Donut Chart -->
             <div class="donut-chart-wrapper">
-                <svg class="donut-chart" viewBox="0 0 200 200" id="donutChart">
-                    <!-- Will be populated by JS -->
+                <svg class="donut-chart-svg" viewBox="0 0 200 200" id="donutChart">
+                    <!-- Segments will be created by JS -->
                 </svg>
                 <div class="donut-center">
                     <div class="donut-center-number">874</div>
@@ -2355,7 +2970,7 @@
             <div class="section-label">Programme Growth</div>
             <h2 class="section-title">A Growing Community</h2>
             <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide — and counting.
+                From 25 graduates in 2014 to over 1,300 alumni worldwide  —  and counting.
             </p>
         </div>
         
@@ -2429,6 +3044,34 @@
                 <!-- Populated by JS -->
             </div>
         </div>
+        
+        <!-- Talent Flow Visualization -->
+        <div class="talent-flow-section">
+            <div class="talent-flow-title">
+                <i data-lucide="git-compare"></i>
+                Global Talent Flow
+            </div>
+            <p class="talent-flow-subtitle">Where our alumni come from and where they build their careers</p>
+            
+            <div class="talent-flow-container">
+                <div class="talent-flow-column" id="talentFlowOrigin">
+                    <div class="talent-flow-column-title">Top Origin Countries</div>
+                    <!-- Populated by JS -->
+                </div>
+                
+                <div class="talent-flow-center">
+                    <div class="talent-flow-arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                    <div class="talent-flow-label">MSP Journey</div>
+                </div>
+                
+                <div class="talent-flow-column" id="talentFlowDestination">
+                    <div class="talent-flow-column-title">Top Current Locations</div>
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
     </section>
     
     <!-- Nationality Diversity Section -->
@@ -2441,38 +3084,66 @@
             </p>
         </div>
         
-        <div class="nationality-mosaic" id="nationalityMosaic">
-            <!-- Flags will be populated by JS -->
+        <!-- Globe + Stats Layout -->
+        <div class="nationality-globe-container">
+            <!-- Left Stats -->
+            <div class="nationality-side-stats left">
+                <div class="side-stat-card">
+                    <div class="side-stat-icon"><i data-lucide="globe"></i></div>
+                    <div class="side-stat-number">78</div>
+                    <div class="side-stat-label">Nationalities</div>
+                </div>
+                <div class="side-stat-card">
+                    <div class="side-stat-icon"><i data-lucide="map-pin"></i></div>
+                    <div class="side-stat-number">56</div>
+                    <div class="side-stat-label">Countries Now</div>
+                </div>
+            </div>
+            
+            <!-- Animated Globe with Floating Flags -->
+            <div class="globe-wrapper">
+                <div class="orbit-ring orbit-ring-1"></div>
+                <div class="orbit-ring orbit-ring-2"></div>
+                <div class="orbit-ring orbit-ring-3"></div>
+                <div class="globe-sphere"></div>
+                <div class="globe-center">
+                    <div class="globe-number">78</div>
+                    <div class="globe-label">Nations</div>
+                </div>
+                <!-- Floating Flags -->
+                <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="floating-flag">
+                <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="floating-flag">
+                <img src="https://flagcdn.com/w40/cn.png" alt="China" class="floating-flag">
+                <img src="https://flagcdn.com/w40/us.png" alt="USA" class="floating-flag">
+                <img src="https://flagcdn.com/w40/in.png" alt="India" class="floating-flag">
+                <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="floating-flag">
+                <img src="https://flagcdn.com/w40/fr.png" alt="France" class="floating-flag">
+                <img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="floating-flag">
+                <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="floating-flag">
+                <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="floating-flag">
+                <img src="https://flagcdn.com/w40/mx.png" alt="Mexico" class="floating-flag">
+                <img src="https://flagcdn.com/w40/br.png" alt="Brazil" class="floating-flag">
+            </div>
+            
+            <!-- Right Stats -->
+            <div class="nationality-side-stats right">
+                <div class="side-stat-card">
+                    <div class="side-stat-icon"><i data-lucide="users"></i></div>
+                    <div class="side-stat-number">335</div>
+                    <div class="side-stat-label">WhatsApp Members</div>
+                </div>
+                <div class="side-stat-card">
+                    <div class="side-stat-icon"><i data-lucide="graduation-cap"></i></div>
+                    <div class="side-stat-number">248+</div>
+                    <div class="side-stat-label">Universities</div>
+                </div>
+            </div>
         </div>
         
-        <div class="nationality-stats">
-            <div class="nat-stat">
-                <div class="nat-stat-icon"><i data-lucide="globe"></i></div>
-                <div class="nat-stat-info">
-                    <div class="nat-stat-number">78</div>
-                    <div class="nat-stat-label">Nationalities</div>
-                </div>
-            </div>
-            <div class="nat-stat">
-                <div class="nat-stat-icon"><i data-lucide="map-pin"></i></div>
-                <div class="nat-stat-info">
-                    <div class="nat-stat-number">56</div>
-                    <div class="nat-stat-label">Countries Now</div>
-                </div>
-            </div>
-            <div class="nat-stat">
-                <div class="nat-stat-icon"><i data-lucide="users"></i></div>
-                <div class="nat-stat-info">
-                    <div class="nat-stat-number">383</div>
-                    <div class="nat-stat-label">In WhatsApp Groups</div>
-                </div>
-            </div>
-            <div class="nat-stat">
-                <div class="nat-stat-icon"><i data-lucide="graduation-cap"></i></div>
-                <div class="nat-stat-info">
-                    <div class="nat-stat-number">248+</div>
-                    <div class="nat-stat-label">Universities</div>
-                </div>
+        <!-- Scrolling Flag Wave -->
+        <div class="flag-wave-container">
+            <div class="flag-wave" id="flagWave">
+                <!-- Flags will be populated by JS -->
             </div>
         </div>
     </section>
@@ -2499,7 +3170,7 @@
                     <p>
                         The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
                         <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students — 
+                        new city, find mentors in your field, or give back to current students  —  
                         we're here to help.
                     </p>
                     <p>
@@ -2551,7 +3222,7 @@
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate →'</a>
+                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate â†’'</a>
             </div>
         </div>
     </footer>
@@ -2703,98 +3374,62 @@
         // ==========================================
         // FIELDS OF STUDY - DONUT + BAR CHART
         // ==========================================
-        const fieldsBars = document.getElementById('fieldsBars');
         const donutChart = document.getElementById('donutChart');
+        const fieldsBars = document.getElementById('fieldsBars');
         
-        // Color classes for fields
+        // Field colors matching CSS
         const fieldColors = [
-            'life-sciences', 'chemistry', 'medicine', 'physics', 'neuro',
-            'business', 'computer', 'environmental', 'social', 'other'
-        ];
-        
-        // Lucide icon mapping
-        const fieldIconMap = {
-            'Life Sciences & Biology': 'dna',
-            'Chemistry & Materials': 'flask-conical',
-            'Medicine & Health': 'heart-pulse',
-            'Physics & Engineering': 'zap',
-            'Neuroscience & Psychology': 'brain',
-            'Business & Economics': 'bar-chart-3',
-            'Computer Science & AI': 'monitor',
-            'Environmental & Earth Sciences': 'globe-2',
-            'Social Sciences & Humanities': 'book-open',
-            'Other': 'folder'
-        };
-        
-        // Donut chart colors
-        const donutColors = [
             '#00A2DB', '#E84E10', '#10b981', '#8b5cf6', '#f59e0b',
             '#3b82f6', '#06b6d4', '#22c55e', '#ec4899', '#64748b'
         ];
         
-        // Create donut chart
-        let cumulativePercent = 0;
-        const radius = 80;
-        const cx = 100;
-        const cy = 100;
+        // Create donut chart segments
+        const radius = 85;
+        const circumference = 2 * Math.PI * radius;
+        let offset = 0;
         
         MSP_DATA.fieldsOfStudy.forEach((field, index) => {
             const percent = field.percent / 100;
-            const startAngle = cumulativePercent * 2 * Math.PI - Math.PI / 2;
-            const endAngle = (cumulativePercent + percent) * 2 * Math.PI - Math.PI / 2;
+            const segmentLength = circumference * percent;
+            const gapLength = circumference - segmentLength;
             
-            const x1 = cx + radius * Math.cos(startAngle);
-            const y1 = cy + radius * Math.sin(startAngle);
-            const x2 = cx + radius * Math.cos(endAngle);
-            const y2 = cy + radius * Math.sin(endAngle);
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', '100');
+            circle.setAttribute('cy', '100');
+            circle.setAttribute('r', radius);
+            circle.setAttribute('class', 'donut-segment');
+            circle.setAttribute('stroke', fieldColors[index]);
+            circle.setAttribute('stroke-dasharray', `${segmentLength} ${gapLength}`);
+            circle.setAttribute('stroke-dashoffset', -offset);
+            circle.style.animationDelay = `${index * 0.1}s`;
             
-            const largeArc = percent > 0.5 ? 1 : 0;
-            
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', `M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`);
-            path.setAttribute('fill', donutColors[index]);
-            path.style.opacity = '0.9';
-            path.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            path.style.transformOrigin = 'center';
-            path.style.cursor = 'pointer';
-            
-            path.addEventListener('mouseenter', () => {
-                path.style.opacity = '1';
-                path.style.transform = 'scale(1.03)';
+            // Hover effect
+            circle.addEventListener('mouseenter', () => {
+                circle.style.strokeWidth = '52';
+                circle.style.filter = 'brightness(1.1) drop-shadow(0 0 10px ' + fieldColors[index] + ')';
             });
-            path.addEventListener('mouseleave', () => {
-                path.style.opacity = '0.9';
-                path.style.transform = 'scale(1)';
+            circle.addEventListener('mouseleave', () => {
+                circle.style.strokeWidth = '45';
+                circle.style.filter = 'none';
             });
             
-            donutChart.appendChild(path);
-            cumulativePercent += percent;
+            donutChart.appendChild(circle);
+            offset += segmentLength;
         });
         
-        // Add inner circle for donut effect
-        const innerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        innerCircle.setAttribute('cx', cx);
-        innerCircle.setAttribute('cy', cy);
-        innerCircle.setAttribute('r', 50);
-        innerCircle.setAttribute('fill', 'white');
-        donutChart.appendChild(innerCircle);
+        // Create bar chart rows
+        const maxCount = Math.max(...MSP_DATA.fieldsOfStudy.map(f => f.count));
         
-        // Create horizontal bar chart
         MSP_DATA.fieldsOfStudy.forEach((field, index) => {
-            const iconName = fieldIconMap[field.name] || 'book-open';
-            const colorClass = fieldColors[index] || 'other';
+            const barWidth = (field.count / maxCount) * 100;
             
             const row = document.createElement('div');
             row.className = 'field-bar-row';
             row.innerHTML = `
-                <div class="field-bar-label">
-                    <div class="field-bar-icon" style="background: linear-gradient(135deg, ${donutColors[index]}, ${donutColors[index]}cc);">
-                        <i data-lucide="${iconName}"></i>
-                    </div>
-                    <span>${field.name}</span>
-                </div>
+                <div class="field-bar-color field-color-${index + 1}"></div>
+                <div class="field-bar-label">${field.name}</div>
                 <div class="field-bar-track">
-                    <div class="field-bar-fill ${colorClass}" style="width: ${field.percent * 2.5}%;">
+                    <div class="field-bar-fill field-color-${index + 1}" style="width: ${barWidth}%">
                         <span class="field-bar-value">${field.count}</span>
                     </div>
                 </div>
@@ -2883,7 +3518,7 @@
                         </div>
                     </div>
                     <a href="country.html?code=${country.code}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} →
+                        Explore ${country.name} â†’
                     </a>
                 </div>
             `;
@@ -3057,12 +3692,72 @@
         }
         
         // ==========================================
-        // NATIONALITY MOSAIC
+        // TALENT FLOW VISUALIZATION
         // ==========================================
-        const nationalityMosaic = document.getElementById('nationalityMosaic');
-        if (nationalityMosaic) {
-            MSP_DATA.allNationalityFlags.forEach(code => {
+        const talentFlowOrigin = document.getElementById('talentFlowOrigin');
+        const talentFlowDestination = document.getElementById('talentFlowDestination');
+        
+        if (talentFlowOrigin && talentFlowDestination && MSP_DATA.topOriginCountries && MSP_DATA.countriesLiving) {
+            // Top origin countries (nationalities)
+            const originData = MSP_DATA.topOriginCountries.slice(0, 5);
+            const maxOrigin = Math.max(...originData.map(c => c.count));
+            
+            originData.forEach(country => {
+                const item = document.createElement('div');
+                item.className = 'talent-flow-item origin';
+                const percent = (country.count / maxOrigin) * 100;
+                item.innerHTML = `
+                    <img src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name}" class="talent-flow-flag">
+                    <div class="talent-flow-info">
+                        <div class="talent-flow-country">${country.name}</div>
+                        <div class="talent-flow-bar">
+                            <div class="talent-flow-bar-fill" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+                    <div class="talent-flow-count">${country.count}</div>
+                `;
+                talentFlowOrigin.appendChild(item);
+            });
+            
+            // Top destination countries (current locations)
+            const destData = MSP_DATA.countriesLiving.slice(0, 5);
+            const maxDest = Math.max(...destData.map(c => c.count));
+            
+            destData.forEach(country => {
+                const item = document.createElement('div');
+                item.className = 'talent-flow-item destination';
+                const percent = (country.count / maxDest) * 100;
+                item.innerHTML = `
+                    <img src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name}" class="talent-flow-flag">
+                    <div class="talent-flow-info">
+                        <div class="talent-flow-country">${country.name}</div>
+                        <div class="talent-flow-bar">
+                            <div class="talent-flow-bar-fill" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+                    <div class="talent-flow-count">${country.count}</div>
+                `;
+                talentFlowDestination.appendChild(item);
+            });
+        }
+        
+        // ==========================================
+        // FLAG WAVE ANIMATION
+        // ==========================================
+        const flagWave = document.getElementById('flagWave');
+        if (flagWave && MSP_DATA.allNationalityFlags) {
+            // Duplicate flags for seamless scrolling
+            const allFlags = [...MSP_DATA.allNationalityFlags, ...MSP_DATA.allNationalityFlags];
+            
+            allFlags.forEach(code => {
                 const img = document.createElement('img');
                 img.src = `https://flagcdn.com/w80/${code}.png`;
                 img.alt = code.toUpperCase();
-                img.classN
+                img.className = 'wave-flag';
+                img.loading = 'lazy';
+                flagWave.appendChild(img);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -125,8 +125,34 @@
         }
         
         header.scrolled {
-            background: rgba(255,255,255,0.98);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+            background: var(--um-dark-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        header.scrolled .logo-text h1,
+        header.scrolled .logo-text p {
+            color: white;
+        }
+        
+        header.scrolled .logo-text p {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        header.scrolled .header-nav a {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        header.scrolled .header-nav a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        header.scrolled .header-nav a.active {
+            color: white;
+        }
+        
+        header.scrolled .logo-img {
+            filter: brightness(0) invert(1);
         }
         
         .logo {
@@ -256,7 +282,7 @@
             opacity: 0.6;
         }
         
-        /* Floating DNA Helix */
+        /* Floating DNA Helix - Right Side */
         .dna-container {
             position: absolute;
             right: 5%;
@@ -266,6 +292,31 @@
             height: 600px;
             pointer-events: none;
             opacity: 0.15;
+            z-index: 0;
+        }
+        
+        /* Floating DNA Helix - Left Side (more visible) */
+        .dna-container-left {
+            position: absolute;
+            left: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 250px;
+            height: 550px;
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 0;
+        }
+        
+        .dna-container-left-2 {
+            position: absolute;
+            left: 8%;
+            top: 30%;
+            transform: translateY(-50%);
+            width: 180px;
+            height: 400px;
+            pointer-events: none;
+            opacity: 0.25;
             z-index: 0;
         }
         
@@ -998,90 +1049,144 @@
         }
         
         /* ============================================
-           FIELDS OF STUDY - REFINED
+           FIELDS OF STUDY - PROFESSIONAL CHART
         ============================================ */
         .fields-section {
             background: white;
             padding: 100px 50px;
         }
         
-        .fields-grid {
+        .fields-chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 18px;
-            max-width: 1100px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        /* Donut Chart */
+        .donut-chart-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
             margin: 0 auto;
         }
         
-        .field-card {
-            background: var(--um-gray-50);
-            border: 1px solid var(--um-gray-100);
-            border-radius: var(--radius-lg);
-            padding: 24px;
+        .donut-chart {
+            width: 100%;
+            height: auto;
+        }
+        
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .donut-center-number {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            line-height: 1;
+        }
+        
+        .donut-center-label {
+            font-size: 14px;
+            color: var(--um-gray-500);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        
+        /* Horizontal Bar Chart */
+        .fields-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .field-bar-row {
             display: flex;
             align-items: center;
-            gap: 18px;
-            transition: all var(--transition-smooth);
+            gap: 16px;
         }
         
-        .field-card:hover {
-            background: white;
-            border-color: var(--um-light-blue);
-            box-shadow: var(--shadow-md), 0 0 0 1px var(--um-light-blue);
-            transform: translateX(6px);
+        .field-bar-label {
+            width: 180px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .field-icon {
-            width: 54px;
-            height: 54px;
+        .field-bar-icon {
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-            border-radius: var(--radius-md);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.25);
         }
         
-        .field-icon i,
-        .field-icon svg {
-            width: 26px;
-            height: 26px;
+        .field-bar-icon i {
+            width: 16px;
+            height: 16px;
             color: white;
-            stroke: white;
         }
         
-        .field-info {
+        .field-bar-track {
             flex: 1;
-        }
-        
-        .field-name {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--um-dark-blue);
-            margin-bottom: 6px;
-        }
-        
-        .field-count {
-            font-size: 13px;
-            color: var(--um-gray-500);
-            font-weight: 500;
-        }
-        
-        .field-bar {
-            height: 6px;
-            background: var(--um-gray-200);
-            border-radius: 3px;
+            height: 28px;
+            background: var(--um-gray-100);
+            border-radius: 14px;
             overflow: hidden;
-            margin-top: 12px;
+            position: relative;
         }
         
         .field-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--um-light-blue), #00c4ff);
-            border-radius: 3px;
-            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 60px;
+        }
+        
+        .field-bar-fill.life-sciences { background: linear-gradient(90deg, #00A2DB, #00c4ff); }
+        .field-bar-fill.chemistry { background: linear-gradient(90deg, #E84E10, #ff6b35); }
+        .field-bar-fill.medicine { background: linear-gradient(90deg, #10b981, #34d399); }
+        .field-bar-fill.physics { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .field-bar-fill.neuro { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .field-bar-fill.business { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .field-bar-fill.computer { background: linear-gradient(90deg, #06b6d4, #22d3ee); }
+        .field-bar-fill.environmental { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .field-bar-fill.social { background: linear-gradient(90deg, #ec4899, #f472b6); }
+        .field-bar-fill.other { background: linear-gradient(90deg, #64748b, #94a3b8); }
+        
+        .field-bar-value {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+        }
+        
+        .field-bar-percent {
+            width: 50px;
+            text-align: right;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--um-gray-600);
         }
         
         /* ============================================
@@ -1350,6 +1455,225 @@
         .continental-card.americas .continental-percent { color: var(--um-light-blue); }
         .continental-card.asia .continental-percent { color: #10b981; }
         .continental-card.africa .continental-percent { color: #f59e0b; }
+        
+        /* Top Destinations Highlight */
+        .top-destinations-highlight {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--um-gray-200);
+        }
+        
+        .destinations-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 24px;
+        }
+        
+        .destinations-title i {
+            width: 24px;
+            height: 24px;
+            color: var(--um-orange);
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        
+        .dest-card {
+            background: var(--um-gray-50);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .dest-card:hover {
+            background: white;
+            border-color: var(--um-light-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .dest-card.top-1 {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #f59e0b;
+        }
+        
+        .dest-card.top-2 {
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border-color: #9ca3af;
+        }
+        
+        .dest-card.top-3 {
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+            border-color: #f97316;
+        }
+        
+        .dest-logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+        }
+        
+        .dest-name {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .dest-count {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--um-orange);
+        }
+        
+        /* Nationality Diversity Section */
+        .nationality-section {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 100%);
+            color: white;
+            padding: 100px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nationality-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        .nationality-section .section-label {
+            color: var(--um-orange);
+        }
+        
+        .nationality-section .section-label::before,
+        .nationality-section .section-label::after {
+            background: linear-gradient(90deg, transparent, var(--um-orange));
+        }
+        
+        .nationality-section .section-label::after {
+            background: linear-gradient(90deg, var(--um-orange), transparent);
+        }
+        
+        .nationality-section .section-title {
+            color: white;
+        }
+        
+        .nationality-section .section-subtitle {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .nationality-mosaic {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .nat-flag {
+            width: 40px;
+            height: 28px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+        }
+        
+        .nat-flag:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        .nationality-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .nat-stat {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.05);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all var(--transition-smooth);
+        }
+        
+        .nat-stat:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+        }
+        
+        .nat-stat-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .nat-stat-icon i {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .nat-stat-number {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+        
+        .nat-stat-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
         
         /* ============================================
            COMMUNITY SECTION
@@ -1643,6 +1967,11 @@
                 display: none;
             }
             
+            .dna-container-left,
+            .dna-container-left-2 {
+                display: none;
+            }
+            
             .hero-logo-large {
                 width: 300px;
             }
@@ -1694,6 +2023,27 @@
             
             .continental-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .destinations-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .nationality-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .fields-chart-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .field-bar-label {
+                width: 140px;
+            }
+            
+            .field-bar-label span {
+                font-size: 12px;
             }
             
             .community-content {
@@ -1766,6 +2116,45 @@
                 grid-template-columns: 1fr;
             }
             
+            .destinations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nationality-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .nationality-mosaic {
+                padding: 20px;
+            }
+            
+            .nat-flag {
+                width: 32px;
+                height: 22px;
+            }
+            
+            .top-destinations-highlight {
+                padding: 24px;
+            }
+            
+            .field-bar-label {
+                width: 100px;
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .field-bar-label span {
+                font-size: 11px;
+            }
+            
+            .donut-chart-wrapper {
+                max-width: 280px;
+            }
+            
+            .donut-center-number {
+                font-size: 36px;
+            }
+            
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -1809,8 +2198,12 @@
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
         
-        <!-- DNA Helix Visual -->
+        <!-- DNA Helix Visual - Right -->
         <div class="dna-container" id="dnaContainer"></div>
+        
+        <!-- DNA Helix Visual - Left (more visible) -->
+        <div class="dna-container-left" id="dnaContainerLeft"></div>
+        <div class="dna-container-left-2" id="dnaContainerLeft2"></div>
         
         <!-- Flag Cascade -->
         <div class="flag-cascade">
@@ -1827,9 +2220,9 @@
             </div>
             
             <div class="hero-right">
-                <h2>Where <span>Science</span> Takes You</h2>
+                <h2><span>MSP</span> Alumni Community</h2>
                 <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni â€” from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni — from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
@@ -1900,7 +2293,7 @@
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where They Continue</h2>
             <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities â€” from Oxford to ETH ZÃ¼rich.
+                Our alumni pursue Master's degrees at the world's top universities — from Oxford to ETH Zürich.
             </p>
         </div>
         
@@ -1924,7 +2317,23 @@
             </p>
         </div>
         
-        <div class="fields-grid" id="fieldsGrid"></div>
+        <div class="fields-chart-container">
+            <!-- Donut Chart -->
+            <div class="donut-chart-wrapper">
+                <svg class="donut-chart" viewBox="0 0 200 200" id="donutChart">
+                    <!-- Will be populated by JS -->
+                </svg>
+                <div class="donut-center">
+                    <div class="donut-center-number">874</div>
+                    <div class="donut-center-label">Alumni Tracked</div>
+                </div>
+            </div>
+            
+            <!-- Horizontal Bar Chart -->
+            <div class="fields-bars" id="fieldsBars">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
     </section>
     
     <!-- Growth Section -->
@@ -1933,7 +2342,7 @@
             <div class="section-label">Programme Growth</div>
             <h2 class="section-title">A Growing Community</h2>
             <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide â€” and counting.
+                From 25 graduates in 2014 to over 1,300 alumni worldwide — and counting.
             </p>
         </div>
         
@@ -1996,9 +2405,64 @@
                 <div class="continental-percent">3%</div>
             </div>
         </div>
+        
+        <!-- Top Destinations Highlight -->
+        <div class="top-destinations-highlight">
+            <div class="destinations-title">
+                <i data-lucide="trophy"></i>
+                Top Master's Destinations
+            </div>
+            <div class="destinations-grid" id="topDestinationsGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
     </section>
     
-    <!-- Community Section -->
+    <!-- Nationality Diversity Section -->
+    <section class="nationality-section section">
+        <div class="section-header">
+            <div class="section-label">Global Diversity</div>
+            <h2 class="section-title">78 Nationalities, One Community</h2>
+            <p class="section-subtitle">
+                MSP brings together students from across the globe, creating a truly international academic community.
+            </p>
+        </div>
+        
+        <div class="nationality-mosaic" id="nationalityMosaic">
+            <!-- Flags will be populated by JS -->
+        </div>
+        
+        <div class="nationality-stats">
+            <div class="nat-stat">
+                <div class="nat-stat-icon"><i data-lucide="globe"></i></div>
+                <div class="nat-stat-info">
+                    <div class="nat-stat-number">78</div>
+                    <div class="nat-stat-label">Nationalities</div>
+                </div>
+            </div>
+            <div class="nat-stat">
+                <div class="nat-stat-icon"><i data-lucide="map-pin"></i></div>
+                <div class="nat-stat-info">
+                    <div class="nat-stat-number">56</div>
+                    <div class="nat-stat-label">Countries Now</div>
+                </div>
+            </div>
+            <div class="nat-stat">
+                <div class="nat-stat-icon"><i data-lucide="users"></i></div>
+                <div class="nat-stat-info">
+                    <div class="nat-stat-number">383</div>
+                    <div class="nat-stat-label">In WhatsApp Groups</div>
+                </div>
+            </div>
+            <div class="nat-stat">
+                <div class="nat-stat-icon"><i data-lucide="graduation-cap"></i></div>
+                <div class="nat-stat-info">
+                    <div class="nat-stat-number">248+</div>
+                    <div class="nat-stat-label">Universities</div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="community-section section">
         <div class="community-toggle" onclick="toggleCommunity()">
             <div class="community-toggle-left">
@@ -2022,7 +2486,7 @@
                     <p>
                         The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
                         <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students â€” 
+                        new city, find mentors in your field, or give back to current students — 
                         we're here to help.
                     </p>
                     <p>
@@ -2069,12 +2533,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-                Â© 2025 MSP Alumni Network Â· Maastricht University Â· 
-                Updated <span id="lastUpdated">December 2025</span> Â· 
+                © 2025 MSP Alumni Network · Maastricht University · 
+                Updated <span id="lastUpdated">December 2025</span> · 
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate â†’</a>
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate →'</a>
             </div>
         </div>
     </footer>
@@ -2265,38 +2729,106 @@
         });
         
         // ==========================================
-        // FIELDS OF STUDY
+        // FIELDS OF STUDY - DONUT + BAR CHART
         // ==========================================
-        const fieldsGrid = document.getElementById('fieldsGrid');
+        const fieldsBars = document.getElementById('fieldsBars');
+        const donutChart = document.getElementById('donutChart');
         
-        // Map emoji icons to Lucide icons
-        const fieldIcons = {
-            'ðŸ§¬': 'dna',
-            'âš—ï¸': 'flask-conical',
-            'ðŸ¥': 'heart-pulse',
-            'âš¡': 'zap',
-            'ðŸ§ ': 'brain',
-            'ðŸ“Š': 'bar-chart-3',
-            'ðŸ’»': 'monitor',
-            'ðŸŒ': 'globe-2',
-            'ðŸ“š': 'book-open'
+        // Color classes for fields
+        const fieldColors = [
+            'life-sciences', 'chemistry', 'medicine', 'physics', 'neuro',
+            'business', 'computer', 'environmental', 'social', 'other'
+        ];
+        
+        // Lucide icon mapping
+        const fieldIconMap = {
+            'Life Sciences & Biology': 'dna',
+            'Chemistry & Materials': 'flask-conical',
+            'Medicine & Health': 'heart-pulse',
+            'Physics & Engineering': 'zap',
+            'Neuroscience & Psychology': 'brain',
+            'Business & Economics': 'bar-chart-3',
+            'Computer Science & AI': 'monitor',
+            'Environmental & Earth Sciences': 'globe-2',
+            'Social Sciences & Humanities': 'book-open',
+            'Other': 'folder'
         };
         
-        MSP_DATA.fieldsOfStudy.forEach(field => {
-            const iconName = fieldIcons[field.icon] || 'book-open';
-            const card = document.createElement('div');
-            card.className = 'field-card';
-            card.innerHTML = `
-                <div class="field-icon"><i data-lucide="${iconName}"></i></div>
-                <div class="field-info">
-                    <div class="field-name">${field.name}</div>
-                    <div class="field-count">${field.count}+ alumni Â· ${field.percent}%</div>
-                    <div class="field-bar">
-                        <div class="field-bar-fill" style="width: ${field.percent * 2.5}%"></div>
+        // Donut chart colors
+        const donutColors = [
+            '#00A2DB', '#E84E10', '#10b981', '#8b5cf6', '#f59e0b',
+            '#3b82f6', '#06b6d4', '#22c55e', '#ec4899', '#64748b'
+        ];
+        
+        // Create donut chart
+        let cumulativePercent = 0;
+        const radius = 80;
+        const cx = 100;
+        const cy = 100;
+        
+        MSP_DATA.fieldsOfStudy.forEach((field, index) => {
+            const percent = field.percent / 100;
+            const startAngle = cumulativePercent * 2 * Math.PI - Math.PI / 2;
+            const endAngle = (cumulativePercent + percent) * 2 * Math.PI - Math.PI / 2;
+            
+            const x1 = cx + radius * Math.cos(startAngle);
+            const y1 = cy + radius * Math.sin(startAngle);
+            const x2 = cx + radius * Math.cos(endAngle);
+            const y2 = cy + radius * Math.sin(endAngle);
+            
+            const largeArc = percent > 0.5 ? 1 : 0;
+            
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`);
+            path.setAttribute('fill', donutColors[index]);
+            path.style.opacity = '0.9';
+            path.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            path.style.transformOrigin = 'center';
+            path.style.cursor = 'pointer';
+            
+            path.addEventListener('mouseenter', () => {
+                path.style.opacity = '1';
+                path.style.transform = 'scale(1.03)';
+            });
+            path.addEventListener('mouseleave', () => {
+                path.style.opacity = '0.9';
+                path.style.transform = 'scale(1)';
+            });
+            
+            donutChart.appendChild(path);
+            cumulativePercent += percent;
+        });
+        
+        // Add inner circle for donut effect
+        const innerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        innerCircle.setAttribute('cx', cx);
+        innerCircle.setAttribute('cy', cy);
+        innerCircle.setAttribute('r', 50);
+        innerCircle.setAttribute('fill', 'white');
+        donutChart.appendChild(innerCircle);
+        
+        // Create horizontal bar chart
+        MSP_DATA.fieldsOfStudy.forEach((field, index) => {
+            const iconName = fieldIconMap[field.name] || 'book-open';
+            const colorClass = fieldColors[index] || 'other';
+            
+            const row = document.createElement('div');
+            row.className = 'field-bar-row';
+            row.innerHTML = `
+                <div class="field-bar-label">
+                    <div class="field-bar-icon" style="background: linear-gradient(135deg, ${donutColors[index]}, ${donutColors[index]}cc);">
+                        <i data-lucide="${iconName}"></i>
+                    </div>
+                    <span>${field.name}</span>
+                </div>
+                <div class="field-bar-track">
+                    <div class="field-bar-fill ${colorClass}" style="width: ${field.percent * 2.5}%;">
+                        <span class="field-bar-value">${field.count}</span>
                     </div>
                 </div>
+                <div class="field-bar-percent">${field.percent}%</div>
             `;
-            fieldsGrid.appendChild(card);
+            fieldsBars.appendChild(row);
         });
         
         lucide.createIcons();
@@ -2343,7 +2875,7 @@
         }).setView([30, 10], 2);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: 'Â©OpenStreetMap, Â©CartoDB',
+            attribution: '©OpenStreetMap, ©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
@@ -2379,7 +2911,7 @@
                         </div>
                     </div>
                     <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} â†’
+                        Explore ${country.name} →'
                     </a>
                 </div>
             `;
@@ -2413,22 +2945,24 @@
         // ==========================================
         // ANIMATED COUNTERS
         // ==========================================
-        function animateCounter(element, target, duration = 2000) {
+        function animateCounter(element, target, duration = 2000, suffix = '') {
             const start = 0;
             const startTime = performance.now();
+            const isNumber = typeof target === 'number';
+            const numericTarget = isNumber ? target : parseInt(target);
             
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
                 const easeOut = 1 - Math.pow(1 - progress, 3);
-                const current = Math.floor(start + (target - start) * easeOut);
+                const current = Math.floor(start + (numericTarget - start) * easeOut);
                 
-                element.textContent = current.toLocaleString();
+                element.textContent = current.toLocaleString() + suffix;
                 
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
-                    element.textContent = target.toLocaleString();
+                    element.textContent = isNumber ? target.toLocaleString() + suffix : target;
                 }
             }
             
@@ -2440,12 +2974,118 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateCounter(document.getElementById('totalAlumni'), MSP_DATA.summary.totalAlumni);
+                    animateCounter(document.getElementById('totalNationalities'), MSP_DATA.summary.nationalities);
+                    animateCounter(document.getElementById('totalCountries'), MSP_DATA.summary.countriesLivingIn);
+                    animateCounter(document.getElementById('totalUniversities'), MSP_DATA.summary.universitiesAttended, 2000, '+');
                     heroObserver.disconnect();
                 }
             });
         }, { threshold: 0.5 });
         
         heroObserver.observe(document.querySelector('.hero'));
+        
+        // ==========================================
+        // DNA HELIX GENERATION (Left Side - More Visible)
+        // ==========================================
+        function createDNAHelix(container, dotCount, height) {
+            const containerEl = document.getElementById(container);
+            if (!containerEl) return;
+            
+            const strand = document.createElement('div');
+            strand.className = 'dna-strand';
+            
+            for (let i = 0; i < dotCount; i++) {
+                const progress = i / dotCount;
+                const y = progress * height;
+                const angle = progress * Math.PI * 6;
+                const x1 = 50 + Math.sin(angle) * 40;
+                const x2 = 50 - Math.sin(angle) * 40;
+                
+                // Left dot
+                const dot1 = document.createElement('div');
+                dot1.className = 'dna-dot';
+                dot1.style.cssText = `left: ${x1}%; top: ${y}px; animation-delay: ${-progress * 2}s;`;
+                strand.appendChild(dot1);
+                
+                // Right dot
+                const dot2 = document.createElement('div');
+                dot2.className = 'dna-dot orange';
+                dot2.style.cssText = `left: ${x2}%; top: ${y}px; animation-delay: ${-progress * 2}s;`;
+                strand.appendChild(dot2);
+                
+                // Connecting line
+                if (i % 3 === 0) {
+                    const line = document.createElement('div');
+                    line.className = 'dna-line';
+                    const lineWidth = Math.abs(x1 - x2);
+                    line.style.cssText = `
+                        left: ${Math.min(x1, x2)}%;
+                        top: ${y}px;
+                        width: ${lineWidth}%;
+                    `;
+                    strand.appendChild(line);
+                }
+            }
+            
+            containerEl.appendChild(strand);
+        }
+        
+        // Create DNA helixes
+        createDNAHelix('dnaContainer', 25, 600);
+        createDNAHelix('dnaContainerLeft', 22, 550);
+        createDNAHelix('dnaContainerLeft2', 18, 400);
+        
+        // ==========================================
+        // HEADER SCROLL EFFECT
+        // ==========================================
+        const header = document.getElementById('header');
+        const hero = document.querySelector('.hero');
+        
+        function updateHeader() {
+            const heroBottom = hero.offsetTop + hero.offsetHeight - 100;
+            if (window.scrollY > heroBottom) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        
+        window.addEventListener('scroll', updateHeader);
+        updateHeader();
+        
+        // ==========================================
+        // TOP DESTINATIONS GRID
+        // ==========================================
+        const topDestGrid = document.getElementById('topDestinationsGrid');
+        if (topDestGrid) {
+            MSP_DATA.topUniversities.slice(0, 5).forEach((uni, index) => {
+                const card = document.createElement('div');
+                card.className = `dest-card ${index === 0 ? 'top-1' : index === 1 ? 'top-2' : index === 2 ? 'top-3' : ''}`;
+                card.innerHTML = `
+                    <img src="assets/logos/${uni.logo}" alt="${uni.name}" class="dest-logo" onerror="this.style.display='none'">
+                    <div class="dest-name">${uni.name}</div>
+                    <div class="dest-count">${uni.count}</div>
+                `;
+                card.onclick = () => window.location.href = 'universities.html';
+                topDestGrid.appendChild(card);
+            });
+        }
+        
+        // ==========================================
+        // NATIONALITY MOSAIC
+        // ==========================================
+        const nationalityMosaic = document.getElementById('nationalityMosaic');
+        if (nationalityMosaic) {
+            MSP_DATA.allNationalityFlags.forEach(code => {
+                const img = document.createElement('img');
+                img.src = `https://flagcdn.com/w80/${code}.png`;
+                img.alt = code.toUpperCase();
+                img.className = 'nat-flag';
+                nationalityMosaic.appendChild(img);
+            });
+        }
+        
+        lucide.createIcons();
     </script>
 </body>
 </html>

@@ -3155,7 +3155,7 @@
         });
         
         // ==========================================
-        // PARTICLE NETWORK ANIMATION - Enhanced
+        // PARTICLE NETWORK ANIMATION - Enhanced (Left Side Focus)
         // ==========================================
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
@@ -3168,18 +3168,20 @@
         window.addEventListener('resize', resizeCanvas);
         
         const particles = [];
-        const particleCount = 180; // More particles
-        const connectionDistance = 220; // Longer connections
+        const particleCount = 180;
+        const connectionDistance = 220;
+        const leftBoundary = 0.55; // Particles stay in left 55% of screen
         
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
+                // Spawn particles on the left side only (0 to 55% of width)
+                this.x = Math.random() * canvas.width * leftBoundary;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.8; // Slightly faster
+                this.vx = (Math.random() - 0.5) * 0.8;
                 this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 3 + 2; // Bigger dots (2-5px)
-                this.isOrange = Math.random() > 0.7; // 30% orange particles
-                this.pulse = Math.random() * Math.PI * 2; // For pulsing effect
+                this.radius = Math.random() * 3 + 2;
+                this.isOrange = Math.random() > 0.7;
+                this.pulse = Math.random() * Math.PI * 2;
                 this.pulseSpeed = 0.02 + Math.random() * 0.02;
             }
             
@@ -3188,7 +3190,12 @@
                 this.y += this.vy;
                 this.pulse += this.pulseSpeed;
                 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                // Bounce off left boundary and right boundary (55% of screen)
+                if (this.x < 0) this.vx *= -1;
+                if (this.x > canvas.width * leftBoundary) {
+                    this.vx *= -1;
+                    this.x = canvas.width * leftBoundary; // Keep within bounds
+                }
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
             

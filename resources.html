@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | MSP Alumni Network</title>
+    <meta name="description" content="Resources for MSP students and alumni - career guidance, official UM links, and how to connect with the MSP Alumni Network.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --um-dark-blue: #001C3D;
+            --um-darker-blue: #00101f;
+            --um-light-blue: #00A2DB;
+            --um-light-blue-glow: rgba(0, 162, 219, 0.4);
+            --um-orange: #E84E10;
+            --um-orange-glow: rgba(232, 78, 16, 0.4);
+            --um-white: #FFFFFF;
+            --um-off-white: #fafbfc;
+            --um-gray-50: #f8fafc;
+            --um-gray-100: #f1f5f9;
+            --um-gray-200: #e2e8f0;
+            --um-gray-300: #cbd5e1;
+            --um-gray-500: #64748b;
+            --um-gray-600: #475569;
+            --um-gray-800: #1e293b;
+            
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--um-dark-blue);
+            background: var(--um-white);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.15; letter-spacing: -0.02em; }
+        a { color: var(--um-light-blue); text-decoration: none; transition: color var(--transition-fast); }
+        a:hover { color: var(--um-orange); }
+        
+        /* Header */
+        header {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,28,61,0.06);
+            padding: 0 50px;
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all var(--transition-smooth);
+        }
+        header.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img { height: 44px; width: auto; transition: transform var(--transition-smooth); }
+        .logo:hover .logo-img { transform: scale(1.02); }
+        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; }
+        .logo-text p { font-size: 11px; color: var(--um-gray-500); margin: 0; font-weight: 500; }
+        .header-nav { display: flex; gap: 5px; align-items: center; }
+        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-sm); color: var(--um-dark-blue); transition: all var(--transition-smooth); }
+        .header-nav a:hover { background: var(--um-gray-100); color: var(--um-dark-blue); }
+        .header-nav a.active { background: var(--um-gray-100); color: var(--um-light-blue); }
+        .header-nav .btn-cta { 
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white; 
+            margin-left: 10px;
+            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.3);
+        }
+        .header-nav .btn-cta:hover { 
+            background: linear-gradient(135deg, #d63d0a 0%, var(--um-orange) 100%);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--um-gray-50) 0%, white 50%, var(--um-gray-100) 100%);
+            padding: 120px 50px 80px;
+            margin-top: 72px;
+            position: relative;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--um-gray-200), transparent);
+        }
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--um-dark-blue), #003366);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 40px rgba(0,28,61,0.15);
+        }
+        .hero-icon i {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+        .hero h2 {
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            margin-bottom: 15px;
+        }
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--um-gray-600);
+            line-height: 1.7;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 50px;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 40px;
+        }
+        .section-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-header h3 i {
+            width: 28px;
+            height: 28px;
+            color: var(--um-light-blue);
+        }
+        .section-header p {
+            font-size: 16px;
+            color: var(--um-gray-600);
+            margin-left: 40px;
+        }
+        
+        /* Contact Card */
+        .contact-section {
+            margin-bottom: 80px;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002a5c 100%);
+            border-radius: var(--radius-xl);
+            padding: 50px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,162,219,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .contact-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .contact-card p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 16px 28px;
+            border-radius: var(--radius-md);
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all var(--transition-smooth);
+        }
+        .contact-email:hover {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .contact-email i {
+            width: 22px;
+            height: 22px;
+        }
+        .contact-image {
+            position: relative;
+            z-index: 1;
+        }
+        .contact-image img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        
+        /* UM Official Links Section */
+        .um-section {
+            background: var(--um-gray-50);
+            padding: 60px 50px;
+            margin: 0 -50px 60px;
+            border-radius: 0;
+        }
+        .um-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .um-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .um-intro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .um-intro-badge img {
+            height: 24px;
+        }
+        .um-intro-badge span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        .um-intro h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+        .um-intro p {
+            font-size: 16px;
+            color: var(--um-gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .um-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .um-link-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 2px solid var(--um-gray-200);
+            transition: all var(--transition-smooth);
+            display: block;
+            text-decoration: none;
+        }
+        .um-link-card:hover {
+            border-color: var(--um-light-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .um-link-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .um-link-card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .um-link-card-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--um-dark-blue);
+        }
+        .um-link-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        .um-link-card p {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .um-link-card-url {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-light-blue);
+        }
+        .um-link-card-url i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* For Current Students Section */
+        .students-section {
+            margin-bottom: 60px;
+        }
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .student-card {
+            background: white;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            transition: all var(--transition-smooth);
+        }
+        .student-card:hover {
+            border-color: var(--um-orange);
+            box-shadow: var(--shadow-md);
+        }
+        .student-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--um-orange), #ff6b35);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .student-card-icon i {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        .student-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 10px;
+        }
+        .student-card p {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            line-height: 1.7;
+        }
+        .student-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-orange);
+        }
+        .student-card-link i {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .faq-item {
+            background: var(--um-gray-50);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition-fast);
+        }
+        .faq-question:hover {
+            background: var(--um-gray-100);
+        }
+        .faq-question i {
+            width: 20px;
+            height: 20px;
+            color: var(--um-gray-500);
+            transition: transform var(--transition-smooth);
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-smooth);
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+        .faq-answer-inner {
+            padding: 0 25px 20px;
+            font-size: 15px;
+            color: var(--um-gray-600);
+            line-height: 1.7;
+        }
+        .faq-answer-inner a {
+            color: var(--um-light-blue);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
+            color: white;
+            padding: 50px 50px 30px;
+        }
+        footer::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
+            margin-bottom: 50px;
+        }
+        .footer-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 15px;
+            line-height: 1.7;
+        }
+        .footer-section h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .footer-section a {
+            display: block;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            padding: 6px 0;
+            transition: all var(--transition-fast);
+        }
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(3px);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-bottom a:hover {
+            color: var(--um-orange);
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            header { padding: 0 20px; }
+            .hero { padding: 100px 20px 60px; }
+            .hero h2 { font-size: 32px; }
+            .main-content { padding: 60px 20px; }
+            .um-section { padding: 50px 20px; margin: 0 -20px 40px; }
+            .contact-card { grid-template-columns: 1fr; padding: 35px; }
+            .contact-image { display: none; }
+            .footer-main { grid-template-columns: 1fr; gap: 40px; }
+            .section-header p { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <a href="index.html" class="logo">
+            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">
+                <h1>MSP Alumni Network</h1>
+                <p>Maastricht Science Programme</p>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html">Alumni Map</a>
+            <a href="countries.html">Countries</a>
+            <a href="universities.html">Universities</a>
+            <a href="outcomes.html">Outcomes</a>
+            <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
+        </nav>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i data-lucide="book-open"></i>
+            </div>
+            <h2>Resources & Contact</h2>
+            <p class="hero-subtitle">
+                Everything you need — from connecting with alumni to official Maastricht University resources.
+            </p>
+        </div>
+    </section>
+    
+    <div class="main-content">
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-card">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <p>Have questions about the MSP Alumni Network? Want to update your information, share your story, or get involved? We'd love to hear from you.</p>
+                    <a href="mailto:msp-alumni@maastrichtuniversity.nl" class="contact-email">
+                        <i data-lucide="mail"></i>
+                        msp-alumni@maastrichtuniversity.nl
+                    </a>
+                </div>
+                <div class="contact-image">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
+        
+        <!-- For Current Students -->
+        <section class="students-section">
+            <div class="section-header">
+                <h3><i data-lucide="graduation-cap"></i> For Current MSP Students</h3>
+                <p>Resources to help you plan your future and connect with the alumni network</p>
+            </div>
+            
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-card-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h4>Connect with Alumni</h4>
+                    <p>Want career advice from someone who's been in your shoes? Reach out to us and we can connect you with alumni in your field of interest.</p>
+                    <a href="mailto:msp-alumni@maastrichtuniversity.nl?subject=Alumni%20Connection%20Request" class="student-card-link">
+                        Request a connection <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="student-card">
+                    <div class="student-card-icon">
+                        <i data-lucide="message-circle"></i>
+                    </div>
+                    <h4>Join the Community</h4>
+                    <p>Our WhatsApp community connects 380+ alumni across 24 country groups. Join after graduation to stay connected with your cohort.</p>
+                    <a href="community.html" class="student-card-link">
+                        Learn more <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="student-card">
+                    <div class="student-card-icon">
+                        <i data-lucide="compass"></i>
+                    </div>
+                    <h4>Explore Career Paths</h4>
+                    <p>See where MSP alumni work — from PhD research to industry, consulting to entrepreneurship. Get inspired by the possibilities.</p>
+                    <a href="outcomes.html" class="student-card-link">
+                        View outcomes <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="student-card">
+                    <div class="student-card-icon">
+                        <i data-lucide="map"></i>
+                    </div>
+                    <h4>Find Alumni Nearby</h4>
+                    <p>Planning to study or work abroad? Find MSP alumni already in your destination country who might offer local insights.</p>
+                    <a href="countries.html" class="student-card-link">
+                        Explore countries <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Official UM Links Section -->
+    <section class="um-section">
+        <div class="um-container">
+            <div class="um-intro">
+                <div class="um-intro-badge">
+                    <img src="assets/logos/maastricht-university-logo.png" alt="UM" onerror="this.outerHTML='<i data-lucide=\"building-2\" style=\"width:24px;height:24px;color:var(--um-dark-blue)\"></i>'">
+                    <span>Part of the UM Ecosystem</span>
+                </div>
+                <h3>Official Maastricht University Resources</h3>
+                <p>The MSP Alumni Network is part of Maastricht University's broader alumni community. Explore official UM resources below.</p>
+            </div>
+            
+            <div class="um-links-grid">
+                <a href="https://www.maastrichtuniversity.nl" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <h4>Maastricht University</h4>
+                    </div>
+                    <p>The official UM website with information about all faculties, programmes, research, and university news.</p>
+                    <span class="um-link-card-url">
+                        maastrichtuniversity.nl <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+                
+                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h4>UM Alumni Network</h4>
+                    </div>
+                    <p>The central UM Alumni Office connecting 120,000+ graduates. Events, services, and university-wide alumni initiatives.</p>
+                    <span class="um-link-card-url">
+                        UM Alumni Portal <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+                
+                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h4>FSE Alumni</h4>
+                    </div>
+                    <p>Alumni network for the Faculty of Science and Engineering — MSP's home faculty at Maastricht University.</p>
+                    <span class="um-link-card-url">
+                        FSE Alumni Page <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+                
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="atom"></i>
+                        </div>
+                        <h4>MSP Programme</h4>
+                    </div>
+                    <p>Official information about the Maastricht Science Programme — curriculum, admission, and student life.</p>
+                    <span class="um-link-card-url">
+                        MSP Programme Page <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+                
+                <a href="https://www.maastrichtuniversity.nl/support/your-studies-finished/career-services" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <h4>UM Career Services</h4>
+                    </div>
+                    <p>Career guidance, job fairs, CV workshops, and employer connections for students and recent graduates.</p>
+                    <span class="um-link-card-url">
+                        Career Services <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+                
+                <a href="https://library.maastrichtuniversity.nl/" target="_blank" class="um-link-card">
+                    <div class="um-link-card-header">
+                        <div class="um-link-card-icon">
+                            <i data-lucide="library"></i>
+                        </div>
+                        <h4>UM Library</h4>
+                    </div>
+                    <p>Access to academic resources, databases, and research support. Alumni may retain limited access.</p>
+                    <span class="um-link-card-url">
+                        University Library <i data-lucide="external-link"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="main-content">
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h3><i data-lucide="help-circle"></i> Frequently Asked Questions</h3>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How can I update my information in the alumni database?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Send an email to <a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a> with your updated details (current location, job, university, etc.). We'll update your record within a few days. You can also respond to our annual survey each September.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do I join the WhatsApp community?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            The WhatsApp community is open to all MSP alumni. Visit our <a href="community.html">Community page</a> for the join link, or email us if you need assistance. We have a main announcement channel plus 24 country-specific groups.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I be featured in a success story?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes! We're always looking for alumni willing to share their journey. We feature diverse paths — not just PhDs or prestigious positions. If you're interested, email us and we'll arrange a brief interview. You'll approve the final content before publication.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How is my data used and protected?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            We only display aggregated, anonymized statistics publicly. Your individual information is never shared without consent. Read our full <a href="privacy.html">Privacy Policy</a> for details on data handling, your rights, and how to request changes or deletion.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        I'm a current student — can I access alumni resources?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Absolutely! While the WhatsApp community is for graduates, you can explore this website, attend alumni events, and request connections with alumni in your field of interest. Just email us with what you're looking for and we'll help facilitate introductions.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How can I give back to MSP?
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            There are several ways: give a guest lecture, mentor current students, participate in recruitment events, or simply share your story to inspire prospective students. Contact us to discuss opportunities that match your interests and availability.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
+                <p>The MSP Alumni Network connects 1,330+ graduates across 56 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Explore</h4>
+                <a href="index.html">Alumni Map</a>
+                <a href="countries.html">Countries</a>
+                <a href="universities.html">Universities</a>
+                <a href="outcomes.html">Career Outcomes</a>
+                <a href="community.html">Community</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Official UM Sites</h4>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University ↗</a>
+                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni ↗</a>
+                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni ↗</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank">MSP Programme ↗</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated December 2025</p>
+            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

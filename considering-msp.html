@@ -6,12 +6,9 @@
     <title>Considering MSP? | Where Will Science Take You?</title>
     <meta name="description" content="See where MSP graduates go - from Oxford to ETH Zürich, from research labs to startups. Real outcomes from 1,330+ alumni.">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <style>
@@ -21,27 +18,20 @@
             --um-light-blue: #00A2DB;
             --um-orange: #E84E10;
             --um-white: #FFFFFF;
-            --um-off-white: #fafbfc;
             --um-gray-50: #f8fafc;
             --um-gray-100: #f1f5f9;
             --um-gray-200: #e2e8f0;
-            --um-gray-300: #cbd5e1;
             --um-gray-500: #64748b;
             --um-gray-600: #475569;
-            
             --font-heading: 'Space Grotesk', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
-            
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.1);
-            
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
             --radius-xl: 28px;
-            
             --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -54,72 +44,289 @@
         a:hover { color: var(--um-orange); }
         
         /* Header */
-        header { background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,28,61,0.06); padding: 0 50px; height: 72px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all var(--transition-smooth); }
+        header { background: transparent; padding: 0 50px; height: 72px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all var(--transition-smooth); }
         header.scrolled { background: var(--um-dark-blue); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        header.scrolled .logo-text h1, header.scrolled .logo-text p { color: white; }
-        header.scrolled .logo-text p { color: rgba(255,255,255,0.7); }
-        header.scrolled .header-nav a { color: rgba(255,255,255,0.8); }
-        header.scrolled .header-nav a:hover { color: white; background: rgba(255,255,255,0.1); }
-        header.scrolled .header-nav a.active { color: white; }
-        header.scrolled .logo-img { filter: brightness(0) invert(1); }
         .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .logo-img { height: 44px; width: auto; transition: all var(--transition-smooth); }
+        .logo-img { height: 44px; width: auto; filter: brightness(0) invert(1); transition: all var(--transition-smooth); }
         .logo:hover .logo-img { transform: scale(1.02); }
-        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; transition: color var(--transition-smooth); }
-        .logo-text p { font-size: 11px; color: var(--um-gray-500); margin: 0; font-weight: 500; transition: color var(--transition-smooth); }
+        .logo-text h1 { font-size: 15px; font-weight: 700; color: white; margin: 0; line-height: 1.2; }
+        .logo-text p { font-size: 11px; color: rgba(255,255,255,0.7); margin: 0; font-weight: 500; }
         .header-nav { display: flex; gap: 6px; align-items: center; }
-        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-sm); color: var(--um-gray-600); transition: all var(--transition-fast); }
-        .header-nav a:hover { color: var(--um-dark-blue); background: var(--um-gray-50); }
-        .header-nav a.active { color: var(--um-dark-blue); font-weight: 600; }
+        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-sm); color: rgba(255,255,255,0.8); transition: all var(--transition-fast); }
+        .header-nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+        .header-nav a.active { color: white; font-weight: 600; }
         .header-nav .btn-cta { background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%); color: white; margin-left: 12px; box-shadow: 0 2px 8px rgba(232, 78, 16, 0.25); }
         .header-nav .btn-cta:hover { background: linear-gradient(135deg, #ff5a1f 0%, var(--um-orange) 100%); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 78, 16, 0.35); color: white; }
         
-        /* Hero - Same as index.html */
-        .hero { min-height: 100vh; background: linear-gradient(165deg, #000a14 0%, var(--um-dark-blue) 35%, #001a35 70%, #00243d 100%); color: white; padding: 120px 50px 80px; position: relative; overflow: hidden; display: flex; align-items: center; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%); }
-        #particleCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.6; }
-        .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: orbFloat 8s ease-in-out infinite; }
-        .hero-orb-1 { width: 500px; height: 500px; background: var(--um-light-blue); top: -200px; left: -200px; }
-        .hero-orb-2 { width: 400px; height: 400px; background: var(--um-orange); bottom: -150px; right: -150px; animation-delay: -4s; }
-        .hero-orb-3 { width: 300px; height: 300px; background: var(--um-light-blue); top: 50%; right: 20%; opacity: 0.2; animation-delay: -2s; }
-        @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.05); } 66% { transform: translate(-20px, 20px) scale(0.95); } }
-        .flag-cascade { position: absolute; top: 0; right: 0; width: 50%; height: 100%; overflow: hidden; pointer-events: none; z-index: 1; mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%); }
-        .flag-cascade-inner { position: absolute; top: -30px; left: -30px; right: -30px; bottom: -30px; display: flex; flex-wrap: wrap; gap: 14px; padding: 30px; transform: rotate(-12deg) scale(1.4); opacity: 0.7; }
-        .cascade-flag { width: 56px; height: 38px; object-fit: cover; border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-        .cascade-flag:nth-child(odd) { transform: translateY(10px); }
-        .cascade-flag:nth-child(3n) { opacity: 0.8; }
-        .cascade-flag:nth-child(5n) { transform: translateY(-8px) rotate(4deg); }
-        .cascade-flag:nth-child(7n) { transform: translateY(15px) rotate(-3deg); }
-        .hero-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; width: 100%; }
-        .hero-left { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .hero-logo-container { position: relative; }
-        .hero-logo-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 550px; height: 550px; background: radial-gradient(circle, rgba(0,162,219,0.1) 0%, transparent 70%); border-radius: 50%; animation: logoGlow 4s ease-in-out infinite; }
-        @keyframes logoGlow { 0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); } }
-        .hero-logo-large { width: 400px; height: auto; filter: brightness(0) invert(1); position: relative; z-index: 1; }
-        .hero-right { max-width: 700px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,78,16,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(232,78,16,0.3); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--um-orange); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
-        .hero-badge-dot { width: 6px; height: 6px; background: var(--um-orange); border-radius: 50%; animation: pulseDot 2s ease-in-out infinite; }
-        @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-        .hero h2 { font-size: 58px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero h2 span { background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-subtitle { font-size: 20px; color: rgba(255,255,255,0.7); margin-bottom: 50px; line-height: 1.7; }
-        .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .hero-stat { position: relative; text-align: center; padding: 28px 18px; background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.08); transition: all var(--transition-smooth); overflow: hidden; }
-        .hero-stat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); }
-        .hero-stat:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .hero-stat.highlight { background: rgba(232,78,16,0.1); border: 1px solid rgba(232,78,16,0.3); }
-        .hero-stat.highlight::before { background: linear-gradient(90deg, transparent, rgba(232,78,16,0.5), transparent); }
-        .hero-stat.highlight:hover { background: rgba(232,78,16,0.18); border-color: rgba(232,78,16,0.5); box-shadow: 0 20px 50px rgba(232,78,16,0.25); }
-        .hero-stat-number { font-family: var(--font-heading); font-size: 42px; font-weight: 700; color: white; line-height: 1; margin-bottom: 10px; }
-        .hero-stat.highlight .hero-stat-number { color: var(--um-orange); }
-        .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; animation: fadeInUp 1s ease 1s both; }
-        .scroll-indicator-mouse { width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.3); border-radius: 12px; position: relative; }
-        .scroll-indicator-wheel { width: 4px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollWheel 2s ease-in-out infinite; }
-        @keyframes scrollWheel { 0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.3; transform: translateX(-50%) translateY(10px); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        /* ============================================
+           FULL PAGE HERO - UNIQUE DESIGN
+        ============================================ */
+        .hero-fullpage {
+            min-height: 100vh;
+            background: linear-gradient(165deg, #000810 0%, var(--um-dark-blue) 30%, #001530 60%, #001a35 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 50px;
+        }
         
-        /* Section Styles */
+        /* Animated gradient mesh background */
+        .hero-mesh {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0,162,219,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(232,78,16,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 50% 80%, rgba(0,162,219,0.08) 0%, transparent 50%);
+            animation: meshMove 20s ease-in-out infinite;
+        }
+        
+        @keyframes meshMove {
+            0%, 100% { transform: scale(1) translate(0, 0); }
+            25% { transform: scale(1.1) translate(2%, -2%); }
+            50% { transform: scale(1) translate(-1%, 1%); }
+            75% { transform: scale(1.05) translate(1%, 2%); }
+        }
+        
+        /* Floating university logos in background */
+        .floating-logos {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-logo {
+            position: absolute;
+            width: 60px; height: 60px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            opacity: 0.4;
+            animation: float var(--duration) ease-in-out infinite;
+        }
+        
+        .floating-logo img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Main hero content */
+        .hero-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1000px;
+        }
+        
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(232,78,16,0.15);
+            border: 1px solid rgba(232,78,16,0.3);
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .hero-eyebrow-icon { width: 18px; height: 18px; }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            color: white;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-title .highlight {
+            display: block;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 50%, var(--um-light-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradientShift 5s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        /* Journey Stats - Horizontal Flow */
+        .journey-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease 0.6s both;
+            flex-wrap: wrap;
+        }
+        
+        .journey-node {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 24px 32px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            min-width: 140px;
+        }
+        
+        .journey-node:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+        
+        .journey-node.highlight {
+            background: rgba(232,78,16,0.15);
+            border-color: rgba(232,78,16,0.4);
+        }
+        
+        .journey-node.highlight:hover {
+            background: rgba(232,78,16,0.25);
+            border-color: rgba(232,78,16,0.6);
+        }
+        
+        .journey-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+        
+        .journey-node.highlight .journey-number { color: var(--um-orange); }
+        
+        .journey-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+        
+        .journey-arrow {
+            color: rgba(255,255,255,0.3);
+            font-size: 24px;
+        }
+        
+        .journey-arrow i { width: 24px; height: 24px; }
+        
+        /* CTA Buttons */
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+        
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 18px 36px;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+        }
+        
+        .hero-btn.primary {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white;
+            box-shadow: 0 4px 24px rgba(232,78,16,0.4);
+        }
+        
+        .hero-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(232,78,16,0.5);
+            color: white;
+        }
+        
+        .hero-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero-btn.secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+        
+        .hero-btn i { width: 20px; height: 20px; }
+        
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .scroll-hint i { width: 24px; height: 24px; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* ============================================
+           SECTION STYLES
+        ============================================ */
+        .section { padding: 100px 50px; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
         .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--um-light-blue); margin-bottom: 16px; }
         .section-label::before, .section-label::after { content: ''; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, var(--um-light-blue)); }
@@ -127,160 +334,676 @@
         .section-title { font-size: 42px; font-weight: 700; color: var(--um-dark-blue); margin-bottom: 16px; }
         .section-subtitle { font-size: 17px; color: var(--um-gray-500); line-height: 1.7; }
         
-        /* Growth Section */
-        .growth-story { background: var(--um-white); padding: 100px 50px; }
-        .growth-story-container { max-width: 1200px; margin: 0 auto; }
-        .growth-highlight { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; margin-bottom: 60px; }
-        .growth-big-stat { background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%); border-radius: var(--radius-xl); padding: 60px 40px; text-align: center; position: relative; overflow: hidden; }
-        .growth-big-stat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 30%, rgba(0,162,219,0.2) 0%, transparent 50%); }
-        .growth-multiplier { font-family: var(--font-heading); font-size: 120px; font-weight: 700; background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; position: relative; }
-        .growth-multiplier-label { font-size: 18px; color: rgba(255,255,255,0.8); font-weight: 600; margin-top: 10px; position: relative; }
-        .growth-comparison { display: flex; align-items: center; gap: 30px; margin-top: 30px; position: relative; }
-        .growth-year { text-align: center; flex: 1; }
-        .growth-year-number { font-family: var(--font-heading); font-size: 48px; font-weight: 700; color: white; line-height: 1; }
-        .growth-year-label { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 8px; }
-        .growth-arrow { font-size: 32px; color: var(--um-orange); }
-        .growth-chart-wrapper { background: var(--um-gray-50); border-radius: var(--radius-xl); padding: 40px; }
-        .growth-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 280px; gap: 8px; padding-bottom: 40px; border-bottom: 2px solid var(--um-gray-200); }
-        .growth-bar { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
-        .growth-bar-fill { width: 100%; max-width: 50px; background: linear-gradient(180deg, var(--um-light-blue) 0%, #0082b3 100%); border-radius: 8px 8px 0 0; transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; box-shadow: 0 -4px 20px rgba(0,162,219,0.3); }
-        .growth-bar:last-child .growth-bar-fill { background: linear-gradient(180deg, var(--um-orange) 0%, #c43a08 100%); box-shadow: 0 -4px 20px rgba(232,78,16,0.4); }
-        .growth-bar-value { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--um-dark-blue); white-space: nowrap; }
-        .growth-bar-label { position: absolute; bottom: -30px; font-size: 12px; color: var(--um-gray-500); font-weight: 600; }
+        /* ============================================
+           UM OFFICIAL LINKS SECTION
+        ============================================ */
+        .um-links-section {
+            background: linear-gradient(180deg, var(--um-gray-50) 0%, white 100%);
+            padding: 100px 50px;
+        }
         
-        /* University Section */
-        .university-constellation { background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 50%, #00203d 100%); padding: 100px 50px; position: relative; overflow: hidden; }
-        .university-constellation::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(0,162,219,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(232,78,16,0.06) 0%, transparent 40%); }
-        .university-constellation .section-label { color: var(--um-orange); }
-        .university-constellation .section-label::before, .university-constellation .section-label::after { background: linear-gradient(90deg, transparent, var(--um-orange)); }
-        .university-constellation .section-label::after { background: linear-gradient(90deg, var(--um-orange), transparent); }
-        .university-constellation .section-title { color: white; }
-        .university-constellation .section-subtitle { color: rgba(255,255,255,0.6); }
-        .uni-tiers { max-width: 1200px; margin: 0 auto; }
+        .um-links-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .um-links-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .um-links-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .um-links-subtitle {
+            font-size: 16px;
+            color: var(--um-gray-500);
+        }
+        
+        .um-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .um-link-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+            color: var(--um-dark-blue);
+        }
+        
+        .um-link-card:hover {
+            border-color: var(--um-light-blue);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            color: var(--um-dark-blue);
+        }
+        
+        .um-link-card.featured {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            border-color: transparent;
+            color: white;
+            grid-column: span 2;
+        }
+        
+        .um-link-card.featured:hover {
+            box-shadow: 0 12px 40px rgba(0,28,61,0.3);
+        }
+        
+        .um-link-icon {
+            width: 48px; height: 48px;
+            background: var(--um-gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .um-link-card.featured .um-link-icon {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .um-link-icon i { width: 24px; height: 24px; color: var(--um-light-blue); }
+        .um-link-card.featured .um-link-icon i { color: white; }
+        
+        .um-link-content { flex: 1; }
+        
+        .um-link-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .um-link-desc {
+            font-size: 14px;
+            color: var(--um-gray-500);
+            line-height: 1.5;
+        }
+        
+        .um-link-card.featured .um-link-desc { color: rgba(255,255,255,0.7); }
+        
+        .um-link-arrow {
+            color: var(--um-gray-300);
+            transition: all var(--transition-smooth);
+        }
+        
+        .um-link-card:hover .um-link-arrow {
+            color: var(--um-orange);
+            transform: translateX(4px);
+        }
+        
+        .um-link-card.featured .um-link-arrow { color: rgba(255,255,255,0.5); }
+        .um-link-card.featured:hover .um-link-arrow { color: white; }
+        
+        .um-link-arrow i { width: 20px; height: 20px; }
+        
+        /* ============================================
+           QUICK FACTS GRID
+        ============================================ */
+        .facts-section {
+            background: white;
+            padding: 100px 50px;
+        }
+        
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .fact-card {
+            background: var(--um-gray-50);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+        
+        .fact-card:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+        }
+        
+        .fact-card:hover::before { opacity: 1; }
+        
+        .fact-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .fact-card:nth-child(even) .fact-icon {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #c43a08 100%);
+        }
+        
+        .fact-icon i { width: 26px; height: 26px; color: white; }
+        
+        .fact-number {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .fact-label {
+            font-size: 14px;
+            color: var(--um-gray-600);
+            font-weight: 600;
+        }
+        
+        .fact-sublabel {
+            font-size: 12px;
+            color: var(--um-gray-500);
+            margin-top: 4px;
+        }
+        
+        /* ============================================
+           COMPOSITION CHARTS
+        ============================================ */
+        .composition-section {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 50%, #00203d 100%);
+            padding: 100px 50px;
+            color: white;
+        }
+        
+        .composition-section .section-label { color: var(--um-orange); }
+        .composition-section .section-label::before,
+        .composition-section .section-label::after { background: linear-gradient(90deg, transparent, var(--um-orange)); }
+        .composition-section .section-label::after { background: linear-gradient(90deg, var(--um-orange), transparent); }
+        .composition-section .section-title { color: white; }
+        .composition-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        
+        .composition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .composition-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            text-align: center;
+        }
+        
+        .composition-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Donut Chart */
+        .donut-chart {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+        
+        .donut-chart svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        
+        .donut-ring { fill: none; stroke: rgba(255,255,255,0.1); }
+        .donut-segment { fill: none; stroke-linecap: round; transition: stroke-dasharray 1.5s ease; }
+        
+        .donut-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .donut-center-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .donut-center-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .donut-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .legend-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.blue { background: var(--um-light-blue); }
+        .legend-dot.orange { background: var(--um-orange); }
+        .legend-dot.green { background: #10b981; }
+        
+        /* ============================================
+           TOP CITIES
+        ============================================ */
+        .cities-section {
+            background: var(--um-gray-50);
+            padding: 100px 50px;
+        }
+        
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            border: 1px solid var(--um-gray-200);
+        }
+        
+        .city-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        
+        .city-card.top { border: 2px solid var(--um-orange); background: linear-gradient(135deg, #fffbf8 0%, white 100%); }
+        
+        .city-rank {
+            width: 32px; height: 32px;
+            background: var(--um-gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--um-gray-600);
+        }
+        
+        .city-card.top .city-rank { background: var(--um-orange); color: white; }
+        
+        .city-name {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .city-country {
+            font-size: 12px;
+            color: var(--um-gray-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        
+        .city-country img { width: 16px; height: 11px; border-radius: 2px; }
+        
+        .city-count {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-orange);
+        }
+        
+        .city-label {
+            font-size: 11px;
+            color: var(--um-gray-500);
+            text-transform: uppercase;
+        }
+        
+        /* ============================================
+           GROWTH SECTION (Simplified)
+        ============================================ */
+        .growth-section {
+            background: white;
+            padding: 100px 50px;
+        }
+        
+        .growth-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .growth-stat {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .growth-stat::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(0,162,219,0.2) 0%, transparent 50%);
+        }
+        
+        .growth-number {
+            font-family: var(--font-heading);
+            font-size: 100px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            position: relative;
+        }
+        
+        .growth-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .growth-years {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+            position: relative;
+        }
+        
+        .growth-year {
+            text-align: center;
+        }
+        
+        .growth-year-num {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .growth-year-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .growth-arrow-icon { color: var(--um-orange); }
+        
+        .growth-chart {
+            background: var(--um-gray-50);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+        }
+        
+        .growth-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
+            gap: 6px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--um-gray-200);
+        }
+        
+        .growth-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .growth-bar-fill {
+            width: 100%;
+            max-width: 40px;
+            background: linear-gradient(180deg, var(--um-light-blue) 0%, #0082b3 100%);
+            border-radius: 6px 6px 0 0;
+            transition: height 1.5s ease;
+            position: relative;
+        }
+        
+        .growth-bar:last-child .growth-bar-fill {
+            background: linear-gradient(180deg, var(--um-orange) 0%, #c43a08 100%);
+        }
+        
+        .growth-bar-value {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .growth-bar-year {
+            position: absolute;
+            bottom: -24px;
+            font-size: 10px;
+            color: var(--um-gray-500);
+            font-weight: 600;
+        }
+        
+        /* ============================================
+           UNIVERSITY TIERS
+        ============================================ */
+        .universities-section {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 50%, #00203d 100%);
+            padding: 100px 50px;
+            color: white;
+        }
+        
+        .universities-section .section-label { color: var(--um-orange); }
+        .universities-section .section-label::before,
+        .universities-section .section-label::after { background: linear-gradient(90deg, transparent, var(--um-orange)); }
+        .universities-section .section-label::after { background: linear-gradient(90deg, var(--um-orange), transparent); }
+        .universities-section .section-title { color: white; }
+        .universities-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        
+        .uni-container { max-width: 1200px; margin: 0 auto; }
+        
         .uni-tier { margin-bottom: 50px; }
-        .uni-tier-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-        .uni-tier-badge { background: rgba(232,78,16,0.2); border: 1px solid rgba(232,78,16,0.4); color: var(--um-orange); padding: 8px 20px; border-radius: 100px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .uni-tier-badge.blue { background: rgba(0,162,219,0.2); border-color: rgba(0,162,219,0.4); color: var(--um-light-blue); }
+        
+        .uni-tier-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .uni-tier-badge {
+            background: rgba(232,78,16,0.2);
+            border: 1px solid rgba(232,78,16,0.4);
+            color: var(--um-orange);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .uni-tier-badge.blue {
+            background: rgba(0,162,219,0.2);
+            border-color: rgba(0,162,219,0.4);
+            color: var(--um-light-blue);
+        }
+        
         .uni-tier-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); }
         .uni-tier-count { font-family: var(--font-heading); font-size: 14px; color: rgba(255,255,255,0.5); }
-        .uni-tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
-        .uni-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 24px 20px; text-align: center; transition: all var(--transition-smooth); cursor: pointer; }
-        .uni-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .uni-card.elite { background: rgba(232,78,16,0.1); border-color: rgba(232,78,16,0.3); }
-        .uni-card.elite:hover { background: rgba(232,78,16,0.2); border-color: rgba(232,78,16,0.5); box-shadow: 0 20px 40px rgba(232,78,16,0.2); }
-        .uni-logo { width: 60px; height: 60px; background: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; padding: 8px; }
+        
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 16px;
+        }
+        
+        .uni-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 20px 16px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+        }
+        
+        .uni-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        
+        .uni-card.elite {
+            background: rgba(232,78,16,0.1);
+            border-color: rgba(232,78,16,0.3);
+        }
+        
+        .uni-logo {
+            width: 50px; height: 50px;
+            background: white;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            padding: 6px;
+        }
+        
         .uni-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .uni-name { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: white; margin-bottom: 8px; line-height: 1.3; }
-        .uni-country { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
-        .uni-country img { width: 16px; height: 11px; border-radius: 2px; object-fit: cover; }
-        .uni-alumni-count { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--um-orange); }
-        .uni-alumni-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.5px; }
-        .view-all-btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%); color: white; border-radius: var(--radius-md); font-family: var(--font-heading); font-size: 15px; font-weight: 600; transition: all var(--transition-smooth); box-shadow: 0 4px 20px rgba(232,78,16,0.4); text-decoration: none; }
+        
+        .uni-name {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        
+        .uni-country {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .uni-country img { width: 14px; height: 10px; border-radius: 2px; }
+        
+        .uni-count {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-orange);
+        }
+        
+        .uni-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+        
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(232,78,16,0.4);
+        }
+        
         .view-all-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(232,78,16,0.5); color: white; }
         .view-all-btn i { width: 18px; height: 18px; }
         
-        /* PhD Section */
-        .phd-section { background: var(--um-gray-50); padding: 100px 50px; }
-        .phd-container { max-width: 1100px; margin: 0 auto; }
-        .phd-visual { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
-        .phd-ratio { background: white; border-radius: var(--radius-xl); padding: 50px; text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
-        .phd-ratio::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange)); }
-        .phd-dots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
-        .phd-dot { width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--um-gray-200); transition: all 0.5s ease; }
-        .phd-dot.active { background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%); box-shadow: 0 4px 20px rgba(232,78,16,0.4); animation: phdPulse 2s ease-in-out infinite; }
-        @keyframes phdPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        .phd-ratio-text { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--um-dark-blue); margin-bottom: 8px; }
-        .phd-ratio-subtext { font-size: 15px; color: var(--um-gray-500); }
-        .phd-ratio-number { font-family: var(--font-heading); font-size: 72px; font-weight: 700; color: var(--um-orange); line-height: 1; margin-top: 20px; }
-        .phd-ratio-label { font-size: 16px; color: var(--um-gray-600); font-weight: 600; }
-        .phd-institutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .phd-inst { background: white; border-radius: var(--radius-md); padding: 20px; display: flex; align-items: center; gap: 16px; transition: all var(--transition-smooth); border: 1px solid var(--um-gray-100); }
-        .phd-inst:hover { transform: translateX(8px); box-shadow: var(--shadow-md); border-color: var(--um-light-blue); }
-        .phd-inst-flag { width: 40px; height: 28px; border-radius: 4px; object-fit: cover; box-shadow: var(--shadow-sm); }
-        .phd-inst-info { flex: 1; }
-        .phd-inst-name { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--um-dark-blue); }
-        .phd-inst-count { font-size: 13px; color: var(--um-gray-500); }
-        .phd-inst-count strong { color: var(--um-orange); font-weight: 700; }
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #c43a08 100%);
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
         
-        /* Career Section */
-        .career-section { background: white; padding: 100px 50px; }
-        .career-container { max-width: 1200px; margin: 0 auto; }
-        .career-flow { display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: start; margin-top: 50px; }
-        .career-column { display: flex; flex-direction: column; gap: 12px; }
-        .career-column-title { text-align: center; font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: var(--um-gray-500); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--um-gray-200); }
-        .career-item { background: var(--um-gray-50); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; gap: 14px; transition: all var(--transition-smooth); cursor: pointer; }
-        .career-item:hover { background: white; box-shadow: var(--shadow-md); transform: translateX(4px); }
-        .career-item-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .career-item-icon i { width: 20px; height: 20px; color: white; }
-        .career-item-icon.orange { background: linear-gradient(135deg, var(--um-orange) 0%, #c43a08 100%); }
-        .career-item-icon.green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .career-item-icon.purple { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
-        .career-item-info { flex: 1; }
-        .career-item-name { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--um-dark-blue); }
-        .career-item-count { font-size: 12px; color: var(--um-gray-500); }
-        .career-item-percent { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--um-orange); }
-        .career-arrow-column { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 60px; }
-        .career-arrow { width: 60px; height: 60px; background: var(--um-gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .career-arrow i { width: 28px; height: 28px; color: var(--um-gray-500); }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 40%);
+        }
         
-        /* Diversity Section */
-        .diversity-section { background: linear-gradient(165deg, var(--um-dark-blue) 0%, #000d1a 50%, #001530 100%); padding: 100px 50px; position: relative; overflow: hidden; }
-        .diversity-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(232,78,16,0.08) 0%, transparent 50%); }
-        .diversity-section .section-label { color: var(--um-orange); }
-        .diversity-section .section-label::before, .diversity-section .section-label::after { background: linear-gradient(90deg, transparent, var(--um-orange)); }
-        .diversity-section .section-label::after { background: linear-gradient(90deg, var(--um-orange), transparent); }
-        .diversity-section .section-title { color: white; }
-        .diversity-section .section-subtitle { color: rgba(255,255,255,0.6); }
-        .diversity-grid { display: grid; grid-template-columns: 1fr 400px 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; align-items: center; }
-        .diversity-stats { display: flex; flex-direction: column; gap: 20px; }
-        .diversity-stats.left { align-items: flex-end; text-align: right; }
-        .diversity-stats.right { align-items: flex-start; text-align: left; }
-        .diversity-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 24px 28px; transition: all var(--transition-smooth); max-width: 200px; }
-        .diversity-stat:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
-        .diversity-stat-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-        .diversity-stats.left .diversity-stat-icon { margin-left: auto; }
-        .diversity-stat:nth-child(even) .diversity-stat-icon { background: linear-gradient(135deg, var(--um-orange) 0%, #c43a08 100%); }
-        .diversity-stat-icon i { width: 22px; height: 22px; color: white; }
-        .diversity-stat-number { font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: white; line-height: 1; }
-        .diversity-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
-        .globe-container { position: relative; width: 400px; height: 400px; }
-        .globe-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; animation: globeSpin var(--duration) linear infinite; }
-        .globe-ring-1 { width: 280px; height: 280px; --duration: 20s; }
-        .globe-ring-2 { width: 340px; height: 340px; --duration: 30s; animation-direction: reverse; }
-        .globe-ring-3 { width: 400px; height: 400px; --duration: 40s; }
-        @keyframes globeSpin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-        .globe-flag { position: absolute; width: 28px; height: 20px; border-radius: 3px; object-fit: cover; box-shadow: 0 2px 10px rgba(0,0,0,0.4); animation: counterSpin var(--duration) linear infinite; }
-        .globe-ring-2 .globe-flag { animation-direction: reverse; }
-        @keyframes counterSpin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(-360deg); } }
-        .globe-ring-1 .globe-flag:nth-child(1) { top: 0%; left: 50%; }
-        .globe-ring-1 .globe-flag:nth-child(2) { top: 50%; right: 0%; }
-        .globe-ring-1 .globe-flag:nth-child(3) { bottom: 0%; left: 50%; }
-        .globe-ring-1 .globe-flag:nth-child(4) { top: 50%; left: 0%; }
-        .globe-ring-2 .globe-flag:nth-child(1) { top: 15%; right: 15%; }
-        .globe-ring-2 .globe-flag:nth-child(2) { bottom: 15%; right: 15%; }
-        .globe-ring-2 .globe-flag:nth-child(3) { bottom: 15%; left: 15%; }
-        .globe-ring-2 .globe-flag:nth-child(4) { top: 15%; left: 15%; }
-        .globe-ring-3 .globe-flag:nth-child(1) { top: 8%; left: 30%; }
-        .globe-ring-3 .globe-flag:nth-child(2) { top: 30%; right: 8%; }
-        .globe-ring-3 .globe-flag:nth-child(3) { bottom: 8%; right: 30%; }
-        .globe-ring-3 .globe-flag:nth-child(4) { bottom: 30%; left: 8%; }
-        .globe-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; background: radial-gradient(circle, rgba(0,162,219,0.2) 0%, transparent 70%); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); }
-        .globe-center-number { font-family: var(--font-heading); font-size: 64px; font-weight: 700; color: white; line-height: 1; }
-        .globe-center-label { font-size: 14px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; }
-        .flag-wave-container { max-width: 1200px; margin: 60px auto 0; overflow: hidden; }
-        .flag-wave { display: flex; gap: 12px; animation: flagScroll 60s linear infinite; }
-        @keyframes flagScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .wave-flag { width: 48px; height: 32px; border-radius: 4px; object-fit: cover; box-shadow: 0 3px 12px rgba(0,0,0,0.3); flex-shrink: 0; transition: transform var(--transition-smooth); }
-        .wave-flag:hover { transform: scale(1.2) translateY(-5px); }
-        
-        /* CTA Section */
-        .cta-section { background: linear-gradient(135deg, var(--um-orange) 0%, #c43a08 100%); padding: 100px 50px; text-align: center; position: relative; overflow: hidden; }
-        .cta-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 40%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 40%); }
         .cta-content { max-width: 700px; margin: 0 auto; position: relative; }
         .cta-title { font-size: 48px; font-weight: 700; color: white; margin-bottom: 20px; }
         .cta-subtitle { font-size: 18px; color: rgba(255,255,255,0.9); margin-bottom: 40px; line-height: 1.7; }
         .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .cta-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; padding: 18px 36px; border-radius: var(--radius-md); transition: all var(--transition-smooth); text-decoration: none; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; padding: 18px 36px; border-radius: var(--radius-md); transition: all var(--transition-smooth); }
         .cta-btn.primary { background: white; color: var(--um-orange); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .cta-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); color: var(--um-orange); }
         .cta-btn.secondary { background: rgba(255,255,255,0.15); color: white; border: 2px solid rgba(255,255,255,0.3); }
@@ -295,42 +1018,31 @@
         
         /* Responsive */
         @media (max-width: 1200px) {
-            .hero-content { grid-template-columns: 1fr; gap: 50px; text-align: center; }
-            .hero-left { order: 2; }
-            .hero-right { order: 1; max-width: 100%; }
-            .hero h2 { font-size: 48px; }
-            .hero-stats { max-width: 600px; margin: 0 auto; }
-            .hero-logo-large { width: 300px; }
-            .hero-logo-glow { width: 400px; height: 400px; }
-            .growth-highlight { grid-template-columns: 1fr; }
-            .phd-visual { grid-template-columns: 1fr; }
-            .diversity-grid { grid-template-columns: 1fr; }
-            .globe-container { margin: 0 auto; order: 1; }
-            .diversity-stats.left, .diversity-stats.right { flex-direction: row; justify-content: center; order: 2; }
-            .career-flow { grid-template-columns: 1fr; }
-            .career-arrow-column { flex-direction: row; padding: 20px 0; }
-            .career-arrow { transform: rotate(90deg); }
+            .hero-title { font-size: 56px; }
+            .growth-container { grid-template-columns: 1fr; }
+            .composition-grid { grid-template-columns: 1fr; }
+            .um-link-card.featured { grid-column: span 1; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             header { padding: 0 20px; }
-            .hero { padding: 100px 20px 80px; }
-            .hero h2 { font-size: 36px; }
-            .hero-stats { grid-template-columns: repeat(2, 1fr); }
-            .hero-stat-number { font-size: 32px; }
-            .section-title { font-size: 32px; }
-            .growth-multiplier { font-size: 80px; }
-            .uni-tier-grid { grid-template-columns: repeat(2, 1fr); }
-            .phd-institutions { grid-template-columns: 1fr; }
-            .globe-container { width: 300px; height: 300px; }
-            .cta-title { font-size: 36px; }
-            .growth-story, .university-constellation, .phd-section, .career-section, .diversity-section, .cta-section { padding: 70px 20px; }
+            .hero-fullpage { padding: 100px 20px; }
+            .hero-title { font-size: 42px; }
+            .journey-flow { flex-direction: column; }
+            .journey-arrow { transform: rotate(90deg); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+            .cities-grid { grid-template-columns: repeat(3, 1fr); }
+            .section { padding: 70px 20px; }
+            .um-links-section, .facts-section, .composition-section, .cities-section, .growth-section, .universities-section, .cta-section { padding: 70px 20px; }
         }
-        @media (max-width: 480px) {
-            .hero h2 { font-size: 28px; }
-            .hero-stat-number { font-size: 26px; }
-            .uni-tier-grid { grid-template-columns: 1fr; }
-            .globe-container { width: 250px; height: 250px; }
-            .globe-center-number { font-size: 48px; }
+        @media (max-width: 600px) {
+            .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .journey-node { padding: 16px 20px; min-width: 100px; }
+            .journey-number { font-size: 28px; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .cities-grid { grid-template-columns: repeat(2, 1fr); }
+            .uni-grid { grid-template-columns: repeat(2, 1fr); }
+            .cta-title { font-size: 32px; }
         }
     </style>
 </head>
@@ -352,226 +1064,504 @@
         </nav>
     </header>
     
-    <section class="hero" id="hero">
-        <canvas id="particleCanvas"></canvas>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        <div class="flag-cascade"><div class="flag-cascade-inner" id="flagCascade"></div></div>
-        <div class="hero-content">
-            <div class="hero-left">
-                <div class="hero-logo-container">
-                    <div class="hero-logo-glow"></div>
-                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="hero-logo-large">
+    <!-- FULL PAGE HERO -->
+    <section class="hero-fullpage">
+        <div class="hero-mesh"></div>
+        
+        <div class="floating-logos">
+            <div class="floating-logo" style="top: 15%; left: 10%; --duration: 6s;"><img src="assets/logos/imperial-college-london.png" alt=""></div>
+            <div class="floating-logo" style="top: 25%; right: 15%; --duration: 8s;"><img src="assets/logos/eth-zurich.png" alt=""></div>
+            <div class="floating-logo" style="bottom: 30%; left: 8%; --duration: 7s;"><img src="assets/logos/cambridge.png" alt=""></div>
+            <div class="floating-logo" style="bottom: 20%; right: 10%; --duration: 9s;"><img src="assets/logos/oxford.png" alt=""></div>
+            <div class="floating-logo" style="top: 60%; left: 20%; --duration: 5s;"><img src="assets/logos/utrecht.png" alt=""></div>
+            <div class="floating-logo" style="top: 40%; right: 25%; --duration: 7.5s;"><img src="assets/logos/uva.png" alt=""></div>
+        </div>
+        
+        <div class="hero-center">
+            <div class="hero-eyebrow">
+                <i data-lucide="sparkles" class="hero-eyebrow-icon"></i>
+                Real Outcomes from 1,330+ Alumni
+            </div>
+            
+            <h1 class="hero-title">
+                Where Will
+                <span class="highlight">Science Take You?</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                This isn't marketing. This is data. See exactly where MSP graduates go — the universities, the cities, the careers. Real paths from real alumni.
+            </p>
+            
+            <div class="journey-flow">
+                <div class="journey-node highlight">
+                    <div class="journey-number">1,330</div>
+                    <div class="journey-label">Alumni</div>
+                </div>
+                <div class="journey-arrow"><i data-lucide="chevron-right"></i></div>
+                <div class="journey-node">
+                    <div class="journey-number">249</div>
+                    <div class="journey-label">Universities</div>
+                </div>
+                <div class="journey-arrow"><i data-lucide="chevron-right"></i></div>
+                <div class="journey-node">
+                    <div class="journey-number">93</div>
+                    <div class="journey-label">Countries</div>
+                </div>
+                <div class="journey-arrow"><i data-lucide="chevron-right"></i></div>
+                <div class="journey-node highlight">
+                    <div class="journey-number">129</div>
+                    <div class="journey-label">PhDs</div>
                 </div>
             </div>
-            <div class="hero-right">
-                <div class="hero-badge"><span class="hero-badge-dot"></span>For Prospective Students</div>
-                <h2>Where Will <span>Science</span> Take You?</h2>
-                <p class="hero-subtitle">From research labs in Zürich to startups in Amsterdam — see the real paths of 1,330+ MSP graduates. Your future starts with the right foundation.</p>
-                <div class="hero-stats">
-                    <div class="hero-stat highlight"><div class="hero-stat-number">10×</div><div class="hero-stat-label">Growth Since 2014</div></div>
-                    <div class="hero-stat"><div class="hero-stat-number">249</div><div class="hero-stat-label">Universities</div></div>
-                    <div class="hero-stat highlight"><div class="hero-stat-number">71</div><div class="hero-stat-label">Elite Universities</div></div>
-                    <div class="hero-stat"><div class="hero-stat-number">129</div><div class="hero-stat-label">PhD Researchers</div></div>
-                </div>
+            
+            <div class="hero-ctas">
+                <a href="#um-links" class="hero-btn primary">
+                    Explore the Data
+                    <i data-lucide="arrow-down"></i>
+                </a>
+                <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme" target="_blank" class="hero-btn secondary">
+                    Official MSP Page
+                    <i data-lucide="external-link"></i>
+                </a>
             </div>
         </div>
-        <div class="scroll-indicator"><div class="scroll-indicator-mouse"><div class="scroll-indicator-wheel"></div></div><span>Explore Outcomes</span></div>
+        
+        <div class="scroll-hint">
+            <i data-lucide="chevrons-down"></i>
+            Scroll to explore
+        </div>
     </section>
     
-    <section class="growth-story">
-        <div class="growth-story-container">
-            <div class="section-header">
-                <div class="section-label">Programme Growth</div>
-                <h2 class="section-title">A Decade of Momentum</h2>
-                <p class="section-subtitle">From 25 pioneers in 2014 to 247 graduates in 2025 — MSP has grown into one of Europe's most dynamic science programmes.</p>
+    <!-- UM OFFICIAL LINKS -->
+    <section class="um-links-section" id="um-links">
+        <div class="um-links-header">
+            <img src="assets/logos/maastricht-university-logo.png" alt="Maastricht University" class="um-links-logo" onerror="this.style.display='none'">
+            <h2 class="um-links-title">Official MSP Resources</h2>
+            <p class="um-links-subtitle">Everything you need to know about the Maastricht Science Programme</p>
+        </div>
+        
+        <div class="um-links-grid">
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme" target="_blank" class="um-link-card featured">
+                <div class="um-link-icon"><i data-lucide="home"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">MSP Official Homepage</div>
+                    <div class="um-link-desc">Complete overview of the Maastricht Science Programme at Maastricht University</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/waarom-deze-studie" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="heart"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Why MSP?</div>
+                    <div class="um-link-desc">Discover what makes MSP unique</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/vakken-en-curriculum" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="book-open"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Curriculum</div>
+                    <div class="um-link-desc">Courses and programme structure</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/jouw-toekomst" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="rocket"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Your Future</div>
+                    <div class="um-link-desc">Career paths and opportunities</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelatingseisen" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="clipboard-check"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Requirements</div>
+                    <div class="um-link-desc">Admission requirements</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelating-en-inschrijving" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="user-plus"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Apply Now</div>
+                    <div class="um-link-desc">Admission & registration</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/collegegelden" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="wallet"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Tuition Fees</div>
+                    <div class="um-link-desc">Costs and financial info</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/contact" target="_blank" class="um-link-card">
+                <div class="um-link-icon"><i data-lucide="mail"></i></div>
+                <div class="um-link-content">
+                    <div class="um-link-title">Contact</div>
+                    <div class="um-link-desc">Get in touch with MSP</div>
+                </div>
+                <div class="um-link-arrow"><i data-lucide="arrow-right"></i></div>
+            </a>
+        </div>
+    </section>
+    
+    <!-- QUICK FACTS -->
+    <section class="facts-section">
+        <div class="section-header">
+            <div class="section-label">By The Numbers</div>
+            <h2 class="section-title">Quick Facts</h2>
+            <p class="section-subtitle">Key statistics about MSP graduates and where they are today</p>
+        </div>
+        
+        <div class="facts-grid">
+            <div class="fact-card">
+                <div class="fact-icon"><i data-lucide="users"></i></div>
+                <div class="fact-number">80%</div>
+                <div class="fact-label">International Students</div>
+                <div class="fact-sublabel">From 78 nationalities</div>
             </div>
-            <div class="growth-highlight">
-                <div class="growth-big-stat">
-                    <div class="growth-multiplier">10×</div>
-                    <div class="growth-multiplier-label">Growth in 12 Years</div>
-                    <div class="growth-comparison">
-                        <div class="growth-year"><div class="growth-year-number">25</div><div class="growth-year-label">Graduates 2014</div></div>
-                        <div class="growth-arrow">→</div>
-                        <div class="growth-year"><div class="growth-year-number">247</div><div class="growth-year-label">Graduates 2025</div></div>
+            <div class="fact-card">
+                <div class="fact-icon"><i data-lucide="user-check"></i></div>
+                <div class="fact-number">60%</div>
+                <div class="fact-label">Female Students</div>
+                <div class="fact-sublabel">795 of 1,330 alumni</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon"><i data-lucide="map-pin"></i></div>
+                <div class="fact-number">32%</div>
+                <div class="fact-label">Stay in Netherlands</div>
+                <div class="fact-sublabel">427 alumni currently</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon"><i data-lucide="award"></i></div>
+                <div class="fact-number">71</div>
+                <div class="fact-label">At Elite Universities</div>
+                <div class="fact-sublabel">World Top 10 institutions</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- COMPOSITION CHARTS -->
+    <section class="composition-section">
+        <div class="section-header">
+            <div class="section-label">Who Studies at MSP</div>
+            <h2 class="section-title">Student Composition</h2>
+            <p class="section-subtitle">A truly diverse and international programme</p>
+        </div>
+        
+        <div class="composition-grid">
+            <div class="composition-card">
+                <div class="composition-title">Gender Balance</div>
+                <div class="donut-chart">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="donut-ring" cx="50" cy="50" r="40" stroke-width="12"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="var(--um-orange)" stroke-dasharray="150.8 251.3" data-percent="60"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="var(--um-light-blue)" stroke-dasharray="100.5 251.3" stroke-dashoffset="-150.8" data-percent="40"/>
+                    </svg>
+                    <div class="donut-center">
+                        <div class="donut-center-number">60%</div>
+                        <div class="donut-center-label">Female</div>
                     </div>
                 </div>
-                <div class="growth-chart-wrapper"><div class="growth-chart" id="growthChart"></div></div>
+                <div class="donut-legend">
+                    <div class="legend-item"><span class="legend-dot orange"></span> Female 795</div>
+                    <div class="legend-item"><span class="legend-dot blue"></span> Male 533</div>
+                </div>
+            </div>
+            
+            <div class="composition-card">
+                <div class="composition-title">International Mix</div>
+                <div class="donut-chart">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="donut-ring" cx="50" cy="50" r="40" stroke-width="12"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="var(--um-orange)" stroke-dasharray="200.8 251.3" data-percent="80"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="var(--um-light-blue)" stroke-dasharray="50.5 251.3" stroke-dashoffset="-200.8" data-percent="20"/>
+                    </svg>
+                    <div class="donut-center">
+                        <div class="donut-center-number">80%</div>
+                        <div class="donut-center-label">International</div>
+                    </div>
+                </div>
+                <div class="donut-legend">
+                    <div class="legend-item"><span class="legend-dot orange"></span> International 1,065</div>
+                    <div class="legend-item"><span class="legend-dot blue"></span> Dutch 265</div>
+                </div>
+            </div>
+            
+            <div class="composition-card">
+                <div class="composition-title">EU / Non-EU</div>
+                <div class="donut-chart">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="donut-ring" cx="50" cy="50" r="40" stroke-width="12"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="var(--um-light-blue)" stroke-dasharray="203.8 251.3" data-percent="81"/>
+                        <circle class="donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke="#10b981" stroke-dasharray="47.5 251.3" stroke-dashoffset="-203.8" data-percent="19"/>
+                    </svg>
+                    <div class="donut-center">
+                        <div class="donut-center-number">81%</div>
+                        <div class="donut-center-label">EU Citizens</div>
+                    </div>
+                </div>
+                <div class="donut-legend">
+                    <div class="legend-item"><span class="legend-dot blue"></span> EU 1,079</div>
+                    <div class="legend-item"><span class="legend-dot green"></span> Non-EU 251</div>
+                </div>
             </div>
         </div>
     </section>
     
-    <section class="university-constellation">
+    <!-- TOP CITIES -->
+    <section class="cities-section">
+        <div class="section-header">
+            <div class="section-label">Where Alumni Live Now</div>
+            <h2 class="section-title">Top Cities</h2>
+            <p class="section-subtitle">The most popular destinations for MSP graduates worldwide</p>
+        </div>
+        
+        <div class="cities-grid">
+            <div class="city-card top">
+                <div class="city-rank">1</div>
+                <div class="city-name">Maastricht</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Netherlands</div>
+                <div class="city-count">112</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card top">
+                <div class="city-rank">2</div>
+                <div class="city-name">Amsterdam</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Netherlands</div>
+                <div class="city-count">94</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card top">
+                <div class="city-rank">3</div>
+                <div class="city-name">Utrecht</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Netherlands</div>
+                <div class="city-count">72</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">4</div>
+                <div class="city-name">London</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/gb.png" alt="UK"> United Kingdom</div>
+                <div class="city-count">37</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">5</div>
+                <div class="city-name">Leiden</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/nl.png" alt="NL"> Netherlands</div>
+                <div class="city-count">36</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">6</div>
+                <div class="city-name">Brussels</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/be.png" alt="BE"> Belgium</div>
+                <div class="city-count">32</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">7</div>
+                <div class="city-name">Munich</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/de.png" alt="DE"> Germany</div>
+                <div class="city-count">22</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">8</div>
+                <div class="city-name">Copenhagen</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/dk.png" alt="DK"> Denmark</div>
+                <div class="city-count">22</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">9</div>
+                <div class="city-name">Zürich</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/ch.png" alt="CH"> Switzerland</div>
+                <div class="city-count">20</div>
+                <div class="city-label">alumni</div>
+            </div>
+            <div class="city-card">
+                <div class="city-rank">10</div>
+                <div class="city-name">Berlin</div>
+                <div class="city-country"><img src="https://flagcdn.com/w20/de.png" alt="DE"> Germany</div>
+                <div class="city-count">20</div>
+                <div class="city-label">alumni</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GROWTH SECTION -->
+    <section class="growth-section">
+        <div class="section-header">
+            <div class="section-label">Programme Growth</div>
+            <h2 class="section-title">A Decade of Momentum</h2>
+            <p class="section-subtitle">From 25 pioneers in 2014 to 247 graduates in 2025</p>
+        </div>
+        
+        <div class="growth-container">
+            <div class="growth-stat">
+                <div class="growth-number">10×</div>
+                <div class="growth-label">Growth in 12 Years</div>
+                <div class="growth-years">
+                    <div class="growth-year">
+                        <div class="growth-year-num">25</div>
+                        <div class="growth-year-label">2014</div>
+                    </div>
+                    <span class="growth-arrow-icon">→</span>
+                    <div class="growth-year">
+                        <div class="growth-year-num">247</div>
+                        <div class="growth-year-label">2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="growth-chart">
+                <div class="growth-bars" id="growthBars"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- UNIVERSITIES -->
+    <section class="universities-section">
         <div class="section-header">
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where MSP Opens Doors</h2>
-            <p class="section-subtitle">Our alumni continue at 249 universities worldwide — from world-renowned research institutions to specialized programmes.</p>
+            <p class="section-subtitle">Our alumni continue at 249 universities worldwide</p>
         </div>
-        <div class="uni-tiers">
+        
+        <div class="uni-container">
             <div class="uni-tier">
-                <div class="uni-tier-header"><div class="uni-tier-badge">World Top 10</div><div class="uni-tier-line"></div><div class="uni-tier-count">71 alumni at elite institutions</div></div>
-                <div class="uni-tier-grid" id="eliteUnis"></div>
+                <div class="uni-tier-header">
+                    <div class="uni-tier-badge">World Top 10</div>
+                    <div class="uni-tier-line"></div>
+                    <div class="uni-tier-count">71 alumni at elite institutions</div>
+                </div>
+                <div class="uni-grid" id="eliteUnis"></div>
             </div>
+            
             <div class="uni-tier">
-                <div class="uni-tier-header"><div class="uni-tier-badge blue">Top Dutch Universities</div><div class="uni-tier-line"></div><div class="uni-tier-count">Strong domestic pathways</div></div>
-                <div class="uni-tier-grid" id="dutchUnis"></div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 50px;"><a href="universities.html" class="view-all-btn">Explore All 249 Universities <i data-lucide="arrow-right"></i></a></div>
-    </section>
-    
-    <section class="phd-section">
-        <div class="phd-container">
-            <div class="section-header">
-                <div class="section-label">Research Excellence</div>
-                <h2 class="section-title">The PhD Pipeline</h2>
-                <p class="section-subtitle">Nearly 1 in 10 MSP alumni pursue doctoral research — building the next generation of scientists.</p>
-            </div>
-            <div class="phd-visual">
-                <div class="phd-ratio">
-                    <div class="phd-dots"><div class="phd-dot active"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div><div class="phd-dot"></div></div>
-                    <div class="phd-ratio-text">1 in 10</div>
-                    <div class="phd-ratio-subtext">MSP alumni pursue a PhD</div>
-                    <div class="phd-ratio-number">129</div>
-                    <div class="phd-ratio-label">PhD Candidates & Graduates</div>
+                <div class="uni-tier-header">
+                    <div class="uni-tier-badge blue">Top Dutch Universities</div>
+                    <div class="uni-tier-line"></div>
+                    <div class="uni-tier-count">Strong domestic pathways</div>
                 </div>
-                <div class="phd-institutions" id="phdInstitutions"></div>
+                <div class="uni-grid" id="dutchUnis"></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="universities.html" class="view-all-btn">Explore All 249 Universities <i data-lucide="arrow-right"></i></a>
             </div>
         </div>
     </section>
     
-    <section class="career-section">
-        <div class="career-container">
-            <div class="section-header">
-                <div class="section-label">Career Outcomes</div>
-                <h2 class="section-title">From MSP to Career</h2>
-                <p class="section-subtitle">The interdisciplinary foundation of MSP leads to diverse and impactful careers.</p>
-            </div>
-            <div class="career-flow">
-                <div class="career-column">
-                    <div class="career-column-title">Top Fields</div>
-                    <div class="career-item"><div class="career-item-icon"><i data-lucide="dna"></i></div><div class="career-item-info"><div class="career-item-name">Life Sciences</div><div class="career-item-count">341 alumni</div></div><div class="career-item-percent">39%</div></div>
-                    <div class="career-item"><div class="career-item-icon orange"><i data-lucide="flask-conical"></i></div><div class="career-item-info"><div class="career-item-name">Chemistry</div><div class="career-item-count">105 alumni</div></div><div class="career-item-percent">12%</div></div>
-                    <div class="career-item"><div class="career-item-icon green"><i data-lucide="heart-pulse"></i></div><div class="career-item-info"><div class="career-item-name">Medicine & Health</div><div class="career-item-count">105 alumni</div></div><div class="career-item-percent">12%</div></div>
-                    <div class="career-item"><div class="career-item-icon purple"><i data-lucide="atom"></i></div><div class="career-item-info"><div class="career-item-name">Physics & Engineering</div><div class="career-item-count">98 alumni</div></div><div class="career-item-percent">11%</div></div>
-                </div>
-                <div class="career-arrow-column"><div class="career-arrow"><i data-lucide="arrow-right"></i></div></div>
-                <div class="career-column">
-                    <div class="career-column-title">Career Sectors</div>
-                    <div class="career-item"><div class="career-item-icon"><i data-lucide="graduation-cap"></i></div><div class="career-item-info"><div class="career-item-name">PhD Research</div><div class="career-item-count">129 alumni</div></div><div class="career-item-percent">17%</div></div>
-                    <div class="career-item"><div class="career-item-icon orange"><i data-lucide="microscope"></i></div><div class="career-item-info"><div class="career-item-name">Industry R&D</div><div class="career-item-count">54 alumni</div></div><div class="career-item-percent">7%</div></div>
-                    <div class="career-item"><div class="career-item-icon green"><i data-lucide="bar-chart-3"></i></div><div class="career-item-info"><div class="career-item-name">Consulting</div><div class="career-item-count">44 alumni</div></div><div class="career-item-percent">6%</div></div>
-                    <div class="career-item"><div class="career-item-icon purple"><i data-lucide="pill"></i></div><div class="career-item-info"><div class="career-item-name">Pharma & Biotech</div><div class="career-item-count">39 alumni</div></div><div class="career-item-percent">5%</div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="diversity-section">
-        <div class="section-header">
-            <div class="section-label">Global Community</div>
-            <h2 class="section-title">78 Nationalities, One Programme</h2>
-            <p class="section-subtitle">MSP brings together students from across the globe — creating a truly international learning environment.</p>
-        </div>
-        <div class="diversity-grid">
-            <div class="diversity-stats left">
-                <div class="diversity-stat"><div class="diversity-stat-icon"><i data-lucide="globe"></i></div><div class="diversity-stat-number">78</div><div class="diversity-stat-label">Nationalities</div></div>
-                <div class="diversity-stat"><div class="diversity-stat-icon"><i data-lucide="map-pin"></i></div><div class="diversity-stat-number">93</div><div class="diversity-stat-label">Countries Now</div></div>
-            </div>
-            <div class="globe-container">
-                <div class="globe-ring globe-ring-1"><img src="https://flagcdn.com/w40/de.png" alt="Germany" class="globe-flag"><img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="globe-flag"><img src="https://flagcdn.com/w40/cn.png" alt="China" class="globe-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA" class="globe-flag"></div>
-                <div class="globe-ring globe-ring-2"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="globe-flag"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="globe-flag"><img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="globe-flag"><img src="https://flagcdn.com/w40/in.png" alt="India" class="globe-flag"></div>
-                <div class="globe-ring globe-ring-3"><img src="https://flagcdn.com/w40/it.png" alt="Italy" class="globe-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain" class="globe-flag"><img src="https://flagcdn.com/w40/mx.png" alt="Mexico" class="globe-flag"><img src="https://flagcdn.com/w40/br.png" alt="Brazil" class="globe-flag"></div>
-                <div class="globe-center"><div class="globe-center-number">78</div><div class="globe-center-label">Nations</div></div>
-            </div>
-            <div class="diversity-stats right">
-                <div class="diversity-stat"><div class="diversity-stat-icon"><i data-lucide="users"></i></div><div class="diversity-stat-number">1,330</div><div class="diversity-stat-label">Total Alumni</div></div>
-                <div class="diversity-stat"><div class="diversity-stat-icon"><i data-lucide="trending-up"></i></div><div class="diversity-stat-number">247</div><div class="diversity-stat-label">Class of 2025</div></div>
-            </div>
-        </div>
-        <div class="flag-wave-container"><div class="flag-wave" id="flagWave"></div></div>
-    </section>
-    
+    <!-- CTA -->
     <section class="cta-section">
         <div class="cta-content">
             <h2 class="cta-title">Ready to Start Your Journey?</h2>
             <p class="cta-subtitle">Join 1,330+ alumni who began their scientific careers at MSP. The next chapter starts with one decision.</p>
             <div class="cta-buttons">
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-maastricht-science-programme/admission-and-application" target="_blank" class="cta-btn primary">Apply to MSP <i data-lucide="arrow-right"></i></a>
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/bachelor-maastricht-science-programme" target="_blank" class="cta-btn secondary">Learn More <i data-lucide="external-link"></i></a>
+                <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/toelating-en-inschrijving" target="_blank" class="cta-btn primary">Apply to MSP <i data-lucide="arrow-right"></i></a>
+                <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/maastricht-science-programme/contact" target="_blank" class="cta-btn secondary">Contact MSP <i data-lucide="mail"></i></a>
             </div>
         </div>
     </section>
     
-    <footer><div class="footer-text">© 2025 MSP Alumni Network · Maastricht University · <a href="privacy.html">Privacy Policy</a></div></footer>
+    <footer>
+        <div class="footer-text">
+            © 2025 MSP Alumni Network · <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> · <a href="privacy.html">Privacy Policy</a>
+        </div>
+    </footer>
     
     <script>
         lucide.createIcons();
         
-        const growthData = [{year:2014,count:25},{year:2015,count:44},{year:2016,count:57},{year:2017,count:66},{year:2018,count:65},{year:2019,count:76},{year:2020,count:108},{year:2021,count:132},{year:2022,count:145},{year:2023,count:170},{year:2024,count:194},{year:2025,count:247}];
-        const eliteUniversities = [{name:'Imperial College London',country:'United Kingdom',code:'gb',count:19,logo:'imperial-college-london.png'},{name:'ETH Zürich',country:'Switzerland',code:'ch',count:12,logo:'eth-zurich.png'},{name:'University of Cambridge',country:'United Kingdom',code:'gb',count:8,logo:'cambridge.png'},{name:'University of Oxford',country:'United Kingdom',code:'gb',count:7,logo:'oxford.png'},{name:'UCL',country:'United Kingdom',code:'gb',count:14,logo:'ucl.png'},{name:'Karolinska Institutet',country:'Sweden',code:'se',count:10,logo:'karolinska.png'}];
-        const dutchUniversities = [{name:'Utrecht University',country:'Netherlands',code:'nl',count:96,logo:'utrecht.png'},{name:'University of Amsterdam',country:'Netherlands',code:'nl',count:72,logo:'uva.png'},{name:'Leiden University',country:'Netherlands',code:'nl',count:45,logo:'leiden.png'},{name:'Wageningen University',country:'Netherlands',code:'nl',count:40,logo:'wageningen.png'},{name:'Radboud University',country:'Netherlands',code:'nl',count:38,logo:'radboud.png'},{name:'TU Delft',country:'Netherlands',code:'nl',count:19,logo:'tudelft.png'}];
-        const phdInstitutions = [{name:'Maastricht University',code:'nl',count:21},{name:'Utrecht University',code:'nl',count:14},{name:'University of Amsterdam',code:'nl',count:11},{name:'Imperial College London',code:'gb',count:7},{name:'Radboud University',code:'nl',count:8},{name:'KU Leuven',code:'be',count:5},{name:'ETH Zürich',code:'ch',count:4},{name:'University of Cambridge',code:'gb',count:3}];
-        const nationalityFlags = ['nl','de','be','it','gb','es','fr','pl','lu','ie','ro','gr','pt','at','hu','se','cz','bg','hr','sk','lt','fi','dk','ee','lv','si','cy','mt','cn','in','us','br','mx','jp','kr','au','ca','ru','tr','za','eg','ng','ke','gh','ma','ar','co','cl','pe','ve','ph','id','my','sg','th','vn','pk','bd','ir','il','ae','sa','nz','no','ch','ua','rs','ba','mk','al','md','by','ge','am','az','kz','uz'];
-        
-        // Header scroll effect
+        // Header scroll
         const header = document.getElementById('header');
-        const hero = document.getElementById('hero');
-        function updateHeader() {
-            const heroBottom = hero.offsetTop + hero.offsetHeight - 100;
-            header.classList.toggle('scrolled', window.scrollY > heroBottom);
-        }
-        window.addEventListener('scroll', updateHeader);
-        updateHeader();
-        
-        // Particle Network
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        const particles = [];
-        const particleCount = 150;
-        const connectionDistance = 200;
-        const leftBoundary = 0.55;
-        class Particle {
-            constructor() { this.x = Math.random() * canvas.width * leftBoundary; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.8; this.vy = (Math.random() - 0.5) * 0.8; this.radius = Math.random() * 3 + 2; this.isOrange = Math.random() > 0.7; this.pulse = Math.random() * Math.PI * 2; }
-            update() { this.x += this.vx; this.y += this.vy; this.pulse += 0.02; if (this.x < 0) this.vx *= -1; if (this.x > canvas.width * leftBoundary) { this.vx *= -1; this.x = canvas.width * leftBoundary; } if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
-            draw() { const pulseScale = 1 + Math.sin(this.pulse) * 0.3; const currentRadius = this.radius * pulseScale; const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, currentRadius * 3); if (this.isOrange) { gradient.addColorStop(0, 'rgba(232, 78, 16, 0.9)'); gradient.addColorStop(0.4, 'rgba(232, 78, 16, 0.4)'); gradient.addColorStop(1, 'rgba(232, 78, 16, 0)'); } else { gradient.addColorStop(0, 'rgba(0, 162, 219, 0.9)'); gradient.addColorStop(0.4, 'rgba(0, 162, 219, 0.4)'); gradient.addColorStop(1, 'rgba(0, 162, 219, 0)'); } ctx.beginPath(); ctx.arc(this.x, this.y, currentRadius * 3, 0, Math.PI * 2); ctx.fillStyle = gradient; ctx.fill(); ctx.beginPath(); ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2); ctx.fillStyle = this.isOrange ? 'rgba(232, 78, 16, 1)' : 'rgba(0, 162, 219, 1)'; ctx.fill(); }
-        }
-        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const distance = Math.sqrt(dx * dx + dy * dy); if (distance < connectionDistance) { const opacity = (1 - distance / connectionDistance) * 0.5; const gradient = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y); const color1 = particles[i].isOrange ? `rgba(232, 78, 16, ${opacity})` : `rgba(0, 162, 219, ${opacity})`; const color2 = particles[j].isOrange ? `rgba(232, 78, 16, ${opacity})` : `rgba(0, 162, 219, ${opacity})`; gradient.addColorStop(0, color1); gradient.addColorStop(1, color2); ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = gradient; ctx.lineWidth = 1.5; ctx.stroke(); } } }
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-        
-        // Flag Cascade
-        const flagCascade = document.getElementById('flagCascade');
-        const shuffledFlags = [...nationalityFlags].sort(() => Math.random() - 0.5);
-        [...shuffledFlags, ...shuffledFlags.slice(0, 60)].forEach(code => { const img = document.createElement('img'); img.src = `https://flagcdn.com/w80/${code}.png`; img.className = 'cascade-flag'; img.loading = 'lazy'; flagCascade.appendChild(img); });
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
         
         // Growth Chart
-        const growthChart = document.getElementById('growthChart');
-        const maxCount = Math.max(...growthData.map(d => d.count));
-        growthData.forEach((d, i) => { const bar = document.createElement('div'); bar.className = 'growth-bar'; const height = (d.count / maxCount) * 220; bar.innerHTML = `<div class="growth-bar-fill" style="height: 0px" data-height="${height}"><span class="growth-bar-value">${d.count}</span></div><span class="growth-bar-label">'${String(d.year).slice(-2)}</span>`; growthChart.appendChild(bar); });
-        const chartObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { document.querySelectorAll('.growth-bar-fill').forEach((bar, i) => { setTimeout(() => { bar.style.height = bar.dataset.height + 'px'; }, i * 80); }); chartObserver.disconnect(); } }); }, { threshold: 0.3 });
-        chartObserver.observe(growthChart);
+        const growthData = [
+            {year: 2014, count: 25}, {year: 2015, count: 44}, {year: 2016, count: 57},
+            {year: 2017, count: 66}, {year: 2018, count: 65}, {year: 2019, count: 76},
+            {year: 2020, count: 108}, {year: 2021, count: 132}, {year: 2022, count: 145},
+            {year: 2023, count: 170}, {year: 2024, count: 194}, {year: 2025, count: 247}
+        ];
         
-        // University Grids
-        function createUniCard(uni, isElite = false) { return `<div class="uni-card ${isElite ? 'elite' : ''}"><div class="uni-logo"><img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'; lucide.createIcons();"></div><div class="uni-name">${uni.name}</div><div class="uni-country"><img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">${uni.country}</div><div class="uni-alumni-count">${uni.count}</div><div class="uni-alumni-label">alumni</div></div>`; }
-        document.getElementById('eliteUnis').innerHTML = eliteUniversities.map(u => createUniCard(u, true)).join('');
-        document.getElementById('dutchUnis').innerHTML = dutchUniversities.map(u => createUniCard(u, false)).join('');
+        const growthBars = document.getElementById('growthBars');
+        const maxCount = 247;
         
-        // PhD Institutions
-        document.getElementById('phdInstitutions').innerHTML = phdInstitutions.map(inst => `<div class="phd-inst"><img src="https://flagcdn.com/w40/${inst.code}.png" alt="" class="phd-inst-flag"><div class="phd-inst-info"><div class="phd-inst-name">${inst.name}</div><div class="phd-inst-count"><strong>${inst.count}</strong> PhD alumni</div></div></div>`).join('');
+        growthData.forEach((d, i) => {
+            const bar = document.createElement('div');
+            bar.className = 'growth-bar';
+            const height = (d.count / maxCount) * 160;
+            bar.innerHTML = `
+                <div class="growth-bar-fill" style="height: 0" data-height="${height}">
+                    <span class="growth-bar-value">${d.count}</span>
+                    <span class="growth-bar-year">'${String(d.year).slice(-2)}</span>
+                </div>
+            `;
+            growthBars.appendChild(bar);
+        });
         
-        // Flag Wave
-        const flagWave = document.getElementById('flagWave');
-        [...nationalityFlags, ...nationalityFlags].forEach(code => { const img = document.createElement('img'); img.src = `https://flagcdn.com/w80/${code}.png`; img.className = 'wave-flag'; img.loading = 'lazy'; flagWave.appendChild(img); });
+        // Animate bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.growth-bar-fill').forEach((bar, i) => {
+                        setTimeout(() => {
+                            bar.style.height = bar.dataset.height + 'px';
+                        }, i * 80);
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(growthBars);
+        
+        // Universities
+        const eliteUnis = [
+            {name: 'Imperial College', code: 'gb', count: 19, logo: 'imperial-college-london.png'},
+            {name: 'ETH Zürich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
+            {name: 'Cambridge', code: 'gb', count: 8, logo: 'cambridge.png'},
+            {name: 'Oxford', code: 'gb', count: 7, logo: 'oxford.png'},
+            {name: 'UCL', code: 'gb', count: 14, logo: 'ucl.png'},
+            {name: 'Karolinska', code: 'se', count: 10, logo: 'karolinska.png'}
+        ];
+        
+        const dutchUnis = [
+            {name: 'Utrecht', code: 'nl', count: 96, logo: 'utrecht.png'},
+            {name: 'Amsterdam', code: 'nl', count: 72, logo: 'uva.png'},
+            {name: 'Leiden', code: 'nl', count: 45, logo: 'leiden.png'},
+            {name: 'Wageningen', code: 'nl', count: 40, logo: 'wageningen.png'},
+            {name: 'Radboud', code: 'nl', count: 38, logo: 'radboud.png'},
+            {name: 'TU Delft', code: 'nl', count: 19, logo: 'tudelft.png'}
+        ];
+        
+        function createUniCard(u, elite) {
+            return `<div class="uni-card ${elite ? 'elite' : ''}">
+                <div class="uni-logo"><img src="assets/logos/${u.logo}" alt="${u.name}" onerror="this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'"></div>
+                <div class="uni-name">${u.name}</div>
+                <div class="uni-country"><img src="https://flagcdn.com/w20/${u.code}.png" alt=""></div>
+                <div class="uni-count">${u.count}</div>
+                <div class="uni-label">alumni</div>
+            </div>`;
+        }
+        
+        document.getElementById('eliteUnis').innerHTML = eliteUnis.map(u => createUniCard(u, true)).join('');
+        document.getElementById('dutchUnis').innerHTML = dutchUnis.map(u => createUniCard(u, false)).join('');
         
         lucide.createIcons();
     </script>

@@ -811,7 +811,16 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // Initialize icons
         lucide.createIcons();
+        
+        // Debug: Check if data.js loaded
+        console.log('COUNTRY_DETAILS defined:', typeof COUNTRY_DETAILS !== 'undefined');
+        if (typeof COUNTRY_DETAILS === 'undefined') {
+            document.getElementById('countryName').textContent = 'Error: data.js not loaded';
+            document.getElementById('heroSubtitle').textContent = 'Make sure data.js is in the same folder';
+            throw new Error('COUNTRY_DETAILS not defined - data.js may not be loaded');
+        }
         
         // Country facts database with emojis
         const COUNTRY_FACTS = {
@@ -921,10 +930,18 @@
         const urlParams = new URLSearchParams(window.location.search);
         const countryCode = urlParams.get('code') || 'nl';
         
+        console.log('Country code:', countryCode);
+        console.log('Available countries:', Object.keys(COUNTRY_DETAILS));
+        console.log('Country data exists:', !!COUNTRY_DETAILS[countryCode]);
+        
         const countryData = COUNTRY_DETAILS[countryCode];
         const facts = COUNTRY_FACTS[countryCode] || {};
         
-        if (countryData) {
+        if (!countryData) {
+            console.error('Country not found:', countryCode);
+            document.getElementById('countryName').textContent = 'Country Not Found: ' + countryCode;
+            document.getElementById('heroSubtitle').textContent = 'Available: ' + Object.keys(COUNTRY_DETAILS).slice(0, 10).join(', ') + '...';
+        } else {
             // Update page title
             document.title = `${countryData.name} | MSP Alumni Network`;
             
@@ -1077,9 +1094,6 @@
                     map.fitBounds(allCoords, { padding: [50, 50] });
                 }
             }
-        } else {
-            document.getElementById('countryName').textContent = 'Country Not Found';
-            document.getElementById('heroSubtitle').textContent = 'This country is not in our database';
         }
         
         // Header scroll effect

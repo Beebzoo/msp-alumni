@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master's Destinations | MSP Alumni Network</title>
-    <meta name="description" content="Explore where MSP alumni pursue their Master's degrees - from Oxford to ETH Zürich, across 235+ universities worldwide.">
+    <meta name="description" content="Explore where MSP alumni pursue their Master's degrees - from Oxford to ETH ZÃ¼rich, across 235+ universities worldwide.">
     
-    <!-- Fonts -->
+    <!-- Fonts - Futuristic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -20,38 +20,53 @@
     <style>
         :root {
             --um-dark-blue: #001C3D;
+            --um-darker-blue: #00101f;
             --um-light-blue: #00A2DB;
+            --um-light-blue-glow: rgba(0, 162, 219, 0.4);
             --um-orange: #E84E10;
+            --um-orange-glow: rgba(232, 78, 16, 0.4);
             --um-white: #FFFFFF;
-            --um-off-white: #f8f9fa;
-            --um-gray-100: #f5f5f5;
-            --um-gray-200: #e9ecef;
-            --um-gray-600: #6c757d;
-            --um-gray-800: #343a40;
+            --um-off-white: #fafbfc;
+            --um-gray-50: #f8fafc;
+            --um-gray-100: #f1f5f9;
+            --um-gray-200: #e2e8f0;
+            --um-gray-300: #cbd5e1;
+            --um-gray-500: #64748b;
+            --um-gray-600: #475569;
+            --um-gray-800: #1e293b;
             
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Source Sans 3', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.1);
+            --shadow-glow-blue: 0 0 40px rgba(0, 162, 219, 0.15);
+            --shadow-glow-orange: 0 0 40px rgba(232, 78, 16, 0.15);
             
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
+            --radius-xl: 28px;
+            
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         body {
             font-family: var(--font-body);
             font-size: 16px;
             line-height: 1.6;
             color: var(--um-dark-blue);
             background: var(--um-white);
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.2; }
-        a { color: var(--um-light-blue); text-decoration: none; transition: color 0.2s ease; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.15; letter-spacing: -0.02em; }
+        a { color: var(--um-light-blue); text-decoration: none; transition: color var(--transition-fast); }
         a:hover { color: var(--um-orange); }
         
         /* ==========================================
@@ -638,33 +653,55 @@
             padding: 30px;
         }
         
-        /* Header */
+        /* Premium Header - Glassmorphism */
         header {
-            background: var(--um-white);
-            border-bottom: 1px solid var(--um-gray-200);
-            padding: 12px 40px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,28,61,0.06);
+            padding: 0 50px;
+            height: 72px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            transition: all var(--transition-smooth);
         }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 42px; width: auto; }
-        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; }
-        .logo-text p { font-size: 11px; color: var(--um-gray-600); margin: 0; }
+        header.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img { height: 44px; width: auto; transition: transform var(--transition-smooth); }
+        .logo:hover .logo-img { transform: scale(1.02); }
+        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; letter-spacing: -0.01em; }
+        .logo-text p { font-size: 11px; color: var(--um-gray-500); margin: 0; font-weight: 500; }
         .header-nav { display: flex; gap: 5px; align-items: center; }
-        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 16px; border-radius: var(--radius-sm); color: var(--um-dark-blue); transition: all 0.2s; }
-        .header-nav a:hover { background: var(--um-gray-100); }
-        .header-nav a.active { background: var(--um-light-blue); color: white; }
-        .header-nav .btn-cta { background: var(--um-orange); color: white; margin-left: 8px; }
-        .header-nav .btn-cta:hover { background: #d63d0a; color: white; }
+        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-sm); color: var(--um-dark-blue); transition: all var(--transition-smooth); }
+        .header-nav a:hover { background: var(--um-gray-100); color: var(--um-dark-blue); }
+        .header-nav a.active { background: var(--um-gray-100); color: var(--um-light-blue); }
+        .header-nav .btn-cta { 
+            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
+            color: white; 
+            margin-left: 10px;
+            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.3);
+        }
+        .header-nav .btn-cta:hover { 
+            background: linear-gradient(135deg, #d63d0a 0%, var(--um-orange) 100%);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(232, 78, 16, 0.4);
+        }
         
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
+            background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 50%, #001530 100%);
             padding: 80px 50px;
+            margin-top: 72px; /* Account for fixed header */
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -676,7 +713,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.06) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
         }
         .hero-content {
@@ -1241,7 +1281,7 @@
             </div>
             <h2>Where MSP Alumni Study</h2>
             <p class="hero-subtitle">
-                From Maastricht to the world's top universities — explore the 235+ institutions where MSP graduates continue their academic journey.
+                From Maastricht to the world's top universities â€” explore the 235+ institutions where MSP graduates continue their academic journey.
             </p>
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -1267,11 +1307,11 @@
                 <span class="filter-label">Filter:</span>
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">All Universities</button>
-                    <button class="filter-btn" data-filter="nl">🇳🇱 Netherlands</button>
-                    <button class="filter-btn" data-filter="gb">🇬🇧 United Kingdom</button>
-                    <button class="filter-btn" data-filter="de">🇩🇪 Germany</button>
-                    <button class="filter-btn" data-filter="se">🇸🇪 Sweden</button>
-                    <button class="filter-btn" data-filter="prestige">⭐ Top Ranked</button>
+                    <button class="filter-btn" data-filter="nl">ðŸ‡³ðŸ‡± Netherlands</button>
+                    <button class="filter-btn" data-filter="gb">ðŸ‡¬ðŸ‡§ United Kingdom</button>
+                    <button class="filter-btn" data-filter="de">ðŸ‡©ðŸ‡ª Germany</button>
+                    <button class="filter-btn" data-filter="se">ðŸ‡¸ðŸ‡ª Sweden</button>
+                    <button class="filter-btn" data-filter="prestige">â­ Top Ranked</button>
                 </div>
             </div>
             <div class="search-box">
@@ -1285,7 +1325,7 @@
     <section class="world-map-section">
         <div class="world-map-container">
             <div class="world-map-header">
-                <h3>🗺️ Explore by Country</h3>
+                <h3>ðŸ—ºï¸ Explore by Country</h3>
                 <p>Click any highlighted country to see universities where MSP alumni study</p>
             </div>
             <div class="world-map-wrapper" id="map-wrapper">
@@ -1602,7 +1642,7 @@
             <div class="collapsible-header" onclick="toggleSection('prestige')">
                 <div class="collapsible-header-left">
                     <div>
-                        <h3>⭐ World-Leading Universities</h3>
+                        <h3>â­ World-Leading Universities</h3>
                         <p>MSP alumni at the most prestigious institutions globally</p>
                     </div>
                 </div>
@@ -1717,7 +1757,7 @@
             <div class="collapsible-header" onclick="toggleSection('other')">
                 <div class="collapsible-header-left">
                     <div>
-                        <h3>🌍 Other Countries</h3>
+                        <h3>ðŸŒ Other Countries</h3>
                         <p>MSP alumni across Europe and beyond</p>
                     </div>
                 </div>
@@ -1785,7 +1825,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · Data updated December 2025 · <a href="/cdn-cgi/l/email-protection#a8c5dbd885c9c4ddc5c6c1e8c5c9c9dbdcdac1cbc0dcddc6c1decddadbc1dcd186c6c4" style="color: rgba(255,255,255,0.7);">Help keep data accurate</a>
+                Â© 2025 MSP Alumni Network Â· Maastricht University Â· Data updated December 2025 Â· <a href="/cdn-cgi/l/email-protection#a8c5dbd885c9c4ddc5c6c1e8c5c9c9dbdcdac1cbc0dcddc6c1decddadbc1dcd186c6c4" style="color: rgba(255,255,255,0.7);">Help keep data accurate</a>
             </div>
             <div class="footer-links">
                 <a href="index.html">Alumni Map</a>
@@ -1813,7 +1853,7 @@
             
             // Prestige International
             { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", rank: 2, prestige: true, fields: ["Biology", "Chemistry", "Physics", "Engineering", "Medicine"], website: "https://www.imperial.ac.uk" },
-            { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true, fields: ["Physics", "Chemistry", "Engineering", "Computer Science"], website: "https://ethz.ch" },
+            { name: "ETH ZÃ¼rich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true, fields: ["Physics", "Chemistry", "Engineering", "Computer Science"], website: "https://ethz.ch" },
             { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", rank: 5, prestige: true, fields: ["Natural Sciences", "Chemistry", "Physics", "Biology"], website: "https://www.cam.ac.uk" },
             { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", rank: 3, prestige: true, fields: ["Biochemistry", "Chemistry", "Physics"], website: "https://www.ox.ac.uk" },
             { name: "UCL", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png", rank: 9, prestige: true, fields: ["Neuroscience", "Biology", "Chemistry", "Medicine"], website: "https://www.ucl.ac.uk" },
@@ -1917,7 +1957,7 @@
                 path.addEventListener('mouseenter', function(e) {
                     tooltipFlag.src = `https://flagcdn.com/w80/${code}.png`;
                     tooltipName.textContent = data.name;
-                    tooltipDetails.innerHTML = `<span>${data.count}</span> alumni · <span>${data.uniCount}</span> universities`;
+                    tooltipDetails.innerHTML = `<span>${data.count}</span> alumni Â· <span>${data.uniCount}</span> universities`;
                     tooltip.classList.add('visible');
                 });
                 
@@ -2219,6 +2259,16 @@
         setupSearch();
         setupWorldMap();
         lucide.createIcons();
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>

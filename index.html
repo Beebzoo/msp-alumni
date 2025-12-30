@@ -1796,6 +1796,7 @@
             <a href="index.html" class="active">Alumni Map</a>
             <a href="countries.html">Countries</a>
             <a href="universities.html">Universities</a>
+            <a href="community.html">Community</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
     </header>
@@ -1828,7 +1829,7 @@
             <div class="hero-right">
                 <h2>Where <span>Science</span> Takes You</h2>
                 <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni — from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni â€” from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
@@ -1899,7 +1900,7 @@
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where They Continue</h2>
             <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities — from Oxford to ETH Zürich.
+                Our alumni pursue Master's degrees at the world's top universities â€” from Oxford to ETH ZÃ¼rich.
             </p>
         </div>
         
@@ -1932,7 +1933,7 @@
             <div class="section-label">Programme Growth</div>
             <h2 class="section-title">A Growing Community</h2>
             <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide — and counting.
+                From 25 graduates in 2014 to over 1,300 alumni worldwide â€” and counting.
             </p>
         </div>
         
@@ -2021,7 +2022,7 @@
                     <p>
                         The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
                         <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students — 
+                        new city, find mentors in your field, or give back to current students â€” 
                         we're here to help.
                     </p>
                     <p>
@@ -2068,12 +2069,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · 
-                Updated <span id="lastUpdated">December 2025</span> · 
+                Â© 2025 MSP Alumni Network Â· Maastricht University Â· 
+                Updated <span id="lastUpdated">December 2025</span> Â· 
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate →</a>
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate â†’</a>
             </div>
         </div>
     </footer>
@@ -2270,15 +2271,15 @@
         
         // Map emoji icons to Lucide icons
         const fieldIcons = {
-            '🧬': 'dna',
-            '⚗️': 'flask-conical',
-            '🏥': 'heart-pulse',
-            '⚡': 'zap',
-            '🧠': 'brain',
-            '📊': 'bar-chart-3',
-            '💻': 'monitor',
-            '🌍': 'globe-2',
-            '📚': 'book-open'
+            'ðŸ§¬': 'dna',
+            'âš—ï¸': 'flask-conical',
+            'ðŸ¥': 'heart-pulse',
+            'âš¡': 'zap',
+            'ðŸ§ ': 'brain',
+            'ðŸ“Š': 'bar-chart-3',
+            'ðŸ’»': 'monitor',
+            'ðŸŒ': 'globe-2',
+            'ðŸ“š': 'book-open'
         };
         
         MSP_DATA.fieldsOfStudy.forEach(field => {
@@ -2289,7 +2290,7 @@
                 <div class="field-icon"><i data-lucide="${iconName}"></i></div>
                 <div class="field-info">
                     <div class="field-name">${field.name}</div>
-                    <div class="field-count">${field.count}+ alumni · ${field.percent}%</div>
+                    <div class="field-count">${field.count}+ alumni Â· ${field.percent}%</div>
                     <div class="field-bar">
                         <div class="field-bar-fill" style="width: ${field.percent * 2.5}%"></div>
                     </div>
@@ -2342,7 +2343,7 @@
         }).setView([30, 10], 2);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '©OpenStreetMap, ©CartoDB',
+            attribution: 'Â©OpenStreetMap, Â©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
@@ -2378,7 +2379,7 @@
                         </div>
                     </div>
                     <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} →
+                        Explore ${country.name} â†’
                     </a>
                 </div>
             `;

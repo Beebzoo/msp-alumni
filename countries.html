@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countries | MSP Alumni Network</title>
-    <meta name="description" content="Explore where MSP alumni live and work across 59 countries on 6 continents worldwide.">
+    <meta name="description" content="Explore where MSP alumni live and work across 56 countries on 6 continents worldwide.">
     
-    <!-- Fonts -->
+    <!-- Fonts - Matching index.html -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -18,31 +18,50 @@
     <script src="data.js"></script>
     
     <style>
+        /* ============================================
+           PREMIUM CSS VARIABLES - MATCHING INDEX.HTML
+        ============================================ */
         :root {
             --um-dark-blue: #001C3D;
+            --um-darker-blue: #00101f;
             --um-light-blue: #00A2DB;
+            --um-light-blue-glow: rgba(0, 162, 219, 0.4);
             --um-orange: #E84E10;
+            --um-orange-glow: rgba(232, 78, 16, 0.4);
             --um-white: #FFFFFF;
-            --um-off-white: #f8f9fa;
-            --um-gray-100: #f5f5f5;
-            --um-gray-200: #e9ecef;
-            --um-gray-600: #6c757d;
-            --um-gray-800: #343a40;
+            --um-off-white: #fafbfc;
+            --um-gray-50: #f8fafc;
+            --um-gray-100: #f1f5f9;
+            --um-gray-200: #e2e8f0;
+            --um-gray-300: #cbd5e1;
+            --um-gray-500: #64748b;
+            --um-gray-600: #475569;
+            --um-gray-800: #1e293b;
             
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Source Sans 3', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.1);
+            --shadow-glow-blue: 0 0 40px rgba(0, 162, 219, 0.15);
+            --shadow-glow-orange: 0 0 40px rgba(232, 78, 16, 0.15);
             
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
+            --radius-xl: 28px;
+            
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ============================================
+           RESET & BASE STYLES
+        ============================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
             font-family: var(--font-body);
             font-size: 16px;
@@ -50,98 +69,140 @@
             color: var(--um-dark-blue);
             background: var(--um-white);
         }
-        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.2; }
-        a { color: var(--um-light-blue); text-decoration: none; transition: color 0.2s ease; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.15; letter-spacing: -0.02em; }
+        a { color: var(--um-light-blue); text-decoration: none; transition: color var(--transition-fast); }
         a:hover { color: var(--um-orange); }
         
-        /* Header */
+        /* ============================================
+           PREMIUM HEADER
+        ============================================ */
         header {
-            background: var(--um-white);
-            border-bottom: 1px solid var(--um-gray-200);
-            padding: 12px 40px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,28,61,0.06);
+            padding: 0 50px;
+            height: 72px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            transition: all var(--transition-smooth);
         }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 42px; width: auto; }
+        header.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img { height: 44px; width: auto; transition: transform var(--transition-smooth); }
+        .logo:hover .logo-img { transform: scale(1.02); }
         .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; }
-        .logo-text p { font-size: 11px; color: var(--um-gray-600); margin: 0; }
-        .header-nav { display: flex; gap: 5px; align-items: center; }
-        .header-nav a { font-size: 14px; font-weight: 500; padding: 10px 16px; border-radius: var(--radius-sm); color: var(--um-dark-blue); transition: all 0.2s; }
-        .header-nav a:hover { background: var(--um-gray-100); }
-        .header-nav a.active { background: var(--um-light-blue); color: white; }
-        .header-nav .btn-cta { background: var(--um-orange); color: white; margin-left: 8px; }
-        .header-nav .btn-cta:hover { background: #d63d0a; color: white; }
+        .logo-text p { font-size: 11px; color: var(--um-gray-500); margin: 0; font-weight: 500; }
         
-        /* Hero */
+        .header-nav { display: flex; gap: 6px; align-items: center; }
+        .header-nav a {
+            font-size: 14px; font-weight: 500; padding: 10px 18px;
+            border-radius: var(--radius-sm); color: var(--um-gray-600);
+            transition: all var(--transition-fast); position: relative;
+        }
+        .header-nav a:hover { color: var(--um-dark-blue); background: var(--um-gray-50); }
+        .header-nav a.active { color: var(--um-dark-blue); font-weight: 600; }
+        .header-nav a.active::after {
+            content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+            width: 20px; height: 2px; background: var(--um-orange); border-radius: 2px;
+        }
+        .header-nav .btn-cta {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white; margin-left: 12px;
+            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.25); border: none;
+        }
+        .header-nav .btn-cta:hover {
+            background: linear-gradient(135deg, #ff5a1f 0%, var(--um-orange) 100%);
+            transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 78, 16, 0.35); color: white;
+        }
+
+        /* ============================================
+           HERO SECTION - FUTURISTIC
+        ============================================ */
         .hero {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
-            padding: 80px 50px;
-            text-align: center;
+            min-height: 50vh;
+            background: linear-gradient(165deg, #000a14 0%, var(--um-dark-blue) 35%, #001a35 70%, #00243d 100%);
+            color: white;
+            padding: 140px 50px 80px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
         }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
+        .hero-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            opacity: 0.3; animation: orbFloat 8s ease-in-out infinite;
         }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0,162,219,0.2);
-            color: var(--um-light-blue);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-        .hero-badge i, .hero-badge svg { width: 16px; height: 16px; }
-        .hero h2 {
-            font-size: 48px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-        }
-        .hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 40px;
-            line-height: 1.6;
+        .hero-orb-1 { width: 400px; height: 400px; background: var(--um-light-blue); top: -150px; left: -150px; }
+        .hero-orb-2 { width: 300px; height: 300px; background: var(--um-orange); bottom: -100px; right: -100px; animation-delay: -4s; }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
         }
         
-        /* Floating Flags Animation */
-        .floating-flags {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        .hero-content {
+            position: relative; z-index: 2;
+            max-width: 900px; margin: 0 auto; text-align: center;
         }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 16px; border-radius: 100px;
+            font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px;
+        }
+        .hero-badge-dot {
+            width: 6px; height: 6px; background: var(--um-orange);
+            border-radius: 50%; animation: pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+        
+        .hero h2 {
+            font-size: 52px; font-weight: 700; letter-spacing: -0.03em;
+            line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 40px; line-height: 1.6; }
+        
+        .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .hero-stat {
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 30px; border-radius: var(--radius-lg);
+            text-align: center; transition: all var(--transition-smooth);
+        }
+        .hero-stat:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+        .hero-stat-number { font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: white; line-height: 1; margin-bottom: 6px; }
+        .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        
+        /* Floating Flags */
+        .floating-flags { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
         .floating-flag {
-            width: 50px;
-            height: 35px;
-            border-radius: 6px;
+            width: 50px; height: 35px; border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            animation: float 3s ease-in-out infinite;
-            object-fit: cover;
+            animation: float 3s ease-in-out infinite; object-fit: cover;
         }
         .floating-flag:nth-child(1) { animation-delay: 0s; }
         .floating-flag:nth-child(2) { animation-delay: 0.2s; }
@@ -151,364 +212,209 @@
         .floating-flag:nth-child(6) { animation-delay: 1s; }
         .floating-flag:nth-child(7) { animation-delay: 1.2s; }
         .floating-flag:nth-child(8) { animation-delay: 1.4s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* ============================================
+           SECTION STYLING
+        ============================================ */
+        .section-header {
+            text-align: center; max-width: 700px; margin: 0 auto 40px; position: relative;
         }
-        
-        /* Hero Stats */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--um-light-blue); margin-bottom: 16px;
         }
-        .hero-stat {
-            text-align: center;
+        .section-label::before, .section-label::after {
+            content: ''; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, var(--um-light-blue));
         }
-        .hero-stat-number {
-            font-family: var(--font-heading);
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--um-orange);
+        .section-label::after { background: linear-gradient(90deg, var(--um-light-blue), transparent); }
+        .section-title {
+            font-size: 38px; font-weight: 700; color: var(--um-dark-blue);
+            margin-bottom: 16px; letter-spacing: -0.02em;
         }
-        .hero-stat-label {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Continent Sections */
-        .main-content {
-            padding: 60px 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .continent-section {
-            margin-bottom: 60px;
-        }
-        
-        .continent-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--um-gray-200);
-        }
-        
-        .continent-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        
-        .continent-header h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-        }
-        
-        .continent-count {
-            margin-left: auto;
-            font-size: 14px;
-            color: var(--um-gray-600);
-            background: var(--um-gray-100);
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-        
-        .continent-count strong {
-            color: var(--um-orange);
-        }
-        
-        /* Country Grid */
-        .country-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        /* Country Card */
-        .country-card {
-            background: white;
-            border: 2px solid var(--um-gray-200);
-            border-radius: var(--radius-lg);
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .country-card:hover {
-            border-color: var(--um-light-blue);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .country-card.top-country {
-            border-color: var(--um-orange);
-            background: linear-gradient(180deg, rgba(232,78,16,0.05) 0%, white 100%);
-        }
-        
-        .country-card.top-country:hover {
-            box-shadow: 0 12px 40px rgba(232,78,16,0.2);
-        }
-        
-        .country-flag {
-            width: 80px;
-            height: 55px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            margin: 0 auto 15px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .country-card:hover .country-flag {
-            transform: scale(1.1);
-        }
-        
-        .country-name {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-        
-        .country-alumni {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--um-orange);
-        }
-        
-        .country-alumni span {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--um-gray-600);
-        }
-        
-        .country-badge {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 12px;
-            background: var(--um-orange);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Top Countries Showcase */
-        .top-showcase {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003366 100%);
-            padding: 60px 50px;
-            margin-bottom: 60px;
-            border-radius: var(--radius-lg);
-        }
-        
-        .top-showcase-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .top-showcase-header h3 {
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 10px;
-        }
-        
-        .top-showcase-header p {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-        }
-        
+        .section-subtitle { font-size: 16px; color: var(--um-gray-500); line-height: 1.7; }
+
+        /* ============================================
+           TOP COUNTRIES SECTION
+        ============================================ */
+        .top-countries-section { background: white; padding: 80px 50px; }
         .top-countries-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 20px;
-        }
-        
-        .top-country-card {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: var(--radius-md);
-            padding: 30px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .top-country-card:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--um-orange);
-            transform: translateY(-6px);
-        }
-        
-        .top-country-card .country-flag {
-            width: 70px;
-            height: 48px;
-            margin-bottom: 15px;
-        }
-        
-        .top-country-card .country-name {
-            color: white;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .top-country-card .country-alumni {
-            font-size: 32px;
-        }
-        
-        .top-country-card .country-alumni span {
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .top-country-rank {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--um-orange);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-size: 12px;
-            font-weight: 700;
-        }
-        
-        .top-country-card {
-            position: relative;
-        }
-        
-        /* All Flags Wall */
-        .flags-wall {
-            background: var(--um-off-white);
-            padding: 50px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 60px;
-        }
-        
-        .flags-wall-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .flags-wall-header h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 10px;
-        }
-        
-        .flags-wall-header p {
-            color: var(--um-gray-600);
-        }
-        
-        .flags-mosaic {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .flag-tile {
-            width: 60px;
-            height: 40px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            object-fit: cover;
-        }
-        
-        .flag-tile:hover {
-            transform: scale(1.2);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--um-dark-blue);
-            color: white;
-            padding: 40px 50px 25px;
-        }
-        .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+        .top-country-card {
+            background: linear-gradient(135deg, var(--um-gray-50) 0%, white 100%);
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--um-dark-blue);
+            position: relative;
+            transition: all var(--transition-smooth);
+            overflow: hidden;
+        }
+        .top-country-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
+            transform: scaleX(0); transform-origin: left; transition: transform var(--transition-smooth);
+        }
+        .top-country-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow-blue);
+            border-color: var(--um-light-blue);
+        }
+        .top-country-card:hover::before { transform: scaleX(1); }
+        .top-country-rank {
+            position: absolute; top: 12px; left: 12px;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white; font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 8px rgba(232, 78, 16, 0.3);
+        }
+        .top-country-card .country-flag {
+            width: 80px; height: 54px; border-radius: 8px;
+            object-fit: cover; margin-bottom: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        .top-country-card .country-name {
+            font-family: var(--font-heading); font-weight: 600;
+            font-size: 16px; margin-bottom: 8px;
+        }
+        .top-country-card .country-alumni {
+            font-size: 28px; font-weight: 700; color: var(--um-light-blue);
+        }
+        .top-country-card .country-alumni span {
+            font-size: 12px; font-weight: 500; color: var(--um-gray-500);
+        }
+
+        /* ============================================
+           FLAGS MOSAIC
+        ============================================ */
+        .flags-mosaic-section {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #001530 100%);
+            padding: 80px 50px;
+        }
+        .flags-mosaic-section .section-title { color: white; }
+        .flags-mosaic-section .section-subtitle { color: rgba(255,255,255,0.7); }
+        .flags-mosaic {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 10px; max-width: 1200px; margin: 0 auto;
+        }
+        .flags-mosaic a {
+            transition: all var(--transition-smooth);
+        }
+        .flags-mosaic a:hover { transform: scale(1.15) rotate(2deg); z-index: 10; }
+        .flag-tile {
+            width: 50px; height: 35px; border-radius: 6px;
+            object-fit: cover; box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+        }
+        .flag-tile:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 20px rgba(0,162,219,0.4);
+        }
+
+        /* ============================================
+           CONTINENT SECTIONS
+        ============================================ */
+        .continent-section { padding: 80px 50px; }
+        .continent-section:nth-child(even) { background: var(--um-gray-50); }
+        .continent-header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 30px; max-width: 1200px; margin-left: auto; margin-right: auto;
+        }
+        .continent-icon {
+            width: 56px; height: 56px; border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.25);
+        }
+        .continent-icon i, .continent-icon svg { width: 28px; height: 28px; color: white; stroke: white; }
+        .continent-title {
+            font-family: var(--font-heading); font-size: 28px;
+            font-weight: 700; color: var(--um-dark-blue);
+        }
+        .continent-count { font-size: 14px; color: var(--um-gray-500); margin-top: 4px; }
+        .continent-count strong { color: var(--um-orange); }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .country-card {
+            background: white;
+            border: 1px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-decoration: none;
+            color: var(--um-dark-blue);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            gap: 14px;
+            transition: all var(--transition-smooth);
         }
-        .footer-text {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
+        .country-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--um-light-blue);
         }
-        .footer-links {
-            display: flex;
-            gap: 25px;
+        .country-card .country-flag {
+            width: 48px; height: 32px; border-radius: 6px;
+            object-fit: cover; box-shadow: var(--shadow-sm); flex-shrink: 0;
         }
-        .footer-links a {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
+        .country-card .country-name {
+            font-family: var(--font-heading); font-weight: 600;
+            font-size: 14px; margin-bottom: 2px;
         }
-        .footer-links a:hover {
-            color: white;
+        .country-card .country-alumni {
+            font-size: 13px; color: var(--um-gray-500);
         }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
+        .country-card .country-alumni span { font-weight: 600; color: var(--um-orange); }
+        .country-card.top-country {
+            border-color: var(--um-orange);
+            background: linear-gradient(135deg, #fff9f5 0%, white 100%);
+        }
+        .country-badge {
+            position: absolute; top: -8px; right: -8px;
+            background: var(--um-orange); color: white;
+            font-size: 10px; font-weight: 700; padding: 4px 8px;
+            border-radius: 4px; text-transform: uppercase;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #00101f 100%);
+            color: white; padding: 50px; text-align: center;
+        }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-text { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 20px; }
+        .footer-text a { color: rgba(255,255,255,0.8); }
+        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; }
+        .footer-links a:hover { color: var(--um-orange); }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1024px) {
             .top-countries-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        @media (max-width: 1000px) {
-            .hero { padding: 60px 30px; }
-            .hero h2 { font-size: 36px; }
-            .hero-stats { gap: 30px; }
-            .hero-stat-number { font-size: 42px; }
-            .main-content { padding: 40px 30px; }
-            .top-countries-grid { grid-template-columns: repeat(2, 1fr); }
-            .country-grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media (max-width: 768px) {
-            header { padding: 12px 20px; }
-            .header-nav a:not(.btn-cta) { display: none; }
-            .hero { padding: 50px 20px; }
-            .hero h2 { font-size: 28px; }
-            .hero-stats { flex-direction: column; gap: 20px; }
-            .floating-flags { gap: 10px; }
-            .floating-flag { width: 40px; height: 28px; }
-            .top-showcase { padding: 40px 20px; }
-            .top-countries-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .flags-wall { padding: 30px 20px; }
-        }
-        @media (max-width: 500px) {
-            .country-grid { grid-template-columns: 1fr; }
-            .top-countries-grid { grid-template-columns: 1fr; }
+            header { padding: 0 20px; }
+            .hero { padding: 120px 20px 60px; }
+            .hero h2 { font-size: 36px; }
+            .top-countries-grid { grid-template-columns: repeat(2, 1fr); }
+            .top-countries-section, .flags-mosaic-section, .continent-section { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -516,29 +422,32 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP Alumni" class="logo-img" onerror="this.style.display='none'">
+            <img src="https://www.maastrichtuniversity.nl/sites/default/files/styles/page_photo/public/logo_fse_0.png" alt="MSP Logo" class="logo-img">
             <div class="logo-text">
                 <h1>MSP Alumni Network</h1>
-                <p>Maastricht Science Programme</p>
+                <p>Faculty of Science and Engineering</p>
             </div>
         </a>
         <nav class="header-nav">
-            <a href="index.html">Alumni Map</a>
+            <a href="index.html">Home</a>
             <a href="countries.html" class="active">Countries</a>
             <a href="universities.html">Universities</a>
+            <a href="community.html">Community</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
     </header>
-    
-    <!-- Hero -->
+
+    <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        
         <div class="hero-content">
             <div class="hero-badge">
-                <i data-lucide="globe"></i>
+                <span class="hero-badge-dot"></span>
                 Global Alumni Network
             </div>
             
-            <!-- Floating Flags -->
             <div class="floating-flags">
                 <img src="https://flagcdn.com/w80/nl.png" alt="Netherlands" class="floating-flag">
                 <img src="https://flagcdn.com/w80/de.png" alt="Germany" class="floating-flag">
@@ -551,13 +460,11 @@
             </div>
             
             <h2>Where MSP Alumni Call Home</h2>
-            <p class="hero-subtitle">
-                From Maastricht to the world — our graduates live and work across 59 countries on 6 continents. Click on any country to explore.
-            </p>
+            <p class="hero-subtitle">Our graduates have built careers across 56 countries on 6 continents.<br>Explore the global reach of the MSP network.</p>
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number">59</div>
+                    <div class="hero-stat-number">56</div>
                     <div class="hero-stat-label">Countries</div>
                 </div>
                 <div class="hero-stat">
@@ -565,170 +472,153 @@
                     <div class="hero-stat-label">Continents</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-number">1,329</div>
-                    <div class="hero-stat-label">Alumni Worldwide</div>
+                    <div class="hero-stat-number">78</div>
+                    <div class="hero-stat-label">Nationalities</div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-        
-        <!-- Top 5 Countries Showcase -->
-        <div class="top-showcase">
-            <div class="top-showcase-header">
-                <h3>🏆 Top 5 Countries</h3>
-                <p>Where most MSP alumni currently live</p>
-            </div>
-            <div class="top-countries-grid" id="topCountriesGrid"></div>
+
+    <!-- Top Countries Section -->
+    <section class="top-countries-section">
+        <div class="section-header">
+            <div class="section-label">Top Destinations</div>
+            <h2 class="section-title">Where Alumni Settle</h2>
+            <p class="section-subtitle">The five countries with the highest concentration of MSP graduates</p>
         </div>
-        
-        <!-- All Flags Wall -->
-        <div class="flags-wall">
-            <div class="flags-wall-header">
-                <h3>🌍 All 59 Countries</h3>
-                <p>Click any flag to explore that country's MSP alumni</p>
-            </div>
-            <div class="flags-mosaic" id="flagsMosaic"></div>
+        <div class="top-countries-grid" id="topCountriesGrid"></div>
+    </section>
+
+    <!-- Flags Mosaic -->
+    <section class="flags-mosaic-section">
+        <div class="section-header">
+            <div class="section-label" style="color: rgba(255,255,255,0.6);">All Countries</div>
+            <h2 class="section-title">56 Countries Worldwide</h2>
+            <p class="section-subtitle">Click any flag to explore alumni in that country</p>
         </div>
-        
-        <!-- Europe -->
-        <section class="continent-section" id="europe">
-            <div class="continent-header">
-                <div class="continent-icon">🇪🇺</div>
-                <h3>Europe</h3>
+        <div class="flags-mosaic" id="flagsMosaic"></div>
+    </section>
+
+    <!-- Europe Section -->
+    <section class="continent-section">
+        <div class="continent-header">
+            <div class="continent-icon"><i data-lucide="map"></i></div>
+            <div>
+                <div class="continent-title">Europe</div>
                 <div class="continent-count"><strong id="europeCount">0</strong> alumni</div>
             </div>
-            <div class="country-grid" id="europeGrid"></div>
-        </section>
-        
-        <!-- Americas -->
-        <section class="continent-section" id="americas">
-            <div class="continent-header">
-                <div class="continent-icon">🌎</div>
-                <h3>Americas</h3>
+        </div>
+        <div class="country-grid" id="europeGrid"></div>
+    </section>
+
+    <!-- Americas Section -->
+    <section class="continent-section">
+        <div class="continent-header">
+            <div class="continent-icon"><i data-lucide="globe-2"></i></div>
+            <div>
+                <div class="continent-title">Americas</div>
                 <div class="continent-count"><strong id="americasCount">0</strong> alumni</div>
             </div>
-            <div class="country-grid" id="americasGrid"></div>
-        </section>
-        
-        <!-- Asia & Pacific -->
-        <section class="continent-section" id="asia">
-            <div class="continent-header">
-                <div class="continent-icon">🌏</div>
-                <h3>Asia & Pacific</h3>
+        </div>
+        <div class="country-grid" id="americasGrid"></div>
+    </section>
+
+    <!-- Asia & Pacific Section -->
+    <section class="continent-section">
+        <div class="continent-header">
+            <div class="continent-icon"><i data-lucide="sun"></i></div>
+            <div>
+                <div class="continent-title">Asia & Pacific</div>
                 <div class="continent-count"><strong id="asiaCount">0</strong> alumni</div>
             </div>
-            <div class="country-grid" id="asiaGrid"></div>
-        </section>
-        
-        <!-- Africa & Middle East -->
-        <section class="continent-section" id="africa">
-            <div class="continent-header">
-                <div class="continent-icon">🌍</div>
-                <h3>Africa & Middle East</h3>
+        </div>
+        <div class="country-grid" id="asiaGrid"></div>
+    </section>
+
+    <!-- Africa & Middle East Section -->
+    <section class="continent-section">
+        <div class="continent-header">
+            <div class="continent-icon"><i data-lucide="mountain"></i></div>
+            <div>
+                <div class="continent-title">Africa & Middle East</div>
                 <div class="continent-count"><strong id="africaCount">0</strong> alumni</div>
             </div>
-            <div class="country-grid" id="africaGrid"></div>
-        </section>
-        
-    </main>
-    
+        </div>
+        <div class="country-grid" id="africaGrid"></div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · Data updated December 2025 · <a href="/cdn-cgi/l/email-protection#bbd6c8cb96dad7ced6d5d2fbd6dadac8cfc9d2d8d3cfced5d2cddec9c8d2cfc295d5d7" style="color: rgba(255,255,255,0.7);">Help keep data accurate</a>
+                © 2025 MSP Alumni Network · Maastricht University · Data updated December 2025
             </div>
             <div class="footer-links">
                 <a href="index.html">Alumni Map</a>
                 <a href="universities.html">Universities</a>
+            <a href="community.html">Community</a>
                 <a href="considering-msp.html">Considering MSP?</a>
                 <a href="privacy.html">Privacy</a>
             </div>
         </div>
     </footer>
-    
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Complete countries data with continents
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Countries data with continents
         const allCountries = [
-            // Europe (main)
-            { name: "Netherlands", code: "nl", count: 445, continent: "europe" },
-            { name: "Germany", code: "de", count: 92, continent: "europe" },
-            { name: "United Kingdom", code: "gb", count: 81, continent: "europe" },
-            { name: "Belgium", code: "be", count: 68, continent: "europe" },
+            // Europe
+            { name: "Netherlands", code: "nl", count: 462, continent: "europe" },
+            { name: "Germany", code: "de", count: 93, continent: "europe" },
+            { name: "United Kingdom", code: "gb", count: 83, continent: "europe" },
+            { name: "Belgium", code: "be", count: 70, continent: "europe" },
             { name: "Sweden", code: "se", count: 49, continent: "europe" },
-            { name: "Switzerland", code: "ch", count: 39, continent: "europe" },
+            { name: "Switzerland", code: "ch", count: 37, continent: "europe" },
+            { name: "Italy", code: "it", count: 32, continent: "europe" },
+            { name: "France", code: "fr", count: 30, continent: "europe" },
             { name: "Spain", code: "es", count: 29, continent: "europe" },
-            { name: "Italy", code: "it", count: 27, continent: "europe" },
-            { name: "France", code: "fr", count: 25, continent: "europe" },
-            { name: "Denmark", code: "dk", count: 22, continent: "europe" },
-            { name: "Austria", code: "at", count: 18, continent: "europe" },
-            { name: "Finland", code: "fi", count: 17, continent: "europe" },
-            { name: "Ireland", code: "ie", count: 9, continent: "europe" },
+            { name: "Denmark", code: "dk", count: 24, continent: "europe" },
+            { name: "Finland", code: "fi", count: 18, continent: "europe" },
+            { name: "Austria", code: "at", count: 17, continent: "europe" },
+            { name: "Ireland", code: "ie", count: 10, continent: "europe" },
             { name: "Luxembourg", code: "lu", count: 9, continent: "europe" },
-            { name: "Portugal", code: "pt", count: 7, continent: "europe" },
-            { name: "Norway", code: "no", count: 7, continent: "europe" },
+            { name: "Portugal", code: "pt", count: 8, continent: "europe" },
+            { name: "Norway", code: "no", count: 6, continent: "europe" },
             { name: "Greece", code: "gr", count: 5, continent: "europe" },
             { name: "Poland", code: "pl", count: 4, continent: "europe" },
-            { name: "Czech Republic", code: "cz", count: 3, continent: "europe" },
-            { name: "Hungary", code: "hu", count: 3, continent: "europe" },
-            { name: "Romania", code: "ro", count: 2, continent: "europe" },
-            { name: "Croatia", code: "hr", count: 2, continent: "europe" },
-            { name: "Slovenia", code: "si", count: 2, continent: "europe" },
-            { name: "Slovakia", code: "sk", count: 2, continent: "europe" },
-            { name: "Bulgaria", code: "bg", count: 1, continent: "europe" },
-            { name: "Estonia", code: "ee", count: 1, continent: "europe" },
-            { name: "Latvia", code: "lv", count: 1, continent: "europe" },
-            { name: "Lithuania", code: "lt", count: 1, continent: "europe" },
-            { name: "Iceland", code: "is", count: 1, continent: "europe" },
-            { name: "Malta", code: "mt", count: 1, continent: "europe" },
-            { name: "Cyprus", code: "cy", count: 1, continent: "europe" },
-            
+            { name: "Bulgaria", code: "bg", count: 3, continent: "europe" },
+            { name: "Lithuania", code: "lt", count: 2, continent: "europe" },
+            { name: "Hungary", code: "hu", count: 2, continent: "europe" },
             // Americas
-            { name: "United States", code: "us", count: 22, continent: "americas" },
+            { name: "United States", code: "us", count: 23, continent: "americas" },
             { name: "Canada", code: "ca", count: 8, continent: "americas" },
-            { name: "Brazil", code: "br", count: 3, continent: "americas" },
-            { name: "Mexico", code: "mx", count: 2, continent: "americas" },
-            { name: "Colombia", code: "co", count: 2, continent: "americas" },
-            { name: "Argentina", code: "ar", count: 1, continent: "americas" },
-            { name: "Chile", code: "cl", count: 1, continent: "americas" },
-            { name: "Peru", code: "pe", count: 1, continent: "americas" },
-            
+            { name: "Chile", code: "cl", count: 2, continent: "americas" },
+            { name: "Brazil", code: "br", count: 1, continent: "americas" },
+            { name: "Mexico", code: "mx", count: 1, continent: "americas" },
             // Asia & Pacific
+            { name: "Australia", code: "au", count: 7, continent: "asia" },
             { name: "Japan", code: "jp", count: 4, continent: "asia" },
-            { name: "Australia", code: "au", count: 8, continent: "asia" },
-            { name: "China", code: "cn", count: 3, continent: "asia" },
-            { name: "Singapore", code: "sg", count: 3, continent: "asia" },
-            { name: "South Korea", code: "kr", count: 2, continent: "asia" },
-            { name: "India", code: "in", count: 2, continent: "asia" },
-            { name: "Hong Kong", code: "hk", count: 2, continent: "asia" },
+            { name: "China", code: "cn", count: 2, continent: "asia" },
+            { name: "Singapore", code: "sg", count: 2, continent: "asia" },
+            { name: "India", code: "in", count: 1, continent: "asia" },
             { name: "Taiwan", code: "tw", count: 1, continent: "asia" },
-            { name: "Thailand", code: "th", count: 1, continent: "asia" },
-            { name: "Indonesia", code: "id", count: 1, continent: "asia" },
-            { name: "New Zealand", code: "nz", count: 1, continent: "asia" },
-            { name: "Philippines", code: "ph", count: 1, continent: "asia" },
-            { name: "Vietnam", code: "vn", count: 1, continent: "asia" },
-            
             // Africa & Middle East
-            { name: "Israel", code: "il", count: 3, continent: "africa" },
-            { name: "South Africa", code: "za", count: 2, continent: "africa" },
-            { name: "UAE", code: "ae", count: 2, continent: "africa" },
-            { name: "Turkey", code: "tr", count: 2, continent: "africa" },
-            { name: "Morocco", code: "ma", count: 1, continent: "africa" },
-            { name: "Egypt", code: "eg", count: 1, continent: "africa" },
-            { name: "Kenya", code: "ke", count: 1, continent: "africa" }
+            { name: "Turkey", code: "tr", count: 1, continent: "africa" },
+            { name: "Kenya", code: "ke", count: 1, continent: "africa" },
+            { name: "South Africa", code: "za", count: 1, continent: "africa" }
         ];
-        
-        // Initialize page
+
         document.addEventListener('DOMContentLoaded', function() {
             renderTopCountries();
             renderFlagsMosaic();
             renderContinentGrids();
             lucide.createIcons();
         });
-        
+
         function renderTopCountries() {
             const grid = document.getElementById('topCountriesGrid');
             const top5 = allCountries.sort((a, b) => b.count - a.count).slice(0, 5);
@@ -746,22 +636,20 @@
                 grid.appendChild(card);
             });
         }
-        
+
         function renderFlagsMosaic() {
             const mosaic = document.getElementById('flagsMosaic');
-            
-            // Sort by count for visual weight
             const sorted = [...allCountries].sort((a, b) => b.count - a.count);
             
             sorted.forEach(country => {
                 const flag = document.createElement('a');
                 flag.href = `country.html?code=${country.code}`;
                 flag.title = `${country.name} - ${country.count} alumni`;
-                flag.innerHTML = `<img src="https://flagcdn.com/w120/${country.code}.png" alt="${country.name}" class="flag-tile">`;
+                flag.innerHTML = `<img src="https://flagcdn.com/w80/${country.code}.png" alt="${country.name}" class="flag-tile">`;
                 mosaic.appendChild(flag);
             });
         }
-        
+
         function renderContinentGrids() {
             const continents = {
                 europe: { grid: 'europeGrid', count: 'europeCount' },
@@ -769,7 +657,7 @@
                 asia: { grid: 'asiaGrid', count: 'asiaCount' },
                 africa: { grid: 'africaGrid', count: 'africaCount' }
             };
-            
+
             Object.keys(continents).forEach(continent => {
                 const countries = allCountries
                     .filter(c => c.continent === continent)
@@ -788,10 +676,11 @@
                     card.href = `country.html?code=${country.code}`;
                     card.className = `country-card ${isTop ? 'top-country' : ''}`;
                     card.innerHTML = `
-                        <img src="https://flagcdn.com/w160/${country.code}.png" alt="${country.name}" class="country-flag">
-                        <div class="country-name">${country.name}</div>
-                        <div class="country-alumni">${country.count} <span>alumni</span></div>
-                        ${isTop ? '<div class="country-badge">Top Destination</div>' : ''}
+                        <img src="https://flagcdn.com/w80/${country.code}.png" alt="${country.name}" class="country-flag">
+                        <div>
+                            <div class="country-name">${country.name}</div>
+                            <div class="country-alumni"><span>${country.count}</span> alumni</div>
+                        </div>
                     `;
                     grid.appendChild(card);
                 });

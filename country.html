@@ -893,8 +893,8 @@
             'Tokyo': [35.6762, 139.6503], 'Singapore': [1.3521, 103.8198]
         };
         
-        // University logo mapping
-        const UNIVERSITY_LOGOS = {
+        // University logo mapping (local - overrides empty one from data.js)
+        const UNI_LOGO_FILES = {
             'Maastricht University': 'maastricht-university.png',
             'Utrecht University': 'utrecht-university.png',
             'University of Amsterdam': 'university-of-amsterdam.png',
@@ -1013,7 +1013,7 @@
             // Universities with logos
             const uniGrid = document.getElementById('universitiesGrid');
             (countryData.universities || []).forEach(uni => {
-                const logoFile = UNIVERSITY_LOGOS[uni.name];
+                const logoFile = UNI_LOGO_FILES[uni.name];
                 const logoHtml = logoFile 
                     ? `<img src="assets/logos/${logoFile}" alt="${uni.name}" onerror="this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\'></i>'; lucide.createIcons();">`
                     : `<i data-lucide="graduation-cap"></i>`;

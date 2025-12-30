@@ -282,101 +282,89 @@
             opacity: 0.6;
         }
         
-        /* DNA Helix Containers - Left Side (prominent, animated) */
-        .dna-container-left {
+        /* Flowing Particle Lines - Left Side */
+        .particle-lines-container {
             position: absolute;
-            left: 2%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            height: 650px;
-            pointer-events: none;
-            opacity: 0.85;
-            z-index: 1;
-            animation: dnaFloat 8s ease-in-out infinite;
-        }
-        
-        .dna-container-left-2 {
-            position: absolute;
-            left: 8%;
-            top: 35%;
-            transform: translateY(-50%);
-            width: 180px;
-            height: 500px;
-            pointer-events: none;
-            opacity: 0.7;
-            z-index: 1;
-            animation: dnaFloat 10s ease-in-out infinite reverse;
-        }
-        
-        .dna-container-left-3 {
-            position: absolute;
-            left: 14%;
-            top: 60%;
-            transform: translateY(-50%);
-            width: 150px;
-            height: 450px;
-            pointer-events: none;
-            opacity: 0.55;
-            z-index: 1;
-            animation: dnaFloat 12s ease-in-out infinite;
-        }
-        
-        .dna-container-left-4 {
-            position: absolute;
-            left: 5%;
-            top: 80%;
-            transform: translateY(-50%);
-            width: 120px;
-            height: 350px;
-            pointer-events: none;
-            opacity: 0.45;
-            z-index: 1;
-            animation: dnaFloat 9s ease-in-out infinite reverse;
-        }
-        
-        @keyframes dnaFloat {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(8px); }
-        }
-        
-        .dna-strand {
-            position: absolute;
-            width: 100%;
+            left: 0;
+            top: 0;
+            width: 35%;
             height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .dna-dot {
+        .particle-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--um-light-blue) 20%, var(--um-light-blue) 80%, transparent 100%);
+            opacity: 0;
+            animation: flowLine 8s ease-in-out infinite;
+        }
+        
+        .particle-line::before,
+        .particle-line::after {
+            content: '';
             position: absolute;
             width: 10px;
             height: 10px;
-            background: var(--um-light-blue);
             border-radius: 50%;
-            box-shadow: 0 0 20px var(--um-light-blue), 0 0 40px rgba(0, 162, 219, 0.6), 0 0 60px rgba(0, 162, 219, 0.3);
-            animation: dotPulse 3s ease-in-out infinite;
+            top: 50%;
+            transform: translateY(-50%);
         }
         
-        .dna-dot.orange {
+        .particle-line::before {
+            left: 0;
+            background: var(--um-light-blue);
+            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.5);
+        }
+        
+        .particle-line::after {
+            right: 0;
             background: var(--um-orange);
-            box-shadow: 0 0 20px var(--um-orange), 0 0 40px rgba(232, 78, 16, 0.6), 0 0 60px rgba(232, 78, 16, 0.3);
+            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.5);
         }
         
-        .dna-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
-            opacity: 0.7;
-            box-shadow: 0 0 12px rgba(0, 162, 219, 0.5);
+        .particle-line.orange {
+            background: linear-gradient(90deg, transparent 0%, var(--um-orange) 20%, var(--um-orange) 80%, transparent 100%);
         }
         
-        @keyframes dotPulse {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+        .particle-line.orange::before {
+            background: var(--um-orange);
+            box-shadow: 0 0 15px var(--um-orange), 0 0 30px rgba(232, 78, 16, 0.5);
         }
         
-        .dna-dot:nth-child(odd) { animation-delay: -0.5s; }
-        .dna-dot:nth-child(3n) { animation-delay: -1s; }
-        .dna-dot:nth-child(5n) { animation-delay: -1.5s; }
+        .particle-line.orange::after {
+            background: var(--um-light-blue);
+            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0, 162, 219, 0.5);
+        }
+        
+        @keyframes flowLine {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-100%) rotate(var(--angle, 0deg));
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { 
+                opacity: 0; 
+                transform: translateX(250%) rotate(var(--angle, 0deg));
+            }
+        }
+        
+        /* Individual line positioning and timing */
+        .particle-line:nth-child(1) { top: 8%; width: 120px; --angle: 15deg; animation-delay: 0s; animation-duration: 7s; }
+        .particle-line:nth-child(2) { top: 15%; width: 180px; --angle: -8deg; animation-delay: -1s; animation-duration: 9s; }
+        .particle-line:nth-child(3) { top: 22%; width: 100px; --angle: 22deg; animation-delay: -2s; animation-duration: 6s; }
+        .particle-line:nth-child(4) { top: 30%; width: 150px; --angle: -12deg; animation-delay: -3s; animation-duration: 8s; }
+        .particle-line:nth-child(5) { top: 38%; width: 200px; --angle: 5deg; animation-delay: -4s; animation-duration: 10s; }
+        .particle-line:nth-child(6) { top: 45%; width: 130px; --angle: -18deg; animation-delay: -0.5s; animation-duration: 7.5s; }
+        .particle-line:nth-child(7) { top: 52%; width: 170px; --angle: 10deg; animation-delay: -1.5s; animation-duration: 8.5s; }
+        .particle-line:nth-child(8) { top: 60%; width: 90px; --angle: -5deg; animation-delay: -2.5s; animation-duration: 6.5s; }
+        .particle-line:nth-child(9) { top: 68%; width: 160px; --angle: 20deg; animation-delay: -3.5s; animation-duration: 9.5s; }
+        .particle-line:nth-child(10) { top: 75%; width: 140px; --angle: -15deg; animation-delay: -4.5s; animation-duration: 7s; }
+        .particle-line:nth-child(11) { top: 82%; width: 110px; --angle: 8deg; animation-delay: -5s; animation-duration: 8s; }
+        .particle-line:nth-child(12) { top: 90%; width: 190px; --angle: -10deg; animation-delay: -5.5s; animation-duration: 9s; }
         
         /* Glowing orbs */
         .hero-orb {
@@ -1108,7 +1096,7 @@
         .donut-segment {
             fill: none;
             stroke-width: 45;
-            stroke-linecap: round;
+            stroke-linecap: butt;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
@@ -1976,70 +1964,82 @@
             margin-top: 8px;
         }
         
-        /* Orbiting Flags */
+        /* Orbiting Flags System */
         .orbit-ring {
             position: absolute;
             top: 50%;
             left: 50%;
-            border: 1px dashed rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 50%;
+            transform-style: preserve-3d;
         }
         
         .orbit-ring-1 {
-            width: 350px;
-            height: 350px;
-            transform: translate(-50%, -50%) rotateX(75deg);
-            animation: orbitRotate 30s linear infinite;
+            width: 340px;
+            height: 340px;
+            transform: translate(-50%, -50%);
+            animation: orbitSpin 25s linear infinite;
         }
         
         .orbit-ring-2 {
             width: 400px;
             height: 400px;
-            transform: translate(-50%, -50%) rotateX(75deg) rotateZ(60deg);
-            animation: orbitRotate 40s linear infinite reverse;
+            transform: translate(-50%, -50%);
+            animation: orbitSpin 35s linear infinite reverse;
         }
         
         .orbit-ring-3 {
-            width: 450px;
-            height: 450px;
-            transform: translate(-50%, -50%) rotateX(75deg) rotateZ(120deg);
-            animation: orbitRotate 35s linear infinite;
+            width: 460px;
+            height: 460px;
+            transform: translate(-50%, -50%);
+            animation: orbitSpin 45s linear infinite;
         }
         
-        @keyframes orbitRotate {
-            from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
-            to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+        @keyframes orbitSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
         
-        /* Floating Flags around Globe */
-        .floating-flag {
+        /* Orbiting flags on rings */
+        .orbit-flag {
             position: absolute;
-            width: 36px;
-            height: 25px;
-            border-radius: 4px;
+            width: 32px;
+            height: 22px;
+            border-radius: 3px;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            animation: flagFloat 6s ease-in-out infinite;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            /* Counter-rotate to stay upright */
+            animation: counterRotate 25s linear infinite;
         }
         
-        @keyframes flagFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.05); }
+        .orbit-ring-2 .orbit-flag {
+            animation: counterRotate 35s linear infinite reverse;
         }
         
-        /* Flag positions around globe */
-        .floating-flag:nth-child(1) { top: 5%; left: 50%; animation-delay: 0s; }
-        .floating-flag:nth-child(2) { top: 15%; right: 10%; animation-delay: -0.5s; }
-        .floating-flag:nth-child(3) { top: 35%; right: 0%; animation-delay: -1s; }
-        .floating-flag:nth-child(4) { top: 60%; right: 5%; animation-delay: -1.5s; }
-        .floating-flag:nth-child(5) { bottom: 15%; right: 15%; animation-delay: -2s; }
-        .floating-flag:nth-child(6) { bottom: 5%; left: 50%; animation-delay: -2.5s; }
-        .floating-flag:nth-child(7) { bottom: 15%; left: 15%; animation-delay: -3s; }
-        .floating-flag:nth-child(8) { top: 60%; left: 0%; animation-delay: -3.5s; }
-        .floating-flag:nth-child(9) { top: 35%; left: 5%; animation-delay: -4s; }
-        .floating-flag:nth-child(10) { top: 15%; left: 15%; animation-delay: -4.5s; }
-        .floating-flag:nth-child(11) { top: 25%; left: 25%; animation-delay: -5s; }
-        .floating-flag:nth-child(12) { bottom: 25%; right: 25%; animation-delay: -5.5s; }
+        .orbit-ring-3 .orbit-flag {
+            animation: counterRotate 45s linear infinite;
+        }
+        
+        @keyframes counterRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+        
+        /* Position flags around each ring */
+        .orbit-ring-1 .orbit-flag:nth-child(1) { top: 0%; left: 50%; }
+        .orbit-ring-1 .orbit-flag:nth-child(2) { top: 50%; right: 0%; }
+        .orbit-ring-1 .orbit-flag:nth-child(3) { bottom: 0%; left: 50%; }
+        .orbit-ring-1 .orbit-flag:nth-child(4) { top: 50%; left: 0%; }
+        
+        .orbit-ring-2 .orbit-flag:nth-child(1) { top: 15%; right: 15%; }
+        .orbit-ring-2 .orbit-flag:nth-child(2) { bottom: 15%; right: 15%; }
+        .orbit-ring-2 .orbit-flag:nth-child(3) { bottom: 15%; left: 15%; }
+        .orbit-ring-2 .orbit-flag:nth-child(4) { top: 15%; left: 15%; }
+        
+        .orbit-ring-3 .orbit-flag:nth-child(1) { top: 8%; left: 30%; }
+        .orbit-ring-3 .orbit-flag:nth-child(2) { top: 30%; right: 8%; }
+        .orbit-ring-3 .orbit-flag:nth-child(3) { bottom: 8%; right: 30%; }
+        .orbit-ring-3 .orbit-flag:nth-child(4) { bottom: 30%; left: 8%; }
         
         /* Side Stats Columns */
         .nationality-side-stats {
@@ -2453,10 +2453,7 @@
                 margin: 0 auto;
             }
             
-            .dna-container-left,
-            .dna-container-left-2,
-            .dna-container-left-3,
-            .dna-container-left-4 {
+            .particle-lines-container {
                 display: none;
             }
             
@@ -2588,9 +2585,9 @@
             .orbit-ring-2 { width: 320px; height: 320px; }
             .orbit-ring-3 { width: 350px; height: 350px; }
             
-            .floating-flag {
-                width: 28px;
-                height: 20px;
+            .orbit-flag {
+                width: 26px;
+                height: 18px;
             }
             
             .talent-flow-container {
@@ -2718,11 +2715,24 @@
                 font-size: 11px;
             }
             
-            .orbit-ring { display: none; }
+            .orbit-ring { 
+                width: 240px !important; 
+                height: 240px !important; 
+            }
             
-            .floating-flag {
-                width: 24px;
-                height: 17px;
+            .orbit-ring-2 { 
+                width: 260px !important; 
+                height: 260px !important; 
+            }
+            
+            .orbit-ring-3 { 
+                width: 280px !important; 
+                height: 280px !important; 
+            }
+            
+            .orbit-flag {
+                width: 22px;
+                height: 15px;
             }
             
             .side-stat-card {
@@ -2827,11 +2837,21 @@
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
         
-        <!-- DNA Helix Visuals - Left Side (multiple strands) -->
-        <div class="dna-container-left" id="dnaContainerLeft"></div>
-        <div class="dna-container-left-2" id="dnaContainerLeft2"></div>
-        <div class="dna-container-left-3" id="dnaContainerLeft3"></div>
-        <div class="dna-container-left-4" id="dnaContainerLeft4"></div>
+        <!-- Flowing Particle Lines - Left Side -->
+        <div class="particle-lines-container">
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+            <div class="particle-line"></div>
+            <div class="particle-line orange"></div>
+        </div>
         
         <!-- Flag Cascade -->
         <div class="flag-cascade">
@@ -3100,29 +3120,34 @@
                 </div>
             </div>
             
-            <!-- Animated Globe with Floating Flags -->
+            <!-- Animated Globe with Orbiting Flags -->
             <div class="globe-wrapper">
-                <div class="orbit-ring orbit-ring-1"></div>
-                <div class="orbit-ring orbit-ring-2"></div>
-                <div class="orbit-ring orbit-ring-3"></div>
+                <!-- Orbital Ring 1 - Inner -->
+                <div class="orbit-ring orbit-ring-1">
+                    <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/cn.png" alt="China" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/us.png" alt="USA" class="orbit-flag">
+                </div>
+                <!-- Orbital Ring 2 - Middle -->
+                <div class="orbit-ring orbit-ring-2">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/fr.png" alt="France" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/in.png" alt="India" class="orbit-flag">
+                </div>
+                <!-- Orbital Ring 3 - Outer -->
+                <div class="orbit-ring orbit-ring-3">
+                    <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/mx.png" alt="Mexico" class="orbit-flag">
+                    <img src="https://flagcdn.com/w40/br.png" alt="Brazil" class="orbit-flag">
+                </div>
                 <div class="globe-sphere"></div>
                 <div class="globe-center">
                     <div class="globe-number">78</div>
                     <div class="globe-label">Nations</div>
                 </div>
-                <!-- Floating Flags -->
-                <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="floating-flag">
-                <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands" class="floating-flag">
-                <img src="https://flagcdn.com/w40/cn.png" alt="China" class="floating-flag">
-                <img src="https://flagcdn.com/w40/us.png" alt="USA" class="floating-flag">
-                <img src="https://flagcdn.com/w40/in.png" alt="India" class="floating-flag">
-                <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="floating-flag">
-                <img src="https://flagcdn.com/w40/fr.png" alt="France" class="floating-flag">
-                <img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="floating-flag">
-                <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="floating-flag">
-                <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="floating-flag">
-                <img src="https://flagcdn.com/w40/mx.png" alt="Mexico" class="floating-flag">
-                <img src="https://flagcdn.com/w40/br.png" alt="Brazil" class="floating-flag">
             </div>
             
             <!-- Right Stats -->
@@ -3590,70 +3615,6 @@
         }, { threshold: 0.5 });
         
         heroObserver.observe(document.querySelector('.hero'));
-        
-        // ==========================================
-        // DNA HELIX GENERATION (Left Side - Static, Prominent)
-        // ==========================================
-        function createDNAHelix(containerId, dotCount, height, dotSize = 10) {
-            const containerEl = document.getElementById(containerId);
-            if (!containerEl) return;
-            
-            const strand = document.createElement('div');
-            strand.className = 'dna-strand';
-            
-            for (let i = 0; i < dotCount; i++) {
-                const progress = i / dotCount;
-                const y = progress * height;
-                const angle = progress * Math.PI * 5; // 2.5 full waves
-                const x1 = 50 + Math.sin(angle) * 35;
-                const x2 = 50 - Math.sin(angle) * 35;
-                
-                // Left dot (blue)
-                const dot1 = document.createElement('div');
-                dot1.className = 'dna-dot';
-                dot1.style.cssText = `
-                    left: ${x1}%; 
-                    top: ${y}px; 
-                    width: ${dotSize}px; 
-                    height: ${dotSize}px;
-                    animation-delay: ${-progress * 3}s;
-                `;
-                strand.appendChild(dot1);
-                
-                // Right dot (orange)
-                const dot2 = document.createElement('div');
-                dot2.className = 'dna-dot orange';
-                dot2.style.cssText = `
-                    left: ${x2}%; 
-                    top: ${y}px; 
-                    width: ${dotSize}px; 
-                    height: ${dotSize}px;
-                    animation-delay: ${-progress * 3 - 0.5}s;
-                `;
-                strand.appendChild(dot2);
-                
-                // Connecting line every 2nd point
-                if (i % 2 === 0) {
-                    const line = document.createElement('div');
-                    line.className = 'dna-line';
-                    const lineWidth = Math.abs(x1 - x2);
-                    line.style.cssText = `
-                        left: ${Math.min(x1, x2)}%;
-                        top: ${y + dotSize/2 - 1}px;
-                        width: ${lineWidth}%;
-                    `;
-                    strand.appendChild(line);
-                }
-            }
-            
-            containerEl.appendChild(strand);
-        }
-        
-        // Create all DNA helixes on the left side
-        createDNAHelix('dnaContainerLeft', 28, 650, 12);
-        createDNAHelix('dnaContainerLeft2', 22, 500, 10);
-        createDNAHelix('dnaContainerLeft3', 18, 450, 9);
-        createDNAHelix('dnaContainerLeft4', 14, 350, 8);
         
         // ==========================================
         // HEADER SCROLL EFFECT

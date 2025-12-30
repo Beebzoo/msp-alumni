@@ -2538,13 +2538,13 @@
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate →'</a>
+                <a href="/cdn-cgi/l/email-protection#ea87999ac78b869f878483aa878b8b999e988389829e9f84839c8f9899839e93c48486">Help keep the map accurate →'</a>
             </div>
         </div>
     </footer>
     
     <!-- Scripts -->
-    <script src="data.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="data.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // ==========================================
@@ -2910,8 +2910,8 @@
                             <div class="popup-stat-label">Alumni Living Here</div>
                         </div>
                     </div>
-                    <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} →'
+                    <a href="country.html?code=${country.code}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
+                        Explore ${country.name} →
                     </a>
                 </div>
             `;
@@ -3080,12 +3080,4 @@
                 const img = document.createElement('img');
                 img.src = `https://flagcdn.com/w80/${code}.png`;
                 img.alt = code.toUpperCase();
-                img.className = 'nat-flag';
-                nationalityMosaic.appendChild(img);
-            });
-        }
-        
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+                img.classN

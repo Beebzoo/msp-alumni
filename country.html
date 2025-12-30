@@ -111,11 +111,8 @@
         }
         
         .hero-flag-section {
-            width: 40%;
+            width: 45%;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding-top: 72px;
         }
         
@@ -129,22 +126,17 @@
         .hero-flag-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,28,61,0.95) 100%);
-        }
-        
-        .hero-flag-large {
-            position: relative;
-            z-index: 2;
-            width: 200px;
-            height: 133px;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            object-fit: cover;
+            background: linear-gradient(90deg, 
+                rgba(0,28,61,0) 0%, 
+                rgba(0,28,61,0.1) 30%,
+                rgba(0,28,61,0.4) 50%,
+                rgba(0,28,61,0.8) 70%,
+                rgba(0,28,61,1) 100%);
         }
         
         .hero-content-section {
-            width: 60%;
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #001530 100%);
+            width: 55%;
+            background: var(--um-dark-blue);
             padding: 120px 60px 50px;
             position: relative;
             display: flex;
@@ -212,6 +204,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .country-fact-emoji {
+            font-size: 14px;
         }
         
         .country-fact-value {
@@ -235,12 +234,15 @@
         }
         
         .alumni-stat {
-            text-align: center;
+            background: rgba(232, 78, 16, 0.15);
+            border: 1px solid rgba(232, 78, 16, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px 30px;
         }
         
         .alumni-stat-number {
             font-family: var(--font-heading);
-            font-size: 42px;
+            font-size: 52px;
             font-weight: 700;
             color: var(--um-orange);
             line-height: 1;
@@ -248,7 +250,7 @@
         
         .alumni-stat-label {
             font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.6);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 8px;
@@ -405,10 +407,12 @@
         
         .nationality-flag {
             width: 32px;
-            height: 22px;
+            height: 24px;
             border-radius: 4px;
             object-fit: cover;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border: 1px solid var(--um-gray-200);
+            background: var(--um-gray-100);
         }
         
         .nationality-name {
@@ -603,11 +607,16 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .hero { flex-direction: column; }
-            .hero-flag-section { width: 100%; min-height: 200px; }
+            .hero-flag-section { width: 100%; min-height: 180px; }
+            .hero-flag-overlay {
+                background: linear-gradient(180deg, 
+                    rgba(0,28,61,0) 0%, 
+                    rgba(0,28,61,0.5) 60%,
+                    rgba(0,28,61,1) 100%);
+            }
             .hero-content-section { width: 100%; padding: 40px 30px; }
             .hero h1 { font-size: 42px; }
             .country-facts { grid-template-columns: repeat(2, 1fr); }
-            .alumni-stats { flex-wrap: wrap; }
         }
         
         @media (max-width: 768px) {
@@ -619,6 +628,7 @@
             main { padding: 40px 20px; }
             .card { padding: 24px; }
             .universities-grid { grid-template-columns: 1fr; }
+            .alumni-stat-number { font-size: 42px; }
         }
     </style>
 </head>
@@ -641,7 +651,6 @@
         <div class="hero-flag-section">
             <div class="hero-flag-bg" id="heroFlagBg"></div>
             <div class="hero-flag-overlay"></div>
-            <img id="heroFlagLarge" src="" alt="" class="hero-flag-large">
         </div>
         
         <div class="hero-content-section">
@@ -657,14 +666,6 @@
                     <div class="alumni-stat">
                         <div class="alumni-stat-number" id="totalAlumni">0</div>
                         <div class="alumni-stat-label">Total Alumni</div>
-                    </div>
-                    <div class="alumni-stat">
-                        <div class="alumni-stat-number" id="topCityName">-</div>
-                        <div class="alumni-stat-label">Top City</div>
-                    </div>
-                    <div class="alumni-stat">
-                        <div class="alumni-stat-number" id="topUniName">-</div>
-                        <div class="alumni-stat-label">Top University</div>
                     </div>
                 </div>
             </div>
@@ -829,35 +830,24 @@
             
             // Hero content
             document.getElementById('heroFlagBg').style.backgroundImage = `url(https://flagcdn.com/w1280/${countryCode}.png)`;
-            document.getElementById('heroFlagLarge').src = `https://flagcdn.com/w320/${countryCode}.png`;
-            document.getElementById('heroFlagLarge').alt = countryData.name;
             document.getElementById('countryName').textContent = countryData.name;
             document.getElementById('alumniCount').textContent = countryData.count;
             document.getElementById('totalAlumni').textContent = countryData.count;
             
-            // Top city and university
-            if (countryData.cities && countryData.cities.length > 0) {
-                document.getElementById('topCityName').textContent = countryData.cities[0].name;
-            }
-            if (countryData.universities && countryData.universities.length > 0) {
-                const uniName = countryData.universities[0].name;
-                document.getElementById('topUniName').textContent = uniName.length > 15 ? uniName.split(' ')[0] : uniName;
-            }
-            
-            // Country facts
+            // Country facts with emojis
             const factsContainer = document.getElementById('countryFacts');
             const meta = countryMeta[countryCode] || {};
             const facts = [
-                { label: 'Capital', value: meta.capital || '-' },
-                { label: 'Currency', value: meta.currency || '-' },
-                { label: 'Language', value: meta.language || '-' },
-                { label: 'Population', value: meta.population || '-' }
+                { label: 'Capital', value: meta.capital || '-', emoji: '🏛️' },
+                { label: 'Currency', value: meta.currency || '-', emoji: '💶' },
+                { label: 'Language', value: meta.language || '-', emoji: '🗣️' },
+                { label: 'Population', value: meta.population || '-', emoji: '👥' }
             ];
             
             facts.forEach(fact => {
                 factsContainer.innerHTML += `
                     <div class="country-fact">
-                        <div class="country-fact-label">${fact.label}</div>
+                        <div class="country-fact-label"><span class="country-fact-emoji">${fact.emoji}</span> ${fact.label}</div>
                         <div class="country-fact-value">${fact.value}</div>
                     </div>
                 `;
@@ -883,13 +873,13 @@
                 `;
             });
             
-            // Nationalities
+            // Nationalities with flags
             const natList = document.getElementById('nationalitiesList');
             (countryData.nationalities || []).forEach(nat => {
                 natList.innerHTML += `
                     <div class="nationality-item">
                         <div class="nationality-info">
-                            <img src="https://flagcdn.com/w64/${nat.code}.png" alt="${nat.name}" class="nationality-flag">
+                            <img src="https://flagcdn.com/${nat.code}.svg" alt="${nat.name}" class="nationality-flag" onerror="this.src='https://flagcdn.com/w40/${nat.code}.png'">
                             <span class="nationality-name">${nat.name}</span>
                         </div>
                         <span class="nationality-count">${nat.count}</span>

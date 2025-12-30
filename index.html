@@ -2724,8 +2724,7 @@
         </a>
         <nav class="header-nav">
             <a href="index.html" class="active">Alumni Map</a>
-            <a href="countries.html">Countries</a>
-            <a href="universities.html">Universities</a>
+            <a href="destinations.html">Destinations</a>
             <a href="community.html">Community</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
@@ -2756,11 +2755,11 @@
             <div class="hero-right">
                 <h2><span>MSP</span> Alumni Community</h2>
                 <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni  —  from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni  â€”  from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
-                    <a href="countries.html" class="hero-stat clickable">
+                    <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-number" id="totalAlumni">1,330</div>
                         <div class="hero-stat-label">Alumni</div>
                     </a>
@@ -2768,11 +2767,11 @@
                         <div class="hero-stat-number" id="totalNationalities">78</div>
                         <div class="hero-stat-label">Nationalities</div>
                     </div>
-                    <a href="countries.html" class="hero-stat clickable">
+                    <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-number" id="totalCountries">56</div>
                         <div class="hero-stat-label">Countries</div>
                     </a>
-                    <a href="universities.html" class="hero-stat clickable">
+                    <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-number" id="totalUniversities">220+</div>
                         <div class="hero-stat-label">Universities</div>
                     </a>
@@ -2827,14 +2826,14 @@
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where They Continue</h2>
             <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities  —  from Oxford to ETH Zürich.
+                Our alumni pursue Master's degrees at the world's top universities  â€”  from Oxford to ETH ZÃ¼rich.
             </p>
         </div>
         
         <div class="uni-grid" id="uniGrid"></div>
         
         <div style="text-align: center; margin-top: 50px;">
-            <a href="universities.html" class="view-all-btn">
+            <a href="destinations.html" class="view-all-btn">
                 Explore All <span id="statUniversities">220</span>+ Universities
                 <i data-lucide="arrow-right"></i>
             </a>
@@ -2876,7 +2875,7 @@
             <div class="section-label">Programme Growth</div>
             <h2 class="section-title">A Growing Community</h2>
             <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide  —  and counting.
+                From 25 graduates in 2014 to over 1,300 alumni worldwide  â€”  and counting.
             </p>
         </div>
         
@@ -3081,7 +3080,7 @@
                     <p>
                         The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
                         <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students  —  
+                        new city, find mentors in your field, or give back to current students  â€”  
                         we're here to help.
                     </p>
                     <p>
@@ -3128,12 +3127,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-                © 2025 MSP Alumni Network · Maastricht University · 
-                Updated <span id="lastUpdated">December 2025</span> · 
+                Â© 2025 MSP Alumni Network Â· Maastricht University Â· 
+                Updated <span id="lastUpdated">December 2025</span> Â· 
                 <a href="privacy.html">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate â†’'</a>
+                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate Ã¢â€ â€™'</a>
             </div>
         </div>
     </footer>
@@ -3314,7 +3313,7 @@
         
         MSP_DATA.topUniversities.slice(0, 12).forEach(uni => {
             const card = document.createElement('a');
-            card.href = 'universities.html';
+            card.href = 'destinations.html';
             card.className = uni.prestige ? 'uni-card prestige' : 'uni-card';
             card.style.textDecoration = 'none';
             card.innerHTML = `
@@ -3463,7 +3462,7 @@
         }).setView([30, 10], 2);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '©OpenStreetMap, ©CartoDB',
+            attribution: 'Â©OpenStreetMap, Â©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
@@ -3499,7 +3498,7 @@
                         </div>
                     </div>
                     <a href="country.html?code=${country.code}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} â†’
+                        Explore ${country.name} Ã¢â€ â€™
                     </a>
                 </div>
             `;
@@ -3603,7 +3602,7 @@
                     <div class="dest-name">${uni.name}</div>
                     <div class="dest-count">${uni.count}</div>
                 `;
-                card.onclick = () => window.location.href = 'universities.html';
+                card.onclick = () => window.location.href = 'destinations.html';
                 topDestGrid.appendChild(card);
             });
         }

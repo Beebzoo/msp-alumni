@@ -289,92 +289,10 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            opacity: 0.85;
+            opacity: 0.95;
         }
         
-        /* Floating DNA Helix - Enhanced and Prominent */
-        .dna-container {
-            position: absolute;
-            left: -80px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 350px;
-            height: 700px;
-            pointer-events: none;
-            opacity: 0.5;
-            z-index: 1;
-            perspective: 1000px;
-        }
-        
-        /* Second DNA helix for more visual impact */
-        .dna-container-2 {
-            position: absolute;
-            left: -150px;
-            top: 30%;
-            transform: translateY(-50%);
-            width: 200px;
-            height: 500px;
-            pointer-events: none;
-            opacity: 0.3;
-            z-index: 0;
-            perspective: 1000px;
-        }
-        
-        .dna-strand {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: dnaRotate 25s linear infinite;
-            transform-style: preserve-3d;
-        }
-        
-        .dna-container-2 .dna-strand {
-            animation: dnaRotate 30s linear infinite reverse;
-        }
-        
-        .dna-dot {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--um-light-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--um-light-blue), 0 0 40px rgba(0, 162, 219, 0.4);
-        }
-        
-        .dna-dot.orange {
-            background: var(--um-orange);
-            box-shadow: 0 0 20px var(--um-orange), 0 0 40px rgba(232, 78, 16, 0.4);
-        }
-        
-        .dna-container-2 .dna-dot {
-            width: 6px;
-            height: 6px;
-            box-shadow: 0 0 12px var(--um-light-blue);
-        }
-        
-        .dna-container-2 .dna-dot.orange {
-            box-shadow: 0 0 12px var(--um-orange);
-        }
-        
-        .dna-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
-            opacity: 0.6;
-            box-shadow: 0 0 8px rgba(0, 162, 219, 0.4);
-        }
-        
-        .dna-container-2 .dna-line {
-            height: 1px;
-            opacity: 0.4;
-        }
-        
-        @keyframes dnaRotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        
-        /* Remove floating molecules - too busy */
+        /* DNA Helix removed - using particle network only */
         
         /* Glowing orbs */
         .hero-orb {
@@ -1880,11 +1798,6 @@
                 margin: 0 auto;
             }
             
-            .dna-container,
-            .dna-container-2 {
-                display: none;
-            }
-            
             .hero-logo-large {
                 width: 300px;
             }
@@ -2050,10 +1963,6 @@
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
-        
-        <!-- DNA Helix Visuals - At the edges -->
-        <div class="dna-container" id="dnaContainer"></div>
-        <div class="dna-container-2" id="dnaContainer2"></div>
         
         <!-- Flag Cascade -->
         <div class="flag-cascade">
@@ -2352,7 +2261,7 @@
         });
         
         // ==========================================
-        // PARTICLE NETWORK ANIMATION - ENHANCED LEFT SIDE
+        // PARTICLE NETWORK ANIMATION - ENHANCED
         // ==========================================
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
@@ -2365,23 +2274,23 @@
         window.addEventListener('resize', resizeCanvas);
         
         const particles = [];
-        const particleCount = 120; // More particles
-        const connectionDistance = 180; // Longer connections
+        const particleCount = 160; // Even more particles for rich network
+        const connectionDistance = 200; // Longer connections
         
         class Particle {
             constructor(forceLeft = false) {
-                // Bias particles toward the left side
-                if (forceLeft || Math.random() < 0.6) {
-                    this.x = Math.random() * (canvas.width * 0.5); // Left half
+                // Bias particles toward the left side for balance with flags
+                if (forceLeft || Math.random() < 0.55) {
+                    this.x = Math.random() * (canvas.width * 0.55); // Left side bias
                 } else {
                     this.x = Math.random() * canvas.width;
                 }
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2.5 + 1;
+                this.vx = (Math.random() - 0.5) * 0.35;
+                this.vy = (Math.random() - 0.5) * 0.35;
+                this.radius = Math.random() * 2.5 + 1.5;
                 // Random color - blue or orange
-                this.isOrange = Math.random() < 0.3;
+                this.isOrange = Math.random() < 0.25;
             }
             
             update() {
@@ -2394,8 +2303,8 @@
             
             draw() {
                 // Brightness based on x position (brighter on left)
-                const leftBrightness = Math.max(0.3, 1 - (this.x / canvas.width));
-                const opacity = 0.4 + (leftBrightness * 0.5);
+                const leftBrightness = Math.max(0.3, 1 - (this.x / canvas.width) * 0.8);
+                const opacity = 0.5 + (leftBrightness * 0.5);
                 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -2406,14 +2315,14 @@
                 }
                 ctx.fill();
                 
-                // Add glow for particles on the left
-                if (this.x < canvas.width * 0.4) {
+                // Add glow for particles on the left half
+                if (this.x < canvas.width * 0.5) {
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
+                    ctx.arc(this.x, this.y, this.radius * 2.5, 0, Math.PI * 2);
                     if (this.isOrange) {
-                        ctx.fillStyle = `rgba(232, 78, 16, ${opacity * 0.3})`;
+                        ctx.fillStyle = `rgba(232, 78, 16, ${opacity * 0.2})`;
                     } else {
-                        ctx.fillStyle = `rgba(0, 162, 219, ${opacity * 0.3})`;
+                        ctx.fillStyle = `rgba(0, 162, 219, ${opacity * 0.2})`;
                     }
                     ctx.fill();
                 }
@@ -2421,7 +2330,7 @@
         }
         
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle(i < 50)); // First 50 forced to left
+            particles.push(new Particle(i < 70)); // First 70 forced to left
         }
         
         function animateParticles() {
@@ -2437,9 +2346,9 @@
                     if (distance < connectionDistance) {
                         // Connection brightness based on average x position
                         const avgX = (particles[i].x + particles[j].x) / 2;
-                        const leftBoost = Math.max(0.3, 1 - (avgX / canvas.width));
+                        const leftBoost = Math.max(0.3, 1 - (avgX / canvas.width) * 0.8);
                         const baseOpacity = (1 - distance / connectionDistance);
-                        const opacity = baseOpacity * (0.2 + leftBoost * 0.4);
+                        const opacity = baseOpacity * (0.25 + leftBoost * 0.45);
                         
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -2451,7 +2360,7 @@
                         } else {
                             ctx.strokeStyle = `rgba(0, 162, 219, ${opacity})`;
                         }
-                        ctx.lineWidth = avgX < canvas.width * 0.3 ? 1.5 : 1;
+                        ctx.lineWidth = avgX < canvas.width * 0.4 ? 1.5 : 1;
                         ctx.stroke();
                     }
                 }
@@ -2466,51 +2375,6 @@
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
-        
-        // ==========================================
-        // DNA HELIX GENERATOR - ENHANCED
-        // ==========================================
-        function createDNAHelix(containerId, height, points, amplitude, centerX) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            
-            for (let i = 0; i < points; i++) {
-                const y = (i / points) * height;
-                const angle = (i / points) * Math.PI * 5; // More twists
-                
-                // Left strand dot
-                const leftDot = document.createElement('div');
-                leftDot.className = 'dna-dot';
-                leftDot.style.left = `${centerX + Math.sin(angle) * amplitude}px`;
-                leftDot.style.top = `${y}px`;
-                container.appendChild(leftDot);
-                
-                // Right strand dot
-                const rightDot = document.createElement('div');
-                rightDot.className = 'dna-dot orange';
-                rightDot.style.left = `${centerX - Math.sin(angle) * amplitude}px`;
-                rightDot.style.top = `${y}px`;
-                container.appendChild(rightDot);
-                
-                // Connection line (every other point)
-                if (i % 2 === 0) {
-                    const line = document.createElement('div');
-                    line.className = 'dna-line';
-                    const leftX = centerX + Math.sin(angle) * amplitude;
-                    const rightX = centerX - Math.sin(angle) * amplitude;
-                    line.style.left = `${Math.min(leftX, rightX)}px`;
-                    line.style.top = `${y + 4}px`;
-                    line.style.width = `${Math.abs(leftX - rightX)}px`;
-                    container.appendChild(line);
-                }
-            }
-        }
-        
-        // Create main DNA helix (larger, more prominent)
-        createDNAHelix('dnaContainer', 700, 28, 100, 175);
-        
-        // Create secondary DNA helix (smaller, background)
-        createDNAHelix('dnaContainer2', 500, 20, 60, 100);
         
         // ==========================================
         // POPULATE FROM DATA.JS

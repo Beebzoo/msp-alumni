@@ -171,86 +171,6 @@
             .content-grid { grid-template-columns: 1fr; }
             main { padding: 40px 20px; }
         }
-    
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
-            color: white;
-            padding: 50px 50px 30px;
-        }
-        footer::before {
-            content: '';
-            display: block;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
-            margin-bottom: 50px;
-        }
-        .footer-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 50px;
-        }
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 15px;
-            line-height: 1.7;
-        }
-        .footer-section h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 6px 0;
-            transition: all var(--transition-fast);
-        }
-        .footer-section a:hover {
-            color: white;
-            transform: translateX(3px);
-        }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-        }
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
-        }
-        .footer-bottom a:hover {
-            color: var(--um-orange);
-        }
-        
-        @media (max-width: 900px) {
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -319,34 +239,13 @@
         </div>
     </main>
 
-        <footer>
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
-                <p>The MSP Alumni Network connects 1,330+ graduates across 56 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Explore</h4>
-                <a href="index.html">Alumni Map</a>
-                <a href="countries.html">Countries</a>
-                <a href="universities.html">Universities</a>
-                <a href="outcomes.html">Career Outcomes</a>
-                <a href="community.html">Community</a>
-                <a href="resources.html">Resources</a>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Official UM Sites</h4>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni ↗</a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated December 2025</p>
-            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="countries.html">All Countries</a>
+            <a href="universities.html">Universities</a>
+            <a href="community.html">Community</a>
+            <a href="privacy.html">Privacy</a>
         </div>
     </footer>
 
@@ -405,7 +304,7 @@
             if (countryData.coords) {
                 const map = L.map('countryMap').setView(countryData.coords, 5);
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    attribution: 'Â©OpenStreetMap, Â©CartoDB'
+                    attribution: '©OpenStreetMap, ©CartoDB'
                 }).addTo(map);
                 L.circleMarker(countryData.coords, {
                     radius: 20,

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master's Destinations | MSP Alumni Network</title>
-    <meta name="description" content="Explore where MSP alumni pursue their Master's degrees - from Oxford to ETH Zürich, across 235+ universities worldwide.">
+    <meta name="description" content="Explore where MSP alumni pursue their Master's degrees - from Oxford to ETH ZÃ¼rich, across 235+ universities worldwide.">
     
     <!-- Fonts - Futuristic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -675,17 +675,6 @@
             background: rgba(255,255,255,0.98);
             box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
         }
-        header.scrolled-blue {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002a5c 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        header.scrolled-blue .logo-text h1 { color: white; }
-        header.scrolled-blue .logo-text p { color: rgba(255,255,255,0.7); }
-        header.scrolled-blue .logo-img { filter: brightness(0) invert(1); }
-        header.scrolled-blue .header-nav a { color: rgba(255,255,255,0.9); }
-        header.scrolled-blue .header-nav a:hover { background: rgba(255,255,255,0.1); color: white; }
-        header.scrolled-blue .header-nav a.active { background: rgba(255,255,255,0.15); color: white; }
         .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
         .logo-img { height: 44px; width: auto; transition: transform var(--transition-smooth); }
         .logo:hover .logo-img { transform: scale(1.02); }
@@ -708,39 +697,33 @@
             box-shadow: 0 4px 12px rgba(232, 78, 16, 0.4);
         }
         
-        /* Hero - Premium University Showcase */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, #000a1a 0%, var(--um-dark-blue) 50%, #001530 100%);
-            padding: 100px 50px 80px;
-            margin-top: 72px;
+            padding: 80px 50px;
+            margin-top: 72px; /* Account for fixed header */
+            text-align: center;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            min-height: 420px;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.12) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.08) 0%, transparent 40%);
-            opacity: 0.8;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.06) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
         }
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 700px;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .hero-badge {
             display: inline-flex;
@@ -753,88 +736,39 @@
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 25px;
-            border: 1px solid rgba(232,78,16,0.3);
         }
         .hero-badge i, .hero-badge svg { width: 16px; height: 16px; }
         .hero h2 {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 800;
             color: white;
             margin-bottom: 20px;
-            line-height: 1.1;
         }
         .hero-subtitle {
-            font-size: 18px;
+            font-size: 20px;
             color: rgba(255,255,255,0.8);
             margin-bottom: 40px;
-            line-height: 1.7;
+            line-height: 1.6;
         }
         .hero-stats {
             display: flex;
-            gap: 50px;
+            justify-content: center;
+            gap: 60px;
         }
         .hero-stat {
-            text-align: left;
+            text-align: center;
         }
         .hero-stat-number {
             font-family: var(--font-heading);
             font-size: 48px;
             font-weight: 800;
             color: var(--um-orange);
-            line-height: 1;
         }
         .hero-stat-label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 8px;
-        }
-        
-        /* Floating University Logos */
-        .hero-logos {
-            position: absolute;
-            right: 80px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            z-index: 2;
-        }
-        .hero-logo-card {
-            width: 100px;
-            height: 100px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-        .hero-logo-card:nth-child(1) { animation-delay: 0s; }
-        .hero-logo-card:nth-child(2) { animation-delay: 0.5s; }
-        .hero-logo-card:nth-child(3) { animation-delay: 1s; }
-        .hero-logo-card:nth-child(4) { animation-delay: 1.5s; }
-        .hero-logo-card:nth-child(5) { animation-delay: 2s; }
-        .hero-logo-card:nth-child(6) { animation-delay: 2.5s; }
-        .hero-logo-card img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @media (max-width: 1200px) {
-            .hero-logos { display: none; }
-            .hero-content { max-width: 100%; text-align: center; margin: 0 auto; }
-            .hero-stats { justify-content: center; }
-            .hero-stat { text-align: center; }
         }
         
         /* Filters */
@@ -1318,75 +1252,6 @@
         @media (max-width: 500px) {
             .uni-grid { grid-template-columns: 1fr; }
         }
-    
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
-            color: white;
-            padding: 50px 50px 30px;
-        }
-        footer::before {
-            content: '';
-            display: block;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
-            margin-bottom: 50px;
-        }
-        .footer-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 50px;
-        }
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 15px;
-            line-height: 1.7;
-        }
-        .footer-section h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 6px 0;
-            transition: all var(--transition-fast);
-        }
-        .footer-section a:hover {
-            color: white;
-            transform: translateX(3px);
-        }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-        }
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
-        }
-        .footer-bottom a:hover {
-            color: var(--um-orange);
-        }
-
     </style>
 </head>
 <body>
@@ -1414,13 +1279,13 @@
                 <i data-lucide="graduation-cap"></i>
                 Master's Destinations
             </div>
-            <h2>Where MSP Alumni<br>Continue Their Journey</h2>
+            <h2>Where MSP Alumni Study</h2>
             <p class="hero-subtitle">
-                From Maastricht to the world's top universities — explore the 248 institutions across 30+ countries where MSP graduates pursue their Master's degrees.
+                From Maastricht to the world's top universities â€” explore the 235+ institutions where MSP graduates continue their academic journey.
             </p>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-number" id="statUniversities">248</div>
+                    <div class="hero-stat-number" id="statUniversities">235</div>
                     <div class="hero-stat-label">Universities</div>
                 </div>
                 <div class="hero-stat">
@@ -1433,27 +1298,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class="hero-logos">
-            <div class="hero-logo-card">
-                <img src="assets/logos/imperial-college-london.png" alt="Imperial College">
-            </div>
-            <div class="hero-logo-card">
-                <img src="assets/logos/eth-zurich.png" alt="ETH Zürich">
-            </div>
-            <div class="hero-logo-card">
-                <img src="assets/logos/university-of-cambridge.png" alt="Cambridge">
-            </div>
-            <div class="hero-logo-card">
-                <img src="assets/logos/utrecht-university.png" alt="Utrecht">
-            </div>
-            <div class="hero-logo-card">
-                <img src="assets/logos/karolinska-institutet.png" alt="Karolinska">
-            </div>
-            <div class="hero-logo-card">
-                <img src="assets/logos/ku-leuven.png" alt="KU Leuven">
-            </div>
-        </div>
     </section>
     
     <!-- Filters -->
@@ -1462,14 +1306,12 @@
             <div class="filter-group">
                 <span class="filter-label">Filter:</span>
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="nl">🇳🇱 Netherlands</button>
-                    <button class="filter-btn" data-filter="gb">🇬🇧 UK</button>
-                    <button class="filter-btn" data-filter="de">🇩🇪 Germany</button>
-                    <button class="filter-btn" data-filter="se">🇸🇪 Sweden</button>
-                    <button class="filter-btn" data-filter="be">🇧🇪 Belgium</button>
-                    <button class="filter-btn" data-filter="ch">🇨🇭 Switzerland</button>
-                    <button class="filter-btn" data-filter="prestige">⭐ Top 10</button>
+                    <button class="filter-btn active" data-filter="all">All Universities</button>
+                    <button class="filter-btn" data-filter="nl">ðŸ‡³ðŸ‡± Netherlands</button>
+                    <button class="filter-btn" data-filter="gb">ðŸ‡¬ðŸ‡§ United Kingdom</button>
+                    <button class="filter-btn" data-filter="de">ðŸ‡©ðŸ‡ª Germany</button>
+                    <button class="filter-btn" data-filter="se">ðŸ‡¸ðŸ‡ª Sweden</button>
+                    <button class="filter-btn" data-filter="prestige">â­ Top Ranked</button>
                 </div>
             </div>
             <div class="search-box">
@@ -1483,7 +1325,7 @@
     <section class="world-map-section">
         <div class="world-map-container">
             <div class="world-map-header">
-<h3>🗺️ Explore by Country</h3>
+                <h3>ðŸ—ºï¸ Explore by Country</h3>
                 <p>Click any highlighted country to see universities where MSP alumni study</p>
             </div>
             <div class="world-map-wrapper" id="map-wrapper">
@@ -1800,7 +1642,7 @@
             <div class="collapsible-header" onclick="toggleSection('prestige')">
                 <div class="collapsible-header-left">
                     <div>
-                        <h3>⭐ World-Leading Universities</h3>
+                        <h3>â­ World-Leading Universities</h3>
                         <p>MSP alumni at the most prestigious institutions globally</p>
                     </div>
                 </div>
@@ -1910,81 +1752,12 @@
             </div>
         </div>
         
-        <!-- Belgian Universities -->
-        <div class="collapsible-section" id="be-section">
-            <div class="collapsible-header" onclick="toggleSection('be')">
-                <div class="collapsible-header-left">
-                    <div>
-                        <h3><img src="https://flagcdn.com/w40/be.png" alt="Belgium" class="flag"> Belgium</h3>
-                        <p>Excellent research universities in our neighboring country</p>
-                    </div>
-                </div>
-                <div class="collapsible-header-right">
-                    <span class="collapsible-count" id="be-count">0</span>
-                    <div class="collapsible-arrow">
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="collapsible-content" id="be-content">
-                <div class="collapsible-content-inner">
-                    <div class="uni-grid" id="be-grid"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Swiss Universities -->
-        <div class="collapsible-section" id="ch-section">
-            <div class="collapsible-header" onclick="toggleSection('ch')">
-                <div class="collapsible-header-left">
-                    <div>
-                        <h3><img src="https://flagcdn.com/w40/ch.png" alt="Switzerland" class="flag"> Switzerland</h3>
-                        <p>Home to world-leading technical and research institutions</p>
-                    </div>
-                </div>
-                <div class="collapsible-header-right">
-                    <span class="collapsible-count" id="ch-count">0</span>
-                    <div class="collapsible-arrow">
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="collapsible-content" id="ch-content">
-                <div class="collapsible-content-inner">
-                    <div class="uni-grid" id="ch-grid"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Danish Universities -->
-        <div class="collapsible-section" id="dk-section">
-            <div class="collapsible-header" onclick="toggleSection('dk')">
-                <div class="collapsible-header-left">
-                    <div>
-                        <h3><img src="https://flagcdn.com/w40/dk.png" alt="Denmark" class="flag"> Denmark</h3>
-                        <p>Leading Scandinavian research and innovation hub</p>
-                    </div>
-                </div>
-                <div class="collapsible-header-right">
-                    <span class="collapsible-count" id="dk-count">0</span>
-                    <div class="collapsible-arrow">
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="collapsible-content" id="dk-content">
-                <div class="collapsible-content-inner">
-                    <div class="uni-grid" id="dk-grid"></div>
-                </div>
-            </div>
-        </div>
-        
         <!-- Other Universities -->
         <div class="collapsible-section" id="other-section">
             <div class="collapsible-header" onclick="toggleSection('other')">
                 <div class="collapsible-header-left">
                     <div>
-                        <h3>🌍 Other Countries</h3>
+                        <h3>ðŸŒ Other Countries</h3>
                         <p>MSP alumni across Europe and beyond</p>
                     </div>
                 </div>
@@ -2048,35 +1821,18 @@
         </div>
     </div>
     
-        <!-- Footer -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
-                <p>The MSP Alumni Network connects 1,330+ graduates across 56 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
+        <div class="footer-content">
+            <div class="footer-text">
+                Â© 2025 MSP Alumni Network Â· Maastricht University Â· Data updated December 2025 Â· <a href="/cdn-cgi/l/email-protection#a8c5dbd885c9c4ddc5c6c1e8c5c9c9dbdcdac1cbc0dcddc6c1decddadbc1dcd186c6c4" style="color: rgba(255,255,255,0.7);">Help keep data accurate</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Explore</h4>
+            <div class="footer-links">
                 <a href="index.html">Alumni Map</a>
                 <a href="countries.html">Countries</a>
-                <a href="universities.html">Universities</a>
-                <a href="outcomes.html">Career Outcomes</a>
-                <a href="community.html">Community</a>
-                <a href="resources.html">Resources</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="privacy.html">Privacy</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Official UM Sites</h4>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni ↗</a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated December 2025</p>
-            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
         </div>
     </footer>
     
@@ -2094,80 +1850,43 @@
             { name: "TU Delft", country: "Netherlands", code: "nl", count: 17, logo: "tu-delft.png", rank: 47, fields: ["Engineering", "Physics", "Computer Science"], highlight: "Top 50 Global", website: "https://www.tudelft.nl" },
             { name: "VU Amsterdam", country: "Netherlands", code: "nl", count: 14, logo: "vrije-universiteit-amsterdam.png", rank: 207, fields: ["Neuroscience", "Biology", "Chemistry"], website: "https://www.vu.nl" },
             { name: "TU Eindhoven", country: "Netherlands", code: "nl", count: 9, logo: "eindhoven-university.png", rank: 113, fields: ["Engineering", "Physics", "Data Science"], website: "https://www.tue.nl" },
-            { name: "University of Twente", country: "Netherlands", code: "nl", count: 5, logo: "university-of-twente.png", rank: 210, fields: ["Biomedical Engineering", "Nanotechnology"], website: "https://www.utwente.nl" },
-            { name: "Erasmus University Rotterdam", country: "Netherlands", code: "nl", count: 4, logo: "erasmus-university.png", rank: 176, fields: ["Medicine", "Public Health", "Economics"], website: "https://www.eur.nl" },
             
-            // Prestige International (World Top 10)
+            // Prestige International
             { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", rank: 2, prestige: true, fields: ["Biology", "Chemistry", "Physics", "Engineering", "Medicine"], website: "https://www.imperial.ac.uk" },
-            { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true, fields: ["Physics", "Chemistry", "Engineering", "Computer Science"], website: "https://ethz.ch" },
+            { name: "ETH ZÃ¼rich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true, fields: ["Physics", "Chemistry", "Engineering", "Computer Science"], website: "https://ethz.ch" },
             { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", rank: 5, prestige: true, fields: ["Natural Sciences", "Chemistry", "Physics", "Biology"], website: "https://www.cam.ac.uk" },
             { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", rank: 3, prestige: true, fields: ["Biochemistry", "Chemistry", "Physics"], website: "https://www.ox.ac.uk" },
             { name: "UCL", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png", rank: 9, prestige: true, fields: ["Neuroscience", "Biology", "Chemistry", "Medicine"], website: "https://www.ucl.ac.uk" },
-            { name: "EPFL", country: "Switzerland", code: "ch", count: 6, logo: "epfl.png", rank: 12, prestige: true, fields: ["Engineering", "Physics", "Computer Science", "Life Sciences"], website: "https://www.epfl.ch" },
             
-            // UK Universities (expanded)
+            // UK Universities
             { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, logo: "university-of-edinburgh.png", rank: 27, fields: ["Biology", "Neuroscience", "Chemistry"], website: "https://www.ed.ac.uk" },
             { name: "King's College London", country: "United Kingdom", code: "gb", count: 5, logo: "kings-college-london.png", rank: 40, fields: ["Neuroscience", "Medicine", "Biology"], website: "https://www.kcl.ac.uk" },
-            { name: "University of Manchester", country: "United Kingdom", code: "gb", count: 4, logo: "university-of-manchester.png", rank: 32, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.manchester.ac.uk" },
-            { name: "University of Bristol", country: "United Kingdom", code: "gb", count: 3, logo: "university-of-bristol.png", rank: 55, fields: ["Biology", "Chemistry", "Engineering"], website: "https://www.bristol.ac.uk" },
-            { name: "University of Glasgow", country: "United Kingdom", code: "gb", count: 3, logo: "university-of-glasgow.png", rank: 76, fields: ["Life Sciences", "Medicine", "Chemistry"], website: "https://www.gla.ac.uk" },
-            { name: "London School of Economics", country: "United Kingdom", code: "gb", count: 2, logo: "lse.png", rank: 45, fields: ["Economics", "Social Sciences", "Data Science"], website: "https://www.lse.ac.uk" },
             
-            // German Universities (expanded)
-            { name: "TU Munich", country: "Germany", code: "de", count: 7, logo: "tu-munich.png", rank: 37, fields: ["Biology", "Physics", "Engineering"], website: "https://www.tum.de" },
-            { name: "Heidelberg University", country: "Germany", code: "de", count: 5, logo: "heidelberg-university.png", rank: 49, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.uni-heidelberg.de" },
-            { name: "LMU Munich", country: "Germany", code: "de", count: 4, logo: "lmu-munich.png", rank: 54, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.lmu.de" },
-            { name: "Humboldt University Berlin", country: "Germany", code: "de", count: 3, logo: "humboldt-university-of-berlin.png", rank: 120, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.hu-berlin.de" },
-            { name: "RWTH Aachen", country: "Germany", code: "de", count: 3, logo: "rwth-aachen.png", rank: 90, fields: ["Engineering", "Chemistry", "Physics"], website: "https://www.rwth-aachen.de" },
-            { name: "University of Freiburg", country: "Germany", code: "de", count: 3, logo: "university-of-freiburg.png", rank: 192, fields: ["Biology", "Medicine", "Environmental Science"], website: "https://www.uni-freiburg.de" },
-            { name: "University of Bonn", country: "Germany", code: "de", count: 2, logo: "university-of-bonn.png", rank: 185, fields: ["Biology", "Mathematics", "Physics"], website: "https://www.uni-bonn.de" },
-            { name: "Charité Berlin", country: "Germany", code: "de", count: 2, logo: "charite-berlin.png", rank: null, fields: ["Medicine", "Biomedical Science", "Neuroscience"], website: "https://www.charite.de" },
-            
-            // Swedish Universities (expanded)
+            // Swedish Universities
             { name: "Uppsala University", country: "Sweden", code: "se", count: 18, logo: "uppsala-university.png", rank: 105, fields: ["Biology", "Chemistry", "Physics", "Medicine"], website: "https://www.uu.se" },
             { name: "Lund University", country: "Sweden", code: "se", count: 10, logo: "lund-university.png", rank: 75, fields: ["Biology", "Physics", "Medicine"], website: "https://www.lu.se" },
             { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 9, logo: "karolinska-institutet.png", rank: 45, fields: ["Medicine", "Biomedical Science", "Neuroscience"], highlight: "Top Medical School", website: "https://ki.se" },
             { name: "Stockholm University", country: "Sweden", code: "se", count: 9, logo: "stockholm-university.png", rank: 152, fields: ["Biology", "Chemistry", "Environmental Science"], website: "https://www.su.se" },
             { name: "KTH Royal Institute", country: "Sweden", code: "se", count: 4, logo: "kth-royal-institute-of-technology.png", rank: 78, fields: ["Engineering", "Physics", "Computer Science"], website: "https://www.kth.se" },
-            { name: "Chalmers University", country: "Sweden", code: "se", count: 3, logo: "chalmers-university.png", rank: 125, fields: ["Engineering", "Physics", "Biotechnology"], website: "https://www.chalmers.se" },
-            { name: "University of Gothenburg", country: "Sweden", code: "se", count: 2, logo: "university-of-gothenburg.png", rank: 187, fields: ["Marine Biology", "Medicine", "Environmental Science"], website: "https://www.gu.se" },
             
-            // Belgian Universities (expanded)
+            // German Universities
+            { name: "TU Munich", country: "Germany", code: "de", count: 7, logo: "tu-munich.png", rank: 37, fields: ["Biology", "Physics", "Engineering"], website: "https://www.tum.de" },
+            { name: "Heidelberg University", country: "Germany", code: "de", count: 5, logo: "heidelberg-university.png", rank: 49, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.uni-heidelberg.de" },
+            { name: "LMU Munich", country: "Germany", code: "de", count: 4, logo: "lmu-munich.png", rank: 54, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.lmu.de" },
+            { name: "Humboldt University Berlin", country: "Germany", code: "de", count: 3, logo: "humboldt-university-of-berlin.png", rank: 120, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.hu-berlin.de" },
+            
+            // Belgian Universities
             { name: "KU Leuven", country: "Belgium", code: "be", count: 21, logo: "ku-leuven.png", rank: 61, fields: ["Biology", "Chemistry", "Engineering", "Medicine"], website: "https://www.kuleuven.be" },
             { name: "Ghent University", country: "Belgium", code: "be", count: 8, logo: "ghent-university.png", rank: 137, fields: ["Biology", "Chemistry", "Engineering"], website: "https://www.ugent.be" },
             { name: "ULB Brussels", country: "Belgium", code: "be", count: 4, logo: "universite-libre-de-bruxelles.png", rank: 221, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.ulb.be" },
-            { name: "VUB Brussels", country: "Belgium", code: "be", count: 3, logo: "vrije-universiteit-brussel.png", rank: 210, fields: ["Engineering", "Biology", "Medicine"], website: "https://www.vub.be" },
-            { name: "University of Antwerp", country: "Belgium", code: "be", count: 2, logo: "university-of-antwerp.png", rank: 233, fields: ["Biology", "Chemistry", "Pharmaceutical Sciences"], website: "https://www.uantwerpen.be" },
-            
-            // Swiss Universities (expanded)
-            { name: "University of Zürich", country: "Switzerland", code: "ch", count: 4, logo: "university-of-zurich.png", rank: 91, fields: ["Biology", "Neuroscience", "Medicine"], website: "https://www.uzh.ch" },
-            { name: "University of Basel", country: "Switzerland", code: "ch", count: 3, logo: "university-of-basel.png", rank: 95, fields: ["Life Sciences", "Chemistry", "Pharmacy"], website: "https://www.unibas.ch" },
-            { name: "University of Bern", country: "Switzerland", code: "ch", count: 2, logo: "university-of-bern.png", rank: 114, fields: ["Medicine", "Biology", "Climate Science"], website: "https://www.unibe.ch" },
-            { name: "University of Geneva", country: "Switzerland", code: "ch", count: 2, logo: "university-of-geneva.png", rank: 128, fields: ["Genetics", "Biology", "Medicine"], website: "https://www.unige.ch" },
-            
-            // Danish Universities (expanded)
-            { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 12, logo: "university-of-copenhagen.png", rank: 96, fields: ["Biology", "Chemistry", "Neuroscience"], website: "https://www.ku.dk" },
-            { name: "Aarhus University", country: "Denmark", code: "dk", count: 5, logo: "aarhus-university.png", rank: 147, fields: ["Biology", "Molecular Biology", "Neuroscience"], website: "https://www.au.dk" },
-            { name: "DTU - Technical University of Denmark", country: "Denmark", code: "dk", count: 3, logo: "dtu.png", rank: 121, fields: ["Engineering", "Biotechnology", "Environmental Science"], website: "https://www.dtu.dk" },
-            { name: "University of Southern Denmark", country: "Denmark", code: "dk", count: 2, logo: "university-of-southern-denmark.png", rank: 309, fields: ["Biochemistry", "Robotics", "Biology"], website: "https://www.sdu.dk" },
             
             // Other Countries
+            { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 12, logo: "university-of-copenhagen.png", rank: 96, fields: ["Biology", "Chemistry", "Neuroscience"], website: "https://www.ku.dk" },
+            { name: "EPFL", country: "Switzerland", code: "ch", count: 6, logo: "epfl.png", rank: 12, prestige: true, fields: ["Engineering", "Physics", "Computer Science"], website: "https://www.epfl.ch" },
             { name: "University of Vienna", country: "Austria", code: "at", count: 5, logo: "university-of-vienna.png", rank: 130, fields: ["Biology", "Chemistry", "Physics"], website: "https://www.univie.ac.at" },
-            { name: "TU Wien", country: "Austria", code: "at", count: 2, logo: "tu-wien.png", rank: 192, fields: ["Engineering", "Physics", "Computer Science"], website: "https://www.tuwien.at" },
-            { name: "University of Helsinki", country: "Finland", code: "fi", count: 5, logo: "university-of-helsinki.png", rank: 107, fields: ["Biology", "Environmental Science"], website: "https://www.helsinki.fi" },
-            { name: "Aalto University", country: "Finland", code: "fi", count: 4, logo: "aalto-university.png", rank: 109, fields: ["Engineering", "Design", "Biotechnology"], website: "https://www.aalto.fi" },
+            { name: "University of Helsinki", country: "Finland", code: "fi", count: 4, logo: "university-of-helsinki.png", rank: 107, fields: ["Biology", "Environmental Science"], website: "https://www.helsinki.fi" },
             { name: "Trinity College Dublin", country: "Ireland", code: "ie", count: 4, logo: "trinity-college-dublin.png", rank: 87, fields: ["Neuroscience", "Biology", "Chemistry"], website: "https://www.tcd.ie" },
-            { name: "University College Dublin", country: "Ireland", code: "ie", count: 3, logo: "university-college-dublin.png", rank: 171, fields: ["Biology", "Medicine", "Agriculture"], website: "https://www.ucd.ie" },
-            { name: "University of Barcelona", country: "Spain", code: "es", count: 4, logo: "university-of-barcelona.png", rank: 164, fields: ["Biology", "Chemistry", "Environmental Science"], website: "https://www.ub.edu" },
-            { name: "Autonomous University of Barcelona", country: "Spain", code: "es", count: 2, logo: "uab.png", rank: 178, fields: ["Biology", "Veterinary Science", "Biotechnology"], website: "https://www.uab.cat" },
-            { name: "University of Oslo", country: "Norway", code: "no", count: 3, logo: "university-of-oslo.png", rank: 115, fields: ["Biology", "Medicine", "Environmental Science"], website: "https://www.uio.no" },
-            { name: "McGill University", country: "Canada", code: "ca", count: 3, logo: "mcgill-university.png", rank: 30, fields: ["Neuroscience", "Biology", "Medicine"], website: "https://www.mcgill.ca" },
-            { name: "University of Toronto", country: "Canada", code: "ca", count: 2, logo: "university-of-toronto.png", rank: 21, fields: ["Biology", "Medicine", "Computer Science"], website: "https://www.utoronto.ca" },
-            { name: "Harvard University", country: "USA", code: "us", count: 2, logo: "harvard-university.png", rank: 4, prestige: true, fields: ["Biology", "Chemistry", "Medicine"], website: "https://www.harvard.edu" },
-            { name: "Johns Hopkins University", country: "USA", code: "us", count: 2, logo: "johns-hopkins-university.png", rank: 28, fields: ["Medicine", "Public Health", "Biomedical Engineering"], website: "https://www.jhu.edu" },
-            { name: "University of Melbourne", country: "Australia", code: "au", count: 2, logo: "university-of-melbourne.png", rank: 14, fields: ["Biology", "Medicine", "Environmental Science"], website: "https://www.unimelb.edu.au" },
-            { name: "University of Lisbon", country: "Portugal", code: "pt", count: 2, logo: "university-of-lisbon.png", rank: 266, fields: ["Biology", "Marine Science", "Engineering"], website: "https://www.ulisboa.pt" },
-            { name: "University of Bologna", country: "Italy", code: "it", count: 2, logo: "university-of-bologna.png", rank: 133, fields: ["Biology", "Chemistry", "Medicine"], website: "https://www.unibo.it" }
+            { name: "University of Barcelona", country: "Spain", code: "es", count: 4, logo: "university-of-barcelona.png", rank: 164, fields: ["Biology", "Chemistry", "Environmental Science"], website: "https://www.ub.edu" }
         ];
         
         // Initialize page
@@ -2238,7 +1957,7 @@
                 path.addEventListener('mouseenter', function(e) {
                     tooltipFlag.src = `https://flagcdn.com/w80/${code}.png`;
                     tooltipName.textContent = data.name;
-                    tooltipDetails.innerHTML = `<span>${data.count}</span> alumni · <span>${data.uniCount}</span> universities`;
+                    tooltipDetails.innerHTML = `<span>${data.count}</span> alumni Â· <span>${data.uniCount}</span> universities`;
                     tooltip.classList.add('visible');
                 });
                 
@@ -2384,19 +2103,13 @@
             const gbUnis = universitiesData.filter(u => u.code === 'gb' && !u.prestige);
             const deUnis = universitiesData.filter(u => u.code === 'de' && !u.prestige);
             const seUnis = universitiesData.filter(u => u.code === 'se');
-            const beUnis = universitiesData.filter(u => u.code === 'be');
-            const chUnis = universitiesData.filter(u => u.code === 'ch' && !u.prestige);
-            const dkUnis = universitiesData.filter(u => u.code === 'dk');
-            const otherUnis = universitiesData.filter(u => !['nl', 'gb', 'de', 'se', 'be', 'ch', 'dk'].includes(u.code) && !u.prestige);
+            const otherUnis = universitiesData.filter(u => !['nl', 'gb', 'de', 'se'].includes(u.code) && !u.prestige);
             
             renderGrid('prestige-grid', prestigeUnis);
             renderGrid('nl-grid', nlUnis);
             renderGrid('gb-grid', gbUnis);
             renderGrid('de-grid', deUnis);
             renderGrid('se-grid', seUnis);
-            renderGrid('be-grid', beUnis);
-            renderGrid('ch-grid', chUnis);
-            renderGrid('dk-grid', dkUnis);
             renderGrid('other-grid', otherUnis);
             
             // Update counts for collapsible headers
@@ -2405,9 +2118,6 @@
             document.getElementById('gb-count').textContent = `${gbUnis.length} universities`;
             document.getElementById('de-count').textContent = `${deUnis.length} universities`;
             document.getElementById('se-count').textContent = `${seUnis.length} universities`;
-            document.getElementById('be-count').textContent = `${beUnis.length} universities`;
-            document.getElementById('ch-count').textContent = `${chUnis.length} universities`;
-            document.getElementById('dk-count').textContent = `${dkUnis.length} universities`;
             document.getElementById('other-count').textContent = `${otherUnis.length} universities`;
         }
         
@@ -2550,21 +2260,13 @@
         setupWorldMap();
         lucide.createIcons();
         
-        // Header scroll effect - turns blue after hero
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            const hero = document.querySelector('.hero');
-            const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 80 : 400;
-            
-            if (window.scrollY > heroBottom) {
-                header.classList.add('scrolled-blue');
-                header.classList.remove('scrolled');
-            } else if (window.scrollY > 20) {
+            if (window.scrollY > 20) {
                 header.classList.add('scrolled');
-                header.classList.remove('scrolled-blue');
             } else {
                 header.classList.remove('scrolled');
-                header.classList.remove('scrolled-blue');
             }
         });
     </script>

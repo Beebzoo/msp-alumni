@@ -1555,78 +1555,59 @@
         footer {
             background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
             color: white;
-            padding: 50px 50px 30px;
+            padding: 60px 50px 40px;
+            position: relative;
         }
         
         footer::before {
             content: '';
-            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
-            margin-bottom: 50px;
         }
         
-        .footer-main {
+        .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 15px;
-            line-height: 1.7;
-        }
-        
-        .footer-section h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-section a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 6px 0;
-            transition: all var(--transition-fast);
-        }
-        
-        .footer-section a:hover {
-            color: white;
-            transform: translateX(3px);
-        }
-        
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
         }
         
-        .footer-bottom p {
+        .footer-text {
             font-size: 13px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
         }
         
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
+        .footer-text a {
+            color: rgba(255,255,255,0.7);
+            transition: color var(--transition-fast);
         }
         
-        .footer-bottom a:hover {
+        .footer-text a:hover {
             color: var(--um-orange);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: white;
         }
         
         /* ============================================
@@ -1785,14 +1766,14 @@
                 grid-template-columns: 1fr;
             }
             
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-bottom {
+            .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .scroll-indicator {
@@ -1848,7 +1829,7 @@
             <div class="hero-right">
                 <h2>Where <span>Science</span> Takes You</h2>
                 <p class="hero-subtitle">
-                    Explore the global journey of 1,330+ MSP alumni Ã¢â‚¬â€ from Maastricht to world-leading universities and careers across six continents.
+                    Explore the global journey of 1,330+ MSP alumni â€” from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
@@ -1919,7 +1900,7 @@
             <div class="section-label">Academic Destinations</div>
             <h2 class="section-title">Where They Continue</h2>
             <p class="section-subtitle">
-                Our alumni pursue Master's degrees at the world's top universities Ã¢â‚¬â€ from Oxford to ETH ZÃƒÂ¼rich.
+                Our alumni pursue Master's degrees at the world's top universities â€” from Oxford to ETH ZÃ¼rich.
             </p>
         </div>
         
@@ -1952,7 +1933,7 @@
             <div class="section-label">Programme Growth</div>
             <h2 class="section-title">A Growing Community</h2>
             <p class="section-subtitle">
-                From 25 graduates in 2014 to over 1,300 alumni worldwide Ã¢â‚¬â€ and counting.
+                From 25 graduates in 2014 to over 1,300 alumni worldwide â€” and counting.
             </p>
         </div>
         
@@ -2041,7 +2022,7 @@
                     <p>
                         The MSP Alumni Network connects <strong>1,330+ graduates</strong> across 
                         <strong>56 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students Ã¢â‚¬â€ 
+                        new city, find mentors in your field, or give back to current students â€” 
                         we're here to help.
                     </p>
                     <p>
@@ -2084,35 +2065,17 @@
         </div>
     </section>
     
-        <!-- Footer -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-main">
-            <div class="footer-brand">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
-                <p>The MSP Alumni Network connects 1,330+ graduates across 56 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
+        <div class="footer-content">
+            <div class="footer-text">
+                Â© 2025 MSP Alumni Network Â· Maastricht University Â· 
+                Updated <span id="lastUpdated">December 2025</span> Â· 
+                <a href="privacy.html">Privacy Policy</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Explore</h4>
-                <a href="index.html">Alumni Map</a>
-                <a href="countries.html">Countries</a>
-                <a href="universities.html">Universities</a>
-                <a href="outcomes.html">Career Outcomes</a>
-                <a href="community.html">Community</a>
-                <a href="resources.html">Resources</a>
+            <div class="footer-links">
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Help keep the map accurate â†’</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Official UM Sites</h4>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni ↗</a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated <span id="lastUpdated">December 2025</span></p>
-            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
         </div>
     </footer>
     
@@ -2308,15 +2271,15 @@
         
         // Map emoji icons to Lucide icons
         const fieldIcons = {
-            'Ã°Å¸Â§Â¬': 'dna',
-            'Ã¢Å¡â€”Ã¯Â¸Â': 'flask-conical',
-            'Ã°Å¸ÂÂ¥': 'heart-pulse',
-            'Ã¢Å¡Â¡': 'zap',
-            'Ã°Å¸Â§Â ': 'brain',
-            'Ã°Å¸â€œÅ ': 'bar-chart-3',
-            'Ã°Å¸â€™Â»': 'monitor',
-            'Ã°Å¸Å’Â': 'globe-2',
-            'Ã°Å¸â€œÅ¡': 'book-open'
+            'ðŸ§¬': 'dna',
+            'âš—ï¸': 'flask-conical',
+            'ðŸ¥': 'heart-pulse',
+            'âš¡': 'zap',
+            'ðŸ§ ': 'brain',
+            'ðŸ“Š': 'bar-chart-3',
+            'ðŸ’»': 'monitor',
+            'ðŸŒ': 'globe-2',
+            'ðŸ“š': 'book-open'
         };
         
         MSP_DATA.fieldsOfStudy.forEach(field => {
@@ -2327,7 +2290,7 @@
                 <div class="field-icon"><i data-lucide="${iconName}"></i></div>
                 <div class="field-info">
                     <div class="field-name">${field.name}</div>
-                    <div class="field-count">${field.count}+ alumni Ã‚Â· ${field.percent}%</div>
+                    <div class="field-count">${field.count}+ alumni Â· ${field.percent}%</div>
                     <div class="field-bar">
                         <div class="field-bar-fill" style="width: ${field.percent * 2.5}%"></div>
                     </div>
@@ -2380,7 +2343,7 @@
         }).setView([30, 10], 2);
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: 'Ã‚Â©OpenStreetMap, Ã‚Â©CartoDB',
+            attribution: 'Â©OpenStreetMap, Â©CartoDB',
             maxZoom: 18
         }).addTo(map);
         
@@ -2416,7 +2379,7 @@
                         </div>
                     </div>
                     <a href="country.html?country=${encodeURIComponent(country.name)}" style="display: block; background: linear-gradient(135deg, #E84E10, #d94008); color: white; text-align: center; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(232,78,16,0.3);">
-                        Explore ${country.name} Ã¢â€ â€™
+                        Explore ${country.name} â†’
                     </a>
                 </div>
             `;

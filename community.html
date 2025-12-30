@@ -501,86 +501,6 @@
             .footer-content { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
         }
-    
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
-            color: white;
-            padding: 50px 50px 30px;
-        }
-        footer::before {
-            content: '';
-            display: block;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
-            margin-bottom: 50px;
-        }
-        .footer-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 50px;
-        }
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 15px;
-            line-height: 1.7;
-        }
-        .footer-section h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        .footer-section a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 6px 0;
-            transition: all var(--transition-fast);
-        }
-        .footer-section a:hover {
-            color: white;
-            transform: translateX(3px);
-        }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.4);
-        }
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
-        }
-        .footer-bottom a:hover {
-            color: var(--um-orange);
-        }
-        
-        @media (max-width: 900px) {
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -673,7 +593,7 @@ Best regards</pre>
                     </li>
                     <li>
                         <i data-lucide="bar-chart-3"></i>
-                        <span>We use aggregated data only â€” individual information is never shared publicly</span>
+                        <span>We use aggregated data only — individual information is never shared publicly</span>
                     </li>
                     <li>
                         <i data-lucide="mail"></i>
@@ -733,7 +653,7 @@ Best regards</pre>
                 </div>
             </div>
             <div class="section-body">
-                <p>Have something to share with the MSP community? We feature alumni stories on our Instagram and in our newsletter. Whether you've landed your dream job, started a PhD, launched a company, or have reflections on your MSP journey â€” we'd love to hear from you.</p>
+                <p>Have something to share with the MSP community? We feature alumni stories on our Instagram and in our newsletter. Whether you've landed your dream job, started a PhD, launched a company, or have reflections on your MSP journey — we'd love to hear from you.</p>
                 
                 <div class="story-requirements">
                     <div class="req-item">
@@ -796,35 +716,38 @@ Best regards</pre>
         
     </div>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-main">
+        <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
-                <p>The MSP Alumni Network connects 1,330+ graduates across 56 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
+                <h3>MSP Alumni Network</h3>
+                <p>Connecting 1,330+ graduates from the Maastricht Science Programme across 56 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
-            
-            <div class="footer-section">
+            <div class="footer-links">
                 <h4>Explore</h4>
-                <a href="index.html">Alumni Map</a>
+                <a href="index.html">Home</a>
                 <a href="countries.html">Countries</a>
                 <a href="universities.html">Universities</a>
-                <a href="outcomes.html">Career Outcomes</a>
-                <a href="community.html">Community</a>
-                <a href="resources.html">Resources</a>
+                <a href="phd-alumni.html">PhD Alumni</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Official UM Sites</h4>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni ↗</a>
-                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni ↗</a>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="community.html">Join Community</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Contact Us</a>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated December 2025</p>
-            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
+            <p>© 2025 Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/msp_maastricht/" target="_blank" title="Instagram">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/groups/" target="_blank" title="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </div>
         </div>
     </footer>
 

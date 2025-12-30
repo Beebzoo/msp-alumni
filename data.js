@@ -267,16 +267,16 @@ const MSP_DATA = {
     ],
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "ðŸ§¬" },
-        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "âš—ï¸" },
-        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "ðŸ¥" },
-        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "âš¡" },
-        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "ðŸ§ " },
-        { name: "Business & Economics", count: 50, percent: 5.7, icon: "ðŸ“Š" },
-        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "ðŸ’»" },
-        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "ðŸŒ" },
-        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "ðŸ“š" },
-        { name: "Other", count: 39, percent: 4.4, icon: "ðŸ“‹" }
+        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "🧬" },
+        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "⚗️" },
+        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "🏥" },
+        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "⚡" },
+        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "🧠" },
+        { name: "Business & Economics", count: 50, percent: 5.7, icon: "📊" },
+        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "💻" },
+        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "🌍" },
+        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "📚" },
+        { name: "Other", count: 39, percent: 4.4, icon: "📋" }
     ],
     
     allNationalityFlags: [

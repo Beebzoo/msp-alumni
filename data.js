@@ -412,16 +412,16 @@ const MSP_DATA = {
     ],
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "Ã°Å¸Â§Â¬" },
-        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "Ã¢Å¡â€”Ã¯Â¸Â" },
-        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "Ã°Å¸ÂÂ¥" },
-        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "Ã¢Å¡Â¡" },
-        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "Ã°Å¸Â§Â " },
-        { name: "Business & Economics", count: 50, percent: 5.7, icon: "Ã°Å¸â€œÅ " },
-        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "Ã°Å¸â€™Â»" },
-        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "Ã°Å¸Å’Â" },
-        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "Ã°Å¸â€œÅ¡" },
-        { name: "Other", count: 39, percent: 4.4, icon: "Ã°Å¸â€œâ€¹" }
+        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â¬" },
+        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "ÃƒÂ¢Ã…Â¡Ã¢â‚¬â€ÃƒÂ¯Ã‚Â¸Ã‚Â" },
+        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¥" },
+        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "ÃƒÂ¢Ã…Â¡Ã‚Â¡" },
+        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â " },
+        { name: "Business & Economics", count: 50, percent: 5.7, icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â " },
+        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â»" },
+        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â" },
+        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¡" },
+        { name: "Other", count: 39, percent: 4.4, icon: "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¹" }
     ],
     
     allNationalityFlags: [
@@ -482,10 +482,210 @@ const MSP_DATA = {
     }
 };
 
-// University logos mapping (for fallback display)
-const UNIVERSITY_LOGOS = {};
+// Country facts for all countries (capital, currency, language, population, continent, timezone)
+const COUNTRY_FACTS = {
+    // Major European Countries
+    nl: { capital: 'Amsterdam', currency: 'Euro (€)', language: 'Dutch', population: '17.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    de: { capital: 'Berlin', currency: 'Euro (€)', language: 'German', population: '84.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    gb: { capital: 'London', currency: 'Pound (£)', language: 'English', population: '67.3M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    be: { capital: 'Brussels', currency: 'Euro (€)', language: 'Dutch/French', population: '11.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    se: { capital: 'Stockholm', currency: 'Krona (kr)', language: 'Swedish', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    ch: { capital: 'Bern', currency: 'Franc (CHF)', language: 'German/French', population: '8.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    it: { capital: 'Rome', currency: 'Euro (€)', language: 'Italian', population: '58.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    fr: { capital: 'Paris', currency: 'Euro (€)', language: 'French', population: '67.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    es: { capital: 'Madrid', currency: 'Euro (€)', language: 'Spanish', population: '47.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    dk: { capital: 'Copenhagen', currency: 'Krone (kr)', language: 'Danish', population: '5.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    fi: { capital: 'Helsinki', currency: 'Euro (€)', language: 'Finnish', population: '5.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    at: { capital: 'Vienna', currency: 'Euro (€)', language: 'German', population: '9.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    ie: { capital: 'Dublin', currency: 'Euro (€)', language: 'English/Irish', population: '5.1M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    lu: { capital: 'Luxembourg City', currency: 'Euro (€)', language: 'Lux/Fr/De', population: '660K', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    pt: { capital: 'Lisbon', currency: 'Euro (€)', language: 'Portuguese', population: '10.4M', continent: 'Europe', timezone: 'WET (UTC+0)' },
+    no: { capital: 'Oslo', currency: 'Krone (kr)', language: 'Norwegian', population: '5.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    gr: { capital: 'Athens', currency: 'Euro (€)', language: 'Greek', population: '10.4M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    pl: { capital: 'Warsaw', currency: 'Zloty (zł)', language: 'Polish', population: '37.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    bg: { capital: 'Sofia', currency: 'Lev (лв)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    ro: { capital: 'Bucharest', currency: 'Leu (lei)', language: 'Romanian', population: '19.0M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    hu: { capital: 'Budapest', currency: 'Forint (Ft)', language: 'Hungarian', population: '9.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    cz: { capital: 'Prague', currency: 'Koruna (Kč)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    sk: { capital: 'Bratislava', currency: 'Euro (€)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    si: { capital: 'Ljubljana', currency: 'Euro (€)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    lt: { capital: 'Vilnius', currency: 'Euro (€)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    lv: { capital: 'Riga', currency: 'Euro (€)', language: 'Latvian', population: '1.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    rs: { capital: 'Belgrade', currency: 'Dinar (RSD)', language: 'Serbian', population: '6.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    cy: { capital: 'Nicosia', currency: 'Euro (€)', language: 'Greek/Turkish', population: '1.3M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    md: { capital: 'Chișinău', currency: 'Leu (MDL)', language: 'Romanian', population: '2.6M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    tr: { capital: 'Ankara', currency: 'Lira (₺)', language: 'Turkish', population: '85.3M', continent: 'Europe/Asia', timezone: 'TRT (UTC+3)' },
+    
+    // Americas
+    us: { capital: 'Washington D.C.', currency: 'Dollar ($)', language: 'English', population: '334.9M', continent: 'Americas', timezone: 'Multiple' },
+    ca: { capital: 'Ottawa', currency: 'Dollar (C$)', language: 'English/French', population: '40.1M', continent: 'Americas', timezone: 'Multiple' },
+    cl: { capital: 'Santiago', currency: 'Peso (CLP)', language: 'Spanish', population: '19.5M', continent: 'Americas', timezone: 'CLT (UTC-3)' },
+    co: { capital: 'Bogotá', currency: 'Peso (COP)', language: 'Spanish', population: '52.2M', continent: 'Americas', timezone: 'COT (UTC-5)' },
+    ec: { capital: 'Quito', currency: 'Dollar ($)', language: 'Spanish', population: '18.0M', continent: 'Americas', timezone: 'ECT (UTC-5)' },
+    pe: { capital: 'Lima', currency: 'Sol (S/)', language: 'Spanish', population: '34.0M', continent: 'Americas', timezone: 'PET (UTC-5)' },
+    cr: { capital: 'San José', currency: 'Colón (₡)', language: 'Spanish', population: '5.2M', continent: 'Americas', timezone: 'CST (UTC-6)' },
+    jm: { capital: 'Kingston', currency: 'Dollar (J$)', language: 'English', population: '2.8M', continent: 'Americas', timezone: 'EST (UTC-5)' },
+    sx: { capital: 'Philipsburg', currency: 'Guilder (ƒ)', language: 'Dutch/English', population: '44K', continent: 'Americas', timezone: 'AST (UTC-4)' },
+    
+    // Asia
+    jp: { capital: 'Tokyo', currency: 'Yen (¥)', language: 'Japanese', population: '125.1M', continent: 'Asia', timezone: 'JST (UTC+9)' },
+    cn: { capital: 'Beijing', currency: 'Yuan (¥)', language: 'Mandarin', population: '1.4B', continent: 'Asia', timezone: 'CST (UTC+8)' },
+    sg: { capital: 'Singapore', currency: 'Dollar (S$)', language: 'English/+3', population: '5.9M', continent: 'Asia', timezone: 'SGT (UTC+8)' },
+    in: { capital: 'New Delhi', currency: 'Rupee (₹)', language: 'Hindi/English', population: '1.4B', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
+    my: { capital: 'Kuala Lumpur', currency: 'Ringgit (RM)', language: 'Malay', population: '34.0M', continent: 'Asia', timezone: 'MYT (UTC+8)' },
+    hk: { capital: 'Hong Kong', currency: 'Dollar (HK$)', language: 'Chinese/English', population: '7.5M', continent: 'Asia', timezone: 'HKT (UTC+8)' },
+    tw: { capital: 'Taipei', currency: 'Dollar (NT$)', language: 'Mandarin', population: '23.9M', continent: 'Asia', timezone: 'CST (UTC+8)' },
+    ph: { capital: 'Manila', currency: 'Peso (₱)', language: 'Filipino/English', population: '115.6M', continent: 'Asia', timezone: 'PHT (UTC+8)' },
+    lk: { capital: 'Colombo', currency: 'Rupee (Rs)', language: 'Sinhala/Tamil', population: '22.2M', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
+    il: { capital: 'Jerusalem', currency: 'Shekel (₪)', language: 'Hebrew/Arabic', population: '9.7M', continent: 'Asia', timezone: 'IST (UTC+2)' },
+    ae: { capital: 'Abu Dhabi', currency: 'Dirham (AED)', language: 'Arabic', population: '10.0M', continent: 'Asia', timezone: 'GST (UTC+4)' },
+    sa: { capital: 'Riyadh', currency: 'Riyal (SAR)', language: 'Arabic', population: '36.4M', continent: 'Asia', timezone: 'AST (UTC+3)' },
+    
+    // Oceania
+    au: { capital: 'Canberra', currency: 'Dollar (A$)', language: 'English', population: '26.4M', continent: 'Oceania', timezone: 'Multiple' },
+    nc: { capital: 'Nouméa', currency: 'Franc (XPF)', language: 'French', population: '290K', continent: 'Oceania', timezone: 'NCT (UTC+11)' },
+    
+    // Africa
+    ke: { capital: 'Nairobi', currency: 'Shilling (KES)', language: 'Swahili/English', population: '54.0M', continent: 'Africa', timezone: 'EAT (UTC+3)' },
+    za: { capital: 'Pretoria', currency: 'Rand (R)', language: 'Multiple (11)', population: '60.0M', continent: 'Africa', timezone: 'SAST (UTC+2)' },
+    zw: { capital: 'Harare', currency: 'ZiG/USD', language: 'English/+15', population: '16.3M', continent: 'Africa', timezone: 'CAT (UTC+2)' },
+    tn: { capital: 'Tunis', currency: 'Dinar (TND)', language: 'Arabic', population: '12.4M', continent: 'Africa', timezone: 'CET (UTC+1)' },
+    ml: { capital: 'Bamako', currency: 'Franc (XOF)', language: 'French', population: '22.4M', continent: 'Africa', timezone: 'GMT (UTC+0)' }
+};
+
+// University logo file mappings - maps university names to logo filenames in assets/logos/
+const UNI_LOGO_FILES = {
+    // Dutch Universities
+    'Maastricht University': 'maastricht-university.png',
+    'Utrecht University': 'utrecht-university.png',
+    'University of Amsterdam': 'university-of-amsterdam.png',
+    'Leiden University': 'leiden-university.png',
+    'Wageningen University': 'wageningen-university.png',
+    'Wageningen University & Research': 'wageningen-university.png',
+    'Radboud University': 'radboud-university.png',
+    'University of Groningen': 'university-of-groningen.png',
+    'Delft University of Technology': 'tu-delft.png',
+    'TU Delft': 'tu-delft.png',
+    'Vrije Universiteit Amsterdam': 'vrije-universiteit-amsterdam.png',
+    'VU Amsterdam': 'vrije-universiteit-amsterdam.png',
+    'Eindhoven University of Technology': 'eindhoven-university.png',
+    'TU Eindhoven': 'eindhoven-university.png',
+    'Erasmus University Rotterdam': 'erasmus-university.png',
+    'University of Twente': 'university-of-twente.png',
+    
+    // UK Universities
+    'Imperial College London': 'imperial-college-london.png',
+    'University College London': 'ucl.png',
+    'UCL': 'ucl.png',
+    'University of Cambridge': 'university-of-cambridge.png',
+    'University of Oxford': 'university-of-oxford.png',
+    'University of Edinburgh': 'university-of-edinburgh.png',
+    'King\'s College London': 'kings-college-london.png',
+    'University of Manchester': 'university-of-manchester.png',
+    'University of Glasgow': 'university-of-glasgow.png',
+    'University of Birmingham': 'university-of-birmingham.png',
+    'University of Leeds': 'university-of-leeds.png',
+    'University of Sheffield': 'university-of-sheffield.png',
+    'University of Salford': 'university-of-salford.png',
+    'University of Aberdeen': 'university-of-aberdeen.png',
+    'Queen Mary University of London': 'queen-mary-university-of-london.png',
+    
+    // German Universities
+    'Technical University of Munich': 'technical-university-of-munich.png',
+    'TU Munich': 'technical-university-of-munich.png',
+    'LMU Munich': 'lmu-munich.png',
+    'Humboldt University Berlin': 'humboldt-university-of-berlin.png',
+    'Humboldt-Universitat zu Berlin': 'humboldt-university-of-berlin.png',
+    'Heidelberg University': 'heidelberg-university.png',
+    'University of Cologne': 'university-of-cologne.png',
+    'Goethe University Frankfurt': 'goethe-university-frankfurt.png',
+    'University of Tubingen': 'university-of-tubingen.png',
+    
+    // Belgian Universities
+    'KU Leuven': 'ku-leuven.png',
+    'Ghent University': 'ghent-university.png',
+    'Vrije Universiteit Brussel': 'vrije-universiteit-brussel.jpg',
+    'University of Antwerp': 'university-of-antwerp.png',
+    'Université Libre de Bruxelles': 'universite-libre-de-bruxelles.png',
+    'University of Liege': 'university-of-liege.png',
+    
+    // Swedish Universities
+    'Uppsala University': 'uppsala-university.png',
+    'Lund University': 'lund-university.png',
+    'Karolinska Institutet': 'karolinska-institutet.png',
+    'Stockholm University': 'stockholm-university.png',
+    'University of Gothenburg': 'university-of-gothenburg.png',
+    'KTH Royal Institute of Technology': 'kth-royal-institute-of-technology.png',
+    
+    // Swiss Universities
+    'ETH Zurich': 'eth-zurich.png',
+    'ETH Zürich': 'eth-zurich.png',
+    'EPFL': 'epfl.png',
+    'University of Zurich': 'university-of-zurich.png',
+    'University of Bern': 'university-of-bern.png',
+    
+    // Danish Universities
+    'University of Copenhagen': 'university-of-copenhagen.png',
+    'Technical University of Denmark': 'technical-university-of-denmark.png',
+    'Copenhagen Business School': 'copenhagen-business-school.png',
+    
+    // Austrian Universities
+    'University of Vienna': 'university-of-vienna.png',
+    'TU Wien': 'tu-wien.png',
+    
+    // Finnish Universities
+    'University of Helsinki': 'university-of-helsinki.png',
+    'Aalto University': 'aalto-university.png',
+    
+    // Irish Universities
+    'Trinity College Dublin': 'trinity-college-dublin.png',
+    'University College Dublin': 'university-college-dublin.png',
+    
+    // French Universities
+    'Ecole Polytechnique': 'ecole-polytechnique.png',
+    'Sorbonne University': 'sorbonne-university.png',
+    'Paris-Saclay University': 'paris-saclay-university.png',
+    'Université Claude Bernard Lyon 1': 'universite-claude-bernard-lyon-1.png',
+    
+    // Spanish Universities
+    'University of Barcelona': 'university-of-barcelona.png',
+    'Universitat de Barcelona': 'university-of-barcelona.png',
+    'Universitat Autonoma de Barcelona': 'universitat-autonoma-de-barcelona.png',
+    'Universitat Politecnica de Catalunya': 'universitat-politecnica-de-catalunya.png',
+    'Universitat Pompeu Fabra': 'pompeu-fabra-university.png',
+    'University of Valencia': 'university-of-valencia.png',
+    
+    // Italian Universities
+    'Universita di Bologna': 'university-of-bologna.png',
+    'University of Bologna': 'university-of-bologna.png',
+    'Bocconi University': 'bocconi-university.png',
+    'University of Pavia': 'university-of-pavia.png',
+    
+    // Other European Universities
+    'University of Oslo': 'university-of-oslo.png',
+    'University of Athens': 'university-of-athens.png',
+    'Szeged University': 'szeged-university.png',
+    
+    // North American Universities
+    'McGill University': 'mcgill-university.png',
+    'Harvard University': 'harvard-university.png',
+    'Johns Hopkins University': 'johns-hopkins-university.png',
+    'MIT': 'mit.png',
+    'Stanford University': 'stanford-university.png',
+    'University of Toronto': 'university-of-toronto.png',
+    
+    // Australian Universities
+    'University of Melbourne': 'university-of-melbourne.png',
+    'James Cook University': 'james-cook-university.png',
+    
+    // Other Universities
+    'Weizmann Institute of Science': 'weizmann-institute-of-science.png'
+};
+
+// University logos mapping (for fallback display) - kept for backward compatibility
+const UNIVERSITY_LOGOS = UNI_LOGO_FILES;
 
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS };
+    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS, COUNTRY_FACTS, UNI_LOGO_FILES };
 }

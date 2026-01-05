@@ -1555,24 +1555,9 @@
             justify-content: center;
             margin: 0 auto 12px;
             padding: 6px;
-            transition: all 0.3s ease;
         }
         
-        .uni-logo img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-            transition: transform 0.3s ease;
-        }
-        
-        .uni-card:hover .uni-logo {
-            transform: scale(1.15);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        
-        .uni-card:hover .uni-logo img {
-            transform: scale(1.1);
-        }
+        .uni-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
         .uni-name {
             font-family: var(--font-heading);
@@ -2597,20 +2582,20 @@
         // Universities
         const eliteUnis = [
             {name: 'Imperial College', code: 'gb', count: 19, logo: 'imperial-college-london.png'},
-            {name: 'ETH Zürich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
-            {name: 'Cambridge', code: 'gb', count: 8, logo: 'university-of-cambridge.png'},
-            {name: 'Oxford', code: 'gb', count: 7, logo: 'university-of-oxford.png'},
+            {name: 'ETH Zrich', code: 'ch', count: 12, logo: 'eth-zurich.png'},
+            {name: 'Cambridge', code: 'gb', count: 8, logo: 'cambridge.png'},
+            {name: 'Oxford', code: 'gb', count: 7, logo: 'oxford.png'},
             {name: 'UCL', code: 'gb', count: 14, logo: 'ucl.png'},
-            {name: 'Karolinska', code: 'se', count: 10, logo: 'karolinska-institutet.png'}
+            {name: 'Karolinska', code: 'se', count: 10, logo: 'karolinska.png'}
         ];
         
         const dutchUnis = [
-            {name: 'Utrecht', code: 'nl', count: 96, logo: 'utrecht-university.png'},
-            {name: 'Amsterdam (UvA)', code: 'nl', count: 72, logo: 'university-of-amsterdam.png'},
-            {name: 'Leiden', code: 'nl', count: 45, logo: 'leiden-university.png'},
-            {name: 'Wageningen', code: 'nl', count: 40, logo: 'wageningen-university.png'},
-            {name: 'Radboud', code: 'nl', count: 38, logo: 'radboud-university.png'},
-            {name: 'TU Delft', code: 'nl', count: 19, logo: 'tu-delft.png'}
+            {name: 'Utrecht', code: 'nl', count: 96, logo: 'utrecht.png'},
+            {name: 'Amsterdam', code: 'nl', count: 72, logo: 'uva.png'},
+            {name: 'Leiden', code: 'nl', count: 45, logo: 'leiden.png'},
+            {name: 'Wageningen', code: 'nl', count: 40, logo: 'wageningen.png'},
+            {name: 'Radboud', code: 'nl', count: 38, logo: 'radboud.png'},
+            {name: 'TU Delft', code: 'nl', count: 19, logo: 'tudelft.png'}
         ];
         
         function createUniCard(u, elite) {

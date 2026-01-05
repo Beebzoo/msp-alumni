@@ -182,6 +182,310 @@ const COUNTRY_DETAILS = {
         nationalities: [{ name: "Greek", code: "gr", count: 4 }],
         universities: [{ name: "University of Athens", count: 2 }],
         coords: [39.0742, 21.8243]
+    },
+    "jp": {
+        name: "Japan", code: "jp", count: 4,
+        gender: { Female: 0, Male: 4 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Kyoto University", count: 1 }],
+        coords: [36.2048, 138.2529]
+    },
+    "pl": {
+        name: "Poland", code: "pl", count: 3,
+        gender: { Female: 1, Male: 2 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Medical University of Warsaw", count: 1 }],
+        coords: [51.9194, 19.1451]
+    },
+    "bg": {
+        name: "Bulgaria", code: "bg", count: 3,
+        gender: { Female: 1, Male: 2 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Wageningen University & Research", count: 1 }],
+        coords: [42.7339, 25.4858]
+    },
+    "in": {
+        name: "India", code: "in", count: 2,
+        gender: { Female: 2, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Harvard University", count: 1 }],
+        coords: [20.5937, 78.9629]
+    },
+    "sg": {
+        name: "Singapore", code: "sg", count: 2,
+        gender: { Female: 0, Male: 2 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Manchester", count: 1 }],
+        coords: [1.3521, 103.8198]
+    },
+    "si": {
+        name: "Slovenia", code: "si", count: 2,
+        gender: { Female: 2, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University College London", count: 1 }],
+        coords: [46.1512, 14.9955]
+    },
+    "cl": {
+        name: "Chile", code: "cl", count: 2,
+        gender: { Female: 0, Male: 2 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Pontificia Universidad Catolica de Chile", count: 1 }],
+        coords: [-35.6751, -71.543]
+    },
+    "hu": {
+        name: "Hungary", code: "hu", count: 2,
+        gender: { Female: 1, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Szeged University", count: 2 }],
+        coords: [47.1625, 19.5033]
+    },
+    "lk": {
+        name: "Sri Lanka", code: "lk", count: 2,
+        gender: { Female: 1, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Vrije Universiteit Brussel", count: 1 }],
+        coords: [7.8731, 80.7718]
+    },
+    "lt": {
+        name: "Lithuania", code: "lt", count: 2,
+        gender: { Female: 1, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Sorbonne University", count: 1 }],
+        coords: [55.1694, 23.8813]
+    },
+    "cn": {
+        name: "China", code: "cn", count: 2,
+        gender: { Female: 1, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "National University of Singapore", count: 1 }],
+        coords: [35.8617, 104.1954]
+    },
+    "ec": {
+        name: "Ecuador", code: "ec", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Kent", count: 1 }],
+        coords: [-1.8312, -78.1834]
+    },
+    "ke": {
+        name: "Kenya", code: "ke", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Edinburgh", count: 1 }],
+        coords: [-0.0236, 37.9062]
+    },
+    "sx": {
+        name: "Sint Maarten", code: "sx", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Maastricht University", count: 1 }],
+        coords: [18.0425, -63.0548]
+    },
+    "zw": {
+        name: "Zimbabwe", code: "zw", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Manchester", count: 1 }],
+        coords: [-19.0154, 29.1549]
+    },
+    "ro": {
+        name: "Romania", code: "ro", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University Politehnica of Bucharest", count: 1 }],
+        coords: [45.9432, 24.9668]
+    },
+    "nc": {
+        name: "New Caledonia", code: "nc", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Amsterdam", count: 1 }],
+        coords: [-20.9043, 165.618]
+    },
+    "jm": {
+        name: "Jamaica", code: "jm", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "The University of West Indies", count: 1 }],
+        coords: [18.1096, -77.2975]
+    },
+    "sk": {
+        name: "Slovakia", code: "sk", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [48.669, 19.699]
+    },
+    "tr": {
+        name: "Turkey", code: "tr", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Utrecht University", count: 1 }],
+        coords: [38.9637, 35.2433]
+    },
+    "tw": {
+        name: "Taiwan", code: "tw", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University College London", count: 1 }],
+        coords: [23.6978, 120.9605]
+    },
+    "sa": {
+        name: "Saudi Arabia", code: "sa", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Ghent University", count: 1 }],
+        coords: [23.8859, 45.0792]
+    },
+    "cz": {
+        name: "Czech Republic", code: "cz", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "KU Leuven", count: 1 }],
+        coords: [49.8175, 15.473]
+    },
+    "ml": {
+        name: "Mali", code: "ml", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Delft University of Technology", count: 1 }],
+        coords: [17.5707, -3.9962]
+    },
+    "my": {
+        name: "Malaysia", code: "my", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [4.2105, 101.9758]
+    },
+    "lv": {
+        name: "Latvia", code: "lv", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [56.8796, 24.6032]
+    },
+    "co": {
+        name: "Colombia", code: "co", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Maribor", count: 1 }],
+        coords: [4.5709, -74.2973]
+    },
+    "ae": {
+        name: "United Arab Emirates", code: "ae", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [23.4241, 53.8478]
+    },
+    "rs": {
+        name: "Serbia", code: "rs", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [44.0165, 21.0059]
+    },
+    "cy": {
+        name: "Cyprus", code: "cy", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Maastricht University", count: 1 }],
+        coords: [35.1264, 33.4299]
+    },
+    "pe": {
+        name: "Peru", code: "pe", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [-9.19, -75.0152]
+    },
+    "hk": {
+        name: "Hong Kong", code: "hk", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "City University of Hong Kong", count: 1 }],
+        coords: [22.3193, 114.1694]
+    },
+    "md": {
+        name: "Moldova", code: "md", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [47.4116, 28.3699]
+    },
+    "il": {
+        name: "Israel", code: "il", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "Weizmann Institute of Science", count: 1 }],
+        coords: [31.0461, 34.8516]
+    },
+    "za": {
+        name: "South Africa", code: "za", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [{ name: "University of Pretoria", count: 1 }],
+        coords: [-30.5595, 22.9375]
+    },
+    "tn": {
+        name: "Tunisia", code: "tn", count: 1,
+        gender: { Female: 0, Male: 1 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [33.8869, 9.5375]
+    },
+    "ph": {
+        name: "Philippines", code: "ph", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [12.8797, 121.774]
+    },
+    "cr": {
+        name: "Costa Rica", code: "cr", count: 1,
+        gender: { Female: 1, Male: 0 },
+        cities: [],
+        nationalities: [],
+        universities: [],
+        coords: [-9.7489, -83.7534]
     }
 };
 
@@ -226,20 +530,50 @@ const MSP_DATA = {
         { name: "Austria", code: "at", count: 18, coords: [47.5162, 14.5501] },
         { name: "Finland", code: "fi", count: 17, coords: [61.9241, 25.7482] },
         { name: "Ireland", code: "ie", count: 11, coords: [53.1424, -7.6921] },
+        { name: "Portugal", code: "pt", count: 9, coords: [39.3999, -8.2245] },
         { name: "Luxembourg", code: "lu", count: 9, coords: [49.8153, 6.1296] },
-        { name: "Canada", code: "ca", count: 8, coords: [56.1304, -106.3468] },
-        { name: "Portugal", code: "pt", count: 8, coords: [39.3999, -8.2245] },
-        { name: "Australia", code: "au", count: 7, coords: [-25.2744, 133.7751] },
-        { name: "Norway", code: "no", count: 6, coords: [60.4720, 8.4689] },
-        { name: "Greece", code: "gr", count: 5, coords: [39.0742, 21.8243] },
-        { name: "Poland", code: "pl", count: 4, coords: [51.9194, 19.1451] },
+        { name: "Australia", code: "au", count: 9, coords: [-25.2744, 133.7751] },
+        { name: "Canada", code: "ca", count: 9, coords: [56.1304, -106.3468] },
+        { name: "Norway", code: "no", count: 7, coords: [60.4720, 8.4689] },
+        { name: "Greece", code: "gr", count: 4, coords: [39.0742, 21.8243] },
         { name: "Japan", code: "jp", count: 4, coords: [36.2048, 138.2529] },
+        { name: "Poland", code: "pl", count: 3, coords: [51.9194, 19.1451] },
         { name: "Bulgaria", code: "bg", count: 3, coords: [42.7339, 25.4858] },
-        { name: "China", code: "cn", count: 2, coords: [35.8617, 104.1954] },
+        { name: "India", code: "in", count: 2, coords: [20.5937, 78.9629] },
         { name: "Singapore", code: "sg", count: 2, coords: [1.3521, 103.8198] },
-        { name: "Lithuania", code: "lt", count: 2, coords: [55.1694, 23.8813] },
+        { name: "Slovenia", code: "si", count: 2, coords: [46.1512, 14.9955] },
+        { name: "Chile", code: "cl", count: 2, coords: [-35.6751, -71.5430] },
         { name: "Hungary", code: "hu", count: 2, coords: [47.1625, 19.5033] },
-        { name: "Chile", code: "cl", count: 2, coords: [-35.6751, -71.5430] }
+        { name: "Sri Lanka", code: "lk", count: 2, coords: [7.8731, 80.7718] },
+        { name: "Lithuania", code: "lt", count: 2, coords: [55.1694, 23.8813] },
+        { name: "China", code: "cn", count: 2, coords: [35.8617, 104.1954] },
+        { name: "Ecuador", code: "ec", count: 1, coords: [-1.8312, -78.1834] },
+        { name: "Kenya", code: "ke", count: 1, coords: [-0.0236, 37.9062] },
+        { name: "Sint Maarten", code: "sx", count: 1, coords: [18.0425, -63.0548] },
+        { name: "Zimbabwe", code: "zw", count: 1, coords: [-19.0154, 29.1549] },
+        { name: "Romania", code: "ro", count: 1, coords: [45.9432, 24.9668] },
+        { name: "New Caledonia", code: "nc", count: 1, coords: [-20.9043, 165.618] },
+        { name: "Jamaica", code: "jm", count: 1, coords: [18.1096, -77.2975] },
+        { name: "Slovakia", code: "sk", count: 1, coords: [48.669, 19.699] },
+        { name: "Turkey", code: "tr", count: 1, coords: [38.9637, 35.2433] },
+        { name: "Taiwan", code: "tw", count: 1, coords: [23.6978, 120.9605] },
+        { name: "Saudi Arabia", code: "sa", count: 1, coords: [23.8859, 45.0792] },
+        { name: "Czech Republic", code: "cz", count: 1, coords: [49.8175, 15.473] },
+        { name: "Mali", code: "ml", count: 1, coords: [17.5707, -3.9962] },
+        { name: "Malaysia", code: "my", count: 1, coords: [4.2105, 101.9758] },
+        { name: "Latvia", code: "lv", count: 1, coords: [56.8796, 24.6032] },
+        { name: "Colombia", code: "co", count: 1, coords: [4.5709, -74.2973] },
+        { name: "United Arab Emirates", code: "ae", count: 1, coords: [23.4241, 53.8478] },
+        { name: "Serbia", code: "rs", count: 1, coords: [44.0165, 21.0059] },
+        { name: "Cyprus", code: "cy", count: 1, coords: [35.1264, 33.4299] },
+        { name: "Peru", code: "pe", count: 1, coords: [-9.19, -75.0152] },
+        { name: "Hong Kong", code: "hk", count: 1, coords: [22.3193, 114.1694] },
+        { name: "Moldova", code: "md", count: 1, coords: [47.4116, 28.3699] },
+        { name: "Israel", code: "il", count: 1, coords: [31.0461, 34.8516] },
+        { name: "South Africa", code: "za", count: 1, coords: [-30.5595, 22.9375] },
+        { name: "Tunisia", code: "tn", count: 1, coords: [33.8869, 9.5375] },
+        { name: "Philippines", code: "ph", count: 1, coords: [12.8797, 121.774] },
+        { name: "Costa Rica", code: "cr", count: 1, coords: [9.7489, -83.7534] }
     ],
     
     topUniversities: [
@@ -307,7 +641,7 @@ const MSP_DATA = {
             { number: 1321, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
             { number: "265", label: "Master's Universities" },
-            { number: "11%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
+            { number: "12%", label: "Pursued PhDs", subtext: "At world-leading institutions" }
         ],
         alumniJourneys: [
             { year: "2019", university: "ETH Zurich", field: "Biomedical Engineering", role: "Research Scientist", company: "Roche", icon: "microscope" },
@@ -324,8 +658,8 @@ const MSP_DATA = {
             { title: "Policy & NGO", count: 8, icon: "landmark", examples: ["Policy Advisor EU", "Researcher at WHO", "Program Lead at UN"] }
         ],
         phdStats: {
-            total: 141,
-            percentage: "11%",
+            total: 152,
+            percentage: "12%",
             highlights: [
                 { icon: "award", text: "PhDs at 45+ institutions worldwide" },
                 { icon: "globe", text: "Research in 28 countries" },

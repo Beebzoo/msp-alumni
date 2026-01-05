@@ -883,12 +883,23 @@
             margin-bottom: 18px;
             overflow: hidden;
             border: 1px solid var(--um-gray-100);
+            transition: all var(--transition-smooth);
         }
         
         .uni-logo img {
             width: 44px;
             height: 44px;
             object-fit: contain;
+            transition: transform var(--transition-smooth);
+        }
+        
+        .uni-card:hover .uni-logo {
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        
+        .uni-card:hover .uni-logo img {
+            transform: scale(1.15);
         }
         
         .uni-logo i,
@@ -1596,162 +1607,128 @@
             color: var(--um-orange);
         }
         
-        /* Talent Flow Visualization */
-        .talent-flow-section {
-            max-width: 1000px;
+        /* Join Community Card */
+        .join-community-card {
+            max-width: 600px;
             margin: 60px auto 0;
             background: white;
             border-radius: var(--radius-xl);
-            padding: 40px;
+            padding: 50px 40px;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--um-gray-200);
-        }
-        
-        .talent-flow-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-        
-        .talent-flow-title i {
-            width: 24px;
-            height: 24px;
-            color: var(--um-light-blue);
-        }
-        
-        .talent-flow-subtitle {
-            font-size: 14px;
-            color: var(--um-gray-500);
-            margin-bottom: 30px;
-        }
-        
-        .talent-flow-container {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            gap: 20px;
-            align-items: start;
-        }
-        
-        .talent-flow-column {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .talent-flow-column-title {
-            font-family: var(--font-heading);
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--um-gray-500);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
             text-align: center;
         }
         
-        .talent-flow-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            background: var(--um-gray-50);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-fast);
-        }
-        
-        .talent-flow-item:hover {
-            background: var(--um-gray-100);
-            transform: translateX(4px);
-        }
-        
-        .talent-flow-item.origin:hover {
-            transform: translateX(-4px);
-        }
-        
-        .talent-flow-flag {
-            width: 28px;
-            height: 20px;
-            border-radius: 3px;
-            object-fit: cover;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .talent-flow-info {
-            flex: 1;
-        }
-        
-        .talent-flow-country {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-        }
-        
-        .talent-flow-count {
-            font-family: var(--font-heading);
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--um-gray-500);
-        }
-        
-        .talent-flow-bar {
-            height: 6px;
-            background: var(--um-gray-200);
-            border-radius: 3px;
-            margin-top: 4px;
-            overflow: hidden;
-        }
-        
-        .talent-flow-bar-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 1s ease-out;
-        }
-        
-        .talent-flow-item.origin .talent-flow-bar-fill {
-            background: linear-gradient(90deg, var(--um-orange), #ff6b35);
-        }
-        
-        .talent-flow-item.destination .talent-flow-bar-fill {
-            background: linear-gradient(90deg, var(--um-light-blue), #00c4ff);
-        }
-        
-        .talent-flow-center {
+        .join-community-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding-top: 40px;
         }
         
-        .talent-flow-arrow {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--um-dark-blue), #002d5c);
+        .join-community-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--um-orange), #d63d0a);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-md);
+            margin-bottom: 24px;
+            box-shadow: 0 8px 30px rgba(232, 78, 16, 0.3);
         }
         
-        .talent-flow-arrow i {
-            width: 28px;
-            height: 28px;
+        .join-community-icon i {
+            width: 40px;
+            height: 40px;
             color: white;
         }
         
-        .talent-flow-label {
-            margin-top: 12px;
-            font-size: 11px;
+        .join-community-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .join-community-card p {
+            font-size: 15px;
+            color: var(--um-gray-600);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 450px;
+        }
+        
+        .join-community-socials {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        
+        .join-community-socials .social-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all var(--transition-smooth);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .join-community-socials .social-btn:hover {
+            transform: translateY(-4px) scale(1.08);
+        }
+        
+        .join-community-socials .social-btn.instagram {
+            background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+        }
+        
+        .join-community-socials .social-btn.linkedin {
+            background: linear-gradient(135deg, #0077B5, #00a0dc);
+        }
+        
+        .join-community-socials .social-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        
+        .join-community-socials .social-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .join-community-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--um-dark-blue), #002d5c);
+            color: white;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-size: 15px;
             font-weight: 600;
-            color: var(--um-gray-500);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(0, 28, 61, 0.25);
+        }
+        
+        .join-community-btn:hover {
+            background: linear-gradient(135deg, #002d5c, var(--um-dark-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 28, 61, 0.35);
+            color: white;
+        }
+        
+        .join-community-btn i {
+            width: 18px;
+            height: 18px;
+            transition: transform var(--transition-smooth);
+        }
+        
+        .join-community-btn:hover i {
+            transform: translateX(4px);
         }
         
         /* Nationality Diversity Section - Creative Globe Design */
@@ -2270,12 +2247,12 @@
         }
         
         /* ============================================
-           FOOTER - REFINED
+           FOOTER - STANDARDIZED
         ============================================ */
         footer {
             background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
             color: white;
-            padding: 60px 50px 40px;
+            padding: 60px 50px 30px;
             position: relative;
         }
         
@@ -2289,45 +2266,69 @@
             background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
         }
         
-        .footer-content {
+        .footer-main {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+        }
+        
+        .footer-section h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-section a {
+            display: block;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            padding: 6px 0;
+            transition: all var(--transition-fast);
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
         }
         
-        .footer-text {
+        .footer-bottom p {
             font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 400;
+            color: rgba(255,255,255,0.4);
         }
         
-        .footer-text a {
-            color: rgba(255,255,255,0.7);
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
             transition: color var(--transition-fast);
         }
         
-        .footer-text a:hover {
+        .footer-bottom a:hover {
             color: var(--um-orange);
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-links a {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 500;
-            transition: all var(--transition-fast);
-        }
-        
-        .footer-links a:hover {
-            color: white;
         }
         
         /* ============================================
@@ -2492,21 +2493,6 @@
                 height: 18px;
             }
             
-            .talent-flow-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .talent-flow-center {
-                order: 2;
-                flex-direction: row;
-                padding: 20px 0;
-            }
-            
-            .talent-flow-center .talent-flow-arrow {
-                transform: rotate(90deg);
-            }
-            
             .community-content {
                 grid-template-columns: 1fr;
             }
@@ -2650,19 +2636,6 @@
                 height: 24px;
             }
             
-            .talent-flow-section {
-                padding: 24px;
-            }
-            
-            .talent-flow-item {
-                padding: 8px 10px;
-            }
-            
-            .talent-flow-flag {
-                width: 24px;
-                height: 17px;
-            }
-            
             /* Fields mobile */
             .field-bar-label {
                 width: 90px;
@@ -2696,14 +2669,19 @@
                 font-size: 10px;
             }
             
-            .footer-content {
-                flex-direction: column;
+            .footer-main {
+                grid-template-columns: 1fr;
                 text-align: center;
+                gap: 30px;
             }
             
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
+            .footer-section a:hover {
+                transform: none;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
             
             .scroll-indicator {
@@ -2951,31 +2929,29 @@
             </div>
         </div>
         
-        <!-- Talent Flow Visualization -->
-        <div class="talent-flow-section">
-            <div class="talent-flow-title">
-                <i data-lucide="git-compare"></i>
-                Global Talent Flow
-            </div>
-            <p class="talent-flow-subtitle">Where our alumni come from and where they build their careers</p>
-            
-            <div class="talent-flow-container">
-                <div class="talent-flow-column" id="talentFlowOrigin">
-                    <div class="talent-flow-column-title">Top Origin Countries</div>
-                    <!-- Populated by JS -->
+        <!-- Join Community Card -->
+        <div class="join-community-card">
+            <div class="join-community-content">
+                <div class="join-community-icon">
+                    <i data-lucide="users"></i>
                 </div>
-                
-                <div class="talent-flow-center">
-                    <div class="talent-flow-arrow">
-                        <i data-lucide="arrow-right"></i>
-                    </div>
-                    <div class="talent-flow-label">MSP Journey</div>
+                <h3>Join the MSP Alumni Community</h3>
+                <p>Connect with 1,321 graduates across 87 countries. Stay updated, network, and be part of something bigger.</p>
+                <div class="join-community-socials">
+                    <a href="https://www.instagram.com/msp_alumni" target="_blank" class="social-btn instagram" title="Follow on Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/groups/12345" target="_blank" class="social-btn linkedin" title="Join LinkedIn Group">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="community.html#whatsapp" class="social-btn whatsapp" title="Join WhatsApp Groups">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
                 </div>
-                
-                <div class="talent-flow-column" id="talentFlowDestination">
-                    <div class="talent-flow-column-title">Top Current Locations</div>
-                    <!-- Populated by JS -->
-                </div>
+                <a href="community.html" class="join-community-btn">
+                    Explore the Community
+                    <i data-lucide="arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -3126,15 +3102,40 @@
     
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-text">
-                 2025 MSP Alumni Network  Maastricht University  
-                Updated <span id="lastUpdated">December 2025</span>  
+        <div class="footer-main">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
+                </div>
+                <p>The MSP Alumni Network connects 1,321 graduates across 87 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="outcomes.html">Outcomes</a>
+                <a href="phd-alumni.html">PhD Alumni</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="community.html">Join Community</a>
+                <a href="resources.html">Resources</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="mailto:msp-alumni@maastrichtuniversity.nl">Contact Us</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
                 <a href="privacy.html">Privacy Policy</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
             </div>
-            <div class="footer-links">
-                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate '</a>
-            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 MSP Alumni Network · <a href="privacy.html">Privacy Policy</a> · Data updated January 2025</p>
+            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
         </div>
     </footer>
     
@@ -3605,56 +3606,6 @@
                 `;
                 card.onclick = () => window.location.href = 'destinations.html';
                 topDestGrid.appendChild(card);
-            });
-        }
-        
-        // ==========================================
-        // TALENT FLOW VISUALIZATION
-        // ==========================================
-        const talentFlowOrigin = document.getElementById('talentFlowOrigin');
-        const talentFlowDestination = document.getElementById('talentFlowDestination');
-        
-        if (talentFlowOrigin && talentFlowDestination && MSP_DATA.topOriginCountries && MSP_DATA.countriesLiving) {
-            // Top origin countries (nationalities)
-            const originData = MSP_DATA.topOriginCountries.slice(0, 5);
-            const maxOrigin = Math.max(...originData.map(c => c.count));
-            
-            originData.forEach(country => {
-                const item = document.createElement('div');
-                item.className = 'talent-flow-item origin';
-                const percent = (country.count / maxOrigin) * 100;
-                item.innerHTML = `
-                    <img src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name}" class="talent-flow-flag">
-                    <div class="talent-flow-info">
-                        <div class="talent-flow-country">${country.name}</div>
-                        <div class="talent-flow-bar">
-                            <div class="talent-flow-bar-fill" style="width: ${percent}%"></div>
-                        </div>
-                    </div>
-                    <div class="talent-flow-count">${country.count}</div>
-                `;
-                talentFlowOrigin.appendChild(item);
-            });
-            
-            // Top destination countries (current locations)
-            const destData = MSP_DATA.countriesLiving.slice(0, 5);
-            const maxDest = Math.max(...destData.map(c => c.count));
-            
-            destData.forEach(country => {
-                const item = document.createElement('div');
-                item.className = 'talent-flow-item destination';
-                const percent = (country.count / maxDest) * 100;
-                item.innerHTML = `
-                    <img src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name}" class="talent-flow-flag">
-                    <div class="talent-flow-info">
-                        <div class="talent-flow-country">${country.name}</div>
-                        <div class="talent-flow-bar">
-                            <div class="talent-flow-bar-fill" style="width: ${percent}%"></div>
-                        </div>
-                    </div>
-                    <div class="talent-flow-count">${country.count}</div>
-                `;
-                talentFlowDestination.appendChild(item);
             });
         }
         

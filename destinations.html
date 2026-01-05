@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Destinations | MSP Alumni Network</title>
-    <meta name="description" content="Explore where 1,330+ MSP alumni pursue Master's degrees and build careers - across 249 universities in 50+ countries worldwide.">
+    <meta name="description" content="Explore where 1,321 MSP alumni pursue Master's degrees and build careers - across 265 universities in 87 countries worldwide.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -340,7 +340,7 @@
                     Global Alumni Network
                 </div>
                 <h1 class="hero-title">Where MSP <span class="highlight">Opens Doors</span></h1>
-                <p class="hero-subtitle">From Maastricht to the world's leading universities. Explore where 1,330+ alumni pursue Master's degrees and build careers.</p>
+                <p class="hero-subtitle">From Maastricht to the world's leading universities. Explore where 1,321 alumni pursue Master's degrees and build careers.</p>
                 
                 <div class="stats-ribbon">
                     <div class="stat-item">
@@ -405,7 +405,7 @@
             </div>
             <div class="filter-bar">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="prestige">⭐ World Top 10</button>
+                <button class="filter-btn" data-filter="prestige">â­ World Top 10</button>
                 <button class="filter-btn" data-filter="nl"><img src="https://flagcdn.com/w20/nl.png" alt="">Netherlands</button>
                 <button class="filter-btn" data-filter="gb"><img src="https://flagcdn.com/w20/gb.png" alt="">UK</button>
                 <button class="filter-btn" data-filter="de"><img src="https://flagcdn.com/w20/de.png" alt="">Germany</button>
@@ -416,7 +416,7 @@
         
         <div class="uni-tier" id="tier-prestige">
             <div class="tier-header">
-                <div class="tier-badge">⭐ World Top 10</div>
+                <div class="tier-badge">â­ World Top 10</div>
                 <div class="tier-line"></div>
                 <div class="tier-count">8 of the world's top 10 universities</div>
             </div>
@@ -425,7 +425,7 @@
         
         <div class="uni-tier" id="tier-nl">
             <div class="tier-header">
-                <div class="tier-badge blue">🇳🇱 Netherlands</div>
+                <div class="tier-badge blue">ðŸ‡³ðŸ‡± Netherlands</div>
                 <div class="tier-line"></div>
                 <div class="tier-count" id="count-nl"></div>
             </div>
@@ -434,7 +434,7 @@
         
         <div class="uni-tier" id="tier-other">
             <div class="tier-header">
-                <div class="tier-badge gray">🌍 International</div>
+                <div class="tier-badge gray">ðŸŒ International</div>
                 <div class="tier-line"></div>
                 <div class="tier-count" id="count-other"></div>
             </div>
@@ -458,7 +458,7 @@
                     <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
                     <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
                 </a>
-                <p>Connecting 1,330+ MSP graduates across 52 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+                <p>Connecting 1,321 MSP graduates across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
             <div class="footer-links">
                 <h4>Explore</h4>
@@ -480,7 +480,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Maastricht Science Programme Alumni Network</p>
+            <p>Â© 2025 Maastricht Science Programme Alumni Network</p>
             <p>Part of <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a></p>
         </div>
     </footer>
@@ -686,7 +686,7 @@
             // Add Maastricht marker (special - no link)
             L.marker(MAASTRICHT, { icon: maastrichtIcon })
                 .addTo(map)
-                .bindPopup(createPopup('Maastricht', 'Netherlands', 'nl', 1330, ['MSP Origin'], false));
+                .bindPopup(createPopup('Maastricht', 'Netherlands', 'nl', 1321, ['MSP Origin'], false));
             
             // Add destination markers and flight paths
             DESTINATIONS.forEach(dest => {
@@ -731,7 +731,7 @@
                             <div class="popup-stat"><strong>${uniCount}</strong> unis</div>
                         </div>
                     </div>
-                    ${clickable ? '<div class="popup-cta">→</div>' : ''}
+                    ${clickable ? '<div class="popup-cta">â†’</div>' : ''}
                 </div>
             `;
         }

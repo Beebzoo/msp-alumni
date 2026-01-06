@@ -567,7 +567,29 @@
             .academic-funnel { flex-direction: column; }
             .funnel-arrow { transform: rotate(90deg); }
         }
-    </style>
+    
+        /* Standard Footer */
+        footer { background: var(--um-dark-blue); color: white; padding: 60px 50px 30px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
+        .footer-brand .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .footer-brand .logo-img { filter: brightness(0) invert(1); }
+        .footer-brand .logo-text h1 { font-size: 16px; font-weight: 700; color: white; margin: 0; }
+        .footer-brand .logo-text p { font-size: 12px; color: rgba(255,255,255,0.6); margin: 0; }
+        .footer-links h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: rgba(255,255,255,0.5); }
+        .footer-links a { display: block; color: rgba(255,255,255,0.8); font-size: 14px; padding: 6px 0; transition: all 0.15s ease; }
+        .footer-links a:hover { color: #E84E10; padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+        .footer-bottom a { color: rgba(255,255,255,0.6); }
+        @media (max-width: 900px) {
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            footer { padding: 40px 20px 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+</style>
 </head>
 <body>
     <header id="header">
@@ -739,39 +761,36 @@
     </section>
     
     <!-- Footer -->
-    <footer>
-        <div class="footer-main">
+        <footer>
+        <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 40px; filter: brightness(0) invert(1);" onerror="this.style.display='none'">
-                <p>The MSP Alumni Network connects 1,321 graduates across 87 countries. Part of Maastricht University's Faculty of Science and Engineering.</p>
-                <div class="footer-um-links">
-                    <a href="https://www.maastrichtuniversity.nl" target="_blank" title="Maastricht University">
-                        <img src="assets/logos/maastricht-university-logo.png" alt="UM" onerror="this.outerHTML='<span style=\"color:rgba(255,255,255,0.6);font-size:12px;\">UM</span>'">
-                    </a>
-                </div>
+                <a href="index.html" class="logo" style="margin-bottom: 16px;">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 52px;">
+                    <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
+                </a>
             </div>
-            
-            <div class="footer-section">
+            <div class="footer-links">
                 <h4>Explore</h4>
                 <a href="index.html">Home</a>
                 <a href="destinations.html">Destinations</a>
                 <a href="outcomes.html">Career Outcomes</a>
-                <a href="community.html">Community</a>
-                <a href="resources.html">Resources</a>
+                <a href="phd-alumni.html">PhD Alumni</a>
             </div>
-            
-            <div class="footer-section">
-                <h4>Official UM Sites</h4>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University </a>
-                <a href="https://www.maastrichtuniversity.nl/about-um/alumni" target="_blank">UM Alumni </a>
-                <a href="https://www.maastrichtuniversity.nl/fse-alumni" target="_blank">FSE Alumni </a>
-                <a href="https://www.maastrichtuniversity.nl/education/bachelor/maastricht-science-programme" target="_blank">MSP Programme </a>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="community.html">Join Community</a>
+                <a href="resources.html">Resources</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p> 2025 MSP Alumni Network  <a href="privacy.html">Privacy Policy</a>  Data updated December 2025</p>
-            <p><a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a></p>
+            <p>© 2025 Maastricht Science Programme Alumni Network</p>
+            <p>Part of <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a></p>
         </div>
     </footer>
     

@@ -406,7 +406,7 @@
             </div>
             <div class="filter-bar">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="prestige">Ã¢Â­Â World Top 10</button>
+                <button class="filter-btn" data-filter="prestige">⭐ World Top 10</button>
                 <button class="filter-btn" data-filter="nl"><img src="https://flagcdn.com/w20/nl.png" alt="">Netherlands</button>
                 <button class="filter-btn" data-filter="gb"><img src="https://flagcdn.com/w20/gb.png" alt="">UK</button>
                 <button class="filter-btn" data-filter="de"><img src="https://flagcdn.com/w20/de.png" alt="">Germany</button>
@@ -417,7 +417,7 @@
         
         <div class="uni-tier" id="tier-prestige">
             <div class="tier-header">
-                <div class="tier-badge">Ã¢Â­Â World Top 10</div>
+                <div class="tier-badge">⭐ World Top 10</div>
                 <div class="tier-line"></div>
                 <div class="tier-count">8 of the world's top 10 universities</div>
             </div>
@@ -426,7 +426,7 @@
         
         <div class="uni-tier" id="tier-nl">
             <div class="tier-header">
-                <div class="tier-badge blue">Ã°Å¸â€¡Â³Ã°Å¸â€¡Â± Netherlands</div>
+                <div class="tier-badge blue">🇳🇱 Netherlands</div>
                 <div class="tier-line"></div>
                 <div class="tier-count" id="count-nl"></div>
             </div>
@@ -435,7 +435,7 @@
         
         <div class="uni-tier" id="tier-other">
             <div class="tier-header">
-                <div class="tier-badge gray">Ã°Å¸Å’Â International</div>
+                <div class="tier-badge gray">🌍 International</div>
                 <div class="tier-line"></div>
                 <div class="tier-count" id="count-other"></div>
             </div>
@@ -452,14 +452,13 @@
         <div class="country-grid" id="country-grid"></div>
     </section>
     
-    <footer>
+        <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="logo" style="margin-bottom: 16px;">
-                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 52px;">
                     <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
                 </a>
-                <p>Connecting 1,321 MSP graduates across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
             <div class="footer-links">
                 <h4>Explore</h4>
@@ -481,7 +480,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Ã‚Â© 2025 Maastricht Science Programme Alumni Network</p>
+            <p>© 2025 Maastricht Science Programme Alumni Network</p>
             <p>Part of <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a></p>
         </div>
     </footer>
@@ -526,7 +525,7 @@
             { name: "Brussels", country: "Belgium", code: "be", lat: 50.8503, lng: 4.3517, alumni: 6, unis: ["ULB", "VUB"] },
             
             // Switzerland
-            { name: "ZÃ¼rich", country: "Switzerland", code: "ch", lat: 47.3769, lng: 8.5417, alumni: 18, unis: ["ETH ZÃ¼rich", "UZH"] },
+            { name: "Zürich", country: "Switzerland", code: "ch", lat: 47.3769, lng: 8.5417, alumni: 18, unis: ["ETH Zürich", "UZH"] },
             { name: "Lausanne", country: "Switzerland", code: "ch", lat: 46.5197, lng: 6.6323, alumni: 6, unis: ["EPFL"] },
             
             // Denmark
@@ -553,7 +552,7 @@
         
         const UNIVERSITIES = [
             { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, logo: "imperial-college-london.png", rank: 2, prestige: true },
-            { name: "ETH ZÃ¼rich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true },
+            { name: "ETH Zürich", country: "Switzerland", code: "ch", count: 12, logo: "eth-zurich.png", rank: 7, prestige: true },
             { name: "UCL", country: "United Kingdom", code: "gb", count: 12, logo: "ucl.png", rank: 9, prestige: true },
             { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, logo: "university-of-cambridge.png", rank: 5, prestige: true },
             { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 6, logo: "university-of-oxford.png", rank: 3, prestige: true },
@@ -732,7 +731,7 @@
                             <div class="popup-stat"><strong>${uniCount}</strong> unis</div>
                         </div>
                     </div>
-                    ${clickable ? '<div class="popup-cta">Ã¢â€ â€™</div>' : ''}
+                    ${clickable ? '<div class="popup-cta">ÃƒÂ¢" '</div>' : ''}
                 </div>
             `;
         }

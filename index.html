@@ -2267,7 +2267,7 @@
         footer {
             background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
             color: white;
-            padding: 60px 50px 40px;
+            padding: 60px 50px 30px;
             position: relative;
         }
         
@@ -2281,45 +2281,73 @@
             background: linear-gradient(90deg, transparent, rgba(0, 162, 219, 0.3), transparent);
         }
         
-        .footer-content {
+        .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
         }
         
-        .footer-text {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 400;
+        .footer-brand {
+            padding-right: 30px;
         }
         
-        .footer-text a {
-            color: rgba(255,255,255,0.7);
-            transition: color var(--transition-fast);
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 16px;
+            filter: brightness(0) invert(1);
         }
         
-        .footer-text a:hover {
-            color: var(--um-orange);
+        .footer-brand h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
         }
         
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-links a {
-            font-size: 13px;
+        .footer-brand p {
+            font-size: 14px;
             color: rgba(255,255,255,0.6);
-            font-weight: 500;
+            line-height: 1.7;
+        }
+        
+        .footer-links-group h4 {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links-group a {
+            display: block;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 12px;
             transition: all var(--transition-fast);
         }
         
-        .footer-links a:hover {
+        .footer-links-group a:hover {
             color: white;
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
         }
         
         /* ============================================
@@ -2688,14 +2716,18 @@
                 font-size: 10px;
             }
             
-            .footer-content {
-                flex-direction: column;
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
                 text-align: center;
             }
             
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
+            .footer-brand {
+                padding-right: 0;
+            }
+            
+            .footer-links-group a:hover {
+                transform: none;
             }
             
             .scroll-indicator {
@@ -3054,83 +3086,37 @@
             </div>
         </div>
     </section>
-    <section class="community-section section">
-        <div class="community-toggle" onclick="toggleCommunity()">
-            <div class="community-toggle-left">
-                <div class="community-toggle-icon">
-                    <i data-lucide="users"></i>
-                </div>
-                <div class="community-toggle-text">
-                    <h3>Join the MSP Alumni Community</h3>
-                    <p>Connect with fellow graduates in 24 countries</p>
-                </div>
-            </div>
-            <div class="community-toggle-arrow">
-                <i data-lucide="chevron-down"></i>
-            </div>
-        </div>
-        
-        <div class="community-expandable" id="communityContent">
-            <div class="community-content">
-                <div class="community-text">
-                    <h4>Stay Connected After Graduation</h4>
-                    <p>
-                        The MSP Alumni Network connects <strong>1,321 graduates</strong> across 
-                        <strong>87 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students   -   
-                        we're here to help.
-                    </p>
-                    <p>
-                        Our WhatsApp communities cover <strong>24 countries</strong>, making it 
-                        easy to connect with fellow MSP alumni wherever your career takes you.
-                    </p>
-                </div>
-                
-                <div class="community-features">
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="message-circle"></i>
-                        </div>
-                        <h5>WhatsApp Groups</h5>
-                        <p>Country-based groups for local networking and meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="briefcase"></i>
-                        </div>
-                        <h5>Career Network</h5>
-                        <p>Connect with alumni in your field or target companies</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="calendar"></i>
-                        </div>
-                        <h5>Events</h5>
-                        <p>Annual gatherings, reunions, and local meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="heart-handshake"></i>
-                        </div>
-                        <h5>Give Back</h5>
-                        <p>Mentor current students and share your experience</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-text">
-                 2025 MSP Alumni Network  Maastricht University  
-                Updated <span id="lastUpdated">December 2025</span>  
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
+                <h3>MSP Alumni Network</h3>
+                <p>Connecting 1,321 graduates from the Maastricht Science Programme across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="phd-alumni.html">PhD Alumni</a>
+                <a href="community.html">Community</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Connect</h4>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
                 <a href="privacy.html">Privacy Policy</a>
             </div>
-            <div class="footer-links">
-                <a href="/cdn-cgi/l/email-protection#b1dcc2c19cd0ddc4dcdfd8f1dcd0d0c2c5c3d8d2d9c5c4dfd8c7d4c3c2d8c5c89fdfdd">Help keep the map accurate '</a>
+            <div class="footer-links-group">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/msp_alumni/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/groups/12893377/" target="_blank">LinkedIn (MSP)</a>
+                <a href="https://www.linkedin.com/groups/4689010/" target="_blank">LinkedIn (FSE)</a>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MSP Alumni Network. Maastricht University, Faculty of Science and Engineering.</p>
         </div>
     </footer>
     
@@ -3510,21 +3496,6 @@
                 this.setStyle({ fillOpacity: 0.85, radius: radius });
             });
         });
-        
-        // ==========================================
-        // COMMUNITY SECTION TOGGLE
-        // ==========================================
-        function toggleCommunity() {
-            const toggle = document.querySelector('.community-toggle');
-            const content = document.getElementById('communityContent');
-            
-            toggle.classList.toggle('active');
-            content.classList.toggle('open');
-            
-            if (content.classList.contains('open')) {
-                lucide.createIcons();
-            }
-        }
         
         // ==========================================
         // ANIMATED COUNTERS

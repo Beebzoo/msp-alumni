@@ -2267,7 +2267,7 @@
         footer {
             background: linear-gradient(180deg, var(--um-dark-blue) 0%, #000d1a 100%);
             color: white;
-            padding: 60px 50px 40px;
+            padding: 60px 50px 30px;
             position: relative;
         }
         
@@ -2284,42 +2284,79 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand .footer-logo {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            gap: 14px;
+            text-decoration: none;
         }
         
-        .footer-text {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-            font-weight: 400;
-        }
-        
-        .footer-text a {
-            color: rgba(255,255,255,0.7);
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-text a:hover {
-            color: var(--um-orange);
-        }
-        
-        .footer-links {
+        .footer-logo-text {
             display: flex;
-            gap: 30px;
+            flex-direction: column;
         }
         
-        .footer-links a {
-            font-size: 13px;
+        .footer-logo-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-logo-subtitle {
+            font-size: 12px;
             color: rgba(255,255,255,0.6);
-            font-weight: 500;
+        }
+        
+        .footer-links-group h4 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .footer-links-group a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            padding: 6px 0;
             transition: all var(--transition-fast);
         }
         
-        .footer-links a:hover {
-            color: white;
+        .footer-links-group a:hover {
+            color: var(--um-orange);
+            padding-left: 4px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--um-orange);
         }
         
         /* ============================================
@@ -2515,6 +2552,10 @@
             .scroll-indicator {
                 bottom: 20px;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
         @media (max-width: 600px) {
@@ -2689,42 +2730,26 @@
             }
             
             .footer-content {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 30px;
                 text-align: center;
             }
             
-            .footer-links {
-                flex-wrap: wrap;
+            .footer-brand .footer-logo {
                 justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
             }
             
             .scroll-indicator {
                 display: none;
             }
         }
-    
-        /* Standard Footer */
-        footer { background: var(--um-dark-blue); color: white; padding: 60px 50px 30px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
-        .footer-brand .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .footer-brand .logo-img { filter: brightness(0) invert(1); }
-        .footer-brand .logo-text h1 { font-size: 16px; font-weight: 700; color: white; margin: 0; }
-        .footer-brand .logo-text p { font-size: 12px; color: rgba(255,255,255,0.6); margin: 0; }
-        .footer-links h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: rgba(255,255,255,0.5); }
-        .footer-links a { display: block; color: rgba(255,255,255,0.8); font-size: 14px; padding: 6px 0; transition: all 0.15s ease; }
-        .footer-links a:hover { color: #E84E10; padding-left: 4px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
-        .footer-bottom a { color: rgba(255,255,255,0.6); }
-        @media (max-width: 900px) {
-            .footer-content { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 600px) {
-            footer { padding: 40px 20px 20px; }
-            .footer-content { grid-template-columns: 1fr; gap: 30px; }
-            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-        }
-</style>
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -3076,95 +3101,32 @@
             </div>
         </div>
     </section>
-    <section class="community-section section">
-        <div class="community-toggle" onclick="toggleCommunity()">
-            <div class="community-toggle-left">
-                <div class="community-toggle-icon">
-                    <i data-lucide="users"></i>
-                </div>
-                <div class="community-toggle-text">
-                    <h3>Join the MSP Alumni Community</h3>
-                    <p>Connect with fellow graduates in 24 countries</p>
-                </div>
-            </div>
-            <div class="community-toggle-arrow">
-                <i data-lucide="chevron-down"></i>
-            </div>
-        </div>
-        
-        <div class="community-expandable" id="communityContent">
-            <div class="community-content">
-                <div class="community-text">
-                    <h4>Stay Connected After Graduation</h4>
-                    <p>
-                        The MSP Alumni Network connects <strong>1,321 graduates</strong> across 
-                        <strong>87 countries</strong>. Whether you're looking to network in your 
-                        new city, find mentors in your field, or give back to current students   -   
-                        we're here to help.
-                    </p>
-                    <p>
-                        Our WhatsApp communities cover <strong>24 countries</strong>, making it 
-                        easy to connect with fellow MSP alumni wherever your career takes you.
-                    </p>
-                </div>
-                
-                <div class="community-features">
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="message-circle"></i>
-                        </div>
-                        <h5>WhatsApp Groups</h5>
-                        <p>Country-based groups for local networking and meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="briefcase"></i>
-                        </div>
-                        <h5>Career Network</h5>
-                        <p>Connect with alumni in your field or target companies</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon">
-                            <i data-lucide="calendar"></i>
-                        </div>
-                        <h5>Events</h5>
-                        <p>Annual gatherings, reunions, and local meetups</p>
-                    </div>
-                    <div class="community-feature">
-                        <div class="community-feature-icon orange">
-                            <i data-lucide="heart-handshake"></i>
-                        </div>
-                        <h5>Give Back</h5>
-                        <p>Mentor current students and share your experience</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer -->
-        <footer>
+    <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="index.html" class="logo" style="margin-bottom: 16px;">
-                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 52px;">
-                    <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" style="height: 52px; filter: brightness(0) invert(1);">
+                    <div class="footer-logo-text">
+                        <span class="footer-logo-title">MSP Alumni Network</span>
+                        <span class="footer-logo-subtitle">Maastricht Science Programme</span>
+                    </div>
                 </a>
             </div>
-            <div class="footer-links">
+            <div class="footer-links-group">
                 <h4>Explore</h4>
                 <a href="index.html">Home</a>
                 <a href="destinations.html">Destinations</a>
                 <a href="outcomes.html">Career Outcomes</a>
                 <a href="phd-alumni.html">PhD Alumni</a>
             </div>
-            <div class="footer-links">
+            <div class="footer-links-group">
                 <h4>Connect</h4>
                 <a href="community.html">Join Community</a>
                 <a href="resources.html">Resources</a>
                 <a href="considering-msp.html">Considering MSP?</a>
             </div>
-            <div class="footer-links">
+            <div class="footer-links-group">
                 <h4>Legal</h4>
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>

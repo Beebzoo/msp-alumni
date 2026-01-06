@@ -412,16 +412,16 @@ const MSP_DATA = {
     ],
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚Â§Ãƒâ€šÃ‚Â¬" },
-        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã‚Â¡ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ÂÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¸Ãƒâ€šÃ‚Â" },
-        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚ÂÃƒâ€šÃ‚Â¥" },
-        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã‚Â¡Ãƒâ€šÃ‚Â¡" },
-        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚Â§Ãƒâ€šÃ‚Â " },
-        { name: "Business & Economics", count: 50, percent: 5.7, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒâ€¦Ã‚Â " },
-        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãƒâ€šÃ‚Â»" },
-        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã¢â‚¬â„¢Ãƒâ€šÃ‚Â" },
-        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒâ€¦Ã‚Â¡" },
-        { name: "Other", count: 39, percent: 4.4, icon: "ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹" }
+        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬" },
+        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â" },
+        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥" },
+        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡" },
+        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â " },
+        { name: "Business & Economics", count: 50, percent: 5.7, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â " },
+        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»" },
+        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â" },
+        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡" },
+        { name: "Other", count: 39, percent: 4.4, icon: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹" }
     ],
     
     allNationalityFlags: [
@@ -443,107 +443,438 @@ const MSP_DATA = {
     },
     
     recruitment: {
-        heroStat: "78 nationalities. 56 countries. 248+ universities.",
+        heroStat: "78 nationalities. 87 countries. 265+ universities.",
         proofStats: [
-            { number: 1330, label: "MSP Alumni", highlight: true },
+            { number: 1321, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
-            { number: "248+", label: "Master's Universities" },
-            { number: "12%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
+            { number: "265+", label: "Master's Universities" },
+            { number: "10.7%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
+        ]
+    },
+    
+    // ============================================
+    // CONSIDERING MSP PAGE DATA
+    // Updated: January 2025
+    // ============================================
+    
+    consideringMSP: {
+        // Hero section stats (shown in journey flow)
+        heroStats: {
+            alumni: 1321,
+            nationalities: 78,
+            universities: 265,
+            countries: 87
+        },
+        
+        // Career sectors - where MSP alumni work
+        // Based on Work_Category analysis from database
+        careerSectors: [
+            { 
+                name: "Academia & Research", 
+                count: 222, 
+                percent: 16.8, 
+                icon: "graduation-cap",
+                color: "#00A2DB",
+                description: "PhD candidates, postdocs, research scientists, and faculty",
+                examples: ["PhD at Max Planck", "Research Fellow at Cambridge", "Postdoc at ETH Zurich"]
+            },
+            { 
+                name: "Technology & Data", 
+                count: 66, 
+                percent: 5.0, 
+                icon: "cpu",
+                color: "#8b5cf6",
+                description: "Software engineers, data scientists, AI researchers",
+                examples: ["Software Engineer at ASML", "Data Scientist", "ML Engineer"]
+            },
+            { 
+                name: "Industry R&D", 
+                count: 60, 
+                percent: 4.5, 
+                icon: "flask-conical",
+                color: "#10b981",
+                description: "Research and development in corporate settings",
+                examples: ["R&D Scientist at Unilever", "Materials Researcher at ASML", "Innovation Lead"]
+            },
+            { 
+                name: "Finance & Business", 
+                count: 47, 
+                percent: 3.6, 
+                icon: "briefcase",
+                color: "#f59e0b",
+                description: "Management, operations, banking, and finance",
+                examples: ["Investment Analyst", "Operations Manager", "Business Development"]
+            },
+            { 
+                name: "Pharma & Biotech", 
+                count: 46, 
+                percent: 3.5, 
+                icon: "pill",
+                color: "#ec4899",
+                description: "Pharmaceutical and biotechnology industry",
+                examples: ["Scientist at Novartis", "Clinical Researcher at Roche", "Biotech Analyst"]
+            },
+            { 
+                name: "Consulting", 
+                count: 43, 
+                percent: 3.3, 
+                icon: "trending-up",
+                color: "#E84E10",
+                description: "Strategy, management, and specialized consulting",
+                examples: ["Consultant at McKinsey", "Analyst at BCG", "Strategy at Deloitte"]
+            },
+            { 
+                name: "Environment & Sustainability", 
+                count: 33, 
+                percent: 2.5, 
+                icon: "leaf",
+                color: "#22c55e",
+                description: "Environmental science, sustainability, conservation",
+                examples: ["Sustainability Consultant", "Environmental Researcher", "Climate Analyst"]
+            },
+            { 
+                name: "Healthcare & Medicine", 
+                count: 23, 
+                percent: 1.7, 
+                icon: "heart-pulse",
+                color: "#ef4444",
+                description: "Clinical practice, medical research, healthcare management",
+                examples: ["Medical Doctor", "Clinical Research Associate", "Healthcare Consultant"]
+            },
+            { 
+                name: "Engineering", 
+                count: 21, 
+                percent: 1.6, 
+                icon: "settings",
+                color: "#6366f1",
+                description: "Technical engineering roles across industries",
+                examples: ["Process Engineer", "R&D Engineer", "Technical Consultant"]
+            },
+            { 
+                name: "Entrepreneurship", 
+                count: 15, 
+                percent: 1.1, 
+                icon: "rocket",
+                color: "#f97316",
+                description: "Founders, startup leaders, and self-employed",
+                examples: ["Startup Founder", "CEO", "Freelance Consultant"]
+            },
+            { 
+                name: "Government & Policy", 
+                count: 8, 
+                percent: 0.6, 
+                icon: "landmark",
+                color: "#0ea5e9",
+                description: "Public sector, policy research, government roles",
+                examples: ["Policy Advisor", "EU Commission", "Government Researcher"]
+            },
+            { 
+                name: "NGO & Non-profit", 
+                count: 7, 
+                percent: 0.5, 
+                icon: "heart-handshake",
+                color: "#d946ef",
+                description: "Non-governmental organizations and charities",
+                examples: ["Programme Officer", "Research Lead", "Development Coordinator"]
+            }
         ],
-        alumniJourneys: [
-            { year: "2019", university: "ETH Zurich", field: "Biomedical Engineering", role: "Research Scientist", company: "Roche", icon: "microscope" },
-            { year: "2020", university: "Imperial College", field: "Neuroscience", role: "PhD Candidate", company: "Max Planck", icon: "brain" },
-            { year: "2018", university: "Cambridge", field: "Chemistry", role: "R&D Lead", company: "BASF", icon: "flask-conical" },
-            { year: "2021", university: "Karolinska", field: "Medicine", role: "Medical Doctor", company: "Amsterdam UMC", icon: "heart-pulse" }
-        ],
-        careerPaths: [
-            { title: "Research & Academia", count: 186, icon: "microscope", examples: ["PhD at Max Planck", "Postdoc at MIT", "Professor at ETH"] },
-            { title: "Industry R&D", count: 145, icon: "flask-conical", examples: ["Scientist at Novartis", "R&D at ASML", "Engineer at Shell"] },
-            { title: "Healthcare", count: 127, icon: "heart-pulse", examples: ["Doctor at MUMC+", "Clinical Researcher", "Medical Consultant"] },
-            { title: "Tech & Data", count: 89, icon: "cpu", examples: ["Data Scientist at Google", "ML Engineer at Philips", "Software Dev at Booking"] },
-            { title: "Consulting & Business", count: 76, icon: "briefcase", examples: ["Consultant at McKinsey", "Analyst at BCG", "Strategy at Deloitte"] },
-            { title: "Policy & NGO", count: 42, icon: "landmark", examples: ["Policy Advisor EU", "Researcher at WHO", "Program Lead at UN"] }
-        ],
-        phdStats: {
-            total: 159,
-            percentage: "12%",
-            highlights: [
-                { icon: "award", text: "PhDs at 45+ institutions worldwide" },
-                { icon: "globe", text: "Research in 28 countries" },
-                { icon: "trending-up", text: "Growing 15% annually" }
+        
+        // PhD Pipeline data
+        phdPipeline: {
+            phdCandidates: 141,
+            phdPercent: 10.7,
+            postdocs: 9,
+            researchPositions: 49,
+            faculty: 5,
+            totalAcademia: 204,
+            academiaPercent: 15.4,
+            // Notable PhD institutions
+            institutions: [
+                { name: "Max Planck Institutes", icon: "award" },
+                { name: "ETH Zurich", icon: "award" },
+                { name: "University of Cambridge", icon: "award" },
+                { name: "University of Oxford", icon: "award" },
+                { name: "Karolinska Institutet", icon: "award" },
+                { name: "EPFL", icon: "award" }
             ]
         },
-        programmeFeatures: [
-            { icon: "users", title: "Small Classes", description: "Average 15 students per tutorial group for personalized learning" },
-            { icon: "globe-2", title: "International Community", description: "Students from 50+ countries creating a global network" },
-            { icon: "microscope", title: "Research-Driven", description: "Lab experience from year one with active researchers" },
-            { icon: "git-branch", title: "Flexible Curriculum", description: "Design your own path across all sciences" }
-        ]
+        
+        // Field of study to career pathway mapping
+        fieldToCareer: [
+            {
+                field: "Life Sciences & Biology",
+                count: 383,
+                icon: "dna",
+                color: "#10b981",
+                topCareers: [
+                    { name: "PhD Candidates", count: 62 },
+                    { name: "Research Positions", count: 23 },
+                    { name: "Industry R&D", count: 22 },
+                    { name: "Pharma & Biotech", count: 19 }
+                ]
+            },
+            {
+                field: "Chemistry & Materials",
+                count: 111,
+                icon: "flask-conical",
+                color: "#8b5cf6",
+                topCareers: [
+                    { name: "PhD Candidates", count: 30 },
+                    { name: "Industry R&D", count: 7 },
+                    { name: "Environmental", count: 6 },
+                    { name: "Technology", count: 5 }
+                ]
+            },
+            {
+                field: "Physics & Engineering",
+                count: 109,
+                icon: "atom",
+                color: "#00A2DB",
+                topCareers: [
+                    { name: "PhD Candidates", count: 13 },
+                    { name: "Industry R&D", count: 6 },
+                    { name: "Technology", count: 6 },
+                    { name: "Consulting", count: 5 }
+                ]
+            },
+            {
+                field: "Medicine & Health",
+                count: 107,
+                icon: "heart-pulse",
+                color: "#ef4444",
+                topCareers: [
+                    { name: "PhD Candidates", count: 14 },
+                    { name: "Management", count: 10 },
+                    { name: "Industry R&D", count: 7 },
+                    { name: "Healthcare", count: 5 }
+                ]
+            },
+            {
+                field: "Neuroscience & Psychology",
+                count: 63,
+                icon: "brain",
+                color: "#ec4899",
+                topCareers: [
+                    { name: "PhD Candidates", count: 8 },
+                    { name: "Research Positions", count: 5 },
+                    { name: "Consulting", count: 4 },
+                    { name: "Education", count: 2 }
+                ]
+            },
+            {
+                field: "Computer Science & AI",
+                count: 29,
+                icon: "cpu",
+                color: "#6366f1",
+                topCareers: [
+                    { name: "Technology & Data", count: 12 },
+                    { name: "Industry R&D", count: 5 },
+                    { name: "Consulting", count: 3 },
+                    { name: "PhD Candidates", count: 2 }
+                ]
+            }
+        ],
+        
+        // Notable employers (recognizable names)
+        notableEmployers: {
+            research: [
+                { name: "Max Planck", count: 4 },
+                { name: "Fraunhofer", count: 2 },
+                { name: "CERN", count: 1 },
+                { name: "Nikhef", count: 2 }
+            ],
+            consulting: [
+                { name: "McKinsey", count: 2 },
+                { name: "BCG", count: 1 },
+                { name: "Deloitte", count: 3 },
+                { name: "PwC", count: 2 }
+            ],
+            industry: [
+                { name: "ASML", count: 4 },
+                { name: "Unilever", count: 2 },
+                { name: "AstraZeneca", count: 4 },
+                { name: "Novartis", count: 1 }
+            ],
+            categories: [
+                { name: "Research Institutes", icon: "microscope", examples: ["Max Planck", "Fraunhofer", "CERN"] },
+                { name: "Consulting", icon: "trending-up", examples: ["McKinsey", "BCG", "Deloitte", "PwC"] },
+                { name: "Tech & Engineering", icon: "cpu", examples: ["ASML", "Philips", "Booking.com"] },
+                { name: "Pharma & Healthcare", icon: "pill", examples: ["AstraZeneca", "Novartis", "Roche"] }
+            ]
+        },
+        
+        // Gender breakdown by field
+        genderByField: [
+            { field: "Life Sciences & Biology", female: 244, male: 139, femalePercent: 64 },
+            { field: "Medicine & Health", female: 90, male: 17, femalePercent: 84 },
+            { field: "Neuroscience & Psychology", female: 41, male: 22, femalePercent: 65 },
+            { field: "Chemistry & Materials", female: 54, male: 57, femalePercent: 49 },
+            { field: "Physics & Engineering", female: 53, male: 55, femalePercent: 49 },
+            { field: "Computer Science & AI", female: 9, male: 20, femalePercent: 31 }
+        ],
+        
+        // Programme growth data
+        growth: {
+            factor: 3.9,
+            years: "12",
+            early: { period: "2014-2017", count: 192 },
+            recent: { period: "2022-2025", count: 748 },
+            byYear: [
+                { year: 2014, count: 25 },
+                { year: 2015, count: 44 },
+                { year: 2016, count: 57 },
+                { year: 2017, count: 66 },
+                { year: 2018, count: 65 },
+                { year: 2019, count: 76 },
+                { year: 2020, count: 108 },
+                { year: 2021, count: 132 },
+                { year: 2022, count: 145 },
+                { year: 2023, count: 170 },
+                { year: 2024, count: 193 },
+                { year: 2025, count: 240 }
+            ]
+        },
+        
+        // Regional impact data
+        regionalImpact: {
+            inNetherlands: 460,
+            netherlandsPercent: 34.8,
+            fromEuregio: 390,
+            euregioPercent: 29.5,
+            euregioRetention: 54.9
+        },
+        
+        // Quick facts for the page
+        quickFacts: [
+            { number: "60%", label: "Female Students", sublabel: "788 of 1,321 alumni", icon: "users" },
+            { number: "35%", label: "Stay in Netherlands", sublabel: "460 alumni currently", icon: "map-pin" },
+            { number: "82", label: "At Elite Universities", sublabel: "World Top 25 institutions", icon: "award" },
+            { number: "3.9×", label: "Programme Growth", sublabel: "Since 2014", icon: "trending-up" }
+        ],
+        
+        // Top cities where alumni live
+        topCities: [
+            { rank: 1, name: "Maastricht", country: "Netherlands", code: "nl", count: 124 },
+            { rank: 2, name: "Amsterdam", country: "Netherlands", code: "nl", count: 96 },
+            { rank: 3, name: "Utrecht", country: "Netherlands", code: "nl", count: 70 },
+            { rank: 4, name: "London", country: "United Kingdom", code: "gb", count: 37 },
+            { rank: 5, name: "Leiden", country: "Netherlands", code: "nl", count: 35 },
+            { rank: 6, name: "Brussels", country: "Belgium", code: "be", count: 33 },
+            { rank: 7, name: "Copenhagen", country: "Denmark", code: "dk", count: 23 },
+            { rank: 8, name: "Berlin", country: "Germany", code: "de", count: 21 },
+            { rank: 9, name: "Zurich", country: "Switzerland", code: "ch", count: 21 },
+            { rank: 10, name: "Munich", country: "Germany", code: "de", count: 21 }
+        ],
+        
+        // University tiers for display
+        universityTiers: {
+            worldTop10: {
+                label: "World Top 10",
+                count: 33,
+                universities: [
+                    { name: "ETH Zurich", code: "ch", count: 16, logo: "eth-zurich.png" },
+                    { name: "Cambridge", code: "gb", count: 9, logo: "cambridge.png" },
+                    { name: "Oxford", code: "gb", count: 7, logo: "oxford.png" },
+                    { name: "Harvard", code: "us", count: 1, logo: "harvard.png" }
+                ]
+            },
+            worldTop25: {
+                label: "World Top 25",
+                count: 85,
+                universities: [
+                    { name: "Imperial College", code: "gb", count: 20, logo: "imperial-college.png" },
+                    { name: "UCL", code: "gb", count: 19, logo: "ucl.png" },
+                    { name: "Karolinska Institutet", code: "se", count: 11, logo: "karolinska.png" },
+                    { name: "EPFL", code: "ch", count: 2, logo: "epfl.png" },
+                    { name: "Princeton", code: "us", count: 1, logo: "princeton.png" },
+                    { name: "Columbia", code: "us", count: 1, logo: "columbia.png" }
+                ]
+            },
+            topDutch: {
+                label: "Top Dutch Universities",
+                count: 419,
+                universities: [
+                    { name: "Maastricht University", code: "nl", count: 140, logo: "maastricht-university.png" },
+                    { name: "Utrecht University", code: "nl", count: 99, logo: "utrecht-university.png" },
+                    { name: "University of Amsterdam", code: "nl", count: 75, logo: "university-of-amsterdam.png" },
+                    { name: "Leiden University", code: "nl", count: 45, logo: "leiden-university.png" },
+                    { name: "Wageningen University", code: "nl", count: 42, logo: "wageningen-university.png" },
+                    { name: "Radboud University", code: "nl", count: 38, logo: "radboud-university.png" }
+                ]
+            }
+        },
+        
+        // Composition data (for donut charts)
+        composition: {
+            gender: { female: 788, male: 531, other: 2 },
+            international: { international: 1058, dutch: 263 },
+            euStatus: { eu: 1070, nonEu: 251 }
+        }
     }
 };
 
 // Country facts for all countries (capital, currency, language, population, continent, timezone)
 const COUNTRY_FACTS = {
     // Major European Countries
-    nl: { capital: 'Amsterdam', currency: 'Euro (â‚¬)', language: 'Dutch', population: '17.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    de: { capital: 'Berlin', currency: 'Euro (â‚¬)', language: 'German', population: '84.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    gb: { capital: 'London', currency: 'Pound (Â£)', language: 'English', population: '67.3M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
-    be: { capital: 'Brussels', currency: 'Euro (â‚¬)', language: 'Dutch/French', population: '11.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    nl: { capital: 'Amsterdam', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Dutch', population: '17.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    de: { capital: 'Berlin', currency: 'Euro (Ã¢â€šÂ¬)', language: 'German', population: '84.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    gb: { capital: 'London', currency: 'Pound (Ã‚Â£)', language: 'English', population: '67.3M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    be: { capital: 'Brussels', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Dutch/French', population: '11.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     se: { capital: 'Stockholm', currency: 'Krona (kr)', language: 'Swedish', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     ch: { capital: 'Bern', currency: 'Franc (CHF)', language: 'German/French', population: '8.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    it: { capital: 'Rome', currency: 'Euro (â‚¬)', language: 'Italian', population: '58.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    fr: { capital: 'Paris', currency: 'Euro (â‚¬)', language: 'French', population: '67.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    es: { capital: 'Madrid', currency: 'Euro (â‚¬)', language: 'Spanish', population: '47.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    it: { capital: 'Rome', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Italian', population: '58.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    fr: { capital: 'Paris', currency: 'Euro (Ã¢â€šÂ¬)', language: 'French', population: '67.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    es: { capital: 'Madrid', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Spanish', population: '47.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     dk: { capital: 'Copenhagen', currency: 'Krone (kr)', language: 'Danish', population: '5.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    fi: { capital: 'Helsinki', currency: 'Euro (â‚¬)', language: 'Finnish', population: '5.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    at: { capital: 'Vienna', currency: 'Euro (â‚¬)', language: 'German', population: '9.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    ie: { capital: 'Dublin', currency: 'Euro (â‚¬)', language: 'English/Irish', population: '5.1M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
-    lu: { capital: 'Luxembourg City', currency: 'Euro (â‚¬)', language: 'Lux/Fr/De', population: '660K', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    pt: { capital: 'Lisbon', currency: 'Euro (â‚¬)', language: 'Portuguese', population: '10.4M', continent: 'Europe', timezone: 'WET (UTC+0)' },
+    fi: { capital: 'Helsinki', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Finnish', population: '5.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    at: { capital: 'Vienna', currency: 'Euro (Ã¢â€šÂ¬)', language: 'German', population: '9.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    ie: { capital: 'Dublin', currency: 'Euro (Ã¢â€šÂ¬)', language: 'English/Irish', population: '5.1M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    lu: { capital: 'Luxembourg City', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Lux/Fr/De', population: '660K', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    pt: { capital: 'Lisbon', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Portuguese', population: '10.4M', continent: 'Europe', timezone: 'WET (UTC+0)' },
     no: { capital: 'Oslo', currency: 'Krone (kr)', language: 'Norwegian', population: '5.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    gr: { capital: 'Athens', currency: 'Euro (â‚¬)', language: 'Greek', population: '10.4M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    pl: { capital: 'Warsaw', currency: 'Zloty (zÅ‚)', language: 'Polish', population: '37.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    bg: { capital: 'Sofia', currency: 'Lev (Ð»Ð²)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    gr: { capital: 'Athens', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Greek', population: '10.4M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    pl: { capital: 'Warsaw', currency: 'Zloty (zÃ…â€š)', language: 'Polish', population: '37.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    bg: { capital: 'Sofia', currency: 'Lev (ÃÂ»ÃÂ²)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     ro: { capital: 'Bucharest', currency: 'Leu (lei)', language: 'Romanian', population: '19.0M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     hu: { capital: 'Budapest', currency: 'Forint (Ft)', language: 'Hungarian', population: '9.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    cz: { capital: 'Prague', currency: 'Koruna (KÄ)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    sk: { capital: 'Bratislava', currency: 'Euro (â‚¬)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    si: { capital: 'Ljubljana', currency: 'Euro (â‚¬)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    lt: { capital: 'Vilnius', currency: 'Euro (â‚¬)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    lv: { capital: 'Riga', currency: 'Euro (â‚¬)', language: 'Latvian', population: '1.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    cz: { capital: 'Prague', currency: 'Koruna (KÃ„Â)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    sk: { capital: 'Bratislava', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    si: { capital: 'Ljubljana', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    lt: { capital: 'Vilnius', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    lv: { capital: 'Riga', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Latvian', population: '1.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     rs: { capital: 'Belgrade', currency: 'Dinar (RSD)', language: 'Serbian', population: '6.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    cy: { capital: 'Nicosia', currency: 'Euro (â‚¬)', language: 'Greek/Turkish', population: '1.3M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    md: { capital: 'ChiÈ™inÄƒu', currency: 'Leu (MDL)', language: 'Romanian', population: '2.6M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    tr: { capital: 'Ankara', currency: 'Lira (â‚º)', language: 'Turkish', population: '85.3M', continent: 'Europe/Asia', timezone: 'TRT (UTC+3)' },
+    cy: { capital: 'Nicosia', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Greek/Turkish', population: '1.3M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    md: { capital: 'ChiÃˆâ„¢inÃ„Æ’u', currency: 'Leu (MDL)', language: 'Romanian', population: '2.6M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    tr: { capital: 'Ankara', currency: 'Lira (Ã¢â€šÂº)', language: 'Turkish', population: '85.3M', continent: 'Europe/Asia', timezone: 'TRT (UTC+3)' },
     
     // Americas
     us: { capital: 'Washington D.C.', currency: 'Dollar ($)', language: 'English', population: '334.9M', continent: 'Americas', timezone: 'Multiple' },
     ca: { capital: 'Ottawa', currency: 'Dollar (C$)', language: 'English/French', population: '40.1M', continent: 'Americas', timezone: 'Multiple' },
     cl: { capital: 'Santiago', currency: 'Peso (CLP)', language: 'Spanish', population: '19.5M', continent: 'Americas', timezone: 'CLT (UTC-3)' },
-    co: { capital: 'BogotÃ¡', currency: 'Peso (COP)', language: 'Spanish', population: '52.2M', continent: 'Americas', timezone: 'COT (UTC-5)' },
+    co: { capital: 'BogotÃƒÂ¡', currency: 'Peso (COP)', language: 'Spanish', population: '52.2M', continent: 'Americas', timezone: 'COT (UTC-5)' },
     ec: { capital: 'Quito', currency: 'Dollar ($)', language: 'Spanish', population: '18.0M', continent: 'Americas', timezone: 'ECT (UTC-5)' },
     pe: { capital: 'Lima', currency: 'Sol (S/)', language: 'Spanish', population: '34.0M', continent: 'Americas', timezone: 'PET (UTC-5)' },
-    cr: { capital: 'San JosÃ©', currency: 'ColÃ³n (â‚¡)', language: 'Spanish', population: '5.2M', continent: 'Americas', timezone: 'CST (UTC-6)' },
+    cr: { capital: 'San JosÃƒÂ©', currency: 'ColÃƒÂ³n (Ã¢â€šÂ¡)', language: 'Spanish', population: '5.2M', continent: 'Americas', timezone: 'CST (UTC-6)' },
     jm: { capital: 'Kingston', currency: 'Dollar (J$)', language: 'English', population: '2.8M', continent: 'Americas', timezone: 'EST (UTC-5)' },
-    sx: { capital: 'Philipsburg', currency: 'Guilder (Æ’)', language: 'Dutch/English', population: '44K', continent: 'Americas', timezone: 'AST (UTC-4)' },
+    sx: { capital: 'Philipsburg', currency: 'Guilder (Ã†â€™)', language: 'Dutch/English', population: '44K', continent: 'Americas', timezone: 'AST (UTC-4)' },
     
     // Asia
-    jp: { capital: 'Tokyo', currency: 'Yen (Â¥)', language: 'Japanese', population: '125.1M', continent: 'Asia', timezone: 'JST (UTC+9)' },
-    cn: { capital: 'Beijing', currency: 'Yuan (Â¥)', language: 'Mandarin', population: '1.4B', continent: 'Asia', timezone: 'CST (UTC+8)' },
+    jp: { capital: 'Tokyo', currency: 'Yen (Ã‚Â¥)', language: 'Japanese', population: '125.1M', continent: 'Asia', timezone: 'JST (UTC+9)' },
+    cn: { capital: 'Beijing', currency: 'Yuan (Ã‚Â¥)', language: 'Mandarin', population: '1.4B', continent: 'Asia', timezone: 'CST (UTC+8)' },
     sg: { capital: 'Singapore', currency: 'Dollar (S$)', language: 'English/+3', population: '5.9M', continent: 'Asia', timezone: 'SGT (UTC+8)' },
-    in: { capital: 'New Delhi', currency: 'Rupee (â‚¹)', language: 'Hindi/English', population: '1.4B', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
+    in: { capital: 'New Delhi', currency: 'Rupee (Ã¢â€šÂ¹)', language: 'Hindi/English', population: '1.4B', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
     my: { capital: 'Kuala Lumpur', currency: 'Ringgit (RM)', language: 'Malay', population: '34.0M', continent: 'Asia', timezone: 'MYT (UTC+8)' },
     hk: { capital: 'Hong Kong', currency: 'Dollar (HK$)', language: 'Chinese/English', population: '7.5M', continent: 'Asia', timezone: 'HKT (UTC+8)' },
     tw: { capital: 'Taipei', currency: 'Dollar (NT$)', language: 'Mandarin', population: '23.9M', continent: 'Asia', timezone: 'CST (UTC+8)' },
-    ph: { capital: 'Manila', currency: 'Peso (â‚±)', language: 'Filipino/English', population: '115.6M', continent: 'Asia', timezone: 'PHT (UTC+8)' },
+    ph: { capital: 'Manila', currency: 'Peso (Ã¢â€šÂ±)', language: 'Filipino/English', population: '115.6M', continent: 'Asia', timezone: 'PHT (UTC+8)' },
     lk: { capital: 'Colombo', currency: 'Rupee (Rs)', language: 'Sinhala/Tamil', population: '22.2M', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
-    il: { capital: 'Jerusalem', currency: 'Shekel (â‚ª)', language: 'Hebrew/Arabic', population: '9.7M', continent: 'Asia', timezone: 'IST (UTC+2)' },
+    il: { capital: 'Jerusalem', currency: 'Shekel (Ã¢â€šÂª)', language: 'Hebrew/Arabic', population: '9.7M', continent: 'Asia', timezone: 'IST (UTC+2)' },
     ae: { capital: 'Abu Dhabi', currency: 'Dirham (AED)', language: 'Arabic', population: '10.0M', continent: 'Asia', timezone: 'GST (UTC+4)' },
     sa: { capital: 'Riyadh', currency: 'Riyal (SAR)', language: 'Arabic', population: '36.4M', continent: 'Asia', timezone: 'AST (UTC+3)' },
     
     // Oceania
     au: { capital: 'Canberra', currency: 'Dollar (A$)', language: 'English', population: '26.4M', continent: 'Oceania', timezone: 'Multiple' },
-    nc: { capital: 'NoumÃ©a', currency: 'Franc (XPF)', language: 'French', population: '290K', continent: 'Oceania', timezone: 'NCT (UTC+11)' },
+    nc: { capital: 'NoumÃƒÂ©a', currency: 'Franc (XPF)', language: 'French', population: '290K', continent: 'Oceania', timezone: 'NCT (UTC+11)' },
     
     // Africa
     ke: { capital: 'Nairobi', currency: 'Shilling (KES)', language: 'Swahili/English', population: '54.0M', continent: 'Africa', timezone: 'EAT (UTC+3)' },
@@ -606,7 +937,7 @@ const UNI_LOGO_FILES = {
     'Ghent University': 'ghent-university.png',
     'Vrije Universiteit Brussel': 'vrije-universiteit-brussel.jpg',
     'University of Antwerp': 'university-of-antwerp.png',
-    'UniversitÃ© Libre de Bruxelles': 'universite-libre-de-bruxelles.png',
+    'UniversitÃƒÂ© Libre de Bruxelles': 'universite-libre-de-bruxelles.png',
     'University of Liege': 'university-of-liege.png',
     
     // Swedish Universities
@@ -619,7 +950,7 @@ const UNI_LOGO_FILES = {
     
     // Swiss Universities
     'ETH Zurich': 'eth-zurich.png',
-    'ETH ZÃ¼rich': 'eth-zurich.png',
+    'ETH ZÃƒÂ¼rich': 'eth-zurich.png',
     'EPFL': 'epfl.png',
     'University of Zurich': 'university-of-zurich.png',
     'University of Bern': 'university-of-bern.png',
@@ -645,7 +976,7 @@ const UNI_LOGO_FILES = {
     'Ecole Polytechnique': 'ecole-polytechnique.png',
     'Sorbonne University': 'sorbonne-university.png',
     'Paris-Saclay University': 'paris-saclay-university.png',
-    'UniversitÃ© Claude Bernard Lyon 1': 'universite-claude-bernard-lyon-1.png',
+    'UniversitÃƒÂ© Claude Bernard Lyon 1': 'universite-claude-bernard-lyon-1.png',
     
     // Spanish Universities
     'University of Barcelona': 'university-of-barcelona.png',

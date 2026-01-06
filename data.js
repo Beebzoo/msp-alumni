@@ -408,7 +408,7 @@ const MSP_DATA = {
         { name: "Karolinska Institutet", count: 10, code: "se", country: "Sweden", logo: "karolinska-institutet.png", prestige: true },
         { name: "University of Cambridge", count: 8, code: "gb", country: "United Kingdom", logo: "university-of-cambridge.png", prestige: true },
         { name: "University of Edinburgh", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-edinburgh.png", prestige: true },
-        { name: "Technical University of Munich", count: 7, code: "de", country: "Germany", logo: "technical-university-of-munich.png", prestige: true },
+        { name: "Technical University of Munich", count: 7, code: "de", country: "Germany", logo: "tu-munich.png", prestige: true },
         { name: "University of Oxford", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-oxford.png", prestige: true }
     ],
     
@@ -572,7 +572,7 @@ const MSP_DATA = {
                     { name: "ETH Zurich", code: "ch", count: 16, logo: "eth-zurich.png" },
                     { name: "Cambridge", code: "gb", count: 9, logo: "university-of-cambridge.png" },
                     { name: "Oxford", code: "gb", count: 7, logo: "university-of-oxford.png" },
-                    { name: "Harvard", code: "us", count: 1, logo: "harvard-university.png" }
+                    { name: "Harvard", code: "us", count: 1, logo: "harvard.png" }
                 ]
             },
             worldTop25: {
@@ -583,8 +583,8 @@ const MSP_DATA = {
                     { name: "UCL", code: "gb", count: 19, logo: "ucl.png" },
                     { name: "Karolinska Institutet", code: "se", count: 11, logo: "karolinska-institutet.png" },
                     { name: "EPFL", code: "ch", count: 2, logo: "epfl.png" },
-                    { name: "Princeton", code: "us", count: 1, logo: "princeton-university.png" },
-                    { name: "Columbia", code: "us", count: 1, logo: "columbia-university.png" }
+                    { name: "Princeton", code: "us", count: 1, logo: "princeton.png" },
+                    { name: "Columbia", code: "us", count: 1, logo: "columbia.png" }
                 ]
             },
             topDutch: {
@@ -709,8 +709,8 @@ const UNI_LOGO_FILES = {
     'Queen Mary University of London': 'queen-mary-university-of-london.png',
     
     // German Universities
-    'Technical University of Munich': 'technical-university-of-munich.png',
-    'TU Munich': 'technical-university-of-munich.png',
+    'Technical University of Munich': 'tu-munich.png',
+    'TU Munich': 'tu-munich.png',
     'LMU Munich': 'lmu-munich.png',
     'Humboldt University Berlin': 'humboldt-university-of-berlin.png',
     'Humboldt-Universitat zu Berlin': 'humboldt-university-of-berlin.png',
@@ -786,10 +786,12 @@ const UNI_LOGO_FILES = {
     
     // North American Universities
     'McGill University': 'mcgill-university.png',
-    'Harvard University': 'harvard-university.png',
+    'Harvard University': 'harvard.png',
+    'Princeton University': 'princeton.png',
+    'Columbia University': 'columbia.png',
     'Johns Hopkins University': 'johns-hopkins-university.png',
     'MIT': 'mit.png',
-    'Stanford University': 'stanford-university.png',
+    'Stanford University': 'stanford.png',
     'University of Toronto': 'university-of-toronto.png',
     
     // Australian Universities

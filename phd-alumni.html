@@ -104,8 +104,8 @@
            HERO SECTION
         ============================================ */
         .hero {
-            min-height: 85vh;
-            background: linear-gradient(165deg, #000810 0%, var(--um-dark-blue) 30%, #001530 60%, #001a35 100%);
+            min-height: 90vh;
+            background: linear-gradient(165deg, #000408 0%, #000a15 20%, #001020 40%, var(--um-dark-blue) 70%, #001530 100%);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -113,73 +113,221 @@
             padding: 120px 50px 80px;
         }
         
-        /* Molecule/DNA Pattern Background */
-        .hero-molecules {
+        /* Neural Network Canvas */
+        #neuralCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* Floating Scientific Formulas */
+        .formulas-container {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
             overflow: hidden;
-            opacity: 0.15;
         }
-        .molecule {
+        .formula {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: rgba(0, 162, 219, 0.15);
+            font-size: 14px;
+            white-space: nowrap;
+            animation: floatFormula 30s linear infinite;
+            text-shadow: 0 0 20px rgba(0, 162, 219, 0.3);
         }
-        .molecule-node {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--um-light-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--um-light-blue);
-        }
-        .molecule-bond {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, var(--um-light-blue), transparent);
-            transform-origin: left center;
+        .formula.orange { color: rgba(232, 78, 16, 0.12); text-shadow: 0 0 20px rgba(232, 78, 16, 0.2); }
+        
+        @keyframes floatFormula {
+            0% { transform: translateY(100vh) rotate(-5deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(5deg); opacity: 0; }
         }
         
-        /* Floating DNA Helix */
-        .dna-container {
+        /* Electron Orbit System */
+        .atom-system {
             position: absolute;
-            right: 5%;
+            right: 8%;
             top: 50%;
             transform: translateY(-50%);
-            width: 150px;
+            width: 400px;
             height: 400px;
-            opacity: 0.25;
+            z-index: 1;
         }
-        .dna-particle {
+        .atom-nucleus {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--um-orange) 0%, rgba(232,78,16,0.6) 50%, transparent 70%);
             border-radius: 50%;
-            animation: dnaHelix 6s ease-in-out infinite;
+            box-shadow: 0 0 40px var(--um-orange), 0 0 80px rgba(232,78,16,0.5);
+            animation: nucleusPulse 3s ease-in-out infinite;
         }
-        .dna-particle.blue { background: var(--um-light-blue); box-shadow: 0 0 15px var(--um-light-blue); }
-        .dna-particle.orange { background: var(--um-orange); box-shadow: 0 0 15px var(--um-orange); }
-        
-        @keyframes dnaHelix {
-            0%, 100% { transform: translateX(0) scale(0.8); opacity: 0.5; }
-            25% { transform: translateX(60px) scale(1.2); opacity: 1; }
-            50% { transform: translateX(0) scale(0.8); opacity: 0.5; }
-            75% { transform: translateX(-60px) scale(1.2); opacity: 1; }
+        @keyframes nucleusPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--um-orange), 0 0 80px rgba(232,78,16,0.5); }
+            50% { transform: translate(-50%, -50%) scale(1.2); box-shadow: 0 0 60px var(--um-orange), 0 0 120px rgba(232,78,16,0.6); }
         }
         
-        /* Glowing orbs */
-        .hero-glow {
+        .electron-orbit {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(0, 162, 219, 0.2);
             border-radius: 50%;
-            filter: blur(100px);
+            transform: translate(-50%, -50%);
+        }
+        .orbit-1 { width: 120px; height: 120px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); animation: orbitRotate1 8s linear infinite; }
+        .orbit-2 { width: 200px; height: 200px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(60deg); animation: orbitRotate2 12s linear infinite; }
+        .orbit-3 { width: 300px; height: 300px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(120deg); animation: orbitRotate3 18s linear infinite; }
+        
+        @keyframes orbitRotate1 { from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); } to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); } }
+        @keyframes orbitRotate2 { from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(60deg); } to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(420deg); } }
+        @keyframes orbitRotate3 { from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(120deg); } to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(480deg); } }
+        
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--um-light-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--um-light-blue), 0 0 30px rgba(0,162,219,0.5);
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .electron::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--um-light-blue), transparent);
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+            opacity: 0.6;
+        }
+        
+        /* DNA Double Helix - Enhanced */
+        .dna-helix {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 500px;
+            z-index: 1;
+            opacity: 0.4;
+        }
+        .dna-strand {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .dna-base-pair {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dna-node {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: dnaWave 4s ease-in-out infinite;
+        }
+        .dna-node.left { background: var(--um-light-blue); box-shadow: 0 0 10px var(--um-light-blue); }
+        .dna-node.right { background: var(--um-orange); box-shadow: 0 0 10px var(--um-orange); }
+        .dna-bond {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--um-light-blue), var(--um-orange));
+            opacity: 0.4;
+            margin: 0 4px;
+        }
+        
+        @keyframes dnaWave {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(var(--wave-offset, 20px)); }
+        }
+        
+        /* Microscope Grid Overlay */
+        .microscope-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, transparent 0%, rgba(0,10,20,0.3) 100%),
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            z-index: 1;
             pointer-events: none;
         }
-        .hero-glow-1 { width: 600px; height: 600px; background: rgba(0,162,219,0.12); top: -200px; left: -100px; animation: glowFloat 20s ease-in-out infinite; }
-        .hero-glow-2 { width: 400px; height: 400px; background: rgba(232,78,16,0.08); bottom: -100px; right: 10%; animation: glowFloat 25s ease-in-out infinite reverse; }
         
-        @keyframes glowFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
+        /* Glowing Nebula Effects */
+        .hero-nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .nebula-1 { 
+            width: 700px; height: 500px; 
+            background: radial-gradient(ellipse, rgba(0,162,219,0.15) 0%, transparent 70%); 
+            top: -150px; left: -200px; 
+            animation: nebulaFloat 25s ease-in-out infinite; 
+        }
+        .nebula-2 { 
+            width: 500px; height: 400px; 
+            background: radial-gradient(ellipse, rgba(232,78,16,0.1) 0%, transparent 70%); 
+            bottom: -100px; right: -100px; 
+            animation: nebulaFloat 30s ease-in-out infinite reverse; 
+        }
+        .nebula-3 { 
+            width: 300px; height: 300px; 
+            background: radial-gradient(ellipse, rgba(138,43,226,0.08) 0%, transparent 70%); 
+            top: 40%; left: 30%; 
+            animation: nebulaFloat 20s ease-in-out infinite; 
+            animation-delay: -10s;
+        }
+        
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            33% { transform: translate(30px, -20px) scale(1.1); opacity: 0.8; }
+            66% { transform: translate(-20px, 30px) scale(0.95); opacity: 0.7; }
+        }
+        
+        /* Publication Lines - Flowing Text Effect */
+        .publication-stream {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            right: 0;
+            height: 30px;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0.15;
+        }
+        .publication-text {
+            white-space: nowrap;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: var(--um-light-blue);
+            animation: scrollText 60s linear infinite;
+        }
+        @keyframes scrollText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
         .hero-content {
@@ -870,7 +1018,10 @@
             .dissertation-title { font-size: 28px; }
             .pipeline-flow { flex-direction: column; }
             .pipeline-arrow { transform: rotate(90deg); }
-            .dna-container { display: none; }
+            .atom-system { display: none; }
+            .dna-helix { display: none; }
+            .formulas-container { display: none; }
+            .publication-stream { display: none; }
         }
     </style>
 </head>
@@ -896,11 +1047,35 @@
          HERO SECTION
     ========================================== -->
     <section class="hero">
-        <div class="hero-glow hero-glow-1"></div>
-        <div class="hero-glow hero-glow-2"></div>
+        <!-- Neural Network Canvas -->
+        <canvas id="neuralCanvas"></canvas>
         
-        <!-- DNA Helix Animation -->
-        <div class="dna-container" id="dnaContainer"></div>
+        <!-- Nebula Effects -->
+        <div class="hero-nebula nebula-1"></div>
+        <div class="hero-nebula nebula-2"></div>
+        <div class="hero-nebula nebula-3"></div>
+        
+        <!-- Microscope Grid -->
+        <div class="microscope-grid"></div>
+        
+        <!-- Floating Scientific Formulas -->
+        <div class="formulas-container" id="formulasContainer"></div>
+        
+        <!-- Electron Orbit System -->
+        <div class="atom-system">
+            <div class="electron-orbit orbit-1"><div class="electron"></div></div>
+            <div class="electron-orbit orbit-2"><div class="electron"></div></div>
+            <div class="electron-orbit orbit-3"><div class="electron"></div></div>
+            <div class="atom-nucleus"></div>
+        </div>
+        
+        <!-- DNA Double Helix -->
+        <div class="dna-helix" id="dnaHelix"></div>
+        
+        <!-- Publication Stream -->
+        <div class="publication-stream">
+            <div class="publication-text" id="publicationText"></div>
+        </div>
         
         <div class="hero-content">
             <div class="hero-badge">
@@ -1066,12 +1241,12 @@
                         <span>Showcase MSP Impact</span>
                     </div>
                 </div>
-                <a href="mailto:msp-alumni@maastrichtuniversity.nl?subject=MSP%20PhD%20Dissertation%20Contribution&body=Hi%2C%0A%0AI%20would%20like%20to%20contribute%20my%20PhD%20dissertation%20to%20the%20MSP%20collection!%0A%0AName%3A%20%0AMSP%20Graduation%20Year%3A%20%0APhD%20University%3A%20%0ADissertation%20Title%3A%20%0ADefense%20Date%20(or%20expected)%3A%20%0A%0AI%20can%20send%3A%0A%5B%20%5D%20A%20physical%20copy%0A%5B%20%5D%20A%20digital%20PDF%0A%0AThanks!" class="dissertation-cta">
+                <a href="/cdn-cgi/l/email-protection#9ff2ecefb2fef3eaf2f1f6dff2fefeecebedf6fcf7ebeaf1f6e9faedecf6ebe6b1f1f3a0eceafdf5fafceba2d2cccfbaadafcff7dbbaadafdbf6ececfaedebfeebf6f0f1baadafdcf0f1ebedf6fdeaebf6f0f1b9fdf0fbe6a2d7f6baaddcbaafdebaafded6baadafe8f0eaf3fbbaadaff3f6f4fabaadafebf0baadaffcf0f1ebedf6fdeaebfabaadaff2e6baadafcff7dbbaadaffbf6ececfaedebfeebf6f0f1baadafebf0baadafebf7fabaadafd2cccfbaadaffcf0f3f3fafcebf6f0f1bebaafdebaafded1fef2fabaacdebaadafbaafded2cccfbaadafd8edfefbeafeebf6f0f1baadafc6fafeedbaacdebaadafbaafdecff7dbbaadafcaf1f6e9faedecf6ebe6baacdebaadafbaafdedbf6ececfaedebfeebf6f0f1baadafcbf6ebf3fabaacdebaadafbaafdedbfaf9faf1ecfabaadafdbfeebfabaadafb7f0edbaadaffae7effafcebfafbb6baacdebaadafbaafdebaafded6baadaffcfef1baadafecfaf1fbbaacdebaafdebaaaddbaadafbaaadbbaadafdebaadafeff7e6ecf6fcfef3baadaffcf0efe6baafdebaaaddbaadafbaaadbbaadafdebaadaffbf6f8f6ebfef3baadafcfdbd9baafdebaafdecbf7fef1f4ecbe" class="dissertation-cta">
                     <i data-lucide="send"></i>
                     Contribute Your Thesis
                 </a>
                 <p class="dissertation-alt">
-                    Or email us directly at <a href="mailto:msp-alumni@maastrichtuniversity.nl">msp-alumni@maastrichtuniversity.nl</a>
+                    Or email us directly at <a href="/cdn-cgi/l/email-protection#4a27393a672b263f2724230a272b2b393e382329223e3f24233c2f3839233e33642426"><span class="__cf_email__" data-cfemail="325f41421f535e475f5c5b725f53534146405b515a46475c5b445740415b464b1c5c5e">[email&#160;protected]</span></a>
                 </p>
             </div>
         </div>
@@ -1087,7 +1262,7 @@
                 <h2 class="section-title">Doing a PhD? Let Us Know!</h2>
                 <p class="section-subtitle">Help us track MSP's research pipeline. Whether you've just started or are about to defend, we'd love to hear about your doctoral journey.</p>
             </div>
-            <a href="mailto:msp-alumni@maastrichtuniversity.nl?subject=MSP%20PhD%20Update&body=Hi%2C%0A%0AI'm%20doing%20a%20PhD%20and%20wanted%20to%20share%20my%20info%3A%0A%0AName%3A%20%0AMSP%20Graduation%20year%3A%20%0APhD%20University%3A%20%0APhD%20Field%2FTopic%3A%20%0AExpected%20completion%20(or%20completed)%3A%20%0A%0AThanks!" style="display: inline-flex; align-items: center; gap: 10px; background: var(--um-dark-blue); color: white; padding: 16px 32px; border-radius: 100px; font-weight: 600; transition: all 0.3s;">
+            <a href="/cdn-cgi/l/email-protection#9cf1efecb1fdf0e9f1f2f5dcf1fdfdefe8eef5fff4e8e9f2f5eaf9eeeff5e8e5b2f2f0a3efe9fef6f9ffe8a1d1cfccb9aeacccf4d8b9aeacc9ecf8fde8f9bafef3f8e5a1d4f5b9aedfb9acddb9acddd5bbf1b9aeacf8f3f5f2fbb9aeacfdb9aeacccf4d8b9aeacfdf2f8b9aeacebfdf2e8f9f8b9aeace8f3b9aeaceff4fdeef9b9aeacf1e5b9aeacf5f2faf3b9afddb9acddb9acddd2fdf1f9b9afddb9aeacb9acddd1cfccb9aeacdbeefdf8e9fde8f5f3f2b9aeace5f9fdeeb9afddb9aeacb9acddccf4d8b9aeacc9f2f5eaf9eeeff5e8e5b9afddb9aeacb9acddccf4d8b9aeacdaf5f9f0f8b9aedac8f3ecf5ffb9afddb9aeacb9acddd9e4ecf9ffe8f9f8b9aeacfff3f1ecf0f9e8f5f3f2b9aeacb4f3eeb9aeacfff3f1ecf0f9e8f9f8b5b9afddb9aeacb9acddb9acddc8f4fdf2f7efbd" style="display: inline-flex; align-items: center; gap: 10px; background: var(--um-dark-blue); color: white; padding: 16px 32px; border-radius: 100px; font-weight: 600; transition: all 0.3s;">
                 <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
                 Update Your PhD Info
             </a>
@@ -1133,17 +1308,163 @@
         });
         
         // ==========================================
-        // DNA HELIX ANIMATION
+        // NEURAL NETWORK CANVAS
         // ==========================================
-        const dnaContainer = document.getElementById('dnaContainer');
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = `dna-particle ${i % 2 === 0 ? 'blue' : 'orange'}`;
-            particle.style.top = `${i * 5}%`;
-            particle.style.left = '50%';
-            particle.style.animationDelay = `${i * 0.3}s`;
-            dnaContainer.appendChild(particle);
+        const canvas = document.getElementById('neuralCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Particles for neural network
+        const particles = [];
+        const particleCount = 80;
+        const connectionDistance = 150;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.7 ? 'rgba(232, 78, 16, 0.6)' : 'rgba(0, 162, 219, 0.6)';
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                
+                // Glow effect
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+        
+        // Initialize particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.3;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 162, 219, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawConnections();
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animateNetwork);
+        }
+        
+        animateNetwork();
+        
+        // ==========================================
+        // FLOATING SCIENTIFIC FORMULAS
+        // ==========================================
+        const formulas = [
+            'E = mc²', 'ΔG = ΔH - TΔS', '∇²ψ + (2m/ℏ²)(E-V)ψ = 0',
+            'PV = nRT', 'F = ma', '∂ψ/∂t = -iℏ⁻¹Hψ', 'λ = h/p',
+            'S = k ln W', 'dS ≥ δQ/T', 'ΔE·Δt ≥ ℏ/2', 'H = Σpᵢqᵢ - L',
+            '∮E·dl = -dΦ/dt', 'DNA → RNA → Protein', 'ATP → ADP + Pᵢ',
+            'Km = (k₋₁ + k₂)/k₁', 'pH = -log[H⁺]', 'ΔG° = -RT ln K',
+            'd[P]/dt = k[S]', 'v = Vmax[S]/(Km+[S])', 'k = Ae^(-Ea/RT)'
+        ];
+        
+        const formulasContainer = document.getElementById('formulasContainer');
+        
+        function createFormula() {
+            const formula = document.createElement('div');
+            formula.className = `formula ${Math.random() > 0.5 ? 'orange' : ''}`;
+            formula.textContent = formulas[Math.floor(Math.random() * formulas.length)];
+            formula.style.left = `${Math.random() * 90}%`;
+            formula.style.fontSize = `${Math.random() * 8 + 12}px`;
+            formula.style.animationDuration = `${Math.random() * 20 + 25}s`;
+            formula.style.animationDelay = `${Math.random() * -30}s`;
+            formulasContainer.appendChild(formula);
+            
+            // Remove after animation
+            setTimeout(() => formula.remove(), 50000);
+        }
+        
+        // Create initial formulas
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => createFormula(), i * 2000);
+        }
+        
+        // Keep creating formulas
+        setInterval(createFormula, 4000);
+        
+        // ==========================================
+        // DNA DOUBLE HELIX
+        // ==========================================
+        const dnaHelix = document.getElementById('dnaHelix');
+        const basePairs = 25;
+        
+        for (let i = 0; i < basePairs; i++) {
+            const pair = document.createElement('div');
+            pair.className = 'dna-base-pair';
+            pair.style.top = `${(i / basePairs) * 100}%`;
+            
+            const waveOffset = Math.sin(i * 0.5) * 25;
+            pair.innerHTML = `
+                <div class="dna-node left" style="--wave-offset: ${waveOffset}px; animation-delay: ${i * 0.15}s"></div>
+                <div class="dna-bond"></div>
+                <div class="dna-node right" style="--wave-offset: ${-waveOffset}px; animation-delay: ${i * 0.15}s"></div>
+            `;
+            dnaHelix.appendChild(pair);
+        }
+        
+        // ==========================================
+        // PUBLICATION STREAM
+        // ==========================================
+        const publications = [
+            'Nature • Cell • Science • PNAS • Neuron • The Lancet • NEJM • Cell Reports • eLife • EMBO Journal • ',
+            'Molecular Cell • Current Biology • Nature Communications • Science Advances • PLoS Biology • ',
+            'Journal of Biological Chemistry • Nucleic Acids Research • Genome Research • Nature Methods • ',
+            'Annual Review of Biochemistry • Trends in Neurosciences • Nature Neuroscience • Brain • '
+        ];
+        
+        const publicationText = document.getElementById('publicationText');
+        publicationText.textContent = publications.join('').repeat(3);
         
         // ==========================================
         // PhD DATA
@@ -1265,30 +1586,3 @@
                     <div class="institution-name">${inst.name}</div>
                     <div class="institution-count"><strong>${inst.count}</strong> PhD alumni</div>
                 </div>
-                <img src="https://flagcdn.com/w40/${inst.code}.png" alt="" class="institution-flag">
-            `;
-            institutionsGrid.appendChild(card);
-        });
-        lucide.createIcons();
-        
-        // ==========================================
-        // POPULATE TIMELINE
-        // ==========================================
-        const timelineChart = document.getElementById('timelineChart');
-        const maxCount = Math.max(...phdData.timeline.map(d => d.count));
-        
-        phdData.timeline.forEach(item => {
-            const height = (item.count / maxCount) * 200;
-            const bar = document.createElement('div');
-            bar.className = 'timeline-bar';
-            bar.innerHTML = `
-                <div class="timeline-bar-fill" style="height: ${height}px">
-                    <div class="timeline-bar-count">${item.count}</div>
-                </div>
-                <div class="timeline-bar-year">${item.year}</div>
-            `;
-            timelineChart.appendChild(bar);
-        });
-    </script>
-</body>
-</html>

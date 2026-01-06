@@ -1586,3 +1586,30 @@
                     <div class="institution-name">${inst.name}</div>
                     <div class="institution-count"><strong>${inst.count}</strong> PhD alumni</div>
                 </div>
+                                <img src="https://flagcdn.com/w40/${inst.code}.png" alt="" class="institution-flag">
+            `;
+            institutionsGrid.appendChild(card);
+        });
+        lucide.createIcons();
+        
+        // ==========================================
+        // POPULATE TIMELINE
+        // ==========================================
+        const timelineChart = document.getElementById('timelineChart');
+        const maxCount = Math.max(...phdData.timeline.map(d => d.count));
+        
+        phdData.timeline.forEach(item => {
+            const height = (item.count / maxCount) * 200;
+            const bar = document.createElement('div');
+            bar.className = 'timeline-bar';
+            bar.innerHTML = `
+                <div class="timeline-bar-fill" style="height: ${height}px">
+                    <div class="timeline-bar-count">${item.count}</div>
+                </div>
+                <div class="timeline-bar-year">${item.year}</div>
+            `;
+            timelineChart.appendChild(bar);
+        });
+    </script>
+</body>
+</html>

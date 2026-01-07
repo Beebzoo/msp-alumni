@@ -561,7 +561,7 @@
                     <div class="phd-detail-card">
                         <div class="phd-detail-icon"><i data-lucide="microscope"></i></div>
                         <div class="phd-detail-title">204 in Academia</div>
-                        <div class="phd-detail-text">Including PhD candidates, postdocs, research positions, and faculty membersÃ¢â‚¬â€15.4% of all alumni have chosen academic careers.</div>
+                        <div class="phd-detail-text">Including PhD candidates, postdocs, research positions, and faculty members—15.4% of all alumni have chosen academic careers.</div>
                     </div>
                     <div class="phd-detail-card">
                         <div class="phd-detail-icon"><i data-lucide="trending-up"></i></div>
@@ -577,7 +577,7 @@
     <!-- FIELD TO CAREER PATHWAYS -->
     <section class="pathways-section">
         <div class="section-header">
-            <div class="section-label">Study Ã¢â€ â€™ Career</div>
+            <div class="section-label">Study → Career</div>
             <h2 class="section-title">From Field to Future</h2>
             <p class="section-subtitle">See how different scientific specializations translate into career paths</p>
         </div>
@@ -810,10 +810,25 @@
         // NOTABLE EMPLOYERS
         const employersGrid = document.getElementById('employersGrid');
         const employerCategories = data.notableEmployers.categories;
+        
+        // Icon mapping for employer categories
+        const employerIcons = {
+            'Research Institutes': 'flask-conical',
+            'Consulting': 'briefcase',
+            'Tech & Engineering': 'cpu',
+            'Pharma & Healthcare': 'heart-pulse',
+            'Finance': 'landmark',
+            'Energy': 'zap',
+            'Government': 'building-2',
+            'Education': 'graduation-cap',
+            'Startups': 'rocket',
+            'default': 'building'
+        };
+        
         employersGrid.innerHTML = employerCategories.map(cat => `
             <div class="employer-category">
                 <div class="employer-cat-icon">
-                    <i data-lucide="${cat.icon}"></i>
+                    <i data-lucide="${employerIcons[cat.name] || cat.icon || employerIcons['default']}"></i>
                 </div>
                 <div class="employer-cat-title">${cat.name}</div>
                 <div class="employer-list">

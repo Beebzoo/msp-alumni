@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Considering MSP? | Where Will Science Take You?</title>
-    <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
     <meta name="description" content="See where MSP graduates go - from Oxford to ETH Zurich, from research labs to startups. Real outcomes from 1,321 alumni.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -312,10 +311,16 @@
         .cta-btn i { width: 20px; height: 20px; }
         
         /* Footer */
-        footer { background: var(--um-darker-blue); padding: 30px 50px; text-align: center; }
-        .footer-text { color: rgba(255,255,255,0.5); font-size: 13px; }
-        .footer-text a { color: rgba(255,255,255,0.7); margin-left: 20px; }
-        .footer-text a:hover { color: var(--um-orange); }
+        footer { background: var(--um-darker-blue); color: white; padding: 60px 50px 30px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
+        .footer-brand p { color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 16px; line-height: 1.7; }
+        .footer-links h4 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: rgba(255,255,255,0.5); }
+        .footer-links a { display: block; color: rgba(255,255,255,0.8); font-size: 14px; padding: 6px 0; transition: all var(--transition-fast); }
+        .footer-links a:hover { color: var(--um-orange); padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+        .footer-bottom a { color: rgba(255,255,255,0.6); }
+        .footer-bottom a:hover { color: var(--um-orange); }
         
         /* Responsive */
         @media (max-width: 1200px) {
@@ -345,6 +350,8 @@
             .um-link-card.featured { grid-column: span 1; }
             .planet-giant { width: 400px; height: 400px; top: -15%; right: -20%; }
             .planet-saturn-wrapper { width: 300px; height: 200px; left: -5%; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -644,7 +651,7 @@
         </div>
         <div class="growth-container">
             <div class="growth-stat">
-                <div class="growth-number" id="growthFactor">3.9Ãƒâ€”</div>
+                <div class="growth-number" id="growthFactor">3.9×</div>
                 <div class="growth-label">Growth Since 2014</div>
                 <div class="growth-years">
                     <div class="growth-year">
@@ -677,8 +684,36 @@
     </section>
 
     <footer>
-        <div class="footer-text">
-            Ã‚Â© 2025 MSP Alumni Network Ã‚Â· <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a> Ã‚Â· <a href="privacy.html">Privacy Policy</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 16px;">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
+                    <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
+                </a>
+                <p>Connecting 1,321 MSP graduates across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="phd-alumni.html">PhD Alumni</a>
+                <a href="community.html">Community</a>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="community.html">Join Community</a>
+                <a href="resources.html">Resources</a>
+                <a href="considering-msp.html">Considering MSP?</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Maastricht Science Programme Alumni Network</p>
+            <p>Part of <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a></p>
         </div>
     </footer>
 

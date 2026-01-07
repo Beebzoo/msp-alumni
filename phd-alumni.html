@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhD Alumni | MSP Alumni Network</title>
-    <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
     <meta name="description" content="141 MSP alumni are pursuing or have completed PhDs at world-leading institutions. Explore our research community and academic impact.">
     
     <!-- Fonts -->
@@ -948,44 +947,44 @@
             background: linear-gradient(90deg, transparent, rgba(0,162,219,0.3), transparent);
             margin-bottom: 60px;
         }
-        .footer-main {
+        .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 60px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .footer-brand p {
             font-size: 14px;
             color: rgba(255,255,255,0.6);
-            margin-top: 15px;
+            margin-top: 16px;
             line-height: 1.7;
         }
-        .footer-section h4 {
-            font-size: 12px;
-            font-weight: 700;
-            color: rgba(255,255,255,0.4);
+        .footer-links h4 {
+            font-size: 13px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
         }
-        .footer-section a {
+        .footer-links a {
             display: block;
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            padding: 8px 0;
+            color: rgba(255,255,255,0.8);
+            padding: 6px 0;
             transition: all var(--transition-fast);
         }
-        .footer-section a:hover {
-            color: white;
-            transform: translateX(4px);
+        .footer-links a:hover {
+            color: var(--um-orange);
+            padding-left: 4px;
         }
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -997,7 +996,7 @@
             color: rgba(255,255,255,0.4);
         }
         .footer-bottom a {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.6);
         }
         .footer-bottom a:hover { color: var(--um-orange); }
         
@@ -1014,7 +1013,7 @@
             .section-title { font-size: 28px; }
             .countries-section, .institutions-section, .pipeline-section, .dissertation-section { padding: 60px 20px; }
             .timeline-section { padding: 60px 20px; }
-            .footer-main { grid-template-columns: 1fr; gap: 40px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
             .dissertation-card { padding: 40px 24px; }
             .dissertation-title { font-size: 28px; }
             .pipeline-flow { flex-direction: column; }
@@ -1274,27 +1273,36 @@
          FOOTER
     ========================================== -->
     <footer>
-        <div class="footer-main">
+        <div class="footer-content">
             <div class="footer-brand">
-                <h3 style="font-size: 18px; margin-bottom: 5px;">MSP Alumni Network</h3>
-                <p>Connecting 1,321 graduates from the Maastricht Science Programme across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+                <a href="index.html" class="logo" style="margin-bottom: 16px;">
+                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
+                    <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
+                </a>
+                <p>Connecting 1,321 MSP graduates across 87 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
-            <div class="footer-section">
+            <div class="footer-links">
                 <h4>Explore</h4>
                 <a href="index.html">Home</a>
                 <a href="destinations.html">Destinations</a>
                 <a href="phd-alumni.html">PhD Alumni</a>
                 <a href="community.html">Community</a>
             </div>
-            <div class="footer-section">
+            <div class="footer-links">
                 <h4>Connect</h4>
+                <a href="community.html">Join Community</a>
+                <a href="resources.html">Resources</a>
                 <a href="considering-msp.html">Considering MSP?</a>
-                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
                 <a href="privacy.html">Privacy Policy</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Â© 2025 MSP Alumni Network Â· Maastricht University</p>
+            <p>&copy; 2025 Maastricht Science Programme Alumni Network</p>
+            <p>Part of <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a></p>
         </div>
     </footer>
 

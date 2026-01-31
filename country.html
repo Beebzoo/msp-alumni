@@ -515,65 +515,6 @@
             font-weight: 700;
         }
         
-        /* Alumni Journey Section */
-        .journey-section {
-            margin-bottom: 30px;
-        }
-        
-        .journey-card {
-            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #001530 100%);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            color: white;
-        }
-        
-        .journey-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .journey-title i {
-            color: var(--um-orange);
-        }
-        
-        .journey-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        
-        .journey-stat {
-            text-align: center;
-            padding: 24px;
-            background: rgba(255,255,255,0.05);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        
-        .journey-stat-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-        
-        .journey-stat-number {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--um-orange);
-            margin-bottom: 4px;
-        }
-        
-        .journey-stat-label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
         /* Map Section */
         .map-section {
             margin-bottom: 30px;
@@ -698,7 +639,6 @@
             .hero-country-name { font-size: 42px; }
             main { padding: 40px 24px; }
             .content-grid { grid-template-columns: 1fr; }
-            .journey-stats { grid-template-columns: repeat(2, 1fr); }
         }
         
         @media (max-width: 600px) {
@@ -706,7 +646,6 @@
             .hero-alumni-number { font-size: 36px; }
             .country-facts { grid-template-columns: 1fr; }
             .universities-grid { grid-template-columns: 1fr; }
-            .journey-stats { grid-template-columns: 1fr; }
             #countryMap { height: 300px; }
         }
     </style>
@@ -765,15 +704,6 @@
             <div class="card">
                 <h3 class="card-title"><i data-lucide="graduation-cap"></i> Master's Universities</h3>
                 <div class="universities-grid" id="universitiesGrid"></div>
-            </div>
-        </div>
-        
-        <div class="journey-section">
-            <div class="journey-card">
-                <h3 class="journey-title"><i data-lucide="trending-up"></i> Alumni Journey</h3>
-                <div class="journey-stats" id="journeyStats">
-                    <!-- Populated by JS -->
-                </div>
             </div>
         </div>
         
@@ -842,7 +772,7 @@
             'Glasgow': [55.8642, -4.2518], 'Birmingham': [52.4862, -1.8904],
             // Belgium
             'Brussels': [50.8503, 4.3517], 'Leuven': [50.8798, 4.7005], 'Antwerp': [51.2194, 4.4025],
-            'Ghent': [51.0543, 3.7174], 'LiÃƒÂ¨ge': [50.6326, 5.5797],
+            'Ghent': [51.0543, 3.7174], 'LiÃƒÆ’Ã‚Â¨ge': [50.6326, 5.5797],
             // Sweden
             'Stockholm': [59.3293, 18.0686], 'Uppsala': [59.8586, 17.6389], 'Lund': [55.7047, 13.1910],
             'Gothenburg': [57.7089, 11.9746],
@@ -869,8 +799,8 @@
             'Melbourne': [-37.8136, 144.9631], 'Oslo': [59.9139, 10.7522], 'Athens': [37.9838, 23.7275], 
             'Warsaw': [52.2297, 21.0122], 'Tokyo': [35.6762, 139.6503], 'Singapore': [1.3521, 103.8198],
             'Nairobi': [-1.2921, 36.8219], 'Cape Town': [-33.9249, 18.4241], 'Santiago': [-33.4489, -70.6693],
-            'Lima': [-12.0464, -77.0428], 'BogotÃƒÂ¡': [4.7110, -74.0721], 'Quito': [-0.1807, -78.4678],
-            'San JosÃƒÂ©': [9.9281, -84.0907], 'Kingston': [18.0179, -76.8099]
+            'Lima': [-12.0464, -77.0428], 'BogotÃƒÆ’Ã‚Â¡': [4.7110, -74.0721], 'Quito': [-0.1807, -78.4678],
+            'San JosÃƒÆ’Ã‚Â©': [9.9281, -84.0907], 'Kingston': [18.0179, -76.8099]
         };
         
         // Get country code from URL
@@ -972,35 +902,6 @@
                             <div class="university-name">${uni.name}</div>
                             <div class="university-count"><strong>${uni.count}</strong> alumni</div>
                         </div>
-                    </div>
-                `;
-            });
-            
-            // Journey stats
-            const journeyStats = document.getElementById('journeyStats');
-            const totalCities = countryData.cities ? countryData.cities.length : 0;
-            const totalNats = countryData.nationalities ? countryData.nationalities.length : 0;
-            const totalUnis = countryData.universities ? countryData.universities.length : 0;
-            
-            const yearCounts = countryData.graduationYears || {};
-            const years = Object.keys(yearCounts);
-            const latestYear = years.length > 0 ? Math.max(...years.map(Number)) : 2025;
-            const growthRate = years.length > 1 ? 
-                Math.round(((yearCounts[latestYear] || 0) - (yearCounts[latestYear - 1] || 0)) / (yearCounts[latestYear - 1] || 1) * 100) : 0;
-            
-            const journeyData = [
-                { emoji: '', number: totalCities, label: 'Cities' },
-                { emoji: '', number: totalNats, label: 'Nationalities' },
-                { emoji: '', number: totalUnis, label: 'Universities' },
-                { emoji: '', number: `${growthRate > 0 ? '+' : ''}${growthRate}%`, label: 'YoY Growth' }
-            ];
-            
-            journeyData.forEach(stat => {
-                journeyStats.innerHTML += `
-                    <div class="journey-stat">
-                        <div class="journey-stat-icon">${stat.emoji}</div>
-                        <div class="journey-stat-number">${stat.number}</div>
-                        <div class="journey-stat-label">${stat.label}</div>
                     </div>
                 `;
             });

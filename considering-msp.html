@@ -161,40 +161,34 @@
         .um-link-card.featured:hover .um-link-arrow { color: white; }
         .um-link-arrow i { width: 20px; height: 20px; }
         
-        /* Career Paths Section - Interactive Network Visualization */
+        /* Career Paths Section - Clean Flow Grid */
         .careers-section { background: white; padding: 60px 50px 100px; }
         .careers-intro { max-width: 800px; margin: 0 auto 60px; text-align: center; }
         .careers-intro-text { font-size: 18px; color: var(--um-gray-600); line-height: 1.8; }
         
-        /* Interactive Career Network */
-        .careers-network { max-width: 1400px; margin: 0 auto; position: relative; min-height: 700px; }
-        .career-central-hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 20px 60px rgba(0,28,61,0.3), 0 0 0 20px rgba(0,28,61,0.05), 0 0 0 40px rgba(0,28,61,0.03); z-index: 10; }
-        .career-central-logo { width: 80px; height: 80px; margin-bottom: 8px; filter: brightness(0) invert(1); }
-        .career-central-text { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: white; text-align: center; line-height: 1.2; }
+        .careers-flow { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 40px; }
+        .career-central-hub { flex-shrink: 0; width: 200px; height: 200px; background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 20px 60px rgba(0,28,61,0.3); position: relative; }
+        .career-central-hub::before { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent); }
+        .career-central-logo { width: 90px; height: 90px; margin-bottom: 8px; filter: brightness(0) invert(1); position: relative; z-index: 1; }
+        .career-central-text { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: white; text-align: center; line-height: 1.2; position: relative; z-index: 1; }
         
-        /* Career Node Orbits */
-        .career-node { position: absolute; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .career-node-inner { background: white; border: 3px solid var(--node-color); border-radius: var(--radius-xl); padding: 24px 20px; text-align: center; box-shadow: var(--shadow-md); transition: all 0.3s ease; width: 160px; }
-        .career-node:hover .career-node-inner { transform: scale(1.15); box-shadow: 0 12px 40px rgba(0,0,0,0.15); z-index: 100; border-width: 4px; }
-        .career-node.connected .career-node-inner { transform: scale(1.08); opacity: 1; }
-        .career-node.dimmed .career-node-inner { opacity: 0.3; transform: scale(0.95); }
-        .career-icon { width: 60px; height: 60px; background: var(--node-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; transition: all 0.3s ease; }
-        .career-node:hover .career-icon { transform: rotate(360deg) scale(1.1); }
-        .career-icon i { width: 28px; height: 28px; color: white; }
-        .career-name { font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--um-dark-blue); margin-bottom: 8px; line-height: 1.3; min-height: 32px; }
-        .career-count { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--node-color); line-height: 1; }
-        .career-percent { font-size: 12px; color: var(--um-gray-500); margin-top: 4px; font-weight: 600; }
+        .careers-grid { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .career-card { background: white; border: 2px solid var(--card-color); border-radius: var(--radius-lg); padding: 24px 20px; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .career-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--card-color); }
+        .career-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); border-width: 3px; }
+        .career-icon { width: 56px; height: 56px; background: var(--card-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; transition: all 0.3s ease; }
+        .career-card:hover .career-icon { transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .career-icon i { width: 26px; height: 26px; color: white; }
+        .career-name { font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--um-dark-blue); margin-bottom: 10px; line-height: 1.3; min-height: 34px; display: flex; align-items: center; justify-content: center; }
+        .career-count { font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--card-color); line-height: 1; }
+        .career-percent { font-size: 13px; color: var(--um-gray-500); margin-top: 4px; font-weight: 600; }
         
-        /* Connection Lines */
-        .career-connections { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .career-connection-line { position: absolute; height: 2px; background: linear-gradient(90deg, var(--line-color) 0%, transparent 100%); transform-origin: left center; opacity: 0; transition: opacity 0.3s ease; }
-        .career-node:hover ~ .career-connections .career-connection-line { opacity: 0.2; }
-        
-        /* Responsive adjustments */
         @media (max-width: 1200px) {
-            .careers-network { min-height: 600px; }
-            .career-node-inner { width: 140px; padding: 20px 16px; }
-            .career-central-hub { width: 150px; height: 150px; }
+            .careers-flow { flex-direction: column; gap: 50px; }
+            .careers-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .careers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
         }
         
         /* PhD Pipeline Section */
@@ -226,43 +220,42 @@
         .phd-institution:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
         .phd-institution i { width: 16px; height: 16px; color: var(--um-orange); }
         
-        /* Field to Career Pathways - Interactive Expanding Cards */
+        /* Field to Career Pathways - Clean Interactive Cards */
         .pathways-section { background: var(--um-gray-50); padding: 100px 50px; }
-        .pathways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1300px; margin: 0 auto; }
-        .pathway-card { background: white; border-radius: var(--radius-xl); padding: 0; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); border: 2px solid var(--um-gray-200); position: relative; overflow: hidden; cursor: pointer; height: 400px; }
-        .pathway-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--pathway-color, var(--um-light-blue)); transition: height 0.3s ease; }
-        .pathway-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.12); transform: translateY(-10px) scale(1.02); border-color: var(--pathway-color); }
-        .pathway-card:hover::before { height: 100%; opacity: 0.05; }
-        .pathway-card.expanded { grid-column: span 3; height: auto; }
+        .pathways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1300px; margin: 0 auto; }
+        .pathway-card { background: white; border-radius: var(--radius-xl); transition: all 0.3s ease; border: 2px solid transparent; position: relative; overflow: hidden; }
+        .pathway-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--pathway-color, var(--um-light-blue)); }
+        .pathway-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.12); transform: translateY(-8px); border-color: var(--pathway-color); }
         
-        .pathway-header { padding: 32px 32px 24px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid var(--um-gray-200); transition: all 0.3s ease; }
-        .pathway-card:hover .pathway-header { border-bottom-color: var(--pathway-color); }
-        .pathway-icon { width: 64px; height: 64px; background: var(--pathway-color, var(--um-light-blue)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; }
-        .pathway-card:hover .pathway-icon { transform: rotate(5deg) scale(1.1); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .pathway-header { padding: 32px; border-bottom: 1px solid var(--um-gray-200); display: flex; align-items: center; gap: 20px; }
+        .pathway-icon { width: 64px; height: 64px; background: var(--pathway-color, var(--um-light-blue)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; }
+        .pathway-card:hover .pathway-icon { transform: rotate(-5deg) scale(1.05); }
         .pathway-icon i { width: 32px; height: 32px; color: white; }
         .pathway-header-text { flex: 1; }
         .pathway-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--um-dark-blue); line-height: 1.3; margin-bottom: 6px; }
         .pathway-count { font-size: 14px; color: var(--um-gray-500); font-weight: 500; }
         
         .pathway-content { padding: 24px 32px 32px; }
-        .pathway-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
-        .pathway-stat-box { background: var(--um-gray-50); border-radius: var(--radius-md); padding: 16px; text-align: center; transition: all 0.3s ease; }
-        .pathway-card:hover .pathway-stat-box { background: white; box-shadow: var(--shadow-sm); }
+        .pathway-stats { display: flex; gap: 16px; margin-bottom: 24px; }
+        .pathway-stat-box { flex: 1; background: var(--um-gray-50); border-radius: var(--radius-md); padding: 16px; text-align: center; transition: all 0.3s ease; }
+        .pathway-card:hover .pathway-stat-box { background: rgba(0,0,0,0.02); }
         .pathway-stat-number { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--pathway-color); line-height: 1; }
         .pathway-stat-label { font-size: 11px; color: var(--um-gray-600); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; font-weight: 600; }
         
         .pathway-careers { display: flex; flex-direction: column; gap: 10px; }
-        .pathway-career-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--um-gray-50); border-radius: var(--radius-sm); transition: all 0.3s ease; border: 1px solid transparent; }
-        .pathway-card:hover .pathway-career-item { background: white; border-color: var(--um-gray-200); }
-        .pathway-career-item:hover { background: var(--pathway-color) !important; transform: translateX(6px); border-color: var(--pathway-color) !important; }
-        .pathway-career-item:hover .pathway-career-name { color: white; }
+        .pathway-career-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--um-gray-50); border-radius: var(--radius-sm); transition: all 0.3s ease; }
+        .pathway-career-item:hover { background: var(--pathway-color); transform: translateX(4px); }
+        .pathway-career-item:hover .pathway-career-name,
         .pathway-career-item:hover .pathway-career-count { color: white; }
         .pathway-career-name { font-size: 14px; color: var(--um-gray-700); font-weight: 600; transition: color 0.3s ease; }
         .pathway-career-count { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--pathway-color); transition: color 0.3s ease; }
         
-        .pathway-visual-indicator { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--pathway-color); opacity: 0.1; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
-        .pathway-card:hover .pathway-visual-indicator { opacity: 0.2; transform: scale(1.2); }
-        .pathway-visual-indicator i { width: 20px; height: 20px; color: var(--pathway-color); }
+        @media (max-width: 1024px) {
+            .pathways-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .pathways-grid { grid-template-columns: 1fr; }
+        }
         
         /* Notable Employers */
         .employers-section { background: white; padding: 100px 50px; }
@@ -551,12 +544,12 @@
                 MSP's interdisciplinary approach prepares graduates for careers that don't fit traditional boxes. Whether you're drawn to fundamental research, innovative technology, or solving global challenges, our alumni are proof that a science foundation opens doors everywhere.
             </p>
         </div>
-        <div class="careers-network">
+        <div class="careers-flow">
             <div class="career-central-hub">
                 <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="career-central-logo">
                 <div class="career-central-text">MSP<br>Alumni</div>
             </div>
-            <div id="careersNetwork"></div>
+            <div class="careers-grid" id="careersGrid"></div>
         </div>
     </section>
 
@@ -782,57 +775,20 @@
             </div>
         `;
         
-        // CAREER SECTORS - INTERACTIVE NETWORK VISUALIZATION
-        const careersNetwork = document.getElementById('careersNetwork');
-        const careerSectors = data.careerSectors.slice(0, 12); // Top 12 sectors for better layout
+        // CAREER SECTORS - CLEAN GRID LAYOUT
+        const careersGrid = document.getElementById('careersGrid');
+        const careerSectors = data.careerSectors.slice(0, 12); // Top 12 sectors
         
-        // Calculate positions in orbital layout around central hub
-        const centerX = 50; // percentage
-        const centerY = 50; // percentage
-        const orbitRadiusX = 38; // horizontal radius
-        const orbitRadiusY = 32; // vertical radius
-        
-        careersNetwork.innerHTML = careerSectors.map((sector, index) => {
-            const angle = (index / careerSectors.length) * 2 * Math.PI - Math.PI / 2; // Start from top
-            const x = centerX + orbitRadiusX * Math.cos(angle);
-            const y = centerY + orbitRadiusY * Math.sin(angle);
-            
-            return `
-                <div class="career-node" 
-                     style="--node-color: ${sector.color}; left: ${x}%; top: ${y}%;" 
-                     data-sector="${index}"
-                     onmouseenter="highlightSector(${index})"
-                     onmouseleave="resetSectors()">
-                    <div class="career-node-inner">
-                        <div class="career-icon">
-                            <i data-lucide="${sector.icon}"></i>
-                        </div>
-                        <div class="career-name">${sector.name}</div>
-                        <div class="career-count">${sector.count}</div>
-                        <div class="career-percent">${sector.percent}%</div>
-                    </div>
+        careersGrid.innerHTML = careerSectors.map(sector => `
+            <div class="career-card" style="--card-color: ${sector.color}">
+                <div class="career-icon">
+                    <i data-lucide="${sector.icon}"></i>
                 </div>
-            `;
-        }).join('');
-        
-        // Add interaction functions
-        window.highlightSector = function(index) {
-            const nodes = document.querySelectorAll('.career-node');
-            nodes.forEach((node, i) => {
-                if (i === index) {
-                    node.classList.add('connected');
-                } else {
-                    node.classList.add('dimmed');
-                }
-            });
-        };
-        
-        window.resetSectors = function() {
-            const nodes = document.querySelectorAll('.career-node');
-            nodes.forEach(node => {
-                node.classList.remove('connected', 'dimmed');
-            });
-        };
+                <div class="career-name">${sector.name}</div>
+                <div class="career-count">${sector.count}</div>
+                <div class="career-percent">${sector.percent}%</div>
+            </div>
+        `).join('');
         
         // PHD INSTITUTIONS
         const phdInstitutions = document.getElementById('phdInstitutions');
@@ -844,19 +800,18 @@
             </div>
         `).join('');
         
-        // FIELD TO CAREER PATHWAYS - INTERACTIVE CARDS
+        // FIELD TO CAREER PATHWAYS - SIMPLIFIED
         const pathwaysGrid = document.getElementById('pathwaysGrid');
         const pathways = data.fieldToCareer;
         pathwaysGrid.innerHTML = pathways.map(pathway => {
-            // Calculate top PhD count from careers
-            const phdCount = pathway.topCareers.find(c => c.name === 'PhD Candidates')?.count || 
-                           pathway.topCareers.filter(c => c.name.includes('PhD') || c.name.includes('Research')).reduce((sum, c) => sum + c.count, 0);
+            // Get top career and research count
+            const topCareer = pathway.topCareers[0];
+            const researchCount = pathway.topCareers
+                .filter(c => c.name.includes('PhD') || c.name.includes('Research') || c.name.includes('Postdoc'))
+                .reduce((sum, c) => sum + c.count, 0);
             
             return `
                 <div class="pathway-card" style="--pathway-color: ${pathway.color}">
-                    <div class="pathway-visual-indicator">
-                        <i data-lucide="trending-up"></i>
-                    </div>
                     <div class="pathway-header">
                         <div class="pathway-icon">
                             <i data-lucide="${pathway.icon}"></i>
@@ -869,12 +824,12 @@
                     <div class="pathway-content">
                         <div class="pathway-stats">
                             <div class="pathway-stat-box">
-                                <div class="pathway-stat-number">${pathway.topCareers[0]?.count || 0}</div>
+                                <div class="pathway-stat-number">${topCareer?.count || 0}</div>
                                 <div class="pathway-stat-label">Top Career</div>
                             </div>
                             <div class="pathway-stat-box">
-                                <div class="pathway-stat-number">${phdCount || 0}</div>
-                                <div class="pathway-stat-label">In Research</div>
+                                <div class="pathway-stat-number">${researchCount}</div>
+                                <div class="pathway-stat-label">Research</div>
                             </div>
                         </div>
                         <div class="pathway-careers">

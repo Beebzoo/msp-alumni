@@ -421,17 +421,17 @@
             letter-spacing: -0.03em;
             line-height: 1.05;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .hero h2 span {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #ff6b35 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--um-orange);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .hero-subtitle {
@@ -1600,136 +1600,6 @@
         }
         
         /* Nationality Diversity Section - Creative Globe Design */
-        .nationality-section {
-            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #000d1a 50%, #001530 100%);
-            color: white;
-            padding: 100px 50px;
-            position: relative;
-        }
-        
-        .nationality-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 80%, rgba(0,162,219,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(232,78,16,0.08) 0%, transparent 50%);
-        }
-        
-        .nationality-section .section-label {
-            color: var(--um-orange);
-        }
-        
-        .nationality-section .section-label::before,
-        .nationality-section .section-label::after {
-            background: linear-gradient(90deg, transparent, var(--um-orange));
-        }
-        
-        .nationality-section .section-label::after {
-            background: linear-gradient(90deg, var(--um-orange), transparent);
-        }
-        
-        .nationality-section .section-title {
-            color: white;
-        }
-        
-        .nationality-section .section-subtitle {
-            color: rgba(255,255,255,0.6);
-        }
-        
-        /* Simple Stats Grid */
-        .nationality-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1000px;
-            margin: 50px auto 0;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .nationality-stat-card {
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: var(--radius-xl);
-            padding: 40px 30px;
-            text-align: center;
-            transition: all var(--transition-smooth);
-        }
-        
-        .nationality-stat-card:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .nationality-stat-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-        
-        .nationality-stat-card:nth-child(2) .nationality-stat-icon {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
-        }
-        
-        .nationality-stat-card:nth-child(3) .nationality-stat-icon {
-            background: linear-gradient(135deg, var(--um-light-blue) 0%, #0082b3 100%);
-        }
-        
-        .nationality-stat-card:nth-child(4) .nationality-stat-icon {
-            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
-        }
-        
-        .nationality-stat-icon i {
-            width: 28px;
-            height: 28px;
-            color: white;
-        }
-        
-        .nationality-stat-number {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            font-weight: 700;
-            color: white;
-            line-height: 1;
-            margin-bottom: 12px;
-        }
-        
-        .nationality-stat-label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-            flex-shrink: 0;
-        }
-        
-        .wave-flag:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-        
-        /* Hide old nationality styles */
-        .nationality-mosaic {
-            display: none;
-        }
-        
-        .nationality-stats {
-            display: none;
-        }
         
         /* ============================================
            COMMUNITY SECTION
@@ -2669,47 +2539,6 @@
     </section>
     
     <!-- Nationality Diversity Section -->
-    <section class="nationality-section section">
-        <div class="section-header">
-            <div class="section-label">Global Diversity</div>
-            <h2 class="section-title">78 Nationalities, One Community</h2>
-            <p class="section-subtitle">
-                MSP brings together students from across the globe, creating a truly international academic community.
-            </p>
-        </div>
-        
-        <!-- Simple Stats Grid -->
-        <div class="nationality-stats-grid">
-            <div class="nationality-stat-card">
-                <div class="nationality-stat-icon">
-                    <i data-lucide="globe"></i>
-                </div>
-                <div class="nationality-stat-number">78</div>
-                <div class="nationality-stat-label">Nationalities</div>
-            </div>
-            <div class="nationality-stat-card">
-                <div class="nationality-stat-icon">
-                    <i data-lucide="map-pin"></i>
-                </div>
-                <div class="nationality-stat-number">56</div>
-                <div class="nationality-stat-label">Countries Now</div>
-            </div>
-            <div class="nationality-stat-card">
-                <div class="nationality-stat-icon">
-                    <i data-lucide="users"></i>
-                </div>
-                <div class="nationality-stat-number">335</div>
-                <div class="nationality-stat-label">WhatsApp Members</div>
-            </div>
-            <div class="nationality-stat-card">
-                <div class="nationality-stat-icon">
-                    <i data-lucide="graduation-cap"></i>
-                </div>
-                <div class="nationality-stat-number">248+</div>
-                <div class="nationality-stat-label">Universities</div>
-            </div>
-        </div>
-    </section>
     
     <!-- Footer -->
     <footer>
@@ -3079,7 +2908,7 @@
             if (country.count >= 50) {
                 fillColor = '#E84E10';
             } else if (country.count >= 10) {
-                fillColor = '#00A2DB';
+                fillColor = '#8B5CF6';
             }
             
             const marker = L.circleMarker(country.coords, {

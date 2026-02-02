@@ -1474,6 +1474,162 @@ const UNIVERSITY_INFO = {
         location: 'Paris, France',
         students: '900+'
     }
+,
+    // Universities 101-130 (sixth batch)
+    'Emlyon Business School': {
+        founded: 1872,
+        description: 'EMLYON Business School. Leading French business school (Grande École). Triple-crown accredited. Excellence in entrepreneurship and management. Strong international focus.',
+        website: 'https://www.em-lyon.com',
+        location: 'Lyon, France',
+        students: '9,000+'
+    },
+    'University of Bordeaux': {
+        founded: 1441,
+        description: 'Historic French university. Merged 2014 from multiple institutions. 6 Nobel laureates including François Mauriac. Excellence in sciences, law, and humanities.',
+        website: 'https://www.u-bordeaux.fr',
+        location: 'Bordeaux, France',
+        students: '56,000+'
+    },
+    'New Bulgarian University': {
+        founded: 1991,
+        description: 'Bulgaria\'s first private university. Excellence in humanities, arts, and social sciences. Strong international partnerships and modern approach to education.',
+        website: 'https://www.nbu.bg',
+        location: 'Sofia, Bulgaria',
+        students: '10,000+'
+    },
+    'ESCP': {
+        founded: 1819,
+        description: 'ESCP Business School. World\'s first business school. Multi-campus European business school across 6 cities. Triple-crown accredited. Excellence in management and international business.',
+        website: 'https://www.escp.eu',
+        location: 'Paris, France (multi-city)',
+        students: '7,500+'
+    },
+    'ISAE-SUPAERO': {
+        founded: 1909,
+        description: 'Institut Supérieur de l\'Aéronautique et de l\'Espace. France\'s leading aerospace engineering school (Grande École). Excellence in aeronautics, space, and defense engineering.',
+        website: 'https://www.isae-supaero.fr',
+        location: 'Toulouse, France',
+        students: '2,200+'
+    },
+    'American College of Greece': {
+        founded: 1875,
+        description: 'Greece\'s oldest American-accredited college. Deree College and Athens Graduate School of Management. Excellence in liberal arts and business. Strong US connections.',
+        website: 'https://www.acg.edu',
+        location: 'Athens, Greece',
+        students: '4,000+'
+    },
+    'University of Leicester': {
+        founded: 1921,
+        description: 'Major research university. Discovered genetic fingerprinting here. Excellence in space science, archaeology, and medicine. Member of University Alliance.',
+        website: 'https://www.le.ac.uk',
+        location: 'Leicester, United Kingdom',
+        students: '24,000+'
+    },
+    'Tel Aviv University': {
+        founded: 1956,
+        description: 'Israel\'s largest university. Excellence in sciences, humanities, and arts. World-leading research output. Strong innovation and startup culture.',
+        website: 'https://www.tau.ac.il',
+        location: 'Tel Aviv, Israel',
+        students: '30,000+'
+    },
+    'Heriot-Watt University': {
+        founded: 1821,
+        description: 'Scotland\'s first mechanics institute, became university 1966. Excellence in engineering, business, and sciences. Campuses in Edinburgh, Dubai, and Malaysia.',
+        website: 'https://www.hw.ac.uk',
+        location: 'Edinburgh, United Kingdom',
+        students: '30,000+'
+    },
+    'University of Kent': {
+        founded: 1965,
+        description: 'UK\'s European university with campuses in Canterbury and abroad. Excellence in humanities, sciences, and social sciences. Strong European focus and partnerships.',
+        website: 'https://www.kent.ac.uk',
+        location: 'Canterbury, United Kingdom',
+        students: '18,000+'
+    },
+    'Technological University Dublin': {
+        founded: 2019,
+        description: 'Ireland\'s first technological university. Formed by merger of three Dublin institutes. Excellence in engineering, technology, business, and sciences.',
+        website: 'https://www.tudublin.ie',
+        location: 'Dublin, Ireland',
+        students: '28,000+'
+    },
+    'Universite de Namur': {
+        founded: 1831,
+        description: 'University of Namur. Belgian university with Jesuit tradition. Excellence in sciences, law, economics, and humanities. Strong research focus.',
+        website: 'https://www.unamur.be',
+        location: 'Namur, Belgium',
+        students: '7,000+'
+    },
+    'Centrale Nantes': {
+        founded: 1919,
+        description: 'École Centrale de Nantes. French engineering school (Grande École). Excellence in engineering, technology, and industrial sciences. Strong industry partnerships.',
+        website: 'https://www.ec-nantes.fr',
+        location: 'Nantes, France',
+        students: '2,700+'
+    },
+    'Universite Bourgogne Franche-Comte': {
+        founded: 2015,
+        description: 'University of Burgundy-Franche-Comté. Major French research university formed by merger. Excellence in sciences, humanities, health, and engineering.',
+        website: 'https://www.ubfc.fr',
+        location: 'Besançon, France',
+        students: '58,000+'
+    },
+    'University of Lisbon': {
+        founded: 1911,
+        description: 'Portugal\'s largest university. Formed 2013 by merger. Excellence across all disciplines. Strong research tradition and international orientation.',
+        website: 'https://www.ulisboa.pt',
+        location: 'Lisbon, Portugal',
+        students: '50,000+'
+    },
+    'University of St Andrews': {
+        founded: 1413,
+        description: 'Scotland\'s first university and third-oldest in English-speaking world. Excellence in humanities, sciences, and international relations. 6 Nobel laureates.',
+        website: 'https://www.st-andrews.ac.uk',
+        location: 'St Andrews, United Kingdom',
+        students: '10,000+'
+    },
+    'University of Warwick': {
+        founded: 1965,
+        description: 'Young research university with rapid rise to prominence. Russell Group member. Excellence in business, economics, sciences, and engineering.',
+        website: 'https://www.warwick.ac.uk',
+        location: 'Coventry, United Kingdom',
+        students: '29,000+'
+    },
+    'Harvard University': {
+        founded: 1636,
+        description: 'Oldest institution of higher learning in United States. Ivy League. 161 Nobel laureates, 8 US presidents. Consistently ranked world\'s #1 university.',
+        website: 'https://www.harvard.edu',
+        location: 'Cambridge, Massachusetts, USA',
+        students: '23,000+'
+    },
+    'Illinois Institute of Technology': {
+        founded: 1890,
+        description: 'Private research university in Chicago. Excellence in engineering, architecture, and technology. Mies van der Rohe designed campus buildings.',
+        website: 'https://www.iit.edu',
+        location: 'Chicago, Illinois, USA',
+        students: '6,500+'
+    },
+    'University of Rome Tor Vergata': {
+        founded: 1982,
+        description: 'Young Italian research university. Named after Vergata district. Excellence in sciences, engineering, economics, and medicine. Strong research output.',
+        website: 'https://www.uniroma2.it',
+        location: 'Rome, Italy',
+        students: '39,000+'
+    },
+    'Regent\'s University London': {
+        founded: 1984,
+        description: 'Private university in London\'s Regent\'s Park. Excellence in business, arts, and psychology. Strong international focus with diverse student body.',
+        website: 'https://www.regents.ac.uk',
+        location: 'London, United Kingdom',
+        students: '7,000+'
+    },
+    'University of Ulm': {
+        founded: 1967,
+        description: 'Young German research university. Excellence in medicine, sciences, engineering, and mathematics. Strong focus on interdisciplinary research and innovation.',
+        website: 'https://www.uni-ulm.de',
+        location: 'Ulm, Germany',
+        students: '10,000+'
+    }
 };
 
 // Backward compatibility

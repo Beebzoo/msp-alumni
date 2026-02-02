@@ -1346,6 +1346,134 @@ const UNIVERSITY_INFO = {
         location: 'Frankfurt, Germany',
         students: '44,000+'
     }
+,
+    // Universities 71-100 (fifth batch - final expansion)
+    'Universitat Politecnica de Catalunya': {
+        founded: 1971,
+        description: 'BarcelonaTech (UPC). Leading technical university in Catalonia. Excellence in engineering, architecture, and technology. Strong research tradition and innovation culture.',
+        website: 'https://www.upc.edu',
+        location: 'Barcelona, Spain',
+        students: '30,000+'
+    },
+    'Universitat Autonoma de Barcelona': {
+        founded: 1968,
+        description: 'Autonomous University of Barcelona (UAB). Excellence in humanities, sciences, and health sciences. Highly ranked research university with strong international profile.',
+        website: 'https://www.uab.cat',
+        location: 'Barcelona, Spain',
+        students: '40,000+'
+    },
+    'University of Szeged': {
+        founded: 1872,
+        description: 'Hungary\'s second-largest university. Nobel laureate Albert Szent-Györgyi (Vitamin C discoverer) taught here. Excellence in medicine and sciences.',
+        website: 'https://u-szeged.hu',
+        location: 'Szeged, Hungary',
+        students: '21,000+'
+    },
+    'Bocconi University': {
+        founded: 1902,
+        description: 'Italy\'s leading business and economics university. Private research university. Excellence in economics, management, finance, and law. Top European business school.',
+        website: 'https://www.unibocconi.eu',
+        location: 'Milan, Italy',
+        students: '15,000+'
+    },
+    'Universite Claude Bernard Lyon 1': {
+        founded: 1896,
+        description: 'Major French research university. Excellence in sciences, technology, health, and sports. Largest university in Lyon. Strong research tradition.',
+        website: 'https://www.univ-lyon1.fr',
+        location: 'Lyon, France',
+        students: '47,000+'
+    },
+    'University of Regensburg': {
+        founded: 1962,
+        description: 'Young Bavarian university with strong research focus. Excellence in medicine, law, economics, and sciences. Modern campus with international orientation.',
+        website: 'https://www.uni-regensburg.de',
+        location: 'Regensburg, Germany',
+        students: '21,000+'
+    },
+    'University of Geneva': {
+        founded: 1559,
+        description: 'One of world\'s oldest universities. Founded by John Calvin during Reformation. Excellence in international law, physics, and life sciences. 8 Nobel laureates.',
+        website: 'https://www.unige.ch',
+        location: 'Geneva, Switzerland',
+        students: '17,000+'
+    },
+    'Royal Veterinary College': {
+        founded: 1791,
+        description: 'UK\'s first and largest veterinary school. Independent college of University of London. World-leading in veterinary sciences and research.',
+        website: 'https://www.rvc.ac.uk',
+        location: 'London, United Kingdom',
+        students: '1,500+'
+    },
+    'Keck Graduate Institute': {
+        founded: 1997,
+        description: 'Applied life sciences graduate university. Member of Claremont Colleges. Focus on biosciences, pharmaceuticals, and healthcare. Industry-focused education.',
+        website: 'https://www.kgi.edu',
+        location: 'Claremont, California, USA',
+        students: '500+'
+    },
+    'LMU Munich': {
+        founded: 1472,
+        description: 'Ludwig-Maximilians-Universität. One of Europe\'s premier universities. Germany\'s second-oldest university. 43 Nobel laureates. Excellence in humanities, sciences, law, and medicine.',
+        website: 'https://www.lmu.de',
+        location: 'Munich, Germany',
+        students: '52,000+'
+    },
+    'University of Bonn': {
+        founded: 1818,
+        description: 'Rheinische Friedrich-Wilhelms-Universität. Prestigious research university. 8 Nobel laureates including Max Planck. Excellence in mathematics, physics, and economics.',
+        website: 'https://www.uni-bonn.de',
+        location: 'Bonn, Germany',
+        students: '35,000+'
+    },
+    'Institut Polytechnique de Paris': {
+        founded: 2019,
+        description: 'Merger of five prestigious French engineering schools including École Polytechnique. Excellence in engineering and technology. Rapid rise in global rankings.',
+        website: 'https://www.ip-paris.fr',
+        location: 'Palaiseau, France',
+        students: '8,000+'
+    },
+    'Medical University of Warsaw': {
+        founded: 1809,
+        description: 'Poland\'s largest medical school. Oldest medical faculty in Poland. Excellence in medicine, pharmacy, and health sciences. Strong research tradition.',
+        website: 'https://www.wum.edu.pl',
+        location: 'Warsaw, Poland',
+        students: '8,000+'
+    },
+    'Universidad Miguel Hernandez de Elche': {
+        founded: 1997,
+        description: 'Young Spanish university. Excellence in health sciences, experimental sciences, and social sciences. Strong innovation and research culture.',
+        website: 'https://www.umh.es',
+        location: 'Elche, Spain',
+        students: '16,000+'
+    },
+    'Universite de Lausanne': {
+        founded: 1537,
+        description: 'Historic Swiss university. Founded as theological academy, became university 1890. Excellence in life sciences, geosciences, and humanities. Strong research tradition.',
+        website: 'https://www.unil.ch',
+        location: 'Lausanne, Switzerland',
+        students: '15,000+'
+    },
+    'City University of Hong Kong': {
+        founded: 1984,
+        description: 'Young research university. Rapid rise in global rankings. Excellence in engineering, business, sciences, and law. Strong international orientation.',
+        website: 'https://www.cityu.edu.hk',
+        location: 'Hong Kong',
+        students: '20,000+'
+    },
+    'Florida International University': {
+        founded: 1965,
+        description: 'Major public research university. One of largest universities in USA by enrollment. Excellence in international business, hospitality, and engineering.',
+        website: 'https://www.fiu.edu',
+        location: 'Miami, Florida, USA',
+        students: '58,000+'
+    },
+    'Chimie ParisTech': {
+        founded: 1896,
+        description: 'École Nationale Supérieure de Chimie de Paris. Member of PSL University. Elite French engineering school (Grande École). Excellence in chemistry and chemical engineering.',
+        website: 'https://www.chimieparistech.psl.eu',
+        location: 'Paris, France',
+        students: '900+'
+    }
 };
 
 // Backward compatibility

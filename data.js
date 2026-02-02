@@ -935,6 +935,76 @@ const UNIVERSITY_INFO = {
         website: 'https://www.imperial.ac.uk',
         location: 'London, United Kingdom',
         students: '20,000+'
+    },
+    'Delft University of Technology': {
+        founded: 1842,
+        description: 'Oldest and largest technical university in the Netherlands. Top 5 globally for engineering, architecture and civil engineering. Known for innovation and design thinking.',
+        website: 'https://www.tudelft.nl',
+        location: 'Delft, Netherlands',
+        students: '26,000+'
+    },
+    'Vrije Universiteit Amsterdam': {
+        founded: 1880,
+        description: 'Founded as first independent research university in Netherlands. Means \'Free University\' - free from state and church. Strong focus on societal impact and sustainability.',
+        website: 'https://www.vu.nl',
+        location: 'Amsterdam, Netherlands',
+        students: '26,000+'
+    },
+    'Lund University': {
+        founded: 1666,
+        description: 'One of northern Europe\'s oldest and most prestigious universities. Top-ranked Scandinavian university with 8 Nobel laureates. Excellence in research and innovation.',
+        website: 'https://www.lu.se',
+        location: 'Lund, Sweden',
+        students: '47,000+'
+    },
+    'University of Copenhagen': {
+        founded: 1479,
+        description: 'Oldest university in Denmark and one of oldest in Northern Europe. Top-ranked Nordic university. Strong research tradition across all disciplines.',
+        website: 'https://www.ku.dk',
+        location: 'Copenhagen, Denmark',
+        students: '37,000+'
+    },
+    'University College London': {
+        founded: 1826,
+        description: 'London\'s leading multidisciplinary university. First in England to admit students regardless of religion. Member of the \'Golden Triangle\' of UK universities.',
+        website: 'https://www.ucl.ac.uk',
+        location: 'London, United Kingdom',
+        students: '50,000+'
+    },
+    'Karolinska Institutet': {
+        founded: 1810,
+        description: 'Sweden\'s largest medical university. Selects Nobel laureates in Physiology or Medicine. World-leading medical research institution.',
+        website: 'https://www.ki.se',
+        location: 'Stockholm, Sweden',
+        students: '7,500+'
+    },
+    'ETH Zurich': {
+        founded: 1855,
+        description: 'Swiss Federal Institute of Technology. Consistently ranked among world\'s top 10 universities. 21 Nobel laureates including Albert Einstein. Excellence in science and technology.',
+        website: 'https://ethz.ch',
+        location: 'Zurich, Switzerland',
+        students: '24,000+'
+    },
+    'Eindhoven University of Technology': {
+        founded: 1956,
+        description: 'Young technical university focused on engineering and technology. Strong industry partnerships. Known for design, innovation and entrepreneurship.',
+        website: 'https://www.tue.nl',
+        location: 'Eindhoven, Netherlands',
+        students: '14,000+'
+    },
+    'Stockholm University': {
+        founded: 1878,
+        description: 'Major Swedish public research university. One of largest in Scandinavia. Excellence in sciences and humanities with strong international profile.',
+        website: 'https://www.su.se',
+        location: 'Stockholm, Sweden',
+        students: '33,000+'
+    },
+    'University of Cambridge': {
+        founded: 1209,
+        description: 'Second-oldest university in English-speaking world. Collegiate university with 121 Nobel laureates. World-leading research across all disciplines.',
+        website: 'https://www.cam.ac.uk',
+        location: 'Cambridge, United Kingdom',
+        students: '25,000+'
     }
 };
 

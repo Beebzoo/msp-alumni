@@ -165,6 +165,7 @@
         .uni-card:hover { border-color: var(--um-light-blue); transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); }
         .uni-card.prestige { border-color: rgba(232,78,16,0.3); background: linear-gradient(135deg, rgba(232,78,16,0.02) 0%, white 100%); }
         .uni-card.prestige:hover { border-color: var(--um-orange); box-shadow: 0 12px 40px rgba(232,78,16,0.2); }
+        .hidden { display: none !important; }
         .uni-card.hidden { display: none; }
         .uni-card-badge { position: absolute; top: 12px; right: 12px; background: var(--um-orange); color: white; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; }
         .uni-logo { width: 100px; height: 100px; border-radius: var(--radius-md); background: var(--um-gray-50); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; padding: 16px; transition: all var(--transition-smooth); }
@@ -1004,13 +1005,13 @@
             const restPreviewGrid = document.getElementById('grid-rest-preview');
             const restFullGrid = document.getElementById('grid-rest-full');
             
-            // Show first 50
-            restUnis.slice(0, 50).forEach(uni => {
+            // Show first 15
+            restUnis.slice(0, 15).forEach(uni => {
                 restPreviewGrid.appendChild(createUniCard(uni, false));
             });
             
             // Remaining in hidden grid
-            restUnis.slice(50).forEach(uni => {
+            restUnis.slice(15).forEach(uni => {
                 restFullGrid.appendChild(createUniCard(uni, false));
             });
             
@@ -1018,11 +1019,11 @@
             
             // Update expand button text
             const restExpandBtn = document.getElementById('expand-rest');
-            restExpandBtn.querySelector('span').textContent = restUnis.length > 50 
+            restExpandBtn.querySelector('span').textContent = restUnis.length > 15 
                 ? `Show all ${restUnis.length} universities` 
                 : 'All universities shown';
             
-            if (restUnis.length <= 50) {
+            if (restUnis.length <= 15) {
                 restExpandBtn.style.display = 'none';
             }
             

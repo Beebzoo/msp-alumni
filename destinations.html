@@ -271,6 +271,64 @@
             .footer-content { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
+            
+        /* University Directory Table */
+        .university-directory { max-width: 1400px; margin: 60px auto 0; background: white; border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-md); }
+        .directory-header h3 { font-size: 28px; font-weight: 700; color: var(--um-dark-blue); margin-bottom: 8px; }
+        .directory-header p { font-size: 16px; color: var(--um-gray-600); margin-bottom: 30px; }
+        .directory-controls { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+        .search-box-table { display: flex; align-items: center; gap: 10px; background: var(--um-gray-50); border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); padding: 12px 20px; flex: 1; min-width: 250px; transition: all var(--transition-smooth); }
+        .search-box-table:focus-within { border-color: var(--um-light-blue); background: white; box-shadow: 0 0 0 4px rgba(0,162,219,0.1); }
+        .search-box-table i { width: 20px; height: 20px; color: var(--um-gray-500); }
+        .search-box-table input { border: none; outline: none; font-size: 15px; font-family: var(--font-body); width: 100%; background: transparent; }
+        .sort-controls { display: flex; align-items: center; gap: 12px; }
+        .sort-controls label { font-size: 14px; font-weight: 600; color: var(--um-gray-600); white-space: nowrap; }
+        .sort-controls select { padding: 10px 16px; border: 2px solid var(--um-gray-200); border-radius: var(--radius-md); font-size: 14px; font-family: var(--font-body); color: var(--um-dark-blue); background: white; cursor: pointer; transition: all var(--transition-smooth); }
+        .sort-controls select:hover { border-color: var(--um-light-blue); }
+        .sort-controls select:focus { outline: none; border-color: var(--um-light-blue); box-shadow: 0 0 0 4px rgba(0,162,219,0.1); }
+        
+        .university-table-container { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--um-gray-200); }
+        .university-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        .university-table thead { background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002850 100%); color: white; }
+        .university-table th { padding: 16px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .university-table th.rank-col { width: 60px; text-align: center; }
+        .university-table th.name-col { min-width: 300px; }
+        .university-table th.country-col { width: 180px; }
+        .university-table th.alumni-col { width: 100px; text-align: right; }
+        .university-table th.percent-col { width: 80px; text-align: right; }
+        .university-table tbody tr { border-bottom: 1px solid var(--um-gray-100); transition: all var(--transition-fast); cursor: pointer; }
+        .university-table tbody tr:hover { background: var(--um-gray-50); transform: scale(1.01); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .university-table tbody tr.featured-row { background: linear-gradient(90deg, rgba(232,78,16,0.03) 0%, rgba(255,255,255,0) 100%); font-weight: 500; }
+        .university-table tbody tr.featured-row:hover { background: linear-gradient(90deg, rgba(232,78,16,0.06) 0%, var(--um-gray-50) 100%); }
+        .university-table td { padding: 16px; }
+        .rank-cell { text-align: center; font-weight: 600; color: var(--um-gray-500); font-size: 14px; }
+        .name-cell { font-weight: 500; color: var(--um-dark-blue); display: flex; align-items: center; gap: 12px; }
+        .name-cell-featured { color: var(--um-orange); }
+        .country-cell { color: var(--um-gray-600); display: flex; align-items: center; gap: 8px; }
+        .country-flag-small { width: 24px; height: 16px; border-radius: 3px; object-fit: cover; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .alumni-cell { text-align: right; font-weight: 700; color: var(--um-orange); font-size: 16px; }
+        .percent-cell { text-align: right; color: var(--um-gray-500); font-size: 14px; }
+        .featured-badge-table { background: var(--um-orange); color: white; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .table-info { margin-top: 20px; text-align: center; color: var(--um-gray-500); font-size: 14px; }
+        .featured-unis-container { max-width: 1400px; margin: 0 auto 60px; }
+        
+        @media (max-width: 1024px) {
+            .directory-controls { flex-direction: column; align-items: stretch; }
+            .search-box-table { min-width: 100%; }
+            .university-table th.name-col { min-width: 200px; }
+        }
+        
+        @media (max-width: 768px) {
+            .university-directory { padding: 24px 20px; border-radius: var(--radius-md); }
+            .university-table { font-size: 13px; }
+            .university-table th, .university-table td { padding: 12px 8px; }
+            .university-table th.rank-col { width: 40px; }
+            .university-table th.percent-col { display: none; }
+            .university-table td.percent-cell { display: none; }
+            .name-cell { font-size: 14px; }
+            .alumni-cell { font-size: 15px; }
+        }
+
     </style>
 </head>
 <body>
@@ -361,40 +419,59 @@
             <p class="section-subtitle">From world-leading institutions to specialized research centers, MSP graduates pursue excellence globally.</p>
         </div>
         
-        <div class="controls-bar">
-            <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" placeholder="Search universities..." id="search-input">
+        <!-- FEATURED UNIVERSITIES (10+ alumni) -->
+        <div class="featured-unis-container">
+            <div class="tier-header">
+                <div class="tier-badge"><i data-lucide="star"></i> Featured Universities</div>
+                <div class="tier-line"></div>
+                <div class="tier-count">Top destinations with 10+ MSP alumni</div>
             </div>
+            <div class="uni-grid" id="featured-grid"></div>
         </div>
         
-        <!-- World Top 10 -->
-        <div class="uni-tier" id="tier-prestige">
-            <div class="tier-header">
-                <div class="tier-badge"><i data-lucide="star"></i> World Top 10</div>
-                <div class="tier-line"></div>
-                <div class="tier-count">8 of the world's top 10 universities</div>
+        <!-- COMPLETE UNIVERSITY DIRECTORY -->
+        <div class="university-directory">
+            <div class="directory-header">
+                <h3>Complete University Directory</h3>
+                <p>All 233 universities where MSP alumni have pursued master's degrees</p>
             </div>
-            <div class="uni-grid" id="grid-prestige"></div>
-        </div>
-        
-        <!-- Top 5 Countries -->
-        <div id="country-tiers"></div>
-        
-        <!-- Rest Section -->
-        <div class="uni-tier" id="tier-rest">
-            <div class="tier-header">
-                <div class="tier-badge gray"><i data-lucide="globe"></i> International</div>
-                <div class="tier-line"></div>
-                <div class="tier-count" id="count-rest"></div>
+            
+            <div class="directory-controls">
+                <div class="search-box-table">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search universities..." id="table-search">
+                </div>
+                <div class="sort-controls">
+                    <label>Sort by:</label>
+                    <select id="sort-select">
+                        <option value="count-desc">Alumni Count (High to Low)</option>
+                        <option value="count-asc">Alumni Count (Low to High)</option>
+                        <option value="name-asc">University Name (A-Z)</option>
+                        <option value="name-desc">University Name (Z-A)</option>
+                        <option value="country-asc">Country (A-Z)</option>
+                    </select>
+                </div>
             </div>
-            <div class="uni-grid" id="grid-rest-preview"></div>
-            <div class="uni-grid hidden" id="grid-rest-full"></div>
-            <div style="text-align: center;">
-                <button class="expand-btn" id="expand-rest">
-                    <span>Show all universities</span>
-                    <i data-lucide="chevron-down"></i>
-                </button>
+            
+            <div class="university-table-container">
+                <table class="university-table" id="uni-table">
+                    <thead>
+                        <tr>
+                            <th class="rank-col">#</th>
+                            <th class="name-col">University</th>
+                            <th class="country-col">Country</th>
+                            <th class="alumni-col">Alumni</th>
+                            <th class="percent-col">%</th>
+                        </tr>
+                    </thead>
+                    <tbody id="uni-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-info">
+                <span id="table-showing">Showing 233 of 233 universities</span>
             </div>
         </div>
     </section>
@@ -520,315 +597,241 @@
         // Complete university list from Excel database (263 total)        // CORRECTED ALL_UNIVERSITIES ARRAY - From cleaned database Feb 2026
         // Total universities: 233
         const ALL_UNIVERSITIES = [
-            { name: "Maastricht University", country: "Netherlands", code: "nl", count: 143 },
-            { name: "Utrecht University", country: "Netherlands", code: "nl", count: 99 },
-            { name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 75 },
-            { name: "Leiden University", country: "Netherlands", code: "nl", count: 45 },
-            { name: "Wageningen University & Research", country: "Netherlands", code: "nl", count: 43 },
-            { name: "Radboud University", country: "Netherlands", code: "nl", count: 38 },
-            { name: "University of Groningen", country: "Netherlands", code: "nl", count: 25 },
-            { name: "KU Leuven", country: "Belgium", code: "be", count: 21 },
-            { name: "Delft University of Technology", country: "Netherlands", code: "nl", count: 20 },
-            { name: "Uppsala University", country: "Sweden", code: "se", count: 19 },
-            { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19 },
-            { name: "Vrije Universiteit Amsterdam", country: "Netherlands", code: "nl", count: 16 },
-            { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 14 },
-            { name: "Lund University", country: "Sweden", code: "se", count: 14 },
-            { name: "ETH Zurich", country: "Switzerland", code: "ch", count: 14 },
-            { name: "University College London", country: "United Kingdom", code: "gb", count: 14 },
-            { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 11 },
-            { name: "Technical University of Munich", country: "Germany", code: "de", count: 10 },
-            { name: "Stockholm University", country: "Sweden", code: "se", count: 9 },
-            { name: "Eindhoven University of Technology", country: "Netherlands", code: "nl", count: 9 },
-            { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8 },
-            { name: "Vrije Universiteit Brussel", country: "Belgium", code: "be", count: 7 },
-            { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7 },
-            { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7 },
-            { name: "Universita di Bologna", country: "Italy", code: "it", count: 6 },
-            { name: "Humboldt-Universitat zu Berlin", country: "Germany", code: "de", count: 5 },
-            { name: "Ecole Polytechnique", country: "France", code: "fr", count: 5 },
-            { name: "University of Birmingham", country: "United Kingdom", code: "gb", count: 5 },
-            { name: "University of Helsinki", country: "Finland", code: "fi", count: 5 },
-            { name: "Technical University of Denmark", country: "Denmark", code: "dk", count: 5 },
-            { name: "Université Libre de Bruxelles", country: "Belgium", code: "be", count: 4 },
-            { name: "Aalto University", country: "Finland", code: "fi", count: 4 },
-            { name: "University College Dublin", country: "Ireland", code: "ie", count: 4 },
-            { name: "Ghent University", country: "Belgium", code: "be", count: 4 },
-            { name: "University of Cologne", country: "Germany", code: "de", count: 4 },
-            { name: "Erasmus University Rotterdam", country: "Netherlands", code: "nl", count: 4 },
-            { name: "Universitat de Barcelona", country: "Spain", code: "es", count: 4 },
-            { name: "University of Vienna", country: "Austria", code: "at", count: 4 },
-            { name: "University of Antwerp", country: "Belgium", code: "be", count: 4 },
-            { name: "King\'s College London", country: "United Kingdom", code: "gb", count: 3 },
-            { name: "Universitat Pompeu Fabra", country: "Spain", code: "es", count: 3 },
-            { name: "University of Glasgow", country: "United Kingdom", code: "gb", count: 3 },
-            { name: "University of Twente", country: "Netherlands", code: "nl", count: 3 },
-            { name: "Universitat Autonoma de Barcelona", country: "Spain", code: "es", count: 3 },
-            { name: "University of Zurich", country: "Switzerland", code: "ch", count: 3 },
-            { name: "Copenhagen Business School", country: "Denmark", code: "dk", count: 3 },
-            { name: "KTH Royal Institute of Technology", country: "Sweden", code: "se", count: 3 },
-            { name: "Université Paris-Saclay", country: "France", code: "fr", count: 3 },
-            { name: "University of Gothenburg", country: "Sweden", code: "se", count: 2 },
-            { name: "Queen Mary University of London", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "Sorbonne University", country: "France", code: "fr", count: 2 },
-            { name: "Trinity College Dublin", country: "Ireland", code: "ie", count: 2 },
-            { name: "Norwegian University of Science and Technology", country: "Norway", code: "no", count: 2 },
-            { name: "University of Leeds", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "Università degli Studi di Ferrara", country: "Italy", code: "it", count: 2 },
-            { name: "James Cook University", country: "Australia", code: "au", count: 2 },
-            { name: "University of Aberdeen", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "University of Liege", country: "Belgium", code: "be", count: 2 },
-            { name: "Universitat Politècnica de Catalunya", country: "Spain", code: "es", count: 2 },
-            { name: "Bocconi University", country: "Italy", code: "it", count: 2 },
-            { name: "University of Manchester", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "Universidad Autónoma de Madrid", country: "Spain", code: "es", count: 2 },
-            { name: "École Polytechnique Fédérale de Lausanne", country: "Switzerland", code: "ch", count: 2 },
-            { name: "University of Salford", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "University of Bern", country: "Switzerland", code: "ch", count: 2 },
-            { name: "Weizmann Institute of Science", country: "Israel", code: "il", count: 2 },
-            { name: "Universita di Pavia", country: "Italy", code: "it", count: 2 },
-            { name: "University of Valencia", country: "Spain", code: "es", count: 2 },
-            { name: "Technische Universitat Wien", country: "Austria", code: "at", count: 2 },
-            { name: "University of Tubingen", country: "Germany", code: "de", count: 2 },
-            { name: "Charité - Universitätsmedizin Berlin", country: "Germany", code: "de", count: 2 },
-            { name: "University of Sheffield", country: "United Kingdom", code: "gb", count: 2 },
-            { name: "Goethe University Frankfurt", country: "Germany", code: "de", count: 2 },
-            { name: "UCL / Sorbonne Université", country: "London/Paris", code: "xx", count: 2 },
-            { name: "Université Claude Bernard Lyon 1", country: "France", code: "fr", count: 2 },
-            { name: "McGill University", country: "Canada", code: "ca", count: 2 },
-            { name: "Heidelberg University", country: "Germany", code: "de", count: 2 },
-            { name: "Szeged University", country: "Hungary", code: "hu", count: 2 },
-            { name: "University of Barcelona", country: "Spain", code: "es", count: 2 },
-            { name: "Pompeu Fabra University", country: "Spain", code: "es", count: 2 },
-            { name: "LMU Munich", country: "Germany", code: "de", count: 2 },
-            { name: "University of Nottingham", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of London", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Boğaziçi University", country: "Turkey", code: "tr", count: 1 },
-            { name: "University of East Anglia", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Universite de Picardie Jules Verne", country: "France", code: "fr", count: 1 },
-            { name: "University Politehnica of Bucharest", country: "Romania", code: "ro", count: 1 },
-            { name: "University of Exeter", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Cologne / University of Bonn", country: "Germany", code: "de", count: 1 },
-            { name: "The University of Edinburg / University of Capetown", country: "Scotland/South Africa", code: "xx", count: 1 },
-            { name: "Tel Aviv University", country: "Israel", code: "il", count: 1 },
-            { name: "University of Leicester", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of San Francisco", country: "United States", code: "us", count: 1 },
-            { name: "Heriot-Watt University", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "ESCP Europe", country: "France", code: "fr", count: 1 },
-            { name: "University of Kent", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Cambridge Judge Business School", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "ULM University", country: "Germany", code: "de", count: 1 },
-            { name: "Swiss Federal Technology Iinstitute of Lausanne", country: "Switzerland", code: "ch", count: 1 },
-            { name: "KTH Royal Institute of Technology / Grenoble INP", country: "France", code: "fr", count: 1 },
-            { name: "University of Applied Sciences Switzerland", country: "Switzerland", code: "ch", count: 1 },
-            { name: "University of Southern Denmark", country: "Denmark", code: "dk", count: 1 },
-            { name: "University of Regensburg", country: "Germany", code: "de", count: 1 },
-            { name: "University of Strasbourg / Utrecht University", country: "France", code: "fr", count: 1 },
-            { name: "Technological University Dublin", country: "Ireland", code: "ie", count: 1 },
-            { name: "University of Münster", country: "Germany", code: "de", count: 1 },
-            { name: "DTU / University of Copenhagen (Joint)", country: "Denmark", code: "dk", count: 1 },
-            { name: "Centrale Nantes", country: "France", code: "fr", count: 1 },
-            { name: "Université Bourgogne Franche-Comté", country: "France", code: "fr", count: 1 },
-            { name: "Regent\'s University London", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of St Andrews", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Warwick", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Universite de Namur", country: "Belgium", code: "be", count: 1 },
-            { name: "Illinois Institute of Technology", country: "United States", code: "us", count: 1 },
-            { name: "Harvard University", country: "United States", code: "us", count: 1 },
-            { name: "University of Bremen", country: "Germany", code: "de", count: 1 },
-            { name: "University of Luxembourg", country: "Luxembourg", code: "lu", count: 1 },
-            { name: "UCL / Brunel University", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Rome Tor Vergata", country: "Italy", code: "it", count: 1 },
-            { name: "University of Lisbon", country: "Portugal", code: "pt", count: 1 },
-            { name: "University of Toronto", country: "Canada", code: "ca", count: 1 },
-            { name: "University of Basel", country: "Switzerland", code: "ch", count: 1 },
-            { name: "University of KwaZulu-natal", country: "South Africa", code: "za", count: 1 },
-            { name: "University of British Columbia", country: "Canada", code: "ca", count: 1 },
-            { name: "Institute of Science and Technology Austria", country: "Austria", code: "at", count: 1 },
-            { name: "Universite Paul Sabatier Toulouse III", country: "France", code: "fr", count: 1 },
-            { name: "Pontificia Universidad Catolica de Chile", country: "Chile", code: "cl", count: 1 },
-            { name: "University of Hamburg", country: "Germany", code: "de", count: 1 },
-            { name: "Sapienza Università di Roma (ARCHMAT Erasmus Mundus)", country: "Italy / Greece / Portugal", code: "xx", count: 1 },
-            { name: "Università degli Studi di Genova", country: "Italy", code: "it", count: 1 },
-            { name: "Queen\'s University Belfast", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Mons", country: "Belgium", code: "be", count: 1 },
-            { name: "University of Portsmouth", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "ISF Istituto di Scienze Forensi", country: "Italy", code: "it", count: 1 },
-            { name: "TH Köln", country: "Germany", code: "de", count: 1 },
-            { name: "Conservatorium van Amsterdam", country: "Netherlands", code: "nl", count: 1 },
-            { name: "TU Dublin Computer Science", country: "Ireland", code: "ie", count: 1 },
-            { name: "University of Lincoln", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "NOVA IMS Information Management School", country: "Portugal", code: "pt", count: 1 },
-            { name: "National University of Singapore", country: "Singapore", code: "sg", count: 1 },
-            { name: "Universidad Complutense de Madrid", country: "Spain", code: "es", count: 1 },
-            { name: "Rotterdam Business School", country: "Netherlands", code: "nl", count: 1 },
-            { name: "Universita di Padova", country: "Italy", code: "it", count: 1 },
-            { name: "Linköping University", country: "Sweden", code: "se", count: 1 },
-            { name: "University of Nicosia Medical School", country: "Cyprus", code: "cy", count: 1 },
-            { name: "University of Athens", country: "Greece", code: "gr", count: 1 },
-            { name: "Sapienza Universita di Roma", country: "Italy", code: "it", count: 1 },
-            { name: "Universita Cattolica del Sacro Cuore", country: "Italy", code: "it", count: 1 },
-            { name: "Zhejiang University of Science and Technology", country: "China", code: "cn", count: 1 },
-            { name: "Tampere University", country: "Finland", code: "fi", count: 1 },
-            { name: "Sorbonne Universite", country: "France", code: "fr", count: 1 },
-            { name: "Universite Grenoble Alpes", country: "France", code: "fr", count: 1 },
-            { name: "University of Dusseldorf", country: "Germany", code: "de", count: 1 },
-            { name: "University of Bonn", country: "Germany", code: "de", count: 1 },
-            { name: "Copenhagen Business School / Utrecht University", country: "Denmark + Netherlands", code: "xx", count: 1 },
-            { name: "University of Lille / Leipzig University / Jagiellonian University", country: "France/Germany/Poland", code: "xx", count: 1 },
-            { name: "Vrije Universiteit Brussels (VUB)", country: "Belgium", code: "be", count: 1 },
-            { name: "Università degli Studi di Napoli Federico II", country: "Italy", code: "it", count: 1 },
-            { name: "Jagiellonian University", country: "Poland", code: "pl", count: 1 },
-            { name: "Lisbon School of Economics and Management", country: "Portugal", code: "pt", count: 1 },
-            { name: "Leiden University / Delft University of Technology", country: "Netherlands", code: "nl", count: 1 },
-            { name: "University of Maribor", country: "Slovenia", code: "si", count: 1 },
-            { name: "IE University", country: "Spain", code: "es", count: 1 },
-            { name: "University College London / Sorbonne University", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Universidad Pública de Navarra", country: "Spain", code: "es", count: 1 },
-            { name: "The University of West Indies, Mona", country: "Jamaica", code: "jm", count: 1 },
-            { name: "Okinawa Institute of Science and Technology", country: "Japan", code: "jp", count: 1 },
-            { name: "Malaysia University", country: "Malaysia", code: "my", count: 1 },
-            { name: "Università degli Studi dell\'Insubria", country: "Italy", code: "it", count: 1 },
-            { name: "University of California, Los Angeles", country: "United States", code: "us", count: 1 },
-            { name: "The Johns Hopkins University", country: "United States", code: "us", count: 1 },
-            { name: "Keck Graduate Institute", country: "United States", code: "us", count: 1 },
-            { name: "University of Gastronomic Sciences - Pollenzo / University of London", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Stockholm University / Universitatsmedizin Berlin", country: "Germany", code: "de", count: 1 },
-            { name: "Tilburg University", country: "Netherlands", code: "nl", count: 1 },
-            { name: "KTH Royal Institute of Technology / Technical University of Denmark", country: "Denmark", code: "dk", count: 1 },
-            { name: "Universitatsmedizin Berlin", country: "Germany", code: "de", count: 1 },
-            { name: "University of Norway", country: "Norway", code: "no", count: 1 },
-            { name: "University of Oslo", country: "Norway", code: "no", count: 1 },
-            { name: "University of Algarve", country: "Portugal", code: "pt", count: 1 },
-            { name: "London School of Hygiene and Tropical Medicine", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Lille", country: "France", code: "fr", count: 1 },
-            { name: "Technical University of Germany / Imperial College London", country: "Germany/United Kingdom", code: "xx", count: 1 },
-            { name: "University of Göttingen", country: "Germany", code: "de", count: 1 },
-            { name: "UCLouvain", country: "Belgium", code: "be", count: 1 },
-            { name: "Central European University", country: "Austria", code: "at", count: 1 },
-            { name: "Princeton University", country: "United States", code: "us", count: 1 },
-            { name: "Medical University of Vienna", country: "Austria", code: "at", count: 1 },
-            { name: "Vienna University of Technology", country: "Austria", code: "at", count: 1 },
-            { name: "Freidrich Alexander University Erlangen Nurnberg", country: "Germany", code: "de", count: 1 },
-            { name: "University of Milan", country: "Italy", code: "it", count: 1 },
-            { name: "Emlyon Business School", country: "France", code: "fr", count: 1 },
-            { name: "University of Bordeaux", country: "France", code: "fr", count: 1 },
-            { name: "Politecnico di Milano", country: "Italy", code: "it", count: 1 },
-            { name: "Kyoto University", country: "Japan", code: "jp", count: 1 },
-            { name: "City University of Hong Kong", country: "Hong Kong", code: "hk", count: 1 },
-            { name: "University of Bologna / Oslo / MCI (Erasmus Mundus)", country: "Bologna/Oslo/Innsbruck", code: "xx", count: 1 },
-            { name: "University of Worcester", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Boston University", country: "United States", code: "us", count: 1 },
-            { name: "London School of Economics and Political Science", country: "UK", code: "xx", count: 1 },
-            { name: "Norwegian University of Life Sciences", country: "Norway", code: "no", count: 1 },
-            { name: "Universiteit Utrecht", country: "Netherlands", code: "nl", count: 1 },
-            { name: "Leiden University / TU Delft", country: "Netherlands", code: "nl", count: 1 },
-            { name: "Chimie ParisTech - PSL", country: "France", code: "fr", count: 1 },
-            { name: "Florida International University", country: "USA", code: "xx", count: 1 },
-            { name: "Vrije Universiteit Brussel (TROPIMUNDO Erasmus Mundus)", country: "Belgium / Sri Lanka / Italy", code: "xx", count: 1 },
-            { name: "Medical University of Warsaw", country: "Poland", code: "pl", count: 1 },
-            { name: "Universidad Miguel Hernández de Elche", country: "Spain", code: "es", count: 1 },
-            { name: "Institut Polytechnique de Paris", country: "France", code: "fr", count: 1 },
-            { name: "University of Geneva", country: "Switzerland", code: "ch", count: 1 },
-            { name: "Royal Veterinary College", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Keck Graduate University", country: "United States", code: "us", count: 1 },
-            { name: "University of Ghent", country: "Belgium", code: "be", count: 1 },
-            { name: "Rheinische Friedrich-Wilhelms-Universität Bonn", country: "Germany", code: "de", count: 1 },
-            { name: "University of Heidelberg", country: "Germany", code: "de", count: 1 },
-            { name: "New Bulgarian University", country: "Bulgaria", code: "bg", count: 1 },
-            { name: "Université de Lausanne", country: "Switzerland", code: "ch", count: 1 },
-            { name: "ESCP Business School", country: "France", code: "fr", count: 1 },
-            { name: "ISAE-SUPAERO", country: "France", code: "fr", count: 1 },
-            { name: "American College of Greece", country: "Greece", code: "gr", count: 1 },
-            { name: "University of Bologna", country: "Italy", code: "it", count: 1 },
-            { name: "University of Pavia", country: "Italy", code: "it", count: 1 },
-            { name: "Nova University Lisbon", country: "Portugal", code: "pt", count: 1 },
-            { name: "University of Pretoria", country: "South Africa", code: "za", count: 1 },
-            { name: "Camilo José Cela University", country: "Spain", code: "es", count: 1 },
-            { name: "Eidgenössische Technische Hochschule", country: "Switzerland", code: "ch", count: 1 },
-            { name: "Bristol University", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "University of Bath", country: "United Kingdom", code: "gb", count: 1 },
-            { name: "Universidad Carlos III de Madrid", country: "Spain", code: "es", count: 1 },
-            { name: "École Normale Supérieure", country: "France", code: "fr", count: 1 },
-            { name: "Uppsala University / Ludwig-Maximilian University", country: "Mobility European Program: Uppsala (Sweden) and Munich (Germany)", code: "xx", count: 1 },
-            { name: "IQS Barcelona", country: "Spain", code: "es", count: 1 },
-            { name: "Erasmus University", country: "Netherlands", code: "nl", count: 1 },
-        ].map(uni => ({
-            ...uni,
-            prestige: PRESTIGE_UNIS.includes(uni.name)
-        }));
-
-
-        
-        // Destinations for map
-        const DESTINATIONS = [
-            // Netherlands
-            { name: "Amsterdam", country: "Netherlands", code: "nl", lat: 52.3676, lng: 4.9041, alumni: 152, unis: ["UvA", "VU Amsterdam"] },
-            { name: "Utrecht", country: "Netherlands", code: "nl", lat: 52.0907, lng: 5.1214, alumni: 92, unis: ["Utrecht University"] },
-            { name: "Leiden", country: "Netherlands", code: "nl", lat: 52.1601, lng: 4.4970, alumni: 41, unis: ["Leiden University"] },
-            { name: "Wageningen", country: "Netherlands", code: "nl", lat: 51.9692, lng: 5.6654, alumni: 37, unis: ["Wageningen University"] },
-            { name: "Nijmegen", country: "Netherlands", code: "nl", lat: 51.8126, lng: 5.8372, alumni: 36, unis: ["Radboud University"] },
-            { name: "Groningen", country: "Netherlands", code: "nl", lat: 53.2194, lng: 6.5665, alumni: 23, unis: ["University of Groningen"] },
-            { name: "Delft", country: "Netherlands", code: "nl", lat: 52.0116, lng: 4.3571, alumni: 17, unis: ["TU Delft"] },
-            { name: "Eindhoven", country: "Netherlands", code: "nl", lat: 51.4416, lng: 5.4697, alumni: 9, unis: ["TU Eindhoven"] },
-            
-            // UK
-            { name: "London", country: "United Kingdom", code: "gb", lat: 51.5074, lng: -0.1278, alumni: 48, unis: ["Imperial", "UCL", "King's"] },
-            { name: "Cambridge", country: "United Kingdom", code: "gb", lat: 52.2053, lng: 0.1218, alumni: 8, unis: ["University of Cambridge"] },
-            { name: "Oxford", country: "United Kingdom", code: "gb", lat: 51.7520, lng: -1.2577, alumni: 6, unis: ["University of Oxford"] },
-            { name: "Edinburgh", country: "United Kingdom", code: "gb", lat: 55.9533, lng: -3.1883, alumni: 7, unis: ["University of Edinburgh"] },
-            
-            // Sweden
-            { name: "Stockholm", country: "Sweden", code: "se", lat: 59.3293, lng: 18.0686, alumni: 22, unis: ["Stockholm University", "KTH", "Karolinska"] },
-            { name: "Uppsala", country: "Sweden", code: "se", lat: 59.8586, lng: 17.6389, alumni: 18, unis: ["Uppsala University"] },
-            { name: "Lund", country: "Sweden", code: "se", lat: 55.7047, lng: 13.1910, alumni: 10, unis: ["Lund University"] },
-            
-            // Germany
-            { name: "Munich", country: "Germany", code: "de", lat: 48.1351, lng: 11.5820, alumni: 11, unis: ["TU Munich", "LMU Munich"] },
-            { name: "Berlin", country: "Germany", code: "de", lat: 52.5200, lng: 13.4050, alumni: 8, unis: ["Humboldt", "FU Berlin"] },
-            { name: "Heidelberg", country: "Germany", code: "de", lat: 49.3988, lng: 8.6724, alumni: 5, unis: ["Heidelberg University"] },
-            
-            // Belgium
-            { name: "Leuven", country: "Belgium", code: "be", lat: 50.8798, lng: 4.7005, alumni: 21, unis: ["KU Leuven"] },
-            { name: "Ghent", country: "Belgium", code: "be", lat: 51.0543, lng: 3.7174, alumni: 8, unis: ["Ghent University"] },
-            { name: "Brussels", country: "Belgium", code: "be", lat: 50.8503, lng: 4.3517, alumni: 6, unis: ["ULB", "VUB"] },
-            
-            // Switzerland
-            { name: "ZÃ¼rich", country: "Switzerland", code: "ch", lat: 47.3769, lng: 8.5417, alumni: 18, unis: ["ETH ZÃ¼rich", "UZH"] },
-            { name: "Lausanne", country: "Switzerland", code: "ch", lat: 46.5197, lng: 6.6323, alumni: 6, unis: ["EPFL"] },
-            
-            // Denmark
-            { name: "Copenhagen", country: "Denmark", code: "dk", lat: 55.6761, lng: 12.5683, alumni: 21, unis: ["University of Copenhagen", "DTU"] },
-            
-            // France
-            { name: "Paris", country: "France", code: "fr", lat: 48.8566, lng: 2.3522, alumni: 18, unis: ["Sorbonne", "ENS", "Sciences Po"] },
-            
-            // Other European
-            { name: "Vienna", country: "Austria", code: "at", lat: 48.2082, lng: 16.3738, alumni: 5, unis: ["University of Vienna"] },
-            { name: "Helsinki", country: "Finland", code: "fi", lat: 60.1699, lng: 24.9384, alumni: 4, unis: ["University of Helsinki"] },
-            { name: "Dublin", country: "Ireland", code: "ie", lat: 53.3498, lng: -6.2603, alumni: 4, unis: ["Trinity College Dublin"] },
-            { name: "Barcelona", country: "Spain", code: "es", lat: 41.3851, lng: 2.1734, alumni: 6, unis: ["University of Barcelona"] },
-            { name: "Oslo", country: "Norway", code: "no", lat: 59.9139, lng: 10.7522, alumni: 3, unis: ["University of Oslo"] },
-            { name: "Rome", country: "Italy", code: "it", lat: 41.9028, lng: 12.4964, alumni: 4, unis: ["Sapienza"] },
-            { name: "Bologna", country: "Italy", code: "it", lat: 44.4949, lng: 11.3426, alumni: 6, unis: ["University of Bologna"] },
-            { name: "Lisbon", country: "Portugal", code: "pt", lat: 38.7223, lng: -9.1393, alumni: 3, unis: ["University of Lisbon"] },
-            { name: "Warsaw", country: "Poland", code: "pl", lat: 52.2297, lng: 21.0122, alumni: 2, unis: ["Medical University of Warsaw"] },
-            
-            // USA
-            { name: "Boston", country: "United States", code: "us", lat: 42.3601, lng: -71.0589, alumni: 4, unis: ["MIT", "Harvard"] },
-            { name: "San Francisco", country: "United States", code: "us", lat: 37.7749, lng: -122.4194, alumni: 2, unis: ["Stanford", "UC Berkeley"] },
-            { name: "Los Angeles", country: "United States", code: "us", lat: 34.0522, lng: -118.2437, alumni: 1, unis: ["UCLA"] },
-            { name: "New York", country: "United States", code: "us", lat: 40.7128, lng: -74.0060, alumni: 2, unis: ["Columbia"] },
-            
-            // Other Worldwide
-            { name: "Melbourne", country: "Australia", code: "au", lat: -37.8136, lng: 144.9631, alumni: 3, unis: ["University of Melbourne"] },
-            { name: "Toronto", country: "Canada", code: "ca", lat: 43.6532, lng: -79.3832, alumni: 3, unis: ["University of Toronto"] },
-            { name: "Vancouver", country: "Canada", code: "ca", lat: 49.2827, lng: -123.1207, alumni: 1, unis: ["UBC"] },
-            { name: "Singapore", country: "Singapore", code: "sg", lat: 1.3521, lng: 103.8198, alumni: 1, unis: ["NUS"] },
-            { name: "Hong Kong", country: "Hong Kong", code: "hk", lat: 22.3193, lng: 114.1694, alumni: 1, unis: ["City University"] },
-            { name: "Tokyo", country: "Japan", code: "jp", lat: 35.6762, lng: 139.6503, alumni: 2, unis: ["Kyoto University"] },
-            { name: "Santiago", country: "Chile", code: "cl", lat: -33.4489, lng: -70.6693, alumni: 1, unis: ["Pontificia Universidad CatÃ³lica"] }
+            { name: "Maastricht University", country: "Netherlands", code: "nl", count: 143, featured: true },
+            { name: "Utrecht University", country: "Netherlands", code: "nl", count: 99, featured: true },
+            { name: "University of Amsterdam", country: "Netherlands", code: "nl", count: 75, featured: true },
+            { name: "Leiden University", country: "Netherlands", code: "nl", count: 45, featured: true },
+            { name: "Wageningen University & Research", country: "Netherlands", code: "nl", count: 43, featured: true },
+            { name: "Radboud University", country: "Netherlands", code: "nl", count: 38, featured: true },
+            { name: "University of Groningen", country: "Netherlands", code: "nl", count: 25, featured: true },
+            { name: "KU Leuven", country: "Belgium", code: "be", count: 21, featured: true },
+            { name: "Delft University of Technology", country: "Netherlands", code: "nl", count: 20, featured: true },
+            { name: "Uppsala University", country: "Sweden", code: "se", count: 19, featured: true },
+            { name: "Imperial College London", country: "United Kingdom", code: "gb", count: 19, featured: true },
+            { name: "Vrije Universiteit Amsterdam", country: "Netherlands", code: "nl", count: 16, featured: true },
+            { name: "University of Copenhagen", country: "Denmark", code: "dk", count: 14, featured: true },
+            { name: "Lund University", country: "Sweden", code: "se", count: 14, featured: true },
+            { name: "ETH Zurich", country: "Switzerland", code: "ch", count: 14, featured: true },
+            { name: "University College London", country: "United Kingdom", code: "gb", count: 14, featured: true },
+            { name: "Karolinska Institutet", country: "Sweden", code: "se", count: 11, featured: true },
+            { name: "Technical University of Munich", country: "Germany", code: "de", count: 10, featured: true },
+            { name: "Stockholm University", country: "Sweden", code: "se", count: 9, featured: false },
+            { name: "Eindhoven University of Technology", country: "Netherlands", code: "nl", count: 9, featured: false },
+            { name: "University of Cambridge", country: "United Kingdom", code: "gb", count: 8, featured: false },
+            { name: "Vrije Universiteit Brussel", country: "Belgium", code: "be", count: 7, featured: false },
+            { name: "University of Oxford", country: "United Kingdom", code: "gb", count: 7, featured: false },
+            { name: "University of Edinburgh", country: "United Kingdom", code: "gb", count: 7, featured: false },
+            { name: "Universita di Bologna", country: "Italy", code: "it", count: 6, featured: false },
+            { name: "Humboldt-Universitat zu Berlin", country: "Germany", code: "de", count: 5, featured: false },
+            { name: "Ecole Polytechnique", country: "France", code: "fr", count: 5, featured: false },
+            { name: "University of Birmingham", country: "United Kingdom", code: "gb", count: 5, featured: false },
+            { name: "University of Helsinki", country: "Finland", code: "fi", count: 5, featured: false },
+            { name: "Technical University of Denmark", country: "Denmark", code: "dk", count: 5, featured: false },
+            { name: "Université Libre de Bruxelles", country: "Belgium", code: "be", count: 4, featured: false },
+            { name: "Aalto University", country: "Finland", code: "fi", count: 4, featured: false },
+            { name: "University College Dublin", country: "Ireland", code: "ie", count: 4, featured: false },
+            { name: "Ghent University", country: "Belgium", code: "be", count: 4, featured: false },
+            { name: "University of Cologne", country: "Germany", code: "de", count: 4, featured: false },
+            { name: "Erasmus University Rotterdam", country: "Netherlands", code: "nl", count: 4, featured: false },
+            { name: "Universitat de Barcelona", country: "Spain", code: "es", count: 4, featured: false },
+            { name: "University of Vienna", country: "Austria", code: "at", count: 4, featured: false },
+            { name: "University of Antwerp", country: "Belgium", code: "be", count: 4, featured: false },
+            { name: "King\'s College London", country: "United Kingdom", code: "gb", count: 3, featured: false },
+            { name: "Universitat Pompeu Fabra", country: "Spain", code: "es", count: 3, featured: false },
+            { name: "University of Glasgow", country: "United Kingdom", code: "gb", count: 3, featured: false },
+            { name: "University of Twente", country: "Netherlands", code: "nl", count: 3, featured: false },
+            { name: "Universitat Autonoma de Barcelona", country: "Spain", code: "es", count: 3, featured: false },
+            { name: "University of Zurich", country: "Switzerland", code: "ch", count: 3, featured: false },
+            { name: "Copenhagen Business School", country: "Denmark", code: "dk", count: 3, featured: false },
+            { name: "KTH Royal Institute of Technology", country: "Sweden", code: "se", count: 3, featured: false },
+            { name: "Université Paris-Saclay", country: "France", code: "fr", count: 3, featured: false },
+            { name: "University of Gothenburg", country: "Sweden", code: "se", count: 2, featured: false },
+            { name: "Queen Mary University of London", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "Sorbonne University", country: "France", code: "fr", count: 2, featured: false },
+            { name: "Trinity College Dublin", country: "Ireland", code: "ie", count: 2, featured: false },
+            { name: "Norwegian University of Science and Technology", country: "Norway", code: "no", count: 2, featured: false },
+            { name: "University of Leeds", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "Università degli Studi di Ferrara", country: "Italy", code: "it", count: 2, featured: false },
+            { name: "James Cook University", country: "Australia", code: "au", count: 2, featured: false },
+            { name: "University of Aberdeen", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "University of Liege", country: "Belgium", code: "be", count: 2, featured: false },
+            { name: "Universitat Politècnica de Catalunya", country: "Spain", code: "es", count: 2, featured: false },
+            { name: "Bocconi University", country: "Italy", code: "it", count: 2, featured: false },
+            { name: "University of Manchester", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "Universidad Autónoma de Madrid", country: "Spain", code: "es", count: 2, featured: false },
+            { name: "École Polytechnique Fédérale de Lausanne", country: "Switzerland", code: "ch", count: 2, featured: false },
+            { name: "University of Salford", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "University of Bern", country: "Switzerland", code: "ch", count: 2, featured: false },
+            { name: "Weizmann Institute of Science", country: "Israel", code: "il", count: 2, featured: false },
+            { name: "Universita di Pavia", country: "Italy", code: "it", count: 2, featured: false },
+            { name: "University of Valencia", country: "Spain", code: "es", count: 2, featured: false },
+            { name: "Technische Universitat Wien", country: "Austria", code: "at", count: 2, featured: false },
+            { name: "University of Tubingen", country: "Germany", code: "de", count: 2, featured: false },
+            { name: "Charité - Universitätsmedizin Berlin", country: "Germany", code: "de", count: 2, featured: false },
+            { name: "University of Sheffield", country: "United Kingdom", code: "gb", count: 2, featured: false },
+            { name: "Goethe University Frankfurt", country: "Germany", code: "de", count: 2, featured: false },
+            { name: "UCL / Sorbonne Université", country: "London/Paris", code: "xx", count: 2, featured: false },
+            { name: "Université Claude Bernard Lyon 1", country: "France", code: "fr", count: 2, featured: false },
+            { name: "McGill University", country: "Canada", code: "ca", count: 2, featured: false },
+            { name: "Heidelberg University", country: "Germany", code: "de", count: 2, featured: false },
+            { name: "Szeged University", country: "Hungary", code: "hu", count: 2, featured: false },
+            { name: "University of Barcelona", country: "Spain", code: "es", count: 2, featured: false },
+            { name: "Pompeu Fabra University", country: "Spain", code: "es", count: 2, featured: false },
+            { name: "LMU Munich", country: "Germany", code: "de", count: 2, featured: false },
+            { name: "University of Nottingham", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of London", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Boğaziçi University", country: "Turkey", code: "tr", count: 1, featured: false },
+            { name: "University of East Anglia", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Universite de Picardie Jules Verne", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University Politehnica of Bucharest", country: "Romania", code: "ro", count: 1, featured: false },
+            { name: "University of Exeter", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Cologne / University of Bonn", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "The University of Edinburg / University of Capetown", country: "Scotland/South Africa", code: "xx", count: 1, featured: false },
+            { name: "Tel Aviv University", country: "Israel", code: "il", count: 1, featured: false },
+            { name: "University of Leicester", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of San Francisco", country: "United States", code: "us", count: 1, featured: false },
+            { name: "Heriot-Watt University", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "ESCP Europe", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University of Kent", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Cambridge Judge Business School", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "ULM University", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "Swiss Federal Technology Iinstitute of Lausanne", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "KTH Royal Institute of Technology / Grenoble INP", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University of Applied Sciences Switzerland", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "University of Southern Denmark", country: "Denmark", code: "dk", count: 1, featured: false },
+            { name: "University of Regensburg", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Strasbourg / Utrecht University", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Technological University Dublin", country: "Ireland", code: "ie", count: 1, featured: false },
+            { name: "University of Münster", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "DTU / University of Copenhagen (Joint)", country: "Denmark", code: "dk", count: 1, featured: false },
+            { name: "Centrale Nantes", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Université Bourgogne Franche-Comté", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Regent\'s University London", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of St Andrews", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Warwick", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Universite de Namur", country: "Belgium", code: "be", count: 1, featured: false },
+            { name: "Illinois Institute of Technology", country: "United States", code: "us", count: 1, featured: false },
+            { name: "Harvard University", country: "United States", code: "us", count: 1, featured: false },
+            { name: "University of Bremen", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Luxembourg", country: "Luxembourg", code: "lu", count: 1, featured: false },
+            { name: "UCL / Brunel University", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Rome Tor Vergata", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "University of Lisbon", country: "Portugal", code: "pt", count: 1, featured: false },
+            { name: "University of Toronto", country: "Canada", code: "ca", count: 1, featured: false },
+            { name: "University of Basel", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "University of KwaZulu-natal", country: "South Africa", code: "za", count: 1, featured: false },
+            { name: "University of British Columbia", country: "Canada", code: "ca", count: 1, featured: false },
+            { name: "Institute of Science and Technology Austria", country: "Austria", code: "at", count: 1, featured: false },
+            { name: "Universite Paul Sabatier Toulouse III", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Pontificia Universidad Catolica de Chile", country: "Chile", code: "cl", count: 1, featured: false },
+            { name: "University of Hamburg", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "Sapienza Università di Roma (ARCHMAT Erasmus Mundus)", country: "Italy / Greece / Portugal", code: "xx", count: 1, featured: false },
+            { name: "Università degli Studi di Genova", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Queen\'s University Belfast", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Mons", country: "Belgium", code: "be", count: 1, featured: false },
+            { name: "University of Portsmouth", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "ISF Istituto di Scienze Forensi", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "TH Köln", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "Conservatorium van Amsterdam", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "TU Dublin Computer Science", country: "Ireland", code: "ie", count: 1, featured: false },
+            { name: "University of Lincoln", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "NOVA IMS Information Management School", country: "Portugal", code: "pt", count: 1, featured: false },
+            { name: "National University of Singapore", country: "Singapore", code: "sg", count: 1, featured: false },
+            { name: "Universidad Complutense de Madrid", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "Rotterdam Business School", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "Universita di Padova", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Linköping University", country: "Sweden", code: "se", count: 1, featured: false },
+            { name: "University of Nicosia Medical School", country: "Cyprus", code: "cy", count: 1, featured: false },
+            { name: "University of Athens", country: "Greece", code: "gr", count: 1, featured: false },
+            { name: "Sapienza Universita di Roma", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Universita Cattolica del Sacro Cuore", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Zhejiang University of Science and Technology", country: "China", code: "cn", count: 1, featured: false },
+            { name: "Tampere University", country: "Finland", code: "fi", count: 1, featured: false },
+            { name: "Sorbonne Universite", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Universite Grenoble Alpes", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University of Dusseldorf", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Bonn", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "Copenhagen Business School / Utrecht University", country: "Denmark + Netherlands", code: "xx", count: 1, featured: false },
+            { name: "University of Lille / Leipzig University / Jagiellonian University", country: "France/Germany/Poland", code: "xx", count: 1, featured: false },
+            { name: "Vrije Universiteit Brussels (VUB)", country: "Belgium", code: "be", count: 1, featured: false },
+            { name: "Università degli Studi di Napoli Federico II", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Jagiellonian University", country: "Poland", code: "pl", count: 1, featured: false },
+            { name: "Lisbon School of Economics and Management", country: "Portugal", code: "pt", count: 1, featured: false },
+            { name: "Leiden University / Delft University of Technology", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "University of Maribor", country: "Slovenia", code: "si", count: 1, featured: false },
+            { name: "IE University", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "University College London / Sorbonne University", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Universidad Pública de Navarra", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "The University of West Indies, Mona", country: "Jamaica", code: "jm", count: 1, featured: false },
+            { name: "Okinawa Institute of Science and Technology", country: "Japan", code: "jp", count: 1, featured: false },
+            { name: "Malaysia University", country: "Malaysia", code: "my", count: 1, featured: false },
+            { name: "Università degli Studi dell\'Insubria", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "University of California, Los Angeles", country: "United States", code: "us", count: 1, featured: false },
+            { name: "The Johns Hopkins University", country: "United States", code: "us", count: 1, featured: false },
+            { name: "Keck Graduate Institute", country: "United States", code: "us", count: 1, featured: false },
+            { name: "University of Gastronomic Sciences - Pollenzo / University of London", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Stockholm University / Universitatsmedizin Berlin", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "Tilburg University", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "KTH Royal Institute of Technology / Technical University of Denmark", country: "Denmark", code: "dk", count: 1, featured: false },
+            { name: "Universitatsmedizin Berlin", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Norway", country: "Norway", code: "no", count: 1, featured: false },
+            { name: "University of Oslo", country: "Norway", code: "no", count: 1, featured: false },
+            { name: "University of Algarve", country: "Portugal", code: "pt", count: 1, featured: false },
+            { name: "London School of Hygiene and Tropical Medicine", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Lille", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Technical University of Germany / Imperial College London", country: "Germany/United Kingdom", code: "xx", count: 1, featured: false },
+            { name: "University of Göttingen", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "UCLouvain", country: "Belgium", code: "be", count: 1, featured: false },
+            { name: "Central European University", country: "Austria", code: "at", count: 1, featured: false },
+            { name: "Princeton University", country: "United States", code: "us", count: 1, featured: false },
+            { name: "Medical University of Vienna", country: "Austria", code: "at", count: 1, featured: false },
+            { name: "Vienna University of Technology", country: "Austria", code: "at", count: 1, featured: false },
+            { name: "Freidrich Alexander University Erlangen Nurnberg", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Milan", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Emlyon Business School", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University of Bordeaux", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Politecnico di Milano", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Kyoto University", country: "Japan", code: "jp", count: 1, featured: false },
+            { name: "City University of Hong Kong", country: "Hong Kong", code: "hk", count: 1, featured: false },
+            { name: "University of Bologna / Oslo / MCI (Erasmus Mundus)", country: "Bologna/Oslo/Innsbruck", code: "xx", count: 1, featured: false },
+            { name: "University of Worcester", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Boston University", country: "United States", code: "us", count: 1, featured: false },
+            { name: "London School of Economics and Political Science", country: "UK", code: "xx", count: 1, featured: false },
+            { name: "Norwegian University of Life Sciences", country: "Norway", code: "no", count: 1, featured: false },
+            { name: "Universiteit Utrecht", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "Leiden University / TU Delft", country: "Netherlands", code: "nl", count: 1, featured: false },
+            { name: "Chimie ParisTech - PSL", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Florida International University", country: "USA", code: "xx", count: 1, featured: false },
+            { name: "Vrije Universiteit Brussel (TROPIMUNDO Erasmus Mundus)", country: "Belgium / Sri Lanka / Italy", code: "xx", count: 1, featured: false },
+            { name: "Medical University of Warsaw", country: "Poland", code: "pl", count: 1, featured: false },
+            { name: "Universidad Miguel Hernández de Elche", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "Institut Polytechnique de Paris", country: "France", code: "fr", count: 1, featured: false },
+            { name: "University of Geneva", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "Royal Veterinary College", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Keck Graduate University", country: "United States", code: "us", count: 1, featured: false },
+            { name: "University of Ghent", country: "Belgium", code: "be", count: 1, featured: false },
+            { name: "Rheinische Friedrich-Wilhelms-Universität Bonn", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "University of Heidelberg", country: "Germany", code: "de", count: 1, featured: false },
+            { name: "New Bulgarian University", country: "Bulgaria", code: "bg", count: 1, featured: false },
+            { name: "Université de Lausanne", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "ESCP Business School", country: "France", code: "fr", count: 1, featured: false },
+            { name: "ISAE-SUPAERO", country: "France", code: "fr", count: 1, featured: false },
+            { name: "American College of Greece", country: "Greece", code: "gr", count: 1, featured: false },
+            { name: "University of Bologna", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "University of Pavia", country: "Italy", code: "it", count: 1, featured: false },
+            { name: "Nova University Lisbon", country: "Portugal", code: "pt", count: 1, featured: false },
+            { name: "University of Pretoria", country: "South Africa", code: "za", count: 1, featured: false },
+            { name: "Camilo José Cela University", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "Eidgenössische Technische Hochschule", country: "Switzerland", code: "ch", count: 1, featured: false },
+            { name: "Bristol University", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "University of Bath", country: "United Kingdom", code: "gb", count: 1, featured: false },
+            { name: "Universidad Carlos III de Madrid", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "École Normale Supérieure", country: "France", code: "fr", count: 1, featured: false },
+            { name: "Uppsala University / Ludwig-Maximilian University", country: "Mobility European Program: Uppsala (Sweden) and Munich (Germany)", code: "xx", count: 1, featured: false },
+            { name: "IQS Barcelona", country: "Spain", code: "es", count: 1, featured: false },
+            { name: "Erasmus University", country: "Netherlands", code: "nl", count: 1, featured: false },
         ];
+
         
         const COUNTRIES = Object.entries(COUNTRY_DETAILS).map(([code, data]) => ({
             name: data.name,
@@ -848,7 +851,7 @@
             initCounters();
             renderUniversities();
             renderCountries();
-            initSearch();
+            initTableControls();
             initModal();
         });
         
@@ -975,12 +978,115 @@
         // UNIVERSITIES
         // ============================================
         function renderUniversities() {
-            // 1. World Top 10
-            const prestigeGrid = document.getElementById('grid-prestige');
-            const prestigeUnis = ALL_UNIVERSITIES.filter(u => u.prestige);
-            prestigeUnis.forEach(uni => {
-                prestigeGrid.appendChild(createUniCard(uni, true));
+            // 1. Render featured cards (10+ alumni)
+            const featuredUnis = ALL_UNIVERSITIES.filter(u => u.featured);
+            const featuredGrid = document.getElementById('featured-grid');
+            
+            featuredUnis.forEach(uni => {
+                const card = createUniCard(uni, true);
+                featuredGrid.appendChild(card);
             });
+            
+            // 2. Render complete table
+            renderUniversityTable(ALL_UNIVERSITIES);
+            
+            lucide.createIcons();
+        }
+        
+        function renderUniversityTable(universities) {
+            const tbody = document.getElementById('uni-table-body');
+            tbody.innerHTML = '';
+            
+            const totalAlumni = universities.reduce((sum, u) => sum + u.count, 0);
+            
+            universities.forEach((uni, index) => {
+                const row = document.createElement('tr');
+                if (uni.featured) row.classList.add('featured-row');
+                row.onclick = () => openUniModal(uni.name);
+                
+                const percent = ((uni.count / totalAlumni) * 100).toFixed(1);
+                
+                row.innerHTML = `
+                    <td class="rank-cell">${index + 1}</td>
+                    <td class="name-cell ${uni.featured ? 'name-cell-featured' : ''}">
+                        ${uni.name}
+                        ${uni.featured ? '<span class="featured-badge-table">Featured</span>' : ''}
+                    </td>
+                    <td class="country-cell">
+                        <img src="https://flagcdn.com/w40/${uni.code}.png" alt="${uni.country}" class="country-flag-small">
+                        ${uni.country}
+                    </td>
+                    <td class="alumni-cell">${uni.count}</td>
+                    <td class="percent-cell">${percent}%</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            updateTableInfo(universities.length, ALL_UNIVERSITIES.length);
+        }
+        
+        function updateTableInfo(showing, total) {
+            document.getElementById('table-showing').textContent = 
+                `Showing ${showing} of ${total} universities`;
+        }
+        
+        function sortUniversities(universities, sortBy) {
+            const sorted = [...universities];
+            
+            switch(sortBy) {
+                case 'count-desc':
+                    return sorted.sort((a, b) => b.count - a.count);
+                case 'count-asc':
+                    return sorted.sort((a, b) => a.count - b.count);
+                case 'name-asc':
+                    return sorted.sort((a, b) => a.name.localeCompare(b.name));
+                case 'name-desc':
+                    return sorted.sort((a, b) => b.name.localeCompare(a.name));
+                case 'country-asc':
+                    return sorted.sort((a, b) => a.country.localeCompare(b.country));
+                default:
+                    return sorted;
+            }
+        }
+        
+        function initTableControls() {
+            const searchInput = document.getElementById('table-search');
+            const sortSelect = document.getElementById('sort-select');
+            
+            let currentSort = 'count-desc';
+            let currentSearch = '';
+            
+            function updateTable() {
+                let filtered = ALL_UNIVERSITIES;
+                
+                // Apply search
+                if (currentSearch) {
+                    const query = currentSearch.toLowerCase();
+                    filtered = filtered.filter(u => 
+                        u.name.toLowerCase().includes(query) || 
+                        u.country.toLowerCase().includes(query)
+                    );
+                }
+                
+                // Apply sort
+                const sorted = sortUniversities(filtered, currentSort);
+                
+                // Render
+                renderUniversityTable(sorted);
+            }
+            
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value.trim();
+                updateTable();
+            });
+            
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                updateTable();
+            });
+        }
+               });
             
             // 2. Top 5 Countries
             const countryTiersContainer = document.getElementById('country-tiers');
@@ -1215,12 +1321,7 @@
         // ============================================
         // SEARCH
         // ============================================
-        function initSearch() {
-            document.getElementById('search-input').addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.uni-card').forEach(card => {
-                    card.classList.toggle('hidden', query && !card.dataset.name.includes(query));
-                });
+);
             });
         }
         

@@ -1032,13 +1032,13 @@
             const restPreviewGrid = document.getElementById('grid-rest-preview');
             const restFullGrid = document.getElementById('grid-rest-full');
             
-            // Show first 50
-            restUnis.slice(0, 50).forEach(uni => {
+            // Show first 15
+            restUnis.slice(0, 15).forEach(uni => {
                 restPreviewGrid.appendChild(createUniCard(uni, false));
             });
             
             // Remaining in hidden grid
-            restUnis.slice(50).forEach(uni => {
+            restUnis.slice(15).forEach(uni => {
                 restFullGrid.appendChild(createUniCard(uni, false));
             });
             
@@ -1046,11 +1046,11 @@
             
             // Update expand button text
             const restExpandBtn = document.getElementById('expand-rest');
-            restExpandBtn.querySelector('span').textContent = restUnis.length > 50 
+            restExpandBtn.querySelector('span').textContent = restUnis.length > 15 
                 ? `Show all ${restUnis.length} universities` 
                 : 'All universities shown';
             
-            if (restUnis.length <= 50) {
+            if (restUnis.length <= 15) {
                 restExpandBtn.style.display = 'none';
             }
             

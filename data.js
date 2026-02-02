@@ -690,6 +690,9 @@ const UNI_LOGO_FILES = {
     'TU Eindhoven': 'eindhoven-university.png',
     'Erasmus University Rotterdam': 'erasmus-university.png',
     'University of Twente': 'university-of-twente.png',
+    'HAN University of Applied Sciences': 'han-university.png',
+    'Fontys University of Applied Sciences': 'fontys-university.png',
+    'Avans University of Applied Sciences': 'avans-university.png',
     
     // UK Universities
     'Imperial College London': 'imperial-college-london.png',
@@ -716,6 +719,8 @@ const UNI_LOGO_FILES = {
     'University of Leicester': 'university-of-leicester.png',
     'University of Kent': 'university-of-kent.png',
     'Heriot-Watt University': 'heriot-watt-university.png',
+    'University of Portsmouth': 'university-of-portsmouth.png',
+    'Cambridge Judge Business School': 'cambridge-judge-business-school.png',
     
     // German Universities
     'Technical University of Munich': 'tu-munich.png',
@@ -730,6 +735,10 @@ const UNI_LOGO_FILES = {
     'University of Regensburg': 'university-of-regensburg.png',
     'University of Erlangen-Nuremberg': 'university-of-erlangen-nuremberg.png',
     'Ulm University': 'ulm-university.png',
+    'University of Bremen': 'university-of-bremen.png',
+    'University of Hamburg': 'university-of-hamburg.png',
+    'University of Münster': 'university-of-munster.png',
+    'University of Munster': 'university-of-munster.png',
     
     // Belgian Universities
     'KU Leuven': 'ku-leuven.png',
@@ -747,6 +756,8 @@ const UNI_LOGO_FILES = {
     'University of Gothenburg': 'university-of-gothenburg.png',
     'KTH Royal Institute of Technology': 'kth-royal-institute-of-technology.png',
     'Chalmers University of Technology': 'chalmers-university-of-technology.png',
+    'Linköping University': 'linkoping-university.png',
+    'Linkoping University': 'linkoping-university.png',
     
     // Swiss Universities
     'ETH Zurich': 'eth-zurich.png',
@@ -791,6 +802,8 @@ const UNI_LOGO_FILES = {
     'Universitat Politecnica de Catalunya': 'universitat-politecnica-de-catalunya.png',
     'Universitat Pompeu Fabra': 'pompeu-fabra-university.jpg',
     'University of Valencia': 'university-of-valencia.png',
+    'IQS Barcelona': 'iqs-barcelona.png',
+    'Camilo José Cela University': 'camilo-jose-cela-university.png',
     
     // Italian Universities
     'Universita di Bologna': 'university-of-bologna.png',
@@ -798,14 +811,28 @@ const UNI_LOGO_FILES = {
     'Bocconi University': 'bocconi-university.png',
     'University of Pavia': 'university-of-pavia.png',
     'University of Milan': 'university-of-milan.png',
+    'Politecnico di Milano': 'politecnico-di-milano.png',
+    'Università Cattolica del Sacro Cuore': 'universita-cattolica.png',
+    'Universita Cattolica del Sacro Cuore': 'universita-cattolica.png',
     
     // Other European Universities
     'University of Oslo': 'university-of-oslo.png',
+    'Norwegian University of Science and Technology': 'ntnu.png',
+    'NTNU': 'ntnu.png',
     'University of Athens': 'university-of-athens.png',
     'Szeged University': 'szeged-university.png',
     'University of Lisbon': 'university-of-lisbon.png',
+    'Nova University Lisbon': 'nova-university-lisbon.png',
+    'Universidade Católica Portuguesa': 'universidade-catolica-portuguesa.png',
     'University of Luxembourg': 'university-of-luxembourg.png',
     'Medical University of Warsaw': 'medical-university-of-warsaw.png',
+    
+    // African Universities
+    'University of Pretoria': 'university-of-pretoria.png',
+    
+    // Caribbean Universities
+    'University of West Indies': 'university-of-west-indies.png',
+    'The University of West Indies, Mona': 'university-of-west-indies.png',
     
     // North American Universities
     'McGill University': 'mcgill-university.png',
@@ -826,6 +853,9 @@ const UNI_LOGO_FILES = {
     
     // Middle Eastern Universities
     'Tel Aviv University': 'tel-aviv-university.png',
+    
+    // Specialized Education Institutions
+    'SPICED Academy': 'spiced-academy.png',
     
     // Other Universities
     'Weizmann Institute of Science': 'weizmann-institute-of-science.png'

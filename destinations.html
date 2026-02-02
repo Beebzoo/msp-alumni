@@ -820,7 +820,7 @@
             const countryTiersContainer = document.getElementById('country-tiers');
             TOP_COUNTRIES.forEach(countryCode => {
                 const countryData = COUNTRY_DETAILS[countryCode];
-                if (!countryData || !countryData.universities) return;
+                if (!countryData) return;
                 
                 const countryUnis = ALL_UNIVERSITIES.filter(u => u.code === countryCode && !u.prestige);
                 if (countryUnis.length === 0) return;
@@ -844,16 +844,21 @@
                 previewGrid.className = 'uni-grid';
                 previewGrid.id = `grid-${countryCode}-preview`;
                 
-                const fullGrid = document.createElement('div');
-                fullGrid.className = 'uni-grid hidden';
-                fullGrid.id = `grid-${countryCode}-full`;
-                
-                // Show top 10, rest in hidden grid
+                // Show top 10
                 countryUnis.slice(0, 10).forEach(uni => {
                     previewGrid.appendChild(createUniCard(uni, false));
                 });
                 
+                tierDiv.appendChild(header);
+                tierDiv.appendChild(previewGrid);
+                
+                // If more than 10, add hidden grid and expand button
                 if (countryUnis.length > 10) {
+                    const fullGrid = document.createElement('div');
+                    fullGrid.className = 'uni-grid hidden';
+                    fullGrid.id = `grid-${countryCode}-full`;
+                    
+                    // Add remaining universities to hidden grid
                     countryUnis.slice(10).forEach(uni => {
                         fullGrid.appendChild(createUniCard(uni, false));
                     });
@@ -863,62 +868,75 @@
                     
                     const expandBtn = document.createElement('button');
                     expandBtn.className = 'expand-btn';
+                    expandBtn.dataset.country = countryCode;
+                    expandBtn.dataset.total = countryUnis.length;
                     expandBtn.innerHTML = `
                         <span>Show all ${countryUnis.length} universities</span>
                         <i data-lucide="chevron-down"></i>
                     `;
-                    expandBtn.onclick = () => toggleExpand(countryCode, expandBtn);
                     
                     btnContainer.appendChild(expandBtn);
-                    
-                    tierDiv.appendChild(header);
-                    tierDiv.appendChild(previewGrid);
                     tierDiv.appendChild(fullGrid);
                     tierDiv.appendChild(btnContainer);
-                } else {
-                    tierDiv.appendChild(header);
-                    tierDiv.appendChild(previewGrid);
                 }
                 
                 countryTiersContainer.appendChild(tierDiv);
             });
             
-            // 3. Rest Section
+            // 3. Rest Section (International)
             const restUnis = ALL_UNIVERSITIES.filter(u => !u.prestige && !TOP_COUNTRIES.includes(u.code));
             const restPreviewGrid = document.getElementById('grid-rest-preview');
             const restFullGrid = document.getElementById('grid-rest-full');
             
-            restUnis.slice(0, 10).forEach(uni => {
+            // Show first 50
+            restUnis.slice(0, 50).forEach(uni => {
                 restPreviewGrid.appendChild(createUniCard(uni, false));
             });
             
-            restUnis.slice(10).forEach(uni => {
+            // Remaining in hidden grid
+            restUnis.slice(50).forEach(uni => {
                 restFullGrid.appendChild(createUniCard(uni, false));
             });
             
             document.getElementById('count-rest').textContent = `${restUnis.length} universities worldwide`;
             
-            document.getElementById('expand-rest').onclick = () => {
-                const btn = document.getElementById('expand-rest');
-                const fullGrid = document.getElementById('grid-rest-full');
-                fullGrid.classList.toggle('hidden');
-                btn.classList.toggle('expanded');
-                btn.querySelector('span').textContent = fullGrid.classList.contains('hidden') 
-                    ? 'Show all universities' 
-                    : 'Show less';
-                lucide.createIcons();
-            };
+            // Update expand button text
+            const restExpandBtn = document.getElementById('expand-rest');
+            restExpandBtn.querySelector('span').textContent = restUnis.length > 50 
+                ? `Show all ${restUnis.length} universities` 
+                : 'All universities shown';
             
-            lucide.createIcons();
-        }
-        
-        function toggleExpand(countryCode, btn) {
-            const fullGrid = document.getElementById(`grid-${countryCode}-full`);
-            fullGrid.classList.toggle('hidden');
-            btn.classList.toggle('expanded');
-            btn.querySelector('span').textContent = fullGrid.classList.contains('hidden') 
-                ? `Show all ${COUNTRY_DETAILS[countryCode].universities.length} universities` 
-                : 'Show less';
+            if (restUnis.length <= 50) {
+                restExpandBtn.style.display = 'none';
+            }
+            
+            // Add event listeners to all expand buttons
+            document.querySelectorAll('.expand-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const country = this.dataset.country;
+                    const total = this.dataset.total;
+                    
+                    if (country) {
+                        // Country-specific button
+                        const fullGrid = document.getElementById(`grid-${country}-full`);
+                        fullGrid.classList.toggle('hidden');
+                        this.classList.toggle('expanded');
+                        this.querySelector('span').textContent = fullGrid.classList.contains('hidden') 
+                            ? `Show all ${total} universities` 
+                            : 'Show less';
+                    } else {
+                        // Rest section button
+                        const fullGrid = document.getElementById('grid-rest-full');
+                        fullGrid.classList.toggle('hidden');
+                        this.classList.toggle('expanded');
+                        this.querySelector('span').textContent = fullGrid.classList.contains('hidden') 
+                            ? `Show all ${restUnis.length} universities` 
+                            : 'Show less';
+                    }
+                    lucide.createIcons();
+                });
+            });
+            
             lucide.createIcons();
         }
         

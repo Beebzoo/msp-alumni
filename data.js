@@ -1629,6 +1629,168 @@ const UNIVERSITY_INFO = {
         website: 'https://www.uni-ulm.de',
         location: 'Ulm, Germany',
         students: '10,000+'
+    },
+    // Universities 131-160 (seventh batch)
+    'University of Bremen': {
+        founded: 1971,
+        description: 'Young German research university. Excellence in marine sciences, engineering, and social sciences. Strong interdisciplinary focus and international orientation.',
+        website: 'https://www.uni-bremen.de',
+        location: 'Bremen, Germany',
+        students: '20,000+'
+    },
+    'Universita degli Studi di Ferrara': {
+        founded: 1391,
+        description: 'University of Ferrara. One of Italy\'s oldest universities. Excellence in humanities, sciences, and medicine. Historic Renaissance city location.',
+        website: 'https://www.unife.it',
+        location: 'Ferrara, Italy',
+        students: '24,000+'
+    },
+    'University of Luxembourg': {
+        founded: 2003,
+        description: 'Young multilingual research university. Luxembourg\'s only public university. Excellence in law, finance, and computer science. Highly international student body.',
+        website: 'https://www.uni.lu',
+        location: 'Luxembourg City, Luxembourg',
+        students: '7,000+'
+    },
+    'Norwegian University of Science and Technology': {
+        founded: 1996,
+        description: 'NTNU. Norway\'s largest university. Excellence in engineering, natural sciences, and technology. Strong research tradition and innovation culture.',
+        website: 'https://www.ntnu.edu',
+        location: 'Trondheim, Norway',
+        students: '42,000+'
+    },
+    'University of Hamburg': {
+        founded: 1919,
+        description: 'Germany\'s largest research university by student enrollment. Excellence in law, economics, sciences, and humanities. 6 Nobel laureates.',
+        website: 'https://www.uni-hamburg.de',
+        location: 'Hamburg, Germany',
+        students: '43,000+'
+    },
+    'Sapienza Universita di Roma': {
+        founded: 1303,
+        description: 'Sapienza University of Rome. One of world\'s oldest universities. Europe\'s largest university by enrollment. Excellence across all disciplines. Multiple Nobel laureates.',
+        website: 'https://www.uniroma1.it',
+        location: 'Rome, Italy',
+        students: '115,000+'
+    },
+    'Universita di Padova': {
+        founded: 1222,
+        description: 'University of Padua. One of world\'s oldest universities. Galileo taught here. Excellence in sciences, medicine, and humanities. Rich academic tradition.',
+        website: 'https://www.unipd.it',
+        location: 'Padua, Italy',
+        students: '65,000+'
+    },
+    'Linkoping University': {
+        founded: 1975,
+        description: 'Swedish research university. Excellence in technology, medicine, and arts. Strong interdisciplinary programs and innovation focus.',
+        website: 'https://www.liu.se',
+        location: 'Linköping, Sweden',
+        students: '32,000+'
+    },
+    'Universita degli Studi di Genova': {
+        founded: 1481,
+        description: 'University of Genoa. Historic Italian university. Excellence in engineering, sciences, and humanities. Strong maritime and port research.',
+        website: 'https://www.unige.it',
+        location: 'Genoa, Italy',
+        students: '33,000+'
+    },
+    'NOVA IMS': {
+        founded: 1989,
+        description: 'NOVA Information Management School. Part of NOVA University Lisbon. Excellence in information management, data science, and statistics. Strong tech industry connections.',
+        website: 'https://www.novaims.unl.pt',
+        location: 'Lisbon, Portugal',
+        students: '2,000+'
+    },
+    'University of Portsmouth': {
+        founded: 1992,
+        description: 'Modern UK university with older roots dating to 1869. Excellence in sciences, engineering, and creative industries. Strong industry partnerships.',
+        website: 'https://www.port.ac.uk',
+        location: 'Portsmouth, United Kingdom',
+        students: '25,000+'
+    },
+    'University of Mons': {
+        founded: 1837,
+        description: 'UMONS. Belgian university in Wallonia. Excellence in engineering, sciences, and humanities. Strong research tradition.',
+        website: 'https://web.umons.ac.be',
+        location: 'Mons, Belgium',
+        students: '10,000+'
+    },
+    'Pontificia Universidad Catolica de Chile': {
+        founded: 1888,
+        description: 'Chile\'s leading university. Pontifical Catholic University. Excellence in sciences, engineering, law, and humanities. Strong research output.',
+        website: 'https://www.uc.cl',
+        location: 'Santiago, Chile',
+        students: '32,000+'
+    },
+    'Universite Paul Sabatier Toulouse III': {
+        founded: 1969,
+        description: 'Paul Sabatier University. Major French research university. Excellence in sciences, technology, health, and sports. Strong aerospace connections.',
+        website: 'https://www.univ-tlse3.fr',
+        location: 'Toulouse, France',
+        students: '35,000+'
+    },
+    'TH Koln': {
+        founded: 1971,
+        description: 'Cologne University of Applied Sciences. Germany\'s largest university of applied sciences. Excellence in engineering, technology, and applied sciences.',
+        website: 'https://www.th-koeln.de',
+        location: 'Cologne, Germany',
+        students: '26,000+'
+    },
+    'University of West Indies': {
+        founded: 1948,
+        description: 'Regional Caribbean university. Campuses across Jamaica, Trinidad, Barbados. Excellence in tropical medicine, agriculture, and Caribbean studies.',
+        website: 'https://www.uwi.edu',
+        location: 'Mona, Jamaica',
+        students: '50,000+'
+    },
+    'Okinawa Institute of Science and Technology': {
+        founded: 2011,
+        description: 'OIST. Young graduate university. Graduate studies only. Excellence in interdisciplinary science and technology. Highly international faculty and students.',
+        website: 'https://www.oist.jp',
+        location: 'Okinawa, Japan',
+        students: '300+'
+    },
+    'Universiti Malaya': {
+        founded: 1905,
+        description: 'University of Malaya. Malaysia\'s oldest and highest-ranked university. Excellence in sciences, engineering, and humanities. Strong research tradition.',
+        website: 'https://www.um.edu.my',
+        location: 'Kuala Lumpur, Malaysia',
+        students: '22,000+'
+    },
+    'Queen\'s University Belfast': {
+        founded: 1845,
+        description: 'Northern Ireland\'s leading university. Russell Group member. Excellence in medicine, engineering, and humanities. Strong research tradition.',
+        website: 'https://www.qub.ac.uk',
+        location: 'Belfast, United Kingdom',
+        students: '24,000+'
+    },
+    'Universidad Publica de Navarra': {
+        founded: 1987,
+        description: 'Public University of Navarre. Spanish research university. Excellence in engineering, health sciences, and social sciences. Strong regional focus.',
+        website: 'https://www.unavarra.es',
+        location: 'Pamplona, Spain',
+        students: '10,000+'
+    },
+    'Charite Universitatsmedizin Berlin': {
+        founded: 1710,
+        description: 'Charité University Medicine Berlin. Europe\'s largest university hospital. Joint medical faculty of Humboldt and Free University Berlin. Excellence in medicine and research.',
+        website: 'https://www.charite.de',
+        location: 'Berlin, Germany',
+        students: '8,000+'
+    },
+    'University of Munster': {
+        founded: 1780,
+        description: 'Westfälische Wilhelms-Universität. One of Germany\'s largest universities. Excellence in law, economics, sciences, and humanities. Strong research tradition.',
+        website: 'https://www.uni-muenster.de',
+        location: 'Münster, Germany',
+        students: '45,000+'
+    },
+    'ISF Istituto di Scienze Forensi': {
+        founded: 1999,
+        description: 'Institute of Forensic Sciences. Italian specialized institute for forensic science education and research. Excellence in forensic investigation and analysis.',
+        website: 'https://www.isfn.it',
+        location: 'Milan, Italy',
+        students: '500+'
     }
 };
 

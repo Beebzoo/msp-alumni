@@ -2065,6 +2065,168 @@ const UNIVERSITY_INFO = {
         website: 'https://www.usfca.edu',
         location: 'San Francisco, California, USA',
         students: '11,000+'
+    },
+    // Universities 221-280 (batches 10 & 11 combined)
+    'University of Toronto': {
+        founded: 1827,
+        description: 'Canada\'s leading university. Excellence across all disciplines. 10 Nobel laureates. Consistently ranked top 20 globally. Major research powerhouse.',
+        website: 'https://www.utoronto.ca',
+        location: 'Toronto, Canada',
+        students: '95,000+'
+    },
+    'University of British Columbia': {
+        founded: 1908,
+        description: 'UBC. Canada\'s top research university. Excellence in sciences, engineering, and humanities. 8 Nobel laureates. Beautiful Vancouver campus.',
+        website: 'https://www.ubc.ca',
+        location: 'Vancouver, Canada',
+        students: '70,000+'
+    },
+    'Universite de Picardie Jules Verne': {
+        founded: 1970,
+        description: 'University of Picardy Jules Verne. French university in Amiens. Excellence in sciences, humanities, and health. Strong regional focus.',
+        website: 'https://www.u-picardie.fr',
+        location: 'Amiens, France',
+        students: '32,000+'
+    },
+    'University Politehnica of Bucharest': {
+        founded: 1818,
+        description: 'Polytechnic University of Bucharest. Romania\'s leading technical university. Excellence in engineering, technology, and applied sciences.',
+        website: 'https://www.upb.ro',
+        location: 'Bucharest, Romania',
+        students: '25,000+'
+    },
+    'University of KwaZulu-Natal': {
+        founded: 2004,
+        description: 'UKZN. South African university formed by merger. Excellence in health sciences, agriculture, and humanities. Multiple campuses in KwaZulu-Natal.',
+        website: 'https://www.ukzn.ac.za',
+        location: 'Durban, South Africa',
+        students: '45,000+'
+    },
+    'Bogazici University': {
+        founded: 1863,
+        description: 'Boğaziçi University. Turkey\'s top-ranked university. Excellence in engineering, sciences, and economics. Historic Bosphorus campus location.',
+        website: 'https://www.boun.edu.tr',
+        location: 'Istanbul, Turkey',
+        students: '20,000+'
+    },
+    'University of East Anglia': {
+        founded: 1963,
+        description: 'UEA. UK research university. Excellence in environmental sciences, literature, and health. Strong research culture and beautiful campus.',
+        website: 'https://www.uea.ac.uk',
+        location: 'Norwich, United Kingdom',
+        students: '17,000+'
+    },
+    'University of Nottingham': {
+        founded: 1948,
+        description: 'Russell Group university. Excellence in sciences, engineering, medicine, and humanities. Campuses in UK, China, and Malaysia.',
+        website: 'https://www.nottingham.ac.uk',
+        location: 'Nottingham, United Kingdom',
+        students: '48,000+'
+    },
+    'Institute of Science and Technology Austria': {
+        founded: 2009,
+        description: 'IST Austria. Elite graduate research institute. Excellence in natural sciences, mathematics, and computer science. Highly selective and international.',
+        website: 'https://www.ist.ac.at',
+        location: 'Klosterneuburg, Austria',
+        students: '400+'
+    },
+    'Johns Hopkins University': {
+        founded: 1876,
+        description: 'World\'s first research university. #1 in research spending. 39 Nobel laureates. Excellence in medicine, engineering, and international studies.',
+        website: 'https://www.jhu.edu',
+        location: 'Baltimore, Maryland, USA',
+        students: '28,000+'
+    },
+    'University of California Los Angeles': {
+        founded: 1919,
+        description: 'UCLA. Leading public research university. 15 Nobel laureates. Excellence across all disciplines. Major research powerhouse in Los Angeles.',
+        website: 'https://www.ucla.edu',
+        location: 'Los Angeles, California, USA',
+        students: '47,000+'
+    },
+    'IQS Barcelona': {
+        founded: 1905,
+        description: 'IQS School of Engineering. Private technical university in Barcelona. Excellence in chemistry, engineering, and business. Strong industry connections.',
+        website: 'https://www.iqs.edu',
+        location: 'Barcelona, Spain',
+        students: '1,500+'
+    },
+    'Wageningen University': {
+        founded: 1918,
+        description: 'World\'s leading university for agriculture and life sciences. Excellence in food science, environmental studies, and sustainability.',
+        website: 'https://www.wur.nl',
+        location: 'Wageningen, Netherlands',
+        students: '13,000+'
+    },
+    'University of Bath': {
+        founded: 1966,
+        description: 'UK research university. Excellence in engineering, management, sciences, and social sciences. Strong industry partnerships.',
+        website: 'https://www.bath.ac.uk',
+        location: 'Bath, United Kingdom',
+        students: '18,000+'
+    },
+    'Universidad Carlos III de Madrid': {
+        founded: 1989,
+        description: 'Carlos III University of Madrid. Young Spanish research university. Excellence in social sciences, engineering, and humanities. Strong international focus.',
+        website: 'https://www.uc3m.es',
+        location: 'Madrid, Spain',
+        students: '20,000+'
+    },
+    'Ecole Normale Superieure': {
+        founded: 1794,
+        description: 'École Normale Supérieure. Elite French Grande École. 14 Fields Medal winners, 13 Nobel laureates. Excellence in sciences and humanities.',
+        website: 'https://www.ens.psl.eu',
+        location: 'Paris, France',
+        students: '2,400+'
+    },
+    'Humboldt-Universitat zu Berlin': {
+        founded: 1810,
+        description: 'Humboldt University of Berlin. Historic German research university. 29 Nobel laureates including Einstein. Excellence across all disciplines.',
+        website: 'https://www.hu-berlin.de',
+        location: 'Berlin, Germany',
+        students: '36,000+'
+    },
+    'University of Pavia': {
+        founded: 1361,
+        description: 'One of world\'s oldest universities. Historic Italian institution. Alessandro Volta taught here. Excellence in sciences, medicine, and humanities.',
+        website: 'https://www.unipv.it',
+        location: 'Pavia, Italy',
+        students: '24,000+'
+    },
+    'NOVA University Lisbon': {
+        founded: 1973,
+        description: 'New University of Lisbon. Major Portuguese research university. Excellence in sciences, economics, law, and social sciences.',
+        website: 'https://www.unl.pt',
+        location: 'Lisbon, Portugal',
+        students: '20,000+'
+    },
+    'University of Pretoria': {
+        founded: 1908,
+        description: 'South Africa\'s largest contact university. Excellence in veterinary science, engineering, law, and health sciences. Strong research tradition.',
+        website: 'https://www.up.ac.za',
+        location: 'Pretoria, South Africa',
+        students: '55,000+'
+    },
+    'Camilo Jose Cela University': {
+        founded: 2000,
+        description: 'Private Spanish university in Madrid. Excellence in health sciences, communication, and technology. Modern campus and innovative teaching.',
+        website: 'https://www.ucjc.edu',
+        location: 'Madrid, Spain',
+        students: '9,000+'
+    },
+    'University of Bristol': {
+        founded: 1876,
+        description: 'Russell Group university. Excellence in sciences, engineering, and arts. 13 Nobel laureates. Historic red-brick university.',
+        website: 'https://www.bristol.ac.uk',
+        location: 'Bristol, United Kingdom',
+        students: '28,000+'
+    },
+    'University of Southern Denmark': {
+        founded: 1966,
+        description: 'SDU. Major Danish research university. Excellence in engineering, health sciences, and humanities. Multiple campuses across southern Denmark.',
+        website: 'https://www.sdu.dk',
+        location: 'Odense, Denmark',
+        students: '28,000+'
     }
 };
 

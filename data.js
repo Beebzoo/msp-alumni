@@ -1791,6 +1791,280 @@ const UNIVERSITY_INFO = {
         website: 'https://www.isfn.it',
         location: 'Milan, Italy',
         students: '500+'
+    },
+    // Universities 161-220 (batches 8 & 9 combined)
+    'Universita degli Studi dell\'Insubria': {
+        founded: 1998,
+        description: 'University of Insubria. Young Italian university in Lombardy. Excellence in sciences, medicine, and law. Named after ancient Roman province.',
+        website: 'https://www.uninsubria.it',
+        location: 'Varese/Como, Italy',
+        students: '10,000+'
+    },
+    'ISEG': {
+        founded: 1911,
+        description: 'Lisbon School of Economics and Management. Part of University of Lisbon. Portugal\'s leading business and economics school. Triple-crown accredited.',
+        website: 'https://www.iseg.ulisboa.pt',
+        location: 'Lisbon, Portugal',
+        students: '8,000+'
+    },
+    'Tilburg University': {
+        founded: 1927,
+        description: 'Dutch research university. Excellence in economics, business, law, and social sciences. Strong international focus and research output.',
+        website: 'https://www.tilburguniversity.edu',
+        location: 'Tilburg, Netherlands',
+        students: '18,000+'
+    },
+    'Jagiellonian University': {
+        founded: 1364,
+        description: 'Poland\'s oldest university and one of Europe\'s oldest. Copernicus studied here. Excellence in sciences, humanities, and medicine. Rich academic tradition.',
+        website: 'https://www.uj.edu.pl',
+        location: 'Kraków, Poland',
+        students: '40,000+'
+    },
+    'University of Maribor': {
+        founded: 1961,
+        description: 'Slovenia\'s second-largest university. Excellence in engineering, business, law, and medicine. Strong regional impact and international partnerships.',
+        website: 'https://www.um.si',
+        location: 'Maribor, Slovenia',
+        students: '15,000+'
+    },
+    'IE University': {
+        founded: 1997,
+        description: 'IE University. Spanish private university. Excellence in business, international relations, and technology. Highly international student body and innovative teaching.',
+        website: 'https://www.ie.edu',
+        location: 'Madrid/Segovia, Spain',
+        students: '7,000+'
+    },
+    'Universidad Autonoma de Madrid': {
+        founded: 1968,
+        description: 'Autonomous University of Madrid. Major Spanish research university. Excellence in sciences, humanities, and medicine. Strong research tradition.',
+        website: 'https://www.uam.es',
+        location: 'Madrid, Spain',
+        students: '30,000+'
+    },
+    'University of Athens': {
+        founded: 1837,
+        description: 'National and Kapodistrian University of Athens. Greece\'s oldest and largest university. Excellence in sciences, humanities, law, and medicine.',
+        website: 'https://www.uoa.gr',
+        location: 'Athens, Greece',
+        students: '70,000+'
+    },
+    'Universita Cattolica del Sacro Cuore': {
+        founded: 1921,
+        description: 'Catholic University of the Sacred Heart. Italy\'s largest private university. Excellence in medicine, economics, law, and humanities. Multiple campuses.',
+        website: 'https://www.unicatt.it',
+        location: 'Milan, Italy',
+        students: '42,000+'
+    },
+    'Universita degli Studi di Napoli Federico II': {
+        founded: 1224,
+        description: 'University of Naples Federico II. World\'s oldest public secular university. Founded by Emperor Frederick II. Excellence in humanities, sciences, and engineering.',
+        website: 'https://www.unina.it',
+        location: 'Naples, Italy',
+        students: '80,000+'
+    },
+    'Zhejiang University of Science and Technology': {
+        founded: 1980,
+        description: 'Chinese university focused on engineering and applied sciences. Excellence in materials, automation, and industrial design. Growing research profile.',
+        website: 'https://www.zust.edu.cn',
+        location: 'Hangzhou, China',
+        students: '16,000+'
+    },
+    'University of Nicosia Medical School': {
+        founded: 2011,
+        description: 'Medical school of University of Nicosia. Cyprus\'s largest private medical school. US-accredited MD program. Modern medical education.',
+        website: 'https://www.unic.ac.cy/medicalschool',
+        location: 'Nicosia, Cyprus',
+        students: '1,500+'
+    },
+    'Tampere University': {
+        founded: 2019,
+        description: 'Finnish university formed by merger. Excellence in technology, health, and society. Strong interdisciplinary research and innovation culture.',
+        website: 'https://www.tuni.fi',
+        location: 'Tampere, Finland',
+        students: '24,000+'
+    },
+    'Universite Grenoble Alpes': {
+        founded: 2016,
+        description: 'University of Grenoble Alpes. Major French research university formed by merger. Excellence in sciences, engineering, and health. Alpine location.',
+        website: 'https://www.univ-grenoble-alpes.fr',
+        location: 'Grenoble, France',
+        students: '60,000+'
+    },
+    'Heinrich Heine University Dusseldorf': {
+        founded: 1965,
+        description: 'German research university. Excellence in medicine, law, economics, and sciences. Named after poet Heinrich Heine. Strong research tradition.',
+        website: 'https://www.hhu.de',
+        location: 'Düsseldorf, Germany',
+        students: '35,000+'
+    },
+    'National University of Singapore': {
+        founded: 1905,
+        description: 'NUS. Asia\'s leading university. Consistently ranked #1 in Asia. Excellence across all disciplines. World-class research and innovation.',
+        website: 'https://www.nus.edu.sg',
+        location: 'Singapore',
+        students: '40,000+'
+    },
+    'Universidad Complutense de Madrid': {
+        founded: 1293,
+        description: 'Complutense University of Madrid. One of world\'s oldest universities. Spain\'s largest university. Excellence in humanities, sciences, and health.',
+        website: 'https://www.ucm.es',
+        location: 'Madrid, Spain',
+        students: '87,000+'
+    },
+    'University of Lincoln': {
+        founded: 1992,
+        description: 'Modern UK university with medieval cathedral city location. Excellence in engineering, computer science, and business. Strong industry partnerships.',
+        website: 'https://www.lincoln.ac.uk',
+        location: 'Lincoln, United Kingdom',
+        students: '16,000+'
+    },
+    'London School of Hygiene and Tropical Medicine': {
+        founded: 1899,
+        description: 'LSHTM. World-leading public health and tropical medicine institution. Part of University of London. Excellence in global health research.',
+        website: 'https://www.lshtm.ac.uk',
+        location: 'London, United Kingdom',
+        students: '1,200+'
+    },
+    'University of Worcester': {
+        founded: 2005,
+        description: 'Modern UK university with roots dating to 1946. Excellence in education, health, and business. Strong community engagement and student experience.',
+        website: 'https://www.worc.ac.uk',
+        location: 'Worcester, United Kingdom',
+        students: '10,000+'
+    },
+    'Boston University': {
+        founded: 1839,
+        description: 'Major US research university. Excellence in medicine, law, business, and engineering. 9 Nobel laureates. Located in heart of Boston.',
+        website: 'https://www.bu.edu',
+        location: 'Boston, Massachusetts, USA',
+        students: '35,000+'
+    },
+    'Princeton University': {
+        founded: 1746,
+        description: 'Ivy League university. One of world\'s most prestigious institutions. 69 Nobel laureates. Excellence across all disciplines. Historic campus.',
+        website: 'https://www.princeton.edu',
+        location: 'Princeton, New Jersey, USA',
+        students: '8,500+'
+    },
+    'Central European University': {
+        founded: 1991,
+        description: 'CEU. Graduate research university. Founded by George Soros. Excellence in social sciences, humanities, and public policy. Highly international.',
+        website: 'https://www.ceu.edu',
+        location: 'Vienna, Austria',
+        students: '1,500+'
+    },
+    'Medical University of Vienna': {
+        founded: 1365,
+        description: 'One of world\'s oldest medical schools. Separated from University of Vienna in 2004. Excellence in medical research and education. Rich tradition.',
+        website: 'https://www.meduniwien.ac.at',
+        location: 'Vienna, Austria',
+        students: '8,000+'
+    },
+    'Vienna University of Technology': {
+        founded: 1815,
+        description: 'TU Wien. Austria\'s largest technical university. Excellence in engineering, architecture, and natural sciences. Strong research and innovation.',
+        website: 'https://www.tuwien.at',
+        location: 'Vienna, Austria',
+        students: '27,000+'
+    },
+    'London School of Economics': {
+        founded: 1895,
+        description: 'LSE. World-leading social science university. 19 Nobel laureates in Economics. Excellence in economics, politics, law, and sociology.',
+        website: 'https://www.lse.ac.uk',
+        location: 'London, United Kingdom',
+        students: '12,000+'
+    },
+    'Norwegian University of Life Sciences': {
+        founded: 1859,
+        description: 'NMBU. Norwegian university specializing in life sciences. Excellence in veterinary medicine, agriculture, and environmental sciences.',
+        website: 'https://www.nmbu.no',
+        location: 'Ås, Norway',
+        students: '6,000+'
+    },
+    'University of Oslo': {
+        founded: 1811,
+        description: 'Norway\'s oldest and highest-ranked university. Excellence in law, medicine, natural sciences, and humanities. 5 Nobel laureates.',
+        website: 'https://www.uio.no',
+        location: 'Oslo, Norway',
+        students: '28,000+'
+    },
+    'University of Algarve': {
+        founded: 1979,
+        description: 'Portuguese university in Algarve region. Excellence in marine sciences, tourism, and health. Beautiful coastal location.',
+        website: 'https://www.ualg.pt',
+        location: 'Faro, Portugal',
+        students: '9,000+'
+    },
+    'University of Gottingen': {
+        founded: 1734,
+        description: 'Georg August University Göttingen. Historic German research university. 45 Nobel laureates. Excellence in sciences, mathematics, and humanities.',
+        website: 'https://www.uni-goettingen.de',
+        location: 'Göttingen, Germany',
+        students: '31,000+'
+    },
+    'UCLouvain': {
+        founded: 1425,
+        description: 'Catholic University of Louvain. Belgium\'s largest French-speaking university. Excellence in sciences, humanities, and medicine. Historic tradition.',
+        website: 'https://www.uclouvain.be',
+        location: 'Louvain-la-Neuve, Belgium',
+        students: '32,000+'
+    },
+    'University of Lille': {
+        founded: 1559,
+        description: 'Major French research university. Merged 2018 from three institutions. Excellence in sciences, humanities, health, and engineering.',
+        website: 'https://www.univ-lille.fr',
+        location: 'Lille, France',
+        students: '72,000+'
+    },
+    'Friedrich-Alexander University Erlangen-Nuremberg': {
+        founded: 1743,
+        description: 'FAU. Large German research university. Excellence in engineering, sciences, medicine, and humanities. Strong innovation culture.',
+        website: 'https://www.fau.eu',
+        location: 'Erlangen/Nuremberg, Germany',
+        students: '39,000+'
+    },
+    'University of Milan': {
+        founded: 1924,
+        description: 'Università degli Studi di Milano. Italy\'s largest public university by enrollment. Excellence in sciences, humanities, and health.',
+        website: 'https://www.unimi.it',
+        location: 'Milan, Italy',
+        students: '64,000+'
+    },
+    'Kyoto University': {
+        founded: 1897,
+        description: 'Japan\'s second-oldest university. 19 Nobel laureates (most in Asia). Excellence in sciences, engineering, and humanities. Elite research institution.',
+        website: 'https://www.kyoto-u.ac.jp',
+        location: 'Kyoto, Japan',
+        students: '22,000+'
+    },
+    'Politecnico di Milano': {
+        founded: 1863,
+        description: 'Milan Polytechnic. Italy\'s leading technical university. Excellence in engineering, architecture, and design. Strong industry connections.',
+        website: 'https://www.polimi.it',
+        location: 'Milan, Italy',
+        students: '47,000+'
+    },
+    'University of Basel': {
+        founded: 1460,
+        description: 'Switzerland\'s oldest university. Excellence in life sciences, medicine, and humanities. 10 Nobel laureates including Erasmus of Rotterdam.',
+        website: 'https://www.unibas.ch',
+        location: 'Basel, Switzerland',
+        students: '13,000+'
+    },
+    'University of Exeter': {
+        founded: 1955,
+        description: 'Russell Group university in southwest England. Excellence in sciences, humanities, business, and medicine. Beautiful campus locations.',
+        website: 'https://www.exeter.ac.uk',
+        location: 'Exeter, United Kingdom',
+        students: '28,000+'
+    },
+    'University of San Francisco': {
+        founded: 1855,
+        description: 'Jesuit university in San Francisco. Excellence in business, law, nursing, and education. Strong social justice focus and diverse student body.',
+        website: 'https://www.usfca.edu',
+        location: 'San Francisco, California, USA',
+        students: '11,000+'
     }
 };
 

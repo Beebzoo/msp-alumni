@@ -27,7 +27,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2015": 5, "2016": 7, "2017": 8, "2018": 8, "2019": 10, "2020": 9, "2021": 9, "2022": 5, "2023": 10, "2024": 8, "2025": 4 },
         cities: [{ name: "London", count: 38 }, { name: "Oxford", count: 8 }, { name: "Edinburgh", count: 7 }, { name: "Cambridge", count: 5 }],
         nationalities: [{ name: "British", code: "gb", count: 26 }, { name: "German", code: "de", count: 12 }, { name: "Dutch", code: "nl", count: 10 }],
-        universities: [{ name: "Imperial College London", count: 19 }, { name: "University College London", count: 14 }, { name: "University of Cambridge", count: 8 }, { name: "University of Edinburgh", count: 7 }, { name: "University of Oxford", count: 7 }, { name: "University of Birmingham", count: 5 }, { name: "King's College London", count: 3 }, { name: "University of Glasgow", count: 3 }, { name: "Queen Mary University of London", count: 2 }, { name: "University of Aberdeen", count: 2 }, { name: "University of Leeds", count: 2 }, { name: "University of Manchester", count: 2 }, { name: "University of Salford", count: 2 }, { name: "University of Sheffield", count: 2 }, { name: "Bristol University", count: 1 }, { name: "Cambridge Judge Business School", count: 1 }, { name: "Heriot-Watt University", count: 1 }, { name: "LSE", count: 1 }, { name: "Le Cordon Bleu London", count: 1 }, { name: "London School of Hygiene and Tropical Medicine", count: 1 }, { name: "Queen's University Belfast", count: 1 }, { name: "Regent's University London", count: 1 }, { name: "Royal Veterinary College", count: 1 }, { name: "The University of Edinburg/University of Capetown", count: 1 }, { name: "UCL + Brunel University", count: 1 }, { name: "University College London/Sorbonne University", count: 1 }, { name: "University of Bath", count: 1 }, { name: "University of East Anglia", count: 1 }, { name: "University of Exeter", count: 1 }, { name: "University of Gastronomic Sciences - Pollenzo/University of London", count: 1 }, { name: "University of Kent", count: 1 }, { name: "University of Leicester", count: 1 }, { name: "University of Lincoln", count: 1 }, { name: "University of London", count: 1 }, { name: "University of Nottingham", count: 1 }, { name: "University of Portsmouth", count: 1 }, { name: "University of St Andrews", count: 1 }, { name: "University of Warwick", count: 1 }, { name: "University of Worcester", count: 1 }],
+        universities: [{ name: "Imperial College London", count: 19 }, { name: "University College London", count: 14 }, { name: "University of Cambridge", count: 8 }, { name: "University of Edinburgh", count: 7 }, { name: "University of Oxford", count: 7 }, { name: "University of Birmingham", count: 5 }, { name: "King\'s College London", count: 3 }, { name: "University of Glasgow", count: 3 }, { name: "Queen Mary University of London", count: 2 }, { name: "University of Aberdeen", count: 2 }, { name: "University of Leeds", count: 2 }, { name: "University of Manchester", count: 2 }, { name: "University of Salford", count: 2 }, { name: "University of Sheffield", count: 2 }, { name: "Bristol University", count: 1 }, { name: "Cambridge Judge Business School", count: 1 }, { name: "Heriot-Watt University", count: 1 }, { name: "LSE", count: 1 }, { name: "Le Cordon Bleu London", count: 1 }, { name: "London School of Hygiene and Tropical Medicine", count: 1 }, { name: "Queen\'s University Belfast", count: 1 }, { name: "Regent\'s University London", count: 1 }, { name: "Royal Veterinary College", count: 1 }, { name: "The University of Edinburg/University of Capetown", count: 1 }, { name: "UCL + Brunel University", count: 1 }, { name: "University College London/Sorbonne University", count: 1 }, { name: "University of Bath", count: 1 }, { name: "University of East Anglia", count: 1 }, { name: "University of Exeter", count: 1 }, { name: "University of Gastronomic Sciences - Pollenzo/University of London", count: 1 }, { name: "University of Kent", count: 1 }, { name: "University of Leicester", count: 1 }, { name: "University of Lincoln", count: 1 }, { name: "University of London", count: 1 }, { name: "University of Nottingham", count: 1 }, { name: "University of Portsmouth", count: 1 }, { name: "University of St Andrews", count: 1 }, { name: "University of Warwick", count: 1 }, { name: "University of Worcester", count: 1 }],
         coords: [55.3781, -3.4360]
     },
     "be": {
@@ -63,7 +63,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2019": 3, "2020": 6, "2021": 2, "2022": 5, "2024": 6, "2025": 10 },
         cities: [{ name: "Milan", count: 12 }, { name: "Bologna", count: 6 }, { name: "Rome", count: 4 }],
         nationalities: [{ name: "Italian", code: "it", count: 20 }, { name: "Dutch", code: "nl", count: 3 }],
-        universities: [{ name: "Universita di Bologna", count: 6 }, { name: "Bocconi University", count: 2 }, { name: "Universita di Pavia", count: 2 }, { name: "Erasmus Mundus MaMaSELF+ (Torino/LMU Munich/Montpellier)", count: 1 }, { name: "ISF Istituto di Scienze Forensi", count: 1 }, { name: "Politecnico di Milano", count: 1 }, { name: "Sapienza Universita di Roma", count: 1 }, { name: "Sapienza Università di Roma (ARCHMAT Erasmus Mundus)", count: 1 }, { name: "Universita Cattolica del Sacro Cuore", count: 1 }, { name: "Universita Degli Studi Di Ferrara", count: 1 }, { name: "Universita degli Studi di napoli Federico II", count: 1 }, { name: "Universita di Padova", count: 1 }, { name: "University of Bologna", count: 1 }, { name: "University of Bologna / Oslo / MCI (Erasmus Mundus)", count: 1 }, { name: "University of Milan", count: 1 }, { name: "University of Pavia", count: 1 }, { name: "University of Rome Tor Vergata", count: 1 }, { name: "Università degli Studi dell'Insubria", count: 1 }, { name: "Università degli Studi di Genova", count: 1 }, { name: "Università degli studi di Ferrara", count: 1 }],
+        universities: [{ name: "Universita di Bologna", count: 6 }, { name: "Bocconi University", count: 2 }, { name: "Universita di Pavia", count: 2 }, { name: "Erasmus Mundus MaMaSELF+ (Torino/LMU Munich/Montpellier)", count: 1 }, { name: "ISF Istituto di Scienze Forensi", count: 1 }, { name: "Politecnico di Milano", count: 1 }, { name: "Sapienza Universita di Roma", count: 1 }, { name: "Sapienza Università di Roma (ARCHMAT Erasmus Mundus)", count: 1 }, { name: "Universita Cattolica del Sacro Cuore", count: 1 }, { name: "Universita Degli Studi Di Ferrara", count: 1 }, { name: "Universita degli Studi di napoli Federico II", count: 1 }, { name: "Universita di Padova", count: 1 }, { name: "University of Bologna", count: 1 }, { name: "University of Bologna / Oslo / MCI (Erasmus Mundus)", count: 1 }, { name: "University of Milan", count: 1 }, { name: "University of Pavia", count: 1 }, { name: "University of Rome Tor Vergata", count: 1 }, { name: "Università degli Studi dell\'Insubria", count: 1 }, { name: "Università degli Studi di Genova", count: 1 }, { name: "Università degli studi di Ferrara", count: 1 }],
         coords: [41.8719, 12.5674]
     },
     "fr": {
@@ -204,7 +204,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 1, Male: 2 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "New Bulgarian University", count: 1 }, { name: "Telerik Academy School", count: 1 }],
+        universities: [{ name: "Wageningen University", count: 1 }],
         coords: [42.7339, 25.4858]
     },
     "in": {
@@ -228,7 +228,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 2, Male: 0 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "University of Maribor", count: 1 }],
+        universities: [{ name: "University College London", count: 1 }],
         coords: [46.1512, 14.9955]
     },
     "cl": {
@@ -271,31 +271,31 @@ const COUNTRY_DETAILS = {
         universities: [{ name: "Zhejiang University of Science and Technology", count: 1 }],
         coords: [35.8617, 104.1954]
     },
-    "ec": { name: "Ecuador", code: "ec", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "Zhejiang University of Science and Technology", count: 1 }], coords: [-1.8312, -78.1834] },
+    "ec": { name: "Ecuador", code: "ec", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-1.8312, -78.1834] },
     "ke": { name: "Kenya", code: "ke", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [-0.0236, 37.9062] },
     "sx": { name: "Sint Maarten", code: "sx", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [18.0425, -63.0548] },
     "zw": { name: "Zimbabwe", code: "zw", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-19.0154, 29.1549] },
     "ro": { name: "Romania", code: "ro", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [45.9432, 24.9668] },
-    "nc": { name: "New Caledonia", code: "nc", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "University Politehnica of Bucharest", count: 1 }], coords: [-20.9043, 165.618] },
-    "jm": { name: "Jamaica", code: "jm", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [18.1096, -77.2975] },
-    "sk": { name: "Slovakia", code: "sk", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "The University of West Indies, Mona", count: 1 }], coords: [48.669, 19.699] },
+    "nc": { name: "New Caledonia", code: "nc", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [-20.9043, 165.618] },
+    "jm": { name: "Jamaica", code: "jm", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "The University of West Indies, Mona", count: 1 }], coords: [18.1096, -77.2975] },
+    "sk": { name: "Slovakia", code: "sk", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [48.669, 19.699] },
     "tr": { name: "Turkey", code: "tr", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [38.9637, 35.2433] },
-    "tw": { name: "Taiwan", code: "tw", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "Boğaziçi University", count: 1 }], coords: [23.6978, 120.9605] },
+    "tw": { name: "Taiwan", code: "tw", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [23.6978, 120.9605] },
     "sa": { name: "Saudi Arabia", code: "sa", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [23.8859, 45.0792] },
     "cz": { name: "Czech Republic", code: "cz", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [49.8175, 15.473] },
     "ml": { name: "Mali", code: "ml", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [17.5707, -3.9962] },
     "my": { name: "Malaysia", code: "my", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [4.2105, 101.9758] },
-    "lv": { name: "Latvia", code: "lv", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "Malaysia University", count: 1 }], coords: [56.8796, 24.6032] },
+    "lv": { name: "Latvia", code: "lv", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [56.8796, 24.6032] },
     "co": { name: "Colombia", code: "co", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [4.5709, -74.2973] },
     "ae": { name: "United Arab Emirates", code: "ae", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [23.4241, 53.8478] },
     "rs": { name: "Serbia", code: "rs", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [44.0165, 21.0059] },
     "cy": { name: "Cyprus", code: "cy", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [35.1264, 33.4299] },
-    "pe": { name: "Peru", code: "pe", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "University of Nicosia Medical School", count: 1 }], coords: [-9.19, -75.0152] },
+    "pe": { name: "Peru", code: "pe", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-9.19, -75.0152] },
     "hk": { name: "Hong Kong", code: "hk", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [22.3193, 114.1694] },
-    "md": { name: "Moldova", code: "md", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "City University of Hong Kong", count: 1 }], coords: [47.4116, 28.3699] },
-    "il": { name: "Israel", code: "il", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [31.0461, 34.8516] },
-    "za": { name: "South Africa", code: "za", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "Weizmann Institute of Science", count: 2 }, { name: "Tel Aviv University", count: 1 }], coords: [-30.5595, 22.9375] },
-    "tn": { name: "Tunisia", code: "tn", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "University of KwaZulu-natal", count: 1 }, { name: "University of Pretoria", count: 1 }], coords: [33.8869, 9.5375] },
+    "md": { name: "Moldova", code: "md", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [47.4116, 28.3699] },
+    "il": { name: "Israel", code: "il", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "Weizmann Institute of Science", count: 2 }, { name: "Tel Aviv University", count: 1 }], coords: [31.0461, 34.8516] },
+    "za": { name: "South Africa", code: "za", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "University of KwaZulu-natal", count: 1 }, { name: "University of Pretoria", count: 1 }], coords: [-30.5595, 22.9375] },
+    "tn": { name: "Tunisia", code: "tn", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [33.8869, 9.5375] },
     "ph": { name: "Philippines", code: "ph", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [12.8797, 121.774] },
     "cr": { name: "Costa Rica", code: "cr", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [9.7489, -83.7534] }
 };
@@ -864,7 +864,81 @@ const UNI_LOGO_FILES = {
 // Backward compatibility
 const UNIVERSITY_LOGOS = UNI_LOGO_FILES;
 
+// University detailed information for modals (Top 10 by alumni count)
+const UNIVERSITY_INFO = {
+    'Maastricht University': {
+        founded: 1976,
+        description: 'Young international research university known for innovative Problem-Based Learning and European focus. One of the most international universities in the Netherlands.',
+        website: 'https://www.maastrichtuniversity.nl',
+        location: 'Maastricht, Netherlands',
+        students: '23,000+'
+    },
+    'Utrecht University': {
+        founded: 1636,
+        description: 'One of the oldest and largest research universities in the Netherlands. Member of the League of European Research Universities with 12 Nobel Prize winners.',
+        website: 'https://www.uu.nl',
+        location: 'Utrecht, Netherlands',
+        students: '43,000+'
+    },
+    'University of Amsterdam': {
+        founded: 1632,
+        description: 'Founded as the Athenaeum Illustre, one of the largest research universities in Europe. Known for openness, tolerance and interdisciplinary research.',
+        website: 'https://www.uva.nl',
+        location: 'Amsterdam, Netherlands',
+        students: '43,000+'
+    },
+    'Leiden University': {
+        founded: 1575,
+        description: 'The oldest university in the Netherlands. Motto: \'Bastion of Freedom.\' Home to 13 Nobel laureates and renowned for humanities and sciences.',
+        website: 'https://www.universiteitleiden.nl',
+        location: 'Leiden, Netherlands',
+        students: '35,000+'
+    },
+    'Wageningen University & Research': {
+        founded: 1918,
+        description: 'World-leading university in food and agriculture sciences. Consistently ranked #1 globally for agriculture & forestry. Focus on sustainability and life sciences.',
+        website: 'https://www.wur.nl',
+        location: 'Wageningen, Netherlands',
+        students: '13,000+'
+    },
+    'Radboud University': {
+        founded: 1923,
+        description: 'Comprehensive research university with strong tradition in humanities, sciences, and medicine. Known for personal approach and evidence-based innovation.',
+        website: 'https://www.ru.nl',
+        location: 'Nijmegen, Netherlands',
+        students: '24,000+'
+    },
+    'University of Groningen': {
+        founded: 1614,
+        description: 'Second-oldest university in the Netherlands. Top 100 university globally, known for research excellence in energy, healthy ageing, and sustainable society.',
+        website: 'https://www.rug.nl',
+        location: 'Groningen, Netherlands',
+        students: '36,000+'
+    },
+    'KU Leuven': {
+        founded: 1425,
+        description: 'Belgium\'s largest and highest-ranked university. Consistently ranked among Europe\'s top 50 universities. Strong research tradition across all disciplines.',
+        website: 'https://www.kuleuven.be',
+        location: 'Leuven, Belgium',
+        students: '65,000+'
+    },
+    'Uppsala University': {
+        founded: 1477,
+        description: 'Oldest university in Scandinavia and top-ranked Nordic university. Home to 8 Nobel laureates including Anders Celsius. Excellence in sciences and humanities.',
+        website: 'https://www.uu.se',
+        location: 'Uppsala, Sweden',
+        students: '45,000+'
+    },
+    'Imperial College London': {
+        founded: 1907,
+        description: 'World-leading science, engineering, medicine and business university. Consistently ranked among the world\'s top 10 universities. Focus on practical application of research.',
+        website: 'https://www.imperial.ac.uk',
+        location: 'London, United Kingdom',
+        students: '20,000+'
+    }
+};
+
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS, COUNTRY_FACTS, UNI_LOGO_FILES };
+    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS, COUNTRY_FACTS, UNI_LOGO_FILES, UNIVERSITY_INFO };
 }

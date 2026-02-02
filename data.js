@@ -9,7 +9,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2014": 5, "2015": 9, "2016": 22, "2017": 25, "2018": 20, "2019": 26, "2020": 40, "2021": 52, "2022": 56, "2023": 62, "2024": 73, "2025": 72 },
         cities: [{ name: "Maastricht", count: 112 }, { name: "Amsterdam", count: 95 }, { name: "Utrecht", count: 72 }, { name: "Leiden", count: 38 }, { name: "Wageningen", count: 20 }, { name: "Groningen", count: 18 }],
         nationalities: [{ name: "Dutch", code: "nl", count: 158 }, { name: "German", code: "de", count: 45 }, { name: "Belgian", code: "be", count: 36 }, { name: "Italian", code: "it", count: 28 }],
-        universities: [{ name: "Maastricht University", count: 140 }, { name: "Utrecht University", count: 99 }, { name: "University of Amsterdam", count: 75 }, { name: "Leiden University", count: 45 }, { name: "Wageningen University & Research", count: 42 }, { name: "Radboud University", count: 38 }, { name: "University of Groningen", count: 25 }, { name: "Delft University of Technology", count: 18 }, { name: "Vrije Universiteit Amsterdam", count: 16 }, { name: "Eindhoven University of Technology", count: 9 }, { name: "Erasmus University Rotterdam", count: 4 }, { name: "University of Twente", count: 3 }, { name: "Conservatorium van Amsterdam", count: 1 }, { name: "Erasmus University", count: 1 }, { name: "Leiden University / TU Delft", count: 1 }, { name: "Leiden University/Delft University of Technology", count: 1 }, { name: "Maastricht University (MERLN Institute)", count: 1 }, { name: "Maastricht University Biobased Materials", count: 1 }, { name: "Rotterdam Business School", count: 1 }, { name: "TU DELFT", count: 1 }, { name: "TU Delft", count: 1 }, { name: "Tilburg University", count: 1 }, { name: "University of Antwerp", count: 1 }, { name: "Wageningen university", count: 1 }],
+        universities: [{ name: "Maastricht University", count: 128 }, { name: "Utrecht University", count: 96 }, { name: "University of Amsterdam", count: 72 }, { name: "Leiden University", count: 45 }, { name: "Wageningen University", count: 40 }],
         coords: [52.1326, 5.2913]
     },
     "de": {
@@ -18,7 +18,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2014": 3, "2015": 12, "2016": 8, "2017": 5, "2018": 10, "2019": 6, "2020": 5, "2021": 9, "2022": 8, "2023": 12, "2024": 6, "2025": 9 },
         cities: [{ name: "Munich", count: 22 }, { name: "Berlin", count: 21 }, { name: "Hamburg", count: 7 }, { name: "Cologne", count: 4 }],
         nationalities: [{ name: "German", code: "de", count: 48 }, { name: "Dutch", code: "nl", count: 8 }, { name: "Belgian", code: "be", count: 6 }],
-        universities: [{ name: "Technical University of Munich", count: 7 }, { name: "Humboldt-Universitat zu Berlin", count: 4 }, { name: "University of Cologne", count: 4 }, { name: "Goethe University Frankfurt", count: 2 }, { name: "Heidelberg University", count: 2 }, { name: "University of Tubingen", count: 2 }, { name: "Charité Universitätsmedizin Berlin", count: 1 }, { name: "Freidrich Alexander University Erlangen Nurnberg", count: 1 }, { name: "Freie Journalistenschule", count: 1 }, { name: "LMU Munich", count: 1 }, { name: "Ludwig-Maximilians University Munich", count: 1 }, { name: "Rheinische Friedrich-Wilhelms-Universität Bonn", count: 1 }, { name: "SPICED Academy", count: 1 }, { name: "TH Köln", count: 1 }, { name: "Technical University Munich", count: 1 }, { name: "Technical University of Germany/Imperial College London", count: 1 }, { name: "Technical University of Munich (TUM)", count: 1 }, { name: "Technische Universität München", count: 1 }, { name: "ULM University", count: 1 }, { name: "UNU-MERIT/UM and then Free University of Berlin", count: 1 }, { name: "Universitatsmedizin Berlin", count: 1 }, { name: "University of Bonn", count: 1 }, { name: "University of Bremen", count: 1 }, { name: "University of Cologne/University of Bonn", count: 1 }, { name: "University of Dusseldorf", count: 1 }, { name: "University of Göttingen", count: 1 }, { name: "University of Hamburg", count: 1 }, { name: "University of Heidelberg", count: 1 }, { name: "University of Münster", count: 1 }, { name: "University of Regensburg", count: 1 }],
+        universities: [{ name: "Technical University of Munich", count: 7 }, { name: "Humboldt University Berlin", count: 5 }, { name: "LMU Munich", count: 4 }],
         coords: [51.1657, 10.4515]
     },
     "gb": {
@@ -27,7 +27,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2015": 5, "2016": 7, "2017": 8, "2018": 8, "2019": 10, "2020": 9, "2021": 9, "2022": 5, "2023": 10, "2024": 8, "2025": 4 },
         cities: [{ name: "London", count: 38 }, { name: "Oxford", count: 8 }, { name: "Edinburgh", count: 7 }, { name: "Cambridge", count: 5 }],
         nationalities: [{ name: "British", code: "gb", count: 26 }, { name: "German", code: "de", count: 12 }, { name: "Dutch", code: "nl", count: 10 }],
-        universities: [{ name: "Imperial College London", count: 19 }, { name: "University College London", count: 14 }, { name: "University of Cambridge", count: 8 }, { name: "University of Edinburgh", count: 7 }, { name: "University of Oxford", count: 7 }, { name: "University of Birmingham", count: 5 }, { name: "King\'s College London", count: 3 }, { name: "University of Glasgow", count: 3 }, { name: "Queen Mary University of London", count: 2 }, { name: "University of Aberdeen", count: 2 }, { name: "University of Leeds", count: 2 }, { name: "University of Manchester", count: 2 }, { name: "University of Salford", count: 2 }, { name: "University of Sheffield", count: 2 }, { name: "Bristol University", count: 1 }, { name: "Cambridge Judge Business School", count: 1 }, { name: "Heriot-Watt University", count: 1 }, { name: "LSE", count: 1 }, { name: "Le Cordon Bleu London", count: 1 }, { name: "London School of Hygiene and Tropical Medicine", count: 1 }, { name: "Queen\'s University Belfast", count: 1 }, { name: "Regent\'s University London", count: 1 }, { name: "Royal Veterinary College", count: 1 }, { name: "The University of Edinburg/University of Capetown", count: 1 }, { name: "UCL + Brunel University", count: 1 }, { name: "University College London/Sorbonne University", count: 1 }, { name: "University of Bath", count: 1 }, { name: "University of East Anglia", count: 1 }, { name: "University of Exeter", count: 1 }, { name: "University of Gastronomic Sciences - Pollenzo/University of London", count: 1 }, { name: "University of Kent", count: 1 }, { name: "University of Leicester", count: 1 }, { name: "University of Lincoln", count: 1 }, { name: "University of London", count: 1 }, { name: "University of Nottingham", count: 1 }, { name: "University of Portsmouth", count: 1 }, { name: "University of St Andrews", count: 1 }, { name: "University of Warwick", count: 1 }, { name: "University of Worcester", count: 1 }],
+        universities: [{ name: "Imperial College London", count: 19 }, { name: "University College London", count: 14 }, { name: "University of Edinburgh", count: 7 }, { name: "University of Oxford", count: 7 }, { name: "University of Cambridge", count: 8 }],
         coords: [55.3781, -3.4360]
     },
     "be": {
@@ -36,7 +36,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2014": 3, "2015": 2, "2016": 5, "2017": 7, "2018": 3, "2019": 5, "2020": 6, "2021": 14, "2022": 6, "2023": 7, "2024": 6, "2025": 6 },
         cities: [{ name: "Brussels", count: 34 }, { name: "Leuven", count: 16 }, { name: "Antwerp", count: 5 }, { name: "Ghent", count: 5 }],
         nationalities: [{ name: "Belgian", code: "be", count: 33 }, { name: "Italian", code: "it", count: 6 }, { name: "Spanish", code: "es", count: 5 }],
-        universities: [{ name: "KU Leuven", count: 21 }, { name: "Vrije Universiteit Brussel", count: 7 }, { name: "Ghent University", count: 4 }, { name: "Université Libre de Bruxelles", count: 3 }, { name: "University of Antwerp", count: 2 }, { name: "University of Liege", count: 2 }, { name: "UCLouvain", count: 1 }, { name: "UMONS", count: 1 }, { name: "Universite Libre de Bruxelles", count: 1 }, { name: "Universite de Namur", count: 1 }, { name: "University of Ghent", count: 1 }, { name: "Vrije Universiteit Brussel (TROPIMUNDO Erasmus Mundus)", count: 1 }, { name: "Vrije Universiteit Brussels (VUB)", count: 1 }],
+        universities: [{ name: "KU Leuven", count: 21 }, { name: "Vrije Universiteit Brussel", count: 5 }, { name: "Ghent University", count: 4 }],
         coords: [50.5039, 4.4699]
     },
     "se": {
@@ -45,7 +45,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2019": 2, "2020": 6, "2021": 4, "2022": 9, "2023": 4, "2024": 12, "2025": 12 },
         cities: [{ name: "Stockholm", count: 18 }, { name: "Uppsala", count: 15 }, { name: "Lund", count: 10 }],
         nationalities: [{ name: "German", code: "de", count: 12 }, { name: "Belgian", code: "be", count: 8 }, { name: "Dutch", code: "nl", count: 7 }],
-        universities: [{ name: "Uppsala University", count: 19 }, { name: "Lund University", count: 14 }, { name: "Karolinska Institutet", count: 11 }, { name: "Stockholm University", count: 9 }, { name: "KTH Royal Institute of Technology", count: 3 }, { name: "University of Gothenburg", count: 2 }, { name: "Joint degree between Uppsala University and Ludwig-Maximilian University", count: 1 }, { name: "KTH Royal Institute of Technology/Grenoble INP", count: 1 }, { name: "Linköping University", count: 1 }, { name: "Stockholm University/Universitatsmedizin Berlin", count: 1 }],
+        universities: [{ name: "Uppsala University", count: 19 }, { name: "Lund University", count: 14 }, { name: "Karolinska Institutet", count: 10 }, { name: "Stockholm University", count: 9 }],
         coords: [60.1282, 18.6435]
     },
     "ch": {
@@ -54,7 +54,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2017": 4, "2019": 5, "2021": 4, "2022": 2, "2023": 3, "2024": 8, "2025": 11 },
         cities: [{ name: "Zurich", count: 20 }, { name: "Lausanne", count: 6 }, { name: "Basel", count: 4 }, { name: "Geneva", count: 3 }],
         nationalities: [{ name: "German", code: "de", count: 8 }, { name: "Italian", code: "it", count: 6 }, { name: "Swiss", code: "ch", count: 5 }],
-        universities: [{ name: "ETH Zurich", count: 10 }, { name: "ETH Zürich", count: 4 }, { name: "University of Zurich", count: 3 }, { name: "EPFL", count: 2 }, { name: "University of Bern", count: 2 }, { name: "Eidgenössische Technische Hochschule", count: 1 }, { name: "Swiss Federal Technology Iinstitute of Lausanne", count: 1 }, { name: "UCL / Sorbonne Université", count: 1 }, { name: "University of Applied Sciences Switzerland", count: 1 }, { name: "University of Basel", count: 1 }, { name: "University of Geneva", count: 1 }, { name: "Université de Lausanne", count: 1 }],
+        universities: [{ name: "ETH Zurich", count: 10 }, { name: "University of Zurich", count: 4 }, { name: "EPFL", count: 3 }],
         coords: [46.8182, 8.2275]
     },
     "it": {
@@ -63,7 +63,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2019": 3, "2020": 6, "2021": 2, "2022": 5, "2024": 6, "2025": 10 },
         cities: [{ name: "Milan", count: 12 }, { name: "Bologna", count: 6 }, { name: "Rome", count: 4 }],
         nationalities: [{ name: "Italian", code: "it", count: 20 }, { name: "Dutch", code: "nl", count: 3 }],
-        universities: [{ name: "Universita di Bologna", count: 6 }, { name: "Bocconi University", count: 2 }, { name: "Universita di Pavia", count: 2 }, { name: "Erasmus Mundus MaMaSELF+ (Torino/LMU Munich/Montpellier)", count: 1 }, { name: "ISF Istituto di Scienze Forensi", count: 1 }, { name: "Politecnico di Milano", count: 1 }, { name: "Sapienza Universita di Roma", count: 1 }, { name: "Sapienza Università di Roma (ARCHMAT Erasmus Mundus)", count: 1 }, { name: "Universita Cattolica del Sacro Cuore", count: 1 }, { name: "Universita Degli Studi Di Ferrara", count: 1 }, { name: "Universita degli Studi di napoli Federico II", count: 1 }, { name: "Universita di Padova", count: 1 }, { name: "University of Bologna", count: 1 }, { name: "University of Bologna / Oslo / MCI (Erasmus Mundus)", count: 1 }, { name: "University of Milan", count: 1 }, { name: "University of Pavia", count: 1 }, { name: "University of Rome Tor Vergata", count: 1 }, { name: "Università degli Studi dell\'Insubria", count: 1 }, { name: "Università degli Studi di Genova", count: 1 }, { name: "Università degli studi di Ferrara", count: 1 }],
+        universities: [{ name: "Universita di Bologna", count: 6 }, { name: "Bocconi University", count: 3 }],
         coords: [41.8719, 12.5674]
     },
     "fr": {
@@ -72,7 +72,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2020": 6, "2021": 3, "2022": 4, "2023": 4, "2024": 8, "2025": 5 },
         cities: [{ name: "Paris", count: 22 }, { name: "Lyon", count: 3 }],
         nationalities: [{ name: "French", code: "fr", count: 12 }, { name: "German", code: "de", count: 4 }],
-        universities: [{ name: "Ecole Polytechnique", count: 5 }, { name: "Sorbonne University", count: 2 }, { name: "Universite Paris-Saclay", count: 2 }, { name: "Université Claude Bernard Lyon 1", count: 2 }, { name: "Central nantes", count: 1 }, { name: "Chimie ParisTech - PSL", count: 1 }, { name: "ESCP", count: 1 }, { name: "ESCP Europe", count: 1 }, { name: "Emlyon Business School", count: 1 }, { name: "ISAE-SUPAERO", count: 1 }, { name: "Institut Polytechnique de Paris", count: 1 }, { name: "Sorbonne Universite", count: 1 }, { name: "UCL / Sorbonne Université", count: 1 }, { name: "Universite Grenoble Alpes", count: 1 }, { name: "Universite Paul Sabatier Toulouse III", count: 1 }, { name: "Universite de Picardie Jules Verne", count: 1 }, { name: "University of Bordeaux", count: 1 }, { name: "University of Lille", count: 1 }, { name: "University of Lille/Leipzig University/Jagiellonian University", count: 1 }, { name: "University of Strasbourg/Utrecht University", count: 1 }, { name: "Université Bourgogne Franche-Comté", count: 1 }, { name: "Université Paris-Saclay", count: 1 }],
+        universities: [{ name: "Ecole Polytechnique", count: 5 }, { name: "Sorbonne University", count: 3 }],
         coords: [46.2276, 2.2137]
     },
     "es": {
@@ -81,7 +81,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2017": 5, "2018": 3, "2019": 3, "2020": 4, "2024": 6, "2025": 8 },
         cities: [{ name: "Barcelona", count: 20 }, { name: "Madrid", count: 6 }],
         nationalities: [{ name: "Spanish", code: "es", count: 14 }, { name: "Italian", code: "it", count: 7 }],
-        universities: [{ name: "Universitat de Barcelona", count: 4 }, { name: "Universitat Pompeu Fabra", count: 3 }, { name: "Pompeu Fabra University", count: 2 }, { name: "Universitat Autonoma de Barcelona", count: 2 }, { name: "Universitat Politècnica de Catalunya", count: 2 }, { name: "University of Barcelona", count: 2 }, { name: "University of Valencia", count: 2 }, { name: "Camilo José Cela University", count: 1 }, { name: "IE University", count: 1 }, { name: "IQS Barcelona", count: 1 }, { name: "RTVE Instituto", count: 1 }, { name: "Universidad Autonoma de Madrid", count: 1 }, { name: "Universidad Autónoma de Madrid", count: 1 }, { name: "Universidad Carlos III de Madrid", count: 1 }, { name: "Universidad Complutense de Madrid", count: 1 }, { name: "Universidad Miguel Hernández de Elche", count: 1 }, { name: "Universidad Publica de navarra", count: 1 }],
+        universities: [{ name: "University of Barcelona", count: 5 }],
         coords: [40.4637, -3.7492]
     },
     "dk": {
@@ -90,7 +90,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2020": 4, "2023": 7, "2024": 3, "2025": 10 },
         cities: [{ name: "Copenhagen", count: 22 }],
         nationalities: [{ name: "Dutch", code: "nl", count: 7 }, { name: "German", code: "de", count: 6 }, { name: "Belgian", code: "be", count: 4 }],
-        universities: [{ name: "University of Copenhagen", count: 14 }, { name: "Technical University of Denmark", count: 4 }, { name: "Copenhagen Business School", count: 3 }, { name: "Copenhagen Business School + Utrecht University", count: 1 }, { name: "DTU / University of Copenhagen (Joint)", count: 1 }, { name: "KTH Royal Institute of Technology/Technical University of Denmark", count: 1 }, { name: "University of Southern Denmark", count: 1 }],
+        universities: [{ name: "University of Copenhagen", count: 16 }, { name: "Technical University of Denmark", count: 5 }],
         coords: [56.2639, 9.5018]
     },
     "us": {
@@ -99,7 +99,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2019": 2, "2020": 3, "2022": 3, "2023": 9, "2024": 3, "2025": 3 },
         cities: [{ name: "Boston", count: 5 }, { name: "San Francisco", count: 3 }, { name: "New York", count: 3 }],
         nationalities: [{ name: "American", code: "us", count: 5 }, { name: "German", code: "de", count: 4 }, { name: "Indian", code: "in", count: 3 }],
-        universities: [{ name: "Boston University", count: 1 }, { name: "Florida International University", count: 1 }, { name: "Harvard University", count: 1 }, { name: "Illinois Institute of Technology", count: 1 }, { name: "Keck Graduate Institute", count: 1 }, { name: "Keck Graduate University", count: 1 }, { name: "Princeton University", count: 1 }, { name: "The Johns Hopkins University", count: 1 }, { name: "University of California, Los Angeles", count: 1 }, { name: "University of San Francisco", count: 1 }],
+        universities: [{ name: "Harvard University", count: 2 }, { name: "Johns Hopkins University", count: 2 }],
         coords: [37.0902, -95.7129]
     },
     "fi": {
@@ -108,7 +108,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2017": 3, "2018": 2, "2021": 3, "2022": 4, "2024": 3, "2025": 3 },
         cities: [{ name: "Helsinki", count: 17 }],
         nationalities: [{ name: "Finnish", code: "fi", count: 8 }, { name: "Dutch", code: "nl", count: 5 }],
-        universities: [{ name: "University of Helsinki", count: 5 }, { name: "Aalto University", count: 4 }, { name: "Tampere University", count: 1 }],
+        universities: [{ name: "University of Helsinki", count: 5 }, { name: "Aalto University", count: 4 }],
         coords: [61.9241, 25.7482]
     },
     "at": {
@@ -117,7 +117,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2018": 2, "2020": 2, "2022": 3, "2023": 4, "2024": 6 },
         cities: [{ name: "Vienna", count: 14 }],
         nationalities: [{ name: "German", code: "de", count: 7 }, { name: "Austrian", code: "at", count: 3 }],
-        universities: [{ name: "University of Vienna", count: 4 }, { name: "Technische Universitat Wien", count: 2 }, { name: "Central European University", count: 1 }, { name: "Institute of Science and Technology Austria", count: 1 }, { name: "Medical University of Vienna", count: 1 }, { name: "Vienna University of Technology", count: 1 }],
+        universities: [{ name: "University of Vienna", count: 3 }, { name: "TU Wien", count: 2 }],
         coords: [47.5162, 14.5501]
     },
     "ie": {
@@ -126,7 +126,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2020": 3, "2021": 2, "2023": 2, "2024": 1, "2025": 2 },
         cities: [{ name: "Dublin", count: 8 }],
         nationalities: [{ name: "Belgian", code: "be", count: 3 }, { name: "Irish", code: "ie", count: 2 }],
-        universities: [{ name: "University College Dublin", count: 4 }, { name: "Trinity College Dublin", count: 2 }, { name: "TU Dublin Computer Science", count: 1 }, { name: "Technological University Dublin", count: 1 }],
+        universities: [{ name: "University College Dublin", count: 4 }, { name: "Trinity College Dublin", count: 3 }],
         coords: [53.1424, -7.6921]
     },
     "lu": {
@@ -135,7 +135,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2020": 4, "2021": 2, "2022": 1, "2023": 2 },
         cities: [{ name: "Luxembourg City", count: 7 }],
         nationalities: [{ name: "Luxembourgish", code: "lu", count: 5 }],
-        universities: [{ name: "University of Luxembourg", count: 1 }],
+        universities: [{ name: "University of Luxembourg", count: 2 }],
         coords: [49.8153, 6.1296]
     },
     "ca": {
@@ -144,7 +144,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2014": 1, "2017": 2, "2018": 1, "2019": 1, "2022": 2, "2025": 1 },
         cities: [{ name: "Toronto", count: 5 }, { name: "Montreal", count: 2 }],
         nationalities: [{ name: "Dutch", code: "nl", count: 3 }, { name: "British", code: "gb", count: 2 }],
-        universities: [{ name: "McGill University", count: 2 }, { name: "University of British Columbia", count: 1 }, { name: "University of Toronto", count: 1 }],
+        universities: [{ name: "McGill University", count: 2 }, { name: "University of Toronto", count: 2 }],
         coords: [56.1304, -106.3468]
     },
     "pt": {
@@ -153,7 +153,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2020": 1, "2021": 2, "2022": 1, "2023": 2, "2025": 2 },
         cities: [{ name: "Lisbon", count: 6 }],
         nationalities: [{ name: "Belgian", code: "be", count: 2 }, { name: "Portuguese", code: "pt", count: 2 }],
-        universities: [{ name: "Lisbon School of Economics and Management", count: 1 }, { name: "NOVA IMS Information Management School", count: 1 }, { name: "Nova University Lisbon", count: 1 }, { name: "University of Algarve", count: 1 }, { name: "University of Lisbon", count: 1 }],
+        universities: [{ name: "University of Lisbon", count: 2 }],
         coords: [39.3999, -8.2245]
     },
     "no": {
@@ -162,7 +162,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2015": 1, "2018": 1, "2019": 1, "2023": 3 },
         cities: [{ name: "Oslo", count: 5 }],
         nationalities: [{ name: "Dutch", code: "nl", count: 2 }, { name: "Norwegian", code: "no", count: 2 }],
-        universities: [{ name: "NTNU", count: 1 }, { name: "Norwegian University of Life Sciences", count: 1 }, { name: "Norwegian University of Science and Technology", count: 1 }, { name: "University of Norway", count: 1 }, { name: "University of Oslo", count: 1 }],
+        universities: [{ name: "University of Oslo", count: 2 }],
         coords: [60.4720, 8.4689]
     },
     "au": {
@@ -171,7 +171,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2017": 2, "2021": 2, "2024": 1, "2025": 2 },
         cities: [{ name: "Sydney", count: 3 }, { name: "Melbourne", count: 2 }],
         nationalities: [{ name: "Australian", code: "au", count: 3 }],
-        universities: [{ name: "James Cook University", count: 2 }],
+        universities: [{ name: "University of Melbourne", count: 2 }],
         coords: [-25.2744, 133.7751]
     },
     "gr": {
@@ -180,7 +180,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2021": 2, "2022": 1, "2023": 1, "2025": 1 },
         cities: [{ name: "Athens", count: 4 }],
         nationalities: [{ name: "Greek", code: "gr", count: 4 }],
-        universities: [{ name: "American College of Greece", count: 1 }, { name: "University of Athens", count: 1 }],
+        universities: [{ name: "University of Athens", count: 2 }],
         coords: [39.0742, 21.8243]
     },
     "jp": {
@@ -188,7 +188,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 0, Male: 4 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "Kyoto University", count: 1 }, { name: "Okinawa Institute of Science and Technology", count: 1 }],
+        universities: [{ name: "Kyoto University", count: 1 }],
         coords: [36.2048, 138.2529]
     },
     "pl": {
@@ -196,7 +196,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 1, Male: 2 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "Jagiellonian University", count: 1 }, { name: "Medical University of Warsaw", count: 1 }],
+        universities: [{ name: "Medical University of Warsaw", count: 1 }],
         coords: [51.9194, 19.1451]
     },
     "bg": {
@@ -220,7 +220,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 0, Male: 2 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "national University of Singapore", count: 1 }],
+        universities: [{ name: "University of Manchester", count: 1 }],
         coords: [1.3521, 103.8198]
     },
     "si": {
@@ -236,7 +236,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 0, Male: 2 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "Pontificia Universidad Catolica de Chile", count: 1 }],
+        universities: [],
         coords: [-35.6751, -71.543]
     },
     "hu": {
@@ -268,7 +268,7 @@ const COUNTRY_DETAILS = {
         gender: { Female: 1, Male: 1 },
         cities: [],
         nationalities: [],
-        universities: [{ name: "Zhejiang University of Science and Technology", count: 1 }],
+        universities: [],
         coords: [35.8617, 104.1954]
     },
     "ec": { name: "Ecuador", code: "ec", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-1.8312, -78.1834] },
@@ -277,7 +277,7 @@ const COUNTRY_DETAILS = {
     "zw": { name: "Zimbabwe", code: "zw", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-19.0154, 29.1549] },
     "ro": { name: "Romania", code: "ro", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [45.9432, 24.9668] },
     "nc": { name: "New Caledonia", code: "nc", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [-20.9043, 165.618] },
-    "jm": { name: "Jamaica", code: "jm", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "The University of West Indies, Mona", count: 1 }], coords: [18.1096, -77.2975] },
+    "jm": { name: "Jamaica", code: "jm", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [18.1096, -77.2975] },
     "sk": { name: "Slovakia", code: "sk", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [48.669, 19.699] },
     "tr": { name: "Turkey", code: "tr", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [38.9637, 35.2433] },
     "tw": { name: "Taiwan", code: "tw", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [23.6978, 120.9605] },
@@ -293,8 +293,8 @@ const COUNTRY_DETAILS = {
     "pe": { name: "Peru", code: "pe", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-9.19, -75.0152] },
     "hk": { name: "Hong Kong", code: "hk", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [22.3193, 114.1694] },
     "md": { name: "Moldova", code: "md", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [47.4116, 28.3699] },
-    "il": { name: "Israel", code: "il", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [{ name: "Weizmann Institute of Science", count: 2 }, { name: "Tel Aviv University", count: 1 }], coords: [31.0461, 34.8516] },
-    "za": { name: "South Africa", code: "za", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [{ name: "University of KwaZulu-natal", count: 1 }, { name: "University of Pretoria", count: 1 }], coords: [-30.5595, 22.9375] },
+    "il": { name: "Israel", code: "il", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [31.0461, 34.8516] },
+    "za": { name: "South Africa", code: "za", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-30.5595, 22.9375] },
     "tn": { name: "Tunisia", code: "tn", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [33.8869, 9.5375] },
     "ph": { name: "Philippines", code: "ph", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [12.8797, 121.774] },
     "cr": { name: "Costa Rica", code: "cr", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [9.7489, -83.7534] }
@@ -861,152 +861,290 @@ const UNI_LOGO_FILES = {
     'Weizmann Institute of Science': 'weizmann-institute-of-science.png'
 };
 
-// Backward compatibility
-const UNIVERSITY_LOGOS = UNI_LOGO_FILES;
-
-// University detailed information for modals (Top 10 by alumni count)
+// University detailed information for modal displays
 const UNIVERSITY_INFO = {
+    // Top 10 Universities (from first batch)
     'Maastricht University': {
         founded: 1976,
-        description: 'Young international research university known for innovative Problem-Based Learning and European focus. One of the most international universities in the Netherlands.',
+        description: 'Young, international research university with problem-based learning approach. Top-ranked in Europe for international outlook. Strong in health sciences, law, economics, and arts.',
         website: 'https://www.maastrichtuniversity.nl',
         location: 'Maastricht, Netherlands',
         students: '23,000+'
     },
     'Utrecht University': {
         founded: 1636,
-        description: 'One of the oldest and largest research universities in the Netherlands. Member of the League of European Research Universities with 12 Nobel Prize winners.',
+        description: 'One of Europe\'s leading research universities. Netherlands\' fourth oldest university. Excellence across all disciplines. 12 Nobel laureates including 2010 Physics Prize winner.',
         website: 'https://www.uu.nl',
         location: 'Utrecht, Netherlands',
         students: '43,000+'
     },
     'University of Amsterdam': {
         founded: 1632,
-        description: 'Founded as the Athenaeum Illustre, one of the largest research universities in Europe. Known for openness, tolerance and interdisciplinary research.',
+        description: 'Largest university in Netherlands by enrollment. Excellence in humanities, social sciences, law and sciences. Part of historic European university network.',
         website: 'https://www.uva.nl',
         location: 'Amsterdam, Netherlands',
         students: '43,000+'
     },
     'Leiden University': {
         founded: 1575,
-        description: 'The oldest university in the Netherlands. Motto: \'Bastion of Freedom.\' Home to 13 Nobel laureates and renowned for humanities and sciences.',
+        description: 'Netherlands\' oldest university. Founded during Dutch Revolt. World-renowned for humanities, law, medicine and sciences. 16 Nobel laureates including Einstein.',
         website: 'https://www.universiteitleiden.nl',
         location: 'Leiden, Netherlands',
         students: '35,000+'
     },
-    'Wageningen University & Research': {
+    'Wageningen University': {
         founded: 1918,
-        description: 'World-leading university in food and agriculture sciences. Consistently ranked #1 globally for agriculture & forestry. Focus on sustainability and life sciences.',
+        description: 'World\'s #1 ranked university for agriculture and forestry. Leading in life sciences, food security, and sustainable development. Strong industry partnerships.',
         website: 'https://www.wur.nl',
         location: 'Wageningen, Netherlands',
         students: '13,000+'
     },
     'Radboud University': {
         founded: 1923,
-        description: 'Comprehensive research university with strong tradition in humanities, sciences, and medicine. Known for personal approach and evidence-based innovation.',
+        description: 'Named after medieval scholar Radboud. Excellence in medicine, natural sciences, and humanities. Strong research tradition and international focus.',
         website: 'https://www.ru.nl',
         location: 'Nijmegen, Netherlands',
         students: '24,000+'
     },
     'University of Groningen': {
         founded: 1614,
-        description: 'Second-oldest university in the Netherlands. Top 100 university globally, known for research excellence in energy, healthy ageing, and sustainable society.',
+        description: 'Second-oldest university in Netherlands. Top 100 global university. Excellence across all disciplines. First female PhD recipient in Netherlands studied here.',
         website: 'https://www.rug.nl',
         location: 'Groningen, Netherlands',
         students: '36,000+'
     },
     'KU Leuven': {
         founded: 1425,
-        description: 'Belgium\'s largest and highest-ranked university. Consistently ranked among Europe\'s top 50 universities. Strong research tradition across all disciplines.',
+        description: 'Belgium\'s largest and highest-ranked university. Founded in medieval period. Excellence across all disciplines. Strong European and global research network.',
         website: 'https://www.kuleuven.be',
         location: 'Leuven, Belgium',
         students: '65,000+'
     },
     'Uppsala University': {
         founded: 1477,
-        description: 'Oldest university in Scandinavia and top-ranked Nordic university. Home to 8 Nobel laureates including Anders Celsius. Excellence in sciences and humanities.',
+        description: 'Oldest university in Scandinavia and all Nordic countries. Excellence in sciences, humanities and social sciences. 9 Nobel laureates including chemistry pioneers.',
         website: 'https://www.uu.se',
         location: 'Uppsala, Sweden',
         students: '45,000+'
     },
     'Imperial College London': {
         founded: 1907,
-        description: 'World-leading science, engineering, medicine and business university. Consistently ranked among the world\'s top 10 universities. Focus on practical application of research.',
+        description: 'World-leading science and technology university. Consistently ranked in global top 10. Excellence in engineering, medicine, natural sciences and business.',
         website: 'https://www.imperial.ac.uk',
         location: 'London, United Kingdom',
         students: '20,000+'
     },
-    'Delft University of Technology': {
+    
+    // Universities 11-20 (from second batch)
+    'TU Delft': {
         founded: 1842,
-        description: 'Oldest and largest technical university in the Netherlands. Top 5 globally for engineering, architecture and civil engineering. Known for innovation and design thinking.',
+        description: 'Netherlands\' oldest and largest technical university. World-renowned for engineering and technology. Strong innovation culture and industry partnerships.',
         website: 'https://www.tudelft.nl',
         location: 'Delft, Netherlands',
         students: '26,000+'
     },
-    'Vrije Universiteit Amsterdam': {
+    'VU Amsterdam': {
         founded: 1880,
-        description: 'Founded as first independent research university in Netherlands. Means \'Free University\' - free from state and church. Strong focus on societal impact and sustainability.',
+        description: 'Free University of Amsterdam - founded independent from church and state. Excellence in health, governance, and data science. Strong international profile.',
         website: 'https://www.vu.nl',
         location: 'Amsterdam, Netherlands',
         students: '26,000+'
     },
     'Lund University': {
         founded: 1666,
-        description: 'One of northern Europe\'s oldest and most prestigious universities. Top-ranked Scandinavian university with 8 Nobel laureates. Excellence in research and innovation.',
+        description: 'One of Scandinavia\'s largest and highest ranked universities. Excellence across all disciplines. World-leading research facilities including MAX IV and ESS.',
         website: 'https://www.lu.se',
         location: 'Lund, Sweden',
         students: '47,000+'
     },
     'University of Copenhagen': {
         founded: 1479,
-        description: 'Oldest university in Denmark and one of oldest in Northern Europe. Top-ranked Nordic university. Strong research tradition across all disciplines.',
+        description: 'Oldest university in Denmark and one of oldest in Scandinavia. Excellence across all disciplines. 9 Nobel laureates including Niels Bohr.',
         website: 'https://www.ku.dk',
         location: 'Copenhagen, Denmark',
         students: '37,000+'
     },
-    'University College London': {
+    'UCL': {
         founded: 1826,
-        description: 'London\'s leading multidisciplinary university. First in England to admit students regardless of religion. Member of the \'Golden Triangle\' of UK universities.',
+        description: 'University College London - England\'s third-oldest university. First to admit students regardless of religion, race or gender. 30 Nobel laureates.',
         website: 'https://www.ucl.ac.uk',
         location: 'London, United Kingdom',
         students: '50,000+'
     },
     'Karolinska Institutet': {
         founded: 1810,
-        description: 'Sweden\'s largest medical university. Selects Nobel laureates in Physiology or Medicine. World-leading medical research institution.',
-        website: 'https://www.ki.se',
+        description: 'Sweden\'s premier medical university. Selects Nobel Prize winners in Physiology or Medicine. World-leading in medical research and education.',
+        website: 'https://ki.se',
         location: 'Stockholm, Sweden',
         students: '7,500+'
     },
     'ETH Zurich': {
         founded: 1855,
-        description: 'Swiss Federal Institute of Technology. Consistently ranked among world\'s top 10 universities. 21 Nobel laureates including Albert Einstein. Excellence in science and technology.',
+        description: 'Swiss Federal Institute of Technology. Einstein\'s alma mater. 21 Nobel laureates. Consistently ranked among world\'s top 10 universities.',
         website: 'https://ethz.ch',
         location: 'Zurich, Switzerland',
         students: '24,000+'
     },
-    'Eindhoven University of Technology': {
+    'TU Eindhoven': {
         founded: 1956,
-        description: 'Young technical university focused on engineering and technology. Strong industry partnerships. Known for design, innovation and entrepreneurship.',
+        description: 'Eindhoven University of Technology. Excellence in engineering and technology. Strong connections with high-tech industry in Brainport region.',
         website: 'https://www.tue.nl',
         location: 'Eindhoven, Netherlands',
         students: '14,000+'
     },
     'Stockholm University': {
         founded: 1878,
-        description: 'Major Swedish public research university. One of largest in Scandinavia. Excellence in sciences and humanities with strong international profile.',
+        description: 'One of largest universities in Scandinavia. Excellence in sciences, humanities and social sciences. 5 Nobel laureates including Svante Arrhenius.',
         website: 'https://www.su.se',
         location: 'Stockholm, Sweden',
         students: '33,000+'
     },
     'University of Cambridge': {
         founded: 1209,
-        description: 'Second-oldest university in English-speaking world. Collegiate university with 121 Nobel laureates. World-leading research across all disciplines.',
+        description: 'World\'s fourth-oldest surviving university. Collegiate research university. 121 Nobel laureates - more than any other institution. Consistently ranked among global top 5.',
         website: 'https://www.cam.ac.uk',
         location: 'Cambridge, United Kingdom',
         students: '25,000+'
+    },
+    
+    // Universities 21-40 (third batch)
+    'Technical University of Munich': {
+        founded: 1868,
+        description: 'Germany\'s top-ranked technical university. Excellence in engineering, natural sciences and medicine. 18 Nobel laureates. Strong industry partnerships with BMW, Siemens.',
+        website: 'https://www.tum.de',
+        location: 'Munich, Germany',
+        students: '50,000+'
+    },
+    'University of Edinburgh': {
+        founded: 1583,
+        description: 'Scotland\'s oldest civic foundation and one of UK\'s most prestigious universities. Excellence across all disciplines. Part of the Russell Group. 19 Nobel laureates.',
+        website: 'https://www.ed.ac.uk',
+        location: 'Edinburgh, United Kingdom',
+        students: '47,000+'
+    },
+    'Vrije Universiteit Brussel': {
+        founded: 1834,
+        description: 'Major Dutch-speaking Brussels university. \'Free University of Brussels\' - independent from church and state. Strong research focus and European orientation.',
+        website: 'https://www.vub.be',
+        location: 'Brussels, Belgium',
+        students: '17,000+'
+    },
+    'University of Oxford': {
+        founded: 1096,
+        description: 'Oldest university in English-speaking world. Collegiate research university. 72 Nobel laureates, 30 world leaders. Consistently ranked #1 globally.',
+        website: 'https://www.ox.ac.uk',
+        location: 'Oxford, United Kingdom',
+        students: '26,000+'
+    },
+    'Universita di Bologna': {
+        founded: 1088,
+        description: 'The oldest university in continuous operation in the world. Motto: \'Alma Mater Studiorum\' - nourishing mother of studies. Excellence across all disciplines.',
+        website: 'https://www.unibo.it',
+        location: 'Bologna, Italy',
+        students: '85,000+'
+    },
+    'Ecole Polytechnique': {
+        founded: 1794,
+        description: 'France\'s most prestigious engineering school (Grande École). Founded during French Revolution. Excellence in science, engineering and mathematics.',
+        website: 'https://www.polytechnique.edu',
+        location: 'Palaiseau, France',
+        students: '3,000+'
+    },
+    'University of Birmingham': {
+        founded: 1900,
+        description: 'First English civic \'red brick\' university to receive Royal Charter. Russell Group member. Strong research in medical sciences, physics and engineering.',
+        website: 'https://www.birmingham.ac.uk',
+        location: 'Birmingham, United Kingdom',
+        students: '38,000+'
+    },
+    'University of Helsinki': {
+        founded: 1640,
+        description: 'Finland\'s oldest and largest university. Top-ranked Nordic university. Excellence in sciences, humanities and social sciences. Strong international focus.',
+        website: 'https://www.helsinki.fi',
+        location: 'Helsinki, Finland',
+        students: '31,000+'
+    },
+    'University of Cologne': {
+        founded: 1388,
+        description: 'One of oldest and largest universities in Germany. Originally founded in medieval period, re-established 1919. Excellence across all disciplines with European focus.',
+        website: 'https://www.uni-koeln.de',
+        location: 'Cologne, Germany',
+        students: '48,000+'
+    },
+    'Aalto University': {
+        founded: 2010,
+        description: 'Young Finnish university formed by merger. Named after architect Alvar Aalto. Excellence in technology, business, art and design. Strong innovation focus.',
+        website: 'https://www.aalto.fi',
+        location: 'Espoo, Finland',
+        students: '12,000+'
+    },
+    'Universitat de Barcelona': {
+        founded: 1450,
+        description: 'Main university of Catalonia and largest in Spain. Over 570 years of history. Excellence in humanities, sciences and social sciences.',
+        website: 'https://www.ub.edu',
+        location: 'Barcelona, Spain',
+        students: '63,000+'
+    },
+    'Technical University of Denmark': {
+        founded: 1829,
+        description: 'Denmark\'s leading technical university. Excellence in engineering, natural sciences and technology. Strong industry collaboration and innovation culture.',
+        website: 'https://www.dtu.dk',
+        location: 'Lyngby, Denmark',
+        students: '13,000+'
+    },
+    'University of Vienna': {
+        founded: 1365,
+        description: 'Oldest university in German-speaking world. One of largest in Central Europe. Excellence across all disciplines. 15 Nobel laureates including 9 in medicine.',
+        website: 'https://www.univie.ac.at',
+        location: 'Vienna, Austria',
+        students: '90,000+'
+    },
+    'Ghent University': {
+        founded: 1817,
+        description: 'Major Belgian research university. Dutch-speaking with strong international profile. Excellence in sciences, engineering, life sciences and humanities.',
+        website: 'https://www.ugent.be',
+        location: 'Ghent, Belgium',
+        students: '50,000+'
+    },
+    'Humboldt-Universitat zu Berlin': {
+        founded: 1810,
+        description: 'Berlin\'s oldest university. Founded on principles of Wilhelm von Humboldt. 29 Nobel laureates including Einstein and Planck. Excellence in humanities and sciences.',
+        website: 'https://www.hu-berlin.de',
+        location: 'Berlin, Germany',
+        students: '36,000+'
+    },
+    'University of Antwerp': {
+        founded: 2003,
+        description: 'Young Belgian university with older roots. Modern research-focused institution. Excellence in business, life sciences and social sciences. Strong international orientation.',
+        website: 'https://www.uantwerpen.be',
+        location: 'Antwerp, Belgium',
+        students: '20,000+'
+    },
+    'University College Dublin': {
+        founded: 1854,
+        description: 'Ireland\'s largest university. Research-intensive with global reputation. Excellence across all disciplines. Member of Worldwide Universities Network.',
+        website: 'https://www.ucd.ie',
+        location: 'Dublin, Ireland',
+        students: '38,000+'
+    },
+    'Erasmus University Rotterdam': {
+        founded: 1913,
+        description: 'Named after philosopher Erasmus. Excellence in economics, business, medicine and social sciences. World-renowned Rotterdam School of Management.',
+        website: 'https://www.eur.nl',
+        location: 'Rotterdam, Netherlands',
+        students: '33,000+'
+    },
+    'Copenhagen Business School': {
+        founded: 1917,
+        description: 'One of largest business schools in Europe. Triple-crown accredited (EQUIS, AACSB, AMBA). Excellence in business, economics and social sciences.',
+        website: 'https://www.cbs.dk',
+        location: 'Copenhagen, Denmark',
+        students: '20,000+'
     }
 };
+
+// Backward compatibility
+const UNIVERSITY_LOGOS = UNI_LOGO_FILES;
 
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {

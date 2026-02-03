@@ -1,6 +1,7 @@
 // MSP Alumni Data - Complete Dataset
-// Last updated: January 2025
-// Total alumni: 1330 across 78 nationalities
+// Last updated: February 2026
+// Total alumni: 1321 across 78 nationalities
+// Universities: 233 (corrected from cleaned database)
 
 const COUNTRY_DETAILS = {
     "nl": {
@@ -9,7 +10,7 @@ const COUNTRY_DETAILS = {
         graduationYears: { "2014": 5, "2015": 9, "2016": 22, "2017": 25, "2018": 20, "2019": 26, "2020": 40, "2021": 52, "2022": 56, "2023": 62, "2024": 73, "2025": 72 },
         cities: [{ name: "Maastricht", count: 112 }, { name: "Amsterdam", count: 95 }, { name: "Utrecht", count: 72 }, { name: "Leiden", count: 38 }, { name: "Wageningen", count: 20 }, { name: "Groningen", count: 18 }],
         nationalities: [{ name: "Dutch", code: "nl", count: 158 }, { name: "German", code: "de", count: 45 }, { name: "Belgian", code: "be", count: 36 }, { name: "Italian", code: "it", count: 28 }],
-        universities: [{ name: "Maastricht University", count: 128 }, { name: "Utrecht University", count: 96 }, { name: "University of Amsterdam", count: 72 }, { name: "Leiden University", count: 45 }, { name: "Wageningen University", count: 40 }],
+        universities: [{ name: "Maastricht University", count: 143 }, { name: "Utrecht University", count: 99 }, { name: "University of Amsterdam", count: 75 }, { name: "Leiden University", count: 45 }, { name: "Wageningen University & Research", count: 43 }],
         coords: [52.1326, 5.2913]
     },
     "de": {
@@ -307,9 +308,9 @@ const MSP_DATA = {
         totalAlumni: 1321,
         nationalities: 78,
         countriesLivingIn: 87,
-        universitiesAttended: 265
+        universitiesAttended: 233
     },
-    lastUpdated: "January 2025",
+    lastUpdated: "February 2026",
     
     graduationByYear: [
         { year: 2014, count: 25 },
@@ -388,27 +389,28 @@ const MSP_DATA = {
     ],
     
     // FIXED: Logo filenames now match actual files in assets/logos/
+    // UPDATED: February 2026 - counts corrected from cleaned database
     topUniversities: [
-        { name: "Maastricht University", count: 128, code: "nl", country: "Netherlands", logo: "maastricht-university.png", prestige: false },
-        { name: "Utrecht University", count: 96, code: "nl", country: "Netherlands", logo: "utrecht-university.png", prestige: false },
-        { name: "University of Amsterdam", count: 72, code: "nl", country: "Netherlands", logo: "university-of-amsterdam.png", prestige: false },
+        { name: "Maastricht University", count: 143, code: "nl", country: "Netherlands", logo: "maastricht-university.png", prestige: false },
+        { name: "Utrecht University", count: 99, code: "nl", country: "Netherlands", logo: "utrecht-university.png", prestige: false },
+        { name: "University of Amsterdam", count: 75, code: "nl", country: "Netherlands", logo: "university-of-amsterdam.png", prestige: false },
         { name: "Leiden University", count: 45, code: "nl", country: "Netherlands", logo: "leiden-university.png", prestige: true },
-        { name: "Wageningen University", count: 40, code: "nl", country: "Netherlands", logo: "wageningen-university.png", prestige: true },
+        { name: "Wageningen University & Research", count: 43, code: "nl", country: "Netherlands", logo: "wageningen-university.png", prestige: true },
         { name: "Radboud University", count: 38, code: "nl", country: "Netherlands", logo: "radboud-university.png", prestige: false },
-        { name: "University of Groningen", count: 23, code: "nl", country: "Netherlands", logo: "university-of-groningen.png", prestige: false },
+        { name: "University of Groningen", count: 25, code: "nl", country: "Netherlands", logo: "university-of-groningen.png", prestige: false },
         { name: "KU Leuven", count: 21, code: "be", country: "Belgium", logo: "ku-leuven.png", prestige: true },
-        { name: "Delft University of Technology", count: 19, code: "nl", country: "Netherlands", logo: "tu-delft.png", prestige: true },
+        { name: "Delft University of Technology", count: 20, code: "nl", country: "Netherlands", logo: "tu-delft.png", prestige: true },
         { name: "Uppsala University", count: 19, code: "se", country: "Sweden", logo: "uppsala-university.png", prestige: true },
         { name: "Imperial College London", count: 19, code: "gb", country: "United Kingdom", logo: "imperial-college-london.png", prestige: true },
-        { name: "University of Copenhagen", count: 16, code: "dk", country: "Denmark", logo: "university-of-copenhagen.png", prestige: true },
-        { name: "Vrije Universiteit Amsterdam", count: 15, code: "nl", country: "Netherlands", logo: "vrije-universiteit-amsterdam.png", prestige: false },
+        { name: "Vrije Universiteit Amsterdam", count: 16, code: "nl", country: "Netherlands", logo: "vrije-universiteit-amsterdam.png", prestige: false },
+        { name: "University of Copenhagen", count: 14, code: "dk", country: "Denmark", logo: "university-of-copenhagen.png", prestige: true },
         { name: "University College London", count: 14, code: "gb", country: "United Kingdom", logo: "ucl.png", prestige: true },
         { name: "Lund University", count: 14, code: "se", country: "Sweden", logo: "lund-university.png", prestige: true },
-        { name: "ETH Zurich", count: 10, code: "ch", country: "Switzerland", logo: "eth-zurich.png", prestige: true },
-        { name: "Karolinska Institutet", count: 10, code: "se", country: "Sweden", logo: "karolinska-institutet.png", prestige: true },
+        { name: "ETH Zurich", count: 14, code: "ch", country: "Switzerland", logo: "eth-zurich.png", prestige: true },
+        { name: "Karolinska Institutet", count: 11, code: "se", country: "Sweden", logo: "karolinska-institutet.png", prestige: true },
+        { name: "Technical University of Munich", count: 10, code: "de", country: "Germany", logo: "tu-munich.png", prestige: true },
         { name: "University of Cambridge", count: 8, code: "gb", country: "United Kingdom", logo: "university-of-cambridge.png", prestige: true },
         { name: "University of Edinburgh", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-edinburgh.png", prestige: true },
-        { name: "Technical University of Munich", count: 7, code: "de", country: "Germany", logo: "tu-munich.png", prestige: true },
         { name: "University of Oxford", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-oxford.png", prestige: true }
     ],
     
@@ -444,11 +446,11 @@ const MSP_DATA = {
     },
     
     recruitment: {
-        heroStat: "78 nationalities. 87 countries. 265+ universities.",
+        heroStat: "78 nationalities. 87 countries. 233 universities.",
         proofStats: [
             { number: 1321, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
-            { number: "265+", label: "Master's Universities" },
+            { number: 233, label: "Master's Universities" },
             { number: "10.7%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
         ]
     },
@@ -462,7 +464,7 @@ const MSP_DATA = {
         heroStats: {
             alumni: 1321,
             nationalities: 78,
-            universities: 265,
+            universities: 233,
             countries: 87
         },
         
@@ -567,20 +569,20 @@ const MSP_DATA = {
         universityTiers: {
             worldTop10: {
                 label: "World Top 10",
-                count: 33,
+                count: 30,
                 universities: [
-                    { name: "ETH Zurich", code: "ch", count: 16, logo: "eth-zurich.png" },
-                    { name: "Cambridge", code: "gb", count: 9, logo: "university-of-cambridge.png" },
+                    { name: "ETH Zurich", code: "ch", count: 14, logo: "eth-zurich.png" },
+                    { name: "Cambridge", code: "gb", count: 8, logo: "university-of-cambridge.png" },
                     { name: "Oxford", code: "gb", count: 7, logo: "university-of-oxford.png" },
                     { name: "Harvard", code: "us", count: 1, logo: "harvard.png" }
                 ]
             },
             worldTop25: {
                 label: "World Top 25",
-                count: 85,
+                count: 48,
                 universities: [
-                    { name: "Imperial College", code: "gb", count: 20, logo: "imperial-college-london.png" },
-                    { name: "UCL", code: "gb", count: 19, logo: "ucl.png" },
+                    { name: "Imperial College", code: "gb", count: 19, logo: "imperial-college-london.png" },
+                    { name: "UCL", code: "gb", count: 14, logo: "ucl.png" },
                     { name: "Karolinska Institutet", code: "se", count: 11, logo: "karolinska-institutet.png" },
                     { name: "EPFL", code: "ch", count: 2, logo: "epfl.png" },
                     { name: "Princeton", code: "us", count: 1, logo: "princeton.png" },
@@ -589,13 +591,13 @@ const MSP_DATA = {
             },
             topDutch: {
                 label: "Top Dutch Universities",
-                count: 419,
+                count: 423,
                 universities: [
-                    { name: "Maastricht University", code: "nl", count: 140, logo: "maastricht-university.png" },
+                    { name: "Maastricht University", code: "nl", count: 143, logo: "maastricht-university.png" },
                     { name: "Utrecht University", code: "nl", count: 99, logo: "utrecht-university.png" },
                     { name: "University of Amsterdam", code: "nl", count: 75, logo: "university-of-amsterdam.png" },
                     { name: "Leiden University", code: "nl", count: 45, logo: "leiden-university.png" },
-                    { name: "Wageningen University", code: "nl", count: 42, logo: "wageningen-university.png" },
+                    { name: "Wageningen University & Research", code: "nl", count: 43, logo: "wageningen-university.png" },
                     { name: "Radboud University", code: "nl", count: 38, logo: "radboud-university.png" }
                 ]
             }
@@ -611,59 +613,59 @@ const MSP_DATA = {
 
 // Country facts for all countries
 const COUNTRY_FACTS = {
-    nl: { capital: 'Amsterdam', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Dutch', population: '17.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    de: { capital: 'Berlin', currency: 'Euro (Ã¢â€šÂ¬)', language: 'German', population: '84.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    gb: { capital: 'London', currency: 'Pound (Ã‚Â£)', language: 'English', population: '67.3M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
-    be: { capital: 'Brussels', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Dutch/French', population: '11.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    nl: { capital: 'Amsterdam', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Dutch', population: '17.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    de: { capital: 'Berlin', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'German', population: '84.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    gb: { capital: 'London', currency: 'Pound (Ãƒâ€šÃ‚Â£)', language: 'English', population: '67.3M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    be: { capital: 'Brussels', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Dutch/French', population: '11.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     se: { capital: 'Stockholm', currency: 'Krona (kr)', language: 'Swedish', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     ch: { capital: 'Bern', currency: 'Franc (CHF)', language: 'German/French', population: '8.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    it: { capital: 'Rome', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Italian', population: '58.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    fr: { capital: 'Paris', currency: 'Euro (Ã¢â€šÂ¬)', language: 'French', population: '67.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    es: { capital: 'Madrid', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Spanish', population: '47.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    it: { capital: 'Rome', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Italian', population: '58.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    fr: { capital: 'Paris', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'French', population: '67.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    es: { capital: 'Madrid', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Spanish', population: '47.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     dk: { capital: 'Copenhagen', currency: 'Krone (kr)', language: 'Danish', population: '5.9M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    fi: { capital: 'Helsinki', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Finnish', population: '5.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    at: { capital: 'Vienna', currency: 'Euro (Ã¢â€šÂ¬)', language: 'German', population: '9.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    ie: { capital: 'Dublin', currency: 'Euro (Ã¢â€šÂ¬)', language: 'English/Irish', population: '5.1M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
-    lu: { capital: 'Luxembourg City', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Lux/Fr/De', population: '660K', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    pt: { capital: 'Lisbon', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Portuguese', population: '10.4M', continent: 'Europe', timezone: 'WET (UTC+0)' },
+    fi: { capital: 'Helsinki', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Finnish', population: '5.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    at: { capital: 'Vienna', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'German', population: '9.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    ie: { capital: 'Dublin', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'English/Irish', population: '5.1M', continent: 'Europe', timezone: 'GMT (UTC+0)' },
+    lu: { capital: 'Luxembourg City', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Lux/Fr/De', population: '660K', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    pt: { capital: 'Lisbon', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Portuguese', population: '10.4M', continent: 'Europe', timezone: 'WET (UTC+0)' },
     no: { capital: 'Oslo', currency: 'Krone (kr)', language: 'Norwegian', population: '5.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    gr: { capital: 'Athens', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Greek', population: '10.4M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    pl: { capital: 'Warsaw', currency: 'Zloty (zÃ…â€š)', language: 'Polish', population: '37.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    bg: { capital: 'Sofia', currency: 'Lev (ÃÂ»ÃÂ²)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    gr: { capital: 'Athens', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Greek', population: '10.4M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    pl: { capital: 'Warsaw', currency: 'Zloty (zÃƒâ€¦Ã¢â‚¬Å¡)', language: 'Polish', population: '37.8M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    bg: { capital: 'Sofia', currency: 'Lev (ÃƒÂÃ‚Â»ÃƒÂÃ‚Â²)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     ro: { capital: 'Bucharest', currency: 'Leu (lei)', language: 'Romanian', population: '19.0M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     hu: { capital: 'Budapest', currency: 'Forint (Ft)', language: 'Hungarian', population: '9.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    cz: { capital: 'Prague', currency: 'Koruna (KÃ„Â)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    sk: { capital: 'Bratislava', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    si: { capital: 'Ljubljana', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    lt: { capital: 'Vilnius', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    lv: { capital: 'Riga', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Latvian', population: '1.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    cz: { capital: 'Prague', currency: 'Koruna (KÃƒâ€žÃ‚Â)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    sk: { capital: 'Bratislava', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    si: { capital: 'Ljubljana', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    lt: { capital: 'Vilnius', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    lv: { capital: 'Riga', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Latvian', population: '1.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     rs: { capital: 'Belgrade', currency: 'Dinar (RSD)', language: 'Serbian', population: '6.7M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    cy: { capital: 'Nicosia', currency: 'Euro (Ã¢â€šÂ¬)', language: 'Greek/Turkish', population: '1.3M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    md: { capital: 'ChiÃˆâ„¢inÃ„Æ’u', currency: 'Leu (MDL)', language: 'Romanian', population: '2.6M', continent: 'Europe', timezone: 'EET (UTC+2)' },
-    tr: { capital: 'Ankara', currency: 'Lira (Ã¢â€šÂº)', language: 'Turkish', population: '85.3M', continent: 'Europe/Asia', timezone: 'TRT (UTC+3)' },
+    cy: { capital: 'Nicosia', currency: 'Euro (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬)', language: 'Greek/Turkish', population: '1.3M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    md: { capital: 'ChiÃƒË†Ã¢â€žÂ¢inÃƒâ€žÃ†â€™u', currency: 'Leu (MDL)', language: 'Romanian', population: '2.6M', continent: 'Europe', timezone: 'EET (UTC+2)' },
+    tr: { capital: 'Ankara', currency: 'Lira (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Âº)', language: 'Turkish', population: '85.3M', continent: 'Europe/Asia', timezone: 'TRT (UTC+3)' },
     us: { capital: 'Washington D.C.', currency: 'Dollar ($)', language: 'English', population: '334.9M', continent: 'Americas', timezone: 'Multiple' },
     ca: { capital: 'Ottawa', currency: 'Dollar (C$)', language: 'English/French', population: '40.1M', continent: 'Americas', timezone: 'Multiple' },
     cl: { capital: 'Santiago', currency: 'Peso (CLP)', language: 'Spanish', population: '19.5M', continent: 'Americas', timezone: 'CLT (UTC-3)' },
-    co: { capital: 'BogotÃƒÂ¡', currency: 'Peso (COP)', language: 'Spanish', population: '52.2M', continent: 'Americas', timezone: 'COT (UTC-5)' },
+    co: { capital: 'BogotÃƒÆ’Ã‚Â¡', currency: 'Peso (COP)', language: 'Spanish', population: '52.2M', continent: 'Americas', timezone: 'COT (UTC-5)' },
     ec: { capital: 'Quito', currency: 'Dollar ($)', language: 'Spanish', population: '18.0M', continent: 'Americas', timezone: 'ECT (UTC-5)' },
     pe: { capital: 'Lima', currency: 'Sol (S/)', language: 'Spanish', population: '34.0M', continent: 'Americas', timezone: 'PET (UTC-5)' },
-    cr: { capital: 'San JosÃƒÂ©', currency: 'ColÃƒÂ³n (Ã¢â€šÂ¡)', language: 'Spanish', population: '5.2M', continent: 'Americas', timezone: 'CST (UTC-6)' },
+    cr: { capital: 'San JosÃƒÆ’Ã‚Â©', currency: 'ColÃƒÆ’Ã‚Â³n (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¡)', language: 'Spanish', population: '5.2M', continent: 'Americas', timezone: 'CST (UTC-6)' },
     jm: { capital: 'Kingston', currency: 'Dollar (J$)', language: 'English', population: '2.8M', continent: 'Americas', timezone: 'EST (UTC-5)' },
-    sx: { capital: 'Philipsburg', currency: 'Guilder (Ã†â€™)', language: 'Dutch/English', population: '44K', continent: 'Americas', timezone: 'AST (UTC-4)' },
-    jp: { capital: 'Tokyo', currency: 'Yen (Ã‚Â¥)', language: 'Japanese', population: '125.1M', continent: 'Asia', timezone: 'JST (UTC+9)' },
-    cn: { capital: 'Beijing', currency: 'Yuan (Ã‚Â¥)', language: 'Mandarin', population: '1.4B', continent: 'Asia', timezone: 'CST (UTC+8)' },
+    sx: { capital: 'Philipsburg', currency: 'Guilder (Ãƒâ€ Ã¢â‚¬â„¢)', language: 'Dutch/English', population: '44K', continent: 'Americas', timezone: 'AST (UTC-4)' },
+    jp: { capital: 'Tokyo', currency: 'Yen (Ãƒâ€šÃ‚Â¥)', language: 'Japanese', population: '125.1M', continent: 'Asia', timezone: 'JST (UTC+9)' },
+    cn: { capital: 'Beijing', currency: 'Yuan (Ãƒâ€šÃ‚Â¥)', language: 'Mandarin', population: '1.4B', continent: 'Asia', timezone: 'CST (UTC+8)' },
     sg: { capital: 'Singapore', currency: 'Dollar (S$)', language: 'English/+3', population: '5.9M', continent: 'Asia', timezone: 'SGT (UTC+8)' },
-    in: { capital: 'New Delhi', currency: 'Rupee (Ã¢â€šÂ¹)', language: 'Hindi/English', population: '1.4B', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
+    in: { capital: 'New Delhi', currency: 'Rupee (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¹)', language: 'Hindi/English', population: '1.4B', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
     my: { capital: 'Kuala Lumpur', currency: 'Ringgit (RM)', language: 'Malay', population: '34.0M', continent: 'Asia', timezone: 'MYT (UTC+8)' },
     hk: { capital: 'Hong Kong', currency: 'Dollar (HK$)', language: 'Chinese/English', population: '7.5M', continent: 'Asia', timezone: 'HKT (UTC+8)' },
     tw: { capital: 'Taipei', currency: 'Dollar (NT$)', language: 'Mandarin', population: '23.9M', continent: 'Asia', timezone: 'CST (UTC+8)' },
-    ph: { capital: 'Manila', currency: 'Peso (Ã¢â€šÂ±)', language: 'Filipino/English', population: '115.6M', continent: 'Asia', timezone: 'PHT (UTC+8)' },
+    ph: { capital: 'Manila', currency: 'Peso (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â±)', language: 'Filipino/English', population: '115.6M', continent: 'Asia', timezone: 'PHT (UTC+8)' },
     lk: { capital: 'Colombo', currency: 'Rupee (Rs)', language: 'Sinhala/Tamil', population: '22.2M', continent: 'Asia', timezone: 'IST (UTC+5:30)' },
-    il: { capital: 'Jerusalem', currency: 'Shekel (Ã¢â€šÂª)', language: 'Hebrew/Arabic', population: '9.7M', continent: 'Asia', timezone: 'IST (UTC+2)' },
+    il: { capital: 'Jerusalem', currency: 'Shekel (ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Âª)', language: 'Hebrew/Arabic', population: '9.7M', continent: 'Asia', timezone: 'IST (UTC+2)' },
     ae: { capital: 'Abu Dhabi', currency: 'Dirham (AED)', language: 'Arabic', population: '10.0M', continent: 'Asia', timezone: 'GST (UTC+4)' },
     sa: { capital: 'Riyadh', currency: 'Riyal (SAR)', language: 'Arabic', population: '36.4M', continent: 'Asia', timezone: 'AST (UTC+3)' },
     au: { capital: 'Canberra', currency: 'Dollar (A$)', language: 'English', population: '26.4M', continent: 'Oceania', timezone: 'Multiple' },
-    nc: { capital: 'NoumÃƒÂ©a', currency: 'Franc (XPF)', language: 'French', population: '290K', continent: 'Oceania', timezone: 'NCT (UTC+11)' },
+    nc: { capital: 'NoumÃƒÆ’Ã‚Â©a', currency: 'Franc (XPF)', language: 'French', population: '290K', continent: 'Oceania', timezone: 'NCT (UTC+11)' },
     ke: { capital: 'Nairobi', currency: 'Shilling (KES)', language: 'Swahili/English', population: '54.0M', continent: 'Africa', timezone: 'EAT (UTC+3)' },
     za: { capital: 'Pretoria', currency: 'Rand (R)', language: 'Multiple (11)', population: '60.0M', continent: 'Africa', timezone: 'SAST (UTC+2)' },
     zw: { capital: 'Harare', currency: 'ZiG/USD', language: 'English/+15', population: '16.3M', continent: 'Africa', timezone: 'CAT (UTC+2)' },
@@ -737,7 +739,7 @@ const UNI_LOGO_FILES = {
     'Ulm University': 'ulm-university.png',
     'University of Bremen': 'university-of-bremen.png',
     'University of Hamburg': 'university-of-hamburg.png',
-    'University of MÃ¼nster': 'university-of-munster.png',
+    'University of MÃƒÂ¼nster': 'university-of-munster.png',
     'University of Munster': 'university-of-munster.png',
     
     // Belgian Universities
@@ -745,7 +747,7 @@ const UNI_LOGO_FILES = {
     'Ghent University': 'ghent-university.png',
     'Vrije Universiteit Brussel': 'vrije-universiteit-brussel.jpg',
     'University of Antwerp': 'university-of-antwerp.png',
-    'UniversitÃƒÂ© Libre de Bruxelles': 'universite-libre-de-bruxelles.png',
+    'UniversitÃƒÆ’Ã‚Â© Libre de Bruxelles': 'universite-libre-de-bruxelles.png',
     'University of Liege': 'university-of-liege.png',
     
     // Swedish Universities
@@ -756,12 +758,12 @@ const UNI_LOGO_FILES = {
     'University of Gothenburg': 'university-of-gothenburg.png',
     'KTH Royal Institute of Technology': 'kth-royal-institute-of-technology.png',
     'Chalmers University of Technology': 'chalmers-university-of-technology.png',
-    'LinkÃ¶ping University': 'linkoping-university.png',
+    'LinkÃƒÂ¶ping University': 'linkoping-university.png',
     'Linkoping University': 'linkoping-university.png',
     
     // Swiss Universities
     'ETH Zurich': 'eth-zurich.png',
-    'ETH ZÃƒÂ¼rich': 'eth-zurich.png',
+    'ETH ZÃƒÆ’Ã‚Â¼rich': 'eth-zurich.png',
     'EPFL': 'epfl.png',
     'University of Zurich': 'university-of-zurich.png',
     'University of Bern': 'university-of-bern.png',
@@ -789,7 +791,7 @@ const UNI_LOGO_FILES = {
     'Ecole Polytechnique': 'ecole-polytechnique.png',
     'Sorbonne University': 'sorbonne-university.png',
     'Paris-Saclay University': 'paris-saclay-university.png',
-    'UniversitÃƒÂ© Claude Bernard Lyon 1': 'universite-claude-bernard-lyon-1.png',
+    'UniversitÃƒÆ’Ã‚Â© Claude Bernard Lyon 1': 'universite-claude-bernard-lyon-1.png',
     'Emlyon Business School': 'emlyon-business-school.png',
     'ESCP Business School': 'escp-business-school.png',
     'ESCP Europe': 'escp-business-school.png',
@@ -803,7 +805,7 @@ const UNI_LOGO_FILES = {
     'Universitat Pompeu Fabra': 'pompeu-fabra-university.jpg',
     'University of Valencia': 'university-of-valencia.png',
     'IQS Barcelona': 'iqs-barcelona.png',
-    'Camilo JosÃ© Cela University': 'camilo-jose-cela-university.png',
+    'Camilo JosÃƒÂ© Cela University': 'camilo-jose-cela-university.png',
     
     // Italian Universities
     'Universita di Bologna': 'university-of-bologna.png',
@@ -812,7 +814,7 @@ const UNI_LOGO_FILES = {
     'University of Pavia': 'university-of-pavia.png',
     'University of Milan': 'university-of-milan.png',
     'Politecnico di Milano': 'politecnico-di-milano.png',
-    'UniversitÃ  Cattolica del Sacro Cuore': 'universita-cattolica.png',
+    'UniversitÃƒÂ  Cattolica del Sacro Cuore': 'universita-cattolica.png',
     'Universita Cattolica del Sacro Cuore': 'universita-cattolica.png',
     
     // Other European Universities
@@ -823,7 +825,7 @@ const UNI_LOGO_FILES = {
     'Szeged University': 'szeged-university.png',
     'University of Lisbon': 'university-of-lisbon.png',
     'Nova University Lisbon': 'nova-university-lisbon.png',
-    'Universidade CatÃ³lica Portuguesa': 'universidade-catolica-portuguesa.png',
+    'Universidade CatÃƒÂ³lica Portuguesa': 'universidade-catolica-portuguesa.png',
     'University of Luxembourg': 'university-of-luxembourg.png',
     'Medical University of Warsaw': 'medical-university-of-warsaw.png',
     
@@ -1045,7 +1047,7 @@ const UNIVERSITY_INFO = {
     },
     'Ecole Polytechnique': {
         founded: 1794,
-        description: 'France\'s most prestigious engineering school (Grande Ã‰cole). Founded during French Revolution. Excellence in science, engineering and mathematics.',
+        description: 'France\'s most prestigious engineering school (Grande Ãƒâ€°cole). Founded during French Revolution. Excellence in science, engineering and mathematics.',
         website: 'https://www.polytechnique.edu',
         location: 'Palaiseau, France',
         students: '3,000+'
@@ -1171,7 +1173,7 @@ const UNIVERSITY_INFO = {
         location: 'Stockholm, Sweden',
         students: '13,000+'
     },
-    'Université Libre de Bruxelles': {
+    'UniversitÃ© Libre de Bruxelles': {
         founded: 1834,
         description: 'Founded 1834 on principle of "free inquiry". Independent from church and state. Split into French (ULB) and Dutch (VUB) universities in 1969. 4 Nobel laureates. Motto: "Conquering darkness with knowledge".',
         website: 'https://www.ulb.be',
@@ -1196,7 +1198,7 @@ const UNIVERSITY_INFO = {
         founded: 1817,
         description: 'Major Belgian research university established after Napoleonic era. Strong in engineering, sciences, and medicine. Important center for research in Wallonia region.',
         website: 'https://www.uliege.be',
-        location: 'Liège, Belgium',
+        location: 'LiÃ¨ge, Belgium',
         students: '28,000+'
     },
     'University of Salford': {
@@ -1243,7 +1245,7 @@ const UNIVERSITY_INFO = {
     },
     'EPFL': {
         founded: 1969,
-        description: 'École Polytechnique Fédérale de Lausanne. Swiss Federal Institute of Technology. Sister institution to ETH Zurich. 2 Nobel laureates. Top European university for engineering and technology.',
+        description: 'Ã‰cole Polytechnique FÃ©dÃ©rale de Lausanne. Swiss Federal Institute of Technology. Sister institution to ETH Zurich. 2 Nobel laureates. Top European university for engineering and technology.',
         website: 'https://www.epfl.ch',
         location: 'Lausanne, Switzerland',
         students: '13,000+'
@@ -1257,7 +1259,7 @@ const UNIVERSITY_INFO = {
     },
     'TU Wien': {
         founded: 1815,
-        description: 'Technische Universität Wien. Austria\'s largest technical university. Founded under Emperor Francis I. Excellence in engineering, technology, and natural sciences.',
+        description: 'Technische UniversitÃ¤t Wien. Austria\'s largest technical university. Founded under Emperor Francis I. Excellence in engineering, technology, and natural sciences.',
         website: 'https://www.tuwien.at',
         location: 'Vienna, Austria',
         students: '28,000+'
@@ -1271,9 +1273,9 @@ const UNIVERSITY_INFO = {
     },
     'University of Tubingen': {
         founded: 1477,
-        description: 'Eberhard Karls University Tübingen. One of Germany\'s oldest universities. 11 Nobel laureates including Einstein (honorary degree). Excellence in humanities, theology, and sciences.',
+        description: 'Eberhard Karls University TÃ¼bingen. One of Germany\'s oldest universities. 11 Nobel laureates including Einstein (honorary degree). Excellence in humanities, theology, and sciences.',
         website: 'https://uni-tuebingen.de',
-        location: 'Tübingen, Germany',
+        location: 'TÃ¼bingen, Germany',
         students: '28,000+'
     },
     'Weizmann Institute of Science': {
@@ -1320,7 +1322,7 @@ const UNIVERSITY_INFO = {
     },
     'Heidelberg University': {
         founded: 1386,
-        description: 'Ruprecht-Karls-Universität Heidelberg. Germany\'s oldest university. 56 Nobel laureates including 11 Nobel Prize winners in Chemistry. Excellence in medicine, sciences, and humanities.',
+        description: 'Ruprecht-Karls-UniversitÃ¤t Heidelberg. Germany\'s oldest university. 56 Nobel laureates including 11 Nobel Prize winners in Chemistry. Excellence in medicine, sciences, and humanities.',
         website: 'https://www.uni-heidelberg.de',
         location: 'Heidelberg, Germany',
         students: '31,000+'
@@ -1364,7 +1366,7 @@ const UNIVERSITY_INFO = {
     },
     'University of Szeged': {
         founded: 1872,
-        description: 'Hungary\'s second-largest university. Nobel laureate Albert Szent-Györgyi (Vitamin C discoverer) taught here. Excellence in medicine and sciences.',
+        description: 'Hungary\'s second-largest university. Nobel laureate Albert Szent-GyÃ¶rgyi (Vitamin C discoverer) taught here. Excellence in medicine and sciences.',
         website: 'https://u-szeged.hu',
         location: 'Szeged, Hungary',
         students: '21,000+'
@@ -1413,21 +1415,21 @@ const UNIVERSITY_INFO = {
     },
     'LMU Munich': {
         founded: 1472,
-        description: 'Ludwig-Maximilians-Universität. One of Europe\'s premier universities. Germany\'s second-oldest university. 43 Nobel laureates. Excellence in humanities, sciences, law, and medicine.',
+        description: 'Ludwig-Maximilians-UniversitÃ¤t. One of Europe\'s premier universities. Germany\'s second-oldest university. 43 Nobel laureates. Excellence in humanities, sciences, law, and medicine.',
         website: 'https://www.lmu.de',
         location: 'Munich, Germany',
         students: '52,000+'
     },
     'University of Bonn': {
         founded: 1818,
-        description: 'Rheinische Friedrich-Wilhelms-Universität. Prestigious research university. 8 Nobel laureates including Max Planck. Excellence in mathematics, physics, and economics.',
+        description: 'Rheinische Friedrich-Wilhelms-UniversitÃ¤t. Prestigious research university. 8 Nobel laureates including Max Planck. Excellence in mathematics, physics, and economics.',
         website: 'https://www.uni-bonn.de',
         location: 'Bonn, Germany',
         students: '35,000+'
     },
     'Institut Polytechnique de Paris': {
         founded: 2019,
-        description: 'Merger of five prestigious French engineering schools including École Polytechnique. Excellence in engineering and technology. Rapid rise in global rankings.',
+        description: 'Merger of five prestigious French engineering schools including Ã‰cole Polytechnique. Excellence in engineering and technology. Rapid rise in global rankings.',
         website: 'https://www.ip-paris.fr',
         location: 'Palaiseau, France',
         students: '8,000+'
@@ -1469,7 +1471,7 @@ const UNIVERSITY_INFO = {
     },
     'Chimie ParisTech': {
         founded: 1896,
-        description: 'École Nationale Supérieure de Chimie de Paris. Member of PSL University. Elite French engineering school (Grande École). Excellence in chemistry and chemical engineering.',
+        description: 'Ã‰cole Nationale SupÃ©rieure de Chimie de Paris. Member of PSL University. Elite French engineering school (Grande Ã‰cole). Excellence in chemistry and chemical engineering.',
         website: 'https://www.chimieparistech.psl.eu',
         location: 'Paris, France',
         students: '900+'
@@ -1478,14 +1480,14 @@ const UNIVERSITY_INFO = {
     // Universities 101-130 (sixth batch)
     'Emlyon Business School': {
         founded: 1872,
-        description: 'EMLYON Business School. Leading French business school (Grande École). Triple-crown accredited. Excellence in entrepreneurship and management. Strong international focus.',
+        description: 'EMLYON Business School. Leading French business school (Grande Ã‰cole). Triple-crown accredited. Excellence in entrepreneurship and management. Strong international focus.',
         website: 'https://www.em-lyon.com',
         location: 'Lyon, France',
         students: '9,000+'
     },
     'University of Bordeaux': {
         founded: 1441,
-        description: 'Historic French university. Merged 2014 from multiple institutions. 6 Nobel laureates including François Mauriac. Excellence in sciences, law, and humanities.',
+        description: 'Historic French university. Merged 2014 from multiple institutions. 6 Nobel laureates including FranÃ§ois Mauriac. Excellence in sciences, law, and humanities.',
         website: 'https://www.u-bordeaux.fr',
         location: 'Bordeaux, France',
         students: '56,000+'
@@ -1506,7 +1508,7 @@ const UNIVERSITY_INFO = {
     },
     'ISAE-SUPAERO': {
         founded: 1909,
-        description: 'Institut Supérieur de l\'Aéronautique et de l\'Espace. France\'s leading aerospace engineering school (Grande École). Excellence in aeronautics, space, and defense engineering.',
+        description: 'Institut SupÃ©rieur de l\'AÃ©ronautique et de l\'Espace. France\'s leading aerospace engineering school (Grande Ã‰cole). Excellence in aeronautics, space, and defense engineering.',
         website: 'https://www.isae-supaero.fr',
         location: 'Toulouse, France',
         students: '2,200+'
@@ -1562,16 +1564,16 @@ const UNIVERSITY_INFO = {
     },
     'Centrale Nantes': {
         founded: 1919,
-        description: 'École Centrale de Nantes. French engineering school (Grande École). Excellence in engineering, technology, and industrial sciences. Strong industry partnerships.',
+        description: 'Ã‰cole Centrale de Nantes. French engineering school (Grande Ã‰cole). Excellence in engineering, technology, and industrial sciences. Strong industry partnerships.',
         website: 'https://www.ec-nantes.fr',
         location: 'Nantes, France',
         students: '2,700+'
     },
     'Universite Bourgogne Franche-Comte': {
         founded: 2015,
-        description: 'University of Burgundy-Franche-Comté. Major French research university formed by merger. Excellence in sciences, humanities, health, and engineering.',
+        description: 'University of Burgundy-Franche-ComtÃ©. Major French research university formed by merger. Excellence in sciences, humanities, health, and engineering.',
         website: 'https://www.ubfc.fr',
-        location: 'Besançon, France',
+        location: 'BesanÃ§on, France',
         students: '58,000+'
     },
     'University of Lisbon': {
@@ -1684,7 +1686,7 @@ const UNIVERSITY_INFO = {
         founded: 1975,
         description: 'Swedish research university. Excellence in technology, medicine, and arts. Strong interdisciplinary programs and innovation focus.',
         website: 'https://www.liu.se',
-        location: 'Linköping, Sweden',
+        location: 'LinkÃ¶ping, Sweden',
         students: '32,000+'
     },
     'Universita degli Studi di Genova': {
@@ -1773,16 +1775,16 @@ const UNIVERSITY_INFO = {
     },
     'Charite Universitatsmedizin Berlin': {
         founded: 1710,
-        description: 'Charité University Medicine Berlin. Europe\'s largest university hospital. Joint medical faculty of Humboldt and Free University Berlin. Excellence in medicine and research.',
+        description: 'CharitÃ© University Medicine Berlin. Europe\'s largest university hospital. Joint medical faculty of Humboldt and Free University Berlin. Excellence in medicine and research.',
         website: 'https://www.charite.de',
         location: 'Berlin, Germany',
         students: '8,000+'
     },
     'University of Munster': {
         founded: 1780,
-        description: 'Westfälische Wilhelms-Universität. One of Germany\'s largest universities. Excellence in law, economics, sciences, and humanities. Strong research tradition.',
+        description: 'WestfÃ¤lische Wilhelms-UniversitÃ¤t. One of Germany\'s largest universities. Excellence in law, economics, sciences, and humanities. Strong research tradition.',
         website: 'https://www.uni-muenster.de',
-        location: 'Münster, Germany',
+        location: 'MÃ¼nster, Germany',
         students: '45,000+'
     },
     'ISF Istituto di Scienze Forensi': {
@@ -1818,7 +1820,7 @@ const UNIVERSITY_INFO = {
         founded: 1364,
         description: 'Poland\'s oldest university and one of Europe\'s oldest. Copernicus studied here. Excellence in sciences, humanities, and medicine. Rich academic tradition.',
         website: 'https://www.uj.edu.pl',
-        location: 'Kraków, Poland',
+        location: 'KrakÃ³w, Poland',
         students: '40,000+'
     },
     'University of Maribor': {
@@ -1895,7 +1897,7 @@ const UNIVERSITY_INFO = {
         founded: 1965,
         description: 'German research university. Excellence in medicine, law, economics, and sciences. Named after poet Heinrich Heine. Strong research tradition.',
         website: 'https://www.hhu.de',
-        location: 'Düsseldorf, Germany',
+        location: 'DÃ¼sseldorf, Germany',
         students: '35,000+'
     },
     'National University of Singapore': {
@@ -1979,7 +1981,7 @@ const UNIVERSITY_INFO = {
         founded: 1859,
         description: 'NMBU. Norwegian university specializing in life sciences. Excellence in veterinary medicine, agriculture, and environmental sciences.',
         website: 'https://www.nmbu.no',
-        location: 'Ås, Norway',
+        location: 'Ã…s, Norway',
         students: '6,000+'
     },
     'University of Oslo': {
@@ -1998,9 +2000,9 @@ const UNIVERSITY_INFO = {
     },
     'University of Gottingen': {
         founded: 1734,
-        description: 'Georg August University Göttingen. Historic German research university. 45 Nobel laureates. Excellence in sciences, mathematics, and humanities.',
+        description: 'Georg August University GÃ¶ttingen. Historic German research university. 45 Nobel laureates. Excellence in sciences, mathematics, and humanities.',
         website: 'https://www.uni-goettingen.de',
-        location: 'Göttingen, Germany',
+        location: 'GÃ¶ttingen, Germany',
         students: '31,000+'
     },
     'UCLouvain': {
@@ -2026,7 +2028,7 @@ const UNIVERSITY_INFO = {
     },
     'University of Milan': {
         founded: 1924,
-        description: 'Università degli Studi di Milano. Italy\'s largest public university by enrollment. Excellence in sciences, humanities, and health.',
+        description: 'UniversitÃ  degli Studi di Milano. Italy\'s largest public university by enrollment. Excellence in sciences, humanities, and health.',
         website: 'https://www.unimi.it',
         location: 'Milan, Italy',
         students: '64,000+'
@@ -2104,7 +2106,7 @@ const UNIVERSITY_INFO = {
     },
     'Bogazici University': {
         founded: 1863,
-        description: 'Boğaziçi University. Turkey\'s top-ranked university. Excellence in engineering, sciences, and economics. Historic Bosphorus campus location.',
+        description: 'BoÄŸaziÃ§i University. Turkey\'s top-ranked university. Excellence in engineering, sciences, and economics. Historic Bosphorus campus location.',
         website: 'https://www.boun.edu.tr',
         location: 'Istanbul, Turkey',
         students: '20,000+'
@@ -2174,7 +2176,7 @@ const UNIVERSITY_INFO = {
     },
     'Ecole Normale Superieure': {
         founded: 1794,
-        description: 'École Normale Supérieure. Elite French Grande École. 14 Fields Medal winners, 13 Nobel laureates. Excellence in sciences and humanities.',
+        description: 'Ã‰cole Normale SupÃ©rieure. Elite French Grande Ã‰cole. 14 Fields Medal winners, 13 Nobel laureates. Excellence in sciences and humanities.',
         website: 'https://www.ens.psl.eu',
         location: 'Paris, France',
         students: '2,400+'

@@ -294,7 +294,6 @@ const COUNTRY_DETAILS = {
     "pe": { name: "Peru", code: "pe", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-9.19, -75.0152] },
     "hk": { name: "Hong Kong", code: "hk", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [22.3193, 114.1694] },
     "md": { name: "Moldova", code: "md", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [47.4116, 28.3699] },
-    "il": { name: "Israel", code: "il", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [31.0461, 34.8516] },
     "za": { name: "South Africa", code: "za", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [-30.5595, 22.9375] },
     "tn": { name: "Tunisia", code: "tn", count: 1, gender: { Female: 0, Male: 1 }, cities: [], nationalities: [], universities: [], coords: [33.8869, 9.5375] },
     "ph": { name: "Philippines", code: "ph", count: 1, gender: { Female: 1, Male: 0 }, cities: [], nationalities: [], universities: [], coords: [12.8797, 121.774] },
@@ -308,7 +307,7 @@ const MSP_DATA = {
     summary: {
         totalAlumni: 1321,
         nationalities: 78,
-        countriesLivingIn: 59,
+        countriesLivingIn: 58,
         universitiesAttended: 233
     },
     lastUpdated: "February 2026",
@@ -382,7 +381,6 @@ const MSP_DATA = {
         { name: "Colombia", code: "co", count: 1, coords: [4.5709, -74.2973] },
         { name: "Hong Kong", code: "hk", count: 1, coords: [22.3193, 114.1694] },
         { name: "Moldova", code: "md", count: 1, coords: [47.4116, 28.3699] },
-        { name: "Israel", code: "il", count: 1, coords: [31.0461, 34.8516] },
         { name: "South Africa", code: "za", count: 1, coords: [-30.5595, 22.9375] },
         { name: "Tunisia", code: "tn", count: 1, coords: [33.8869, 9.5375] },
         { name: "Philippines", code: "ph", count: 1, coords: [12.8797, 121.774] },
@@ -636,7 +634,7 @@ const COUNTRY_FACTS = {
     bg: { capital: 'Sofia', currency: 'Lev (BGN)', language: 'Bulgarian', population: '6.5M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     ro: { capital: 'Bucharest', currency: 'Leu (lei)', language: 'Romanian', population: '19.0M', continent: 'Europe', timezone: 'EET (UTC+2)' },
     hu: { capital: 'Budapest', currency: 'Forint (Ft)', language: 'Hungarian', population: '9.6M', continent: 'Europe', timezone: 'CET (UTC+1)' },
-    cz: { capital: 'Prague', currency: 'Koruna (CZK)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
+    cz: { capital: 'Prague', currency: 'Koruna (CZKÂ)', language: 'Czech', population: '10.5M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     sk: { capital: 'Bratislava', currency: 'Euro (EUR)', language: 'Slovak', population: '5.4M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     si: { capital: 'Ljubljana', currency: 'Euro (EUR)', language: 'Slovene', population: '2.1M', continent: 'Europe', timezone: 'CET (UTC+1)' },
     lt: { capital: 'Vilnius', currency: 'Euro (EUR)', language: 'Lithuanian', population: '2.8M', continent: 'Europe', timezone: 'EET (UTC+2)' },
@@ -855,14 +853,8 @@ const UNI_LOGO_FILES = {
     // Asian Universities
     'Kyoto University': 'kyoto-university.png',
     
-    // Middle Eastern Universities
-    'Tel Aviv University': 'tel-aviv-university.png',
-    
     // Specialized Education Institutions
-    'SPICED Academy': 'spiced-academy.png',
-    
-    // Other Universities
-    'Weizmann Institute of Science': 'weizmann-institute-of-science.png'
+    'SPICED Academy': 'spiced-academy.png'
 };
 
 // University detailed information for modal displays
@@ -1280,13 +1272,6 @@ const UNIVERSITY_INFO = {
         location: 'Tubingen, Germany',
         students: '28,000+'
     },
-    'Weizmann Institute of Science': {
-        founded: 1934,
-        description: 'Elite research institute for natural sciences. Graduate studies only. 6 Nobel laureates. One of world\'s leading multidisciplinary research institutions. Excellence in physics, chemistry, and biology.',
-        website: 'https://www.weizmann.ac.il',
-        location: 'Rehovot, Israel',
-        students: '2,900'
-    },
     'Universita di Pavia': {
         founded: 1361,
         description: 'University of Pavia. One of world\'s oldest universities. Alessandro Volta (electricity pioneer) and Camillo Golgi (Nobel laureate) taught here. Excellence in sciences and medicine.',
@@ -1528,13 +1513,6 @@ const UNIVERSITY_INFO = {
         website: 'https://www.le.ac.uk',
         location: 'Leicester, United Kingdom',
         students: '24,000+'
-    },
-    'Tel Aviv University': {
-        founded: 1956,
-        description: 'Israel\'s largest university. Excellence in sciences, humanities, and arts. World-leading research output. Strong innovation and startup culture.',
-        website: 'https://www.tau.ac.il',
-        location: 'Tel Aviv, Israel',
-        students: '30,000+'
     },
     'Heriot-Watt University': {
         founded: 1821,

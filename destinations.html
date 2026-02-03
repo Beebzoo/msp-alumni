@@ -1040,7 +1040,36 @@
         // ============================================
         // UNIVERSITIES
         // ============================================
-        function renderUniversities() {
+        function createUniCard(uni, isPrestige) {
+            const card = document.createElement('div');
+            card.className = 'uni-card' + (isPrestige ? ' prestige' : '');
+            card.dataset.name = uni.name.toLowerCase();
+            card.dataset.uniName = uni.name;
+            
+            const logoFile = UNI_LOGO_FILES[uni.name];
+            const logoHtml = logoFile 
+                ? `<img src="assets/logos/${logoFile}" alt="${uni.name}" onerror="this.parentElement.innerHTML='<i data-lucide=\'graduation-cap\'></i>'; lucide.createIcons();">`
+                : `<i data-lucide="graduation-cap"></i>`;
+            
+            card.innerHTML = `
+                ${isPrestige ? '<div class="uni-card-badge">Top 10</div>' : ''}
+                <div class="uni-logo">${logoHtml}</div>
+                <div class="uni-name">${uni.name}</div>
+                <div class="uni-location">
+                    <img src="https://flagcdn.com/w20/${uni.code}.png" alt="${uni.country}">
+                    ${uni.country}
+                </div>
+                <div class="uni-stats">
+                    <div class="uni-stat"><strong>${uni.count}</strong> alumni</div>
+                </div>
+            `;
+            
+            card.onclick = () => openUniModal(uni.name);
+            
+            return card;
+        }
+        
+                function renderUniversities() {
             // 1. Render prestige universities (World Top 10)
             const prestigeUnis = ALL_UNIVERSITIES.filter(u => {
                 return PRESTIGE_UNIS.includes(u.name) || PRESTIGE_UNIS.includes(u.name.replace(/ü/g, 'Ã¼'));
@@ -1167,7 +1196,90 @@
         }
         
         // ============================================
-        // STARFIELD ANIMATION
+        // ============================================
+        // MODAL
+        // ============================================
+        function initModal() {
+            const modal = document.getElementById('universityModal');
+            const modalClose = document.getElementById('modalClose');
+            
+            if (!modal || !modalClose) return;
+            
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+        
+        function openUniModal(uniName) {
+            const uniInfo = UNIVERSITY_INFO[uniName];
+            
+            if (!uniInfo) {
+                console.log('No detailed info available for:', uniName);
+                return;
+            }
+            
+            const modal = document.getElementById('universityModal');
+            const modalLogo = document.getElementById('modalLogo');
+            const modalUniName = document.getElementById('modalUniName');
+            const modalLocation = document.getElementById('modalLocation');
+            const modalFounded = document.getElementById('modalFounded');
+            const modalStudents = document.getElementById('modalStudents');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalWebsite = document.getElementById('modalWebsite');
+            
+            modalUniName.textContent = uniName;
+            modalLocation.textContent = uniInfo.location;
+            modalFounded.textContent = uniInfo.founded;
+            modalStudents.textContent = uniInfo.students;
+            modalDescription.textContent = uniInfo.description;
+            modalWebsite.href = uniInfo.website;
+            
+            const logoFile = UNI_LOGO_FILES[uniName];
+            if (logoFile) {
+                modalLogo.innerHTML = `<img src="assets/logos/${logoFile}" alt="${uniName}">`;
+            } else {
+                modalLogo.innerHTML = '<i data-lucide="graduation-cap"></i>';
+            }
+            
+            modal.classList.add('active');
+            lucide.createIcons();
+        }
+        
+                // ============================================
+        // COUNTRIES
+        // ============================================
+        function renderCountries() {
+            const grid = document.getElementById('country-grid');
+            if (!grid) {
+                console.log('country-grid element not found');
+                return;
+            }
+            COUNTRIES.forEach(country => {
+                const card = document.createElement('div');
+                card.className = 'country-card' + (country.top ? ' top' : '');
+                card.innerHTML = `
+                    <img class="country-flag" src="https://flagcdn.com/w80/${country.code}.png" alt="${country.name}">
+                    <h4>${country.name}</h4>
+                    <p><strong>${country.alumni}</strong> alumni</p>
+                `;
+                card.onclick = () => window.location.href = `country.html?code=${country.code}`;
+                grid.appendChild(card);
+            });
+        }
+        
+                // STARFIELD ANIMATION
         // ============================================
         (function() {
             const canvas = document.getElementById('starCanvas');

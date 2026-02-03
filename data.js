@@ -1,7 +1,7 @@
 // MSP Alumni Data - Complete Dataset
 // Last updated: February 2026
 // Total alumni: 1321 across 78 nationalities
-// Universities: 233 (corrected from cleaned database)
+// Universities: 231 (corrected from cleaned database)
 
 const COUNTRY_DETAILS = {
     "nl": {
@@ -308,7 +308,7 @@ const MSP_DATA = {
         totalAlumni: 1321,
         nationalities: 78,
         countriesLivingIn: 58,
-        universitiesAttended: 233
+        universitiesAttended: 231
     },
     lastUpdated: "February 2026",
     
@@ -446,11 +446,11 @@ const MSP_DATA = {
     },
     
     recruitment: {
-        heroStat: "78 nationalities. 59 countries. 233 universities.",
+        heroStat: "78 nationalities. 58 countries. 231 universities.",
         proofStats: [
             { number: 1321, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
-            { number: 233, label: "Master's Universities" },
+            { number: 231, label: "Master's Universities" },
             { number: "10.7%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
         ]
     },
@@ -464,7 +464,7 @@ const MSP_DATA = {
         heroStats: {
             alumni: 1321,
             nationalities: 78,
-            universities: 233,
+            universities: 231,
             countries: 87
         },
         

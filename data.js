@@ -656,7 +656,7 @@ const MSP_DATA = {
                 info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
             },
             "EPFL": {
-                fullName: "Ã‰cole Polytechnique FÃ©dÃ©rale de Lausanne",
+                fullName: "Ãƒâ€°cole Polytechnique FÃƒÂ©dÃƒÂ©rale de Lausanne",
                 location: "Lausanne, Switzerland",
                 founded: 1969,
                 ranking: "36th",
@@ -944,6 +944,38 @@ const UNI_LOGO_FILES = {
     
     // Specialized Education Institutions
     'SPICED Academy': 'spiced-academy.png'
+};
+
+// ============================================
+// UNIVERSITY NAME ALIASES
+// Maps database variations to canonical names in UNIVERSITY_INFO
+// Phase 1 Fix: Resolves 82 alumni with name mismatches
+// ============================================
+const UNIVERSITY_ALIASES = {
+    // Name variations (43 alumni)
+    'Wageningen University & Research': 'Wageningen University',
+    
+    // Name variations (20 alumni)
+    'Delft University of Technology': 'TU Delft',
+    
+    // Name variations (16 alumni)
+    'Vrije Universiteit Amsterdam': 'VU Amsterdam',
+    
+    // Name variations (9 alumni)
+    'Eindhoven University of Technology': 'TU Eindhoven',
+    
+    // Name variations with special characters (2 alumni)
+    'École Polytechnique Fédérale de Lausanne': 'EPFL',
+    'Ecole Polytechnique Federale de Lausanne': 'EPFL',
+    
+    // German name variation (1 alumnus)
+    'Eidgenössische Technische Hochschule': 'ETH Zurich',
+    
+    // Additional common variations
+    'Universiteit Utrecht': 'Utrecht University',
+    'Université de Lausanne': 'University of Lausanne',
+    'Sorbonne Universite': 'Sorbonne University',
+    'University College London': 'UCL'
 };
 
 // University detailed information for modal displays
@@ -2298,6 +2330,75 @@ const UNIVERSITY_INFO = {
         website: 'https://www.sdu.dk',
         location: 'Odense, Denmark',
         students: '28,000+'
+    },
+    
+    // ============================================
+    // PHASE 2 ADDITIONS - Missing Universities
+    // Added February 2026 to fix 31 alumni without modals
+    // ============================================
+    
+    'King\'s College London': {
+        founded: 1829,
+        description: 'One of England\'s oldest and most prestigious universities. Part of the University of London. 12 Nobel laureates. Excellence in medicine, law, humanities, and sciences.',
+        website: 'https://www.kcl.ac.uk',
+        location: 'London, United Kingdom',
+        students: '35,000+'
+    },
+    'Université Paris-Saclay': {
+        founded: 2019,
+        description: 'Major French research university formed by merger of prestigious institutions. Combines universities and grandes écoles. Excellence in sciences, engineering, and technology. Located in Europe\'s leading technology hub.',
+        website: 'https://www.universite-paris-saclay.fr',
+        location: 'Paris, France',
+        students: '48,000+'
+    },
+    'Université Libre de Bruxelles': {
+        founded: 1834,
+        description: 'ULB. Major Belgian research university with strong European focus. Five Nobel laureates. Excellence in sciences, medicine, and social sciences. Bilingual French-English programmes.',
+        website: 'https://www.ulb.be',
+        location: 'Brussels, Belgium',
+        students: '32,000+'
+    },
+    'Pompeu Fabra University': {
+        founded: 1990,
+        description: 'Young Spanish university that rapidly achieved international recognition. Named after linguist Pompeu Fabra. Excellence in economics, political science, health sciences, and communication.',
+        website: 'https://www.upf.edu',
+        location: 'Barcelona, Spain',
+        students: '16,000+'
+    },
+    'University of Barcelona': {
+        founded: 1450,
+        description: 'Catalonia\'s oldest and Spain\'s second largest university. Long tradition of academic excellence. Strong in sciences, medicine, humanities, and social sciences.',
+        website: 'https://www.ub.edu',
+        location: 'Barcelona, Spain',
+        students: '63,000+'
+    },
+    'Charité - Universitätsmedizin Berlin': {
+        founded: 1710,
+        description: 'One of Europe\'s largest university hospitals. Joint medical faculty of Freie Universität and Humboldt University. More than half of German Nobel Prize winners in medicine worked here. World leader in medical research.',
+        website: 'https://www.charite.de',
+        location: 'Berlin, Germany',
+        students: '8,000+'
+    },
+    'Weizmann Institute of Science': {
+        founded: 1934,
+        description: 'Israel\'s premier research institution dedicated solely to graduate studies and research. Excellence in physics, chemistry, biology, and mathematics. Home to numerous Turing and Nobel laureates.',
+        website: 'https://www.weizmann.ac.il',
+        location: 'Rehovot, Israel',
+        students: '2,500+'
+    },
+    'Technische Universität Wien': {
+        founded: 1815,
+        description: 'TU Wien. Austria\'s largest technical university. Excellence in engineering, technology, and natural sciences. Strong tradition in architecture and urban planning.',
+        website: 'https://www.tuwien.at',
+        location: 'Vienna, Austria',
+        students: '27,000+'
+    },
+    'Universidad Autónoma de Madrid': {
+        founded: 1968,
+        description: 'UAM. One of Spain\'s leading public research universities. Excellence in sciences, medicine, law, and humanities. Consistently ranked among Spain\'s top universities.',
+        website: 'https://www.uam.es',
+        location: 'Madrid, Spain',
+        students: '33,000+'
     }
 };
 
@@ -2306,5 +2407,5 @@ const UNIVERSITY_LOGOS = UNI_LOGO_FILES;
 
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS, COUNTRY_FACTS, UNI_LOGO_FILES, UNIVERSITY_INFO };
+    module.exports = { COUNTRY_DETAILS, MSP_DATA, UNIVERSITY_LOGOS, COUNTRY_FACTS, UNI_LOGO_FILES, UNIVERSITY_INFO, UNIVERSITY_ALIASES };
 }

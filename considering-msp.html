@@ -1165,8 +1165,14 @@
             transition: all var(--transition-smooth);
         }
         .flow-path.highlighted {
-            opacity: 0.6;
-            stroke-width: 3;
+            opacity: 0.75;
+            stroke-width: 4;
+            filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+        }
+        .flow-node.active-hover {
+            background: var(--um-gray-50);
+            box-shadow: var(--shadow-md);
+            transform: translateX(6px);
         }
         .flow-legend {
             margin-top: 24px;
@@ -1892,10 +1898,13 @@
         const fieldsData = data.fieldToCareer;
         const careersData = data.careerSectors.slice(0, 10); // Top 10 careers
         
-        // Render field nodes
-        const fieldsHTML = fieldsData.map(field => `
-            <div class="flow-node field-node" style="border-color: ${field.color};">
-                <div class="flow-node-label">${field.name}</div>
+        // Render field nodes with data-index for hover tracking
+        const fieldsHTML = fieldsData.map((field, index) => `
+            <div class="flow-node field-node" 
+                 style="border-color: ${field.color};"
+                 data-field-index="${index}"
+                 data-color="${field.color}">
+                <div class="flow-node-label">${field.field}</div>
                 <div class="flow-node-count">
                     <i data-lucide="users"></i>
                     <span>${field.count} alumni</span>
@@ -1904,11 +1913,13 @@
         `).join('');
         document.getElementById('flowFields').innerHTML = fieldsHTML;
         
-        // Render career nodes
-        const careersHTML = careersData.map(career => `
+        // Render career nodes with data-index for hover tracking
+        const careersHTML = careersData.map((career, index) => `
             <div class="flow-node career-node" 
                  style="border-color: ${career.color};"
                  data-career='${JSON.stringify(career)}'
+                 data-career-index="${index}"
+                 data-color="${career.color}"
                  onclick="showCareerModal(this)">
                 <div class="flow-node-label">${career.name}</div>
                 <div class="flow-node-count">
@@ -1932,7 +1943,7 @@
             svg.style.height = containerRect.height + 'px';
             svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
             
-            // Draw connections (simplified version - connects all fields to all careers with opacity based on relevance)
+            // Draw connections with data attributes for hover tracking
             fieldNodes.forEach((fieldNode, fieldIndex) => {
                 careerNodes.forEach((careerNode, careerIndex) => {
                     const fieldRect = fieldNode.getBoundingClientRect();
@@ -1947,6 +1958,10 @@
                     const d = `M ${x1} ${y1} C ${x1 + 100} ${y1}, ${x2 - 100} ${y2}, ${x2} ${y2}`;
                     path.setAttribute('d', d);
                     path.setAttribute('class', 'flow-path');
+                    
+                    // Add data attributes for hover tracking
+                    path.setAttribute('data-field-index', fieldIndex);
+                    path.setAttribute('data-career-index', careerIndex);
                     
                     // Get field and career colors
                     const fieldColor = fieldsData[fieldIndex].color;
@@ -1973,6 +1988,45 @@
                     
                     path.setAttribute('stroke', `url(#${gradientId})`);
                     svg.appendChild(path);
+                });
+            });
+            
+            // Add hover interactions to highlight connections
+            fieldNodes.forEach((node, index) => {
+                node.addEventListener('mouseenter', () => {
+                    // Highlight the node itself
+                    node.classList.add('active-hover');
+                    // Highlight all paths connected to this field
+                    document.querySelectorAll('.flow-path').forEach(path => {
+                        if (parseInt(path.getAttribute('data-field-index')) === index) {
+                            path.classList.add('highlighted');
+                        }
+                    });
+                });
+                node.addEventListener('mouseleave', () => {
+                    node.classList.remove('active-hover');
+                    document.querySelectorAll('.flow-path').forEach(path => {
+                        path.classList.remove('highlighted');
+                    });
+                });
+            });
+            
+            careerNodes.forEach((node, index) => {
+                node.addEventListener('mouseenter', () => {
+                    // Highlight the node itself
+                    node.classList.add('active-hover');
+                    // Highlight all paths connected to this career
+                    document.querySelectorAll('.flow-path').forEach(path => {
+                        if (parseInt(path.getAttribute('data-career-index')) === index) {
+                            path.classList.add('highlighted');
+                        }
+                    });
+                });
+                node.addEventListener('mouseleave', () => {
+                    node.classList.remove('active-hover');
+                    document.querySelectorAll('.flow-path').forEach(path => {
+                        path.classList.remove('highlighted');
+                    });
                 });
             });
         }, 100);

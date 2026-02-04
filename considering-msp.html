@@ -417,27 +417,27 @@
                     <div class="year-badge">Year 1</div>
                     <h3>Foundation</h3>
                     <ul class="year-features">
-                        <li><i data-lucide="check"></i>Core sciences (Bio, Chem, Physics)</li>
-                        <li><i data-lucide="check"></i>Problem-Based Learning</li>
-                        <li><i data-lucide="check"></i>Lab skills introduction</li>
+                        <li class="clickable-feature" data-feature="y1-core"><i data-lucide="check"></i>Core sciences (Bio, Chem, Physics)</li>
+                        <li class="clickable-feature" data-feature="y1-pbl"><i data-lucide="check"></i>Problem-Based Learning</li>
+                        <li class="clickable-feature" data-feature="y1-lab"><i data-lucide="check"></i>Lab skills introduction</li>
                     </ul>
                 </div>
                 <div class="year-card">
                     <div class="year-badge">Year 2</div>
                     <h3>Specialization</h3>
                     <ul class="year-features">
-                        <li><i data-lucide="check"></i>Elective curriculum</li>
-                        <li><i data-lucide="check"></i>Project work</li>
-                        <li><i data-lucide="check"></i>Advanced skills</li>
+                        <li class="clickable-feature" data-feature="y2-elective"><i data-lucide="check"></i>Elective curriculum</li>
+                        <li class="clickable-feature" data-feature="y2-project"><i data-lucide="check"></i>Project work</li>
+                        <li class="clickable-feature" data-feature="y2-skills"><i data-lucide="check"></i>Advanced skills</li>
                     </ul>
                 </div>
                 <div class="year-card">
                     <div class="year-badge">Year 3</div>
                     <h3>Research</h3>
                     <ul class="year-features">
-                        <li><i data-lucide="check"></i>Bachelor Thesis Research (30 ECTS)</li>
-                        <li><i data-lucide="check"></i>Brightlands Chemelot Campus</li>
-                        <li><i data-lucide="check"></i>Independent research project</li>
+                        <li class="clickable-feature" data-feature="y3-btr"><i data-lucide="check"></i>Bachelor Thesis Research (30 ECTS)</li>
+                        <li class="clickable-feature" data-feature="y3-facilities"><i data-lucide="check"></i>DUB30 & Brightlands labs</li>
+                        <li class="clickable-feature" data-feature="y3-research"><i data-lucide="check"></i>Independent research project</li>
                     </ul>
                 </div>
             </div>
@@ -853,6 +853,21 @@
             color: var(--um-orange);
             flex-shrink: 0;
             margin-top: 2px;
+        }
+        .clickable-feature {
+            cursor: pointer;
+            padding: 6px 10px;
+            margin-left: -10px;
+            margin-right: -10px;
+            border-radius: 6px;
+            transition: all var(--transition-fast);
+        }
+        .clickable-feature:hover {
+            background: var(--um-gray-50);
+            color: var(--um-dark-blue);
+        }
+        .clickable-feature:hover i {
+            color: var(--um-light-blue);
         }
         
         /* Outcomes Grid */
@@ -1786,6 +1801,405 @@
             modal.style.display = 'block';
         }
         
+        // Add click handlers to curriculum features
+        document.querySelectorAll('.clickable-feature').forEach(feature => {
+            feature.addEventListener('click', function() {
+                const featureType = this.getAttribute('data-feature');
+                showCurriculumModal(featureType);
+            });
+        });
+        
+        // Curriculum feature data with official evidence
+        const curriculumFeatures = {
+            'y1-core': {
+                title: 'Core Sciences (Bio, Chem, Physics)',
+                year: 'Year 1',
+                description: 'All MSP students begin with four mandatory core courses that establish a strong foundation in the natural sciences and liberal arts thinking.',
+                officialCourses: [
+                    'BIO1101 Introduction to Biology (5 ECTS)',
+                    'CHE1101 Introduction to Chemistry (5 ECTS)',
+                    'PHY1101 Introduction to Physics (5 ECTS)',
+                    'INT1101 Introduction to Liberal Arts and Sciences (5 ECTS)'
+                ],
+                source: 'Education and Examination Regulations 2025-2026, Appendix I'
+            },
+            'y1-pbl': {
+                title: 'Problem-Based Learning',
+                year: 'Year 1',
+                description: 'MSP uses Problem-Based Learning (PBL) as its primary educational method. Students work in small tutorial groups to actively address real-life scientific problems.',
+                details: [
+                    'Work in small discussion groups',
+                    'Formulate learning goals collaboratively',
+                    'Apply theory to real-world situations',
+                    'Develop presentation and argumentation skills',
+                    'Learn from diverse cultural perspectives'
+                ],
+                source: 'Official MSP Programme Information'
+            },
+            'y1-lab': {
+                title: 'Lab Skills Introduction',
+                year: 'Year 1',
+                description: 'First-year students complete two mandatory skills training courses that introduce fundamental laboratory techniques and scientific research methods.',
+                officialCourses: [
+                    'PRA1101 Introduction to Scientific Research I (2.5 ECTS)',
+                    'PRA1102 Introduction to Scientific Research II (2.5 ECTS)',
+                    'PRO1101 Introduction to Project Period (5 ECTS)'
+                ],
+                skills: [
+                    'Safe laboratory practices',
+                    'Accurate weighing and solution preparation',
+                    'Working with pipettes and volumetric glassware',
+                    'Basic data analysis and interpretation',
+                    'Writing lab reports'
+                ],
+                source: 'MSP Course Catalogue 2025-2026'
+            },
+            'y2-elective': {
+                title: 'Elective Curriculum',
+                year: 'Year 2',
+                description: 'Students build their own curriculum by selecting from a wide range of courses across biology, chemistry, physics, mathematics, neuroscience, and interdisciplinary fields.',
+                structure: [
+                    '14 elective courses total (5 ECTS each)',
+                    'Minimum 4 advanced (3000-level) courses required',
+                    'Courses range from introductory (1000) to advanced (3000) levels',
+                    'Maximum 4 introductory-level courses allowed'
+                ],
+                examples: [
+                    'Molecular Biology, Quantum Mechanics, Systems Biology',
+                    'Organic Chemistry, Neuroscience, Biobased Materials',
+                    'Conservation Palaeobiology, Medical Microbiology'
+                ],
+                source: 'Education and Examination Regulations 2025-2026'
+            },
+            'y2-project': {
+                title: 'Project Work',
+                year: 'Year 2',
+                description: 'At the end of each semester, students complete a 3-week intensive research project that integrates knowledge and skills from their courses.',
+                structure: [
+                    '5 total projects throughout the programme (5 ECTS each)',
+                    '1 core project (PRO1101) in first year',
+                    '4 elective projects (maximum 1 introductory, minimum 1 advanced)',
+                    'Work in small multidisciplinary teams'
+                ],
+                projectTypes: [
+                    'Design and conduct experiments',
+                    'Apply theoretical knowledge practically',
+                    'Present findings through oral presentations',
+                    'Write scientific reports collaboratively'
+                ],
+                source: 'MSP Programme Structure, EER 2025-2026'
+            },
+            'y2-skills': {
+                title: 'Advanced Skills',
+                year: 'Year 2',
+                description: 'Students select from specialized skills training courses that provide hands-on experience in advanced laboratory and research techniques.',
+                structure: [
+                    '10 total skills trainings (2.5 ECTS each)',
+                    '2 core skills in Year 1',
+                    '8 elective skills (maximum 2 introductory, minimum 2 advanced)'
+                ],
+                examples: [
+                    'Genetics, Molecular Biology, Organic Chemistry Lab',
+                    'Programming, Electronics, Spectroscopic Methods',
+                    'Field Skills in Biology, Advanced Microscopy',
+                    'Synthetic Biology, Physical Chemistry'
+                ],
+                source: 'MSP Course Catalogue 2025-2026'
+            },
+            'y3-btr': {
+                title: 'Bachelor Thesis Research (30 ECTS)',
+                year: 'Year 3',
+                description: 'The Bachelor Thesis Research (BTR) is the culminating experience of the MSP programme—a full semester of independent scientific research in your chosen field.',
+                structure: [
+                    'One full semester (30 ECTS)',
+                    'Independent research project',
+                    'Field of your choice',
+                    'Written thesis + video presentation required'
+                ],
+                objectives: [
+                    'Design and plan a research project',
+                    'Apply scientific methods in your field',
+                    'Work independently and professionally',
+                    'Evaluate results in broader scientific context',
+                    'Communicate findings effectively'
+                ],
+                locations: [
+                    'Within Maastricht University',
+                    'External research institutes',
+                    'During academic exchange abroad'
+                ],
+                source: 'MSP Course Catalogue 2025-2026, EER 2025-2026'
+            },
+            'y3-facilities': {
+                title: 'DUB30 & Brightlands Labs',
+                year: 'Year 3',
+                description: 'MSP students have access to state-of-the-art laboratory facilities at two locations for practical coursework and research.',
+                facilities: [
+                    'Dubois Domein 30 (DUB30) - Main MSP lab facility in Maastricht',
+                    'Brightlands Chemelot Campus - Advanced chemistry and materials science labs in Geleen'
+                ],
+                labTypes: [
+                    'Biology and molecular biology laboratories',
+                    'Chemistry and organic synthesis labs',
+                    'Physics and electronics workshops',
+                    'Advanced spectroscopy and analytical equipment'
+                ],
+                note: 'Many advanced chemistry and polymer processing courses require travel to the Brightlands Chemelot Campus.',
+                source: 'Official MSP Programme Information, MSP Course Catalogue 2025-2026'
+            },
+            'y3-research': {
+                title: 'Independent Research Project',
+                year: 'Year 3',
+                description: 'The BTR allows you to demonstrate autonomy, creativity, and critical thinking while conducting original scientific research.',
+                components: [
+                    'Formulate a clear research question',
+                    'Develop and refine a research plan',
+                    'Carry out the research independently',
+                    'Document findings in a written thesis',
+                    'Create a video presentation for broader audiences'
+                ],
+                examples: [
+                    'Atomic force microscopy in nanocrystal solar cells',
+                    'Genetic algorithms in aerospace engineering design',
+                    'Pro-oxidant activity in human cancer cells',
+                    'Synthesis of biobased aromatic building blocks',
+                    'Long non-coding RNAs in heart failure'
+                ],
+                source: 'MSP Bachelor Thesis Research Course Description 2025-2026'
+            }
+        };
+        
+        // Show curriculum modal
+        function showCurriculumModal(featureType) {
+            const modal = document.getElementById('curriculumModal');
+            const feature = curriculumFeatures[featureType];
+            
+            if (!feature) {
+                console.error('Feature not found:', featureType);
+                return;
+            }
+            
+            document.getElementById('modalCurriculumTitle').textContent = feature.title;
+            
+            let bodyHTML = `
+                <div class="modal-section">
+                    <div class="modal-info-text">${feature.description}</div>
+                </div>
+            `;
+            
+            // Add official courses if present
+            if (feature.officialCourses) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Official Courses</div>
+                        <div class="modal-examples">
+                            ${feature.officialCourses.map(course => `
+                                <div class="modal-example">
+                                    <i data-lucide="book-open"></i>
+                                    <span>${course}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add structure if present
+            if (feature.structure) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Structure</div>
+                        <div class="modal-examples">
+                            ${feature.structure.map(item => `
+                                <div class="modal-example">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>${item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add details if present
+            if (feature.details) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Key Elements</div>
+                        <div class="modal-examples">
+                            ${feature.details.map(item => `
+                                <div class="modal-example">
+                                    <i data-lucide="arrow-right"></i>
+                                    <span>${item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add skills if present
+            if (feature.skills) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Skills Developed</div>
+                        <div class="modal-examples">
+                            ${feature.skills.map(skill => `
+                                <div class="modal-example">
+                                    <i data-lucide="star"></i>
+                                    <span>${skill}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add objectives if present
+            if (feature.objectives) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Learning Objectives</div>
+                        <div class="modal-examples">
+                            ${feature.objectives.map(obj => `
+                                <div class="modal-example">
+                                    <i data-lucide="target"></i>
+                                    <span>${obj}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add examples if present
+            if (feature.examples) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Examples</div>
+                        <div class="modal-examples">
+                            ${feature.examples.map(ex => `
+                                <div class="modal-example">
+                                    <i data-lucide="lightbulb"></i>
+                                    <span>${ex}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add project types if present
+            if (feature.projectTypes) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Project Activities</div>
+                        <div class="modal-examples">
+                            ${feature.projectTypes.map(type => `
+                                <div class="modal-example">
+                                    <i data-lucide="flask-conical"></i>
+                                    <span>${type}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add facilities if present
+            if (feature.facilities) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Facilities</div>
+                        <div class="modal-examples">
+                            ${feature.facilities.map(fac => `
+                                <div class="modal-example">
+                                    <i data-lucide="building-2"></i>
+                                    <span>${fac}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add lab types if present
+            if (feature.labTypes) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Available Laboratories</div>
+                        <div class="modal-examples">
+                            ${feature.labTypes.map(lab => `
+                                <div class="modal-example">
+                                    <i data-lucide="microscope"></i>
+                                    <span>${lab}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add locations if present
+            if (feature.locations) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Research Locations</div>
+                        <div class="modal-examples">
+                            ${feature.locations.map(loc => `
+                                <div class="modal-example">
+                                    <i data-lucide="map-pin"></i>
+                                    <span>${loc}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add components if present
+            if (feature.components) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-section-title">Research Components</div>
+                        <div class="modal-examples">
+                            ${feature.components.map(comp => `
+                                <div class="modal-example">
+                                    <i data-lucide="clipboard-list"></i>
+                                    <span>${comp}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add note if present
+            if (feature.note) {
+                bodyHTML += `
+                    <div class="modal-section">
+                        <div class="modal-info-text" style="font-style: italic; color: var(--um-gray-600);">
+                            Note: ${feature.note}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add source
+            bodyHTML += `
+                <div class="modal-section" style="border-top: 1px solid var(--um-gray-200); padding-top: 20px; margin-top: 20px;">
+                    <div style="font-size: 12px; color: var(--um-gray-500); text-align: center;">
+                        <i data-lucide="file-text" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i>
+                        Source: ${feature.source}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modalCurriculumBody').innerHTML = bodyHTML;
+            modal.style.display = 'block';
+            lucide.createIcons();
+        }
+        
         // Initialize Lucide icons
         lucide.createIcons();
     </script>
@@ -1816,6 +2230,17 @@
         </div>
     </div>
 
+    <!-- CURRICULUM FEATURE MODAL -->
+    <div id="curriculumModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCurriculumTitle"></h3>
+                <button class="modal-close" onclick="closeCurriculumModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalCurriculumBody"></div>
+        </div>
+    </div>
+
     <script>
         // === MODAL FUNCTIONS ===
         function closeModal() {
@@ -1826,12 +2251,18 @@
             document.getElementById('uniModal').style.display = 'none';
         }
         
+        function closeCurriculumModal() {
+            document.getElementById('curriculumModal').style.display = 'none';
+        }
+        
         // Close modals when clicking outside
         window.onclick = function(event) {
             const outcomeModal = document.getElementById('outcomeModal');
             const uniModal = document.getElementById('uniModal');
+            const curriculumModal = document.getElementById('curriculumModal');
             if (event.target == outcomeModal) closeModal();
             if (event.target == uniModal) closeUniModal();
+            if (event.target == curriculumModal) closeCurriculumModal();
         }
     </script>
 

@@ -308,7 +308,7 @@ const MSP_DATA = {
         totalAlumni: 1321,
         nationalities: 78,
         countriesLivingIn: 58,
-        universitiesAttended: 231
+        universitiesAttended: 233
     },
     lastUpdated: "February 2026",
     
@@ -446,11 +446,11 @@ const MSP_DATA = {
     },
     
     recruitment: {
-        heroStat: "78 nationalities. 58 countries. 231 universities.",
+        heroStat: "78 nationalities. 58 countries. 233 universities.",
         proofStats: [
             { number: 1321, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
-            { number: 231, label: "Master's Universities" },
+            { number: 233, label: "Master's Universities" },
             { number: "10.7%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
         ]
     },
@@ -464,8 +464,8 @@ const MSP_DATA = {
         heroStats: {
             alumni: 1321,
             nationalities: 78,
-            universities: 231,
-            countries: 87
+            universities: 233,
+            countries: 58
         },
         
         careerSectors: [

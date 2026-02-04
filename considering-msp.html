@@ -483,30 +483,50 @@
                 <p>Real outcomes from 1,321 alumni</p>
             </div>
             
-            <div class="outcomes-grid">
-                <div class="outcome-card" data-outcome="masters">
-                    <div class="outcome-icon blue">
-                        <i data-lucide="graduation-cap"></i>
+            <div class="outcomes-timeline">
+                <div class="timeline-center">
+                    <div class="timeline-center-node">
+                        <i data-lucide="graduation-cap" class="timeline-center-icon"></i>
+                        <span class="timeline-center-label">MSP<br>Graduation</span>
                     </div>
-                    <div class="outcome-stat">67%</div>
-                    <div class="outcome-title">Master's Programs</div>
-                    <div class="outcome-detail">885 alumni at 233 universities</div>
                 </div>
-                <div class="outcome-card" data-outcome="phd">
-                    <div class="outcome-icon purple">
-                        <i data-lucide="microscope"></i>
+                
+                <div class="timeline-branches">
+                    <div class="timeline-branch">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-destination" data-outcome="masters">
+                            <div class="timeline-dest-icon">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div class="timeline-percentage">67%</div>
+                            <div class="timeline-dest-title">Master's Programs</div>
+                            <div class="timeline-dest-detail">885 alumni at 233 universities</div>
+                        </div>
                     </div>
-                    <div class="outcome-stat">10.7%</div>
-                    <div class="outcome-title">PhD Track</div>
-                    <div class="outcome-detail">141 candidates + 9 postdocs</div>
-                </div>
-                <div class="outcome-card" data-outcome="career">
-                    <div class="outcome-icon orange">
-                        <i data-lucide="briefcase"></i>
+                    
+                    <div class="timeline-branch">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-destination" data-outcome="phd">
+                            <div class="timeline-dest-icon">
+                                <i data-lucide="microscope"></i>
+                            </div>
+                            <div class="timeline-percentage">10.7%</div>
+                            <div class="timeline-dest-title">PhD Track</div>
+                            <div class="timeline-dest-detail">141 candidates + 9 postdocs</div>
+                        </div>
                     </div>
-                    <div class="outcome-stat">22%</div>
-                    <div class="outcome-title">Direct to Career</div>
-                    <div class="outcome-detail">295 alumni in workforce</div>
+                    
+                    <div class="timeline-branch">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-destination" data-outcome="career">
+                            <div class="timeline-dest-icon">
+                                <i data-lucide="briefcase"></i>
+                            </div>
+                            <div class="timeline-percentage">22%</div>
+                            <div class="timeline-dest-title">Direct to Career</div>
+                            <div class="timeline-dest-detail">295 alumni in workforce</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1048,63 +1068,199 @@
             color: var(--um-light-blue);
         }
         
-        /* Outcomes Grid */
-        .outcomes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .outcome-card {
+        /* Outcomes Timeline - Branching Path */
+        .outcomes-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 60px 40px;
             background: white;
-            border-radius: var(--radius-md);
-            padding: 36px;
-            text-align: center;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            border: 2px solid transparent;
-            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .timeline-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-center-node {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #003d7a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0,28,61,0.2), 0 0 0 8px rgba(0,162,219,0.1);
+            position: relative;
+        }
+        
+        .timeline-center-icon {
+            width: 40px;
+            height: 40px;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-center-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .timeline-branches {
+            display: flex;
+            gap: 80px;
+            position: relative;
+        }
+        
+        .timeline-branch {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+        
+        .timeline-connector {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, var(--um-gray-300) 50%, transparent 100%);
+            position: relative;
+        }
+        
+        .timeline-connector::before {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--um-gray-400);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .timeline-branch:nth-child(1) .timeline-connector {
+            background: linear-gradient(90deg, transparent 0%, var(--um-light-blue) 50%, transparent 100%);
+        }
+        
+        .timeline-branch:nth-child(1) .timeline-connector::before {
+            border-left-color: var(--um-light-blue);
+        }
+        
+        .timeline-branch:nth-child(2) .timeline-connector {
+            background: linear-gradient(90deg, transparent 0%, #8b5cf6 50%, transparent 100%);
+        }
+        
+        .timeline-branch:nth-child(2) .timeline-connector::before {
+            border-left-color: #8b5cf6;
+        }
+        
+        .timeline-branch:nth-child(3) .timeline-connector {
+            background: linear-gradient(90deg, transparent 0%, var(--um-orange) 50%, transparent 100%);
+        }
+        
+        .timeline-branch:nth-child(3) .timeline-connector::before {
+            border-left-color: var(--um-orange);
+        }
+        
+        .timeline-destination {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             cursor: pointer;
+            transition: all var(--transition-smooth);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            min-width: 180px;
         }
-        .outcome-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
+        
+        .timeline-destination:hover {
+            transform: translateY(-4px);
         }
-        .outcome-card[data-outcome="masters"]:hover { border-color: var(--um-light-blue); }
-        .outcome-card[data-outcome="phd"]:hover { border-color: #8b5cf6; }
-        .outcome-card[data-outcome="career"]:hover { border-color: var(--um-orange); }
-        .outcome-icon {
-            width: 70px;
-            height: 70px;
+        
+        .timeline-percentage {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+            transition: all var(--transition-smooth);
+        }
+        
+        .timeline-branch:nth-child(1) .timeline-percentage {
+            color: var(--um-light-blue);
+        }
+        
+        .timeline-branch:nth-child(2) .timeline-percentage {
+            color: #8b5cf6;
+        }
+        
+        .timeline-branch:nth-child(3) .timeline-percentage {
+            color: var(--um-orange);
+        }
+        
+        .timeline-destination:hover .timeline-percentage {
+            transform: scale(1.1);
+        }
+        
+        .timeline-dest-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 6px;
+        }
+        
+        .timeline-dest-detail {
+            font-size: 13px;
+            color: var(--um-gray-600);
+            line-height: 1.4;
+        }
+        
+        .timeline-dest-icon {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 12px;
+            transition: all var(--transition-smooth);
         }
-        .outcome-icon.blue { background: linear-gradient(135deg, var(--um-light-blue), #0077b6); }
-        .outcome-icon.purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-        .outcome-icon.orange { background: linear-gradient(135deg, var(--um-orange), #d94008); }
-        .outcome-icon i {
-            width: 34px;
-            height: 34px;
+        
+        .timeline-branch:nth-child(1) .timeline-dest-icon {
+            background: linear-gradient(135deg, var(--um-light-blue), #0077b6);
+        }
+        
+        .timeline-branch:nth-child(2) .timeline-dest-icon {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+        }
+        
+        .timeline-branch:nth-child(3) .timeline-dest-icon {
+            background: linear-gradient(135deg, var(--um-orange), #d94008);
+        }
+        
+        .timeline-dest-icon i {
+            width: 24px;
+            height: 24px;
             color: white;
         }
-        .outcome-stat {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            line-height: 1;
-            margin-bottom: 12px;
-        }
-        .outcome-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 8px;
-        }
-        .outcome-detail {
-            font-size: 14px;
-            color: var(--um-gray-600);
+        
+        .timeline-destination:hover .timeline-dest-icon {
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
         
         /* Careers Grid */
@@ -1638,7 +1794,35 @@
             .year-card::before {
                 display: none;
             }
-            .outcomes-grid { grid-template-columns: 1fr; }
+            .outcomes-timeline { 
+                flex-direction: column; 
+                gap: 40px;
+                padding: 40px 24px;
+            }
+            .timeline-branches {
+                flex-direction: column;
+                gap: 32px;
+                width: 100%;
+            }
+            .timeline-branch {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .timeline-connector {
+                width: 3px;
+                height: 40px;
+                background: linear-gradient(180deg, transparent 0%, var(--um-gray-300) 50%, transparent 100%) !important;
+            }
+            .timeline-connector::before {
+                left: 50%;
+                top: auto;
+                bottom: -6px;
+                transform: translateX(-50%) rotate(90deg);
+            }
+            .timeline-destination {
+                min-width: auto;
+                width: 100%;
+            }
             .career-flow-container { grid-template-columns: 1fr; gap: 30px; }
             .flow-svg { display: none; } /* Hide connections on tablet */
             .elite-grid { grid-template-columns: repeat(3, 1fr); }

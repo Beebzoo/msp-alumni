@@ -509,15 +509,34 @@
             </div>
         </section>
 
-        <!-- TOP CAREER SECTORS -->
+        <!-- CAREER PATHWAYS FLOW -->
         <section class="section-compact">
             <div class="section-header-compact">
-                <span class="section-tag">Career Paths</span>
-                <h2>Where Alumni Work</h2>
-                <p>From research labs to innovative startups</p>
+                <span class="section-tag">Career Journeys</span>
+                <h2>From Fields to Careers</h2>
+                <p>Trace the pathways MSP alumni take from their academic focus to diverse career destinations</p>
             </div>
             
-            <div class="careers-grid" id="careersGrid"></div>
+            <div class="career-flow-container">
+                <div class="flow-stage">
+                    <div class="flow-stage-label">Academic Focus</div>
+                    <div id="flowFields" class="flow-nodes"></div>
+                </div>
+                
+                <div class="flow-connections" id="flowConnections">
+                    <svg id="flowSvg" class="flow-svg"></svg>
+                </div>
+                
+                <div class="flow-stage">
+                    <div class="flow-stage-label">Career Destinations</div>
+                    <div id="flowCareers" class="flow-nodes"></div>
+                </div>
+            </div>
+            
+            <div class="flow-legend">
+                <i data-lucide="info" style="width: 16px; height: 16px;"></i>
+                <span>Click any career destination to see specific companies, positions, and alumni examples</span>
+            </div>
         </section>
 
         <!-- TESTIMONIALS -->
@@ -532,7 +551,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2016
+                        MSP Graduate â€¢ 2016
                     </div>
                     <div class="testimonial-quote">
                         "The learning environment at MSP nurtured curiosity, encouraged independent thinking, and reignited my genuine enjoyment of learning."
@@ -542,17 +561,17 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2023
+                        MSP Graduate â€¢ 2023
                     </div>
                     <div class="testimonial-quote">
-                        "Your degree doesn't lock you into one career—it can open doors you didn't even know existed."
+                        "Your degree doesn't lock you into one careerâ€”it can open doors you didn't even know existed."
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2022
+                        MSP Graduate â€¢ 2022
                     </div>
                     <div class="testimonial-quote">
                         "We learned how to adapt our narrative to our audience. This remains one of the most valuable skills I bring to the workplace."
@@ -562,17 +581,17 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2022
+                        MSP Graduate â€¢ 2022
                     </div>
                     <div class="testimonial-quote">
-                        "The small class sizes, supportive staff, and sense of community are special—not something you easily find again."
+                        "The small class sizes, supportive staff, and sense of community are specialâ€”not something you easily find again."
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2015
+                        MSP Graduate â€¢ 2015
                     </div>
                     <div class="testimonial-quote">
                         "MSP has a very unique atmosphere that is not found anywhere else. My classmates were inspirational."
@@ -582,7 +601,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2020
+                        MSP Graduate â€¢ 2020
                     </div>
                     <div class="testimonial-quote">
                         "MSP allowed me to explore my interests while still receiving guidance. This helped me feel confident making decisions about my future."
@@ -592,7 +611,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2019
+                        MSP Graduate â€¢ 2019
                     </div>
                     <div class="testimonial-quote">
                         "I really enjoyed the programme's multidisciplinary approach. MSP was the perfect way to explore a wide range of subjects across very different disciplines."
@@ -602,17 +621,17 @@
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2021
+                        MSP Graduate â€¢ 2021
                     </div>
                     <div class="testimonial-quote">
-                        "The skills courses and project work were especially important—they helped me build practical skills that became essential in my academic journey."
+                        "The skills courses and project work were especially importantâ€”they helped me build practical skills that became essential in my academic journey."
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-year-badge">
                         <i data-lucide="graduation-cap"></i>
-                        MSP Graduate • 2024
+                        MSP Graduate â€¢ 2024
                     </div>
                     <div class="testimonial-quote">
                         "MSP gave me the freedom to discover early on and the confidence to change direction without feeling limited by my degree."
@@ -1055,56 +1074,114 @@
         }
         
         /* Careers Grid */
-        .careers-grid {
+        /* Career Flow Visualization */
+        .career-flow-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .career-card-compact {
+            grid-template-columns: 300px 1fr 300px;
+            gap: 40px;
+            margin: 40px 0;
+            padding: 40px;
             background: white;
-            border-radius: var(--radius-md);
-            padding: 24px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--um-gray-200);
-            transition: all var(--transition-smooth);
-        }
-        .career-card-compact:hover {
-            transform: translateY(-4px);
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            border-color: var(--um-orange);
+            position: relative;
+            overflow: visible;
         }
-        .career-icon-compact {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--um-dark-blue), #002b5c);
+        .flow-stage {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
+            flex-direction: column;
+            gap: 16px;
         }
-        .career-icon-compact i {
-            width: 24px;
-            height: 24px;
-            color: white;
-        }
-        .career-title-compact {
-            font-size: 15px;
+        .flow-stage-label {
+            font-size: 13px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--um-gray-600);
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--um-gray-200);
+        }
+        .flow-nodes {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .flow-node {
+            padding: 14px 18px;
+            background: white;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+        .flow-node:hover {
+            border-color: var(--um-orange);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        .flow-node.field-node {
+            border-left: 4px solid;
+        }
+        .flow-node.career-node {
+            border-right: 4px solid;
+        }
+        .flow-node-label {
+            font-size: 14px;
+            font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 8px;
             line-height: 1.3;
+            margin-bottom: 4px;
         }
-        .career-count-compact {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--um-orange);
-            font-family: var(--font-heading);
-        }
-        .career-percent-compact {
+        .flow-node-count {
             font-size: 12px;
             color: var(--um-gray-600);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .flow-node-count i {
+            width: 14px;
+            height: 14px;
+        }
+        .flow-connections {
+            position: relative;
+            min-height: 400px;
+        }
+        .flow-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .flow-path {
+            fill: none;
+            stroke-width: 2;
+            opacity: 0.15;
+            transition: all var(--transition-smooth);
+        }
+        .flow-path.highlighted {
+            opacity: 0.6;
+            stroke-width: 3;
+        }
+        .flow-legend {
+            margin-top: 24px;
+            padding: 16px 20px;
+            background: var(--um-gray-50);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--um-light-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--um-gray-700);
+        }
+        .flow-legend i {
+            color: var(--um-light-blue);
         }
         
         /* Elite Section */
@@ -1516,7 +1593,8 @@
             .stat-divider { display: none; }
             .journey-compact { grid-template-columns: 1fr; }
             .outcomes-grid { grid-template-columns: 1fr; }
-            .careers-grid { grid-template-columns: repeat(2, 1fr); }
+            .career-flow-container { grid-template-columns: 1fr; gap: 30px; }
+            .flow-svg { display: none; } /* Hide connections on tablet */
             .elite-grid { grid-template-columns: repeat(3, 1fr); }
             .phd-compact { grid-template-columns: 1fr; }
             .um-links-grid { grid-template-columns: 1fr; }
@@ -1524,7 +1602,10 @@
         }
         @media (max-width: 768px) {
             .main-content { padding: 60px 24px; }
-            .careers-grid { grid-template-columns: 1fr; }
+            .career-flow-container { padding: 24px; }
+            .flow-stage-label { font-size: 11px; }
+            .flow-node { padding: 12px 14px; }
+            .flow-node-label { font-size: 13px; }
             .elite-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content-sleek { grid-template-columns: 1fr; }
         }
@@ -1690,6 +1771,45 @@
             color: var(--um-gray-700);
         }
         
+        /* Career Detail Modal Styles */
+        .career-examples-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .career-example-item {
+            padding: 14px;
+            background: var(--um-gray-50);
+            border-left: 3px solid var(--um-light-blue);
+            border-radius: var(--radius-sm);
+        }
+        .career-example-company {
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .career-example-position {
+            font-size: 13px;
+            color: var(--um-gray-700);
+            line-height: 1.4;
+        }
+        .career-modal-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .career-modal-icon i {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
         /* Enhanced Career Cards with Icons */
         .career-icon-compact i {
             color: var(--icon-color, white);
@@ -1768,19 +1888,94 @@
             }
         });
         
-        // Populate careers grid (top 6 for cleaner look)
-        const topCareers = data.careerSectors.slice(0, 6);
-        const careersHTML = topCareers.map(career => `
-            <div class="career-card-compact">
-                <div class="career-icon-compact" style="--icon-color: ${career.color}; background: linear-gradient(135deg, ${career.color}, ${career.color}dd);">
-                    <i data-lucide="${career.icon}"></i>
+        // Populate career flow visualization
+        const fieldsData = data.fieldToCareer;
+        const careersData = data.careerSectors.slice(0, 10); // Top 10 careers
+        
+        // Render field nodes
+        const fieldsHTML = fieldsData.map(field => `
+            <div class="flow-node field-node" style="border-color: ${field.color};">
+                <div class="flow-node-label">${field.name}</div>
+                <div class="flow-node-count">
+                    <i data-lucide="users"></i>
+                    <span>${field.count} alumni</span>
                 </div>
-                <div class="career-title-compact">${career.name}</div>
-                <div class="career-count-compact">${career.count}</div>
-                <div class="career-percent-compact">${career.percent}% of alumni</div>
             </div>
         `).join('');
-        document.getElementById('careersGrid').innerHTML = careersHTML;
+        document.getElementById('flowFields').innerHTML = fieldsHTML;
+        
+        // Render career nodes
+        const careersHTML = careersData.map(career => `
+            <div class="flow-node career-node" 
+                 style="border-color: ${career.color};"
+                 data-career='${JSON.stringify(career)}'
+                 onclick="showCareerModal(this)">
+                <div class="flow-node-label">${career.name}</div>
+                <div class="flow-node-count">
+                    <i data-lucide="briefcase"></i>
+                    <span>${career.count} alumni</span>
+                </div>
+            </div>
+        `).join('');
+        document.getElementById('flowCareers').innerHTML = careersHTML;
+        
+        // Draw SVG connections after a brief delay to allow DOM to render
+        setTimeout(() => {
+            const svg = document.getElementById('flowSvg');
+            const container = document.querySelector('.career-flow-container');
+            const fieldNodes = document.querySelectorAll('.field-node');
+            const careerNodes = document.querySelectorAll('.career-node');
+            
+            // Set SVG dimensions
+            const containerRect = container.getBoundingClientRect();
+            svg.style.width = containerRect.width + 'px';
+            svg.style.height = containerRect.height + 'px';
+            svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
+            
+            // Draw connections (simplified version - connects all fields to all careers with opacity based on relevance)
+            fieldNodes.forEach((fieldNode, fieldIndex) => {
+                careerNodes.forEach((careerNode, careerIndex) => {
+                    const fieldRect = fieldNode.getBoundingClientRect();
+                    const careerRect = careerNode.getBoundingClientRect();
+                    
+                    const x1 = fieldRect.right - containerRect.left;
+                    const y1 = fieldRect.top + fieldRect.height / 2 - containerRect.top;
+                    const x2 = careerRect.left - containerRect.left;
+                    const y2 = careerRect.top + careerRect.height / 2 - containerRect.top;
+                    
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    const d = `M ${x1} ${y1} C ${x1 + 100} ${y1}, ${x2 - 100} ${y2}, ${x2} ${y2}`;
+                    path.setAttribute('d', d);
+                    path.setAttribute('class', 'flow-path');
+                    
+                    // Get field and career colors
+                    const fieldColor = fieldsData[fieldIndex].color;
+                    const careerColor = careersData[careerIndex].color;
+                    
+                    // Create gradient
+                    const gradientId = `gradient-${fieldIndex}-${careerIndex}`;
+                    const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                    gradient.setAttribute('id', gradientId);
+                    gradient.setAttribute('x1', '0%');
+                    gradient.setAttribute('x2', '100%');
+                    
+                    const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+                    stop1.setAttribute('offset', '0%');
+                    stop1.setAttribute('stop-color', fieldColor);
+                    
+                    const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+                    stop2.setAttribute('offset', '100%');
+                    stop2.setAttribute('stop-color', careerColor);
+                    
+                    gradient.appendChild(stop1);
+                    gradient.appendChild(stop2);
+                    svg.appendChild(gradient);
+                    
+                    path.setAttribute('stroke', `url(#${gradientId})`);
+                    svg.appendChild(path);
+                });
+            });
+        }, 100);
         
         // Populate elite universities (top 12 - 2 rows of 6)
         const worldTop10 = data.universityTiers.worldTop10.universities;
@@ -1801,6 +1996,52 @@
                 showOutcomeModal(outcomeType);
             });
         });
+        
+        // Show career modal with details
+        function showCareerModal(element) {
+            const careerData = JSON.parse(element.getAttribute('data-career'));
+            const modal = document.getElementById('careerModal');
+            
+            document.getElementById('modalCareerTitle').textContent = careerData.name;
+            
+            // Create examples HTML
+            let examplesHTML = '';
+            if (careerData.examples && careerData.examples.length > 0) {
+                examplesHTML = careerData.examples.map(ex => `
+                    <div class="modal-example">
+                        <i data-lucide="arrow-right"></i>
+                        <span>${ex}</span>
+                    </div>
+                `).join('');
+            }
+            
+            document.getElementById('modalCareerBody').innerHTML = `
+                <div class="modal-section">
+                    <div class="modal-stat-row">
+                        <div class="modal-stat-item">
+                            <span class="modal-stat-number">${careerData.count}</span>
+                            <span class="modal-stat-label">Alumni in this sector</span>
+                        </div>
+                        <div class="modal-stat-item">
+                            <span class="modal-stat-number">${careerData.percent}%</span>
+                            <span class="modal-stat-label">Of all graduates</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <p class="modal-info-text">${careerData.description}</p>
+                </div>
+                ${examplesHTML ? `
+                <div class="modal-section">
+                    <div class="modal-section-title">Example Positions</div>
+                    <div class="modal-examples">${examplesHTML}</div>
+                </div>
+                ` : ''}
+            `;
+            
+            modal.style.display = 'block';
+            lucide.createIcons();
+        }
         
         // Show outcome modal
         function showOutcomeModal(type) {
@@ -2031,7 +2272,7 @@
             'y3-btr': {
                 title: 'Bachelor Thesis Research (30 ECTS)',
                 year: 'Year 3',
-                description: 'The Bachelor Thesis Research (BTR) is the culminating experience of the MSP programmeâ€”a full semester of independent scientific research in your chosen field.',
+                description: 'The Bachelor Thesis Research (BTR) is the culminating experience of the MSP programmeÃ¢â‚¬â€a full semester of independent scientific research in your chosen field.',
                 structure: [
                     'One full semester (30 ECTS)',
                     'Independent research project',
@@ -2363,6 +2604,17 @@
         </div>
     </div>
 
+    <!-- CAREER DETAIL MODAL -->
+    <div id="careerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCareerTitle"></h3>
+                <button class="modal-close" onclick="closeCareerModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalCareerBody"></div>
+        </div>
+    </div>
+
     <script>
         // === MODAL FUNCTIONS ===
         function closeModal() {
@@ -2377,14 +2629,20 @@
             document.getElementById('curriculumModal').style.display = 'none';
         }
         
+        function closeCareerModal() {
+            document.getElementById('careerModal').style.display = 'none';
+        }
+        
         // Close modals when clicking outside
         window.onclick = function(event) {
             const outcomeModal = document.getElementById('outcomeModal');
             const uniModal = document.getElementById('uniModal');
             const curriculumModal = document.getElementById('curriculumModal');
+            const careerModal = document.getElementById('careerModal');
             if (event.target == outcomeModal) closeModal();
             if (event.target == uniModal) closeUniModal();
             if (event.target == curriculumModal) closeCurriculumModal();
+            if (event.target == careerModal) closeCareerModal();
         }
     </script>
 

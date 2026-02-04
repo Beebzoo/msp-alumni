@@ -952,6 +952,10 @@ const UNI_LOGO_FILES = {
 // Phase 1 Fix: Resolves 82 alumni with name mismatches
 // ============================================
 const UNIVERSITY_ALIASES = {
+    // ============================================
+    // PHASE 1: Name Variations (91 alumni)
+    // ============================================
+    
     // Name variations (43 alumni)
     'Wageningen University & Research': 'Wageningen University',
     
@@ -975,7 +979,49 @@ const UNIVERSITY_ALIASES = {
     'Universiteit Utrecht': 'Utrecht University',
     'Université de Lausanne': 'University of Lausanne',
     'Sorbonne Universite': 'Sorbonne University',
-    'University College London': 'UCL'
+    'University College London': 'UCL',
+    
+    // ============================================
+    // PHASE 3: Joint Programs (57 alumni)
+    // Strategy: Map to primary (first) institution
+    // ============================================
+    
+    // Major joint programs
+    'Copenhagen Business School / Utrecht University': 'Utrecht University',
+    'DTU / University of Copenhagen (Joint)': 'Technical University of Denmark',
+    'DTU / University of Copenhagen': 'Technical University of Denmark',
+    'University of Copenhagen / DTU': 'University of Copenhagen',
+    'Leiden University / TU Delft': 'Leiden University',
+    'TU Delft / Leiden University': 'TU Delft',
+    'UCL / Sorbonne Université': 'UCL',
+    'UCL / Sorbonne University': 'UCL',
+    'Sorbonne Université / UCL': 'Sorbonne University',
+    'University College London / Sorbonne University': 'UCL',
+    
+    // Erasmus Mundus and joint degrees
+    'KU Leuven / University of Copenhagen': 'KU Leuven',
+    'Leiden University / Utrecht University': 'Leiden University',
+    'Uppsala University / Lund University': 'Uppsala University',
+    'ETH Zurich / University of Zurich': 'ETH Zurich',
+    'Imperial College London / UCL': 'Imperial College London',
+    'University of Amsterdam / VU Amsterdam': 'University of Amsterdam',
+    'Maastricht University / Aachen University': 'Maastricht University',
+    'Wageningen University / Utrecht University': 'Wageningen University',
+    'Radboud University / Utrecht University': 'Radboud University',
+    'University of Groningen / Utrecht University': 'University of Groningen',
+    
+    // European joint masters
+    'Stockholm University / Uppsala University': 'Stockholm University',
+    'Karolinska Institutet / Stockholm University': 'Karolinska Institutet',
+    'University of Edinburgh / University of Glasgow': 'University of Edinburgh',
+    'University of Bristol / University of Bath': 'University of Bristol',
+    'King\'s College London / UCL': 'King\'s College London',
+    
+    // Additional patterns
+    'Technical University of Denmark / University of Copenhagen': 'Technical University of Denmark',
+    'University of Barcelona / Autonomous University of Barcelona': 'University of Barcelona',
+    'LMU Munich / TU Munich': 'LMU Munich',
+    'Humboldt University / Freie Universität Berlin': 'Humboldt University Berlin'
 };
 
 // University detailed information for modal displays
@@ -2254,13 +2300,6 @@ const UNIVERSITY_INFO = {
         location: 'Barcelona, Spain',
         students: '1,500+'
     },
-    'Wageningen University': {
-        founded: 1918,
-        description: 'World\'s leading university for agriculture and life sciences. Excellence in food science, environmental studies, and sustainability.',
-        website: 'https://www.wur.nl',
-        location: 'Wageningen, Netherlands',
-        students: '13,000+'
-    },
     'University of Bath': {
         founded: 1966,
         description: 'UK research university. Excellence in engineering, management, sciences, and social sciences. Strong industry partnerships.',
@@ -2281,13 +2320,6 @@ const UNIVERSITY_INFO = {
         website: 'https://www.ens.psl.eu',
         location: 'Paris, France',
         students: '2,400+'
-    },
-    'Humboldt-Universitat zu Berlin': {
-        founded: 1810,
-        description: 'Humboldt University of Berlin. Historic German research university. 29 Nobel laureates including Einstein. Excellence across all disciplines.',
-        website: 'https://www.hu-berlin.de',
-        location: 'Berlin, Germany',
-        students: '36,000+'
     },
     'University of Pavia': {
         founded: 1361,
@@ -2399,6 +2431,97 @@ const UNIVERSITY_INFO = {
         website: 'https://www.uam.es',
         location: 'Madrid, Spain',
         students: '33,000+'
+    },
+    
+    // ============================================
+    // PHASE 4 ADDITIONS - Long Tail Universities
+    // Added February 2026 for remaining alumni
+    // Only genuinely new universities (no duplicates)
+    // ============================================
+    
+    'Tel Aviv University': {
+        founded: 1956,
+        description: 'Israel\'s largest university. Excellence in sciences, engineering, humanities, and social sciences. Strong research output and innovation.',
+        website: 'https://www.tau.ac.il',
+        location: 'Tel Aviv, Israel',
+        students: '30,000+'
+    },
+    'Singapore Management University': {
+        founded: 2000,
+        description: 'SMU. Leading Asian university modeled on Wharton School. Excellence in business, economics, social sciences, and law. Strong industry connections.',
+        website: 'https://www.smu.edu.sg',
+        location: 'Singapore',
+        students: '12,000+'
+    },
+    'Nanyang Technological University': {
+        founded: 1991,
+        description: 'NTU Singapore. Young university that rapidly achieved world-class status. Excellence in engineering, sciences, business, and humanities. Smart campus pioneer.',
+        website: 'https://www.ntu.edu.sg',
+        location: 'Singapore',
+        students: '33,000+'
+    },
+    'Autonomous University of Barcelona': {
+        founded: 1968,
+        description: 'UAB. Leading Spanish research university. Excellence in sciences, health, humanities, and social sciences. Beautiful campus near Barcelona.',
+        website: 'https://www.uab.cat',
+        location: 'Barcelona, Spain',
+        students: '40,000+'
+    },
+    'Complutense University of Madrid': {
+        founded: 1293,
+        description: 'One of world\'s oldest universities. Spain\'s largest university. Long tradition in humanities, sciences, and health sciences.',
+        website: 'https://www.ucm.es',
+        location: 'Madrid, Spain',
+        students: '86,000+'
+    },
+    'Sapienza University of Rome': {
+        founded: 1303,
+        description: 'One of world\'s oldest universities. Europe\'s largest university. Excellence across all disciplines with historic presence in Rome.',
+        website: 'https://www.uniroma1.it',
+        location: 'Rome, Italy',
+        students: '112,000+'
+    },
+    'Polytechnic University of Milan': {
+        founded: 1863,
+        description: 'Politecnico di Milano. Italy\'s leading technical university. Excellence in engineering, architecture, and design. Strong industry connections.',
+        website: 'https://www.polimi.it',
+        location: 'Milan, Italy',
+        students: '47,000+'
+    },
+    'Free University of Berlin': {
+        founded: 1948,
+        description: 'Freie Universität Berlin. Major research university founded during Cold War. Excellence in humanities, social sciences, and sciences.',
+        website: 'https://www.fu-berlin.de',
+        location: 'Berlin, Germany',
+        students: '33,000+'
+    },
+    'University of Freiburg': {
+        founded: 1457,
+        description: 'One of Germany\'s oldest universities. Excellence in sciences, medicine, humanities, and law. Beautiful Black Forest location.',
+        website: 'https://www.uni-freiburg.de',
+        location: 'Freiburg, Germany',
+        students: '25,000+'
+    },
+    'University of Göttingen': {
+        founded: 1737,
+        description: 'Historic German research university. 44 Nobel laureates. Excellence in mathematics, sciences, and humanities.',
+        website: 'https://www.uni-goettingen.de',
+        location: 'Göttingen, Germany',
+        students: '31,000+'
+    },
+    'Lancaster University': {
+        founded: 1964,
+        description: 'Leading research university. Excellence in sciences, social sciences, and management. Beautiful campus setting.',
+        website: 'https://www.lancaster.ac.uk',
+        location: 'Lancaster, United Kingdom',
+        students: '20,000+'
+    },
+    'Yale University': {
+        founded: 1701,
+        description: 'Ivy League university. Third-oldest higher education institution in US. Excellence in law, medicine, arts, and sciences.',
+        website: 'https://www.yale.edu',
+        location: 'New Haven, Connecticut, USA',
+        students: '14,000+'
     }
 };
 

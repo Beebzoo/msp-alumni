@@ -860,183 +860,94 @@
         }
         
         /* ============================================
-           FIELDS OF STUDY - DONUT + BAR CHART
+           FIELDS OF STUDY - CLEAN INSTITUTIONAL BARS
         ============================================ */
         .fields-section {
             background: white;
             padding: 100px 50px;
         }
         
-        .fields-chart-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 80px;
-            align-items: center;
+        .fields-bars-container {
+            max-width: 900px;
+            margin: 50px auto 0;
         }
         
-        /* Animated Donut Chart */
-        .donut-chart-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
-        }
-        
-        .donut-chart-svg {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 10px 40px rgba(0,0,0,0.1));
-        }
-        
-        .donut-segment-path {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .donut-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            background: white;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        
-        .donut-center-number {
-            font-family: var(--font-heading);
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--um-dark-blue);
-            line-height: 1;
-        }
-        
-        .donut-center-label {
-            font-size: 13px;
-            color: var(--um-gray-500);
-            font-weight: 600;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Horizontal Bar Chart */
         .fields-bars {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 18px;
         }
         
         .field-bar-row {
-            display: flex;
+            display: grid;
+            grid-template-columns: 240px 1fr 80px 70px;
             align-items: center;
-            gap: 14px;
-            padding: 8px 0;
-            border-radius: var(--radius-md);
+            gap: 20px;
+            padding: 4px 0;
             transition: all var(--transition-fast);
         }
         
         .field-bar-row:hover {
-            background: var(--um-gray-50);
-            padding-left: 12px;
-            margin-left: -12px;
-            padding-right: 12px;
-            margin-right: -12px;
-        }
-        
-        .field-bar-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transform: translateX(4px);
         }
         
         .field-bar-label {
-            width: 160px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 500;
             color: var(--um-dark-blue);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+        
+        .field-bar-color {
+            width: 4px;
+            height: 32px;
+            border-radius: 2px;
+            flex-shrink: 0;
         }
         
         .field-bar-track {
-            flex: 1;
-            height: 24px;
+            height: 32px;
             background: var(--um-gray-100);
-            border-radius: 12px;
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
         }
         
         .field-bar-fill {
             height: 100%;
-            border-radius: 12px;
-            position: relative;
             transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 50px;
+            position: relative;
         }
         
-        .field-bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-            border-radius: 12px 12px 0 0;
-        }
-        
-        .field-bar-value {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+        .field-bar-count {
             font-family: var(--font-heading);
-            font-size: 12px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-gray-600);
+            text-align: right;
         }
         
         .field-bar-percent {
-            width: 50px;
-            text-align: right;
             font-family: var(--font-heading);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--um-gray-600);
+            color: var(--um-dark-blue);
+            text-align: right;
         }
         
-        /* Field colors */
-        .field-color-1 { background: linear-gradient(135deg, #00A2DB 0%, #0082b3 100%); }
-        .field-color-2 { background: linear-gradient(135deg, #E84E10 0%, #c43a08 100%); }
-        .field-color-3 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .field-color-4 { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
-        .field-color-5 { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-        .field-color-6 { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
-        .field-color-7 { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
-        .field-color-8 { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
-        .field-color-9 { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
-        .field-color-10 { background: linear-gradient(135deg, #64748b 0%, #475569 100%); }
-        
-        /* Horizontal Bar Chart */
-        .fields-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        /* Field colors - solid, no gradients */
+        .field-color-1 { background: #00A2DB; }
+        .field-color-2 { background: #E84E10; }
+        .field-color-3 { background: #10b981; }
+        .field-color-4 { background: #8b5cf6; }
+        .field-color-5 { background: #f59e0b; }
+        .field-color-6 { background: #3b82f6; }
+        .field-color-7 { background: #06b6d4; }
+        .field-color-8 { background: #22c55e; }
+        .field-color-9 { background: #ec4899; }
+        .field-color-10 { background: #64748b; }
         
         .field-bar-row {
             display: flex;
@@ -1916,23 +1827,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            /* Fields section - stack donut and bars */
-            .fields-chart-container {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-            
-            .donut-chart-wrapper {
-                max-width: 320px;
-            }
-            
-            .donut-center {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .donut-center-number {
-                font-size: 42px;
+            /* Fields section - responsive */
+            .field-bar-row {
+                grid-template-columns: 200px 1fr 70px 60px;
+                gap: 16px;
             }
             
             /* Nationality globe responsive */
@@ -2157,36 +2055,36 @@
             }
             
             /* Fields mobile */
+            .fields-bars {
+                gap: 14px;
+            }
+            
+            .field-bar-row {
+                grid-template-columns: 1fr 60px 50px;
+                gap: 10px;
+            }
+            
             .field-bar-label {
-                width: 90px;
-                font-size: 11px;
+                font-size: 13px;
+                grid-column: 1 / -1;
+                margin-bottom: 4px;
             }
             
             .field-bar-color {
-                width: 12px;
-                height: 12px;
+                width: 3px;
+                height: 24px;
+            }
+            
+            .field-bar-track {
+                height: 28px;
+            }
+            
+            .field-bar-count {
+                font-size: 13px;
             }
             
             .field-bar-percent {
-                width: 40px;
-                font-size: 12px;
-            }
-            
-            .donut-chart-wrapper {
-                max-width: 260px;
-            }
-            
-            .donut-center {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .donut-center-number {
-                font-size: 32px;
-            }
-            
-            .donut-center-label {
-                font-size: 10px;
+                font-size: 13px;
             }
             
             .footer-container {
@@ -2589,25 +2487,13 @@
     <section class="fields-section section">
         <div class="section-header">
             <div class="section-label">Academic Paths</div>
-            <h2 class="section-title">Fields of Expertise</h2>
+            <h2 class="section-title">Master's Specializations</h2>
             <p class="section-subtitle">
-                The interdisciplinary foundation of MSP leads to diverse specializations.
+                MSP's interdisciplinary foundation enables alumni to pursue diverse graduate fields across sciences, medicine, and engineering.
             </p>
         </div>
         
-        <div class="fields-chart-container">
-            <!-- Animated Donut Chart -->
-            <div class="donut-chart-wrapper">
-                <svg class="donut-chart-svg" viewBox="0 0 200 200" id="donutChart">
-                    <!-- Segments will be created by JS -->
-                </svg>
-                <div class="donut-center">
-                    <div class="donut-center-number">874</div>
-                    <div class="donut-center-label">Alumni Tracked</div>
-                </div>
-            </div>
-            
-            <!-- Horizontal Bar Chart -->
+        <div class="fields-bars-container">
             <div class="fields-bars" id="fieldsBars">
                 <!-- Will be populated by JS -->
             </div>
@@ -2804,73 +2690,10 @@
         });
         
         // ==========================================
-        // FIELDS OF STUDY - DONUT + BAR CHART
         // ==========================================
-        const donutChart = document.getElementById('donutChart');
+        // FIELDS OF STUDY - CLEAN BAR CHART
+        // ==========================================
         const fieldsBars = document.getElementById('fieldsBars');
-        
-        // Field colors matching CSS
-        const fieldColors = [
-            '#00A2DB', '#E84E10', '#10b981', '#8b5cf6', '#f59e0b',
-            '#3b82f6', '#06b6d4', '#22c55e', '#ec4899', '#64748b'
-        ];
-        
-        // Create donut chart segments using path arcs for seamless circle
-        const radius = 85;
-        const cx = 100, cy = 100;
-        let currentAngle = -90; // Start from top (12 o'clock)
-        
-        MSP_DATA.fieldsOfStudy.forEach((field, index) => {
-            const percent = field.percent / 100;
-            const angle = percent * 360;
-            const endAngle = currentAngle + angle;
-            
-            // Convert angles to radians
-            const startRad = (currentAngle * Math.PI) / 180;
-            const endRad = (endAngle * Math.PI) / 180;
-            
-            // Calculate arc points
-            const x1 = cx + radius * Math.cos(startRad);
-            const y1 = cy + radius * Math.sin(startRad);
-            const x2 = cx + radius * Math.cos(endRad);
-            const y2 = cy + radius * Math.sin(endRad);
-            
-            // Large arc flag (1 if angle > 180)
-            const largeArc = angle > 180 ? 1 : 0;
-            
-            // Create path element
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const d = `M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`;
-            path.setAttribute('d', d);
-            path.setAttribute('fill', fieldColors[index]);
-            path.setAttribute('class', 'donut-segment-path');
-            path.style.transition = 'all 0.3s ease';
-            path.style.cursor = 'pointer';
-            path.style.transformOrigin = 'center';
-            
-            // Hover effect
-            path.addEventListener('mouseenter', () => {
-                path.style.transform = 'scale(1.03)';
-                path.style.filter = 'brightness(1.1) drop-shadow(0 0 15px ' + fieldColors[index] + ')';
-            });
-            path.addEventListener('mouseleave', () => {
-                path.style.transform = 'scale(1)';
-                path.style.filter = 'none';
-            });
-            
-            donutChart.appendChild(path);
-            currentAngle = endAngle;
-        });
-        
-        // Add center circle (donut hole)
-        const centerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        centerCircle.setAttribute('cx', cx);
-        centerCircle.setAttribute('cy', cy);
-        centerCircle.setAttribute('r', '48');
-        centerCircle.setAttribute('fill', 'white');
-        donutChart.appendChild(centerCircle);
-        
-        // Create bar chart rows
         const maxCount = Math.max(...MSP_DATA.fieldsOfStudy.map(f => f.count));
         
         MSP_DATA.fieldsOfStudy.forEach((field, index) => {
@@ -2879,17 +2702,25 @@
             const row = document.createElement('div');
             row.className = 'field-bar-row';
             row.innerHTML = `
-                <div class="field-bar-color field-color-${index + 1}"></div>
-                <div class="field-bar-label">${field.name}</div>
-                <div class="field-bar-track">
-                    <div class="field-bar-fill field-color-${index + 1}" style="width: ${barWidth}%">
-                        <span class="field-bar-value">${field.count}</span>
-                    </div>
+                <div class="field-bar-label">
+                    <div class="field-bar-color field-color-${index + 1}"></div>
+                    ${field.name}
                 </div>
+                <div class="field-bar-track">
+                    <div class="field-bar-fill field-color-${index + 1}" style="width: 0%;" data-width="${barWidth}"></div>
+                </div>
+                <div class="field-bar-count">${field.count}</div>
                 <div class="field-bar-percent">${field.percent}%</div>
             `;
             fieldsBars.appendChild(row);
         });
+        
+        // Animate bars on load
+        setTimeout(() => {
+            document.querySelectorAll('.field-bar-fill').forEach(bar => {
+                bar.style.width = bar.dataset.width + '%';
+            });
+        }, 100);
         
         lucide.createIcons();
         

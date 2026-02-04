@@ -579,14 +579,16 @@ const MSP_DATA = {
             },
             worldTop25: {
                 label: "World Top 25",
-                count: 48,
+                count: 81,
                 universities: [
                     { name: "Imperial College", code: "gb", count: 19, logo: "imperial-college-london.png" },
                     { name: "UCL", code: "gb", count: 14, logo: "ucl.png" },
                     { name: "Karolinska Institutet", code: "se", count: 11, logo: "karolinska-institutet.png" },
                     { name: "EPFL", code: "ch", count: 2, logo: "epfl.png" },
                     { name: "Princeton", code: "us", count: 1, logo: "princeton.png" },
-                    { name: "Columbia", code: "us", count: 1, logo: "columbia.png" }
+                    { name: "Columbia", code: "us", count: 1, logo: "columbia.png" },
+                    { name: "Uppsala University", code: "se", count: 19, logo: "uppsala-university.png" },
+                    { name: "Lund University", code: "se", count: 14, logo: "lund-university.png" }
                 ]
             },
             topDutch: {
@@ -647,7 +649,7 @@ const MSP_DATA = {
                 info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
             },
             "EPFL": {
-                fullName: "École Polytechnique Fédérale de Lausanne",
+                fullName: "Ã‰cole Polytechnique FÃ©dÃ©rale de Lausanne",
                 location: "Lausanne, Switzerland",
                 founded: 1969,
                 info: "Switzerland's premier science and technology university, known for cutting-edge research in engineering and physical sciences."

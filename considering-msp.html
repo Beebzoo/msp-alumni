@@ -1196,6 +1196,7 @@
             border-radius: var(--radius-lg);
             padding: 60px;
             box-shadow: var(--shadow-md);
+            margin-top: 80px;
         }
         .elite-stat-bar {
             text-align: center;
@@ -2070,7 +2071,7 @@
         });
         
         // Show career modal with details
-        function showCareerModal(element) {
+        window.showCareerModal = function(element) {
             const careerData = JSON.parse(element.getAttribute('data-career'));
             const modal = document.getElementById('careerModal');
             
@@ -2116,7 +2117,7 @@
         }
         
         // Show outcome modal
-        function showOutcomeModal(type) {
+        window.showOutcomeModal = function(type) {
             const modal = document.getElementById('outcomeModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalBody = document.getElementById('modalBody');
@@ -2196,12 +2197,25 @@
         }
         
         // Show university modal
-        function showUniModal(uniName, alumniCount) {
+        window.showUniModal = function(uniName, alumniCount) {
+            console.log('showUniModal called with:', uniName, alumniCount);
             const modal = document.getElementById('uniModal');
+            
+            if (!modal) {
+                console.error('Modal element not found!');
+                return;
+            }
+            
+            if (!data || !data.consideringMSP || !data.consideringMSP.universityDetails) {
+                console.error('Data structure not found!');
+                return;
+            }
+            
             const uniDetails = data.consideringMSP.universityDetails[uniName];
             
             if (!uniDetails) {
                 console.error('University details not found for:', uniName);
+                console.log('Available universities:', Object.keys(data.consideringMSP.universityDetails));
                 return;
             }
             
@@ -2405,7 +2419,7 @@
         };
         
         // Show curriculum modal
-        function showCurriculumModal(featureType) {
+        window.showCurriculumModal = function(featureType) {
             const modal = document.getElementById('curriculumModal');
             const feature = curriculumFeatures[featureType];
             
@@ -2689,19 +2703,19 @@
 
     <script>
         // === MODAL FUNCTIONS ===
-        function closeModal() {
+        window.closeModal = function() {
             document.getElementById('outcomeModal').style.display = 'none';
         }
         
-        function closeUniModal() {
+        window.closeUniModal = function() {
             document.getElementById('uniModal').style.display = 'none';
         }
         
-        function closeCurriculumModal() {
+        window.closeCurriculumModal = function() {
             document.getElementById('curriculumModal').style.display = 'none';
         }
         
-        function closeCareerModal() {
+        window.closeCareerModal = function() {
             document.getElementById('careerModal').style.display = 'none';
         }
         

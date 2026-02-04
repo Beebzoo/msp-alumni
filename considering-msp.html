@@ -435,9 +435,9 @@
                     <div class="year-badge">Year 3</div>
                     <h3>Research</h3>
                     <ul class="year-features">
-                        <li><i data-lucide="check"></i>Bachelor thesis (25 ECTS)</li>
-                        <li><i data-lucide="check"></i>Brightlands campuses</li>
-                        <li><i data-lucide="check"></i>Independent project</li>
+                        <li><i data-lucide="check"></i>Bachelor Thesis Research (30 ECTS)</li>
+                        <li><i data-lucide="check"></i>Brightlands Chemelot Campus</li>
+                        <li><i data-lucide="check"></i>Independent research project</li>
                     </ul>
                 </div>
             </div>
@@ -917,7 +917,7 @@
         /* Careers Grid */
         .careers-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
         .career-card-compact {
@@ -1389,6 +1389,171 @@
             .elite-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-content-sleek { grid-template-columns: 1fr; }
         }
+        
+        /* ===== MODAL STYLES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background: var(--um-dark-blue);
+            color: white;
+            position: relative;
+        }
+        .modal-header h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            flex: 1;
+        }
+        .modal-uni-logo {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .modal-uni-logo img {
+            max-width: 50px;
+            max-height: 50px;
+            object-fit: contain;
+        }
+        .modal-uni-location {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 4px 0 0 0;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            padding: 30px;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+        .modal-section {
+            margin-bottom: 24px;
+        }
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+        .modal-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--um-gray-600);
+            margin-bottom: 12px;
+        }
+        .modal-examples {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .modal-example {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--um-gray-50);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--um-dark-blue);
+        }
+        .modal-example i {
+            width: 18px;
+            height: 18px;
+            color: var(--um-orange);
+            flex-shrink: 0;
+        }
+        .modal-stat-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .modal-stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 16px;
+            background: var(--um-gray-50);
+            border-radius: 8px;
+        }
+        .modal-stat-number {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            display: block;
+        }
+        .modal-stat-label {
+            font-size: 12px;
+            color: var(--um-gray-600);
+            display: block;
+            margin-top: 4px;
+        }
+        .modal-info-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--um-gray-700);
+        }
+        
+        /* Enhanced Career Cards with Icons */
+        .career-icon-compact i {
+            color: var(--icon-color, white);
+        }
     </style>
 
     <script>
@@ -1463,11 +1628,11 @@
             }
         });
         
-        // Populate careers grid (top 8)
-        const topCareers = data.careerSectors.slice(0, 8);
+        // Populate careers grid (top 6 for cleaner look)
+        const topCareers = data.careerSectors.slice(0, 6);
         const careersHTML = topCareers.map(career => `
             <div class="career-card-compact">
-                <div class="career-icon-compact">
+                <div class="career-icon-compact" style="--icon-color: ${career.color}; background: linear-gradient(135deg, ${career.color}, ${career.color}dd);">
                     <i data-lucide="${career.icon}"></i>
                 </div>
                 <div class="career-title-compact">${career.name}</div>
@@ -1477,12 +1642,12 @@
         `).join('');
         document.getElementById('careersGrid').innerHTML = careersHTML;
         
-        // Populate elite universities (top 12)
+        // Populate elite universities (top 12 - 2 rows of 6)
         const worldTop10 = data.universityTiers.worldTop10.universities;
         const worldTop25 = data.universityTiers.worldTop25.universities;
         const eliteUnis = [...worldTop10, ...worldTop25].slice(0, 12);
         const eliteHTML = eliteUnis.map(uni => `
-            <div class="uni-card-compact">
+            <div class="uni-card-compact" onclick="showUniModal('${uni.name}', ${uni.count})" style="cursor: pointer;">
                 <img src="assets/logos/${uni.logo}" alt="${uni.name}" class="uni-logo-compact">
                 <div class="uni-name-compact">${uni.name}</div>
                 <div class="uni-count-compact">${uni.count} alumni</div>
@@ -1492,8 +1657,183 @@
         const totalElite = eliteUnis.reduce((sum, u) => sum + u.count, 0);
         document.getElementById('eliteCount').textContent = totalElite;
         
+        // Add click handlers to outcome cards
+        document.querySelectorAll('.outcome-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const outcomeType = this.getAttribute('data-outcome');
+                showOutcomeModal(outcomeType);
+            });
+        });
+        
+        // Show outcome modal
+        function showOutcomeModal(type) {
+            const modal = document.getElementById('outcomeModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            const outcomeData = {
+                masters: {
+                    title: "Master's Programs",
+                    stat: "67% of MSP Graduates",
+                    description: "Most MSP graduates continue their academic journey with master's programs at 233 universities worldwide. Our alumni pursue diverse fields from life sciences to engineering, often at world-class institutions.",
+                    examples: [
+                        "Master's in Biomedical Sciences at Utrecht University",
+                        "MSc Molecular Medicine at Imperial College London",
+                        "Master's in Chemical Engineering at ETH Zurich",
+                        "MSc Bioinformatics at Leiden University",
+                        "Master's in Neuroscience at University of Amsterdam",
+                        "MSc Environmental Sciences at Wageningen University"
+                    ]
+                },
+                phd: {
+                    title: "PhD Research Track",
+                    stat: "10.7% of MSP Graduates",
+                    description: "A significant portion of our alumni pursue doctoral research, with 141 current PhD candidates and 9 postdocs. They conduct cutting-edge research at prestigious institutions worldwide.",
+                    examples: [
+                        "PhD in Systems Biology at Max Planck Institute",
+                        "Doctoral Research in Quantum Physics at ETH Zurich",
+                        "PhD in Cancer Biology at University of Cambridge",
+                        "Research Fellow in Neuroscience at Karolinska Institutet",
+                        "PhD in Materials Science at EPFL",
+                        "Doctoral Candidate in Drug Discovery at University of Oxford"
+                    ]
+                },
+                career: {
+                    title: "Direct to Career",
+                    stat: "22% of MSP Graduates",
+                    description: "Nearly a quarter of our alumni enter the workforce directly after graduation, bringing their interdisciplinary science background to diverse sectors including consulting, technology, pharma, and startups.",
+                    examples: [
+                        "Junior Consultant at McKinsey & Company",
+                        "Data Scientist at Booking.com",
+                        "Research Scientist at AstraZeneca",
+                        "Process Engineer at ASML",
+                        "Sustainability Analyst at Deloitte",
+                        "Biotech Researcher at Novartis"
+                    ]
+                }
+            };
+            
+            const content = outcomeData[type];
+            modalTitle.textContent = content.title;
+            
+            const examplesHTML = content.examples.map(ex => `
+                <div class="modal-example">
+                    <i data-lucide="arrow-right"></i>
+                    <span>${ex}</span>
+                </div>
+            `).join('');
+            
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <div class="modal-stat-row">
+                        <div class="modal-stat-item">
+                            <span class="modal-stat-number">${content.stat.split(' ')[0]}</span>
+                            <span class="modal-stat-label">${content.stat.substring(content.stat.indexOf(' ') + 1)}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <p class="modal-info-text">${content.description}</p>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title">Example Paths</div>
+                    <div class="modal-examples">${examplesHTML}</div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            lucide.createIcons();
+        }
+        
+        // Show university modal
+        function showUniModal(uniName, alumniCount) {
+            const modal = document.getElementById('uniModal');
+            const uniDetails = data.universityDetails[uniName];
+            
+            if (!uniDetails) {
+                console.error('University details not found for:', uniName);
+                return;
+            }
+            
+            document.getElementById('modalUniName').textContent = uniDetails.fullName;
+            document.getElementById('modalUniLocation').textContent = uniDetails.location;
+            
+            // Find the university in the data to get its logo
+            const allUnis = [...data.universityTiers.worldTop10.universities, ...data.universityTiers.worldTop25.universities];
+            const uni = allUnis.find(u => u.name === uniName);
+            const logoHTML = uni ? `<img src="assets/logos/${uni.logo}" alt="${uniName}">` : '';
+            document.getElementById('modalUniLogo').innerHTML = logoHTML;
+            
+            document.getElementById('modalUniBody').innerHTML = `
+                <div class="modal-section">
+                    <div class="modal-stat-row">
+                        <div class="modal-stat-item">
+                            <span class="modal-stat-number">${alumniCount}</span>
+                            <span class="modal-stat-label">MSP Alumni</span>
+                        </div>
+                        <div class="modal-stat-item">
+                            <span class="modal-stat-number">${uniDetails.founded}</span>
+                            <span class="modal-stat-label">Founded</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title">About</div>
+                    <p class="modal-info-text">${uniDetails.info}</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+        
         // Initialize Lucide icons
         lucide.createIcons();
     </script>
+    
+    <!-- OUTCOME MODAL -->
+    <div id="outcomeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- UNIVERSITY MODAL -->
+    <div id="uniModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-uni-logo" id="modalUniLogo"></div>
+                <div>
+                    <h3 id="modalUniName"></h3>
+                    <p id="modalUniLocation" class="modal-uni-location"></p>
+                </div>
+                <button class="modal-close" onclick="closeUniModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalUniBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // === MODAL FUNCTIONS ===
+        function closeModal() {
+            document.getElementById('outcomeModal').style.display = 'none';
+        }
+        
+        function closeUniModal() {
+            document.getElementById('uniModal').style.display = 'none';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const outcomeModal = document.getElementById('outcomeModal');
+            const uniModal = document.getElementById('uniModal');
+            if (event.target == outcomeModal) closeModal();
+            if (event.target == uniModal) closeUniModal();
+        }
+    </script>
+
 </body>
 </html>

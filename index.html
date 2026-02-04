@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSP Alumni Network | Maastricht Science Programme</title>
     <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
-    <meta name="description" content="Explore where 1,321 MSP alumni from 78 nationalities are now - across 58 countries and 233 universities worldwide.">
+    <meta name="description" content="Explore where 1,321 MSP alumni from 78 nationalities are now - across 58 countries and 233 universities worldwide." data-stat="totalAlumni-formatted" data-text-template="Explore where {totalAlumni-formatted} MSP alumni from {nationalities} nationalities are now - across {countriesLivingIn} countries and {universitiesAttended} universities worldwide.">
     
     <!-- Fonts - Using more distinctive choices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2556,32 +2556,32 @@
                 </div>
                 
                 <h2><span>MSP</span> Alumni Community</h2>
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" data-text-template="Explore the global journey of {totalAlumni-formatted} MSP alumni   -   from Maastricht to world-leading universities and careers across six continents.">
                     Explore the global journey of 1,321 MSP alumni   -   from Maastricht to world-leading universities and careers across six continents.
                 </p>
                 
                 <div class="hero-stats">
                     <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-circle">
-                            <div class="hero-stat-number" id="totalAlumni">1,321</div>
+                            <div class="hero-stat-number" id="totalAlumni" data-stat="totalAlumni-formatted">1,321</div>
                         </div>
                         <div class="hero-stat-label">Alumni</div>
                     </a>
                     <div class="hero-stat">
                         <div class="hero-stat-circle">
-                            <div class="hero-stat-number" id="totalNationalities">78</div>
+                            <div class="hero-stat-number" id="totalNationalities" data-stat="nationalities">78</div>
                         </div>
                         <div class="hero-stat-label">Nationalities</div>
                     </div>
                     <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-circle">
-                            <div class="hero-stat-number" id="totalCountries">56</div>
+                            <div class="hero-stat-number" id="totalCountries" data-stat="countriesLivingIn">56</div>
                         </div>
                         <div class="hero-stat-label">Countries</div>
                     </a>
                     <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-circle">
-                            <div class="hero-stat-number" id="totalUniversities">233</div>
+                            <div class="hero-stat-number" id="totalUniversities" data-stat="universitiesAttended">233</div>
                         </div>
                         <div class="hero-stat-label">Universities</div>
                     </a>
@@ -2644,7 +2644,7 @@
         
         <div style="text-align: center; margin-top: 50px;">
             <a href="destinations.html" class="view-all-btn">
-                Explore All <span id="statUniversities">233</span> Universities
+                Explore All <span id="statUniversities" data-stat="universitiesAttended">233</span> Universities
                 <i data-lucide="arrow-right"></i>
             </a>
         </div>
@@ -2790,7 +2790,7 @@
             <div class="footer-brand">
                 <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
                 <h3>MSP Alumni Network</h3>
-                <p>Connecting 1,321 graduates from the Maastricht Science Programme across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+                <p data-text-template="Connecting {totalAlumni-formatted} graduates from the Maastricht Science Programme across {countriesLivingIn} countries. Part of the Faculty of Science and Engineering at Maastricht University.">Connecting 1,321 graduates from the Maastricht Science Programme across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
             <div class="footer-links-group">
                 <h4>Explore</h4>
@@ -2818,6 +2818,7 @@
     
     <!-- Scripts -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="data.js"></script>
+    <script src="data-bind.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // ==========================================

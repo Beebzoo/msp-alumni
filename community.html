@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join the Community | MSP Alumni Network</title>
     <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
-    <meta name="description" content="Stay connected with 1,321 MSP graduates across 58 countries. Get exclusive updates, join WhatsApp groups, win merch, and be part of a global network.">
+    <meta name="description" content="Stay connected with 1,321 MSP graduates across 58 countries. Get exclusive updates, join WhatsApp groups, win merch, and be part of a global network." data-text-template="Stay connected with {totalAlumni-formatted} MSP graduates across {countriesLivingIn} countries. Get exclusive updates, join WhatsApp groups, win merch, and be part of a global network.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,8 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="data.js"></script>
+    <script src="data-bind.js"></script>
     
     <style>
         :root {
@@ -1448,10 +1450,10 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <i data-lucide="users"></i>
-                1,321 Alumni Worldwide
+                <span data-text-template="{totalAlumni-formatted} Alumni Worldwide">1,321 Alumni Worldwide</span>
             </div>
             <h1>Join the <span class="highlight">MSP Alumni</span> Community</h1>
-            <p>Stay connected with fellow graduates across 58 countries. Get updates, win merch, and help us build something great together.</p>
+            <p data-text-template="Stay connected with fellow graduates across {countriesLivingIn} countries. Get updates, win merch, and help us build something great together.">Stay connected with fellow graduates across 58 countries. Get updates, win merch, and help us build something great together.</p>
             
             <!-- Three social buttons in a row -->
             <div class="hero-social-row">
@@ -1731,11 +1733,11 @@
                         
                         <div class="whatsapp-stats">
                             <div class="whatsapp-stat">
-                                <div class="whatsapp-stat-number">400+</div>
+                                <div class="whatsapp-stat-number" data-stat="whatsapp-members">400+</div>
                                 <div class="whatsapp-stat-label">Members</div>
                             </div>
                             <div class="whatsapp-stat">
-                                <div class="whatsapp-stat-number">18</div>
+                                <div class="whatsapp-stat-number" data-stat="whatsapp-groups">18</div>
                                 <div class="whatsapp-stat-label">Country Groups</div>
                             </div>
                         </div>
@@ -1937,7 +1939,7 @@
             <div class="footer-brand">
                 <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
                 <h3>MSP Alumni Network</h3>
-                <p>Connecting 1,321 graduates from the Maastricht Science Programme across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+                <p data-text-template="Connecting {totalAlumni-formatted} graduates from the Maastricht Science Programme across {countriesLivingIn} countries. Part of the Faculty of Science and Engineering at Maastricht University.">Connecting 1,321 graduates from the Maastricht Science Programme across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
             <div class="footer-links">
                 <h4>Explore</h4>

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Destinations | MSP Alumni Network</title>
     <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
-    <meta name="description" content="Explore where 1,321 MSP alumni pursue Master's degrees and build careers - across 233 universities in 58 countries worldwide.">
+    <meta name="description" content="Explore where 1,321 MSP alumni pursue Master's degrees and build careers - across 233 universities in 58 countries worldwide." data-text-template="Explore where {totalAlumni-formatted} MSP alumni pursue Master's degrees and build careers - across {universitiesAttended} universities in {countriesLivingIn} countries worldwide.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="data.js"></script>
+    <script src="data-bind.js"></script>
     
     <!-- Leaflet CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -347,7 +348,7 @@
                     Global Alumni Network
                 </div>
                 <h1 class="hero-title">Where MSP <span class="highlight">Opens Doors</span></h1>
-                <p class="hero-subtitle">From Maastricht to the world's leading universities. Explore where 1,321 alumni pursue Master's degrees and build careers.</p>
+                <p class="hero-subtitle" data-text-template="From Maastricht to the world's leading universities. Explore where {totalAlumni-formatted} alumni pursue Master's degrees and build careers.">From Maastricht to the world's leading universities. Explore where 1,321 alumni pursue Master's degrees and build careers.</p>
                 
                 <div class="stats-ribbon">
                     <div class="stat-item">
@@ -467,7 +468,7 @@
             </div>
             
             <div class="table-info">
-                <span id="table-showing">Showing 10 of 233 universities</span>
+                <span id="table-showing">Showing 10 of <span data-stat="universitiesAttended">233</span> universities</span>
             </div>
             
             <div class="table-expand-container">
@@ -537,7 +538,7 @@
                     <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
                     <div class="logo-text"><h1>MSP Alumni Network</h1><p>Maastricht Science Programme</p></div>
                 </a>
-                <p>Connecting 1,321 MSP graduates across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+                <p data-text-template="Connecting {totalAlumni-formatted} MSP graduates across {countriesLivingIn} countries. Part of the Faculty of Science and Engineering at Maastricht University.">Connecting 1,321 MSP graduates across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
             <div class="footer-links">
                 <h4>Explore</h4>
@@ -1031,7 +1032,7 @@
                             <div class="popup-stat"><strong>${uniCount}</strong> unis</div>
                         </div>
                     </div>
-                    ${clickable ? '<div class="popup-cta">Explore Ã¢â€ â€™</div>' : ''}
+                    ${clickable ? '<div class="popup-cta">Explore ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</div>' : ''}
                 </div>
             `;
         }

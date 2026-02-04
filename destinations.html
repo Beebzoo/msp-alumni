@@ -1031,7 +1031,7 @@
                             <div class="popup-stat"><strong>${uniCount}</strong> unis</div>
                         </div>
                     </div>
-                    ${clickable ? '<div class="popup-cta">Explore â†’</div>' : ''}
+                    ${clickable ? '<div class="popup-cta">Explore Ã¢â€ â€™</div>' : ''}
                 </div>
             `;
         }
@@ -1274,10 +1274,12 @@
         }
         
         function openUniModal(uniName) {
-            const uniInfo = UNIVERSITY_INFO[uniName];
+            // Phase 1 Fix: Check for alias mapping first
+            const mappedName = UNIVERSITY_ALIASES[uniName] || uniName;
+            const uniInfo = UNIVERSITY_INFO[mappedName];
             
             if (!uniInfo) {
-                console.log('No detailed info available for:', uniName);
+                console.log('No detailed info available for:', uniName, '(checked as:', mappedName, ')');
                 return;
             }
             
@@ -1290,6 +1292,7 @@
             const modalDescription = document.getElementById('modalDescription');
             const modalWebsite = document.getElementById('modalWebsite');
             
+            // Display original name from database
             modalUniName.textContent = uniName;
             modalLocation.textContent = uniInfo.location;
             modalFounded.textContent = uniInfo.founded;
@@ -1297,7 +1300,8 @@
             modalDescription.textContent = uniInfo.description;
             modalWebsite.href = uniInfo.website;
             
-            const logoFile = UNI_LOGO_FILES[uniName];
+            // Check for logo using both original and mapped names
+            const logoFile = UNI_LOGO_FILES[uniName] || UNI_LOGO_FILES[mappedName];
             if (logoFile) {
                 modalLogo.innerHTML = `<img src="assets/logos/${logoFile}" alt="${uniName}">`;
             } else {

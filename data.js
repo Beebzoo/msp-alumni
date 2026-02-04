@@ -1,7 +1,7 @@
 // MSP Alumni Data - Complete Dataset
 // Last updated: February 2026
 // Total alumni: 1321 across 78 nationalities
-// Universities: 231 (corrected from cleaned database)
+// Universities: 233 (verified from cleaned database)
 
 const COUNTRY_DETAILS = {
     "nl": {
@@ -656,7 +656,7 @@ const MSP_DATA = {
                 info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
             },
             "EPFL": {
-                fullName: "École Polytechnique Fédérale de Lausanne",
+                fullName: "Ã‰cole Polytechnique FÃ©dÃ©rale de Lausanne",
                 location: "Lausanne, Switzerland",
                 founded: 1969,
                 ranking: "36th",

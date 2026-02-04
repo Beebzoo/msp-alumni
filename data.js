@@ -603,6 +603,81 @@ const MSP_DATA = {
             }
         },
         
+        universityDetails: {
+            "ETH Zurich": {
+                fullName: "ETH Zurich (Swiss Federal Institute of Technology)",
+                location: "Zurich, Switzerland",
+                founded: 1855,
+                info: "Renowned for science and technology, consistently ranked among the world's top 10 universities. Home to 22 Nobel laureates, including Albert Einstein."
+            },
+            "Cambridge": {
+                fullName: "University of Cambridge",
+                location: "Cambridge, United Kingdom",
+                founded: 1209,
+                info: "One of the world's oldest and most prestigious universities. 121 Nobel laureates have been affiliated with Cambridge, more than any other institution."
+            },
+            "Oxford": {
+                fullName: "University of Oxford",
+                location: "Oxford, United Kingdom",
+                founded: 1096,
+                info: "The oldest university in the English-speaking world. Oxford has educated 30 British prime ministers and 72 Nobel laureates."
+            },
+            "Harvard": {
+                fullName: "Harvard University",
+                location: "Cambridge, Massachusetts, USA",
+                founded: 1636,
+                info: "America's oldest institution of higher learning. Harvard has produced 8 US presidents and 161 Nobel laureates."
+            },
+            "Imperial College": {
+                fullName: "Imperial College London",
+                location: "London, United Kingdom",
+                founded: 1907,
+                info: "Specializes in science, engineering, medicine and business. Consistently ranked among the top 10 universities globally."
+            },
+            "UCL": {
+                fullName: "University College London",
+                location: "London, United Kingdom",
+                founded: 1826,
+                info: "London's leading multidisciplinary university, with 30 Nobel Prize winners among its alumni and staff."
+            },
+            "Karolinska Institutet": {
+                fullName: "Karolinska Institutet",
+                location: "Stockholm, Sweden",
+                founded: 1810,
+                info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
+            },
+            "EPFL": {
+                fullName: "École Polytechnique Fédérale de Lausanne",
+                location: "Lausanne, Switzerland",
+                founded: 1969,
+                info: "Switzerland's premier science and technology university, known for cutting-edge research in engineering and physical sciences."
+            },
+            "Princeton": {
+                fullName: "Princeton University",
+                location: "Princeton, New Jersey, USA",
+                founded: 1746,
+                info: "One of America's most prestigious Ivy League universities. Home to 42 Nobel laureates and numerous Fields Medal winners."
+            },
+            "Columbia": {
+                fullName: "Columbia University",
+                location: "New York City, USA",
+                founded: 1754,
+                info: "The oldest institution of higher learning in New York. Columbia has produced 96 Nobel laureates and the Pulitzer Prizes are administered from here."
+            },
+            "Uppsala University": {
+                fullName: "Uppsala University",
+                location: "Uppsala, Sweden",
+                founded: 1477,
+                info: "The oldest university in Sweden and Scandinavia. Known for excellence in life sciences and medicine."
+            },
+            "Lund University": {
+                fullName: "Lund University",
+                location: "Lund, Sweden",
+                founded: 1666,
+                info: "One of Northern Europe's oldest and most prestigious universities, ranked top 100 globally in most fields."
+            }
+        },
+        
         composition: {
             gender: { female: 788, male: 531, other: 2 },
             international: { international: 1058, dutch: 263 },

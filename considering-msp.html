@@ -518,14 +518,15 @@
             </div>
             
             <div class="career-flow-container">
+                <!-- SVG overlay for connections -->
+                <svg id="flowSvg" class="flow-svg"></svg>
+                
                 <div class="flow-stage">
                     <div class="flow-stage-label">Academic Focus</div>
                     <div id="flowFields" class="flow-nodes"></div>
                 </div>
                 
-                <div class="flow-connections" id="flowConnections">
-                    <svg id="flowSvg" class="flow-svg"></svg>
-                </div>
+                <div style="grid-column: 2;"></div>
                 
                 <div class="flow-stage">
                     <div class="flow-stage-label">Career Destinations</div>
@@ -1091,6 +1092,8 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            position: relative;
+            z-index: 2;
         }
         .flow-stage-label {
             font-size: 13px;
@@ -1144,10 +1147,6 @@
         .flow-node-count i {
             width: 14px;
             height: 14px;
-        }
-        .flow-connections {
-            position: relative;
-            min-height: 400px;
         }
         .flow-svg {
             position: absolute;
@@ -1937,10 +1936,15 @@
             const fieldNodes = document.querySelectorAll('.field-node');
             const careerNodes = document.querySelectorAll('.career-node');
             
-            // Set SVG dimensions
+            if (!container || fieldNodes.length === 0 || careerNodes.length === 0) return;
+            
+            // Get container dimensions and position
             const containerRect = container.getBoundingClientRect();
-            svg.style.width = containerRect.width + 'px';
-            svg.style.height = containerRect.height + 'px';
+            const containerPadding = 40; // Match the padding in CSS
+            
+            // Set SVG dimensions to match container
+            svg.setAttribute('width', containerRect.width);
+            svg.setAttribute('height', containerRect.height);
             svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
             
             // Draw connections with data attributes for hover tracking
@@ -1949,13 +1953,19 @@
                     const fieldRect = fieldNode.getBoundingClientRect();
                     const careerRect = careerNode.getBoundingClientRect();
                     
+                    // Calculate positions relative to container
+                    // Start: right edge of field node
                     const x1 = fieldRect.right - containerRect.left;
-                    const y1 = fieldRect.top + fieldRect.height / 2 - containerRect.top;
-                    const x2 = careerRect.left - containerRect.left;
-                    const y2 = careerRect.top + careerRect.height / 2 - containerRect.top;
+                    const y1 = (fieldRect.top + fieldRect.bottom) / 2 - containerRect.top;
                     
+                    // End: left edge of career node
+                    const x2 = careerRect.left - containerRect.left;
+                    const y2 = (careerRect.top + careerRect.bottom) / 2 - containerRect.top;
+                    
+                    // Create smooth bezier curve
+                    const controlOffset = Math.abs(x2 - x1) * 0.4; // 40% of horizontal distance
                     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                    const d = `M ${x1} ${y1} C ${x1 + 100} ${y1}, ${x2 - 100} ${y2}, ${x2} ${y2}`;
+                    const d = `M ${x1} ${y1} C ${x1 + controlOffset} ${y1}, ${x2 - controlOffset} ${y2}, ${x2} ${y2}`;
                     path.setAttribute('d', d);
                     path.setAttribute('class', 'flow-path');
                     

@@ -632,9 +632,9 @@
             <div class="elite-showcase">
                 <div class="elite-stat-bar">
                     <div class="elite-stat">
-                        <span class="elite-number" id="eliteCount">82</span>
-                        <span class="elite-label">At World Top 25</span>
+                        <span class="elite-label-only">World Top 25</span>
                     </div>
+                    <div class="elite-citation">Based on QS World University Rankings 2025</div>
                 </div>
                 <div class="elite-grid" id="eliteGrid"></div>
                 <div class="elite-cta">
@@ -1143,6 +1143,19 @@
             color: rgba(255,255,255,0.8);
             font-weight: 600;
         }
+        .elite-label-only {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        .elite-citation {
+            font-size: 11px;
+            color: var(--um-gray-500);
+            margin-top: 8px;
+            font-weight: 500;
+        }
         .elite-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -1174,12 +1187,7 @@
             font-size: 13px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 6px;
             line-height: 1.2;
-        }
-        .uni-count-compact {
-            font-size: 11px;
-            color: var(--um-gray-600);
         }
         .elite-cta {
             text-align: center;
@@ -1586,18 +1594,19 @@
             flex: 1;
         }
         .modal-uni-logo {
-            width: 60px;
-            height: 60px;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
         }
         .modal-uni-logo img {
-            max-width: 50px;
-            max-height: 50px;
+            max-width: 100px;
+            max-height: 100px;
             object-fit: contain;
         }
         .modal-uni-location {
@@ -1796,12 +1805,9 @@
             <div class="uni-card-compact" onclick="showUniModal('${uni.name}', ${uni.count})" style="cursor: pointer;">
                 <img src="assets/logos/${uni.logo}" alt="${uni.name}" class="uni-logo-compact">
                 <div class="uni-name-compact">${uni.name}</div>
-                <div class="uni-count-compact">${uni.count} alumni</div>
             </div>
         `).join('');
         document.getElementById('eliteGrid').innerHTML = eliteHTML;
-        const totalElite = eliteUnis.reduce((sum, u) => sum + u.count, 0);
-        document.getElementById('eliteCount').textContent = totalElite;
         
         // Add click handlers to outcome cards
         document.querySelectorAll('.outcome-card').forEach(card => {
@@ -1914,8 +1920,8 @@
                 <div class="modal-section">
                     <div class="modal-stat-row">
                         <div class="modal-stat-item">
-                            <span class="modal-stat-number">${alumniCount}</span>
-                            <span class="modal-stat-label">MSP Alumni</span>
+                            <span class="modal-stat-number">${uniDetails.ranking || 'N/A'}</span>
+                            <span class="modal-stat-label">QS World Ranking 2025</span>
                         </div>
                         <div class="modal-stat-item">
                             <span class="modal-stat-number">${uniDetails.founded}</span>

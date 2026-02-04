@@ -443,27 +443,43 @@
             </div>
             
             <div class="journey-compact">
+                <div class="journey-timeline"></div>
+                
                 <div class="year-card">
                     <div class="year-badge">Year 1</div>
                     <h3>Foundation</h3>
+                    <div class="year-metric">
+                        <i data-lucide="users"></i>
+                        <span>~220 students per cohort</span>
+                    </div>
                     <ul class="year-features">
                         <li class="clickable-feature" data-feature="y1-core"><i data-lucide="check"></i>Core sciences (Bio, Chem, Physics)</li>
                         <li class="clickable-feature" data-feature="y1-pbl"><i data-lucide="check"></i>Problem-Based Learning</li>
                         <li class="clickable-feature" data-feature="y1-lab"><i data-lucide="check"></i>Lab skills introduction</li>
                     </ul>
                 </div>
+                
                 <div class="year-card">
                     <div class="year-badge">Year 2</div>
                     <h3>Specialization</h3>
+                    <div class="year-metric">
+                        <i data-lucide="git-branch"></i>
+                        <span>Choose from 40+ elective courses</span>
+                    </div>
                     <ul class="year-features">
                         <li class="clickable-feature" data-feature="y2-elective"><i data-lucide="check"></i>Elective curriculum</li>
                         <li class="clickable-feature" data-feature="y2-project"><i data-lucide="check"></i>Project work</li>
                         <li class="clickable-feature" data-feature="y2-skills"><i data-lucide="check"></i>Advanced skills</li>
                     </ul>
                 </div>
+                
                 <div class="year-card">
                     <div class="year-badge">Year 3</div>
                     <h3>Research</h3>
+                    <div class="year-metric">
+                        <i data-lucide="flask-conical"></i>
+                        <span>30 ECTS thesis • 8 research groups</span>
+                    </div>
                     <ul class="year-features">
                         <li class="clickable-feature" data-feature="y3-btr"><i data-lucide="check"></i>Bachelor Thesis Research (30 ECTS)</li>
                         <li class="clickable-feature" data-feature="y3-facilities"><i data-lucide="check"></i>DUB30 & Brightlands labs</li>
@@ -940,25 +956,101 @@
             color: var(--um-gray-600);
         }
         
-        /* Journey Compact */
+        /* Journey Compact - Progressive Timeline */
         .journey-compact {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 32px;
+            position: relative;
+            padding: 40px 0;
         }
+        
+        /* Timeline connector */
+        .journey-timeline {
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--um-light-blue) 0%, 
+                var(--um-light-blue) 33%, 
+                rgba(0,162,219,0.3) 33%,
+                rgba(0,162,219,0.3) 66%,
+                rgba(0,162,219,0.1) 66%,
+                rgba(0,162,219,0.1) 100%
+            );
+            z-index: 0;
+            border-radius: 2px;
+        }
+        
+        .journey-timeline::before,
+        .journey-timeline::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--um-light-blue);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 4px rgba(0,162,219,0.2);
+        }
+        
+        .journey-timeline::before {
+            left: 33.33%;
+        }
+        
+        .journey-timeline::after {
+            left: 66.66%;
+        }
+        
+        /* Progressive card complexity */
         .year-card {
             background: white;
             border-radius: var(--radius-md);
-            padding: 30px;
+            padding: 32px;
             box-shadow: var(--shadow-sm);
             transition: all var(--transition-smooth);
             border: 1px solid var(--um-gray-200);
+            position: relative;
+            z-index: 1;
         }
+        
+        /* Year 1 - Simple foundation */
+        .year-card:nth-child(1) {
+            border-left: 4px solid var(--um-light-blue);
+        }
+        
+        /* Year 2 - Medium complexity */
+        .year-card:nth-child(2) {
+            border-left: 4px solid var(--um-light-blue);
+            padding-top: 36px;
+            transform: translateY(-8px);
+        }
+        
+        /* Year 3 - Advanced sophistication */
+        .year-card:nth-child(3) {
+            border-left: 4px solid var(--um-orange);
+            padding-top: 40px;
+            transform: translateY(-16px);
+            background: linear-gradient(135deg, white 0%, #fafbfc 100%);
+        }
+        
         .year-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-md);
-            border-color: var(--um-light-blue);
+            border-left-color: var(--um-orange);
         }
+        
+        .year-card:nth-child(2):hover {
+            transform: translateY(-16px);
+        }
+        
+        .year-card:nth-child(3):hover {
+            transform: translateY(-24px);
+        }
+        
         .year-badge {
             display: inline-block;
             font-size: 11px;
@@ -969,15 +1061,44 @@
             border-radius: 100px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
+        
+        .year-card:nth-child(3) .year-badge {
+            background: var(--um-orange);
+        }
+        
         .year-card h3 {
             font-family: var(--font-heading);
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--um-dark-blue);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
         }
+        
+        /* Year metric */
+        .year-metric {
+            font-size: 13px;
+            color: var(--um-gray-500);
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--um-gray-200);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .year-metric i {
+            width: 14px;
+            height: 14px;
+            color: var(--um-light-blue);
+        }
+        
+        .year-card:nth-child(3) .year-metric i {
+            color: var(--um-orange);
+        }
+        
         .year-features {
             list-style: none;
             display: flex;
@@ -1598,7 +1719,25 @@
         @media (max-width: 1024px) {
             .stats-container { flex-wrap: wrap; gap: 30px; }
             .stat-divider { display: none; }
-            .journey-compact { grid-template-columns: 1fr; }
+            .journey-compact { 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+                padding: 20px 0;
+            }
+            .journey-timeline {
+                display: none;
+            }
+            .year-card:nth-child(2),
+            .year-card:nth-child(3) {
+                transform: translateY(0);
+            }
+            .year-card:hover {
+                transform: translateY(-4px);
+            }
+            .year-card:nth-child(2):hover,
+            .year-card:nth-child(3):hover {
+                transform: translateY(-4px);
+            }
             .outcomes-grid { grid-template-columns: 1fr; }
             .career-flow-container { grid-template-columns: 1fr; gap: 30px; }
             .flow-svg { display: none; } /* Hide connections on tablet */
@@ -2358,7 +2497,7 @@
             'y3-btr': {
                 title: 'Bachelor Thesis Research (30 ECTS)',
                 year: 'Year 3',
-                description: 'The Bachelor Thesis Research (BTR) is the culminating experience of the MSP programme--a full semester of independent scientific research in your chosen field.',
+                description: 'The Bachelor Thesis Research (BTR) is the culminating experience of the MSP programme--Âa full semester of independent scientific research in your chosen field.',
                 structure: [
                     'One full semester (30 ECTS)',
                     'Independent research project',

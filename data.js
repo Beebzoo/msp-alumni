@@ -610,72 +610,84 @@ const MSP_DATA = {
                 fullName: "ETH Zurich (Swiss Federal Institute of Technology)",
                 location: "Zurich, Switzerland",
                 founded: 1855,
+                ranking: "7th",
                 info: "Renowned for science and technology, consistently ranked among the world's top 10 universities. Home to 22 Nobel laureates, including Albert Einstein."
             },
             "Cambridge": {
                 fullName: "University of Cambridge",
                 location: "Cambridge, United Kingdom",
                 founded: 1209,
+                ranking: "5th",
                 info: "One of the world's oldest and most prestigious universities. 121 Nobel laureates have been affiliated with Cambridge, more than any other institution."
             },
             "Oxford": {
                 fullName: "University of Oxford",
                 location: "Oxford, United Kingdom",
                 founded: 1096,
+                ranking: "3rd",
                 info: "The oldest university in the English-speaking world. Oxford has educated 30 British prime ministers and 72 Nobel laureates."
             },
             "Harvard": {
                 fullName: "Harvard University",
                 location: "Cambridge, Massachusetts, USA",
                 founded: 1636,
+                ranking: "4th",
                 info: "America's oldest institution of higher learning. Harvard has produced 8 US presidents and 161 Nobel laureates."
             },
             "Imperial College": {
                 fullName: "Imperial College London",
                 location: "London, United Kingdom",
                 founded: 1907,
+                ranking: "6th",
                 info: "Specializes in science, engineering, medicine and business. Consistently ranked among the top 10 universities globally."
             },
             "UCL": {
                 fullName: "University College London",
                 location: "London, United Kingdom",
                 founded: 1826,
+                ranking: "9th",
                 info: "London's leading multidisciplinary university, with 30 Nobel Prize winners among its alumni and staff."
             },
             "Karolinska Institutet": {
                 fullName: "Karolinska Institutet",
                 location: "Stockholm, Sweden",
                 founded: 1810,
+                ranking: "26th",
                 info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
             },
             "EPFL": {
-                fullName: "Ã‰cole Polytechnique FÃ©dÃ©rale de Lausanne",
+                fullName: "École Polytechnique Fédérale de Lausanne",
                 location: "Lausanne, Switzerland",
                 founded: 1969,
+                ranking: "36th",
                 info: "Switzerland's premier science and technology university, known for cutting-edge research in engineering and physical sciences."
             },
             "Princeton": {
                 fullName: "Princeton University",
                 location: "Princeton, New Jersey, USA",
                 founded: 1746,
+                ranking: "17th",
                 info: "One of America's most prestigious Ivy League universities. Home to 42 Nobel laureates and numerous Fields Medal winners."
             },
             "Columbia": {
                 fullName: "Columbia University",
                 location: "New York City, USA",
                 founded: 1754,
+                ranking: "34th",
                 info: "The oldest institution of higher learning in New York. Columbia has produced 96 Nobel laureates and the Pulitzer Prizes are administered from here."
             },
             "Uppsala University": {
                 fullName: "Uppsala University",
                 location: "Uppsala, Sweden",
                 founded: 1477,
+                ranking: "105th",
                 info: "The oldest university in Sweden and Scandinavia. Known for excellence in life sciences and medicine."
             },
             "Lund University": {
                 fullName: "Lund University",
                 location: "Lund, Sweden",
                 founded: 1666,
+                ranking: "85th",
                 info: "One of Northern Europe's oldest and most prestigious universities, ranked top 100 globally in most fields."
             }
         },

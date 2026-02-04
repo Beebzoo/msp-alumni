@@ -273,24 +273,12 @@
             -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
         }
         
-        /* Particle Network Canvas */
-        #particleCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-        
-        /* Glowing orbs */
+        /* Subtle background depth - static glowing orbs */
         .hero-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: orbFloat 8s ease-in-out infinite;
+            filter: blur(100px);
+            opacity: 0.25;
         }
         
         .hero-orb-1 {
@@ -299,7 +287,6 @@
             background: var(--um-light-blue);
             top: -200px;
             left: -200px;
-            animation-delay: 0s;
         }
         
         .hero-orb-2 {
@@ -308,67 +295,9 @@
             background: var(--um-orange);
             bottom: -150px;
             right: -150px;
-            animation-delay: -4s;
         }
         
-        .hero-orb-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--um-light-blue);
-            top: 50%;
-            right: 20%;
-            opacity: 0.2;
-            animation-delay: -2s;
-        }
-        
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-        
-        /* Flag Cascade - Refined */
-        .flag-cascade {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-            mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
-        }
-        
-        .flag-cascade-inner {
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            right: -30px;
-            bottom: -30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            padding: 30px;
-            transform: rotate(-12deg) scale(1.4);
-            opacity: 0.7;
-        }
-        
-        .cascade-flag {
-            width: 56px;
-            height: 38px;
-            object-fit: cover;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            transition: all 0.4s ease;
-        }
-        
-        .cascade-flag:nth-child(odd) { transform: translateY(10px); }
-        .cascade-flag:nth-child(3n) { opacity: 0.8; }
-        .cascade-flag:nth-child(5n) { transform: translateY(-8px) rotate(4deg); }
-        .cascade-flag:nth-child(7n) { transform: translateY(15px) rotate(-3deg); }
-        
+
         /* Hero Content */
         .hero-content {
             max-width: 900px;
@@ -416,11 +345,11 @@
         }
         
         .hero h2 {
-            font-size: 58px;
-            font-weight: 700;
+            font-size: 72px;
+            font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.05;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             color: white;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
@@ -435,20 +364,20 @@
         }
         
         .hero-subtitle {
-            font-size: 18px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 20px;
+            font-size: 20px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 24px;
             line-height: 1.7;
             font-weight: 400;
-            max-width: 700px;
+            max-width: 750px;
         }
         
-        /* Hero Stats - With Circular Borders */
+        /* Hero Stats - Enhanced and Larger */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 50px;
+            gap: 30px;
+            margin-top: 60px;
         }
         
         .hero-stat {
@@ -458,18 +387,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
         }
         
         .hero-stat-circle {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 3px solid rgba(255,255,255,0.15);
+            border: 3px solid rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.04);
             backdrop-filter: blur(10px);
             transition: all var(--transition-smooth);
         }
@@ -493,8 +422,8 @@
         
         .hero-stat-number {
             font-family: var(--font-heading);
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 42px;
+            font-weight: 800;
             color: white;
             line-height: 1;
         }
@@ -504,11 +433,20 @@
         }
         
         .hero-stat-label {
-            font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            color: rgba(255,255,255,0.9);
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            font-weight: 600;
+            letter-spacing: 1.4px;
+            font-weight: 700;
+        }
+        
+        .hero-stat-context {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+            max-width: 140px;
+            line-height: 1.4;
+            margin-top: -6px;
         }
         
         /* Scroll Indicator */
@@ -2537,15 +2475,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <!-- Background Elements -->
-        <canvas id="particleCanvas"></canvas>
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        
-        <!-- Flag Cascade -->
-        <div class="flag-cascade">
-            <div class="flag-cascade-inner" id="flagCascade"></div>
-        </div>
         
         <!-- Content -->
         <div class="hero-content">
@@ -2566,24 +2497,28 @@
                             <div class="hero-stat-number" id="totalAlumni" data-stat="totalAlumni-formatted">1,321</div>
                         </div>
                         <div class="hero-stat-label">Alumni</div>
+                        <div class="hero-stat-context">Graduated since 2011</div>
                     </a>
                     <div class="hero-stat">
                         <div class="hero-stat-circle">
                             <div class="hero-stat-number" id="totalNationalities" data-stat="nationalities">78</div>
                         </div>
                         <div class="hero-stat-label">Nationalities</div>
+                        <div class="hero-stat-context">From six continents</div>
                     </div>
                     <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-circle">
-                            <div class="hero-stat-number" id="totalCountries" data-stat="countriesLivingIn">56</div>
+                            <div class="hero-stat-number" id="totalCountries" data-stat="countriesLivingIn">58</div>
                         </div>
                         <div class="hero-stat-label">Countries</div>
+                        <div class="hero-stat-context">Living & working globally</div>
                     </a>
                     <a href="destinations.html" class="hero-stat clickable">
                         <div class="hero-stat-circle">
                             <div class="hero-stat-number" id="totalUniversities" data-stat="universitiesAttended">233</div>
                         </div>
                         <div class="hero-stat-label">Universities</div>
+                        <div class="hero-stat-context">Master's destinations</div>
                     </a>
                 </div>
             </div>
@@ -2834,133 +2769,6 @@
         });
         
         // ==========================================
-        // PARTICLE NETWORK ANIMATION - Enhanced (Left Side Focus)
-        // ==========================================
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        const particles = [];
-        const particleCount = 180;
-        const connectionDistance = 220;
-        const leftBoundary = 0.55; // Particles stay in left 55% of screen
-        
-        class Particle {
-            constructor() {
-                // Spawn particles on the left side only (0 to 55% of width)
-                this.x = Math.random() * canvas.width * leftBoundary;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 3 + 2;
-                this.isOrange = Math.random() > 0.7;
-                this.pulse = Math.random() * Math.PI * 2;
-                this.pulseSpeed = 0.02 + Math.random() * 0.02;
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.pulse += this.pulseSpeed;
-                
-                // Bounce off left boundary and right boundary (55% of screen)
-                if (this.x < 0) this.vx *= -1;
-                if (this.x > canvas.width * leftBoundary) {
-                    this.vx *= -1;
-                    this.x = canvas.width * leftBoundary; // Keep within bounds
-                }
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            
-            draw() {
-                const pulseScale = 1 + Math.sin(this.pulse) * 0.3;
-                const currentRadius = this.radius * pulseScale;
-                
-                // Glow effect
-                const gradient = ctx.createRadialGradient(
-                    this.x, this.y, 0,
-                    this.x, this.y, currentRadius * 3
-                );
-                
-                if (this.isOrange) {
-                    gradient.addColorStop(0, 'rgba(232, 78, 16, 0.9)');
-                    gradient.addColorStop(0.4, 'rgba(232, 78, 16, 0.4)');
-                    gradient.addColorStop(1, 'rgba(232, 78, 16, 0)');
-                } else {
-                    gradient.addColorStop(0, 'rgba(0, 162, 219, 0.9)');
-                    gradient.addColorStop(0.4, 'rgba(0, 162, 219, 0.4)');
-                    gradient.addColorStop(1, 'rgba(0, 162, 219, 0)');
-                }
-                
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, currentRadius * 3, 0, Math.PI * 2);
-                ctx.fillStyle = gradient;
-                ctx.fill();
-                
-                // Core dot
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
-                ctx.fillStyle = this.isOrange ? 'rgba(232, 78, 16, 1)' : 'rgba(0, 162, 219, 1)';
-                ctx.fill();
-            }
-        }
-        
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw connections
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < connectionDistance) {
-                        const opacity = (1 - distance / connectionDistance) * 0.6; // Brighter lines
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        
-                        // Gradient line between particles
-                        const gradient = ctx.createLinearGradient(
-                            particles[i].x, particles[i].y,
-                            particles[j].x, particles[j].y
-                        );
-                        
-                        const color1 = particles[i].isOrange ? `rgba(232, 78, 16, ${opacity})` : `rgba(0, 162, 219, ${opacity})`;
-                        const color2 = particles[j].isOrange ? `rgba(232, 78, 16, ${opacity})` : `rgba(0, 162, 219, ${opacity})`;
-                        
-                        gradient.addColorStop(0, color1);
-                        gradient.addColorStop(1, color2);
-                        
-                        ctx.strokeStyle = gradient;
-                        ctx.lineWidth = 1.5; // Thicker lines
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            // Update and draw particles
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-        
-        // ==========================================
         // POPULATE FROM DATA.JS
         // ==========================================
         document.getElementById('totalAlumni').textContent = MSP_DATA.summary.totalAlumni.toLocaleString();
@@ -2968,22 +2776,6 @@
         document.getElementById('totalCountries').textContent = MSP_DATA.summary.countriesLivingIn;
         document.getElementById('totalUniversities').textContent = MSP_DATA.summary.universitiesAttended + '+';
         document.getElementById('statUniversities').textContent = MSP_DATA.summary.universitiesAttended;
-        
-        // ==========================================
-        // FLAG CASCADE
-        // ==========================================
-        const flagCascade = document.getElementById('flagCascade');
-        const shuffledFlags = [...MSP_DATA.allNationalityFlags].sort(() => Math.random() - 0.5);
-        const flagsToShow = [...shuffledFlags, ...shuffledFlags.slice(0, 60)];
-        
-        flagsToShow.forEach(code => {
-            const img = document.createElement('img');
-            img.src = `https://flagcdn.com/w80/${code}.png`;
-            img.alt = '';
-            img.className = 'cascade-flag';
-            img.loading = 'lazy';
-            flagCascade.appendChild(img);
-        });
         
         // ==========================================
         // UNIVERSITIES GRID - With Modal

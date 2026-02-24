@@ -500,22 +500,36 @@
         }
         .instagram-actions i { width: 24px; height: 24px; color: var(--um-gray-700); }
         
-        /* Update Info Card */
+        /* ============================================
+           UPDATE INFO CARD — NODE DIAGRAM FORM
+        ============================================ */
         .update-card {
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            background: linear-gradient(145deg, #001C3D 0%, #002a5c 60%, #003875 100%);
             border-radius: var(--radius-xl);
             padding: 60px;
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 60px;
-            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        
+        .update-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(0,162,219,0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+
+        .update-card-header {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
         .update-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: rgba(0,162,219,0.15);
+            border: 1px solid rgba(0,162,219,0.3);
             padding: 10px 20px;
             border-radius: 100px;
             font-size: 13px;
@@ -524,109 +538,391 @@
             margin-bottom: 20px;
         }
         .update-badge i { width: 16px; height: 16px; }
-        
-        .update-text h2 {
+        .update-card-header h2 {
             font-size: 38px;
             font-weight: 700;
-            color: var(--um-dark-blue);
-            margin-bottom: 16px;
+            color: white;
+            margin-bottom: 12px;
         }
-        .update-text > p {
+        .update-card-header > p {
             font-size: 17px;
-            color: var(--um-gray-600);
+            color: rgba(255,255,255,0.65);
             line-height: 1.8;
-            margin-bottom: 30px;
+            max-width: 700px;
         }
-        
-        .update-what-we-need {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 25px 30px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-sm);
+
+        /* Identity row at top */
+        .update-identity-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
-        .update-what-we-need h4 {
+        .update-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .update-field-group label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+        .update-field-group input,
+        .update-field-group select {
+            padding: 13px 16px;
+            border: 1.5px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
             font-size: 15px;
-            font-weight: 600;
-            color: var(--um-dark-blue);
-            margin-bottom: 16px;
+            color: white;
+            background: rgba(255,255,255,0.07);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
-        .update-what-we-need ul {
-            list-style: none;
+        .update-field-group input::placeholder { color: rgba(255,255,255,0.3); }
+        .update-field-group input:focus,
+        .update-field-group select:focus {
+            border-color: var(--um-light-blue);
+            background: rgba(0,162,219,0.1);
+            box-shadow: 0 0 0 3px rgba(0,162,219,0.15);
         }
-        .update-what-we-need ul li {
+        .update-field-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        .update-field-group select option { background: #001C3D; color: white; }
+
+        /* Node diagram wrapper */
+        .node-diagram-wrapper {
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 50px 40px 40px;
+            margin-bottom: 32px;
+        }
+
+        /* SVG lines layer */
+        #node-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+        .node-line {
+            stroke: rgba(0,162,219,0.25);
+            stroke-width: 1.5;
+            fill: none;
+            stroke-dasharray: 6 4;
+            animation: dashMove 20s linear infinite;
+            transition: stroke 0.3s, stroke-width 0.3s;
+        }
+        .node-line.active {
+            stroke: rgba(0,162,219,0.7);
+            stroke-width: 2;
+        }
+        @keyframes dashMove { to { stroke-dashoffset: -200; } }
+
+        /* Central node */
+        .node-center {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+        .node-bubble-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--um-light-blue), #0090c5);
+            border-radius: 20px;
+            padding: 18px 32px;
+            box-shadow: 0 0 0 6px rgba(0,162,219,0.15), 0 12px 40px rgba(0,162,219,0.3);
+            cursor: default;
+        }
+        .node-bubble-center .node-icon { font-size: 22px; }
+        .node-bubble-center .node-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.02em;
+        }
+        .node-bubble-center .node-sublabel {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Branch rows */
+        .node-branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Branch group */
+        .node-branch {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Branch header bubble (clickable) */
+        .node-branch-head {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            color: var(--um-gray-600);
-            font-size: 15px;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+            cursor: pointer;
+            transition: all 0.25s;
+            user-select: none;
+            position: relative;
         }
-        .update-what-we-need ul li i { width: 20px; height: 20px; color: var(--um-light-blue); flex-shrink: 0; }
-        
-        .update-note {
+        .node-branch-head:hover {
+            border-color: rgba(0,162,219,0.5);
+            background: rgba(0,162,219,0.1);
+        }
+        .node-branch-head.active {
+            border-color: var(--um-light-blue);
+            background: rgba(0,162,219,0.15);
+            box-shadow: 0 0 0 3px rgba(0,162,219,0.1);
+        }
+        .node-branch-head.location-head { border-color: rgba(232,78,16,0.3); }
+        .node-branch-head.location-head:hover { border-color: var(--um-orange); background: rgba(232,78,16,0.1); }
+        .node-branch-head.location-head.active { border-color: var(--um-orange); background: rgba(232,78,16,0.15); box-shadow: 0 0 0 3px rgba(232,78,16,0.1); }
+
+        .branch-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+        .branch-icon.blue { background: rgba(0,162,219,0.2); }
+        .branch-icon.orange { background: rgba(232,78,16,0.2); }
+        .branch-icon.green { background: rgba(34,197,94,0.2); }
+        .branch-icon.purple { background: rgba(168,85,247,0.2); }
+        .branch-icon.yellow { background: rgba(234,179,8,0.2); }
+        .branch-icon.pink { background: rgba(236,72,153,0.2); }
+        .branch-icon.teal { background: rgba(20,184,166,0.2); }
+
+        .branch-meta { flex: 1; min-width: 0; }
+        .branch-name {
             font-size: 14px;
-            color: var(--um-gray-500);
-            margin-bottom: 25px;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .update-note strong { color: var(--um-dark-blue); }
-        
+        .branch-desc {
+            font-size: 11px;
+            color: rgba(255,255,255,0.45);
+            margin-top: 1px;
+        }
+        .branch-toggle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+        .node-branch-head.active .branch-toggle {
+            background: var(--um-light-blue);
+            border-color: var(--um-light-blue);
+            color: white;
+            transform: rotate(45deg);
+        }
+        .node-branch-head.location-head.active .branch-toggle {
+            background: var(--um-orange);
+            border-color: var(--um-orange);
+        }
+
+        /* Expanding fields panel */
+        .branch-fields {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+            opacity: 0;
+        }
+        .branch-fields.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .branch-fields-inner {
+            padding: 12px 0 4px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-left: 2px solid rgba(0,162,219,0.25);
+            margin-left: 18px;
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+        .branch-fields-inner.orange-line { border-left-color: rgba(232,78,16,0.35); }
+
+        .branch-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .branch-input-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+        .branch-input,
+        .branch-textarea {
+            padding: 10px 14px;
+            border: 1.5px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: white;
+            background: rgba(255,255,255,0.05);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        .branch-input::placeholder,
+        .branch-textarea::placeholder { color: rgba(255,255,255,0.25); }
+        .branch-input:focus,
+        .branch-textarea:focus {
+            border-color: var(--um-light-blue);
+            background: rgba(0,162,219,0.08);
+            box-shadow: 0 0 0 2px rgba(0,162,219,0.12);
+        }
+        .branch-textarea { resize: none; min-height: 70px; }
+
+        /* Extras row at bottom */
+        .update-extras {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .update-extras-label {
+            grid-column: 1 / -1;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Submit area */
+        .update-submit-area {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .update-privacy-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .update-privacy-note svg { width: 13px; height: 13px; opacity: 0.5; }
+
         .update-submit-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 32px;
+            padding: 16px 40px;
             background: linear-gradient(135deg, var(--um-light-blue), #0090c5);
             color: white;
+            border: none;
             border-radius: var(--radius-md);
-            font-weight: 600;
+            font-family: var(--font-body);
+            font-weight: 700;
             font-size: 16px;
+            cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(0,162,219,0.3);
+            box-shadow: 0 8px 25px rgba(0,162,219,0.35);
         }
         .update-submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0,162,219,0.4);
-            color: white;
+            box-shadow: 0 12px 35px rgba(0,162,219,0.5);
         }
-        .update-submit-btn i { width: 20px; height: 20px; }
-        
-        /* Database Mockup */
-        .update-preview {
-            display: flex;
-            justify-content: center;
+        .update-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .update-submit-btn i { width: 18px; height: 18px; }
+
+        /* Success */
+        .update-success {
+            display: none;
+            text-align: center;
+            padding: 60px 32px;
+            position: relative;
+            z-index: 1;
         }
-        .database-mockup {
-            background: white;
-            border-radius: 20px;
-            width: 300px;
-            box-shadow: var(--shadow-xl);
-            overflow: hidden;
-            padding: 24px;
+        .update-success.visible { display: block; }
+        .update-success-ring {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 0 12px rgba(34,197,94,0.12);
         }
-        .database-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .database-header i { width: 24px; height: 24px; color: var(--um-light-blue); }
-        .database-header span { font-weight: 600; font-size: 14px; color: var(--um-dark-blue); }
-        .database-fields {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .database-field {
-            background: var(--um-gray-50);
+        .update-success-ring i { width: 34px; height: 34px; color: white; }
+        .update-success h3 { font-size: 26px; font-weight: 700; color: white; margin-bottom: 10px; }
+        .update-success p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 500px; margin: 0 auto; }
+
+        /* Error */
+        .update-error-msg {
+            display: none;
+            background: rgba(220,38,38,0.1);
+            border: 1px solid rgba(220,38,38,0.3);
+            color: #fca5a5;
             padding: 12px 16px;
             border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 13px;
+            margin-top: 14px;
+            position: relative; z-index: 1;
         }
-        .database-field i { width: 18px; height: 18px; color: var(--um-gray-400); }
-        .database-field span { font-size: 13px; color: var(--um-gray-500); }
+        .update-error-msg.visible { display: block; }
+
+        @media (max-width: 768px) {
+            .update-identity-row { grid-template-columns: 1fr; }
+            .node-branches { grid-template-columns: 1fr; }
+            .update-extras { grid-template-columns: 1fr; }
+        }
         
         /* ============================================
            PLATFORM CARDS SECTION (Instagram, WhatsApp, LinkedIn)
@@ -1611,65 +1907,261 @@
                 </div>
             </div>
             
-            <!-- Update Your Info Card -->
-            <div class="update-card">
-                <div class="update-text">
+            <!-- Update Your Info Card — Node Diagram Form -->
+            <div class="update-card" id="update-info-section">
+                <div class="update-card-header">
                     <div class="update-badge">
-                        <i data-lucide="database"></i>
-                        Join the Network
+                        <i data-lucide="network"></i>
+                        Keep Us Updated
                     </div>
                     <h2>Update Your Info</h2>
-                    <p>Help us keep track of where MSP alumni are around the world. It takes 30 seconds and helps us build a stronger community.</p>
-                    
-                    <div class="update-what-we-need">
-                        <h4>All we need:</h4>
-                        <ul>
-                            <li><i data-lucide="check"></i> Your name</li>
-                            <li><i data-lucide="check"></i> Where you're living now</li>
-                            <li><i data-lucide="check"></i> Your Master's university</li>
-                            <li><i data-lucide="check"></i> What programme you did</li>
-                            <li><i data-lucide="check"></i> What you're doing now</li>
-                        </ul>
-                    </div>
-                    
-                    <p class="update-note"><strong>That's it!</strong> This info helps us plan events, create accurate statistics, and connect alumni in similar fields or locations.</p>
-                    
-                    <a href="mailto:msp-alumni@maastrichtuniversity.nl?subject=Alumni Info Update&body=Hi MSP Alumni Team,%0D%0A%0D%0AHere's my updated info:%0D%0A%0D%0AName:%0D%0ACurrent City/Country:%0D%0AMaster's University:%0D%0AMaster's Programme:%0D%0ACurrent Role/What I'm doing now:%0D%0A%0D%0AThanks!" class="update-submit-btn">
-                        <i data-lucide="send"></i>
-                        Send My Info
-                    </a>
+                    <p>Already in the network, or just graduated? Fill in as much or as little as you like — every piece helps us keep the map accurate, plan events, and connect the right people.</p>
                 </div>
-                
-                <div class="update-preview">
-                    <div class="database-mockup">
-                        <div class="database-header">
-                            <i data-lucide="database"></i>
-                            <span>Your Profile</span>
+
+                <!-- Success state -->
+                <div class="update-success" id="update-success">
+                    <div class="update-success-ring">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <h3>Got it — thank you!</h3>
+                    <p>We'll update your record in the database. If you want to add anything else, just drop us an email at msp-alumni@maastrichtuniversity.nl.</p>
+                </div>
+
+                <!-- Form -->
+                <form id="alumni-node-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <input type="hidden" name="_subject" value="MSP Alumni Profile Update">
+
+                    <!-- Identity: always visible -->
+                    <div class="update-identity-row">
+                        <div class="update-field-group">
+                            <label>Full name *</label>
+                            <input type="text" name="name" placeholder="e.g. Jana Novak" required>
                         </div>
-                        <div class="database-fields">
-                            <div class="database-field">
-                                <i data-lucide="user"></i>
-                                <span>Your name</span>
-                            </div>
-                            <div class="database-field">
-                                <i data-lucide="map-pin"></i>
-                                <span>Current location</span>
-                            </div>
-                            <div class="database-field">
-                                <i data-lucide="graduation-cap"></i>
-                                <span>Master's university</span>
-                            </div>
-                            <div class="database-field">
-                                <i data-lucide="book-open"></i>
-                                <span>Programme</span>
-                            </div>
-                            <div class="database-field">
-                                <i data-lucide="briefcase"></i>
-                                <span>Current role</span>
-                            </div>
+                        <div class="update-field-group">
+                            <label>Graduation year *</label>
+                            <select name="graduation_year" required>
+                                <option value="" disabled selected>Select year</option>
+                                <option>2011</option><option>2012</option><option>2013</option>
+                                <option>2014</option><option>2015</option><option>2016</option>
+                                <option>2017</option><option>2018</option><option>2019</option>
+                                <option>2020</option><option>2021</option><option>2022</option>
+                                <option>2023</option><option>2024</option><option>2025</option>
+                            </select>
                         </div>
                     </div>
-                </div>
+
+                    <!-- Node diagram -->
+                    <div class="node-diagram-wrapper" id="node-diagram">
+                        <svg id="node-svg" aria-hidden="true"></svg>
+
+                        <!-- Central node -->
+                        <div class="node-center" id="node-center-el">
+                            <div class="node-bubble-center">
+                                <span class="node-icon">🎓</span>
+                                <span class="node-label">Your MSP Profile</span>
+                                <span class="node-sublabel">Click any category to expand</span>
+                            </div>
+                        </div>
+
+                        <!-- Branch grid -->
+                        <div class="node-branches">
+
+                            <!-- Location branch -->
+                            <div class="node-branch" id="branch-location">
+                                <div class="node-branch-head location-head" onclick="toggleBranch('location')">
+                                    <div class="branch-icon orange">📍</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Current Location</div>
+                                        <div class="branch-desc">Where you live right now</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-location">
+                                    <div class="branch-fields-inner orange-line">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Country</div>
+                                            <input type="text" class="branch-input" name="location_country" placeholder="e.g. Germany">
+                                        </div>
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">City</div>
+                                            <input type="text" class="branch-input" name="location_city" placeholder="e.g. Berlin">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Working branch -->
+                            <div class="node-branch" id="branch-working">
+                                <div class="node-branch-head" onclick="toggleBranch('working')">
+                                    <div class="branch-icon blue">💼</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Working</div>
+                                        <div class="branch-desc">Full-time or part-time job</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-working">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Employer / Organisation</div>
+                                            <input type="text" class="branch-input" name="work_employer" placeholder="e.g. WHO, Philips, startupname">
+                                        </div>
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Job Title</div>
+                                            <input type="text" class="branch-input" name="work_title" placeholder="e.g. Research Analyst">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Master's branch -->
+                            <div class="node-branch" id="branch-masters">
+                                <div class="node-branch-head" onclick="toggleBranch('masters')">
+                                    <div class="branch-icon purple">🎓</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Master's</div>
+                                        <div class="branch-desc">Current or completed MSc</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-masters">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">University</div>
+                                            <input type="text" class="branch-input" name="masters_university" placeholder="e.g. Utrecht University">
+                                        </div>
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Programme</div>
+                                            <input type="text" class="branch-input" name="masters_programme" placeholder="e.g. MSc Neuroscience">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PhD branch -->
+                            <div class="node-branch" id="branch-phd">
+                                <div class="node-branch-head" onclick="toggleBranch('phd')">
+                                    <div class="branch-icon teal">🔬</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">PhD</div>
+                                        <div class="branch-desc">Doctorate / research position</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-phd">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">University / Institute</div>
+                                            <input type="text" class="branch-input" name="phd_university" placeholder="e.g. ETH Zürich">
+                                        </div>
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Research Topic</div>
+                                            <input type="text" class="branch-input" name="phd_topic" placeholder="e.g. Computational neuroscience">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Internship branch -->
+                            <div class="node-branch" id="branch-internship">
+                                <div class="node-branch-head" onclick="toggleBranch('internship')">
+                                    <div class="branch-icon green">📋</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Internship</div>
+                                        <div class="branch-desc">Current or recent placement</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-internship">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Organisation</div>
+                                            <input type="text" class="branch-input" name="internship_org" placeholder="e.g. RIVM, CERN">
+                                        </div>
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Role</div>
+                                            <input type="text" class="branch-input" name="internship_role" placeholder="e.g. Data science intern">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gap year branch -->
+                            <div class="node-branch" id="branch-gapyear">
+                                <div class="node-branch-head" onclick="toggleBranch('gapyear')">
+                                    <div class="branch-icon yellow">🌍</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Gap Year / Travel</div>
+                                        <div class="branch-desc">Taking time between chapters</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-gapyear">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Where / What</div>
+                                            <textarea class="branch-textarea" name="gapyear_details" placeholder="e.g. Travelling Southeast Asia, volunteering in Costa Rica..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other branch -->
+                            <div class="node-branch" id="branch-other">
+                                <div class="node-branch-head" onclick="toggleBranch('other')">
+                                    <div class="branch-icon pink">✨</div>
+                                    <div class="branch-meta">
+                                        <div class="branch-name">Other</div>
+                                        <div class="branch-desc">Anything else worth sharing</div>
+                                    </div>
+                                    <div class="branch-toggle">+</div>
+                                </div>
+                                <div class="branch-fields" id="fields-other">
+                                    <div class="branch-fields-inner">
+                                        <div class="branch-input-group">
+                                            <div class="branch-input-label">Tell us</div>
+                                            <textarea class="branch-textarea" name="other_details" placeholder="Projects, freelance, looking for opportunities, founding something..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- /node-branches -->
+                    </div><!-- /node-diagram-wrapper -->
+
+                    <!-- Extras: contact update + free text -->
+                    <div class="update-extras">
+                        <div class="update-extras-label">Optional — update your contact details or share anything else</div>
+                        <div class="update-field-group">
+                            <label>New email</label>
+                            <input type="email" name="updated_email" placeholder="your@email.com">
+                        </div>
+                        <div class="update-field-group">
+                            <label>New phone</label>
+                            <input type="tel" name="updated_phone" placeholder="+31 6 12 34 56 78">
+                        </div>
+                        <div class="update-field-group">
+                            <label>Anything else</label>
+                            <input type="text" name="anything_else" placeholder="Events you'd like, alumni to connect with, achievements to feature...">
+                        </div>
+                    </div>
+
+                    <div class="update-submit-area">
+                        <p class="update-privacy-note">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            Only the MSP Alumni team sees this. Never shared publicly.
+                        </p>
+                        <button type="submit" class="update-submit-btn" id="update-submit-btn">
+                            <i data-lucide="send"></i>
+                            Send My Info
+                        </button>
+                    </div>
+
+                    <div class="update-error-msg" id="update-error">
+                        Something went wrong. Please email us directly at msp-alumni@maastrichtuniversity.nl.
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -2070,6 +2562,118 @@
         }
         
         animate();
+    </script>
+
+    <!-- Node Diagram Form JS -->
+    <script>
+        // ── Toggle branches ──────────────────────────────────────────────
+        const openBranches = new Set();
+
+        function toggleBranch(id) {
+            const head = document.querySelector(`#branch-${id} .node-branch-head`);
+            const fields = document.getElementById(`fields-${id}`);
+            if (!head || !fields) return;
+
+            if (openBranches.has(id)) {
+                openBranches.delete(id);
+                head.classList.remove('active');
+                fields.classList.remove('open');
+            } else {
+                openBranches.add(id);
+                head.classList.add('active');
+                fields.classList.add('open');
+            }
+            drawLines();
+        }
+
+        // ── SVG connection lines ─────────────────────────────────────────
+        function getCenter(el) {
+            const diagramRect = document.getElementById('node-diagram').getBoundingClientRect();
+            const elRect = el.getBoundingClientRect();
+            return {
+                x: elRect.left - diagramRect.left + elRect.width / 2,
+                y: elRect.top  - diagramRect.top  + elRect.height / 2
+            };
+        }
+
+        function drawLines() {
+            const svg = document.getElementById('node-svg');
+            if (!svg) return;
+            svg.innerHTML = '';
+
+            const centerEl = document.querySelector('.node-bubble-center');
+            if (!centerEl) return;
+            const c = getCenter(centerEl);
+
+            const branches = [
+                'location','working','masters','phd','internship','gapyear','other'
+            ];
+
+            branches.forEach(id => {
+                const head = document.querySelector(`#branch-${id} .node-branch-head`);
+                if (!head) return;
+                const b = getCenter(head);
+                const isActive = openBranches.has(id);
+
+                // Cubic bezier control points for smooth curve
+                const mx = (c.x + b.x) / 2;
+                const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+                path.setAttribute('d', `M${c.x},${c.y} C${mx},${c.y} ${mx},${b.y} ${b.x},${b.y}`);
+                path.setAttribute('class', `node-line${isActive ? ' active' : ''}`);
+                svg.appendChild(path);
+
+                // Dot at branch end
+                const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+                dot.setAttribute('cx', b.x);
+                dot.setAttribute('cy', b.y);
+                dot.setAttribute('r', isActive ? 5 : 3);
+                dot.setAttribute('fill', isActive ? 'rgba(0,162,219,0.8)' : 'rgba(255,255,255,0.15)');
+                dot.style.transition = 'all 0.3s';
+                svg.appendChild(dot);
+            });
+        }
+
+        // Redraw on load and resize
+        window.addEventListener('load', () => { setTimeout(drawLines, 200); });
+        window.addEventListener('resize', drawLines);
+
+        // ── Form submission via fetch (Formspree) ────────────────────────
+        const nodeForm = document.getElementById('alumni-node-form');
+        if (nodeForm) {
+            nodeForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('update-submit-btn');
+                const errEl = document.getElementById('update-error');
+                const successEl = document.getElementById('update-success');
+
+                btn.disabled = true;
+                btn.innerHTML = '<i data-lucide="loader"></i> Sending…';
+                lucide.createIcons();
+                errEl.classList.remove('visible');
+
+                try {
+                    const data = new FormData(nodeForm);
+                    const res = await fetch(nodeForm.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (res.ok) {
+                        nodeForm.style.display = 'none';
+                        successEl.classList.add('visible');
+                        lucide.createIcons();
+                    } else {
+                        throw new Error('Server error');
+                    }
+                } catch {
+                    errEl.classList.add('visible');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i data-lucide="send"></i> Send My Info';
+                    lucide.createIcons();
+                }
+            });
+        }
     </script>
 </body>
 </html>

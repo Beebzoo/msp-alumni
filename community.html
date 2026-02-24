@@ -606,43 +606,33 @@
         .node-diagram-wrapper {
             position: relative;
             z-index: 1;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: var(--radius-lg);
             padding: 50px 40px 40px;
             margin-bottom: 32px;
         }
 
-        /* SVG lines layer */
-        #node-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: visible;
-        }
-        .node-line {
-            stroke: rgba(0,162,219,0.25);
-            stroke-width: 1.5;
-            fill: none;
-            stroke-dasharray: 6 4;
-            animation: dashMove 20s linear infinite;
-            transition: stroke 0.3s, stroke-width 0.3s;
-        }
-        .node-line.active {
-            stroke: rgba(0,162,219,0.7);
-            stroke-width: 2;
-        }
-        @keyframes dashMove { to { stroke-dashoffset: -200; } }
-
         /* Central node */
         .node-center {
             position: relative;
             display: flex;
             justify-content: center;
-            margin-bottom: 48px;
+            /* vertical stem going down to branches */
+            padding-bottom: 40px;
         }
+        /* The vertical line from center node downward */
+        .node-center::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(0,162,219,0.7), rgba(0,162,219,0.2));
+        }
+
         .node-bubble-center {
             display: flex;
             flex-direction: column;
@@ -650,27 +640,52 @@
             gap: 6px;
             background: linear-gradient(135deg, var(--um-light-blue), #0090c5);
             border-radius: 20px;
-            padding: 18px 32px;
-            box-shadow: 0 0 0 6px rgba(0,162,219,0.15), 0 12px 40px rgba(0,162,219,0.3);
+            padding: 22px 44px;
+            box-shadow: 0 0 0 8px rgba(0,162,219,0.12), 0 16px 50px rgba(0,162,219,0.35);
             cursor: default;
+            position: relative;
+            z-index: 2;
         }
-        .node-bubble-center .node-icon { font-size: 22px; }
+        .node-bubble-center .node-icon { font-size: 26px; }
         .node-bubble-center .node-label {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
             letter-spacing: 0.02em;
         }
         .node-bubble-center .node-sublabel {
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* Horizontal bar connecting all branch columns */
+        .node-connector-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+        .node-connector-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 14%;
+            right: 14%;
+            height: 2px;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(0,162,219,0.5) 15%,
+                rgba(0,162,219,0.5) 85%,
+                transparent
+            );
         }
 
         /* Branch rows */
         .node-branches {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 16px;
+            padding-top: 0;
         }
 
         /* Branch group */
@@ -678,56 +693,71 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            position: relative;
+            /* vertical stem from top of each branch upward to connector bar */
+            padding-top: 28px;
+        }
+        .node-branch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 28px;
+            background: linear-gradient(to bottom, rgba(0,162,219,0.3), rgba(0,162,219,0.6));
         }
 
         /* Branch header bubble (clickable) */
         .node-branch-head {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 14px 20px;
+            gap: 14px;
+            padding: 18px 22px;
             border-radius: var(--radius-md);
-            border: 1.5px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.06);
+            border: 2px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.07);
             cursor: pointer;
             transition: all 0.25s;
             user-select: none;
             position: relative;
         }
         .node-branch-head:hover {
-            border-color: rgba(0,162,219,0.5);
-            background: rgba(0,162,219,0.1);
+            border-color: rgba(0,162,219,0.6);
+            background: rgba(0,162,219,0.12);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
         .node-branch-head.active {
             border-color: var(--um-light-blue);
-            background: rgba(0,162,219,0.15);
-            box-shadow: 0 0 0 3px rgba(0,162,219,0.1);
+            background: rgba(0,162,219,0.18);
+            box-shadow: 0 0 0 4px rgba(0,162,219,0.12), 0 6px 20px rgba(0,0,0,0.2);
         }
-        .node-branch-head.location-head { border-color: rgba(232,78,16,0.3); }
-        .node-branch-head.location-head:hover { border-color: var(--um-orange); background: rgba(232,78,16,0.1); }
-        .node-branch-head.location-head.active { border-color: var(--um-orange); background: rgba(232,78,16,0.15); box-shadow: 0 0 0 3px rgba(232,78,16,0.1); }
+        .node-branch-head.location-head { border-color: rgba(232,78,16,0.35); }
+        .node-branch-head.location-head:hover { border-color: var(--um-orange); background: rgba(232,78,16,0.12); }
+        .node-branch-head.location-head.active { border-color: var(--um-orange); background: rgba(232,78,16,0.18); box-shadow: 0 0 0 4px rgba(232,78,16,0.12), 0 6px 20px rgba(0,0,0,0.2); }
 
         .branch-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 17px;
+            font-size: 20px;
             flex-shrink: 0;
         }
-        .branch-icon.blue { background: rgba(0,162,219,0.2); }
-        .branch-icon.orange { background: rgba(232,78,16,0.2); }
-        .branch-icon.green { background: rgba(34,197,94,0.2); }
-        .branch-icon.purple { background: rgba(168,85,247,0.2); }
-        .branch-icon.yellow { background: rgba(234,179,8,0.2); }
-        .branch-icon.pink { background: rgba(236,72,153,0.2); }
-        .branch-icon.teal { background: rgba(20,184,166,0.2); }
+        .branch-icon.blue   { background: rgba(0,162,219,0.25);  border: 1px solid rgba(0,162,219,0.3); }
+        .branch-icon.orange { background: rgba(232,78,16,0.25);  border: 1px solid rgba(232,78,16,0.3); }
+        .branch-icon.green  { background: rgba(34,197,94,0.2);   border: 1px solid rgba(34,197,94,0.3); }
+        .branch-icon.purple { background: rgba(168,85,247,0.2);  border: 1px solid rgba(168,85,247,0.3); }
+        .branch-icon.yellow { background: rgba(234,179,8,0.2);   border: 1px solid rgba(234,179,8,0.3); }
+        .branch-icon.pink   { background: rgba(236,72,153,0.2);  border: 1px solid rgba(236,72,153,0.3); }
+        .branch-icon.teal   { background: rgba(20,184,166,0.2);  border: 1px solid rgba(20,184,166,0.3); }
 
         .branch-meta { flex: 1; min-width: 0; }
         .branch-name {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: white;
             white-space: nowrap;
@@ -735,20 +765,21 @@
             text-overflow: ellipsis;
         }
         .branch-desc {
-            font-size: 11px;
-            color: rgba(255,255,255,0.45);
-            margin-top: 1px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
         }
         .branch-toggle {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.2);
+            border: 1.5px solid rgba(255,255,255,0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
+            font-size: 16px;
+            line-height: 1;
+            color: rgba(255,255,255,0.6);
             transition: all 0.25s;
             flex-shrink: 0;
         }
@@ -1928,7 +1959,7 @@
                 </div>
 
                 <!-- Form -->
-                <form id="alumni-node-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="alumni-node-form" action="https://formspree.io/f/xnjboerz" method="POST">
                     <input type="text" name="_gotcha" style="display:none">
                     <input type="hidden" name="_subject" value="MSP Alumni Profile Update">
 
@@ -1953,7 +1984,6 @@
 
                     <!-- Node diagram -->
                     <div class="node-diagram-wrapper" id="node-diagram">
-                        <svg id="node-svg" aria-hidden="true"></svg>
 
                         <!-- Central node -->
                         <div class="node-center" id="node-center-el">
@@ -1963,6 +1993,9 @@
                                 <span class="node-sublabel">Click any category to expand</span>
                             </div>
                         </div>
+
+                        <!-- Horizontal connector bar -->
+                        <div class="node-connector-bar"></div>
 
                         <!-- Branch grid -->
                         <div class="node-branches">
@@ -2583,59 +2616,7 @@
                 head.classList.add('active');
                 fields.classList.add('open');
             }
-            drawLines();
         }
-
-        // ── SVG connection lines ─────────────────────────────────────────
-        function getCenter(el) {
-            const diagramRect = document.getElementById('node-diagram').getBoundingClientRect();
-            const elRect = el.getBoundingClientRect();
-            return {
-                x: elRect.left - diagramRect.left + elRect.width / 2,
-                y: elRect.top  - diagramRect.top  + elRect.height / 2
-            };
-        }
-
-        function drawLines() {
-            const svg = document.getElementById('node-svg');
-            if (!svg) return;
-            svg.innerHTML = '';
-
-            const centerEl = document.querySelector('.node-bubble-center');
-            if (!centerEl) return;
-            const c = getCenter(centerEl);
-
-            const branches = [
-                'location','working','masters','phd','internship','gapyear','other'
-            ];
-
-            branches.forEach(id => {
-                const head = document.querySelector(`#branch-${id} .node-branch-head`);
-                if (!head) return;
-                const b = getCenter(head);
-                const isActive = openBranches.has(id);
-
-                // Cubic bezier control points for smooth curve
-                const mx = (c.x + b.x) / 2;
-                const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-                path.setAttribute('d', `M${c.x},${c.y} C${mx},${c.y} ${mx},${b.y} ${b.x},${b.y}`);
-                path.setAttribute('class', `node-line${isActive ? ' active' : ''}`);
-                svg.appendChild(path);
-
-                // Dot at branch end
-                const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
-                dot.setAttribute('cx', b.x);
-                dot.setAttribute('cy', b.y);
-                dot.setAttribute('r', isActive ? 5 : 3);
-                dot.setAttribute('fill', isActive ? 'rgba(0,162,219,0.8)' : 'rgba(255,255,255,0.15)');
-                dot.style.transition = 'all 0.3s';
-                svg.appendChild(dot);
-            });
-        }
-
-        // Redraw on load and resize
-        window.addEventListener('load', () => { setTimeout(drawLines, 200); });
-        window.addEventListener('resize', drawLines);
 
         // ── Form submission via fetch (Formspree) ────────────────────────
         const nodeForm = document.getElementById('alumni-node-form');

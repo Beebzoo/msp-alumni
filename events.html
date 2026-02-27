@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | MSP Alumni Network</title>
+    <link rel="icon" type="image/png" href="assets/logos/maastricht-science-programme-logo.png">
+    <meta name="description" content="MSP Alumni events — talks, reunions, and community gatherings connecting graduates worldwide.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="data.js"></script>
+    <script src="data-bind.js"></script>
+    
+    <style>
+        :root {
+            --um-dark-blue: #001C3D;
+            --um-darker-blue: #00101f;
+            --um-light-blue: #00A2DB;
+            --um-light-blue-glow: rgba(0, 162, 219, 0.4);
+            --um-orange: #E84E10;
+            --um-orange-glow: rgba(232, 78, 16, 0.4);
+            --um-white: #FFFFFF;
+            --um-gray-50: #f8fafc;
+            --um-gray-100: #f1f5f9;
+            --um-gray-200: #e2e8f0;
+            --um-gray-300: #cbd5e1;
+            --um-gray-400: #94a3b8;
+            --um-gray-500: #64748b;
+            --um-gray-600: #475569;
+            --um-gray-700: #334155;
+            --um-gray-800: #1e293b;
+            
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 16px 48px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { 
+            font-family: var(--font-body); 
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--um-dark-blue); 
+            background: var(--um-white);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.15; letter-spacing: -0.02em; }
+        a { color: var(--um-light-blue); text-decoration: none; transition: color var(--transition-fast); }
+        a:hover { color: var(--um-orange); }
+        img { max-width: 100%; height: auto; }
+
+        /* ============================================
+           HEADER — identical to other pages
+        ============================================ */
+        header {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,28,61,0.06);
+            padding: 0 50px;
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            transition: all var(--transition-smooth);
+        }
+        header.scrolled {
+            background: var(--um-dark-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        header.scrolled .logo-text h1,
+        header.scrolled .logo-text p { color: white; }
+        header.scrolled .logo-text p { color: rgba(255,255,255,0.7); }
+        header.scrolled .header-nav a { color: rgba(255,255,255,0.8); }
+        header.scrolled .header-nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+        header.scrolled .header-nav a.active { color: white; }
+        header.scrolled .logo-img { filter: brightness(0) invert(1); }
+
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img { height: 44px; width: auto; transition: transform var(--transition-smooth); }
+        .logo:hover .logo-img { transform: scale(1.02); }
+        .logo-text h1 { font-size: 15px; font-weight: 700; color: var(--um-dark-blue); margin: 0; line-height: 1.2; }
+        .logo-text p { font-size: 11px; color: var(--um-gray-500); margin: 0; font-weight: 500; }
+
+        .header-nav { display: flex; gap: 6px; align-items: center; }
+        .header-nav a {
+            font-size: 14px; font-weight: 500; padding: 10px 18px;
+            border-radius: var(--radius-sm); color: var(--um-gray-600);
+            transition: all var(--transition-fast); position: relative;
+        }
+        .header-nav a:hover { color: var(--um-dark-blue); background: var(--um-gray-50); }
+        .header-nav a.active { color: var(--um-dark-blue); font-weight: 600; }
+        .header-nav a.active::after {
+            content: ''; position: absolute; bottom: 4px; left: 50%;
+            transform: translateX(-50%); width: 20px; height: 2px;
+            background: var(--um-orange); border-radius: 2px;
+        }
+        .header-nav .btn-cta {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white; margin-left: 12px;
+            box-shadow: 0 2px 8px rgba(232,78,16,0.25); border: none;
+        }
+        .header-nav .btn-cta:hover {
+            background: linear-gradient(135deg, #ff5a1f 0%, var(--um-orange) 100%);
+            transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,78,16,0.35); color: white;
+        }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero {
+            background: linear-gradient(165deg, #000a14 0%, var(--um-dark-blue) 35%, #001a35 70%, #00243d 100%);
+            padding: 140px 50px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,162,219,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,162,219,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
+        }
+
+        .hero-orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); opacity: 0.2;
+        }
+        .hero-orb-1 { width: 500px; height: 500px; background: var(--um-light-blue); top: -200px; right: -100px; }
+        .hero-orb-2 { width: 300px; height: 300px; background: var(--um-orange); bottom: -100px; left: -50px; }
+
+        .hero-content {
+            max-width: 1200px; margin: 0 auto;
+            position: relative; z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px;
+            background: rgba(0,162,219,0.15);
+            border: 1px solid rgba(0,162,219,0.3);
+            border-radius: 100px;
+            font-size: 11px; font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 24px;
+        }
+        .hero-eyebrow i { width: 14px; height: 14px; color: var(--um-light-blue); }
+
+        .hero h1 {
+            font-size: 64px; font-weight: 800;
+            letter-spacing: -0.03em; line-height: 1.05;
+            color: white; margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--um-orange); }
+
+        .hero-subtitle {
+            font-size: 19px; color: rgba(255,255,255,0.7);
+            line-height: 1.7; max-width: 600px;
+        }
+
+        /* ============================================
+           SECTION LAYOUT
+        ============================================ */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--um-light-blue);
+            margin-bottom: 16px;
+        }
+        .section-label::before, .section-label::after {
+            content: ''; width: 30px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--um-light-blue));
+        }
+        .section-label::after { background: linear-gradient(90deg, var(--um-light-blue), transparent); }
+
+        /* ============================================
+           UPCOMING EVENTS
+        ============================================ */
+        .events-upcoming {
+            background: var(--um-gray-50);
+            padding: 100px 50px;
+        }
+
+        .events-section-header {
+            max-width: 1200px; margin: 0 auto 60px;
+        }
+
+        .events-section-title {
+            font-size: 42px; font-weight: 700;
+            color: var(--um-dark-blue); margin-bottom: 12px;
+        }
+        .events-section-subtitle {
+            font-size: 17px; color: var(--um-gray-500); line-height: 1.7;
+        }
+
+        .events-list {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; flex-direction: column; gap: 0;
+        }
+
+        /* ============================================
+           EVENT CARD — split layout
+        ============================================ */
+        .event-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--um-gray-200);
+            display: grid;
+            grid-template-columns: 480px 1fr;
+            margin-bottom: 40px;
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--um-gray-300);
+        }
+
+        .event-card.reverse {
+            grid-template-columns: 1fr 480px;
+        }
+        .event-card.reverse .event-image { order: 2; }
+        .event-card.reverse .event-body { order: 1; }
+
+        /* Status badge on card */
+        .event-status-ribbon {
+            position: absolute;
+            top: 24px; left: 24px;
+            z-index: 10;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.2px;
+        }
+        .event-status-ribbon.upcoming {
+            background: rgba(0,162,219,0.15);
+            border: 1px solid rgba(0,162,219,0.4);
+            color: var(--um-light-blue);
+            backdrop-filter: blur(8px);
+        }
+        .event-status-ribbon.announced {
+            background: rgba(232,78,16,0.15);
+            border: 1px solid rgba(232,78,16,0.4);
+            color: var(--um-orange);
+            backdrop-filter: blur(8px);
+        }
+        .event-status-ribbon.past {
+            background: rgba(100,116,139,0.12);
+            border: 1px solid rgba(100,116,139,0.25);
+            color: var(--um-gray-500);
+        }
+
+        /* Image side */
+        .event-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 360px;
+        }
+
+        .event-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .event-card:hover .event-image img { transform: scale(1.04); }
+
+        .event-image-placeholder {
+            width: 100%; height: 100%;
+            min-height: 360px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 16px;
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002550 100%);
+            color: rgba(255,255,255,0.3);
+        }
+        .event-image-placeholder i { width: 48px; height: 48px; }
+        .event-image-placeholder span {
+            font-size: 13px; font-weight: 500;
+            text-align: center; max-width: 180px; line-height: 1.5;
+        }
+
+        /* Photo overlay gradient for text readability */
+        .event-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, transparent 60%, rgba(255,255,255,0.08) 100%);
+            pointer-events: none;
+        }
+
+        /* Body side */
+        .event-body {
+            padding: 48px 52px;
+            display: flex; flex-direction: column;
+            justify-content: center;
+        }
+
+        .event-type-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--um-light-blue); margin-bottom: 18px;
+        }
+        .event-type-tag i { width: 14px; height: 14px; }
+
+        .event-title {
+            font-family: var(--font-heading);
+            font-size: 28px; font-weight: 700;
+            color: var(--um-dark-blue);
+            line-height: 1.2; margin-bottom: 16px;
+        }
+
+        .event-meta {
+            display: flex; flex-direction: column; gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .event-meta-item {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 14px; color: var(--um-gray-600); font-weight: 500;
+        }
+        .event-meta-item i { width: 16px; height: 16px; color: var(--um-orange); flex-shrink: 0; }
+
+        .event-description {
+            font-size: 15px; color: var(--um-gray-600);
+            line-height: 1.75; margin-bottom: 32px;
+        }
+
+        .event-actions {
+            display: flex; gap: 12px; flex-wrap: wrap;
+        }
+
+        .event-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-size: 14px; font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+        }
+        .event-btn i { width: 16px; height: 16px; transition: transform var(--transition-smooth); }
+        .event-btn:hover i { transform: translateX(3px); }
+
+        .event-btn.primary {
+            background: linear-gradient(135deg, var(--um-orange) 0%, #d94008 100%);
+            color: white;
+            box-shadow: 0 4px 16px rgba(232,78,16,0.3);
+        }
+        .event-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232,78,16,0.4);
+            color: white;
+        }
+
+        .event-btn.secondary {
+            background: var(--um-gray-100);
+            color: var(--um-dark-blue);
+            border: 1px solid var(--um-gray-200);
+        }
+        .event-btn.secondary:hover {
+            background: var(--um-dark-blue);
+            color: white;
+            border-color: var(--um-dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .event-btn.video {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0,28,61,0.2);
+        }
+        .event-btn.video:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,28,61,0.3);
+            color: white;
+        }
+
+        /* Speaker highlight */
+        .event-speaker {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: var(--um-gray-50);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--um-orange);
+        }
+        .event-speaker-avatar {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--um-light-blue), var(--um-dark-blue));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: white; font-family: var(--font-heading);
+            font-size: 16px; font-weight: 700;
+        }
+        .event-speaker-info { flex: 1; }
+        .event-speaker-name {
+            font-family: var(--font-heading);
+            font-size: 14px; font-weight: 700;
+            color: var(--um-dark-blue); line-height: 1.2;
+        }
+        .event-speaker-role {
+            font-size: 12px; color: var(--um-gray-500); margin-top: 2px;
+        }
+        .event-speaker-badge {
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--um-orange);
+            background: rgba(232,78,16,0.1);
+            padding: 3px 8px; border-radius: 100px;
+        }
+
+        /* ============================================
+           PAST EVENTS
+        ============================================ */
+        .events-past {
+            background: white;
+            padding: 100px 50px;
+        }
+
+        .past-events-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .past-event-card {
+            background: var(--um-gray-50);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--um-gray-200);
+            transition: all var(--transition-smooth);
+        }
+        .past-event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--um-gray-300);
+        }
+
+        .past-event-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        .past-event-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .past-event-card:hover .past-event-image img { transform: scale(1.05); }
+
+        .past-event-image-placeholder {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002550 100%);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            color: rgba(255,255,255,0.25);
+        }
+        .past-event-image-placeholder i { width: 36px; height: 36px; }
+        .past-event-image-placeholder span { font-size: 12px; }
+
+        .past-event-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,28,61,0.7) 0%, transparent 50%);
+        }
+
+        .past-event-body {
+            padding: 28px;
+        }
+
+        .past-event-date {
+            font-size: 12px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.2px;
+            color: var(--um-gray-400); margin-bottom: 10px;
+        }
+
+        .past-event-title {
+            font-family: var(--font-heading);
+            font-size: 18px; font-weight: 700;
+            color: var(--um-dark-blue); line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .past-event-description {
+            font-size: 14px; color: var(--um-gray-500);
+            line-height: 1.65; margin-bottom: 20px;
+        }
+
+        .past-event-actions {
+            display: flex; gap: 10px; flex-wrap: wrap;
+        }
+
+        .past-event-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 13px; font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+        }
+        .past-event-btn i { width: 14px; height: 14px; }
+
+        .past-event-btn.watch {
+            background: var(--um-dark-blue);
+            color: white;
+        }
+        .past-event-btn.watch:hover {
+            background: var(--um-light-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            background: var(--um-dark-blue);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 50px 30px;
+        }
+        .footer-container {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px; padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand { padding-right: 20px; }
+        .footer-logo { height: 40px; width: auto; filter: brightness(0) invert(1); margin-bottom: 16px; }
+        .footer-brand h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 10px; }
+        .footer-brand p { font-size: 14px; line-height: 1.7; }
+        .footer-links-group h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+        .footer-links-group a { display: block; font-size: 14px; color: rgba(255,255,255,0.65); padding: 5px 0; transition: color var(--transition-fast); }
+        .footer-links-group a:hover { color: white; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1100px) {
+            .event-card { grid-template-columns: 1fr; }
+            .event-card.reverse { grid-template-columns: 1fr; }
+            .event-card.reverse .event-image { order: 1; }
+            .event-card.reverse .event-body { order: 2; }
+            .event-image { min-height: 280px; }
+            .event-image-placeholder { min-height: 280px; }
+            .series-banner-inner { grid-template-columns: 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 0 24px; }
+            .hero { padding: 120px 24px 80px; }
+            .hero h1 { font-size: 42px; }
+            .events-upcoming, .events-past, .series-banner { padding: 70px 24px; }
+            .footer-container { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .past-events-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .header-nav a:not(.btn-cta) { display: none; }
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .event-body { padding: 32px 24px; }
+            .event-title { font-size: 22px; }
+            .events-section-title { font-size: 30px; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">
+            <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img">
+            <div class="logo-text">
+                <h1>MSP Alumni Network</h1>
+                <p>Maastricht Science Programme</p>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="community.html">Community</a>
+            <a href="events.html" class="active">Events</a>
+            <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <i data-lucide="calendar"></i>
+                MSP Alumni Events
+            </div>
+            <h1>Connect.<br><span>Meet. Grow.</span></h1>
+            <p class="hero-subtitle">
+                From alumni talks to university reunions — events that bring the MSP community together, wherever you are.
+            </p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="events-upcoming">
+        <div class="events-section-header">
+            <div class="section-label">On the calendar</div>
+            <h2 class="events-section-title">Upcoming Events</h2>
+            <p class="events-section-subtitle">Don't miss what's coming — register early.</p>
+        </div>
+
+        <div class="events-list">
+
+            <!-- EVENT 1: UM 50 Homecoming -->
+            <div class="event-card">
+                <div class="event-status-ribbon upcoming">Upcoming</div>
+                <div class="event-image">
+                    <!-- Replace src with actual photo when available -->
+                    <div class="event-image-placeholder">
+                        <i data-lucide="image"></i>
+                        <span>Photo coming soon</span>
+                    </div>
+                </div>
+                <div class="event-body">
+                    <div class="event-type-tag">
+                        <i data-lucide="party-popper"></i>
+                        Reunion · University Event
+                    </div>
+                    <h2 class="event-title">UM 50 Alumni Homecoming</h2>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i data-lucide="calendar"></i>
+                            Saturday, 23 May 2026
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="clock"></i>
+                            11:45 – 19:00 &nbsp;·&nbsp; FSE programme: 11:45–14:30
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="map-pin"></i>
+                            Zwingelput 4 + Tapijnkazerne, Maastricht
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Maastricht University turns 50 — and we're celebrating together. 
+                        Join fellow MSP alumni for a festive reunion day filled with good food, great company, 
+                        and memories old and new. The day kicks off with the FSE faculty programme: 
+                        a Back to the Future-themed pub quiz and lunch at Zwingelput 4, before we all walk 
+                        together to the main university-wide celebration at Tapijnkazerne.
+                    </p>
+                    <div class="event-actions">
+                        <a href="#" class="event-btn primary">
+                            Register Now
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENT 2: Alumni Talk Aliya Shah -->
+            <div class="event-card reverse">
+                <div class="event-status-ribbon announced">Date TBC</div>
+                <div class="event-image">
+                    <div class="event-image-placeholder">
+                        <i data-lucide="image"></i>
+                        <span>Photo coming soon</span>
+                    </div>
+                </div>
+                <div class="event-body">
+                    <div class="event-type-tag">
+                        <i data-lucide="mic"></i>
+                        MSP Alumni Talk
+                    </div>
+                    <h2 class="event-title">Alumni Talk with Aliya Shah</h2>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i data-lucide="calendar"></i>
+                            Thursday, 19 March 2026 (TBC)
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="clock"></i>
+                            17:00
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="map-pin"></i>
+                            Maastricht University (location TBC)
+                        </div>
+                    </div>
+                    <div class="event-speaker">
+                        <div class="event-speaker-avatar">AS</div>
+                        <div class="event-speaker-info">
+                            <div class="event-speaker-name">Aliya Shah</div>
+                            <div class="event-speaker-role">MSP Alumna · Based in Nairobi, Kenya</div>
+                        </div>
+                        <div class="event-speaker-badge">MSP Alumna</div>
+                    </div>
+                    <p class="event-description">
+                        Details and registration link coming soon. Open to all MSP students, alumni, and staff. 
+                        Keep an eye on our community channels for the announcement.
+                    </p>
+                    <div class="event-actions">
+                        <a href="community.html" class="event-btn secondary">
+                            Get Notified
+                            <i data-lucide="bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Past Events -->
+    <section class="events-past">
+        <div class="events-section-header" style="max-width: 1200px; margin: 0 auto 50px;">
+            <div class="section-label">Archive</div>
+            <h2 class="events-section-title">Past Events</h2>
+            <p class="events-section-subtitle">Missed it? Watch the recording.</p>
+        </div>
+
+        <div class="past-events-grid">
+
+            <!-- Past Event 1: Jordi Ferrer Orri -->
+            <div class="past-event-card">
+                <div class="past-event-image">
+                    <!-- Replace with actual event photo -->
+                    <div class="past-event-image-placeholder">
+                        <i data-lucide="image"></i>
+                        <span>Photo coming soon</span>
+                    </div>
+                    <div class="past-event-overlay"></div>
+                </div>
+                <div class="past-event-body">
+                    <div class="past-event-date">26 February 2026 · MSP Alumni Talk</div>
+                    <h3 class="past-event-title">Entrepreneurship & Sustainability with Jordi Ferrer Orri</h3>
+                    <p class="past-event-description">
+                        MSP alumnus Jordi Ferrer Orri shared his entrepreneurial journey in the materials and 
+                        sustainability space — key lessons, challenges, and how his MSP experience translated 
+                        into real-world entrepreneurial paths.
+                    </p>
+                    <div class="past-event-actions">
+                        <!-- Replace # with actual YouTube URL once uploaded -->
+                        <a href="#" class="past-event-btn watch">
+                            <i data-lucide="play-circle"></i>
+                            Watch Recording
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
+                <h3>MSP Alumni Network</h3>
+                <p>Connecting MSP graduates from the Maastricht Science Programme across the world. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="community.html">Community</a>
+                <a href="events.html">Events</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Connect</h4>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/msp_alumni/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/groups/12893377/" target="_blank">LinkedIn (MSP)</a>
+                <a href="https://www.linkedin.com/groups/4689010/" target="_blank">LinkedIn (FSE)</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MSP Alumni Network. Maastricht University, Faculty of Science and Engineering.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

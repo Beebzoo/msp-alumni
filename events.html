@@ -287,9 +287,23 @@
         .event-image img {
             width: 100%; height: 100%;
             object-fit: cover;
+            object-position: center center;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .event-card:hover .event-image img { transform: scale(1.04); }
+
+        .event-image-dark {
+            background: #001226;
+        }
+        .event-image img.img-um50 {
+            object-fit: contain;
+            object-position: center center;
+            background: #001226;
+        }
+        .event-image img.img-jordi {
+            object-fit: cover;
+            object-position: center 15%;
+        }
         .event-image-placeholder {
             width: 100%; height: 100%;
             min-height: 360px;
@@ -534,8 +548,8 @@
             <!-- EVENT 1: UM 50 Homecoming -->
             <div class="event-card">
                 <div class="event-status-ribbon upcoming">Upcoming</div>
-                <div class="event-image">
-                    <img src="assets/images/UM50.png" alt="UM 50 Alumni Homecoming">
+                <div class="event-image event-image-dark">
+                    <img src="assets/images/UM50.png" alt="UM 50 Alumni Homecoming" class="img-um50">
                 </div>
                 <div class="event-body">
                     <div class="event-type-tag">
@@ -591,7 +605,7 @@
                     <div class="event-meta">
                         <div class="event-meta-item">
                             <i data-lucide="calendar"></i>
-                            Thursday, 26 March 2026 (TBC)
+                            Thursday, 19 March 2026 (TBC)
                         </div>
                         <div class="event-meta-item">
                             <i data-lucide="clock"></i>
@@ -642,7 +656,7 @@
             <div class="event-card past-card">
                 <div class="event-status-ribbon past">Past Event</div>
                 <div class="event-image">
-                    <img src="assets/images/Jordi Alumnbi Talk.png" alt="Entrepreneurship & Sustainability with Jordi Ferrer Orri">
+                    <img src="assets/images/Jordi Alumnbi Talk.png" alt="Entrepreneurship & Sustainability with Jordi Ferrer Orri" class="img-jordi">
                 </div>
                 <div class="event-body">
                     <div class="event-type-tag">

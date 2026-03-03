@@ -300,16 +300,16 @@
         .cta-btn.secondary:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: white; }
         
         /* FOOTER */
-        footer { background: var(--um-dark-blue); color: rgba(255,255,255,0.8); padding: 60px 50px 30px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 40px; }
-        .footer-brand p { font-size: 14px; line-height: 1.6; margin-top: 16px; }
-        .footer-links h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { font-size: 14px; color: rgba(255,255,255,0.7); transition: color var(--transition-fast); }
-        .footer-links a:hover { color: white; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
-        .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.5); }
+        footer { background: var(--um-dark-blue); color: rgba(255,255,255,0.7); padding: 60px 50px 30px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .footer-brand { padding-right: 20px; }
+        .footer-logo { height: 40px; width: auto; filter: brightness(0) invert(1); margin-bottom: 16px; }
+        .footer-brand h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 10px; }
+        .footer-brand p { font-size: 14px; line-height: 1.7; }
+        .footer-links-group h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+        .footer-links-group a { display: block; font-size: 14px; color: rgba(255,255,255,0.65); padding: 5px 0; transition: color var(--transition-fast); }
+        .footer-links-group a:hover { color: white; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(255,255,255,0.35); }
         
         /* TESTIMONIALS SECTION */
         .testimonials-section { background: linear-gradient(180deg, #fafbfc 0%, white 100%); padding: 100px 50px; }
@@ -352,7 +352,7 @@
             .phd-showcase { grid-template-columns: 1fr; }
             .uni-grid { grid-template-columns: repeat(4, 1fr); }
             .cities-showcase { grid-template-columns: repeat(3, 1fr); }
-            .footer-content { grid-template-columns: 1fr 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
         
         @media (max-width: 768px) {
@@ -361,7 +361,7 @@
             .career-sectors { grid-template-columns: 1fr; }
             .uni-grid { grid-template-columns: repeat(2, 1fr); }
             .cities-showcase { grid-template-columns: repeat(2, 1fr); }
-            .footer-content { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
             .careers-display { min-width: 320px; padding: 30px 20px; }
         }
     </style>
@@ -857,39 +857,35 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer-sleek">
-        <div class="footer-content-sleek">
-            <div class="footer-brand-sleek">
-                <a href="index.html" class="logo">
-                    <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img" style="height: 40px;">
-                    <div class="logo-text">
-                        <h1>MSP Alumni Network</h1>
-                    </div>
-                </a>
-                <p class="footer-desc">Connecting 1,321 graduates from the Maastricht Science Programme across 58 countries. Part of the Faculty of Science and Engineering at Maastricht University.</p>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="footer-logo">
+                <h3>MSP Alumni Network</h3>
+                <p>Connecting MSP graduates from the Maastricht Science Programme across the world. Part of the Faculty of Science and Engineering at Maastricht University.</p>
             </div>
-            <div class="footer-links-sleek">
-                <div class="footer-col">
-                    <h3>Explore</h3>
-                    <a href="index.html">Home</a>
-                    <a href="destinations.html">Destinations</a>
-                    <a href="community.html">Community</a>
-                </div>
-                <div class="footer-col">
-                    <h3>Connect</h3>
-                    <a href="considering-msp.html">Considering MSP?</a>
-                    <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
-                    <a href="privacy.html">Privacy Policy</a>
-                </div>
-                <div class="footer-col">
-                    <h3>Follow Us</h3>
-                    <a href="https://www.instagram.com/msp_alumni/" target="_blank">Instagram</a>
-                    <a href="https://www.linkedin.com/groups/12893377/" target="_blank">LinkedIn (MSP)</a>
-                    <a href="https://www.linkedin.com/groups/4689010/" target="_blank">LinkedIn (FSE)</a>
-                </div>
+            <div class="footer-links-group">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="community.html">Community</a>
+                <a href="events.html">Events</a>
+                <a href="stories.html">Stories</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Connect</h4>
+                <a href="considering-msp.html">Considering MSP?</a>
+                <a href="https://www.maastrichtuniversity.nl" target="_blank">Maastricht University</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Follow Us</h4>
+                <a href="https://www.instagram.com/msp_alumni/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/groups/12893377/" target="_blank">LinkedIn (MSP)</a>
+                <a href="https://www.linkedin.com/groups/4689010/" target="_blank">LinkedIn (FSE)</a>
             </div>
         </div>
-        <div class="footer-bottom-sleek">
+        <div class="footer-bottom">
             <p>&copy; 2026 MSP Alumni Network. Maastricht University, Faculty of Science and Engineering.</p>
         </div>
     </footer>
@@ -1682,56 +1678,6 @@
             height: 18px;
         }
         
-        /* Footer Sleek */
-        .footer-sleek {
-            background: var(--um-dark-blue);
-            padding: 60px 50px 30px;
-        }
-        .footer-content-sleek {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
-        }
-        .footer-brand-sleek .logo {
-            margin-bottom: 16px;
-        }
-        .footer-desc {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.6;
-        }
-        .footer-col h3 {
-            font-size: 14px;
-            font-weight: 700;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-        .footer-col a {
-            display: block;
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 10px;
-            transition: color var(--transition-fast);
-        }
-        .footer-col a:hover {
-            color: white;
-        }
-        .footer-bottom-sleek {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-        .footer-bottom-sleek p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
-        }
         
         /* Responsive */
         @media (max-width: 1024px) {
@@ -1762,7 +1708,7 @@
             .elite-grid { grid-template-columns: repeat(3, 1fr); }
             .phd-compact { grid-template-columns: 1fr; }
             .um-links-grid { grid-template-columns: 1fr; }
-            .footer-content-sleek { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .footer-container { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
         @media (max-width: 768px) {
             .main-content { padding: 60px 24px; }
@@ -1771,7 +1717,7 @@
             .flow-node { padding: 12px 14px; }
             .flow-node-label { font-size: 13px; }
             .elite-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-content-sleek { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
         }
         
         /* ===== MODAL STYLES ===== */

@@ -538,6 +538,175 @@
         .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(255,255,255,0.35); }
 
         /* ============================================
+           SUMMARY MODAL
+        ============================================ */
+        .summary-modal {
+            display: none;
+            position: fixed; inset: 0;
+            z-index: 9998;
+            background: rgba(0,0,0,0.6);
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 40px 20px;
+        }
+        .summary-modal.active { display: flex; }
+        .summary-modal-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            max-width: 820px; width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            animation: lightbox-in 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .summary-modal-header {
+            position: sticky; top: 0; z-index: 2;
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002550 100%);
+            padding: 40px 48px 32px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .summary-modal-header .summary-series-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--um-light-blue);
+            margin-bottom: 16px;
+        }
+        .summary-modal-header h2 {
+            font-family: var(--font-heading);
+            font-size: 28px; font-weight: 700;
+            color: white; line-height: 1.15; margin-bottom: 6px;
+        }
+        .summary-modal-header h3 {
+            font-family: var(--font-heading);
+            font-size: 18px; font-weight: 500;
+            color: rgba(255,255,255,0.7); margin-bottom: 12px;
+        }
+        .summary-modal-header .summary-meta {
+            font-size: 13px; color: rgba(255,255,255,0.5);
+        }
+        .summary-modal-close {
+            position: absolute; top: 20px; right: 24px;
+            background: rgba(255,255,255,0.1); border: none;
+            color: white; font-size: 20px; cursor: pointer;
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--transition-fast);
+            font-family: var(--font-heading);
+        }
+        .summary-modal-close:hover { background: rgba(255,255,255,0.2); }
+        .summary-modal-body {
+            padding: 40px 48px 48px;
+        }
+        .summary-section {
+            margin-bottom: 40px;
+        }
+        .summary-section:last-child { margin-bottom: 0; }
+        .summary-section-number {
+            font-family: var(--font-heading);
+            font-size: 11px; font-weight: 700;
+            color: var(--um-light-blue);
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .summary-section h4 {
+            font-family: var(--font-heading);
+            font-size: 20px; font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 16px; line-height: 1.2;
+        }
+        .summary-section p {
+            font-size: 15px; color: var(--um-gray-600);
+            line-height: 1.8; margin-bottom: 14px;
+        }
+        .summary-section p:last-child { margin-bottom: 0; }
+        .summary-blockquote {
+            padding: 20px 28px;
+            background: var(--um-gray-50);
+            border-left: 3px solid var(--um-orange);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 24px 0;
+            font-family: var(--font-heading);
+            font-size: 16px; font-weight: 600;
+            color: var(--um-dark-blue);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .summary-timeline {
+            margin: 20px 0;
+        }
+        .summary-timeline-item {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--um-gray-100);
+        }
+        .summary-timeline-item:last-child { border-bottom: none; }
+        .summary-timeline-year {
+            font-family: var(--font-heading);
+            font-size: 13px; font-weight: 700;
+            color: var(--um-orange);
+            padding-top: 2px;
+        }
+        .summary-timeline-label {
+            font-family: var(--font-heading);
+            font-size: 14px; font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        .summary-timeline-desc {
+            font-size: 14px; color: var(--um-gray-600);
+            line-height: 1.7;
+        }
+        .summary-arrow-item {
+            padding: 8px 0 8px 20px;
+            position: relative;
+            font-size: 15px; color: var(--um-gray-600);
+            line-height: 1.7;
+        }
+        .summary-arrow-item::before {
+            content: '→';
+            position: absolute; left: 0;
+            color: var(--um-orange); font-weight: 700;
+        }
+        .summary-subheading {
+            font-family: var(--font-heading);
+            font-size: 15px; font-weight: 700;
+            color: var(--um-dark-blue);
+            margin: 20px 0 8px; text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .summary-qa {
+            margin: 20px 0;
+        }
+        .summary-qa-item {
+            margin-bottom: 20px;
+        }
+        .summary-qa-item:last-child { margin-bottom: 0; }
+        .summary-qa-q {
+            font-family: var(--font-heading);
+            font-size: 14px; font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 6px;
+            display: flex; gap: 8px;
+        }
+        .summary-qa-q span { color: var(--um-orange); flex-shrink: 0; }
+        .summary-qa-a {
+            font-size: 14px; color: var(--um-gray-600);
+            line-height: 1.75; padding-left: 24px;
+        }
+        .summary-footer-note {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--um-gray-200);
+            font-size: 12px; color: var(--um-gray-400);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ============================================
            RESPONSIVE
         ============================================ */
         @media (max-width: 1100px) {
@@ -563,6 +732,11 @@
             .event-title { font-size: 22px; }
             .events-section-title { font-size: 30px; }
             .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .summary-modal { padding: 20px 12px; }
+            .summary-modal-header { padding: 32px 24px 24px; }
+            .summary-modal-header h2 { font-size: 22px; }
+            .summary-modal-body { padding: 28px 24px 32px; }
+            .summary-timeline-item { grid-template-columns: 70px 1fr; gap: 12px; }
         }
     </style>
 </head>
@@ -614,50 +788,7 @@
 
         <div class="events-list">
 
-            <!-- EVENT 1: UM 50 Homecoming -->
-            <div class="event-card">
-                <div class="event-status-ribbon upcoming">Upcoming</div>
-                <div class="event-image event-image-dark clickable" onclick="openLightbox('assets/images/UM50.png')">
-                    <img src="assets/images/UM50.png" alt="UM 50 Alumni Homecoming" class="img-um50">
-                    <div class="zoom-hint"><i data-lucide="zoom-in"></i> View full image</div>
-                </div>
-                <div class="event-body">
-                    <div class="event-type-tag">
-                        <i data-lucide="party-popper"></i>
-                        Reunion · University Event
-                    </div>
-                    <h2 class="event-title">UM 50 Alumni Homecoming</h2>
-                    <div class="event-meta">
-                        <div class="event-meta-item">
-                            <i data-lucide="calendar"></i>
-                            Saturday, 23 May 2026
-                        </div>
-                        <div class="event-meta-item">
-                            <i data-lucide="clock"></i>
-                            11:45 – 19:00 &nbsp;·&nbsp; FSE programme: 11:45–14:30
-                        </div>
-                        <div class="event-meta-item">
-                            <i data-lucide="map-pin"></i>
-                            Zwingelput 4 + Tapijnkazerne, Maastricht
-                        </div>
-                    </div>
-                    <p class="event-description">
-                        Maastricht University turns 50 — and we're celebrating together. 
-                        Join fellow MSP alumni for a festive reunion day filled with good food, great company, 
-                        and memories old and new. The day kicks off with the FSE faculty programme: 
-                        a Back to the Future-themed pub quiz and lunch at Zwingelput 4, before we all walk 
-                        together to the main university-wide celebration at Tapijnkazerne.
-                    </p>
-                    <div class="event-actions">
-                        <a href="#" class="event-btn primary">
-                            Register Now
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EVENT 2: Alumni Talk Aliya Shah -->
+            <!-- EVENT 1: Alumni Talk Aliya Shah -->
             <div class="event-card">
                 <div class="event-status-ribbon announced">Date TBC</div>
                 <div class="event-image">
@@ -695,13 +826,56 @@
                         <div class="event-speaker-badge">MSP Alumna</div>
                     </div>
                     <p class="event-description">
-                        Details and registration link coming soon. Open to all MSP students, alumni, and staff. 
+                        Details and registration link coming soon. Open to all MSP students, alumni, and staff.
                         Keep an eye on our community channels for the announcement.
                     </p>
                     <div class="event-actions">
                         <a href="community.html" class="event-btn secondary">
                             Get Notified
                             <i data-lucide="bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENT 2: UM 50 Homecoming -->
+            <div class="event-card">
+                <div class="event-status-ribbon upcoming">Upcoming</div>
+                <div class="event-image event-image-dark clickable" onclick="openLightbox('assets/images/UM50.png')">
+                    <img src="assets/images/UM50.png" alt="UM 50 Alumni Homecoming" class="img-um50">
+                    <div class="zoom-hint"><i data-lucide="zoom-in"></i> View full image</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-type-tag">
+                        <i data-lucide="party-popper"></i>
+                        Reunion · University Event
+                    </div>
+                    <h2 class="event-title">UM 50 Alumni Homecoming</h2>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i data-lucide="calendar"></i>
+                            Saturday, 23 May 2026
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="clock"></i>
+                            11:45 – 19:00 &nbsp;·&nbsp; FSE programme: 11:45–14:30
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="map-pin"></i>
+                            Zwingelput 4 + Tapijnkazerne, Maastricht
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Maastricht University turns 50 — and we're celebrating together.
+                        Join fellow MSP alumni for a festive reunion day filled with good food, great company,
+                        and memories old and new. The day kicks off with the FSE faculty programme:
+                        a Back to the Future-themed pub quiz and lunch at Zwingelput 4, before we all walk
+                        together to the main university-wide celebration at Tapijnkazerne.
+                    </p>
+                    <div class="event-actions">
+                        <a href="#" class="event-btn primary">
+                            Register Now
+                            <i data-lucide="arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -807,9 +981,13 @@
                         into real-world entrepreneurial paths.
                     </p>
                     <div class="event-actions">
-                        <a href="#" class="event-btn video">
+                        <a href="https://www.youtube.com/watch?v=x9XPc9B_y28" target="_blank" class="event-btn video">
                             <i data-lucide="play-circle"></i>
                             Watch Recording
+                        </a>
+                        <a href="#" class="event-btn secondary" onclick="openSummaryModal(); return false;">
+                            <i data-lucide="file-text"></i>
+                            Read Summary
                         </a>
                     </div>
                 </div>
@@ -851,6 +1029,187 @@
         </div>
     </footer>
 
+    <!-- Summary Modal -->
+    <div class="summary-modal" id="summaryModal" onclick="closeSummaryModal(event)">
+        <div class="summary-modal-content" onclick="event.stopPropagation()">
+            <button class="summary-modal-close" onclick="closeSummaryModal()">&times;</button>
+            <div class="summary-modal-header">
+                <div class="summary-series-tag">MSP Alumni Talk Series</div>
+                <h2>Entrepreneurship &amp; Sustainability in Deep Tech</h2>
+                <h3>A conversation with Jordi Ferrer Orri</h3>
+                <div class="summary-meta">February 26, 2026 &nbsp;·&nbsp; MSP, Maastricht University</div>
+            </div>
+            <div class="summary-modal-body">
+
+                <!-- 01 INTRODUCTION -->
+                <div class="summary-section">
+                    <div class="summary-section-number">01</div>
+                    <h4>Introduction &amp; Context</h4>
+                    <p>This was the first session in a new MSP alumni talk series — an initiative designed to give current students and fellow graduates a window into life after MSP. Alumni joined from across the Netherlands, Spain, Finland, the US, India, and France. Jordi Ferrer Orri, MSP class of 2015–2018, was the guest speaker.</p>
+                    <p>Jordi studied physical chemistry and polymer science at MSP. He went on to Cambridge for a combined Masters and PhD, and has since moved through the startup world, building and working in deep tech companies focused on sustainable materials. The talk covered his career arc and the lessons he has drawn from roughly a decade of work at the frontier of science and entrepreneurship.</p>
+                </div>
+
+                <!-- 02 CAREER JOURNEY -->
+                <div class="summary-section">
+                    <div class="summary-section-number">02</div>
+                    <h4>Jordi's Career Journey</h4>
+                    <p>Below is a structured overview of Jordi's path since leaving MSP — not a tidy linear progression, but a series of deliberate pivots, each one building on the last.</p>
+                    <div class="summary-timeline">
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2015–18</div>
+                            <div>
+                                <div class="summary-timeline-label">MSP</div>
+                                <div class="summary-timeline-desc">Majored in physical chemistry and polymer science. Developed a taste for research and cross-disciplinary curiosity. Credits MSP with building the scientific mindset that has underpinned everything since.</div>
+                            </div>
+                        </div>
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2018–22</div>
+                            <div>
+                                <div class="summary-timeline-label">Cambridge PhD</div>
+                                <div class="summary-timeline-desc">Five years completing a Masters and PhD in nanotechnology at Cambridge. Research evolved into materials science and machine learning — largely self-taught. Learned that if something interests you, you dive in, even if it's outside your official field.</div>
+                            </div>
+                        </div>
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2022</div>
+                            <div>
+                                <div class="summary-timeline-label">Entrepreneur First</div>
+                                <div class="summary-timeline-desc">Joined a London incubator for people early in their careers who want to build something but don't yet have a co-founder or clear problem space. An 8-week sprint to find a co-founder, followed by 3 months to identify a problem and pitch for pre-seed funding.</div>
+                            </div>
+                        </div>
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2022–23</div>
+                            <div>
+                                <div class="summary-timeline-label">Biomer (CTO &amp; Co-founder)</div>
+                                <div class="summary-timeline-desc">Co-founded Biomer, developing sustainable alternatives to PFAS — toxic synthetic chemicals still widely used in consumer goods and industry. Managed significant capital and a move to New York. The startup ended due to co-founder misalignment, not technical failure. The technology was patented.</div>
+                            </div>
+                        </div>
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2023–24</div>
+                            <div>
+                                <div class="summary-timeline-label">Anfrico (Principal ML Engineer)</div>
+                                <div class="summary-timeline-desc">Joined a 10–15 person later-stage startup as Principal ML Engineer. Learned what it takes to go from seed to Series A — a shift from proving the technology works to managing teams, scaling processes, and chasing product-market fit. Technology was productised successfully within a year.</div>
+                            </div>
+                        </div>
+                        <div class="summary-timeline-item">
+                            <div class="summary-timeline-year">2024–</div>
+                            <div>
+                                <div class="summary-timeline-label">Industry Fellowship</div>
+                                <div class="summary-timeline-desc">Awarded a UK industry fellowship — a rare position bridging academia and industry — to build a research team applying AI agents and models to the design of sustainable, non-toxic chemistry. Scientifically ambitious, commercially grounded.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-blockquote">"If you found something interesting, just dive in."</div>
+                </div>
+
+                <!-- 03 KEY THEMES -->
+                <div class="summary-section">
+                    <div class="summary-section-number">03</div>
+                    <h4>Key Themes &amp; Lessons</h4>
+
+                    <div class="summary-subheading">What Jordi Has Learned He Loves</div>
+                    <p>Three threads run through Jordi's career, sometimes explicitly, sometimes quietly:</p>
+                    <div class="summary-arrow-item"><strong>Consolidating deep tech</strong> — bridging the gap between what universities prove in labs (TRL 1–3) and what industry can commercialise (TRL 3–7+). Not creating science from scratch, but connecting existing innovations and asking: what would it take to turn this into a product?</div>
+                    <div class="summary-arrow-item"><strong>Sustainable materials</strong> — from bio-based polymers at MSP to energy materials during his PhD, PFAS alternatives at Biomer, and now AI-driven sustainable chemistry. The only fully consistent theme across ten years.</div>
+                    <div class="summary-arrow-item"><strong>Digitising the physical world</strong> — self-teaching Python during his PhD turned out to be one of the most consequential decisions of his career. AI/ML has gone from niche to essential.</div>
+
+                    <div class="summary-blockquote">"AI is going to become the next universal soft skill — how to understand how these tools work and how to interact with them."</div>
+
+                    <div class="summary-subheading">Breadth vs. Depth</div>
+                    <p>Jordi's career doesn't fit the mould of deep specialisation. He has moved across polymers, energy materials, machine learning, and biochemistry — and is honest that in some contexts (large corporations hiring for niche roles), this is a disadvantage. In early-stage startups, it's an asset. The key is knowing which context you're in, and playing accordingly.</p>
+                    <div class="summary-blockquote">"I've managed to play this to my advantage rather than let it hinder my career."</div>
+
+                    <div class="summary-subheading">Four Ways to Fund Independent Innovation</div>
+                    <div class="summary-arrow-item"><strong>Venture Capital / Angel Investment</strong> — Fast money with relatively low proof requirements at pre-seed — but you are selling part of your company and, effectively, your time. Investors expect rapid growth and your life to revolve around the startup. Jordi's caution: it looks shinier than it is. Talk to people who have raised VC before going down that path.</div>
+                    <div class="summary-arrow-item"><strong>Grants</strong> — Companies of all sizes rely heavily on public funding. Being good at writing grants is an underrated path to research independence — letting you decide what you work on and when.</div>
+                    <div class="summary-arrow-item"><strong>Bootstrapping</strong> — Difficult for deep tech (expensive equipment, long timelines), but increasingly viable for software and some engineering startups — especially as AI tools reduce the team size needed to ship products.</div>
+                    <div class="summary-arrow-item"><strong>Academic Path</strong> — Fellowships, research grants, PI roles. Jordi's personally least-preferred route, but genuinely full of opportunity for those who want it.</div>
+
+                    <div class="summary-subheading">Why Entrepreneurship Is Not for Everyone</div>
+                    <p>Jordi was candid: founding a company is not a universally good idea. He listed what makes it work for him — impatience, love of rapid iteration, comfort with chaos, indifference to citation counts — and was equally clear that these traits don't suit everyone. He acknowledged that he himself has become less risk-tolerant over time and may move toward corporate life for stability.</p>
+                    <div class="summary-blockquote">"There's no perfect career path for anyone. It just depends on you and your moment in life."</div>
+
+                    <div class="summary-subheading">The Reality of Founding: Hassle Tolerance</div>
+                    <p>One of the most candid sections of the talk. A major reason Jordi chose to become an employee rather than a founder again (for now) is that founding consumed his entire life. He has personal goals beyond work, and watched many founder friends disappear into their startups. He included 'hassle tolerance' as a key skill — but framed it as a warning, not a badge of honour.</p>
+
+                    <div class="summary-subheading">The Decision Framework: Should You Start a Company?</div>
+                    <p>Jordi shared a simple but useful flow diagram for anyone thinking about entrepreneurship:</p>
+                    <div class="summary-arrow-item">Does entrepreneurship seem like a fit for you? If no — stop here. If yes, continue.</div>
+                    <div class="summary-arrow-item">Have you identified a specific problem or opportunity where you have an edge over ~90% of others?</div>
+                    <div class="summary-arrow-item">If yes: Build a proof of concept in your free time. Test it with users. Look for traction before quitting your job.</div>
+                    <div class="summary-arrow-item">If no, and you lack experience: Join an early-stage startup to learn fast, then re-evaluate.</div>
+                    <div class="summary-arrow-item">If you have skills but no clear idea: Join an incubator (like Entrepreneur First) to find co-founders and problem spaces.</div>
+                    <div class="summary-arrow-item">If you lack both: Invest in yourself first — through a PhD, a programme, industry experience — then return to the chart.</div>
+                    <div class="summary-blockquote">"Don't quit your job to start from scratch. Test it in your free time first. Then, if you have clarity, go all in."</div>
+
+                    <div class="summary-subheading">Key Skills for the Early-Stage World</div>
+                    <p>What Jordi looks for when interviewing for early-stage roles:</p>
+                    <div class="summary-arrow-item"><strong>Analytical thinking</strong> — a given for most MSP graduates</div>
+                    <div class="summary-arrow-item"><strong>Multitasking</strong> — small teams mean wearing many hats simultaneously</div>
+                    <div class="summary-arrow-item"><strong>Leadership and comfort with uncertainty</strong> — making decisions without full information, and not freezing</div>
+                    <div class="summary-arrow-item"><strong>Resilience and communication</strong></div>
+                    <div class="summary-arrow-item"><strong>Hassle tolerance</strong> — the unglamorous ability to keep going</div>
+                    <div class="summary-arrow-item"><strong>Networking</strong> — his single most important skill (see below)</div>
+                </div>
+
+                <!-- 04 NETWORKING -->
+                <div class="summary-section">
+                    <div class="summary-section-number">04</div>
+                    <h4>On Networking</h4>
+                    <p>Jordi returned to networking both at the start and the end of the talk, calling it the single most important thing he has taken away from the last decade. His point was simple: people are kinder than you expect, and they will give you 15–20 minutes if you share any connection — an alma mater, a past employer, even a football club.</p>
+                    <div class="summary-blockquote">"Don't be shy. Just ask for help. People will give it to you."</div>
+                    <p>He encouraged everyone — especially current students — to reach out to MSP alumni directly. Not to ask for jobs or formal advice, but simply to build genuine connections. The MSP network is small enough to feel personal and large enough to be genuinely global.</p>
+                </div>
+
+                <!-- 05 Q&A -->
+                <div class="summary-section">
+                    <div class="summary-section-number">05</div>
+                    <h4>Q&amp;A Highlights</h4>
+                    <div class="summary-qa">
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> What does 'consolidating deep tech' mean?</div>
+                            <div class="summary-qa-a">Bridging the gap between TRL 1–3 (university lab validation) and TRL 3–7 (scale-up). Not creating science from scratch, but connecting existing innovations and translating them into products. A lot of value gets lost between academia and industry — often, all you need is to connect three or four published innovations and write a grant together with the relevant academics.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> Why did you leave your own startup to join a competitor?</div>
+                            <div class="summary-qa-a">Co-founder misalignment is one of the most common reasons startups fail — and Jordi was simply in that statistic. Once misalignment is clear, dragging it out only makes things worse. He moved fast, preserved the technology via patent, and reflected on it as the right call. The human element of a company is consistently underestimated.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> What's Entrepreneur First like, and is it worth it?</div>
+                            <div class="summary-qa-a">EF is a structured sprint: 8 weeks to find a co-founder, 3 months to pitch for pre-seed. Its biggest value is the network — a cohort of ambitious people at the same inflection point in their careers. Jordi also learned industry communication norms there (pyramid communication: lead with the conclusion, not the evidence), how to pitch, and how to do early market validation. He wouldn't do it again today — he already has the network — but for someone fresh out of academia, he rates it highly.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> Is a PhD necessary for a career in deep tech entrepreneurship?</div>
+                            <div class="summary-qa-a">No universal answer. Jordi did his PhD because he thought he wanted to be an academic — and it taught him a lot. For deep tech specifically, the patience, scientific rigour, and credibility that come with a PhD are real assets, both technically and in how investors and partners perceive you. A 3-year UK-style PhD is a manageable investment; a 5–6 year US PhD is only worth it with a clear commitment to academia or a very specific research path.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> When is the right time to start a company?</div>
+                            <div class="summary-qa-a">There is no perfect time. Jordi's recommendation: test it in your free time first. Reduce your gym days from four to three, spend one evening doing outreach and market research, build a minimal prototype, and see if there's traction. Committing fully to a startup as a founder is committing 5–10 years of your life. You should be reasonably sure it fits your long-term goals before making that leap.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> Do you need to have 80% of the solution before starting?</div>
+                            <div class="summary-qa-a">No — and this is one of the most harmful myths from academic training. In industry, especially at senior levels, big decisions are made with far less certainty than any academic would feel comfortable with. You need to understand the market and gather the right people. Action without complete knowledge is the norm, not the exception. The important shift is moving from individual expert to team builder.</div>
+                        </div>
+                        <div class="summary-qa-item">
+                            <div class="summary-qa-q"><span>Q</span> How do you define 'deep tech'?</div>
+                            <div class="summary-qa-a">Jordi's working definition: how long until market? If a technology takes 10–20 years to reach commercial scale, it's deep tech. That's also how investors distinguish: software/SaaS investors want 5–7 year returns; deep tech investors are willing to wait 10–20. An alternative framing: how many technical layers must be solved before reaching the end user — the more layers, the deeper the tech.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 CLOSING -->
+                <div class="summary-section">
+                    <div class="summary-section-number">06</div>
+                    <h4>Closing Thoughts</h4>
+                    <p>Jordi closed by returning to where he started: community. He recognised faces in the call he hadn't seen in nearly eight years, and named the MSP alumni network as one of his most valuable assets — not just professionally, but personally. He encouraged everyone to stay connected, reach out freely, and trust that the goodwill in the network is real.</p>
+                    <div class="summary-blockquote">"These faces here — I haven't seen some of you in eight years. Just connect. Reach out. People will give you their time."</div>
+                    <p>The session also closed with a preview of two upcoming MSP alumni initiatives: an alumni merchandise line (sweaters and more — graphic designers welcome) and a new alumni website featuring an interactive world map showing where MSP graduates have landed. Both are expected to launch in the coming weeks.</p>
+                </div>
+
+                <div class="summary-footer-note">Transcript recorded and summarised &nbsp;·&nbsp; MSP, Faculty of Science and Engineering, Maastricht University</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
@@ -877,8 +1236,21 @@
             document.getElementById('lightbox').classList.remove('active');
             document.body.style.overflow = '';
         }
+        function openSummaryModal() {
+            document.getElementById('summaryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSummaryModal(e) {
+            if (e && e.target !== document.getElementById('summaryModal')) return;
+            document.getElementById('summaryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'Escape') {
+                closeLightbox();
+                document.getElementById('summaryModal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     </script>
 

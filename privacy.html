@@ -152,6 +152,7 @@
             <a href="events.html">Events</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
+        <button class="menu-toggle" onclick="toggleMobileNav(this)" aria-label="Menu"><span></span><span></span><span></span></button>
     </header>
 
     <div class="content-wrapper">
@@ -302,6 +303,12 @@
         <p class="footer-copyright"> 2026 Maastricht Science Programme  Faculty of Science and Engineering  Maastricht University</p>
     </footer>
     
-    <script>lucide.createIcons();</script>
+    <script>
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            document.querySelector('.header-nav').classList.toggle('open');
+        }
+        lucide.createIcons();
+    </script>
 </body>
 </html>

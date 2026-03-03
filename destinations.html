@@ -258,7 +258,6 @@
         
         @media (max-width: 768px) {
             header { padding: 0 20px; }
-            .header-nav a:not(.btn-cta) { display: none; }
             .hero-content-wrapper { padding: 80px 20px 20px; }
             .hero-title { font-size: 30px; }
             .hero-subtitle { font-size: 15px; }
@@ -321,7 +320,7 @@
     </style>
 </head>
 <body>
-    <header id="header">
+    <header id="header" class="dark-header">
         <a href="index.html" class="logo">
             <img src="assets/logos/maastricht-science-programme-logo.png" alt="MSP" class="logo-img">
             <div class="logo-text">
@@ -336,6 +335,7 @@
             <a href="events.html">Events</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
+        <button class="menu-toggle" onclick="toggleMobileNav(this)" aria-label="Menu"><span></span><span></span><span></span></button>
     </header>
     
     <section class="hero-fullpage">
@@ -567,6 +567,12 @@
     </footer>
     
     <script>
+        // Mobile nav toggle
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            document.querySelector('.header-nav').classList.toggle('open');
+        }
+
         // ============================================
         // Check data.js loaded
         // ============================================

@@ -579,6 +579,7 @@
             <a href="events.html">Events</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
+        <button class="menu-toggle" onclick="toggleMobileNav(this)" aria-label="Menu"><span></span><span></span><span></span></button>
     </header>
     
     <!-- Hero -->
@@ -865,6 +866,12 @@
     </footer>
     
     <script>
+        // Mobile nav toggle
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            document.querySelector('.header-nav').classList.toggle('open');
+        }
+
         // FAQ Toggle
         function toggleFaq(element) {
             const item = element.parentElement;

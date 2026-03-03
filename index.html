@@ -1833,10 +1833,6 @@
         }
         
         @media (max-width: 600px) {
-            .header-nav a:not(.btn-cta) {
-                display: none;
-            }
-            
             .hero {
                 padding: 110px 20px 80px;
                 min-height: 100vh;
@@ -2282,6 +2278,7 @@
             <a href="events.html">Events</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
+        <button class="menu-toggle" onclick="toggleMobileNav(this)" aria-label="Menu"><span></span><span></span><span></span></button>
     </header>
     
     <!-- Hero Section -->
@@ -2556,6 +2553,12 @@
     <script src="data-bind.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // Mobile nav toggle
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            document.querySelector('.header-nav').classList.toggle('open');
+        }
+
         // ==========================================
         // HEADER SCROLL EFFECT
         // ==========================================

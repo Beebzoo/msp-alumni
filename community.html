@@ -1710,8 +1710,7 @@
         ============================================ */
         @media (max-width: 900px) {
             header { padding: 0 20px; }
-            .header-nav a:not(.btn-cta) { display: none; }
-            
+
             .hero { padding: 120px 20px 80px; }
             .hero h1 { font-size: 36px; }
             .hero p { font-size: 17px; }
@@ -1767,6 +1766,7 @@
             <a href="events.html">Events</a>
             <a href="considering-msp.html" class="btn-cta">Considering MSP?</a>
         </nav>
+        <button class="menu-toggle" onclick="toggleMobileNav(this)" aria-label="Menu"><span></span><span></span><span></span></button>
     </header>
 
     <!-- Hero Section -->
@@ -2494,6 +2494,12 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            document.querySelector('.header-nav').classList.toggle('open');
+        }
+
         // Initialize Lucide icons
         lucide.createIcons();
         

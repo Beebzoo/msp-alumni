@@ -433,6 +433,7 @@
         .event-btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 14px 28px;
+            border: none;
             border-radius: var(--radius-md);
             font-family: var(--font-heading);
             font-size: 14px; font-weight: 600;
@@ -708,6 +709,204 @@
         }
 
         /* ============================================
+           INTEREST MODAL
+        ============================================ */
+        .interest-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,20,40,0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+        .interest-overlay.active {
+            opacity: 1; pointer-events: auto;
+        }
+        .interest-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            max-width: 480px; width: 100%;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interest-overlay.active .interest-card {
+            transform: translateY(0) scale(1);
+        }
+        .interest-card-header {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #001a35 100%);
+            padding: 28px 32px;
+            position: relative;
+        }
+        .interest-card-header h3 {
+            color: white; font-size: 22px; margin-bottom: 4px;
+        }
+        .interest-card-header p {
+            color: rgba(255,255,255,0.65); font-size: 14px;
+        }
+        .interest-close {
+            position: absolute; top: 16px; right: 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: rgba(255,255,255,0.7);
+            transition: all var(--transition-fast);
+        }
+        .interest-close:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .interest-close i { width: 16px; height: 16px; }
+        .interest-card-body {
+            padding: 28px 32px 32px;
+        }
+
+        /* Role selector */
+        .interest-role-selector {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            margin-bottom: 24px;
+        }
+        .interest-role-btn {
+            padding: 16px;
+            border: 2px solid var(--um-gray-200);
+            border-radius: var(--radius-md);
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+        .interest-role-btn:hover {
+            border-color: var(--um-light-blue);
+            background: rgba(0,162,219,0.04);
+        }
+        .interest-role-btn.selected {
+            border-color: var(--um-light-blue);
+            background: rgba(0,162,219,0.08);
+        }
+        .interest-role-btn .role-icon {
+            font-size: 28px; margin-bottom: 6px;
+        }
+        .interest-role-btn .role-label {
+            font-weight: 600; font-size: 15px;
+            color: var(--um-dark-blue);
+        }
+        .interest-role-btn .role-desc {
+            font-size: 12px; color: var(--um-gray-500);
+            margin-top: 2px;
+        }
+
+        /* Form fields */
+        .interest-fields {
+            display: none;
+        }
+        .interest-fields.visible {
+            display: block;
+            animation: fadeSlideUp 0.3s ease;
+        }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .interest-field {
+            margin-bottom: 16px;
+        }
+        .interest-field label {
+            display: block;
+            font-size: 13px; font-weight: 600;
+            color: var(--um-gray-700);
+            margin-bottom: 6px;
+        }
+        .interest-field input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--um-gray-200);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--um-dark-blue);
+            transition: border-color var(--transition-fast);
+            outline: none;
+        }
+        .interest-field input:focus {
+            border-color: var(--um-light-blue);
+            box-shadow: 0 0 0 3px rgba(0,162,219,0.1);
+        }
+        .interest-field input::placeholder {
+            color: var(--um-gray-400);
+        }
+        .interest-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--um-orange);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 15px; font-weight: 600;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all var(--transition-fast);
+            margin-top: 8px;
+        }
+        .interest-submit-btn:hover {
+            background: #d14400;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(232,78,16,0.3);
+        }
+        .interest-submit-btn:disabled {
+            opacity: 0.6; cursor: not-allowed; transform: none;
+            box-shadow: none;
+        }
+        .interest-submit-btn i { width: 16px; height: 16px; }
+
+        /* Success state */
+        .interest-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .interest-success.visible {
+            display: block;
+        }
+        .interest-success-icon {
+            width: 56px; height: 56px;
+            background: rgba(34,197,94,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            color: #22c55e;
+        }
+        .interest-success-icon i { width: 28px; height: 28px; }
+        .interest-success h4 {
+            font-size: 18px; color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        .interest-success p {
+            font-size: 14px; color: var(--um-gray-500);
+            line-height: 1.6;
+        }
+
+        /* Error state */
+        .interest-error {
+            display: none;
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.2);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #dc2626;
+            margin-bottom: 16px;
+        }
+        .interest-error.visible {
+            display: block;
+        }
+
+        /* ============================================
            RESPONSIVE
         ============================================ */
         @media (max-width: 1100px) {
@@ -737,6 +936,9 @@
             .summary-modal-header h2 { font-size: 22px; }
             .summary-modal-body { padding: 28px 24px 32px; }
             .summary-timeline-item { grid-template-columns: 70px 1fr; gap: 12px; }
+            .interest-card-header { padding: 24px; }
+            .interest-card-body { padding: 24px; }
+            .interest-card-header h3 { font-size: 19px; }
         }
     </style>
 </head>
@@ -841,10 +1043,10 @@
                         Keep an eye on our community channels for the announcement.
                     </p>
                     <div class="event-actions">
-                        <a href="community.html" class="event-btn secondary">
-                            Get Notified
-                            <i data-lucide="bell"></i>
-                        </a>
+                        <button class="event-btn secondary" onclick="openInterestModal()">
+                            Interested?
+                            <i data-lucide="hand-metal"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1228,6 +1430,82 @@
         <img id="lightbox-img" src="" alt="">
     </div>
 
+    <!-- Interest Modal -->
+    <div class="interest-overlay" id="interestModal" onclick="closeInterestModal(event)">
+        <div class="interest-card" onclick="event.stopPropagation()">
+            <div class="interest-card-header">
+                <h3>Interested in this talk?</h3>
+                <p>Let us know and we'll keep you in the loop.</p>
+                <button class="interest-close" onclick="closeInterestModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="interest-card-body">
+                <!-- Success message -->
+                <div class="interest-success" id="interestSuccess">
+                    <div class="interest-success-icon">
+                        <i data-lucide="check"></i>
+                    </div>
+                    <h4>You're on the list!</h4>
+                    <p>We'll reach out with details as the event gets closer.</p>
+                </div>
+
+                <!-- Form -->
+                <form id="interest-form" action="https://formspree.io/f/xnjboerz" method="POST">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <input type="hidden" name="_subject" value="Event Interest: Alumni Talk — Aliya Shah & Thomas van Rein">
+                    <input type="hidden" name="role" id="interest-role-input" value="">
+
+                    <p style="font-size: 14px; color: var(--um-gray-600); margin-bottom: 16px;">I am a…</p>
+
+                    <div class="interest-role-selector">
+                        <button type="button" class="interest-role-btn" onclick="selectRole('alumni')">
+                            <div class="role-icon">🎓</div>
+                            <div class="role-label">Alumni</div>
+                            <div class="role-desc">MSP graduate</div>
+                        </button>
+                        <button type="button" class="interest-role-btn" onclick="selectRole('student')">
+                            <div class="role-icon">📚</div>
+                            <div class="role-label">Student</div>
+                            <div class="role-desc">Currently studying</div>
+                        </button>
+                    </div>
+
+                    <!-- Alumni fields -->
+                    <div class="interest-fields" id="alumni-fields">
+                        <div class="interest-field">
+                            <label>Name *</label>
+                            <input type="text" name="name" placeholder="Your full name" id="alumni-name">
+                        </div>
+                        <div class="interest-field">
+                            <label>Email *</label>
+                            <input type="email" name="email" placeholder="your@email.com" id="alumni-email">
+                        </div>
+                    </div>
+
+                    <!-- Student fields -->
+                    <div class="interest-fields" id="student-fields">
+                        <div class="interest-field">
+                            <label>Name *</label>
+                            <input type="text" name="student_name" placeholder="Your full name" id="student-name">
+                        </div>
+                        <div class="interest-field">
+                            <label>Student ID number *</label>
+                            <input type="text" name="student_id" placeholder="e.g. i6012345" id="student-id">
+                        </div>
+                    </div>
+
+                    <div class="interest-error" id="interestError">Something went wrong. Please try again.</div>
+
+                    <button type="submit" class="interest-submit-btn" id="interest-submit" style="display:none">
+                        <i data-lucide="send"></i>
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile nav toggle
         function toggleMobileNav(btn) {
@@ -1267,9 +1545,97 @@
             if (e.key === 'Escape') {
                 closeLightbox();
                 document.getElementById('summaryModal').classList.remove('active');
+                closeInterestModal();
                 document.body.style.overflow = '';
             }
         });
+
+        // ── Interest Modal ──────────────────────────────────────────────
+        let selectedRole = null;
+
+        function openInterestModal() {
+            document.getElementById('interestModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeInterestModal(e) {
+            if (e && e.target !== document.getElementById('interestModal')) return;
+            document.getElementById('interestModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function selectRole(role) {
+            selectedRole = role;
+            document.getElementById('interest-role-input').value = role;
+
+            // Update button styles
+            document.querySelectorAll('.interest-role-btn').forEach(btn => btn.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Show/hide field groups
+            const alumniFields = document.getElementById('alumni-fields');
+            const studentFields = document.getElementById('student-fields');
+            const submitBtn = document.getElementById('interest-submit');
+
+            alumniFields.classList.remove('visible');
+            studentFields.classList.remove('visible');
+
+            // Clear required attributes
+            document.querySelectorAll('#alumni-fields input').forEach(i => i.required = false);
+            document.querySelectorAll('#student-fields input').forEach(i => i.required = false);
+
+            if (role === 'alumni') {
+                alumniFields.classList.add('visible');
+                document.getElementById('alumni-name').required = true;
+                document.getElementById('alumni-email').required = true;
+            } else {
+                studentFields.classList.add('visible');
+                document.getElementById('student-name').required = true;
+                document.getElementById('student-id').required = true;
+            }
+
+            submitBtn.style.display = 'flex';
+            lucide.createIcons();
+        }
+
+        // Form submission
+        const interestForm = document.getElementById('interest-form');
+        if (interestForm) {
+            interestForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('interest-submit');
+                const errEl = document.getElementById('interestError');
+                const successEl = document.getElementById('interestSuccess');
+
+                btn.disabled = true;
+                btn.innerHTML = '<i data-lucide="loader"></i> Sending…';
+                lucide.createIcons();
+                errEl.classList.remove('visible');
+
+                try {
+                    const data = new FormData(interestForm);
+                    const res = await fetch(interestForm.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (res.ok) {
+                        interestForm.style.display = 'none';
+                        successEl.classList.add('visible');
+                        lucide.createIcons();
+                    } else {
+                        throw new Error('Server error');
+                    }
+                } catch {
+                    errEl.classList.add('visible');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i data-lucide="send"></i> Submit';
+                    lucide.createIcons();
+                }
+            });
+        }
     </script>
 
 </body>

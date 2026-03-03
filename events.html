@@ -1456,12 +1456,12 @@
                     <p style="font-size: 14px; color: var(--um-gray-600); margin-bottom: 16px;">I am a…</p>
 
                     <div class="interest-role-selector">
-                        <button type="button" class="interest-role-btn" onclick="selectRole('alumni')">
+                        <button type="button" class="interest-role-btn" onclick="selectRole('alumni', event)">
                             <div class="role-icon">🎓</div>
                             <div class="role-label">Alumni</div>
                             <div class="role-desc">MSP graduate</div>
                         </button>
-                        <button type="button" class="interest-role-btn" onclick="selectRole('student')">
+                        <button type="button" class="interest-role-btn" onclick="selectRole('student', event)">
                             <div class="role-icon">📚</div>
                             <div class="role-label">Student</div>
                             <div class="role-desc">Currently studying</div>
@@ -1562,13 +1562,13 @@
             document.body.style.overflow = '';
         }
 
-        function selectRole(role) {
+        function selectRole(role, e) {
             selectedRole = role;
             document.getElementById('interest-role-input').value = role;
 
             // Update button styles
             document.querySelectorAll('.interest-role-btn').forEach(btn => btn.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
+            e.currentTarget.classList.add('selected');
 
             // Show/hide field groups
             const alumniFields = document.getElementById('alumni-fields');

@@ -209,8 +209,8 @@ const COUNTRY_DETAILS = {
         coords: [42.7339, 25.4858]
     },
     "in": {
-        name: "India", code: "in", count: 1,
-        gender: { Female: 1, Male: 0 },
+        name: "India", code: "in", count: 2,
+        gender: { Female: 2, Male: 0 },
         cities: [],
         nationalities: [],
         universities: [{ name: "Harvard University", count: 1 }],

@@ -1,7 +1,7 @@
 // MSP Alumni Data - Complete Dataset
-// Last updated: February 2026
-// Total alumni: 1321 across 78 nationalities
-// Universities: 233 (verified from cleaned database)
+// Last updated: March 2026
+// Total alumni: 1397 across 78 nationalities
+// Universities: 262 (verified from cleaned database)
 
 const COUNTRY_DETAILS = {
     "nl": {
@@ -305,12 +305,12 @@ const COUNTRY_DETAILS = {
 // MSP_DATA - Main data object used by most pages
 const MSP_DATA = {
     summary: {
-        totalAlumni: 1321,
+        totalAlumni: 1397,
         nationalities: 78,
-        countriesLivingIn: 58,
-        universitiesAttended: 233
+        countriesLivingIn: 59,
+        universitiesAttended: 262
     },
-    lastUpdated: "February 2026",
+    lastUpdated: "March 2026",
     
     graduationByYear: [
         { year: 2014, count: 25 },
@@ -323,8 +323,9 @@ const MSP_DATA = {
         { year: 2021, count: 132 },
         { year: 2022, count: 145 },
         { year: 2023, count: 170 },
-        { year: 2024, count: 194 },
-        { year: 2025, count: 247 }
+        { year: 2024, count: 193 },
+        { year: 2025, count: 240 },
+        { year: 2026, count: 76 }
     ],
     
     countriesLiving: [
@@ -385,53 +386,57 @@ const MSP_DATA = {
         { name: "Tunisia", code: "tn", count: 1, coords: [33.8869, 9.5375] },
         { name: "Philippines", code: "ph", count: 1, coords: [12.8797, 121.774] },
         { name: "Laos", code: "la", count: 1, coords: [19.8563, 102.4955] },
+        { name: "Israel", code: "il", count: 1, coords: [31.0461, 34.8516] },
         { name: "Costa Rica", code: "cr", count: 1, coords: [9.7489, -83.7534] }
     ],
     
     // FIXED: Logo filenames now match actual files in assets/logos/
     // UPDATED: February 2026 - counts corrected from cleaned database
     topUniversities: [
-        { name: "Maastricht University", count: 143, code: "nl", country: "Netherlands", logo: "maastricht-university.png", prestige: false },
-        { name: "Utrecht University", count: 99, code: "nl", country: "Netherlands", logo: "utrecht-university.png", prestige: false },
+        { name: "Maastricht University", count: 149, code: "nl", country: "Netherlands", logo: "maastricht-university.png", prestige: false },
+        { name: "Utrecht University", count: 101, code: "nl", country: "Netherlands", logo: "utrecht-university.png", prestige: false },
         { name: "University of Amsterdam", count: 75, code: "nl", country: "Netherlands", logo: "university-of-amsterdam.png", prestige: false },
-        { name: "Leiden University", count: 45, code: "nl", country: "Netherlands", logo: "leiden-university.png", prestige: true },
+        { name: "Leiden University", count: 47, code: "nl", country: "Netherlands", logo: "leiden-university.png", prestige: true },
         { name: "Wageningen University & Research", count: 43, code: "nl", country: "Netherlands", logo: "wageningen-university.png", prestige: true },
-        { name: "Radboud University", count: 38, code: "nl", country: "Netherlands", logo: "radboud-university.png", prestige: false },
-        { name: "University of Groningen", count: 25, code: "nl", country: "Netherlands", logo: "university-of-groningen.png", prestige: false },
+        { name: "Radboud University", count: 39, code: "nl", country: "Netherlands", logo: "radboud-university.png", prestige: false },
+        { name: "University of Groningen", count: 26, code: "nl", country: "Netherlands", logo: "university-of-groningen.png", prestige: false },
         { name: "KU Leuven", count: 21, code: "be", country: "Belgium", logo: "ku-leuven.png", prestige: true },
         { name: "Delft University of Technology", count: 20, code: "nl", country: "Netherlands", logo: "tu-delft.png", prestige: true },
-        { name: "Uppsala University", count: 19, code: "se", country: "Sweden", logo: "uppsala-university.png", prestige: true },
         { name: "Imperial College London", count: 19, code: "gb", country: "United Kingdom", logo: "imperial-college-london.png", prestige: true },
+        { name: "Uppsala University", count: 19, code: "se", country: "Sweden", logo: "uppsala-university.png", prestige: true },
+        { name: "University of Copenhagen", count: 18, code: "dk", country: "Denmark", logo: "university-of-copenhagen.png", prestige: true },
         { name: "Vrije Universiteit Amsterdam", count: 16, code: "nl", country: "Netherlands", logo: "vrije-universiteit-amsterdam.png", prestige: false },
-        { name: "University of Copenhagen", count: 14, code: "dk", country: "Denmark", logo: "university-of-copenhagen.png", prestige: true },
+        { name: "ETH Zurich", count: 15, code: "ch", country: "Switzerland", logo: "eth-zurich.png", prestige: true },
         { name: "University College London", count: 14, code: "gb", country: "United Kingdom", logo: "ucl.png", prestige: true },
         { name: "Lund University", count: 14, code: "se", country: "Sweden", logo: "lund-university.png", prestige: true },
-        { name: "ETH Zurich", count: 14, code: "ch", country: "Switzerland", logo: "eth-zurich.png", prestige: true },
         { name: "Karolinska Institutet", count: 11, code: "se", country: "Sweden", logo: "karolinska-institutet.png", prestige: true },
         { name: "Technical University of Munich", count: 10, code: "de", country: "Germany", logo: "tu-munich.png", prestige: true },
-        { name: "University of Cambridge", count: 8, code: "gb", country: "United Kingdom", logo: "university-of-cambridge.png", prestige: true },
-        { name: "University of Edinburgh", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-edinburgh.png", prestige: true },
-        { name: "University of Oxford", count: 7, code: "gb", country: "United Kingdom", logo: "university-of-oxford.png", prestige: true }
+        { name: "Stockholm University", count: 9, code: "se", country: "Sweden", logo: "stockholm-university.png", prestige: false },
+        { name: "Eindhoven University of Technology", count: 9, code: "nl", country: "Netherlands", logo: "eindhoven-university.png", prestige: true },
+        { name: "University of Cambridge", count: 8, code: "gb", country: "United Kingdom", logo: "university-of-cambridge.png", prestige: true }
     ],
     
     fieldsOfStudy: [
-        { name: "Life Sciences & Biology", count: 341, percent: 38.9, icon: "dna" },
-        { name: "Chemistry & Materials", count: 105, percent: 12.0, icon: "flask-conical" },
-        { name: "Medicine & Health", count: 105, percent: 12.0, icon: "heart-pulse" },
-        { name: "Physics & Engineering", count: 98, percent: 11.2, icon: "atom" },
-        { name: "Neuroscience & Psychology", count: 61, percent: 7.0, icon: "brain" },
-        { name: "Business & Economics", count: 50, percent: 5.7, icon: "briefcase" },
-        { name: "Computer Science & AI", count: 27, percent: 3.1, icon: "cpu" },
-        { name: "Environmental & Earth Sciences", count: 24, percent: 2.7, icon: "leaf" },
-        { name: "Social Sciences & Humanities", count: 24, percent: 2.7, icon: "users" },
-        { name: "Other", count: 39, percent: 4.4, icon: "more-horizontal" }
+        { name: "Life Sciences & Biology", count: 422, percent: 41.5, icon: "dna" },
+        { name: "Physics & Engineering", count: 125, percent: 12.3, icon: "atom" },
+        { name: "Chemistry & Materials", count: 111, percent: 10.9, icon: "flask-conical" },
+        { name: "Medicine & Health", count: 111, percent: 10.9, icon: "heart-pulse" },
+        { name: "Neuroscience & Psychology", count: 69, percent: 6.8, icon: "brain" },
+        { name: "Business & Economics", count: 49, percent: 4.8, icon: "briefcase" },
+        { name: "Computer Science & AI", count: 29, percent: 2.9, icon: "cpu" },
+        { name: "Environmental & Earth Sciences", count: 27, percent: 2.7, icon: "leaf" },
+        { name: "Social Sciences & Humanities", count: 25, percent: 2.5, icon: "users" },
+        { name: "Other", count: 49, percent: 4.8, icon: "more-horizontal" }
     ],
     
     allNationalityFlags: [
-        "nl", "de", "be", "it", "gb", "es", "fr", "pl", "lu", "ie", "ro", "us", 
-        "gr", "tr", "ch", "ru", "bg", "pt", "fi", "in", "cy", "lv", "hu", "hr", 
-        "lt", "si", "sk", "za", "at", "cz", "dk", "mx", "cn", "jp", "au", "ee", 
-        "se", "ca", "no", "ua", "kr", "kz", "ir", "br", "ba", "lk", "th"
+        "nl", "de", "be", "it", "gb", "es", "pl", "fr", "lu", "ie", "ro", "us",
+        "bg", "ch", "gr", "tr", "ru", "fi", "pt", "za", "cy", "in", "hr", "sk",
+        "si", "lt", "hu", "lv", "at", "mx", "cn", "cz", "dk", "jp", "ee", "au",
+        "se", "ca", "ua", "no", "tt", "sg", "kz", "kr", "ir", "br", "zw", "id",
+        "cl", "lk", "ba", "rs", "ec", "vn", "th", "cw", "sd", "mk", "pk", "ke",
+        "co", "iq", "kh", "my", "ma", "mt", "md", "gh", "mz", "ph", "az", "pe",
+        "il", "mu", "pa", "sa", "ar", "kw"
     ],
     
     links: {
@@ -446,12 +451,12 @@ const MSP_DATA = {
     },
     
     recruitment: {
-        heroStat: "78 nationalities. 58 countries. 233 universities.",
+        heroStat: "78 nationalities. 59 countries. 262 universities.",
         proofStats: [
-            { number: 1321, label: "MSP Alumni", highlight: true },
+            { number: 1397, label: "MSP Alumni", highlight: true },
             { number: 78, label: "Nationalities" },
-            { number: 233, label: "Master's Universities" },
-            { number: "10.7%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
+            { number: 262, label: "Master's Universities" },
+            { number: "10.1%", label: "Pursuing PhDs", subtext: "At world-leading institutions" }
         ]
     },
     
@@ -462,22 +467,22 @@ const MSP_DATA = {
     
     consideringMSP: {
         heroStats: {
-            alumni: 1321,
+            alumni: 1397,
             nationalities: 78,
-            universities: 233,
-            countries: 58
+            universities: 262,
+            countries: 59
         },
         
         careerSectors: [
-            { name: "Academia & Research", count: 222, percent: 16.8, icon: "graduation-cap", color: "#00A2DB", description: "PhD candidates, postdocs, research scientists, and faculty", examples: ["PhD at Max Planck", "Research Fellow at Cambridge", "Postdoc at ETH Zurich"] },
-            { name: "Technology & Data", count: 66, percent: 5.0, icon: "cpu", color: "#8b5cf6", description: "Software engineers, data scientists, AI researchers", examples: ["Software Engineer at ASML", "Data Scientist", "ML Engineer"] },
-            { name: "Industry R&D", count: 60, percent: 4.5, icon: "flask-conical", color: "#10b981", description: "Research and development in corporate settings", examples: ["R&D Scientist at Unilever", "Materials Researcher at ASML", "Innovation Lead"] },
-            { name: "Finance & Business", count: 47, percent: 3.6, icon: "briefcase", color: "#f59e0b", description: "Management, operations, banking, and finance", examples: ["Investment Analyst", "Operations Manager", "Business Development"] },
-            { name: "Pharma & Biotech", count: 46, percent: 3.5, icon: "pill", color: "#ec4899", description: "Pharmaceutical and biotechnology industry", examples: ["Scientist at Novartis", "Clinical Researcher at Roche", "Biotech Analyst"] },
-            { name: "Consulting", count: 43, percent: 3.3, icon: "trending-up", color: "#E84E10", description: "Strategy, management, and specialized consulting", examples: ["Consultant at McKinsey", "Analyst at BCG", "Strategy at Deloitte"] },
-            { name: "Environment & Sustainability", count: 33, percent: 2.5, icon: "leaf", color: "#22c55e", description: "Environmental science, sustainability, conservation", examples: ["Sustainability Consultant", "Environmental Researcher", "Climate Analyst"] },
-            { name: "Healthcare & Medicine", count: 23, percent: 1.7, icon: "heart-pulse", color: "#ef4444", description: "Clinical practice, medical research, healthcare management", examples: ["Medical Doctor", "Clinical Research Associate", "Healthcare Consultant"] },
-            { name: "Engineering", count: 21, percent: 1.6, icon: "settings", color: "#6366f1", description: "Technical engineering roles across industries", examples: ["Process Engineer", "R&D Engineer", "Technical Consultant"] },
+            { name: "Academia & Research", count: 222, percent: 15.9, icon: "graduation-cap", color: "#00A2DB", description: "PhD candidates, postdocs, research scientists, and faculty", examples: ["PhD at Max Planck", "Research Fellow at Cambridge", "Postdoc at ETH Zurich"] },
+            { name: "Technology & Data", count: 66, percent: 4.7, icon: "cpu", color: "#8b5cf6", description: "Software engineers, data scientists, AI researchers", examples: ["Software Engineer at ASML", "Data Scientist", "ML Engineer"] },
+            { name: "Industry R&D", count: 60, percent: 4.3, icon: "flask-conical", color: "#10b981", description: "Research and development in corporate settings", examples: ["R&D Scientist at Unilever", "Materials Researcher at ASML", "Innovation Lead"] },
+            { name: "Finance & Business", count: 48, percent: 3.4, icon: "briefcase", color: "#f59e0b", description: "Management, operations, banking, and finance", examples: ["Investment Analyst", "Operations Manager", "Business Development"] },
+            { name: "Pharma & Biotech", count: 46, percent: 3.3, icon: "pill", color: "#ec4899", description: "Pharmaceutical and biotechnology industry", examples: ["Scientist at Novartis", "Clinical Researcher at Roche", "Biotech Analyst"] },
+            { name: "Consulting", count: 42, percent: 3.0, icon: "trending-up", color: "#E84E10", description: "Strategy, management, and specialized consulting", examples: ["Consultant at McKinsey", "Analyst at BCG", "Strategy at Deloitte"] },
+            { name: "Environment & Sustainability", count: 33, percent: 2.4, icon: "leaf", color: "#22c55e", description: "Environmental science, sustainability, conservation", examples: ["Sustainability Consultant", "Environmental Researcher", "Climate Analyst"] },
+            { name: "Healthcare & Medicine", count: 23, percent: 1.6, icon: "heart-pulse", color: "#ef4444", description: "Clinical practice, medical research, healthcare management", examples: ["Medical Doctor", "Clinical Research Associate", "Healthcare Consultant"] },
+            { name: "Engineering", count: 21, percent: 1.5, icon: "settings", color: "#6366f1", description: "Technical engineering roles across industries", examples: ["Process Engineer", "R&D Engineer", "Technical Consultant"] },
             { name: "Entrepreneurship", count: 15, percent: 1.1, icon: "rocket", color: "#f97316", description: "Founders, startup leaders, and self-employed", examples: ["Startup Founder", "CEO", "Freelance Consultant"] },
             { name: "Government & Policy", count: 8, percent: 0.6, icon: "landmark", color: "#0ea5e9", description: "Public sector, policy research, government roles", examples: ["Policy Advisor", "EU Commission", "Government Researcher"] },
             { name: "NGO & Non-profit", count: 7, percent: 0.5, icon: "heart-handshake", color: "#d946ef", description: "Non-governmental organizations and charities", examples: ["Programme Officer", "Research Lead", "Development Coordinator"] }
@@ -485,12 +490,12 @@ const MSP_DATA = {
         
         phdPipeline: {
             phdCandidates: 141,
-            phdPercent: 10.7,
+            phdPercent: 10.1,
             postdocs: 9,
             researchPositions: 49,
             faculty: 5,
-            totalAcademia: 204,
-            academiaPercent: 15.4,
+            totalAcademia: 222,
+            academiaPercent: 15.9,
             institutions: [
                 { name: "Max Planck Institutes", icon: "award" },
                 { name: "ETH Zurich", icon: "award" },
@@ -502,12 +507,12 @@ const MSP_DATA = {
         },
         
         fieldToCareer: [
-            { field: "Life Sciences & Biology", count: 383, icon: "dna", color: "#10b981", topCareers: [{ name: "PhD Candidates", count: 62 }, { name: "Research Positions", count: 23 }, { name: "Industry R&D", count: 22 }, { name: "Pharma & Biotech", count: 19 }] },
+            { field: "Life Sciences & Biology", count: 422, icon: "dna", color: "#10b981", topCareers: [{ name: "PhD Candidates", count: 62 }, { name: "Research Positions", count: 23 }, { name: "Industry R&D", count: 22 }, { name: "Pharma & Biotech", count: 19 }] },
             { field: "Chemistry & Materials", count: 111, icon: "flask-conical", color: "#8b5cf6", topCareers: [{ name: "PhD Candidates", count: 30 }, { name: "Industry R&D", count: 7 }, { name: "Environmental", count: 6 }, { name: "Technology", count: 5 }] },
-            { field: "Physics & Engineering", count: 109, icon: "atom", color: "#00A2DB", topCareers: [{ name: "PhD Candidates", count: 13 }, { name: "Industry R&D", count: 6 }, { name: "Technology", count: 6 }, { name: "Consulting", count: 5 }] },
-            { field: "Medicine & Health", count: 107, icon: "heart-pulse", color: "#ef4444", topCareers: [{ name: "PhD Candidates", count: 14 }, { name: "Management", count: 10 }, { name: "Industry R&D", count: 7 }, { name: "Healthcare", count: 5 }] },
-            { field: "Neuroscience & Psychology", count: 63, icon: "brain", color: "#ec4899", topCareers: [{ name: "PhD Candidates", count: 8 }, { name: "Research Positions", count: 5 }, { name: "Consulting", count: 4 }, { name: "Education", count: 2 }] },
-            { field: "Computer Science & AI", count: 29, icon: "cpu", color: "#6366f1", topCareers: [{ name: "Technology & Data", count: 12 }, { name: "Industry R&D", count: 5 }, { name: "Consulting", count: 3 }, { name: "PhD Candidates", count: 2 }] }
+            { field: "Physics & Engineering", count: 125, icon: "atom", color: "#00A2DB", topCareers: [{ name: "PhD Candidates", count: 13 }, { name: "Industry R&D", count: 6 }, { name: "Technology", count: 6 }, { name: "Consulting", count: 5 }] },
+            { field: "Medicine & Health", count: 111, icon: "heart-pulse", color: "#ef4444", topCareers: [{ name: "PhD Candidates", count: 14 }, { name: "Management", count: 10 }, { name: "Industry R&D", count: 7 }, { name: "Healthcare", count: 5 }] },
+            { field: "Neuroscience & Psychology", count: 69, icon: "brain", color: "#ec4899", topCareers: [{ name: "PhD Candidates", count: 8 }, { name: "Research Positions", count: 5 }, { name: "Consulting", count: 4 }, { name: "Education", count: 2 }] },
+            { field: "Computer Science & AI", count: 29, icon: "cpu", color: "#6366f1", topCareers: [{ name: "Technology & Data", count: 7 }, { name: "Consulting", count: 3 }, { name: "Technology", count: 3 }, { name: "PhD Candidates", count: 2 }] }
         ],
         
         notableEmployers: {
@@ -523,55 +528,56 @@ const MSP_DATA = {
         },
         
         genderByField: [
-            { field: "Life Sciences & Biology", female: 244, male: 139, femalePercent: 64 },
-            { field: "Medicine & Health", female: 90, male: 17, femalePercent: 84 },
-            { field: "Neuroscience & Psychology", female: 41, male: 22, femalePercent: 65 },
+            { field: "Life Sciences & Biology", female: 267, male: 155, femalePercent: 63 },
+            { field: "Medicine & Health", female: 93, male: 18, femalePercent: 84 },
+            { field: "Neuroscience & Psychology", female: 44, male: 24, femalePercent: 65 },
             { field: "Chemistry & Materials", female: 54, male: 57, femalePercent: 49 },
-            { field: "Physics & Engineering", female: 53, male: 55, femalePercent: 49 },
+            { field: "Physics & Engineering", female: 61, male: 63, femalePercent: 49 },
             { field: "Computer Science & AI", female: 9, male: 20, femalePercent: 31 }
         ],
         
         growth: {
             factor: 3.9,
-            years: "12",
+            years: "13",
             early: { period: "2014-2017", count: 192 },
-            recent: { period: "2022-2025", count: 756 },
+            recent: { period: "2022-2025", count: 748 },
             byYear: [
                 { year: 2014, count: 25 }, { year: 2015, count: 44 }, { year: 2016, count: 57 }, { year: 2017, count: 66 },
                 { year: 2018, count: 65 }, { year: 2019, count: 76 }, { year: 2020, count: 108 }, { year: 2021, count: 132 },
-                { year: 2022, count: 145 }, { year: 2023, count: 170 }, { year: 2024, count: 194 }, { year: 2025, count: 247 }
+                { year: 2022, count: 145 }, { year: 2023, count: 170 }, { year: 2024, count: 193 }, { year: 2025, count: 240 },
+                { year: 2026, count: 76 }
             ]
         },
         
-        regionalImpact: { inNetherlands: 460, netherlandsPercent: 34.8, fromEuregio: 390, euregioPercent: 29.5, euregioRetention: 54.9 },
+        regionalImpact: { inNetherlands: 483, netherlandsPercent: 34.6, fromEuregio: 390, euregioPercent: 27.9, euregioRetention: 21.5 },
         
         quickFacts: [
-            { number: "60%", label: "Female Students", sublabel: "788 of 1,321 alumni", icon: "users" },
-            { number: "35%", label: "Stay in Netherlands", sublabel: "460 alumni currently", icon: "map-pin" },
+            { number: "60%", label: "Female Students", sublabel: "832 of 1,397 alumni", icon: "users" },
+            { number: "35%", label: "Stay in Netherlands", sublabel: "483 alumni currently", icon: "map-pin" },
             { number: "82", label: "At Elite Universities", sublabel: "World Top 25 institutions", icon: "award" },
             { number: "3.9x", label: "Programme Growth", sublabel: "Since 2014", icon: "trending-up" }
         ],
         
         topCities: [
-            { rank: 1, name: "Maastricht", country: "Netherlands", code: "nl", count: 124 },
+            { rank: 1, name: "Maastricht", country: "Netherlands", code: "nl", count: 123 },
             { rank: 2, name: "Amsterdam", country: "Netherlands", code: "nl", count: 96 },
             { rank: 3, name: "Utrecht", country: "Netherlands", code: "nl", count: 70 },
             { rank: 4, name: "London", country: "United Kingdom", code: "gb", count: 37 },
             { rank: 5, name: "Leiden", country: "Netherlands", code: "nl", count: 35 },
             { rank: 6, name: "Brussels", country: "Belgium", code: "be", count: 33 },
-            { rank: 7, name: "Copenhagen", country: "Denmark", code: "dk", count: 23 },
+            { rank: 7, name: "Copenhagen", country: "Denmark", code: "dk", count: 22 },
             { rank: 8, name: "Berlin", country: "Germany", code: "de", count: 21 },
-            { rank: 9, name: "Zurich", country: "Switzerland", code: "ch", count: 21 },
-            { rank: 10, name: "Munich", country: "Germany", code: "de", count: 21 }
+            { rank: 9, name: "Munich", country: "Germany", code: "de", count: 21 },
+            { rank: 10, name: "Zurich", country: "Switzerland", code: "ch", count: 21 }
         ],
         
         // FIXED: Logo filenames now match actual files in assets/logos/
         universityTiers: {
             worldTop10: {
                 label: "World Top 10",
-                count: 30,
+                count: 31,
                 universities: [
-                    { name: "ETH Zurich", code: "ch", count: 14, logo: "eth-zurich.png" },
+                    { name: "ETH Zurich", code: "ch", count: 15, logo: "eth-zurich.png" },
                     { name: "Cambridge", code: "gb", count: 8, logo: "university-of-cambridge.png" },
                     { name: "Oxford", code: "gb", count: 7, logo: "university-of-oxford.png" },
                     { name: "Harvard", code: "us", count: 1, logo: "harvard.png" }
@@ -579,7 +585,7 @@ const MSP_DATA = {
             },
             worldTop25: {
                 label: "World Top 25",
-                count: 81,
+                count: 83,
                 universities: [
                     { name: "Imperial College", code: "gb", count: 19, logo: "imperial-college-london.png" },
                     { name: "UCL", code: "gb", count: 14, logo: "ucl.png" },
@@ -593,14 +599,14 @@ const MSP_DATA = {
             },
             topDutch: {
                 label: "Top Dutch Universities",
-                count: 423,
+                count: 443,
                 universities: [
-                    { name: "Maastricht University", code: "nl", count: 143, logo: "maastricht-university.png" },
-                    { name: "Utrecht University", code: "nl", count: 99, logo: "utrecht-university.png" },
+                    { name: "Maastricht University", code: "nl", count: 149, logo: "maastricht-university.png" },
+                    { name: "Utrecht University", code: "nl", count: 101, logo: "utrecht-university.png" },
                     { name: "University of Amsterdam", code: "nl", count: 75, logo: "university-of-amsterdam.png" },
-                    { name: "Leiden University", code: "nl", count: 45, logo: "leiden-university.png" },
+                    { name: "Leiden University", code: "nl", count: 47, logo: "leiden-university.png" },
                     { name: "Wageningen University & Research", code: "nl", count: 43, logo: "wageningen-university.png" },
-                    { name: "Radboud University", code: "nl", count: 38, logo: "radboud-university.png" }
+                    { name: "Radboud University", code: "nl", count: 39, logo: "radboud-university.png" }
                 ]
             }
         },
@@ -656,7 +662,7 @@ const MSP_DATA = {
                 info: "One of the world's foremost medical universities. The Nobel Assembly at Karolinska awards the Nobel Prize in Physiology or Medicine."
             },
             "EPFL": {
-                fullName: "Ãƒâ€°cole Polytechnique FÃƒÂ©dÃƒÂ©rale de Lausanne",
+                fullName: "École Polytechnique Fédérale de Lausanne",
                 location: "Lausanne, Switzerland",
                 founded: 1969,
                 ranking: "36th",
@@ -693,9 +699,9 @@ const MSP_DATA = {
         },
         
         composition: {
-            gender: { female: 788, male: 531, other: 2 },
-            international: { international: 1058, dutch: 263 },
-            euStatus: { eu: 1070, nonEu: 251 }
+            gender: { female: 832, male: 562, other: 3 },
+            international: { international: 1115, dutch: 282 },
+            euStatus: { eu: 1131, nonEu: 266 }
         }
     }
 };
@@ -759,7 +765,8 @@ const COUNTRY_FACTS = {
     za: { capital: 'Pretoria', currency: 'Rand (R)', language: 'Multiple (11)', population: '60.0M', continent: 'Africa', timezone: 'SAST (UTC+2)' },
     zw: { capital: 'Harare', currency: 'ZiG/USD', language: 'English/+15', population: '16.3M', continent: 'Africa', timezone: 'CAT (UTC+2)' },
     tn: { capital: 'Tunis', currency: 'Dinar (TND)', language: 'Arabic', population: '12.4M', continent: 'Africa', timezone: 'CET (UTC+1)' },
-    ml: { capital: 'Bamako', currency: 'Franc (XOF)', language: 'French', population: '22.4M', continent: 'Africa', timezone: 'GMT (UTC+0)' }
+    ml: { capital: 'Bamako', currency: 'Franc (XOF)', language: 'French', population: '22.4M', continent: 'Africa', timezone: 'GMT (UTC+0)' },
+    la: { capital: 'Vientiane', currency: 'Kip (LAK)', language: 'Lao', population: '7.5M', continent: 'Asia', timezone: 'ICT (UTC+7)' }
 };
 
 // University logo file mappings - maps university names to logo filenames in assets/logos/
@@ -829,7 +836,6 @@ const UNI_LOGO_FILES = {
     'University of Bremen': 'university-of-bremen.png',
     'University of Hamburg': 'university-of-hamburg.png',
     'University of Munster': 'university-of-munster.png',
-    'University of Munster': 'university-of-munster.png',
     
     // Belgian Universities
     'KU Leuven': 'ku-leuven.png',
@@ -848,10 +854,8 @@ const UNI_LOGO_FILES = {
     'KTH Royal Institute of Technology': 'kth-royal-institute-of-technology.png',
     'Chalmers University of Technology': 'chalmers-university-of-technology.png',
     'Linkoping University': 'linkoping-university.png',
-    'Linkoping University': 'linkoping-university.png',
     
     // Swiss Universities
-    'ETH Zurich': 'eth-zurich.png',
     'ETH Zurich': 'eth-zurich.png',
     'EPFL': 'epfl.png',
     'University of Zurich': 'university-of-zurich.png',
@@ -903,7 +907,6 @@ const UNI_LOGO_FILES = {
     'University of Pavia': 'university-of-pavia.png',
     'University of Milan': 'university-of-milan.png',
     'Politecnico di Milano': 'politecnico-di-milano.png',
-    'Universita Cattolica del Sacro Cuore': 'universita-cattolica.png',
     'Universita Cattolica del Sacro Cuore': 'universita-cattolica.png',
     
     // Other European Universities

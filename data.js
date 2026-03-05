@@ -209,8 +209,8 @@ const COUNTRY_DETAILS = {
         coords: [42.7339, 25.4858]
     },
     "in": {
-        name: "India", code: "in", count: 1,
-        gender: { Female: 1, Male: 0 },
+        name: "India", code: "in", count: 2,
+        gender: { Female: 2, Male: 0 },
         cities: [],
         nationalities: [],
         universities: [{ name: "Harvard University", count: 1 }],
@@ -323,8 +323,8 @@ const MSP_DATA = {
         { year: 2021, count: 132 },
         { year: 2022, count: 145 },
         { year: 2023, count: 170 },
-        { year: 2024, count: 194 },
-        { year: 2025, count: 247 }
+        { year: 2024, count: 193 },
+        { year: 2025, count: 240 }
     ],
     
     countriesLiving: [
@@ -535,11 +535,11 @@ const MSP_DATA = {
             factor: 3.9,
             years: "12",
             early: { period: "2014-2017", count: 192 },
-            recent: { period: "2022-2025", count: 756 },
+            recent: { period: "2022-2025", count: 748 },
             byYear: [
                 { year: 2014, count: 25 }, { year: 2015, count: 44 }, { year: 2016, count: 57 }, { year: 2017, count: 66 },
                 { year: 2018, count: 65 }, { year: 2019, count: 76 }, { year: 2020, count: 108 }, { year: 2021, count: 132 },
-                { year: 2022, count: 145 }, { year: 2023, count: 170 }, { year: 2024, count: 194 }, { year: 2025, count: 247 }
+                { year: 2022, count: 145 }, { year: 2023, count: 170 }, { year: 2024, count: 193 }, { year: 2025, count: 240 }
             ]
         },
         
